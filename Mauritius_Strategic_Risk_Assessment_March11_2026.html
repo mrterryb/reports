@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mauritius — Iran Conflict Strategic Risk Assessment — March 11, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0d4a4a; --teal-mid: #0f5e5e; --teal-light: #145f5f;
+    --coral: #c75a3a; --coral-bright: #e0694a; --coral-pale: #fdf0eb;
+    --gold: #c49a20; --gold-pale: #fdf6e0; --gold-ultra: #fffcf0;
+    --sky: #1a5f8a; --sky-pale: #eaf4fb;
+    --offwhite: #f5f7f6; --white: #ffffff;
+    --text: #0f1e1e; --text-mid: #2a4040; --text-light: #527070; --border: #d0dede;
+    --red: #c0331e; --amber: #b87200; --green: #1a7a4a; --blue: #1a5f8a;
+    --red-bg: #fdf2f0; --amber-bg: #fef8ed; --green-bg: #edf8f2; --blue-bg: #eaf4fb;
+    --shadow: 0 4px 20px rgba(13,74,74,0.08); --shadow-lg: 0 12px 44px rgba(13,74,74,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* HEADER */
+  .report-header { background: var(--teal); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(196,154,32,0.12) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--coral-bright), var(--gold), transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-country { background: rgba(199,90,58,0.25); border: 1px solid rgba(199,90,58,0.5); color: #f5a080; }
+  .badge-day { background: rgba(192,51,30,0.22); border: 1px solid rgba(192,51,30,0.45); color: #f09080; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #f5c060; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 860px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 19px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.coral { color: #f5a080; } .stat-value.gold { color: #f5c060; } .stat-value.green { color: #7de0a0; } .stat-value.red { color: #f09070; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+  .prepared-for { background: var(--teal-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-bar { display: flex; align-items: center; gap: 14px; }
+  .lma-wordmark { font-family: 'Libre Baskerville', serif; font-size: 13px; font-weight: 700; color: #f5c060; letter-spacing: 0.04em; white-space: nowrap; }
+  .lma-divider { width: 1px; height: 22px; background: rgba(255,255,255,0.15); }
+  .author-details { display: flex; flex-direction: column; gap: 1px; }
+  .author-name { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.75); letter-spacing: 0.02em; }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #f5c060; }
+  .scenario-bar { background: var(--teal-light); padding: 10px 64px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .sc-label { font-size: 10px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.26); margin-right: 4px; }
+  .spill { display: flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 4px; font-size: 11.5px; font-weight: 500; }
+  .spill-a { background: rgba(26,122,74,0.22); color: #7de0a0; border: 1px solid rgba(26,122,74,0.38); }
+  .spill-b { background: rgba(184,114,0,0.22); color: #f5c47a; border: 1px solid rgba(184,114,0,0.38); }
+  .spill-c { background: rgba(192,51,30,0.22); color: #f09080; border: 1px solid rgba(192,51,30,0.38); }
+  .spill-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .spill-a .spill-dot { background: #7de0a0; } .spill-b .spill-dot { background: #f5c47a; } .spill-c .spill-dot { background: #f09080; }
+
+  /* TABS */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,74,74,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'Inter', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--coral-bright); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--teal); }
+  .tab-btn.active { color: var(--teal); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--coral-pale); color: var(--coral); }
+
+  /* CONTENT */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--teal); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--coral-bright); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--teal); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* PROFILE GRID */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--coral); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--teal); }
+
+  /* ALERTS */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-bg); border-color: var(--red); }
+  .alert-warning { background: var(--amber-bg); border-color: var(--amber); }
+  .alert-ok { background: var(--green-bg); border-color: var(--green); }
+  .alert-info { background: var(--blue-bg); border-color: var(--blue); }
+  .alert-gold { background: var(--gold-ultra); border-color: var(--gold); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'JetBrains Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--green); }
+  .alert-info .alert-title { color: var(--blue); }
+  .alert-gold .alert-title { color: var(--gold); }
+
+  /* EXPOSURE CARDS */
+  .exposure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0; }
+  .exp-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .exp-card:hover { border-color: var(--coral); }
+  .exp-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+  .exp-title { font-size: 14.5px; font-weight: 600; color: var(--teal); line-height: 1.3; }
+  .sev { font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 600; padding: 3px 8px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-left: 10px; }
+  .sev-critical { background: #fdecea; color: var(--red); border: 1px solid #f5c4c0; }
+  .sev-high { background: #fef3e2; color: #9a5000; border: 1px solid #f5daa0; }
+  .sev-moderate { background: var(--green-bg); color: var(--green); border: 1px solid #a8dfc0; }
+  .sev-opportunity { background: var(--blue-bg); color: var(--blue); border: 1px solid #a8c8e8; }
+  .exp-body { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
+  .exp-tag { display: inline-block; font-size: 10px; font-family: 'JetBrains Mono', monospace; padding: 2px 7px; border-radius: 3px; background: var(--offwhite); border: 1px solid var(--border); color: var(--text-light); margin: 8px 3px 0 0; }
+
+  /* TABLES */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--teal); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f5f5; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+
+  /* INLINE BADGES */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: #fef3e2; color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--green-bg); color: var(--green); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid #a8c8e8; }
+  .b-coral { background: var(--coral-pale); color: var(--coral); border: 1px solid #f5c0a8; }
+
+  /* STYLED LIST */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #eff3f3; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--coral-bright); font-weight: 700; }
+
+  /* ACTION CARDS */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--coral); }
+  .ac-num { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--coral); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--teal); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-week { background: #fef3e2; color: #9a5000; }
+  .urg-medium { background: var(--green-bg); color: var(--green); }
+
+  /* CLOSING BOXES */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--teal); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.coral-box { background: linear-gradient(135deg, #7a2810, var(--coral)); }
+  .closing-box h4 { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.6; }
+  .closing-box p, .closing-box li { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #f5c060; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* FOOTER */
+  .report-footer { background: var(--teal); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'JetBrains Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .scenario-bar, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .exposure-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-country">Country Assessment</span>
+    <span class="badge badge-day">Conflict Day 11</span>
+    <span class="badge badge-date">March 11, 2026</span>
+  </div>
+  <h1>Iran–US/Israel Conflict:<br><span>Mauritius Strategic Risk</span></h1>
+  <p class="report-subtitle">Full-spectrum country assessment · Energy · Tourism · Trade · Finance · Government · Business</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Energy Import Dependency</div>
+      <div class="stat-value coral">84%</div>
+      <div class="stat-delta">Primary energy from imported fossil fuels</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Tourism / GDP</div>
+      <div class="stat-value gold">~12%</div>
+      <div class="stat-delta">Rs 100B+ earnings in 2025 · 1.44M arrivals</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Brent (March 11)</div>
+      <div class="stat-value red">$87–93</div>
+      <div class="stat-delta">Hit $119 peak March 9 · Was $70 pre-conflict</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Port Louis — Cape Route</div>
+      <div class="stat-value green">+17–23%</div>
+      <div class="stat-delta">Berth occupancy up from rerouted shipping</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>Mauritius Strategic Risk Assessment · March 11, 2026 · Day 11 of Iran–US/Israel Conflict</span>
+  <div class="author-bar">
+    <div class="author-links">
+      <a href="https://thierrybechard.com" target="_blank">https://thierrybechard.com</a>
+      <a href="mailto:thierry@thierrybechard.com">thierry@thierrybechard.com</a>
+    </div>
+  </div>
+</div>
+
+<div class="scenario-bar">
+  <span class="sc-label">Scenarios</span>
+  <span class="spill spill-a"><span class="spill-dot"></span>A: Rapid Ceasefire — 10–15%</span>
+  <span class="spill spill-b"><span class="spill-dot"></span>B: Prolonged Conflict — 50% base case</span>
+  <span class="spill spill-c"><span class="spill-dot"></span>C: Wider Escalation — 35–40%</span>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('overview',this)">Country Profile<span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('energy',this)">Energy<span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('tourism',this)">Tourism<span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('trade',this)">Trade & Port<span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('macro',this)">Macro & Finance<span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('sectors',this)">Sectors<span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('scenarios',this)">Scenarios<span class="tab-num">07</span></button>
+  <button class="tab-btn" onclick="showTab('actions',this)">Actions<span class="tab-num">08</span></button>
+</nav>
+
+<!-- 01 OVERVIEW -->
+<div id="overview" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Country Profile</h2>
+  <p class="section-lead">Mauritius is a small island economy with no fossil fuel reserves, a structural trade deficit, and a GDP dominated by services. It is entirely exposed to global energy and shipping prices — and has limited ability to absorb sustained shocks without fiscal intervention.</p>
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Economy</h4>
+      <p>Upper-middle income island economy. GDP ~<strong>MUR 651B ($14B)</strong>. Services account for <strong>72–77% of GDP</strong>. Tourism: ~12%. Financial services, ICT, textiles. GDP growth 4.7% in 2024.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Energy</h4>
+      <p><strong>84% of primary energy</strong> from imported fossil fuels (oil and coal). No domestic oil, gas, or coal reserves. Entirely dependent on import supply chains for transport, electricity, and industry.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Trade</h4>
+      <p>Structural trade deficit of <strong>~26% of GDP</strong> (2024). Heavy import dependence: oil, vehicles, food. Exports: fish/seafood (21%), textiles (17%), sugar (13%). Foreign reserves: USD 9.5B = 13 months import cover.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Tourism</h4>
+      <p><strong>1.44M arrivals in 2025</strong> (+3.9%). Tourism earnings Rs 100B+ (~$2B). Europe = 64% of arrivals; France the top single market. Air arrivals dominant — sea arrivals fell 27.6% in 2025.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rupee & Inflation</h4>
+      <p>Inflation <strong>3.5% in February 2026</strong> (easing). USD/MUR rate ~47.1 (rupee depreciated 3.6% YoY). IMF flags external position weaker than fundamentals. Current account deficit ~6.5% of GDP in 2024.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Politics</h4>
+      <p>New government since October 2024 elections — former PM Pravind Jugnauth defeated. Political transition ongoing. Public debt ~88% of GDP (June 2025). Fiscal deficit: 6.5% of GDP FY24/25.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">The Core Vulnerability</h3>
+  <p class="body-text">Mauritius has no domestic energy production. Every litre of diesel, petrol, jet fuel, heavy fuel oil, and LPG arrives by sea from international markets. This means Brent at $90 is not just an abstract commodity price — it directly raises the cost of electricity generation, road transport, air access, fishing, construction, and virtually every sector of the economy.</p>
+  <p class="body-text">The island has three compounding vulnerabilities in this crisis. First, it is a price-taker on energy — it cannot influence what it pays. Second, its key revenue earner (tourism) is directly dependent on air connectivity through Gulf hubs now suspended. Third, its import supply chains traverse the Indian Ocean and are exposed to the same Cape rerouting that is adding time and cost to global shipping.</p>
+
+  <div class="alert alert-gold">
+    <div class="alert-title">The One Counterintuitive Positive</div>
+    Cape route rerouting — which is damaging for Mauritius as a trade importer — is simultaneously generating a traffic windfall for Port Louis. Ships rerouting from Asia to Europe via the Cape pass through the Indian Ocean within proximity of Mauritius. Port Louis has already seen 17–23% higher berth occupancy in early March 2026. This is Mauritius's only structural upside from the crisis, and it is real.
+  </div>
+</div>
+</div>
+
+<!-- 02 ENERGY -->
+<div id="energy" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Energy — The Primary Shock</h2>
+  <p class="section-lead">84% import dependence on fossil fuels with zero domestic production. Brent at $87–93 (up 25%+ since conflict began) hits Mauritius across every sector simultaneously — electricity, transport, fishing, manufacturing, and construction.</p>
+
+  <div class="exposure-grid">
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Petroleum Import Cost Shock</div>
+        <span class="sev sev-critical">Critical</span>
+      </div>
+      <p class="exp-body">Mauritius imports all refined petroleum products — gasoline, diesel, jet fuel, heavy fuel oil, LPG. With Brent up from ~$70 pre-conflict to $87–93 today (and an intraday peak of $119), the national import bill for fuel has risen materially. At ~1,000–1,750 thousand barrels/month of oil product imports, each $10/bbl Brent increase adds roughly $10–17M/month to Mauritius's energy import bill. The full $20+ increase from pre-conflict levels represents $20–35M/month in additional cost — a structural shock to the current account.</p>
+      <span class="exp-tag">Affects all sectors</span>
+      <span class="exp-tag">No domestic substitute</span>
+      <span class="exp-tag">Rupee pressure</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Electricity Generation Cost</div>
+        <span class="sev sev-high">High</span>
+      </div>
+      <p class="exp-body">The Central Electricity Board (CEB) generates ~37% of Mauritius's power from four thermal stations running on heavy fuel oil. Independent power producers use coal (outside sugarcane season) and bagasse (during harvest June–November). Brent-correlated fuel oil prices directly inflate CEB's generation cost. Historically, fuel price increases translate into electricity tariff adjustments — but government tends to absorb shocks partially before passing to consumers, creating fiscal strain. At sustained $90+ Brent, electricity subsidy pressure could become significant.</p>
+      <span class="exp-tag">CEB thermal fleet</span>
+      <span class="exp-tag">Electricity tariffs</span>
+      <span class="exp-tag">Subsidy risk</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Fuel Retail Prices — Consumer & Business</div>
+        <span class="sev sev-high">High</span>
+      </div>
+      <p class="exp-body">Mauritius regulates retail fuel prices through the State Trading Corporation (STC), which procures petroleum on behalf of the country. When international prices rise sharply, STC faces a choice: absorb via a fuel price stabilisation mechanism (fiscal cost) or pass through to consumers (inflationary). Diesel price increases flow directly to transport, logistics, fishing, and construction. Petrol increases affect household budgets. A sustained $20+ Brent shock cannot be fully absorbed by stabilisation funds — consumer prices will rise.</p>
+      <span class="exp-tag">STC procurement</span>
+      <span class="exp-tag">Price stabilisation fund</span>
+      <span class="exp-tag">Political sensitivity</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">LPG Supply — Household Cooking Fuel</div>
+        <span class="sev sev-high">High</span>
+      </div>
+      <p class="exp-body">LPG is the dominant household cooking fuel in Mauritius. Qatar — a major LPG exporter through the Strait of Hormuz — declared force majeure on all LNG and associated products on March 4 after its facilities were attacked. While LPG and LNG are separate products, QatarEnergy's production halt affects the wider Gulf hydrocarbon supply complex. LPG supply to Mauritius is currently routed via global trading rather than directly from Qatar, but price spikes and supply tightness will be felt. A supply disruption to LPG is socially and politically sensitive.</p>
+      <span class="exp-tag">Household staple</span>
+      <span class="exp-tag">Qatar supply disruption</span>
+      <span class="exp-tag">Social sensitivity</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">State Trading Corporation — The Critical Intermediary</h3>
+  <p class="body-text">The STC is Mauritius's petroleum procurement agent. It negotiates and executes the country's oil product purchases on international markets and manages the fuel price stabilisation mechanism. In a sustained high-price environment, the STC's stabilisation fund will be drawn down faster than expected — creating a fiscal demand on the government at the same time as fuel price political pressure builds. The new government (in office since October 2024) will face this challenge with a fiscal deficit already at 6.5% of GDP.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">STC Procurement — Key Unknown</div>
+    The state of STC's forward procurement contracts and strategic stock position as of March 11 is not publicly available. If STC had not built forward cover before the conflict began (Brent was ~$70 in late February), it is now procuring at $87–93 with no price ceiling. If it has 3–4 months of forward cover at pre-conflict prices, the impact is delayed but not averted. This is the most important domestic energy security question for government right now.
+  </div>
+
+  <h3 class="subsection-title">Brent Price Sensitivity — Mauritius Context</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Brent Level</th><th>vs. Pre-Conflict ($70)</th><th>Estimated Monthly Import Cost Add</th><th>Likely STC Response</th></tr></thead>
+      <tbody>
+        <tr><td>$80</td><td>+$10</td><td>+$10–17M/month</td><td>Stabilisation fund absorbs — no price change</td></tr>
+        <tr><td>$90–95 (current)</td><td>+$20–25</td><td>+$20–35M/month</td><td>Partial fund drawdown; some pass-through likely</td></tr>
+        <tr><td>$100–110</td><td>+$30–40</td><td>+$30–55M/month</td><td>Retail price increases; political pressure on government</td></tr>
+        <tr><td>$120+ (March 9 peak)</td><td>+$50</td><td>+$50–85M/month</td><td>Emergency measures; fuel assistance for vulnerable households</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- 03 TOURISM -->
+<div id="tourism" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Tourism — The Structural Risk</h2>
+  <p class="section-lead">Tourism contributes ~12% of GDP and generated Rs 100B+ ($2B) in 2025. It is Mauritius's largest foreign exchange earner. Europe — which provides 64% of arrivals — connects primarily through Gulf hubs that are currently suspended.</p>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">Gulf Aviation Hub Suspension — Ongoing Day 11</div>
+    Emirates, Qatar Airways, Etihad, and all major Gulf carriers suspended operations on February 28. Gulf hubs (Dubai, Doha, Abu Dhabi) remain closed. These hubs are the dominant connection points for European-origin flights to Mauritius, particularly for France (the top single market), Italy, Germany, and the UK. With no ceasefire in sight, the suspension may extend through March and into April — threatening the European Easter travel period (a significant Mauritius peak).
+  </div>
+
+  <div class="exposure-grid">
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Air Connectivity — European Markets at Risk</div>
+        <span class="sev sev-critical">Critical</span>
+      </div>
+      <p class="exp-body">Europe provides 64% of Mauritius arrivals. French tourists alone account for ~25% of total arrivals. The dominant routing is via Gulf hubs — Emirates through Dubai, Qatar Airways through Doha, Etihad through Abu Dhabi. All are suspended. Air Mauritius and direct European carriers (Air France, British Airways, Lufthansa) operate some direct routes, but capacity is a fraction of total. A prolonged Gulf hub closure compresses available seats to Mauritius dramatically — even if demand exists, supply is constrained.</p>
+      <span class="exp-tag">64% of arrivals</span>
+      <span class="exp-tag">Gulf hub dependency</span>
+      <span class="exp-tag">Direct capacity limited</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Forward Bookings — Easter and Austral Winter</div>
+        <span class="sev sev-high">High</span>
+      </div>
+      <p class="exp-body">The March–May period includes European Easter holidays — a meaningful Mauritius booking season. The June–September austral winter is Mauritius's peak European arrival period. If Gulf hubs remain suspended into April, Easter bookings will be lost or rerouted via direct flights at premium fares. If suspension extends to June, the peak season faces structural capacity constraints. Tour operators will begin redirecting clients to alternative island destinations (Maldives, Seychelles, Bali) within the next 2–3 weeks if no visibility emerges.</p>
+      <span class="exp-tag">Easter at risk</span>
+      <span class="exp-tag">Peak season June–Sept</span>
+      <span class="exp-tag">Alternative destination switching</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Hotel Sector — Fixed Costs, Variable Revenue</div>
+        <span class="sev sev-high">High</span>
+      </div>
+      <p class="exp-body">Mauritius operates a luxury hotel model — large resort properties with high fixed costs (staff, maintenance, debt service). Average occupancy was ~72% in normal conditions. A sharp drop in European air arrivals directly hits occupancy. Hotels operating at 40–50% occupancy against a 72% baseline quickly move into loss-making territory. The sector employs tens of thousands of Mauritians directly and more through supply chains. Occupancy declines of 20–30 percentage points would be economically significant for the island.</p>
+      <span class="exp-tag">High fixed costs</span>
+      <span class="exp-tag">Employment multiplier</span>
+      <span class="exp-tag">Debt service risk</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Air Mauritius — Fuel Cost + Revenue Squeeze</div>
+        <span class="sev sev-high">High</span>
+      </div>
+      <p class="exp-body">Air Mauritius is both an airline and a critical national infrastructure asset. It faces a double hit: jet fuel costs surging with Brent (Jet A-1 is directly oil-price linked) at the same time as inbound passenger volumes fall due to Gulf hub suspension. The flag carrier has no ability to hedge both sides of this simultaneously. It requires emergency revenue support or hedging mechanism discussions with government now, not after the quarter closes.</p>
+      <span class="exp-tag">Jet fuel cost surge</span>
+      <span class="exp-tag">Revenue volume down</span>
+      <span class="exp-tag">National carrier</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Tourism Revenue at Risk — Scenario Estimates</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Scenario</th><th>Gulf Hub Duration</th><th>European Arrivals Impact</th><th>Tourism Revenue Impact</th></tr></thead>
+      <tbody>
+        <tr><td><strong>A — Ceasefire in weeks</strong></td><td>Suspension ends by early April</td><td>-5 to 10% Easter; full recovery by June</td><td>Rs 3–6B loss; manageable</td></tr>
+        <tr><td><strong>B — Prolonged (base case)</strong></td><td>Suspended through June; partial July</td><td>-20 to 35% for March–June period</td><td>Rs 15–30B loss; significant</td></tr>
+        <tr><td><strong>C — Wider escalation</strong></td><td>Suspended through September or beyond</td><td>-35 to 50% for full peak season</td><td>Rs 35–50B+ loss; severe</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">The Offsetting Factor: Indian Market</div>
+    India was Mauritius's fastest-growing source market in 2025 (+33.5% arrivals). India is not dependent on Gulf aviation hubs for Mauritius connections — Air India, IndiGo, and Air Mauritius operate direct routes. The Indian market could provide partial offset if marketed aggressively now. The same applies to the Southern African market (South Africa +3.5%). These markets cannot fully replace European volumes but can prevent a collapse to worst-case.
+  </div>
+</div>
+</div>
+
+<!-- 04 TRADE & PORT -->
+<div id="trade" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Trade & Port Louis — Mixed Picture</h2>
+  <p class="section-lead">Mauritius is a net importer with a trade deficit of ~26% of GDP. Cape rerouting raises import costs and delays — but simultaneously increases Port Louis traffic. This is the most counterintuitive element of the crisis for Mauritius.</p>
+
+  <h3 class="subsection-title">The Cape Route Opportunity</h3>
+  <p class="body-text">Port Louis lies directly on the Cape of Good Hope shipping corridor — the primary alternative to both the Suez Canal/Red Sea and the Strait of Hormuz routes. Every ship rerouting from Asia to Europe via the Cape passes through the Indian Ocean within proximity of Mauritius's port. Data from the Global Port Tracker shows Port Louis has seen 17–23% higher berth occupancy since early March 2026 as Cape rerouting intensifies.</p>
+
+  <div class="alert alert-ok">
+    <div class="alert-title">Port Louis — A Structural Opportunity in the Crisis</div>
+    The Cape route surge is not temporary noise — it reflects a fundamental rerouting of global shipping away from two closed corridors (Red Sea since 2024, now Hormuz). Port Louis is geographically positioned to benefit from bunkering, transshipment, and port services as vessel call frequency on the Cape route increases. This is Mauritius's only clear structural upside from the crisis. Port management should be engaging shipping lines and fuel suppliers now to capture increased business.
+  </div>
+
+  <div class="exposure-grid">
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Import Cost Surge — Consumer Goods & Food</div>
+        <span class="sev sev-high">High</span>
+      </div>
+      <p class="exp-body">Mauritius imports ~73% of its food requirements. It is heavily import-dependent for vehicles, machinery, electronics, and consumer goods. Cape rerouting adds 10–15 days to vessel transit times from Asia, plus surcharges of $2,000–4,000 per container (CMA CGM has already announced these). For a country that imports nearly everything, higher freight costs are inflationary across every consumer goods category. This compounds the fuel-driven price pressure already in the system.</p>
+      <span class="exp-tag">73% food imported</span>
+      <span class="exp-tag">+10–15 day transit</span>
+      <span class="exp-tag">$2–4K/container surcharge</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Export Delays — Fish/Seafood & Textiles</div>
+        <span class="sev sev-moderate">Moderate</span>
+      </div>
+      <p class="exp-body">Mauritius's top exports — fish/seafood (21%) and textiles (17%) — are time-sensitive goods. Fish and seafood go primarily to European markets; textiles to Europe and the US. Cape rerouting to Europe adds 10–15 days and raises freight costs. For fresh and chilled seafood, this may push exporters toward air freight — itself more expensive at current jet fuel prices. Textile producers face higher logistics costs that compress already thin margins against Asian competition.</p>
+      <span class="exp-tag">Fish/seafood time-sensitive</span>
+      <span class="exp-tag">Air freight premium</span>
+      <span class="exp-tag">Margin compression</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Port Louis Bunkering & Services Uplift</div>
+        <span class="sev sev-opportunity">Opportunity</span>
+      </div>
+      <p class="exp-body">Vessels rerouting via the Cape require bunkering stops. Port Louis is one of the few deep-water ports on the Cape route with established bunkering infrastructure. Increased vessel calls mean more bunkering revenue, port dues, pilotage fees, and ancillary services. Port Louis has existing relationships with global shipping lines — Maersk, CMA CGM, MSC. The question is whether port management has the berth capacity and fuel inventory to handle 17–23% higher occupancy without congestion constraints.</p>
+      <span class="exp-tag">Bunkering revenue</span>
+      <span class="exp-tag">Port dues uplift</span>
+      <span class="exp-tag">Capacity constraint risk</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Sugar Export — Timing & Logistics</div>
+        <span class="sev sev-moderate">Moderate</span>
+      </div>
+      <p class="exp-body">Sugar (13% of exports) is shipped in bulk to European markets. Bulk shipping follows different logistics to container shipping — vessels are generally chartered and less exposed to container surcharges. However, higher bunker fuel costs raise charter rates, and any congestion at European destination ports (from the general shipping disruption) can delay settlement and payment. The sugar industry was already under stress from drought effects — logistics disruption adds another layer.</p>
+      <span class="exp-tag">Bulk shipping</span>
+      <span class="exp-tag">European market</span>
+      <span class="exp-tag">Charter rate risk</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Foreign Reserves — The Buffer</h3>
+  <p class="body-text">Mauritius's foreign reserves stand at USD 9.5 billion as of October 2025 — equivalent to 13 months of import coverage. This is a substantial buffer that provides real protection against a short-to-medium term trade shock. It gives the government time to respond to the crisis without emergency capital controls or IMF intervention. However, a sustained Scenario C shock (oil at $120+, tourism revenue halved, import costs surging) would begin drawing down reserves at an accelerated rate within 6–9 months.</p>
+</div>
+</div>
+
+<!-- 05 MACRO & FINANCE -->
+<div id="macro" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Macro & Finance</h2>
+  <p class="section-lead">Mauritius enters this crisis in a relatively stable but structurally vulnerable position: solid reserves, high public debt, a trade deficit dependent on commodity imports, and an economy primed for a good 2026 that is now being disrupted before it starts.</p>
+
+  <h3 class="subsection-title">Inflation — Upward Pressure Arriving</h3>
+  <p class="body-text">Mauritius's inflation fell to 3.5% in February 2026 — a nine-month low — driven by easing food and energy prices. That trajectory has now reversed sharply. The three inflation transmission channels from this crisis are: petroleum products (direct retail price impact), electricity tariffs (if fuel cost increases are passed through), and imported goods (container surcharges and delays). Food inflation — flat in February — will rise as import cost increases work through the supply chain over the coming 4–8 weeks. The Bank of Mauritius was on a stabilising path; it will now face a re-acceleration of inflation that makes rate cuts harder to justify.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Inflation Re-Acceleration Risk</div>
+    February 2026 inflation: 3.5%. IMF had projected ~3.6% average for 2025, stabilising in 2026. This crisis breaks that trajectory. A sustained Brent at $90+ will add 1–2 percentage points to headline inflation via transport, electricity, and imported goods. If the government passes fuel price increases through rather than subsidising, the transport CPI component (4.7% in February) will accelerate sharply. The political sensitivity of this — for a new government — is high.
+  </div>
+
+  <h3 class="subsection-title">Rupee — Currency Pressure</h3>
+  <p class="body-text">The Mauritian rupee has been under gradual pressure — down 3.6% against the USD year-on-year as of March 2026 (USD/MUR ~47.1). A sharp deterioration in the trade balance (higher oil import bill, lower tourism revenues) and risk-off global sentiment will put further downward pressure on the rupee. A weaker rupee amplifies the import cost shock — oil priced in USD becomes more expensive in rupee terms. The Bank of Mauritius may need to intervene in foreign exchange markets to prevent disorderly depreciation, drawing on reserves.</p>
+
+  <h3 class="subsection-title">Fiscal Position — Limited Room</h3>
+  <p class="body-text">Mauritius enters this crisis with public debt at ~88% of GDP and a primary fiscal deficit of 6.5% of GDP for FY24/25. The government has limited fiscal space to absorb energy subsidies, tourism support, and social assistance simultaneously without increasing borrowing. The new government has planned significant infrastructure investment (roads, ports, housing) in its 2025–2026 Public Sector Investment Program — this may need to be sequenced more carefully if the crisis deepens.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Macro Indicator</th><th>Pre-Conflict</th><th>March 11 Assessment</th><th>Direction</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Headline inflation</strong></td><td>3.5% (Feb 2026)</td><td>Likely 4.5–5.5% by May as fuel and food feed through</td><td>↑ Re-accelerating</td></tr>
+        <tr><td><strong>USD/MUR rate</strong></td><td>~47.1</td><td>Downward pressure — may test 48–49 by Q2</td><td>↓ Rupee weakening</td></tr>
+        <tr><td><strong>Foreign reserves</strong></td><td>USD 9.5B (13 months)</td><td>Stable but drawing down faster if trade deficit widens</td><td>→ Buffer, but watch</td></tr>
+        <tr><td><strong>Current account deficit</strong></td><td>~6.5% of GDP (2024)</td><td>Likely 8–10% of GDP in 2026 if conflict persists</td><td>↑ Widening</td></tr>
+        <tr><td><strong>GDP growth</strong></td><td>4.7% (2024); ~4% forecast 2026</td><td>Downside risk to 2–3% in Scenario B; potentially 0–1% in C</td><td>↓ Growth at risk</td></tr>
+        <tr><td><strong>Public debt</strong></td><td>~88% of GDP</td><td>Subsidy and support spending will push higher</td><td>↑ Rising</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Financial Services — Indirect but Real</h3>
+  <p class="body-text">Mauritius is a significant offshore financial centre — it has attracted over 9,000 offshore entities and is a major investment conduit particularly for India-Africa flows. Global financial market volatility (stock markets fell 1–5% across major indices on Day 1) affects the wealth of clients using Mauritian structures. A prolonged conflict creating global recession fears would reduce FDI flows, management company revenues, and fund activity. This is indirect — financial services do not require physical shipping — but it is not immune to global risk-off conditions.</p>
+</div>
+</div>
+
+<!-- 06 SECTORS -->
+<div id="sectors" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Sector-by-Sector Assessment</h2>
+  <p class="section-lead">Every major sector in Mauritius is affected — some directly through energy costs, some through aviation and tourism, some through import cost and supply chain disruption. No sector is unaffected.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Sector</th><th>GDP Weight</th><th>Primary Impact</th><th>Severity</th><th>Key Concern</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Tourism & Hotels</strong></td>
+          <td>~12%</td>
+          <td>Gulf hub suspension → European arrivals collapse</td>
+          <td><span class="b b-red">Critical</span></td>
+          <td>Easter and peak June–Sept season at risk; fixed cost hotels in distress</td>
+        </tr>
+        <tr>
+          <td><strong>Transport & Logistics</strong></td>
+          <td>Part of services ~72%</td>
+          <td>Diesel cost surge; Cape rerouting surcharges</td>
+          <td><span class="b b-red">Critical</span></td>
+          <td>Public transport cost pressure; last-mile logistics more expensive</td>
+        </tr>
+        <tr>
+          <td><strong>Electricity / CEB</strong></td>
+          <td>Utility</td>
+          <td>Heavy fuel oil generation cost up 25%+</td>
+          <td><span class="b b-amber">High</span></td>
+          <td>Tariff increases or government subsidy; fiscal pressure</td>
+        </tr>
+        <tr>
+          <td><strong>Fish & Seafood Export</strong></td>
+          <td>21% of exports</td>
+          <td>Higher freight cost; Cape transit delays; EU destination congestion</td>
+          <td><span class="b b-amber">High</span></td>
+          <td>Fresh product time-sensitivity; air freight premium</td>
+        </tr>
+        <tr>
+          <td><strong>Textiles / EPZ</strong></td>
+          <td>17% of exports</td>
+          <td>Logistics costs up; US tariff pressure pre-existing</td>
+          <td><span class="b b-amber">High</span></td>
+          <td>Margin compression in already challenged sector</td>
+        </tr>
+        <tr>
+          <td><strong>Construction</strong></td>
+          <td>~8% of GDP</td>
+          <td>Diesel and heavy fuel for machinery; imported materials delayed</td>
+          <td><span class="b b-amber">High</span></td>
+          <td>Government PSIP projects may face cost overruns</td>
+        </tr>
+        <tr>
+          <td><strong>Financial Services</strong></td>
+          <td>~12% of GDP</td>
+          <td>Global volatility; risk-off FDI reduction</td>
+          <td><span class="b b-amber">Moderate</span></td>
+          <td>Indirect — no physical supply chain but global sentiment matters</td>
+        </tr>
+        <tr>
+          <td><strong>Sugar / Agriculture</strong></td>
+          <td>13% of exports</td>
+          <td>Bulk charter rate increases; drought already pressuring</td>
+          <td><span class="b b-amber">Moderate</span></td>
+          <td>Logistics cost on already stressed sector</td>
+        </tr>
+        <tr>
+          <td><strong>Retail / Consumer</strong></td>
+          <td>Part of services</td>
+          <td>Import price increases; consumer purchasing power falls</td>
+          <td><span class="b b-amber">Moderate</span></td>
+          <td>Household budget squeeze; demand pullback</td>
+        </tr>
+        <tr>
+          <td><strong>Port Louis</strong></td>
+          <td>Strategic infrastructure</td>
+          <td>Cape rerouting → +17–23% berth occupancy</td>
+          <td><span class="b b-green">Opportunity</span></td>
+          <td>Berth capacity constraints; bunkering fuel availability</td>
+        </tr>
+        <tr>
+          <td><strong>Air Mauritius</strong></td>
+          <td>National carrier</td>
+          <td>Jet fuel cost surge + inbound passenger volume decline</td>
+          <td><span class="b b-red">Critical</span></td>
+          <td>Double P&L squeeze; national carrier support may be needed</td>
+        </tr>
+        <tr>
+          <td><strong>Fishing Fleet</strong></td>
+          <td>Indian Ocean EEZ</td>
+          <td>Diesel cost surge; Indian Ocean security degradation</td>
+          <td><span class="b b-amber">High</span></td>
+          <td>Operating economics challenged; Houthi activity range expansion</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- 07 SCENARIOS -->
+<div id="scenarios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Scenarios & Probability</h2>
+  <p class="section-lead">Three scenarios. The base case (50%) is a prolonged conflict of 3–9 months with Brent sustained above $85 and Gulf aviation suspended through peak season. The upside (ceasefire) is now only 10–15% likely. The downside (wider escalation) has risen to 35–40%.</p>
+
+  <h3 class="subsection-title">Scenario A — Rapid Ceasefire (10–15%)</h3>
+  <ul class="styled-list">
+    <li>Conflict ends within 3–4 weeks; Hormuz reopens; Gulf hubs resume by mid-April</li>
+    <li>Brent corrects to $75–80; fuel import cost premium is short-lived</li>
+    <li>Tourism impact largely contained to March and Easter; peak season (June–Sept) fully operational</li>
+    <li>Port Louis Cape route bonus is modest and temporary</li>
+    <li>Mauritius 2026 GDP growth: 3.5–4% — modest dip from pre-conflict 4% forecast</li>
+    <li>Why it's unlikely: Iran entrenched under new Supreme Leader Mojtaba Khamenei; mine-laying not the behaviour of a party seeking quick exit; no diplomatic channel operational</li>
+  </ul>
+
+  <h3 class="subsection-title">Scenario B — Prolonged Conflict (50% — Base Case)</h3>
+  <ul class="styled-list">
+    <li>Active conflict 3–9 months; Brent sustained $85–100; Gulf hubs suspended through June, partial recovery by September</li>
+    <li>European arrivals to Mauritius down 20–35% for March–June; peak season partially disrupted</li>
+    <li>Tourism revenue loss: Rs 15–30B — significant but not catastrophic given Rs 100B baseline</li>
+    <li>Fuel import cost increase: $200–400M annualised at sustained Brent $90; STC stabilisation fund under sustained pressure</li>
+    <li>Consumer inflation rises to 5–6% by Q2; rupee depreciates to 48–49/USD; current account deficit widens to 8–9% of GDP</li>
+    <li>Port Louis Cape route bunkering and services uplift generates meaningful revenue — partially offsetting trade deficit widening</li>
+    <li>Mauritius 2026 GDP growth: 2–3% — noticeable step down; some hotel closures; Air Mauritius requires support</li>
+    <li>Government required to choose between fuel subsidies (fiscal cost) and consumer price pass-through (social cost)</li>
+  </ul>
+
+  <h3 class="subsection-title">Scenario C — Wider Escalation (35–40%)</h3>
+  <ul class="styled-list">
+    <li>Conflict extends to 2027; Hormuz remains closed or intermittently contested; Brent sustained $100–130</li>
+    <li>Gulf aviation suspension extends through peak season (June–Sept) and potentially beyond</li>
+    <li>Tourism revenue loss: Rs 35–50B+ — potentially cutting the sector's GDP contribution by 40–50%</li>
+    <li>Fuel import cost: sustained at $400–700M+ annualised; STC stabilisation fund exhausted; government forced into direct fuel subsidies</li>
+    <li>Consumer inflation 6–8%; rupee under severe depreciation pressure; Bank of Mauritius forced to raise rates even as growth falls</li>
+    <li>Stagflation risk — rising prices and falling growth simultaneously</li>
+    <li>Port Louis Cape route benefit is larger and more sustained — potentially positioning Mauritius as a strategic Indian Ocean logistics hub</li>
+    <li>Mauritius 2026 GDP growth: 0–1%; potential technical recession if conflict extends into 2027</li>
+    <li>IMF engagement likely — not for emergency borrowing (reserves sufficient) but for policy guidance on fiscal adjustment</li>
+  </ul>
+
+  <div class="alert alert-gold">
+    <div class="alert-title">The Counter-Narrative: Port Louis as Indian Ocean Hub</div>
+    In Scenario B and especially C, the sustained Cape rerouting creates a structural opportunity Mauritius has never had before. If Port Louis invests now in berth capacity, bunkering infrastructure, and transshipment capability — and actively courts the shipping lines that are rerouting — it can emerge from this crisis with a permanently elevated position in Indian Ocean maritime trade. This is a 10-year strategic opportunity masquerading as a short-term operational disruption.
+  </div>
+</div>
+</div>
+
+<!-- 08 ACTIONS -->
+<div id="actions" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Actions — By Audience</h2>
+  <p class="section-lead">Different stakeholders face different decisions. Actions are organised by audience so each reader can go directly to what is relevant.</p>
+
+  <h3 class="subsection-title">Government / Policymakers</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Action 01</div>
+      <h4>Convene an Energy Security Cabinet Committee This Week</h4>
+      <p>Audit STC's current strategic petroleum stock level, forward contract position, and stabilisation fund balance. Understand the fiscal exposure at sustained Brent $90 before it becomes a crisis. Establish a trigger price for retail fuel adjustment vs. subsidy — and communicate it publicly in advance. Ad hoc price decisions create economic uncertainty. A rules-based framework does not.</p>
+      <span class="urg urg-now">This week</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 02</div>
+      <h4>Brief Parliament and Publish an Economic Impact Statement</h4>
+      <p>The new government needs to establish credibility as a crisis manager. A public economic impact statement — honest about the risks, clear about the buffers (USD 9.5B reserves), and specific about the policy response — is better politics and better economics than silence. Markets, investors, and the public all reward transparency. A government that appears to be discovering this crisis in April is politically worse than one that communicates it in March.</p>
+      <span class="urg urg-now">This week</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 03</div>
+      <h4>Direct Port Louis Management to Maximise Cape Route Revenue</h4>
+      <p>The 17–23% berth occupancy uplift is real and growing. Government should direct the Mauritius Ports Authority to actively market Port Louis to Cape-rerouting shipping lines — bunkering contracts, transshipment agreements, preferential berth scheduling. This is not charity; it is revenue. Every additional vessel call that generates bunkering, port dues, and ancillary fees partially offsets the import cost surge. This is Mauritius's structural upside from the crisis.</p>
+      <span class="urg urg-now">This week</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 04</div>
+      <h4>Emergency Meeting with Air Mauritius and MTPA</h4>
+      <p>Air Mauritius is being squeezed on both sides — jet fuel cost up and inbound passenger volumes down. The Ministry of Tourism and Air Mauritius need a joint strategy for: (a) accelerating non-Gulf routing via direct European carriers; (b) aggressively marketing to India and Southern Africa as interim markets; (c) reviewing Air Mauritius's fuel cost exposure and whether emergency hedging or government support is required. Waiting for Q1 results before acting is too slow.</p>
+      <span class="urg urg-now">This week</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 05</div>
+      <h4>Protect Vulnerable Households — Targeted, Not Blanket</h4>
+      <p>A blanket fuel subsidy is fiscally costly and regressive (it subsidises the wealthy disproportionately). A targeted household fuel assistance scheme — direct transfers to low-income households to offset fuel and LPG cost increases — is more fiscally efficient and socially equitable. The National Social Security Fund and social registry systems provide the infrastructure. This decision needs to be made before consumer prices rise, not after queues form at fuel stations.</p>
+      <span class="urg urg-week">Within 2 weeks</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 06 — Medium Term</div>
+      <h4>Accelerate Renewable Energy Transition — Crisis as Catalyst</h4>
+      <p>84% energy import dependence is Mauritius's fundamental strategic vulnerability. This crisis is the most powerful argument available for accelerating the 60% renewables target. The government's 2025–2026 PSIP already includes renewable energy investments. These should be front-loaded and prioritised over import-heavy infrastructure. Every MW of solar or wind generation installed domestically is a barrel of oil Mauritius does not need to buy at $90+.</p>
+      <span class="urg urg-medium">6–12 months</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Business Owners / Private Sector</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Action 07</div>
+      <h4>Hotels & Tourism: Activate India and Southern Africa Marketing Now</h4>
+      <p>European air connectivity via Gulf hubs is disrupted. You cannot wait for it to return — that could be June. India (+33.5% growth in 2025, direct flights, no Gulf hub dependency) and Southern Africa (direct routes, strong spending) are your short-term alternatives. Joint marketing campaigns, travel agent incentives, and airline co-promotion with Air India, IndiGo, and South African Airways should be activated immediately. Every European room night you cannot fill can potentially be replaced by an Indian or South African guest if marketed now.</p>
+      <span class="urg urg-now">Immediately</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 08</div>
+      <h4>Importers: Audit Your Inventory and Accelerate Forward Orders</h4>
+      <p>Cape rerouting is adding 10–15 days to Asian import transit times. Surcharges of $2–4K per container are already live. If you run lean inventory, you are already at risk of stockouts before your next shipment arrives. Audit your critical stock levels today, identify your next order cycle, and place orders earlier than usual. The cost of stockout (lost revenue, customer switching) is higher than the cost of carrying extra inventory for 4–6 weeks.</p>
+      <span class="urg urg-now">This week</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 09</div>
+      <h4>Fuel-Intensive Businesses: Model Your Cost Exposure</h4>
+      <p>Transport, construction, fishing, and manufacturing companies need to model their P&L at Brent $90, $100, and $120. What is your breakeven? At what fuel price do specific projects or contracts become loss-making? Identify which customer contracts have fuel price escalation clauses and which do not. Renegotiate fixed-price contracts that extend more than 3 months — before the counterparty also realises the problem. Proactive renegotiation is easier than distressed renegotiation.</p>
+      <span class="urg urg-week">This week</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 10</div>
+      <h4>Exporters: Review Your Freight Contracts and Lead Times</h4>
+      <p>If you export fish, seafood, textiles, or sugar, your European customer delivery commitments are now at risk from extended transit times and higher freight costs. Contact your freight forwarder today to understand current lead times and available capacity. For fresh/chilled seafood — consider whether air freight at premium cost is justified to protect customer relationships. For textiles and sugar — communicate proactively with buyers before they chase you for delivery delays. Trust is harder to rebuild than a single delayed shipment.</p>
+      <span class="urg urg-now">Immediately</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Investors / Financial Institutions</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Action 11</div>
+      <h4>Review Tourism Sector Exposure — Hotels and Aviation</h4>
+      <p>Tourism-linked equity and debt in Mauritius faces a material headwind in Scenario B and C. Hotel companies with high fixed cost structures and significant European exposure are most vulnerable. Air Mauritius, as a national carrier, may require government support — assessing its debt instruments requires understanding the government's fiscal capacity. Port-related infrastructure and logistics are the counterintuitive positive exposure. Review and reweight accordingly.</p>
+      <span class="urg urg-week">This week</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 12</div>
+      <h4>Monitor Rupee and Reserve Drawdown Trajectory</h4>
+      <p>The Mauritian rupee is under pressure — it has already depreciated 3.6% YoY. A widening current account deficit (higher oil import bill + lower tourism earnings) and global risk-off sentiment will accelerate this. For USD-denominated investors in Mauritius-domiciled structures, rupee depreciation is a real return drag. Monitor Bank of Mauritius FX intervention activity and reserve drawdown rate monthly. USD 9.5B reserves are a substantial buffer — but the rate of depletion matters more than the stock.</p>
+      <span class="urg urg-week">Monthly monitoring</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Closing — The Three Numbers to Watch</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>What Makes This Hard</h4>
+      <p>Mauritius is simultaneously hit on both sides of its economy — costs up (energy, imports, freight) and revenues down (tourism, exports). Unlike SEYPEC, there is no structural upside that offsets the downside at the national level. The Port Louis opportunity is real but modest relative to the tourism revenue at risk. The government faces fiscal choices with no good options — only better and worse sequencing.</p>
+    </div>
+    <div class="closing-box coral-box">
+      <h4>Three Numbers — Weekly Watch</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Brent crude price — every $10 above $80 adds $10–17M/month to Mauritius's import bill. Watch for sustained breach of $100 as the trigger for emergency fiscal measures.</li>
+        <li><span class="sig-num">02</span>Gulf aviation hub status — specifically Emirates Dubai and Qatar Airways Doha. Any resumption announcement is a tourism revenue recovery signal. Any further delay past April is a peak season crisis signal.</li>
+        <li><span class="sig-num">03</span>Port Louis berth occupancy and bunkering volume — the one structural positive. Monitor monthly to assess whether the Cape route windfall is growing, stabilising, or reversing as the crisis evolves.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="report-footer">
+  <div>Mauritius Strategic Risk Assessment · March 11, 2026 · Day 11 of Iran–US/Israel Conflict</div>
+  <div>IMF · Coface · Al Jazeera · CNN · EIA · Wikipedia · DefenceWeb · Drewry · Shore Africa · ATTA · Trading Economics · UNDP · Supply Chain Intelligence</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: document.querySelector('.tab-nav').offsetTop - 10, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
