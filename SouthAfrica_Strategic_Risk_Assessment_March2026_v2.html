@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>South Africa — Iran Conflict Strategic Risk Assessment — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1a5c2a; --green-mid: #1e6e32; --green-light: #236038;
+    --gold: #c49a20; --gold-pale: #fdf6e0; --gold-ultra: #fffcf0;
+    --amber: #c07010; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --sky: #1a5f8a; --sky-pale: #eaf4fb;
+    --offwhite: #f5f7f5; --white: #ffffff;
+    --text: #0f1e0f; --text-mid: #2a402a; --text-light: #507050; --border: #ccdccc;
+    --shadow: 0 4px 20px rgba(26,92,42,0.08); --shadow-lg: 0 12px 44px rgba(26,92,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  .report-header { background: var(--green); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(196,154,32,0.14) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #f5c060, #c49a20, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-country { background: rgba(196,154,32,0.25); border: 1px solid rgba(196,154,32,0.5); color: #f5d080; }
+  .badge-day { background: rgba(184,48,32,0.22); border: 1px solid rgba(184,48,32,0.45); color: #f09080; }
+  .badge-brics { background: rgba(26,95,138,0.25); border: 1px solid rgba(26,95,138,0.45); color: #80c0f0; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #f5c060; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 19px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.gold { color: #f5c060; } .stat-value.red { color: #f09070; } .stat-value.green { color: #80e0a0; } .stat-value.blue { color: #80c0f0; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  .prepared-for { background: var(--green-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #f5c060; }
+
+  .scenario-bar { background: var(--green-light); padding: 10px 64px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .sc-label { font-size: 10px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.26); margin-right: 4px; }
+  .spill { display: flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 4px; font-size: 11.5px; font-weight: 500; }
+  .spill-a { background: rgba(26,122,74,0.22); color: #80e0a0; border: 1px solid rgba(26,122,74,0.38); }
+  .spill-b { background: rgba(184,114,0,0.22); color: #f5c47a; border: 1px solid rgba(184,114,0,0.38); }
+  .spill-c { background: rgba(184,48,32,0.22); color: #f09080; border: 1px solid rgba(184,48,32,0.38); }
+  .spill-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .spill-a .spill-dot { background: #80e0a0; } .spill-b .spill-dot { background: #f5c47a; } .spill-c .spill-dot { background: #f09080; }
+
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(26,92,42,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'Inter', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--green); }
+  .tab-btn.active { color: var(--green); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--gold-pale); color: var(--amber); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--green); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--gold); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--green); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--amber); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--green); }
+
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: #edf8f2; border-color: #1a7a4a; }
+  .alert-info { background: var(--sky-pale); border-color: var(--sky); }
+  .alert-gold { background: var(--gold-ultra); border-color: var(--gold); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'JetBrains Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: #1a7a4a; }
+  .alert-info .alert-title { color: var(--sky); }
+  .alert-gold .alert-title { color: #9a6800; }
+
+  .exposure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0; }
+  .exp-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .exp-card:hover { border-color: var(--gold); }
+  .exp-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+  .exp-title { font-size: 14.5px; font-weight: 600; color: var(--green); line-height: 1.3; }
+  .sev { font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 600; padding: 3px 8px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-left: 10px; }
+  .sev-critical { background: #fdecea; color: var(--red); border: 1px solid #f5c4c0; }
+  .sev-high { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .sev-moderate { background: #edf8f2; color: #1a7a4a; border: 1px solid #a8dfc0; }
+  .sev-opportunity { background: var(--sky-pale); color: var(--sky); border: 1px solid #a8c8e8; }
+  .exp-body { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
+  .exp-tag { display: inline-block; font-size: 10px; font-family: 'JetBrains Mono', monospace; padding: 2px 7px; border-radius: 3px; background: var(--offwhite); border: 1px solid var(--border); color: var(--text-light); margin: 8px 3px 0 0; }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--green); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f5f0; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: #edf8f2; color: #1a7a4a; border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--sky-pale); color: var(--sky); border: 1px solid #a8c8e8; }
+  .b-gold { background: var(--gold-pale); color: #7a5800; border: 1px solid #e0c878; }
+
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #eff5ef; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+
+  .sword-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 20px 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  .sword-pain { background: var(--red-pale); padding: 22px 24px; border-right: 1px solid var(--border); }
+  .sword-gain { background: #edf8f2; padding: 22px 24px; }
+  .sword-title { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px; }
+  .sword-pain .sword-title { color: var(--red); }
+  .sword-gain .sword-title { color: #1a7a4a; }
+  .sword-list { list-style: none; padding: 0; }
+  .sword-list li { font-size: 13px; color: var(--text-mid); padding: 5px 0 5px 18px; position: relative; border-bottom: 1px solid rgba(0,0,0,0.05); line-height: 1.55; }
+  .sword-list li:last-child { border-bottom: none; }
+  .sword-pain .sword-list li::before { content: '↓'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+  .sword-gain .sword-list li::before { content: '↑'; position: absolute; left: 0; color: #1a7a4a; font-weight: 700; }
+
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--gold); }
+  .ac-num { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--amber); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--green); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+  .urg-medium { background: #edf8f2; color: #1a7a4a; }
+
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--green); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.gold-box { background: linear-gradient(135deg, #7a5000, var(--amber)); }
+  .closing-box h4 { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.6; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #f5c060; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  .report-footer { background: var(--green); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'JetBrains Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .scenario-bar, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .exposure-grid, .action-grid, .closing-grid, .sword-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .sword-pain { border-right: none; border-bottom: 1px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-country">Country Assessment</span>
+    <span class="badge badge-day">Conflict Day 11</span>
+    <span class="badge badge-brics">BRICS+ Member</span>
+    <span class="badge badge-date">March 11, 2026</span>
+  </div>
+  <h1>Iran–US/Israel Conflict:<br><span>South Africa Strategic Risk</span></h1>
+  <p class="report-subtitle">Full-spectrum assessment · Energy · Mining · Trade · Geopolitics · Finance · BRICS</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">GDP (2024)</div>
+      <div class="stat-value gold">~$415B</div>
+      <div class="stat-delta">Africa's largest economy · 1.1% growth in 2025</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Gold — March 11</div>
+      <div class="stat-value green">$5,400+/oz</div>
+      <div class="stat-delta">+2%+ since conflict · Mining sector booking windfall</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Crude Oil Dependency</div>
+      <div class="stat-value red">~70%</div>
+      <div class="stat-delta">Imported crude · Primary from Nigeria &amp; Saudi Arabia</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Geopolitical Exposure</div>
+      <div class="stat-value blue">BRICS+</div>
+      <div class="stat-delta">Iran naval drills Jan 2026 · AGOA under threat · ICJ case</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>South Africa Strategic Risk Assessment · March 11, 2026 · Day 11 of Iran–US/Israel Conflict</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">https://thierrybechard.com</a>
+    <a href="mailto:thierry@thierrybechard.com">thierry@thierrybechard.com</a>
+  </div>
+</div>
+
+<div class="scenario-bar">
+  <span class="sc-label">Scenarios</span>
+  <span class="spill spill-a"><span class="spill-dot"></span>A: Rapid Ceasefire — 10–15%</span>
+  <span class="spill spill-b"><span class="spill-dot"></span>B: Prolonged Conflict — 50% base case</span>
+  <span class="spill spill-c"><span class="spill-dot"></span>C: Wider Escalation — 35–40%</span>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('overview',this)">Country Profile <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('doublesword',this)">Double-Edged Sword <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('energy',this)">Energy <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('mining',this)">Mining Windfall <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('trade',this)">Trade &amp; Ports <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('geopolitics',this)">BRICS &amp; Geopolitics <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('macro',this)">Macro &amp; Finance <span class="tab-num">07</span></button>
+  <button class="tab-btn" onclick="showTab('scenarios',this)">Scenarios <span class="tab-num">08</span></button>
+  <button class="tab-btn" onclick="showTab('actions',this)">Actions <span class="tab-num">09</span></button>
+</nav>
+
+<!-- 01 OVERVIEW -->
+<div id="overview" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Country Profile</h2>
+  <p class="section-lead">South Africa is Africa's largest economy — diversified, export-oriented, and deeply integrated into global commodity markets. The Iran conflict hits it on two fronts simultaneously: as an oil-importing nation whose import costs are surging, and as a world-class gold and platinum producer whose export revenues are surging. The result is an unusually complex risk picture that plays out very differently across sectors and income groups.</p>
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Economy</h4>
+      <p>GDP <strong>~$415B</strong>. Africa's largest economy. Services sector 65%+ of GDP. Growth reached 1.1% in 2025 — strongest in three years, driven by agriculture, finance, and trade. Manufacturing has contracted for two consecutive years. Unemployment structural at ~32%.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Mining &amp; Exports</h4>
+      <p>World's <strong>largest producer of platinum, chromium, and manganese</strong>. Also the 11th largest gold producer globally. Mining contributes ~8.3% of GDP but a far larger share of export earnings. Key exports: gold, PGMs, coal, iron ore, manganese, chrome.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Energy</h4>
+      <p><strong>~70% of liquid fuels</strong> sourced from imported crude oil, primarily from Nigeria and Saudi Arabia. Two operational refineries (NATREF, Astron Energy) plus Sasol's coal-to-liquids plant at Secunda. Shell and BP have exited the refining sector. Import dependency is rising, not falling.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Ports &amp; Trade</h4>
+      <p><strong>Durban is sub-Saharan Africa's busiest port.</strong> Cape Town and Port Elizabeth also strategically positioned on the Cape of Good Hope route. All three ports are seeing elevated vessel traffic from Cape route rerouting. Transnet's recovery plan gains commercial tailwind from this crisis.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Macro &amp; Finance</h4>
+      <p>The rand is an <strong>emerging market risk-sensitive currency</strong> — weakens on global risk-off sentiment, partially cushioned by gold export revenue. The South African Reserve Bank was targeting rate cuts in 2026; it is now formally redrafting its economic risk scenarios. Inflation was at 2.9% forecast before the conflict.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Geopolitics — BRICS+</h4>
+      <p>BRICS+ member alongside <strong>Iran, China, Russia</strong>. Hosted Iranian naval vessels in joint drills in January 2026 — six weeks before the war. Brought an active genocide case against Israel at the ICJ. Under US tariff and AGOA trade preference threat. Non-aligned positioning under severe strain.</p>
+    </div>
+  </div>
+
+  <div class="alert alert-gold">
+    <div class="alert-title">The Defining Feature of South Africa's Exposure</div>
+    South Africa is one of the few economies in the world where higher oil prices and higher gold prices occur simultaneously — and where it is on both sides of that equation. It is a major oil importer (pain) and a top-five precious metals exporter (windfall). These forces partially offset but do not cancel. The distributional consequences — mining company shareholders benefit enormously while households absorb fuel price shock — create a political economy tension that is as significant as the macroeconomic one.
+  </div>
+</div>
+</div>
+
+<!-- 02 DOUBLE-EDGED SWORD -->
+<div id="doublesword" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">The Double-Edged Sword</h2>
+  <p class="section-lead">The Iran conflict sends oil and gold higher simultaneously. South Africa imports one and exports the other. Understanding which force dominates — and for whom — is the central question of this assessment.</p>
+
+  <div class="sword-grid">
+    <div class="sword-pain">
+      <div class="sword-title">⚠ The Pain — Oil Import Shock</div>
+      <ul class="sword-list">
+        <li>~70% of liquid fuels from imported crude — Brent at $90+ hits every sector</li>
+        <li>9% month-on-month fuel price increase confirmed for April 2026</li>
+        <li>Every $15 Brent increase adds ~0.8 percentage points to headline CPI</li>
+        <li>SARB rate cut expectations for 2026 effectively eliminated</li>
+        <li>Rand hit three-month low on Day 1; risk-off emerging market pressure</li>
+        <li>Declining domestic refining capacity means rising import exposure structurally</li>
+        <li>Container shipping surcharges on imports from Asia (+$2–4K/TEU)</li>
+        <li>Manufacturing — already contracting — faces higher energy and logistics costs</li>
+        <li>Households already in cost-of-living crisis absorbing confirmed fuel price rises</li>
+        <li>Higher oil costs compress margins in open-pit mining, transport, logistics</li>
+      </ul>
+    </div>
+    <div class="sword-gain">
+      <div class="sword-title">✦ The Gain — Mining Revenue Surge</div>
+      <ul class="sword-list">
+        <li>Gold at $5,400+/oz — surging on safe-haven demand; near all-time highs</li>
+        <li>Estimated R300–350 billion additional mining revenue at current price levels (Econometrix)</li>
+        <li>AngloGold, Gold Fields, Harmony Gold, Sibanye-Stillwater, DRDGold all up 3–8% Day 1</li>
+        <li>PGM prices also elevated — South Africa produces ~70% of global platinum supply</li>
+        <li>Mining export revenues boost fiscal receipts — partial government windfall</li>
+        <li>Gold price surge cushioning rand against full risk-off depreciation pressure</li>
+        <li>Cape route rerouting drives elevated traffic at Durban, Cape Town, Port Elizabeth</li>
+        <li>Bunkering, port services, ship repair demand all rising along Cape route</li>
+        <li>Cost base largely rand-denominated while revenues are USD — rand weakness amplifies gain</li>
+        <li>Sasol coal-to-liquids plant commands higher product prices when oil rises</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Who Wins and Who Loses Within South Africa</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Stakeholder</th><th>Primary Effect</th><th>Net Position</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Gold &amp; PGM miners</strong></td><td>Metal prices surge; R300–350B revenue windfall; cost base rand-denominated</td><td><span class="b b-green">Clear Winner</span></td></tr>
+        <tr><td><strong>SA National Treasury</strong></td><td>Mining royalty and tax uplift; offset partially by fuel relief cost; net depends on duration</td><td><span class="b b-gold">Slight Positive — Short Conflict</span></td></tr>
+        <tr><td><strong>Durban / Cape Town ports</strong></td><td>Cape rerouting drives 17–23% berth occupancy uplift; bunkering demand rises</td><td><span class="b b-green">Clear Winner</span></td></tr>
+        <tr><td><strong>SA households</strong></td><td>9%+ fuel price rise confirmed for April; food inflation follows; no direct gold benefit</td><td><span class="b b-red">Clear Loser</span></td></tr>
+        <tr><td><strong>Manufacturing sector</strong></td><td>Higher energy costs layered onto already-contracting sector; logistics surcharges</td><td><span class="b b-red">Clear Loser</span></td></tr>
+        <tr><td><strong>Tourism (inbound)</strong></td><td>Gulf hub suspensions reduce European arrivals via Middle East connections</td><td><span class="b b-amber">Moderate Loser</span></td></tr>
+        <tr><td><strong>Sasol</strong></td><td>Coal-to-liquids products command higher prices; energy input costs also rise; net modest positive</td><td><span class="b b-gold">Broadly Neutral to Positive</span></td></tr>
+        <tr><td><strong>SARB / monetary policy</strong></td><td>Stagflation dilemma: rising CPI prevents rate cuts; holding rates constrains weak growth</td><td><span class="b b-red">Constrained</span></td></tr>
+        <tr><td><strong>JSE / financial markets</strong></td><td>Mining stocks surge; consumer and industrial stocks under pressure; sector divergence</td><td><span class="b b-gold">Mixed — Sector Dependent</span></td></tr>
+        <tr><td><strong>AGOA-dependent exporters</strong></td><td>Automotive and agri exports under threat from potential US trade sanctions</td><td><span class="b b-amber">At Risk</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- 03 ENERGY -->
+<div id="energy" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Energy — The Primary Shock Vector</h2>
+  <p class="section-lead">South Africa imports approximately 70% of its crude oil, primarily from Nigeria and Saudi Arabia. With only two operational refineries and a sector in structural decline — Shell and BP have both exited — the country's exposure to international crude price movements is rising, not falling. The government confirmed higher fuel prices for April 2026 on March 10.</p>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">Government Confirmed: Higher Fuel Prices April 2026</div>
+    The Department of Mineral and Petroleum Resources stated on March 10, 2026: "The continued rise in international crude oil prices is expected to result in higher fuel prices at the pump from April 2026. The under-recovery on fuel prices has been fluctuating since the onset of the conflict." Investec chief economist Annabel Bishop estimated a 9% month-on-month increase if Brent and USD/ZAR hold at current levels. This is not a risk scenario — it is confirmed policy.
+  </div>
+
+  <div class="exposure-grid">
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Retail Fuel Prices — April Shock</div>
+        <span class="sev sev-critical">Critical</span>
+      </div>
+      <p class="exp-body">Inland 95-octane petrol was approximately R20/litre in early 2026 — well below the R26+ record of mid-2022. A 9% increase brings it to approximately R21.80. Every $15 increase in Brent crude adds roughly 0.8 percentage points to headline CPI. South Africa's Basic Fuel Price mechanism directly links pump prices to international oil and the rand/dollar rate — there is no buffer mechanism that prevents this transmission without explicit fiscal subsidy. The April increase is locked in; the question now is how much further it goes.</p>
+      <span class="exp-tag">April confirmed</span><span class="exp-tag">~9% month-on-month</span><span class="exp-tag">0.8pp CPI per $15 Brent</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Declining Refining Capacity — Structural Problem</div>
+        <span class="sev sev-high">High</span>
+      </div>
+      <p class="exp-body">Only NATREF and Astron Energy remain as operational crude refineries (Astron currently in scheduled maintenance shutdown). Shell and BP have exited. The direction of travel is unambiguous: South Africa is progressively shifting toward importing refined products rather than crude for domestic processing. This structural shift means each successive oil price shock hits with greater force, as there is no domestic margin between crude cost and retail price to absorb. An industry article from February 2026 described South Africa's oil and gas sector as "defined more by what it is losing than what it is building."</p>
+      <span class="exp-tag">Shell &amp; BP exited</span><span class="exp-tag">NATREF + Astron only</span><span class="exp-tag">Rising import exposure</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Sasol Secunda — A Domestic Buffer</div>
+        <span class="sev sev-opportunity">Strategic Asset</span>
+      </div>
+      <p class="exp-body">Sasol's Secunda plant converts coal to liquid fuels — a unique domestic production capability that provides partial insulation from crude oil import prices. When international oil prices rise, Sasol's synthetic fuel products command higher prices while input costs remain partly domestic (coal). This is South Africa's most important structural energy security asset in this crisis. At sustained Brent above $90, Sasol is generating a revenue uplift while providing domestic fuel supply continuity.</p>
+      <span class="exp-tag">Coal-to-liquids</span><span class="exp-tag">Domestic supply buffer</span><span class="exp-tag">Revenue uplift at high oil</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Mining Diesel — Margin Compression</div>
+        <span class="sev sev-high">High</span>
+      </div>
+      <p class="exp-body">Diesel is the primary energy input for open-pit mining operations, haulage fleets, and ore processing. Higher diesel costs compress mining margins — even for precious metal producers benefiting from higher gold and PGM prices. For gold and platinum miners, the net position remains strongly positive (revenue surge far exceeds cost increase). But for coal and bulk commodity producers operating on thin margins, sustained $90+ oil is a material earnings drag. The intra-sector divergence is significant.</p>
+      <span class="exp-tag">Open-pit operations</span><span class="exp-tag">Haulage &amp; logistics</span><span class="exp-tag">Coal miners most exposed</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 04 MINING WINDFALL -->
+<div id="mining" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">The Mining Windfall — South Africa's Structural Upside</h2>
+  <p class="section-lead">South Africa is one of the world's top producers of gold, platinum, chromium, and manganese. Geopolitical shocks drive investors into safe-haven assets — primarily gold. The conflict has sent gold above $5,400/oz, generating a potential R300–350 billion revenue windfall for the South African mining sector. This is the feature of South Africa's position that no other major oil-importing economy shares.</p>
+
+  <div class="alert alert-ok">
+    <div class="alert-title">R300–350 Billion Mining Windfall — Econometrix Estimate</div>
+    Economist Dr Azar Jammine of Econometrix, presenting at the AfriSam Budget Symposium on March 2, 2026 in Sandton, quantified the upside: higher gold and PGM prices could inject R300–350 billion into the South African economy compared to pre-conflict price levels. "This could be absolutely enormous," he said. If sustained, this strengthens mining company balance sheets, stimulates capital expenditure, supports exploration, and materially improves fiscal revenues through mining royalties and corporate tax.
+  </div>
+
+  <div class="exposure-grid">
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Gold — Safe-Haven Surge</div>
+        <span class="sev sev-opportunity">Windfall</span>
+      </div>
+      <p class="exp-body">Gold surged past $5,400/oz as the conflict escalated — more than 2% higher on Day 1 alone, approaching all-time highs. South Africa's major producers — AngloGold Ashanti, Harmony Gold, Gold Fields, Sibanye-Stillwater, and DRDGold — saw share price gains of 3–8% on March 3. The revenue mathematics are compelling: costs are largely rand-denominated while revenues are USD-denominated. A weaker rand (which accompanies risk-off periods) actually amplifies the margin expansion, not diminishes it. This is a structural hedge embedded in South Africa's export base.</p>
+      <span class="exp-tag">$5,400+/oz</span><span class="exp-tag">AngloGold, Harmony, Gold Fields</span><span class="exp-tag">Rand weakness amplifies margin</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Platinum Group Metals — Supply Risk Premium</div>
+        <span class="sev sev-opportunity">Windfall</span>
+      </div>
+      <p class="exp-body">South Africa produces approximately 70% of global platinum supply and is the dominant global source of palladium and rhodium. PGMs are benefiting from geopolitical risk-off buying and broader commodity supply uncertainty. The conflict does not directly threaten South African PGM production — these are Southern African mines, not Middle Eastern. But elevated precious metal prices globally benefit all producers, and Sibanye-Stillwater and Impala Platinum are directly in line for a revenue uplift that was not in their 2026 planning assumptions.</p>
+      <span class="exp-tag">70% of global platinum supply</span><span class="exp-tag">Sibanye, Implats</span><span class="exp-tag">Safe-haven &amp; supply risk premium</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Fiscal Revenue — Partial Government Windfall</div>
+        <span class="sev sev-opportunity">Opportunity</span>
+      </div>
+      <p class="exp-body">Mining royalties and corporate tax receipts are directly linked to mining revenue. A R300–350 billion revenue uplift to the sector generates materially higher fiscal receipts — at a moment when South Africa's National Treasury is under pressure from a public debt to GDP ratio approaching 73% and an ongoing budget deficit. This revenue windfall is the government's primary tool for managing the domestic distributional tension: use mining tax receipts to fund targeted household fuel relief, without increasing the deficit.</p>
+      <span class="exp-tag">Mining royalties</span><span class="exp-tag">Corporate tax uplift</span><span class="exp-tag">Partial deficit offset</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Sulphur Supply — Hidden Vulnerability</div>
+        <span class="sev sev-high">Risk</span>
+      </div>
+      <p class="exp-body">An under-reported risk: Africa's copper belt imports approximately 2 million tonnes of sulphur annually, roughly 90% from the Middle East (primarily as a byproduct of oil and gas processing). Sulphur is essential for sulphuric acid, which is required for copper oxide ore leaching. While South Africa's primary exposure is gold and PGMs, regional supply chain disruption from a sulphur shortage could affect acid-leaching operations in South Africa and destabilise the regional mining supply chain. Mining executive Robert Friedland (Ivanhoe Mines) specifically flagged this risk.</p>
+      <span class="exp-tag">90% sulphur from Middle East</span><span class="exp-tag">Acid leaching processes</span><span class="exp-tag">Copper belt exposure</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 05 TRADE & PORTS -->
+<div id="trade" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Trade &amp; Ports — The Cape Route Advantage</h2>
+  <p class="section-lead">South Africa sits at the southern tip of Africa — the geographic pivot of the Cape of Good Hope route. Every vessel rerouting from the Suez/Hormuz corridor to the Cape passes through South African waters and potentially calls at South African ports. This is a structural advantage that no infrastructure investment can replicate — it is geographic.</p>
+
+  <div class="alert alert-ok">
+    <div class="alert-title">Cape Route Now Being Called "The New Normal"</div>
+    A Maritime Executive analysis published March 6, 2026 concluded: "Based on a widening of the conflict, it is possible that the events of March 2026 could mark a turning point in how the Cape sea route is seen... Instead of simply being the standing default for diverting risks to global shipping in the north-western Indian Ocean, the route is rapidly becoming the new normal for shipping flows." Global Port Tracker data confirms 17–23% higher berth occupancy at Cape route ports since early March.
+  </div>
+
+  <div class="exposure-grid">
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Durban, Cape Town &amp; Port Elizabeth — Throughput Uplift</div>
+        <span class="sev sev-opportunity">Opportunity</span>
+      </div>
+      <p class="exp-body">All three major South African ports are positioned on or near the Cape rounding route. Durban, as sub-Saharan Africa's largest and busiest port, is the primary beneficiary — vessel calls, container throughput, bunkering demand, and ship repair all rising. Cape Town is geographically on the Cape Point rounding. The Transnet National Ports Authority secured new LPG import capacity at Durban in late 2025; that investment is already proving its value as Middle East supply chains disrupt. The Transnet recovery and modernisation programme has a materially stronger commercial case than it did three months ago.</p>
+      <span class="exp-tag">17–23% berth occupancy uplift</span><span class="exp-tag">Bunkering demand</span><span class="exp-tag">Ship repair &amp; services</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Import Cost Surge — Consumer Goods and Inputs</div>
+        <span class="sev sev-high">High</span>
+      </div>
+      <p class="exp-body">South Africa is a substantial importer of vehicles, machinery, electronics, and food inputs. Cape rerouting adds 10–15 days to Asian import transit times and $2–4,000 per container in surcharges (CMA CGM rates). For an economy where manufacturing is already contracting and household purchasing power is being squeezed by fuel prices, higher import costs add another layer of inflationary pressure. The SARB cannot address imported inflation without further damaging a fragile growth trajectory.</p>
+      <span class="exp-tag">Vehicles &amp; machinery</span><span class="exp-tag">+10–15 day transit</span><span class="exp-tag">+$2–4K/TEU surcharge</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Mineral Export Logistics — Robust</div>
+        <span class="sev sev-moderate">Low Risk</span>
+      </div>
+      <p class="exp-body">South Africa's mineral exports — gold, platinum, chrome, manganese, iron ore — are primarily shipped to Europe, China, Japan, and the US via the Cape route. These routes are not disrupted by Hormuz closure; they transit the Cape naturally. Higher bulk charter rates add some cost, but with metal prices surging, the net economics for South African miners remain strongly positive. Export logistics risk is modest relative to the revenue windfall.</p>
+      <span class="exp-tag">Cape route natural transit</span><span class="exp-tag">Bulk shipping</span><span class="exp-tag">Net positive</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Agricultural Exports — Logistics Pressure</div>
+        <span class="sev sev-moderate">Moderate</span>
+      </div>
+      <p class="exp-body">South Africa's agriculture sector grew 17.4% in 2025. Key exports — citrus, wine, deciduous fruit, maize — are time-sensitive and container-dependent. Cape rerouting adds transit time to European and Asian destinations. Higher reefer freight rates and destination port congestion compress margins for exporters already navigating a challenging global trade environment. This is not a crisis-level risk, but it offsets some of the agricultural sector's strong 2025 momentum going into 2026.</p>
+      <span class="exp-tag">Citrus, wine, fruit</span><span class="exp-tag">Time-sensitive reefer</span><span class="exp-tag">Destination congestion</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 06 BRICS & GEOPOLITICS -->
+<div id="geopolitics" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">BRICS+ &amp; Geopolitics — The Precarious Tightrope</h2>
+  <p class="section-lead">South Africa's geopolitical position in this conflict is uniquely exposed. It is a BRICS+ member alongside Iran — and hosted Iranian naval vessels in joint military drills just six weeks before the war began. It has an active genocide case against Israel at the ICJ. And it depends on the African Growth and Opportunity Act for preferential access to the US market. These fault lines are now in direct collision.</p>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">January 2026 Naval Drills — The Pre-existing Wound</div>
+    South Africa hosted Iranian, Chinese, and Russian naval vessels in "Exercise Will for Peace 2026" from January 9–16, 2026 — six weeks before the US-Israel strikes on Iran. The exercise became a political crisis: President Ramaphosa reportedly ordered Iran's withdrawal but was countermanded by the SANDF chief, who ignored the instruction. Iranian ships reportedly participated despite the presidential order. The ISS Africa described this as exposing "serious misalignment between political authority and military execution." The US threatened tariffs. AGOA renewal came before the US House the same week. This is the pre-existing wound that the Iran war has torn wide open.
+  </div>
+
+  <div class="exposure-grid">
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">AGOA Trade Preference — At Direct Risk</div>
+        <span class="sev sev-high">High</span>
+      </div>
+      <p class="exp-body">The African Growth and Opportunity Act provides South Africa with preferential tariff-free access to the US market for thousands of products. This directly benefits the automotive sector — BMW, Mercedes-Benz, Toyota, and Ford all assemble vehicles in South Africa partly for export to the US. The Trump administration had already threatened BRICS+ members with an additional 10% tariff, and South Africa's ICJ case against Israel and its Iran naval exercise have made it a specific target. A formal AGOA suspension or targeted tariff escalation would be a serious blow to the automotive and agricultural export sectors.</p>
+      <span class="exp-tag">BMW, Mercedes, Toyota, Ford</span><span class="exp-tag">Automotive exports to US</span><span class="exp-tag">10% tariff threat active</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Non-Alignment — Structurally Compromised</div>
+        <span class="sev sev-high">High</span>
+      </div>
+      <p class="exp-body">South Africa has historically positioned itself as non-aligned — a bridge builder between the West and the Global South. That position is increasingly difficult to maintain. Its BRICS+ membership alongside Iran, Russia, and China, combined with the ICJ case against Israel, has placed it in the US's direct line of sight as adversarial. Foreign Policy described South Africa as "navigating a precarious diplomatic landscape, seeking to mend strained relations with the United States despite its historically close relationship with Iran." The tightrope is narrowing with each day of conflict.</p>
+      <span class="exp-tag">Non-alignment eroding</span><span class="exp-tag">ICJ case live</span><span class="exp-tag">Western capital dependency</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Civil-Military Relations — Internal Governance Risk</div>
+        <span class="sev sev-high">High</span>
+      </div>
+      <p class="exp-body">The Will for Peace episode revealed something more alarming than a diplomatic misstep: an apparent breakdown in civilian control of the military. The SANDF chief issued an Iran invitation without presidential approval. When Ramaphosa reportedly ordered Iran's exclusion, the military appears to have proceeded anyway. ISS Africa described this as a "serious institutional failure." South African opposition parties warned it was a potential precursor to civil-military dysfunction. This is not purely a foreign policy risk — it is a governance risk that investors and rating agencies will note.</p>
+      <span class="exp-tag">Presidential instruction ignored</span><span class="exp-tag">ISS Africa institutional failure</span><span class="exp-tag">Governance risk</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">China Relationship — Economic Backstop</div>
+        <span class="sev sev-moderate">Mixed</span>
+      </div>
+      <p class="exp-body">China is South Africa's largest trading partner and a fellow BRICS+ member. It continues to buy South African gold, PGMs, coal, iron ore, and chrome at elevated volumes. China is walking a careful line in this conflict — not condemning the US-Israel strikes but protecting its own oil supply interests. South Africa's close China alignment provides economic stabilisation (China will not restrict South African mineral imports) but complicates Western relations. The relationship is a genuine commercial backstop but not a blank geopolitical cheque.</p>
+      <span class="exp-tag">Largest trading partner</span><span class="exp-tag">Mineral export buyer</span><span class="exp-tag">Diplomatic liability with West</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 07 MACRO & FINANCE -->
+<div id="macro" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Macro &amp; Finance</h2>
+  <p class="section-lead">South Africa entered 2026 with genuine momentum — 1.1% GDP growth (its best in three years), declining inflation, and a clear path to interest rate cuts. The conflict has disrupted that trajectory in real time, threatening to re-accelerate inflation while constraining growth. The SARB is now formally revising its risk scenarios ahead of a pivotal March 26 rate decision.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">SARB Formally Redrafting Economic Risk Scenarios — March 26 Decision Pivotal</div>
+    Governor Lesetja Kganyago announced that the SARB is redrafting its economic risk scenarios ahead of the March 26 MPC interest rate decision. His previous "adverse scenarios" are now outdated. The SARB faces a classic emerging market stagflation dilemma: rising imported inflation (oil, goods) argues for holding or raising rates; stagnant growth and fragile employment argue for cutting. The 100 basis points of cuts expected in 2026 are now in serious doubt.
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Indicator</th><th>Pre-Conflict Baseline</th><th>March 11 Assessment</th><th>Direction</th></tr></thead>
+      <tbody>
+        <tr><td><strong>CPI Inflation</strong></td><td>2.9% forecast</td><td>3.3%+ expected by April; 4%+ if Brent sustains above $90</td><td>↑ Re-accelerating</td></tr>
+        <tr><td><strong>USD/ZAR Rate</strong></td><td>~R15.94</td><td>R16.13–R16.17; BMI/Fitch: "neutral to weaker" trend</td><td>↓ Rand under pressure</td></tr>
+        <tr><td><strong>SARB Rate Cuts</strong></td><td>100bp cuts expected in 2026</td><td>Formally under review; likely delayed to H2 at best</td><td>→ On hold</td></tr>
+        <tr><td><strong>GDP Growth 2026</strong></td><td>~2% targeted by government</td><td>1–1.5% in Scenario B; 0–0.5% in Scenario C</td><td>↓ Growth at risk</td></tr>
+        <tr><td><strong>Mining Revenue</strong></td><td>Baseline</td><td>+R300–350B windfall estimate at current precious metal prices</td><td>↑ Surging</td></tr>
+        <tr><td><strong>Fuel Price (95 unleaded)</strong></td><td>~R20/litre</td><td>~R21.80 projected April; R24+ at sustained Brent $110+</td><td>↑ Confirmed increase</td></tr>
+        <tr><td><strong>JSE All Share</strong></td><td>Baseline</td><td>Mining stocks +3–8%; industrials and consumer stocks volatile</td><td>→ Sector divergence</td></tr>
+        <tr><td><strong>Public Debt to GDP</strong></td><td>~73%</td><td>Mining windfall provides partial offset; net fiscal position manageable in Scenario B</td><td>→ Broadly stable near term</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">The Rand — Two Forces in Collision</h3>
+  <p class="body-text">The rand is simultaneously being pulled by higher gold export revenue expectations (positive for rand) and by global risk-off sentiment and higher oil import costs (negative for rand). BMI/Fitch assessed the net balance as "neutral to weaker." The gold price surge is providing a meaningful cushion — ETM Analytics noted: "Supporting the rand in this instance is the gold price, which has surged back towards its recent record highs." But the rand's trajectory in a prolonged conflict (Scenario B/C) is almost certainly weaker, as the oil import cost compounds over time.</p>
+
+  <p class="body-text">The distributional consequence deserves explicit attention: a weaker rand is good for gold miners (revenues in USD, costs in ZAR) but bad for every household and business paying for imported goods in rand. These effects do not cancel — they redistribute. The political economy of that redistribution will define South Africa's domestic policy response to this crisis.</p>
+</div>
+</div>
+
+<!-- 08 SCENARIOS -->
+<div id="scenarios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Scenarios &amp; Probability</h2>
+  <p class="section-lead">South Africa's scenario outcomes are more nuanced than most oil-importing peers because of the mining windfall. The net impact depends critically on two variables: how long gold and PGM prices remain elevated, and how quickly oil prices normalise. These move together, making the scenario analysis unusually sensitive to conflict duration.</p>
+
+  <h3 class="subsection-title">Scenario A — Rapid Ceasefire (10–15% probability)</h3>
+  <ul class="styled-list">
+    <li>Conflict ends within 3–4 weeks; Hormuz reopens; Brent corrects to $73–78</li>
+    <li>Gold price retreats from $5,400 peak as safe-haven demand cools — windfall is short-lived</li>
+    <li>April fuel price increase modest and partially reverses by June</li>
+    <li>SARB resumes rate cut path; 1–2 cuts still possible in H2 2026</li>
+    <li>AGOA diplomatic damage persists but does not escalate to formal trade sanctions</li>
+    <li>Cape route traffic normalises — port uplift is temporary, not structural</li>
+    <li>SA GDP 2026: ~1.8–2.2% — broadly on trajectory</li>
+    <li>Why unlikely: Iran entrenched, mines being laid in Hormuz, no diplomatic back-channel operational</li>
+  </ul>
+
+  <h3 class="subsection-title">Scenario B — Prolonged Conflict (50% — Base Case)</h3>
+  <ul class="styled-list">
+    <li>Active conflict 3–9 months; Brent sustained $85–100; Gulf airline hubs suspended through mid-year</li>
+    <li>Gold sustained above $5,200 — R300–350B mining revenue windfall materialises in full over 2026</li>
+    <li>Fuel prices 9–15% above February levels through Q2; CPI re-accelerates to 4–5%</li>
+    <li>SARB holds rates; no cuts in H1 2026; possibly one cut H2 if conflict stabilises</li>
+    <li>Rand depreciates to R16.50–R17.00 range; import inflation compounds</li>
+    <li>Manufacturing continues contracting; household real income squeezed</li>
+    <li>Cape route traffic elevated for extended period — Durban and Cape Town benefit materially and sustainably</li>
+    <li>AGOA diplomatic tension active; no formal sanctions but US-SA relations cold; automotive export risk real</li>
+    <li>SA GDP 2026: ~1–1.5% — meaningful slowdown from 1.1% base; job creation stunted</li>
+    <li>Net fiscal position: mining royalties partially offset fuel relief cost; broadly manageable but tight</li>
+    <li>Political pressure for windfall mining tax to fund household relief — likely to emerge by Q2</li>
+  </ul>
+
+  <h3 class="subsection-title">Scenario C — Wider Escalation (35–40%)</h3>
+  <ul class="styled-list">
+    <li>Conflict extends well into 2027; Brent sustained $100–130; Cape route becomes structurally permanent</li>
+    <li>Gold potentially above $6,000 — SA mining sector in a genuine multi-year supercycle</li>
+    <li>Fuel prices 25–40% above pre-conflict levels; consumer crisis deepens severely</li>
+    <li>SARB forced to hold or raise rates despite growth weakness — stagflation entrenched for 12–18 months</li>
+    <li>Rand under severe pressure; capital outflows from risk-off; potential breach of R18/USD</li>
+    <li>US escalates pressure on BRICS+ members; AGOA formally reviewed or suspended</li>
+    <li>Automotive sector (BMW, Mercedes-Benz, Toyota export plants) severely impacted by AGOA loss</li>
+    <li>Durban and Cape Town emerge as permanent Indian Ocean/Atlantic hub ports — decade-defining strategic opportunity</li>
+    <li>Sulphur supply disruption triggers African copper belt production constraint — regional manufacturing ripple</li>
+    <li>SA GDP 2026: 0–0.5%; recession risk in 2027 if AGOA lost and oil sustained above $110</li>
+    <li>IMF policy framework engagement likely — not emergency programme but close monitoring</li>
+  </ul>
+
+  <div class="alert alert-gold">
+    <div class="alert-title">The Distributional Fault Line — Rich Miners, Struggling Households</div>
+    In Scenarios B and C, South Africa faces a deeply uncomfortable political economy: mining shareholders booking R300B+ windfalls while working-class households absorb 9–20% fuel price increases on stagnant wages. South Africa already has one of the world's highest Gini coefficients. This distributional gap will generate intense political pressure — for windfall mining taxes, for fuel subsidies, for expedited social grant increases. How the government navigates this redistribution question may matter more for social stability than the macroeconomic headline numbers.
+  </div>
+</div>
+</div>
+
+<!-- 09 ACTIONS -->
+<div id="actions" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommended Actions — By Audience</h2>
+  <p class="section-lead">South Africa's complex risk profile means action priorities differ sharply by audience. The geopolitical dimension — absent from most of South Africa's peers in this crisis — requires urgent, dedicated treatment alongside the economic response.</p>
+
+  <h3 class="subsection-title">Government &amp; Policymakers</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Action 01</div>
+      <h4>Model the Net Fiscal Position — Windfall vs. Subsidy Cost</h4>
+      <p>The National Treasury must run the explicit numbers: the estimated R300–350B mining revenue uplift generates how much in royalties and corporate tax? How does that compare to the cost of fuel subsidies, social grant adjustments, and AGOA trade protection measures? This is not a purely negative fiscal shock — it may be net neutral or slightly positive in Scenario B. That analysis must precede any policy decisions and be completed this week.</p>
+      <span class="urg urg-now">This week</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 02</div>
+      <h4>Engage Washington Directly and at the Highest Level</h4>
+      <p>The AGOA threat is real, time-sensitive, and asymmetric. South Africa needs high-level direct engagement with the US State Department and Treasury to draw a clear line between the January naval exercise (a military command failure that did not reflect presidential policy) and South Africa's broader economic relationship with the United States. The message: non-alignment is genuine, the naval exercise was a SANDF institutional failure, and AGOA serves mutual commercial interests. Every week of delay makes this harder.</p>
+      <span class="urg urg-now">This week</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 03</div>
+      <h4>Direct Transnet to Actively Market Cape Route Capacity</h4>
+      <p>Berth occupancy at South African ports is already up 17–23%. This is not self-managing — it requires active commercial outreach to the shipping lines now rerouting via the Cape. Transnet Ports Authority should be offering multi-year bunkering contracts, transshipment agreements, LNG bunkering capacity, and ship repair packages. The Transnet modernisation and recovery plan has a materially stronger commercial case today than it had three months ago. Passive management of this opportunity is a strategic error.</p>
+      <span class="urg urg-now">This week</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 04</div>
+      <h4>Design Targeted Household Fuel Relief — Before April</h4>
+      <p>The 9% April fuel price increase is confirmed. A blanket fuel subsidy is fiscally wasteful and regressive. A targeted cash transfer scheme for lower-income households — fundable from elevated mining tax revenue — is the equitable and fiscally sound response. The SASSA infrastructure already exists. The design decision needs to be made before the April increase lands, not in response to public pressure after it does. Reactive policy here will be more expensive and more politically damaging than proactive design.</p>
+      <span class="urg urg-week">Within 2 weeks</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Business &amp; Private Sector</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Action 05</div>
+      <h4>Mining Companies: Protect the Windfall and Model Diesel Risk</h4>
+      <p>Gold at $5,400+ is historically exceptional. Precious metal miners should review hedging positions — not to eliminate upside, but to protect a portion of this windfall against a rapid reversal on ceasefire news. Simultaneously, model diesel cost impact on operations at Brent $80, $100, and $120. The net position is strongly positive at all scenarios, but coal and bulk commodity producers on thin margins face a materially different calculation. The intra-sector divergence requires nuanced management.</p>
+      <span class="urg urg-now">Immediately</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 06</div>
+      <h4>AGOA-Dependent Exporters: Scenario Plan and Activate Government Affairs</h4>
+      <p>BMW, Mercedes-Benz, Toyota, and Ford assemble vehicles in South Africa with US market access that depends on AGOA. An AGOA suspension or additional US tariff would directly damage the economics of these plants. These companies should be activating their Washington government affairs resources now, scenario-planning for AGOA disruption, modelling alternative export markets (EU, Gulf, Africa), and ensuring South Africa's diplomatic engagement with the US includes the automotive industry's commercial interests as a concrete, quantified stake.</p>
+      <span class="urg urg-week">This week</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 07</div>
+      <h4>Fuel-Intensive Businesses: Hedge Exposure and Renegotiate Contracts</h4>
+      <p>Transport, logistics, construction, and agriculture all face confirmed fuel cost increases from April. Model your P&amp;L at R21.80, R23.00, and R25.00/litre. Identify any fixed-price contracts extending beyond June that contain no fuel escalation clause — renegotiate those now. Consider forward fuel procurement where your consumption volumes justify the hedging cost. The April increase is locked in; acting before it lands is materially cheaper than reacting to it.</p>
+      <span class="urg urg-week">This week</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 08</div>
+      <h4>JSE / Institutional Investors: Rebalance for the Mining Supercycle</h4>
+      <p>The JSE is experiencing significant sector divergence. Gold and PGM stocks are up 3–8% with further upside in Scenarios B and C. Several mid-tier producers have not yet fully priced in a sustained $5,200+ gold environment. The rand-denominated cost base / USD-denominated revenue structure means that rand weakness — which accompanies prolonged conflict — amplifies gold miner margins further. The case for an overweight position in South African precious metal producers is stronger now than at any point in the past decade.</p>
+      <span class="urg urg-now">Immediately</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Three Numbers to Watch Every Week</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The South Africa Equation</h4>
+      <p>South Africa has an unusual structural feature: its two most important commodity exposures — oil imports and gold/PGM exports — move in the same direction during geopolitical shocks. The net balance is genuinely ambiguous and shifts daily as prices move. Rather than a single verdict, track the three numbers to the right — they tell you in real time which side of the equation is winning.</p>
+    </div>
+    <div class="closing-box gold-box">
+      <h4>Three Numbers — Weekly Monitor</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Gold price (USD/oz). Above $5,200 = mining windfall intact, rand partially supported, fiscal position manageable. Below $4,800 = windfall fading, net balance tips negative for the economy overall.</li>
+        <li><span class="sig-num">02</span>USD/ZAR. Above R17.00 = import inflation accelerating dangerously; household crisis deepening; SARB under acute pressure. The rand is the transmission mechanism for both the oil pain and the gold gain.</li>
+        <li><span class="sig-num">03</span>AGOA status / US-SA diplomatic signals. This is the asymmetric wildcard unique to South Africa. A formal AGOA review announcement or additional US tariff would be the most impactful single event in this assessment — worse for South Africa than a further $10 Brent increase.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="report-footer">
+  <div>South Africa Strategic Risk Assessment · March 11, 2026 · Day 11 of Iran–US/Israel Conflict · thierrybechard.com</div>
+  <div>Sources: Foreign Policy · Daily Maverick · BMI/Fitch Solutions · Econometrix · Stats SA · DMPR · Bloomberg · Al Jazeera · DefenceWeb · ISS Africa · Maritime Executive · CNBC Africa · African Mining</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: document.querySelector('.tab-nav').offsetTop - 10, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
