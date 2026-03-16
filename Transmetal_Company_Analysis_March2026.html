@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transmetal Group — Comprehensive Company Analysis — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric { display: flex; justify-content: space-between; align-items: baseline; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+  .mv.danger { color: var(--red); }
+  .mv.warn { color: var(--amber); }
+  .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); }
+  .ratio-val.warn { color: var(--amber); }
+  .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS SCORE BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); }
+  .eos-score.mid { color: var(--amber); }
+  .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); }
+  .eos-bar-fill.mid { background: var(--amber); }
+  .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── CLOSING / ACTIONS ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Steel Trading Group</span>
+    <span class="badge badge-type">Three-Entity Private Group</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">16 March 2026</span>
+  </div>
+  <h1>Transmetal Group:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Company intelligence · Financial ratios · EOS implementation assessment · Mauritius Freeport</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Combined Group Revenue</div>
+      <div class="stat-value steel">~$7.7M + MUR 107M</div>
+      <div class="stat-delta">Transmetal Ltd (USD) · Prometal + PEB (MUR) · FY2024/25</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Entities in Group</div>
+      <div class="stat-value amber">3</div>
+      <div class="stat-delta">Transmetal Ltd · Prometal Négoce · Transmetal PEB</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value steel">6.5 / 10</div>
+      <div class="stat-delta">Strong candidate with prerequisites · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Prometal Equity</div>
+      <div class="stat-delta">–MUR 10.6M retained earnings · Technically insolvent</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>Transmetal Group — Company Analysis &amp; EOS Assessment · 16 March 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     01  EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 25-year-old regional steel trading group operating three distinct legal entities from 1 Steel Avenue, Riche Terre, Mauritius — with genuine market strength, deep regional relationships, and a balance sheet that requires urgent structural attention.</p>
+
+  <p class="body-text">The Transmetal Group is one of the Indian Ocean region's most established steel trading and distribution businesses, founded in 1998 by André François Gérard Couve and now operating across three entities: Transmetal Ltd (Freeport steel trading agent serving Indian Ocean island markets and sub-Saharan Africa), Prometal Négoce Ltée (domestic Mauritius flat steel distributor), and Transmetal PEB Ltd (pre-engineered steel building contractor). The group's combined footprint spans procurement from approximately 30 international steel mills across Africa, Asia, the Middle East, and Europe, and distribution to customers in Réunion, Madagascar, Seychelles, Comoros, Mayotte, and across the Mauritius domestic construction sector.</p>
+
+  <p class="body-text">The group's commercial positioning is genuinely strong: 25+ years of regional relationships, a Mauritius Freeport platform with structural logistics advantages, and a differentiated service model combining steel advisory, logistics, and trade finance under one roof. These are assets that competitors cannot replicate quickly. However, the financial structure tells a more complicated story. Prometal Négoce carries negative equity of approximately –MUR 10.6M, sustained entirely by MUR 36.3M in bank debt. Transmetal Ltd's trade receivables stand at USD 4.97M — representing 236 days of sales outstanding — against USD 60K in cash and USD 3.57M in short-term borrowings. Transmetal PEB generated a net loss of –MUR 376K in FY2024. Only the Freeport trading entity (Transmetal Ltd) is generating a meaningful positive result, at USD 141K on USD 7.67M in revenue (1.8% net margin).</p>
+
+  <p class="body-text">For EOS suitability, the group scores <strong>6.5/10</strong> — a qualified positive. The classic conditions that make EOS valuable are present: an owner-operator structure with all decisions flowing through a single director, thin margins that punish operational inefficiency, multi-entity complexity without formal inter-entity governance, and documented process gaps (the receivables cycle alone is diagnostic). The primary prerequisite for EOS is resolving the Prometal balance sheet — you cannot install an accountability system in a business that may face a lender covenant event. That must come first. With that addressed, the group is an excellent EOS candidate.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Financial Structure Must Precede EOS</div>
+    The group's most urgent need is financial restructuring at Prometal Négoce, not operational system implementation. EOS will amplify the efficiency of a business that is structurally stable. It cannot substitute for equity or service a lender relationship under stress. Sequence matters: balance sheet first, EOS second.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>25-year regional track record</strong> in Indian Ocean steel markets. Mauritius Freeport status. ~30 international mill relationships. Integrated service model (procurement + logistics + trade finance). Prometal 48h delivery commitment domestically. PEB construction capability.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Prometal: technically insolvent</strong> (–MUR 10.6M equity, MUR 36.3M debt). Transmetal Ltd: 236-day DSO on USD 4.97M receivables, USD 60K cash buffer. PEB: loss-making FY2024. All three entities operating with razor-thin or negative margin profiles.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p>Classic symptoms of EOS-addressable conditions: <strong>single-point decision-making</strong>, informal meeting rhythms, process gaps visible in financial KPIs (DSO, margins), multi-entity complexity without a formal operating system. Strong candidate once balance sheet is stabilised.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     02  COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">Three entities, one address, one director. The Transmetal Group is a privately held, owner-operated regional steel business built over 25 years from a single industrial unit at Riche Terre, Mauritius.</p>
+
+  <h3 class="subsection-title">Founding and Evolution</h3>
+  <p class="body-text">Transmetal Ltd was incorporated on 3 November 1998 as an import and export agent for steel products, registering under BRN C07021553. The founding story is rooted in the Indian Ocean island market's structural need for a professional, locally-based steel intermediary — an agent who could manage the complexity of sourcing from international steel mills, navigating shipping logistics, and providing trade finance support to customers who lacked direct mill access. Over 25 years, the company evolved from a procurement agent into a comprehensive steel solutions provider, reporting on its website: "our resources and international market knowledge enable us to offer optimized supply packages."</p>
+  <p class="body-text">Prometal Négoce Ltée (originally incorporated as Transmetal Enterprise Ltd, renamed) was incorporated in May 2007, pivoting toward domestic Mauritius distribution of flat steel products from a warehouse at the same Riche Terre address. Transmetal PEB Ltd (originally Transmetal Pre-Engineered Steel Buildings Ltd, renamed) was incorporated in November 2018, extending the group into steel building construction contracting. All three entities share the same registered address, the same director (Couve), and from March 2025, the same secretary (Li Lung Hok Bertrand). Riche Terre Business Park Ltd is the holding shareholder for both Transmetal Ltd and Transmetal PEB.</p>
+
+  <h3 class="subsection-title">The Three Entities — Business Model</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Transmetal Ltd</h4>
+        <div class="ec-sub">Freeport Steel Trading Agent · Est. 1998</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Primary function</span><span class="mv">Import/export agent, steel solutions</span></div>
+        <div class="ec-metric"><span class="mk">Revenue (FY2024)</span><span class="mv ok">USD 7,672,301</span></div>
+        <div class="ec-metric"><span class="mk">Net profit</span><span class="mv warn">USD 140,941</span></div>
+        <div class="ec-metric"><span class="mk">Markets served</span><span class="mv">Réunion, Madagascar, Seychelles, Comoros, Sub-Saharan &amp; West Africa</span></div>
+        <div class="ec-metric"><span class="mk">Unique capability</span><span class="mv">Trade finance + credit insurance for island customers</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Prometal Négoce Ltée</h4>
+        <div class="ec-sub">Domestic Steel Distributor · Est. 2007</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Primary function</span><span class="mv">Flat steel distribution, Mauritius market</span></div>
+        <div class="ec-metric"><span class="mk">Revenue (FY2025)</span><span class="mv ok">MUR 44,479,440</span></div>
+        <div class="ec-metric"><span class="mk">Net profit</span><span class="mv warn">MUR 2,346,511</span></div>
+        <div class="ec-metric"><span class="mk">Value proposition</span><span class="mv">Carbon steel, stainless steel &amp; aluminium in coils &amp; sheets; 48h delivery</span></div>
+        <div class="ec-metric"><span class="mk">Equity position</span><span class="mv danger">–MUR 10,628,458 (critical)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Transmetal PEB Ltd</h4>
+        <div class="ec-sub">Steel Building Contractor · Est. 2018</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Primary function</span><span class="mv">Pre-engineered steel buildings, construction contractor</span></div>
+        <div class="ec-metric"><span class="mk">Revenue (FY2024)</span><span class="mv ok">MUR 62,228,054</span></div>
+        <div class="ec-metric"><span class="mk">Net result</span><span class="mv danger">–MUR 375,827 (loss)</span></div>
+        <div class="ec-metric"><span class="mk">Sectors served</span><span class="mv">Tourism/hotel, IRS/ERS, industrial, commercial construction</span></div>
+        <div class="ec-metric"><span class="mk">Equity</span><span class="mv ok">MUR 6,667,986 (healthy)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leadership and Governance</h3>
+  <p class="body-text">André François Gérard Couve is the sole director of all three entities, having held that position since inception of each company (1998, 2007, and 2018 respectively). He is also the sole shareholder of Prometal Négoce (500 ordinary shares). For Transmetal Ltd and Transmetal PEB, Riche Terre Business Park Ltd is the registered shareholder. This structure places all strategic decision-making authority with a single individual — a classic founder-operator configuration that has enabled the group's long-term continuity but also creates succession risk and single-point-of-failure governance. The group uses Margeot &amp; Associates (Port Louis) as auditors for Transmetal Ltd. A new secretary, Li Lung Hok Bertrand, was appointed across all three entities in March 2025, suggesting a recent administrative reorganisation.</p>
+
+  <h3 class="subsection-title">Products, Services and Value Proposition</h3>
+  <p class="body-text">The group's product range spans long products (structural steel, merchant bar, rod) and flat products (hot rolled coil, cold rolled coil, stainless, coated, aluminium — in coil and cut-to-length form), all grades, on order for long and in stock for flat. The service model goes beyond product supply: the group provides technical advisory on steel grade selection, logistics coordination across international freight networks, and critically, trade finance and credit insurance facilitation — enabling island customers with limited direct market access to procure on credit terms. This bundled service model is the group's core differentiation. The Prometal domestic arm adds a warehousing and rapid delivery capability (48h within 5km radius) specifically tailored to Mauritius fabricators, light manufacturers, and construction contractors.</p>
+
+  <h3 class="subsection-title">Geographic Presence and Market Coverage</h3>
+  <p class="body-text">All operations are physically based at 1 Steel Avenue, Riche Terre — a single industrial address in the freeport zone north of Port Louis. The group has no branch offices. Its geographic reach is commercial, not physical: Transmetal Ltd serves customers across the Indian Ocean island chain (Réunion, Madagascar, Seychelles, Comoros, Mayotte) and into sub-Saharan and West Africa. The company's own description notes customers involved in "merchant port extension, bank reinforcement, industrial infrastructure, water and oil-gas storage" projects — indicating project-oriented industrial buyers across the African continent.</p>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     03  FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">All financial data sourced from CBRIS filings (Registrar of Companies, Mauritius, 16 March 2026). Transmetal Ltd reports in USD. Prometal Négoce and Transmetal PEB report in MUR. Where earlier years are referenced, three annual returns are on file for each entity.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    All three entities are private companies. The financial summaries filed at CBRIS are high-level P&amp;L and balance sheet extracts — not full IFRS financial statements. Comparative year data exists (three years of filings per entity) but prior-year detail is not extracted in the CBRIS summary format. All calculations below are derived from the most recent filed financial year for each entity. No internal management accounts, segment reporting, or inter-company elimination data is available.
+  </div>
+
+  <h3 class="subsection-title">Transmetal Ltd — P&amp;L Summary (FY2024, USD)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>USD</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Revenue (Turnover)</td><td>$7,672,301</td><td>100.0%</td><td>USD-denominated steel trading agent revenue</td></tr>
+        <tr><td>Cost of Goods Sold</td><td>$6,955,720</td><td>90.7%</td><td>Steel purchase cost + direct logistics — dominates the P&amp;L</td></tr>
+        <tr class="heat-warn"><td>Gross Profit</td><td>$716,581</td><td>9.3%</td><td>Thin margin typical of commodity trading agents</td></tr>
+        <tr><td>Distribution Costs</td><td>$54,996</td><td>0.7%</td><td></td></tr>
+        <tr><td>Administration Costs</td><td>$382,103</td><td>5.0%</td><td>Absorbs most of gross profit</td></tr>
+        <tr class="heat-critical"><td>Finance Costs</td><td>$265,495</td><td>3.5%</td><td>High relative to gross profit — 37% of gross profit consumed by interest</td></tr>
+        <tr><td>Other Income</td><td>$138,336</td><td>1.8%</td><td>Service fees, trade finance income</td></tr>
+        <tr><td>Profit Before Tax</td><td>$152,323</td><td>2.0%</td><td></td></tr>
+        <tr><td>Tax Expense</td><td>$11,382</td><td>0.1%</td><td></td></tr>
+        <tr class="heat-warn"><td><strong>Net Profit</strong></td><td><strong>$140,941</strong></td><td><strong>1.8%</strong></td><td>USD 10% steel price increase eliminates this entirely</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Prometal Négoce — P&amp;L Summary (FY2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Revenue (Turnover)</td><td>44,479,440</td><td>100.0%</td><td>Domestic flat steel distribution</td></tr>
+        <tr><td>Cost of Goods Sold</td><td>32,332,115</td><td>72.7%</td><td>USD-denominated procurement, sold in MUR</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>12,147,325</td><td>27.3%</td><td>Higher gross margin than Transmetal Ltd — warehousing adds value</td></tr>
+        <tr><td>Other Income</td><td>950,898</td><td>2.1%</td><td></td></tr>
+        <tr><td>Administration Costs</td><td>8,525,616</td><td>19.2%</td><td>Heavy admin load for the revenue base</td></tr>
+        <tr class="heat-critical"><td>Finance Costs</td><td>2,226,096</td><td>5.0%</td><td>MUR 36.3M debt servicing — structural burden</td></tr>
+        <tr><td>Tax Expense</td><td>0</td><td>—</td><td>No tax — losses carried forward offset liability</td></tr>
+        <tr class="heat-warn"><td><strong>Net Profit</strong></td><td><strong>2,346,511</strong></td><td><strong>5.3%</strong></td><td>Positive but insufficient against –MUR 10.6M retained loss deficit</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Transmetal PEB — P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Revenue (Turnover)</td><td>62,228,054</td><td>100.0%</td><td>Project-based construction contractor revenue</td></tr>
+        <tr><td>Cost of Goods Sold</td><td>55,955,827</td><td>89.9%</td><td>Materials + subcontract cost; thin gross margin characteristic of construction</td></tr>
+        <tr class="heat-warn"><td>Gross Profit</td><td>6,272,227</td><td>10.1%</td><td>Inadequate to cover fixed overheads at current scale</td></tr>
+        <tr><td>Other Income</td><td>31,966</td><td>—</td><td></td></tr>
+        <tr><td>Administration Costs</td><td>5,947,867</td><td>9.6%</td><td>Almost equals gross profit — overhead coverage is the core problem</td></tr>
+        <tr><td>Other Expenses</td><td>110,129</td><td>—</td><td></td></tr>
+        <tr><td>Finance Costs</td><td>533,585</td><td>0.9%</td><td>Moderate; no long-term borrowings</td></tr>
+        <tr><td>Tax Expense</td><td>88,439</td><td>—</td><td></td></tr>
+        <tr class="heat-critical"><td><strong>Net Loss</strong></td><td><strong>–375,827</strong></td><td><strong>–0.6%</strong></td><td>Loss-making. Equity erosion path if not reversed.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Health — Comparative Snapshot</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Metric</th><th>Transmetal Ltd (USD)</th><th>Prometal Négoce (MUR)</th><th>Transmetal PEB (MUR)</th></tr></thead>
+      <tbody>
+        <tr><td>Total Assets</td><td>$5,920,296</td><td>34,927,795</td><td>9,999,219</td></tr>
+        <tr><td>Current Assets</td><td>$5,911,677</td><td>32,121,072</td><td>9,418,139</td></tr>
+        <tr><td>Cash</td><td class="heat-critical">$60,170</td><td>9,154,216</td><td>616,204</td></tr>
+        <tr><td>Trade Receivables</td><td class="heat-critical">$4,967,143</td><td>20,334,295</td><td>4,773,051</td></tr>
+        <tr><td>Inventory</td><td>$884,364</td><td>2,629,817</td><td>3,879,564</td></tr>
+        <tr><td>Total Equity</td><td>$2,132,582</td><td class="heat-critical">–10,628,458</td><td class="heat-ok">6,667,986</td></tr>
+        <tr><td>LT Borrowings</td><td>$2,702</td><td>~17,491,752</td><td>0</td></tr>
+        <tr><td>ST Borrowings</td><td class="heat-warn">$3,567,703</td><td class="heat-critical">18,829,762</td><td>0</td></tr>
+        <tr><td>Total Liabilities</td><td>$3,787,714</td><td>45,556,253</td><td>3,331,233</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     04  FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Key ratios calculated from CBRIS-filed financial summaries. Each ratio is compared against relevant benchmarks — steel distribution and construction contractor industry norms where applicable. Green = healthy relative to benchmark. Amber = below benchmark, monitor. Red = significant concern.</p>
+
+  <h3 class="subsection-title">Transmetal Ltd — Ratio Analysis (USD, FY2024)</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Liquidity Ratios</h4>
+      <div class="ratio-row">
+        <div>
+          <span class="ratio-label">Current Ratio</span>
+          <span class="ratio-interpret">Current Assets ÷ Current Liabilities · Benchmark: &gt;1.5</span>
+        </div>
+        <span class="ratio-val warn">1.56</span>
+      </div>
+      <div class="ratio-row">
+        <div>
+          <span class="ratio-label">Quick Ratio (Acid Test)</span>
+          <span class="ratio-interpret">(Current Assets – Inventory) ÷ Current Liabilities · Benchmark: &gt;1.0</span>
+        </div>
+        <span class="ratio-val warn">1.33</span>
+      </div>
+      <div class="ratio-row">
+        <div>
+          <span class="ratio-label">Cash Ratio</span>
+          <span class="ratio-interpret">Cash ÷ Current Liabilities · Benchmark: &gt;0.2</span>
+        </div>
+        <span class="ratio-val bad">0.016</span>
+      </div>
+      <p style="font-size:12.5px;color:var(--text-mid);margin-top:12px;line-height:1.6;">Current and quick ratios are technically adequate but the cash ratio is critically low. With $60K in cash against $3.57M in short-term borrowings, the business depends entirely on receivables conversion to service its debt. Any collections slowdown creates an immediate liquidity event.</p>
+    </div>
+    <div class="ratio-card">
+      <h4>Profitability Ratios</h4>
+      <div class="ratio-row">
+        <div>
+          <span class="ratio-label">Gross Profit Margin</span>
+          <span class="ratio-interpret">Industry benchmark for steel trading agents: 8–15%</span>
+        </div>
+        <span class="ratio-val warn">9.3%</span>
+      </div>
+      <div class="ratio-row">
+        <div>
+          <span class="ratio-label">Net Profit Margin</span>
+          <span class="ratio-interpret">Industry benchmark for steel trading: 1–4%</span>
+        </div>
+        <span class="ratio-val warn">1.8%</span>
+      </div>
+      <div class="ratio-row">
+        <div>
+          <span class="ratio-label">Return on Assets (ROA)</span>
+          <span class="ratio-interpret">Net Profit ÷ Total Assets · Benchmark: &gt;5%</span>
+        </div>
+        <span class="ratio-val bad">2.4%</span>
+      </div>
+      <div class="ratio-row">
+        <div>
+          <span class="ratio-label">Return on Equity (ROE)</span>
+          <span class="ratio-interpret">Net Profit ÷ Equity · Benchmark: &gt;12%</span>
+        </div>
+        <span class="ratio-val bad">6.6%</span>
+      </div>
+      <p style="font-size:12.5px;color:var(--text-mid);margin-top:12px;line-height:1.6;">Margins are at the low end of acceptable for commodity trading. The ROA of 2.4% and ROE of 6.6% indicate the business is not generating adequate returns on its capital base, primarily because the capital is tied up in slow-turning receivables.</p>
+    </div>
+    <div class="ratio-card">
+      <h4>Leverage and Coverage Ratios</h4>
+      <div class="ratio-row">
+        <div>
+          <span class="ratio-label">Debt-to-Equity Ratio</span>
+          <span class="ratio-interpret">Total Liabilities ÷ Equity · Benchmark: &lt;1.5</span>
+        </div>
+        <span class="ratio-val warn">1.78</span>
+      </div>
+      <div class="ratio-row">
+        <div>
+          <span class="ratio-label">Interest Coverage Ratio</span>
+          <span class="ratio-interpret">EBIT ÷ Finance Costs · Benchmark: &gt;3.0x</span>
+        </div>
+        <span class="ratio-val bad">1.57x</span>
+      </div>
+      <p style="font-size:12.5px;color:var(--text-mid);margin-top:12px;line-height:1.6;">An interest coverage ratio of 1.57x is dangerously low. The business earns only $1.57 in operating profit for every $1.00 of interest owed. Any reduction in operating profit — from steel price increases, a slowdown in revenues, or a bad debt — would put the company below break-even on interest service.</p>
+    </div>
+    <div class="ratio-card">
+      <h4>Efficiency Ratios</h4>
+      <div class="ratio-row">
+        <div>
+          <span class="ratio-label">Days Sales Outstanding (DSO)</span>
+          <span class="ratio-interpret">Receivables ÷ Revenue × 365 · Benchmark for B2B steel: 60–90 days</span>
+        </div>
+        <span class="ratio-val bad">236 days</span>
+      </div>
+      <div class="ratio-row">
+        <div>
+          <span class="ratio-label">Asset Turnover</span>
+          <span class="ratio-interpret">Revenue ÷ Total Assets · Benchmark: &gt;1.5</span>
+        </div>
+        <span class="ratio-val warn">1.30</span>
+      </div>
+      <div class="ratio-row">
+        <div>
+          <span class="ratio-label">Inventory Turnover</span>
+          <span class="ratio-interpret">COGS ÷ Inventory · Benchmark for steel trading: 6–10x</span>
+        </div>
+        <span class="ratio-val ok">7.9x</span>
+      </div>
+      <p style="font-size:12.5px;color:var(--text-mid);margin-top:12px;line-height:1.6;">Inventory turns are adequate. The catastrophic outlier is the 236-day DSO — nearly 2.5× the industry benchmark for B2B steel distribution. This single metric explains why a profitable trading business is cash-poor. It is the primary operational inefficiency in the group and the most important management lever.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Prometal Négoce — Ratio Analysis (MUR, FY2025)</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Liquidity Ratios</h4>
+      <div class="ratio-row">
+        <div><span class="ratio-label">Current Ratio</span><span class="ratio-interpret">Benchmark: &gt;1.5</span></div>
+        <span class="ratio-val warn">1.14</span>
+      </div>
+      <div class="ratio-row">
+        <div><span class="ratio-label">Quick Ratio</span><span class="ratio-interpret">Benchmark: &gt;1.0</span></div>
+        <span class="ratio-val warn">1.05</span>
+      </div>
+      <p style="font-size:12.5px;color:var(--text-mid);margin-top:12px;line-height:1.6;">Liquidity ratios sit barely above their minimum thresholds. With MUR 28.1M in current liabilities (MUR 18.8M of which is short-term borrowings) against MUR 32.1M in current assets, the buffer is thin. A receivables collection problem or a lender request to reduce the credit line would create an immediate cash crisis.</p>
+    </div>
+    <div class="ratio-card">
+      <h4>Profitability &amp; Leverage</h4>
+      <div class="ratio-row">
+        <div><span class="ratio-label">Gross Profit Margin</span><span class="ratio-interpret">Benchmark for steel distribution: 20–30%</span></div>
+        <span class="ratio-val ok">27.3%</span>
+      </div>
+      <div class="ratio-row">
+        <div><span class="ratio-label">Net Profit Margin</span><span class="ratio-interpret">Benchmark: 3–6%</span></div>
+        <span class="ratio-val warn">5.3%</span>
+      </div>
+      <div class="ratio-row">
+        <div><span class="ratio-label">ROA</span><span class="ratio-interpret">Net Profit ÷ Total Assets</span></div>
+        <span class="ratio-val warn">6.7%</span>
+      </div>
+      <div class="ratio-row">
+        <div><span class="ratio-label">ROE</span><span class="ratio-interpret">Not calculable — negative equity</span></div>
+        <span class="ratio-val bad">N/A (–ve equity)</span>
+      </div>
+      <div class="ratio-row">
+        <div><span class="ratio-label">Interest Coverage</span><span class="ratio-interpret">EBIT ÷ Finance Costs · Benchmark: &gt;3.0x</span></div>
+        <span class="ratio-val warn">2.05x</span>
+      </div>
+      <div class="ratio-row">
+        <div><span class="ratio-label">Debt-to-Equity</span><span class="ratio-interpret">Not meaningful — negative equity</span></div>
+        <span class="ratio-val bad">N/A (–ve equity)</span>
+      </div>
+    </div>
+    <div class="ratio-card">
+      <h4>Efficiency Ratios</h4>
+      <div class="ratio-row">
+        <div><span class="ratio-label">DSO (Days Sales Outstanding)</span><span class="ratio-interpret">Benchmark: 30–60 days (domestic distribution)</span></div>
+        <span class="ratio-val bad">167 days</span>
+      </div>
+      <div class="ratio-row">
+        <div><span class="ratio-label">Inventory Turnover</span><span class="ratio-interpret">COGS ÷ Inventory · Benchmark: 8–15x</span></div>
+        <span class="ratio-val ok">12.3x</span>
+      </div>
+      <div class="ratio-row">
+        <div><span class="ratio-label">Asset Turnover</span><span class="ratio-interpret">Benchmark: &gt;1.2</span></div>
+        <span class="ratio-val ok">1.27</span>
+      </div>
+      <p style="font-size:12.5px;color:var(--text-mid);margin-top:12px;line-height:1.6;">Inventory and asset turnover are healthy. The DSO at 167 days is problematic for a domestic distribution business — B2B steel distributors typically operate at 30–60 days on local accounts. The receivables cycle is a group-wide management problem, not isolated to the Freeport entity.</p>
+    </div>
+    <div class="ratio-card">
+      <h4>Transmetal PEB Ratios (MUR, FY2024)</h4>
+      <div class="ratio-row">
+        <div><span class="ratio-label">Current Ratio</span><span class="ratio-interpret">Benchmark for contractors: &gt;1.3</span></div>
+        <span class="ratio-val ok">2.93</span>
+      </div>
+      <div class="ratio-row">
+        <div><span class="ratio-label">Quick Ratio</span></div>
+        <span class="ratio-val ok">1.72</span>
+      </div>
+      <div class="ratio-row">
+        <div><span class="ratio-label">Gross Profit Margin</span><span class="ratio-interpret">Benchmark for steel contractors: 12–20%</span></div>
+        <span class="ratio-val warn">10.1%</span>
+      </div>
+      <div class="ratio-row">
+        <div><span class="ratio-label">Net Profit Margin</span></div>
+        <span class="ratio-val bad">–0.6% (loss)</span>
+      </div>
+      <div class="ratio-row">
+        <div><span class="ratio-label">D/E Ratio</span><span class="ratio-interpret">Total Liabilities ÷ Equity · Benchmark: &lt;1.0</span></div>
+        <span class="ratio-val ok">0.50</span>
+      </div>
+      <div class="ratio-row">
+        <div><span class="ratio-label">Interest Coverage</span><span class="ratio-interpret">EBIT ÷ Finance Costs</span></div>
+        <span class="ratio-val bad">0.46x</span>
+      </div>
+      <div class="ratio-row">
+        <div><span class="ratio-label">DSO</span><span class="ratio-interpret">Construction milestone billing cycle</span></div>
+        <span class="ratio-val ok">28 days</span>
+      </div>
+      <p style="font-size:12.5px;color:var(--text-mid);margin-top:12px;line-height:1.6;">PEB's liquidity and leverage ratios are the healthiest in the group (no LT debt, good current ratio). But its operating performance is the weakest: the interest coverage of 0.46x means the business cannot cover its financing costs from operations — a critical red flag for a profitable-revenue-line entity. The 28-day DSO reflects milestone-based billing which inflates the apparent efficiency picture.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Group Ratio Summary — Red Flag Index</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Ratio</th><th>Transmetal Ltd</th><th>Prometal Négoce</th><th>Transmetal PEB</th><th>Benchmark</th></tr></thead>
+      <tbody>
+        <tr><td>Current Ratio</td><td><span class="b b-blue">1.56 ✓</span></td><td><span class="b b-amber">1.14 ⚠</span></td><td><span class="b b-green">2.93 ✓</span></td><td>&gt;1.5</td></tr>
+        <tr><td>Quick Ratio</td><td><span class="b b-blue">1.33 ✓</span></td><td><span class="b b-amber">1.05 ⚠</span></td><td><span class="b b-green">1.72 ✓</span></td><td>&gt;1.0</td></tr>
+        <tr><td>Gross Margin</td><td><span class="b b-amber">9.3% ⚠</span></td><td><span class="b b-green">27.3% ✓</span></td><td><span class="b b-amber">10.1% ⚠</span></td><td>Varies</td></tr>
+        <tr><td>Net Margin</td><td><span class="b b-amber">1.8% ⚠</span></td><td><span class="b b-blue">5.3% ✓</span></td><td><span class="b b-red">–0.6% ✗</span></td><td>&gt;2%</td></tr>
+        <tr><td>Interest Coverage</td><td><span class="b b-red">1.57x ✗</span></td><td><span class="b b-amber">2.05x ⚠</span></td><td><span class="b b-red">0.46x ✗</span></td><td>&gt;3.0x</td></tr>
+        <tr><td>D/E Ratio</td><td><span class="b b-amber">1.78 ⚠</span></td><td><span class="b b-red">N/A (–ve) ✗</span></td><td><span class="b b-green">0.50 ✓</span></td><td>&lt;1.5</td></tr>
+        <tr><td>ROA</td><td><span class="b b-red">2.4% ✗</span></td><td><span class="b b-blue">6.7% ✓</span></td><td><span class="b b-red">–3.8% ✗</span></td><td>&gt;5%</td></tr>
+        <tr><td>Days Sales Outstanding</td><td><span class="b b-red">236 days ✗</span></td><td><span class="b b-red">167 days ✗</span></td><td><span class="b b-green">28 days ✓</span></td><td>60–90 days</td></tr>
+        <tr><td>Inventory Turnover</td><td><span class="b b-blue">7.9x ✓</span></td><td><span class="b b-green">12.3x ✓</span></td><td><span class="b b-green">14.4x ✓</span></td><td>&gt;6x</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     05  MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">The Transmetal Group operates in a niche where scale meets specialisation — a small operator by global standards but a significant and established player in the Indian Ocean regional steel market, where the barriers to entry are relationship-based, not capital-based.</p>
+
+  <h3 class="subsection-title">Market Position — Indian Ocean Steel Distribution</h3>
+  <p class="body-text">Transmetal Ltd's core competitive advantage is its position at the intersection of international steel market access and Indian Ocean island market expertise. The region it serves — Réunion, Madagascar, Seychelles, Comoros, Mayotte — represents a combined population of approximately 3.5 million people with limited direct access to global steel markets. These markets are too small for major international trading houses to prioritise directly, and too complex (logistics, credit, regulatory) for local buyers to manage independently. Transmetal sits precisely in that gap and has done so for 25 years. That tenure is itself the moat.</p>
+
+  <h3 class="subsection-title">Competitive Landscape — Mauritius Steel Market</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Domestic Competitors (Prometal)</h4>
+      <p>In the Mauritius flat steel distribution market, Prometal competes with <strong>Dalafix Ltd</strong> (also at Riche Terre, steel/stainless specialist), <strong>Phenix Steelworks Ltd</strong> (fabrication and supply, sister company of GMG Services), and various hardware/quincaillerie operators. The domestic market is fragmented. Prometal's 48h delivery commitment and product breadth are differentiators.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Regional Competitors (Transmetal Ltd)</h4>
+      <p>At the Freeport/regional trading level, Transmetal competes with <strong>other Mauritius-based trading houses</strong>, South African steel distributors (Macsteel, ArcelorMittal distribution), and increasingly with <strong>Chinese trading intermediaries</strong> operating directly into African and island markets. The 25-year relationship network is the primary competitive barrier.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Construction Competitors (PEB)</h4>
+      <p>Transmetal PEB competes in the Mauritius pre-engineered steel building sector with other licensed contractors. The sector is tied to tourism investment (hotels, villas, IRS/ERS) and commercial/industrial construction. Key differentiator: PEB has integrated steel supply from the group's own procurement network, potentially offering cost and timeline advantages over independent contractors.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Industry Trends — Tailwinds and Headwinds</h3>
+  <div class="profile-grid two-col">
+    <div class="profile-card">
+      <h4>Structural Tailwinds</h4>
+      <p>
+        <strong>Indian Ocean infrastructure investment:</strong> Ongoing port, industrial, and social infrastructure programs in Madagascar, Comoros, and Seychelles create sustained demand for Transmetal Ltd's project-steel advisory services.<br><br>
+        <strong>Mauritius Smart City and IRS pipeline:</strong> Long-term real estate development pipeline supports Prometal domestic demand and PEB project flow in non-crisis conditions.<br><br>
+        <strong>Supply chain regionalisation:</strong> Post-2020 global supply chain disruption is driving buyers toward established regional intermediaries with proven logistics and credit capabilities — exactly Transmetal's value proposition.
+      </p>
+    </div>
+    <div class="profile-card">
+      <h4>Structural Headwinds</h4>
+      <p>
+        <strong>Commodity trading margin compression:</strong> Global steel price transparency (digital platforms, direct mill programs) is compressing margins across the trading intermediary segment. The group's 9.3% gross margin at Transmetal Ltd is already at the low boundary of viability.<br><br>
+        <strong>Currency risk:</strong> Buying in USD, selling in MUR (Prometal) or island currencies (Transmetal Ltd) creates permanent structural exposure that is not being hedged.<br><br>
+        <strong>Geopolitical supply chain disruption:</strong> The Iran–US/Israel conflict (see separate risk report) represents an acute current-cycle headwind on top of the structural headwinds above.
+      </p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">CBRIS Record — Governance and Compliance</h3>
+  <p class="body-text">All three entities are fully compliant with Mauritius Companies Act filing requirements. Annual returns and financial statements are filed consistently and on time across the 3-year record on CBRIS. There is a historic objection on file for Transmetal PEB (June 2020, listed as "Others"), but no detail is disclosed and no ongoing proceeding is visible. There are no charges registered against any of the three entities, no removal or winding-up proceedings, and no current litigation visible in public records. The group's governance record is clean.</p>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     06  EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">The Entrepreneurial Operating System (EOS) is designed for privately held businesses of 10–250 employees experiencing the frustrations of growth — unclear accountability, inconsistent execution, leadership bottlenecks, and process gaps. The Transmetal Group exhibits multiple classic indicators. The question is timing and prerequisites.</p>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.5</div>
+      <div class="big-denom">/10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Strong Candidate — With One Critical Prerequisite</h4>
+      <p>The Transmetal Group is a genuine EOS candidate. The conditions EOS was designed to address are demonstrably present: single director carrying all decision weight across three entities, process gaps evidenced by a 236-day DSO and negative equity at Prometal, multi-entity complexity without formal inter-entity governance, and a 25-year-old business that has outgrown its informal operating habits. The rating is not higher for one reason: Prometal Négoce's balance sheet must be stabilised before installing an accountability system. You cannot hold a leadership team accountable for results in a technically insolvent entity without first clarifying the structural environment they're operating in.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Dimensional Ratings (1–10)</h3>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">1 — Organisational Size and Complexity</span>
+      <span class="eos-score mid">7/10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:70%"></div></div>
+    <p class="eos-rationale">The EOS sweet spot is 10–250 employees. The Transmetal Group is estimated at fewer than 20 staff across all three entities (no employee count is disclosed in CBRIS filings; the external estimate of ~18 employees aligns with the revenue base and operational footprint). This is at the small end of the EOS range, but the multi-entity structure adds real complexity: three legal entities, three different business models (trading, distribution, construction), three different reporting currencies, and a single director managing all of them. That structural complexity creates more management challenge than a single-entity business of the same headcount. The 7/10 reflects the genuine complexity premium over the small headcount.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">2 — Leadership Openness to Systems and Accountability</span>
+      <span class="eos-score mid">5/10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Couve has been the sole director of all three entities since their respective foundings (1998, 2007, 2018). This 25+ year owner-operator tenure is a classic EOS implementation variable: long-tenured founder-owners are often the most resistant to accountability structures because the business has always run through their personal judgment and relationships. There is no public evidence of Couve's openness to external frameworks, peer accountability, or delegation — which is the norm for private companies of this type, not a negative indicator per se. The 5/10 is a neutral assessment, not a negative one. The Discovery Session conversation would surface the actual readiness.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">3 — Growth Stage and EOS-Addressable Challenges</span>
+      <span class="eos-score high">8/10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">This is the strongest indicator. The financial data reveals symptoms that EOS directly addresses. A 236-day DSO at Transmetal Ltd (benchmark: 60–90 days) is a process failure — it means the collections process is not systematically managed. Prometal's negative equity despite a profitable recent year is the result of accumulated losses, suggesting multi-year margin management failure. PEB's interest coverage of 0.46x means the construction entity cannot cover its financing costs from operations — a pricing and project selection discipline problem. These are not bad-luck outcomes; they are symptoms of a business that has grown in revenue without growing its management systems. That is precisely the EOS addressable condition.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">4 — Current Systems and Process Maturity</span>
+      <span class="eos-score mid">6/10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The group has operational systems sufficient to run a USD 7.67M trading business and manage procurement from 30 international mills — this is not a chaotic startup. There are evident logistics and credit insurance processes. However, the DSO data strongly suggests that collection processes are informal rather than systematic. The absence of management accounts (only year-end CBRIS summaries are available publicly) may indicate limited real-time management reporting. The 6/10 reflects a business with functional operational processes but insufficient management process infrastructure.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">5 — Company Culture — Alignment with EOS Principles</span>
+      <span class="eos-score mid">5/10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Insufficient public data to assess culture directly. Industrial steel trading businesses tend toward pragmatic, relationship-driven cultures — strong on client loyalty and delivery reliability, less naturally oriented toward formal accountability and documented process. The Transmetal website emphasises responsiveness, technical expertise, and reliability — which are broadly consistent with EOS core values around doing what you say. The 5/10 is an honest neutral, not a negative. Cultural assessment would require face-to-face engagement.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">6 — Decision-Making Clarity</span>
+      <span class="eos-score high">8/10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">Single director across three entities. All decision authority resides with Couve. This is both a symptom of the problem and a facilitator for EOS adoption. The problem: a single decision-maker across three different business models is a structural bottleneck — management bandwidth is finite, and the complexity penalty grows with each entity. The EOS facilitator: when the owner is the decision-maker, you only need to convince one person. There is no organisational politics to navigate. The Accountability Chart (one of EOS's first deliverables) would be immediately diagnostic for this group: it would reveal that Couve holds most seats, and provide a clear visual mandate for delegation.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">7 — Vision Clarity</span>
+      <span class="eos-score mid">6/10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The group's market positioning is clear — Indian Ocean regional steel distribution, integrated service model, 30-mill network. This is a well-defined niche with a genuine 25-year track record. However, the addition of PEB in 2018 raises a strategic question: is the group's vision to be a steel trading and distribution business (Transmetal Ltd + Prometal) that happens to have a construction arm, or is PEB a strategic expansion of the value chain? The V/TO (Vision/Traction Organizer) process in EOS would force this clarity. The 6/10 reflects good operational focus but potential ambiguity at the multi-entity strategic level.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">8 — Meeting Culture and Communication Effectiveness</span>
+      <span class="eos-score low">4/10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No public evidence on meeting culture. However, the profile of a &lt;20-person, single-director, multi-entity business in an industrial trading sector is well-documented in EOS practice: communication tends to be informal and reactive rather than structured and rhythmic. The absence of a formal leadership team (there appears to be no published senior management structure below Couve) suggests that the EOS Level 10 Meeting™ structure — which creates weekly accountability rhythms at the leadership team level — would be introducing a new discipline, not improving an existing one. The 4/10 is not pejorative; it reflects the most common starting point for businesses in this profile. It is also where EOS delivers some of its fastest early wins.</p>
+  </div>
+
+  <h3 class="subsection-title">EOS Tools with Highest Impact for This Group</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>The Accountability Chart</h4>
+      <p>The most immediately valuable EOS tool for Transmetal Group. With a single director across three entities, the Accountability Chart will visually surface every seat Couve currently holds — and create a mandate for delegation. It will also clarify whether the three entities are run as one integrated leadership team or three separate ones.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>The group's operational gaps (DSO, margin management, PEB pricing discipline) are systemic but not unsolvable. Converting them into time-bound Rocks with named owners — "Collections process implemented and DSO below 120 days by Q3" — would create tangible progress. The quarterly cadence is well-matched to a trading business's operational rhythm.</p>
+    </div>
+    <div class="profile-card">
+      <h4>The Scorecard</h4>
+      <p>The ratio analysis in this report took effort to construct from annual filings. An EOS Scorecard for this group would track 5–15 leading indicators weekly: DSO by entity, inventory levels, mill order pipeline, MUR/USD rate, cash position by entity. Real-time visibility would change management behaviour immediately.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO (Vision/Traction Organizer)</h4>
+      <p>The strategic clarity question — what is the group's 10-year target, and does PEB belong in the same vision as the trading entities? — is one the V/TO process would force into the open. For a 25-year-old business that has added entities opportunistically, this structured articulation would be genuinely valuable.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List and IDS</h4>
+      <p>The group almost certainly has a set of recurring issues that have never been formally resolved: the Prometal balance sheet, the receivables cycle, the PEB margin problem, the inter-entity governance. The EOS Issues Solving Track (IDS: Identify, Discuss, Solve) provides a structured framework for working through these in the leadership team meeting rhythm.</p>
+    </div>
+    <div class="profile-card">
+      <h4>The Level 10 Meeting™</h4>
+      <p>For a business with a single decision-maker managing three entities, introducing a weekly structured meeting with a leadership team — even a small one — would create the distributed accountability the group currently lacks. The Level 10 format (90 minutes, fixed agenda, scorecard review, Rock review, issues solving) would be a significant upgrade over the current communication model.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     07  RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Sequenced by urgency. The financial recommendations are prerequisites for the EOS recommendations — not alternatives to them. Sequence matters here more than it does for most EOS candidates.</p>
+
+  <h3 class="subsection-title">Financial — Pre-EOS Prerequisites</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Resolve the Prometal Négoce Balance Sheet</h4>
+      <p>Prometal has –MUR 10.6M in retained earnings and MUR 36.3M in debt. This must be addressed through one of: (a) shareholder equity injection to restore positive net worth; (b) formalisation of shareholder loans as subordinated debt; or (c) a structured 24-month retained earnings accumulation plan with explicit margin protection measures (see Rec 03). Until the balance sheet is structurally stable, lender relationships are at risk and management decisions are made under financial duress that impairs judgement.</p>
+      <span class="urg urg-now">Before EOS — Priority 1</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Implement a Group-Wide Receivables Management System</h4>
+      <p>The group's combined DSO (236 days at Transmetal Ltd, 167 days at Prometal) is the single largest operational inefficiency. Moving Transmetal Ltd from 236 to 120 days would release approximately USD 2.2M in working capital — more than enough to eliminate the short-term borrowing facility entirely. This is not a strategic transformation; it is a process implementation. Assign a named owner. Set a 90-day Rock. Track weekly on the Scorecard. This is a perfect early EOS win.</p>
+      <span class="urg urg-now">Before / During EOS Kick-Off</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Introduce Steel Price Escalation Clauses Across All Customer Contracts</h4>
+      <p>Neither Prometal nor PEB appears to have systematic steel price passthrough mechanisms. This is the primary structural reason why margin deterioration accumulates into balance sheet damage. CRU/Platts-linked escalation clauses in Prometal customer contracts and material cost escalation provisions in PEB project contracts would protect gross margin during price-volatile periods. Implement before the next contract renewal cycle.</p>
+      <span class="urg urg-week">Within 30–60 days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Engage Prometal's Senior Lender Proactively</h4>
+      <p>The combination of negative equity, a geopolitical cost shock, and thin interest coverage (2.05x) at Prometal creates genuine lender relationship risk. The correct approach is to get in front of it: prepare a 12-month forward cash flow model under a stress scenario, present it to the bank, and discuss the pathway to positive equity restoration. Proactive engagement converts a potential covenant problem into a managed relationship. Reactive engagement after a trigger event converts it into a crisis.</p>
+      <span class="urg urg-now">Within 30 days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Run the EOS 90-Minute Meeting First — Before Committing to Full Implementation</h4>
+      <p>The EOS Discovery Session (or equivalent 90-Minute Meeting) would serve two purposes here: (a) assess Couve's genuine openness to shared accountability — the dimension rated 5/10 in this assessment; and (b) build a shared understanding of the problems the financial ratios reveal. The ratio data in this report is diagnostic. A well-facilitated 90-minute session using the real numbers (DSO, Prometal equity, PEB interest coverage) would create the clarity of problem needed to make EOS adoption feel inevitable rather than optional.</p>
+      <span class="urg urg-week">Once financial prerequisites are initiated</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Define the Leadership Team Structure Before the Accountability Chart</h4>
+      <p>EOS works through a leadership team, not through a single owner. For Transmetal Group, this means identifying who — beyond Couve — constitutes the leadership team. Is it one team across all three entities, or does each entity have its own? Who runs day-to-day at Transmetal Ltd? Who manages Prometal's warehouse operations and sales? The Accountability Chart will surface the answers, but Couve should come to that session with an initial hypothesis about who the two or three people are who would form a genuine leadership team.</p>
+      <span class="urg urg-week">Pre-work before EOS kick-off</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Set the DSO Reduction as the First Company-Wide Rock</h4>
+      <p>EOS Rocks (90-day priorities) work best when they address a real, visible, measurable problem. The receivables cycle qualifies perfectly: it is measurable, it is important, it is currently unowned, and solving it produces a tangible financial result that validates the system in the first quarter. "Implement formal collections process; reduce Transmetal Ltd DSO from 236 to 150 days by end of Q3 2026" is an excellent first Rock. It also proves to the leadership team that the EOS system is not just meetings — it drives real change.</p>
+      <span class="urg urg-medium">Q1 of EOS implementation</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Use the V/TO to Force the PEB Strategic Question</h4>
+      <p>The 10-Year Target and 3-Year Picture processes in the V/TO will surface a question the group has probably not formally answered: is PEB a core part of the Transmetal Group's long-term vision, or is it a tactical opportunity that was added in 2018 and has not yet proven its place? The PEB entity is loss-making, operates in a different business model (project delivery vs. product trading), and has a different risk profile. The V/TO is the right forum to make this a deliberate strategic choice rather than a legacy assumption.</p>
+      <span class="urg urg-medium">Year 1 EOS — Annual Planning</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>The Transmetal Group is a commercially strong, operationally underleveraged business. It has 25 years of regional relationships, a genuine Freeport platform, and a differentiated service model that competitors cannot easily replicate. What it lacks is a management operating system that converts that commercial strength into predictable, improving financial performance. EOS is the right framework for this. The financial problems surfaced in this analysis — the DSO, the Prometal equity, the PEB margin — are not inevitable features of the steel business. They are management problems that a disciplined operating system would systematically address.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Engage Prometal's lender proactively with a Scenario B cash flow model. Initiate balance sheet restoration conversation. This takes 30 days.</li>
+        <li><span class="sig-num">02</span>Implement steel price escalation clauses. Assign a named owner for receivables management. These take 60 days and produce measurable early results.</li>
+        <li><span class="sig-num">03</span>Run the EOS 90-Minute Meeting. Assess readiness and build the leadership team hypothesis. Confirm or refine the EOS commitment.</li>
+        <li><span class="sig-num">04</span>Kick off EOS implementation with the Accountability Chart and first Scorecard. Set the DSO Rock as the first tangible deliverable. Build the meeting rhythm.</li>
+        <li><span class="sig-num">05</span>Use Year 1 Annual Planning to address the PEB strategic question through the V/TO and set the 3-Year Picture for the group.</li>
+      </ol>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<footer class="report-footer">
+  <div>Transmetal Group — Comprehensive Company Analysis &amp; EOS Assessment · 16 March 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (16 Mar 2026) · transmetal.org · prometal.mu · MEXA Mauritius · Rocketreach · YeloMauritius · EOS Worldwide framework</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>

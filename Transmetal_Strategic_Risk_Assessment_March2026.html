@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transmetal Group — Iran Conflict Strategic Risk Assessment — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-day { background: rgba(184,48,32,0.22); border: 1px solid rgba(184,48,32,0.45); color: #f09080; }
+  .badge-freeport { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 19px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  .scenario-bar { background: var(--iron-light); padding: 10px 64px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .sc-label { font-size: 10px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.26); margin-right: 4px; }
+  .spill { display: flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 4px; font-size: 11.5px; font-weight: 500; }
+  .spill-a { background: rgba(26,106,64,0.22); color: #80d0a8; border: 1px solid rgba(26,106,64,0.38); }
+  .spill-b { background: rgba(184,114,0,0.22); color: #f5c47a; border: 1px solid rgba(184,114,0,0.38); }
+  .spill-c { background: rgba(184,48,32,0.22); color: #f09080; border: 1px solid rgba(184,48,32,0.38); }
+  .spill-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .spill-a .spill-dot { background: #80d0a8; } .spill-b .spill-dot { background: #f5c47a; } .spill-c .spill-dot { background: #f09080; }
+
+  /* ── TAB NAV ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── PROFILE CARDS ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: repeat(2, 1fr); }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── ALERTS ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── EXPOSURE CARDS ── */
+  .exposure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0; }
+  .exp-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .exp-card:hover { border-color: var(--steel); }
+  .exp-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+  .exp-title { font-size: 14.5px; font-weight: 600; color: var(--iron); line-height: 1.3; }
+  .sev { font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; padding: 3px 8px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-left: 10px; }
+  .sev-critical { background: #fdecea; color: var(--red); border: 1px solid #f5c4c0; }
+  .sev-high { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .sev-moderate { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .sev-resilient { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+  .exp-body { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
+  .exp-tag { display: inline-block; font-size: 10px; font-family: 'IBM Plex Mono', monospace; padding: 2px 7px; border-radius: 3px; background: var(--offwhite); border: 1px solid var(--border); color: var(--text-light); margin: 8px 3px 0 0; }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+
+  /* ── BADGES / PILLS ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY GRID ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); }
+  .entity-card .ec-metric .mv.danger { color: var(--red); }
+  .entity-card .ec-metric .mv.warn { color: var(--amber); }
+  .entity-card .ec-metric .mv.ok { color: var(--emerald); }
+
+  /* ── MATH BOX ── */
+  .math-block { background: var(--iron); border-radius: 10px; padding: 22px 26px; margin: 20px 0; }
+  .math-block .mb-title { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.4); margin-bottom: 14px; }
+  .math-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 13px; }
+  .math-row:last-child { border-bottom: none; }
+  .math-row .mr-label { color: rgba(255,255,255,0.65); }
+  .math-row .mr-val { font-family: 'IBM Plex Mono', monospace; font-size: 13.5px; font-weight: 500; color: #60b8f0; }
+  .math-row .mr-val.ok { color: #80d0a8; }
+  .math-row .mr-val.warn { color: #f5c47a; }
+  .math-row .mr-val.danger { color: #f09080; }
+  .math-row .mr-val.critical { color: #ff6060; font-weight: 700; }
+
+  /* ── SCENARIO CARDS ── */
+  .scenario-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .sc-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .sc-card .sc-head { padding: 14px 18px; color: #fff; }
+  .sc-card.sc-a .sc-head { background: var(--emerald); }
+  .sc-card.sc-b .sc-head { background: #8a5a00; }
+  .sc-card.sc-c .sc-head { background: #8a1a10; }
+  .sc-card .sc-head .sc-prob { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; margin-bottom: 2px; }
+  .sc-card .sc-head .sc-name { font-size: 13px; opacity: 0.75; }
+  .sc-card .sc-body { padding: 16px 18px; }
+  .sc-card .sc-row { padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; color: var(--text-mid); display: flex; gap: 8px; }
+  .sc-card .sc-row:last-child { border-bottom: none; }
+  .sc-card .sc-row::before { content: ''; width: 5px; height: 5px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+  .sc-a .sc-row::before { background: var(--emerald); }
+  .sc-b .sc-row::before { background: var(--amber); }
+  .sc-c .sc-row::before { background: var(--red); }
+
+  /* ── DASHBOARD ── */
+  .dashboard-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .dashboard-table thead { background: var(--iron); }
+  .dashboard-table thead th { padding: 10px 14px; text-align: left; font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.65); white-space: nowrap; }
+  .dashboard-table tbody tr { border-bottom: 1px solid var(--border); }
+  .dashboard-table tbody tr:hover { background: #f0f4f9; }
+  .dashboard-table tbody td { padding: 9px 14px; vertical-align: top; color: var(--text-mid); line-height: 1.5; }
+  .dashboard-table tbody td:first-child { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; color: var(--text-light); }
+  .dashboard-table tbody td.ind-name { font-family: 'IBM Plex Sans', monospace; font-size: 13px; font-weight: 600; color: var(--text); }
+  .dashboard-table tbody td.current { font-family: 'IBM Plex Mono', monospace; font-weight: 500; color: var(--text); }
+  .watch-val { color: var(--amber); font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 11.5px; }
+  .crit-val { color: var(--red); font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 11.5px; }
+  .dash-company { font-style: italic; font-size: 11.5px; color: var(--steel); }
+  .dash-row-co { background: #f8fafc; }
+
+  /* ── ACTION CARDS ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+
+  /* ── CLOSING ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── HEAT MAP ── */
+  .heat-critical { background: #fdecea; }
+  .heat-high { background: #fff7ed; }
+  .heat-moderate { background: #fffbeb; }
+  .heat-resilient { background: #edf8f2; }
+
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .scenario-bar, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .exposure-grid, .action-grid, .closing-grid, .entity-grid, .scenario-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Steel Trading Group</span>
+    <span class="badge badge-day">Conflict Day 16</span>
+    <span class="badge badge-freeport">Mauritius Freeport</span>
+    <span class="badge badge-date">16 March 2026</span>
+  </div>
+  <h1>Iran–US/Israel Conflict:<br><span>Transmetal Group — Strategic Risk</span></h1>
+  <p class="report-subtitle">Three-entity assessment · Procurement · Margins · Balance Sheet · Receivables · Scenarios</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Group Revenue (FY2024)</div>
+      <div class="stat-value steel">~$7.7M + MUR 106M</div>
+      <div class="stat-delta">Transmetal Ltd (USD) · Prometal + PEB (MUR)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Margin — Transmetal Ltd</div>
+      <div class="stat-value amber">1.8%</div>
+      <div class="stat-delta">$141K net profit · $6.96M COGS · No buffer</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Prometal Equity Position</div>
+      <div class="stat-value red">–MUR 10.6M</div>
+      <div class="stat-delta">Technically insolvent · MUR 36.1M in debt</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Mill Sourcing Exposure</div>
+      <div class="stat-value red">~30 Mills</div>
+      <div class="stat-delta">Middle East, Asia, Europe · Gulf-origin now disrupted</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>Transmetal Group — Geopolitical Risk Assessment · 16 March 2026 · Day 16 of Iran–US/Israel Conflict</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<div class="scenario-bar">
+  <span class="sc-label">Scenarios</span>
+  <span class="spill spill-a"><span class="spill-dot"></span>A: De-escalation — 40%</span>
+  <span class="spill spill-b"><span class="spill-dot"></span>B: Prolonged Conflict — 40% · Base case</span>
+  <span class="spill spill-c"><span class="spill-dot"></span>C: Regional War — 20%</span>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('overview',this)">Group Profile <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('channels',this)">Shock Channels <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('margins',this)">Cost &amp; Margins <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('balance',this)">Balance Sheet <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('receivables',this)">Receivables &amp; Liquidity <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('riskmap',this)">Risk Map <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('scenarios',this)">Scenarios <span class="tab-num">07</span></button>
+  <button class="tab-btn" onclick="showTab('dashboard',this)">Dashboard <span class="tab-num">08</span></button>
+  <button class="tab-btn" onclick="showTab('actions',this)">Actions <span class="tab-num">09</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     01  GROUP PROFILE
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Group Profile</h2>
+  <p class="section-lead">The Transmetal Group is a Mauritius-based steel trading and distribution group operating three distinct entities from 1 Steel Avenue, Riche Terre, all under the direction of André François Gérard Couve. The group's core business is sourcing steel from approximately 30 mills across Africa, Asia, the Middle East, and Europe — and distributing it to customers across the Indian Ocean island chain and sub-Saharan Africa. The Iran conflict has hit the group's supply chain, cost structure, and customer base simultaneously.</p>
+
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Transmetal Ltd</h4>
+        <div class="ec-sub">C21553 · Est. 1998 · USD Reporting</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Revenue (FY2024)</span><span class="mv">$7.67M</span></div>
+        <div class="ec-metric"><span class="mk">Gross Margin</span><span class="mv warn">9.3%</span></div>
+        <div class="ec-metric"><span class="mk">Net Profit</span><span class="mv warn">$141K (1.8%)</span></div>
+        <div class="ec-metric"><span class="mk">Receivables</span><span class="mv danger">$4.97M (236 DSO)</span></div>
+        <div class="ec-metric"><span class="mk">Activity</span><span class="mk">Freeport steel trading agent · Indian Ocean &amp; Sub-Saharan Africa</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Prometal Négoce Ltée</h4>
+        <div class="ec-sub">C071140 · Est. 2007 · MUR Reporting</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Revenue (FY2025)</span><span class="mv">MUR 44.5M</span></div>
+        <div class="ec-metric"><span class="mk">Gross Margin</span><span class="mv warn">27.3%</span></div>
+        <div class="ec-metric"><span class="mk">Net Profit</span><span class="mv warn">MUR 2.35M</span></div>
+        <div class="ec-metric"><span class="mk">Equity</span><span class="mv danger">–MUR 10.6M</span></div>
+        <div class="ec-metric"><span class="mk">Total Debt</span><span class="mv danger">MUR 36.1M</span></div>
+        <div class="ec-metric"><span class="mk">Activity</span><span class="mk">Domestic flat steel distribution (Mauritius) · warehouse, 48h delivery</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Transmetal PEB Ltd</h4>
+        <div class="ec-sub">C160601 · Est. 2018 · MUR Reporting</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Revenue (FY2024)</span><span class="mv">MUR 62.2M</span></div>
+        <div class="ec-metric"><span class="mk">Gross Margin</span><span class="mv warn">10.1%</span></div>
+        <div class="ec-metric"><span class="mk">Net Result</span><span class="mv danger">–MUR 376K (loss)</span></div>
+        <div class="ec-metric"><span class="mk">Equity</span><span class="mv ok">MUR 6.67M</span></div>
+        <div class="ec-metric"><span class="mk">Activity</span><span class="mk">Pre-engineered steel buildings · construction contractor · Mauritius</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Why This Group Is Directly in the Firing Line</h3>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The Core Structural Problem</div>
+    Steel is the group's only product. Its suppliers are mills in the Middle East, Asia, and Europe — precisely the supply chains most disrupted by the Hormuz closure and Red Sea conflict. Its customers are island economies whose construction and industrial activity is being dampened by the same shock. The group has no alternative product, no domestic production buffer, and no equity cushion at the entity most exposed to cost inflation. This is not a peripheral impact — it is a direct hit.
+  </div>
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Mill Supply Network</h4>
+      <p>Works with <strong>~30 mills</strong> spanning Africa, Asia, the Middle East, and Europe. Gulf mills — Qatar Steel, Emirates Steel — are among the most price-competitive Indian Ocean-routed sources. All are now either physically disrupted or aggressively repricing. European mills route via Suez (currently suspended) or Cape (10–14 day delay).</p>
+    </div>
+    <div class="profile-card">
+      <h4>Customer Geography</h4>
+      <p>Transmetal Ltd serves <strong>Réunion, Madagascar, Mayotte, Seychelles, Comoro Islands</strong>, and sub-Saharan/West African markets. Prometal serves the <strong>Mauritius domestic market</strong>. PEB operates in the <strong>Mauritius construction sector</strong>. All customer markets are experiencing economic stress from this same shock.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Freeport Strategic Position</h4>
+      <p>Transmetal Ltd's <strong>Mauritius Freeport status</strong> is a structural advantage that becomes more valuable during supply chain disruption. As global routes are reorganised, Mauritius is a natural Indian Ocean consolidation hub. This is a medium-term opportunity if the group can survive the near-term cost shock.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     02  SHOCK CHANNELS
+══════════════════════════════════════════ -->
+<div id="channels" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Transmission Channels</h2>
+  <p class="section-lead">The Iran–US/Israel conflict reaches the Transmetal Group through five distinct channels. Each is listed with global context and then a direct assessment of how it hits this group's operations, costs, and revenues. None of these are indirect or theoretical — they are all active.</p>
+
+  <h3 class="subsection-title">1.1 — Oil Price Surge</h3>
+  <p class="body-text">Brent crude moved from $72.87 to $79.41 over the weekend of 28 February 2026. Analyst consensus for the week of 3 March was $82–90, with projections to $100–120 if Hormuz remains blocked. Steel is energy-intensive: energy accounts for 20–35% of steel production cost depending on the furnace type. When oil surges, every mill in the network experiences cost-push inflation and reprices accordingly.</p>
+  <div class="alert alert-critical">
+    <div class="alert-title">→ Transmetal Group Relevance — Direct Input Cost</div>
+    Steel mill pricing is the group's dominant cost line. A 5% increase in mill prices on Transmetal Ltd's $6.96M COGS base adds $348K to costs — more than twice the company's annual net profit. For Prometal, the same percentage increase adds MUR 1.6M — nearly erasing the MUR 2.35M net profit on a business with no equity buffer. For PEB, already operating at a net loss, any mill price increase directly deepens the loss. There is no internal hedge anywhere in the group.
+  </div>
+
+  <h3 class="subsection-title">1.2 — Strait of Hormuz Closure</h3>
+  <p class="body-text">Hormuz daily transits collapsed from 116 to 19 following the crisis onset — a 90% reduction. All major carriers suspended Gulf passage. Approximately 450,000 TEU are currently trapped in the Gulf. Jebel Ali — the UAE's mega-port and the primary redistribution hub for Indian Ocean-bound cargo — is effectively inaccessible for new shipments. <em>Source: Lloyd's List Intelligence, 2 Mar 2026.</em></p>
+  <div class="alert alert-critical">
+    <div class="alert-title">→ Transmetal Group Relevance — Direct Supply Severance</div>
+    Gulf-origin steel — Qatar Steel, Emirates Steel, Saudi producers — is now either physically unreachable or repricing sharply to reflect logistics disruption, force majeure clauses, and war-risk premiums. Lead times for replacement sourcing from Asian mills (South Korea, India, China) add 2–4 weeks minimum. In the interim, Prometal's warehouse inventory (MUR 2.63M) will be drawn down without replenishment at equivalent cost.
+  </div>
+
+  <h3 class="subsection-title">1.3 — Red Sea / Suez Disruption</h3>
+  <p class="body-text">Houthi forces resumed attacks on commercial shipping on 1 March 2026. CMA CGM suspended Suez Canal transits. Emergency surcharges are running at $1,500–4,000 per TEU. Cape diversion adds 10–14 days and significant bunker cost. War-risk premiums are embedded into all freight invoices within 4–8 weeks. <em>Source: Drewry World Container Index, 3 Mar 2026.</em></p>
+  <div class="alert alert-warning">
+    <div class="alert-title">→ Transmetal Group Relevance — European Mill Lead Time Extension</div>
+    European-sourced steel (ArcelorMittal, Tata Steel, Nordic producers) would normally route via Suez. All such shipments are now Cape-routed, adding freight cost, transit time, and insurance premium. For Transmetal Ltd's island customers who expect reliable delivery windows, a 10–14 day extension disrupts supply scheduling. For PEB, a delayed structural steel shipment can halt an active construction site and trigger liquidated damages exposure.
+  </div>
+
+  <h3 class="subsection-title">1.4 — War-Risk Insurance Repricing</h3>
+  <p class="body-text">War-risk premiums on Gulf and Red Sea routes increased 25–50% within 48 hours of the crisis onset. Premiums are passed through by freight forwarders and will remain elevated for the duration of hostilities plus typically 30–90 days after an official end-of-hostilities declaration.</p>
+  <div class="alert alert-warning">
+    <div class="alert-title">→ Transmetal Group Relevance — Double Exposure</div>
+    Transmetal Ltd provides trade finance and credit insurance services to its island customers. This creates a double exposure: (a) war-risk insurance on inbound steel procurements inflates landed cost; and (b) credit insurance premiums for covering downstream customer receivables reprice upward as island market creditworthiness deteriorates. Combined, this hits a business operating at 1.8% net margins from both sides simultaneously.
+  </div>
+
+  <h3 class="subsection-title">1.5 — Aviation Disruption and Tourism Impact</h3>
+  <p class="body-text">Dubai, Doha, and Abu Dhabi airports suspended operations, cancelling 3,400+ flights. Emirates Airlines — which carries approximately 309,000 tourists per year to Mauritius (22% of total arrivals) — has suspended its Mauritius service. Gulf hub carriers represent 30–35% of Mauritius seat capacity.</p>
+  <div class="alert alert-warning">
+    <div class="alert-title">→ PEB Relevance — Construction Pipeline at Risk</div>
+    Tourism drives construction investment in Mauritius — hotels, villas, IRS/ERS/PDS units, Smart City commercial buildings. Transmetal PEB's entire project pipeline is in this sector. If tourist arrivals fall significantly, hotel occupancy drops, investment in new hotel infrastructure pauses, and PEB's order book dries up. Project decisions are being frozen right now as developers reassess feasibility. PEB, already loss-making at –MUR 376K in FY2024, cannot sustain a further volume decline.
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     03  COST & MARGINS
+══════════════════════════════════════════ -->
+<div id="margins" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Cost &amp; Margin Crisis</h2>
+  <p class="section-lead">The single most important fact about the Transmetal Group's exposure to this crisis is arithmetic. Transmetal Ltd turns gross-loss-making at a 10% increase in steel procurement costs. That is not a tail risk — it is the base case in a Prolonged Conflict scenario. There is no operational buffer to absorb it.</p>
+
+  <h3 class="subsection-title">Transmetal Ltd — The Break-Even Calculation (USD)</h3>
+
+  <div class="math-block">
+    <div class="mb-title">FY2024 Base — and What Price Inflation Does to It</div>
+    <div class="math-row"><span class="mr-label">Revenue (FY2024)</span><span class="mr-val ok">$7,672,301</span></div>
+    <div class="math-row"><span class="mr-label">Cost of Goods Sold</span><span class="mr-val">$6,955,720</span></div>
+    <div class="math-row"><span class="mr-label">Gross Profit (9.3% margin)</span><span class="mr-val ok">$716,581</span></div>
+    <div class="math-row"><span class="mr-label">Net Profit (1.8% margin)</span><span class="mr-val warn">$140,941</span></div>
+    <div class="math-row"><span class="mr-label">Additional COGS at +5% mill prices</span><span class="mr-val warn">+$347,786</span></div>
+    <div class="math-row"><span class="mr-label">Additional COGS at +10% mill prices</span><span class="mr-val danger">+$695,572</span></div>
+    <div class="math-row"><span class="mr-label">Gross Profit at +10% steel (assuming flat revenue)</span><span class="mr-val critical">$21,009 — Effectively zero</span></div>
+    <div class="math-row"><span class="mr-label">Net Profit at +10% steel</span><span class="mr-val critical">–$554,631 — Substantial loss</span></div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Scenario</th><th>Steel Price Increase</th><th>Added COGS (USD)</th><th>Gross Profit Remaining</th><th>Net Result</th></tr></thead>
+      <tbody>
+        <tr><td>Base (FY2024 actual)</td><td>—</td><td>—</td><td>$716,581</td><td><span class="b b-green">$140,941</span></td></tr>
+        <tr><td>Mild stress — oil $90</td><td>+5%</td><td>+$347,786</td><td>$368,795</td><td><span class="b b-amber">–$206,845 Loss</span></td></tr>
+        <tr class="heat-high"><td>Moderate stress — oil $100</td><td>+10%</td><td>+$695,572</td><td>$21,009</td><td><span class="b b-red">–$554,631 Loss</span></td></tr>
+        <tr class="heat-critical"><td>Severe stress — oil $120</td><td>+15%</td><td>+$1,043,358</td><td>Negative</td><td><span class="b b-red">–$902,417 Loss</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Prometal Négoce — Currency + Cost Combined Stress (MUR)</h3>
+  <p class="body-text">Prometal buys in USD and sells in MUR. Every percentage point of MUR depreciation is a direct COGS increase in rupee terms — on top of mill price inflation. The two forces compound. The table below models the combined scenario, which is the realistic base case under Prolonged Conflict.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Scenario</th><th>MUR/USD</th><th>Steel Increase</th><th>Added COGS (MUR)</th><th>Net Profit/(Loss)</th><th>Equity Position</th></tr></thead>
+      <tbody>
+        <tr><td>Base (FY2025 actual)</td><td>~45</td><td>—</td><td>—</td><td><span class="b b-green">+MUR 2.35M</span></td><td><span class="b b-red">–MUR 10.6M</span></td></tr>
+        <tr><td>MUR depreciates 3%</td><td>~46.4</td><td>—</td><td>+MUR 970K</td><td><span class="b b-amber">+MUR 1.38M</span></td><td>–MUR 9.7M</td></tr>
+        <tr class="heat-high"><td>MUR depreciates 5%</td><td>~47.3</td><td>—</td><td>+MUR 1.6M</td><td><span class="b b-amber">+MUR 730K</span></td><td>–MUR 9.0M</td></tr>
+        <tr class="heat-high"><td>MUR depreciates 8%</td><td>~48.6</td><td>—</td><td>+MUR 2.6M</td><td><span class="b b-red">–MUR 240K Loss</span></td><td>–MUR 10.9M</td></tr>
+        <tr class="heat-critical"><td>Combined: steel +10% + MUR –5%</td><td>~47.3</td><td>+10%</td><td>+MUR 4.85M</td><td><span class="b b-red">–MUR 2.5M Loss</span></td><td>–MUR 13.1M</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Transmetal PEB — Already Loss-Making, Now Further Exposed</h3>
+  <div class="exposure-grid">
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Steel Component Cost Inflation</div>
+        <span class="sev sev-critical">Critical</span>
+      </div>
+      <div class="exp-body">PEB's 10.1% gross margin (MUR 6.27M on MUR 62.2M revenue) is slim. A 10% increase in steel component costs adds MUR 5.6M to COGS on a project pipeline that was already loss-making at the net level. The equity buffer (MUR 6.67M) would be substantially consumed in a single stress year.
+        <div><span class="exp-tag">FY2024 Net Loss: –MUR 376K</span><span class="exp-tag">COGS: MUR 55.96M</span></div>
+      </div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">No Price Escalation Clause Protection</div>
+        <span class="sev sev-high">High Risk</span>
+      </div>
+      <div class="exp-body">Construction contracts are typically fixed-price or bill-of-quantities based. Any project bid or contracted before the crisis using pre-shock steel price assumptions is now underpriced. PEB cannot absorb that gap — it must be renegotiated or absorbed as additional losses. New bids must be submitted with explicit steel cost escalation provisions.
+        <div><span class="exp-tag">Construction sector exposure</span><span class="exp-tag">Liquidated damages risk</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     04  BALANCE SHEET RISK
+══════════════════════════════════════════ -->
+<div id="balance" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Balance Sheet Risk</h2>
+  <p class="section-lead">The Transmetal Group's financial vulnerability is not distributed evenly. Prometal Négoce is technically insolvent. Transmetal PEB is burning through its equity reserve with each loss-making year. Transmetal Ltd is the only entity with a nominally positive balance sheet — but its receivables concentration and working capital structure are precarious. The crisis has arrived at the worst possible time.</p>
+
+  <h3 class="subsection-title">The Prometal Solvency Problem</h3>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">Technical Insolvency — This Is Not a Footnote</div>
+    Prometal Négoce Ltée has negative retained earnings of –MUR 10,628,458 against share capital of MUR 50,000. Total equity is –MUR 10,640,520. The business is sustained entirely by MUR 17.49M in long-term borrowings and MUR 18.83M in short-term borrowings — a combined MUR 36.32M debt load against a business generating MUR 2.35M in net profit in its best year. A sustained period of margin compression does not merely reduce profit — it accelerates the equity deficit and risks triggering a lender covenant or facility review.
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Entity</th><th>Equity</th><th>LT Debt</th><th>ST Debt</th><th>Cash</th><th>Net Profit (Latest)</th><th>Assessment</th></tr></thead>
+      <tbody>
+        <tr class="heat-critical"><td>Prometal Négoce</td><td><strong>–MUR 10.6M</strong></td><td>MUR 17.5M</td><td>MUR 18.8M</td><td>MUR 9.15M</td><td>+MUR 2.35M</td><td><span class="b b-red">Technically Insolvent</span></td></tr>
+        <tr class="heat-high"><td>Transmetal PEB</td><td>MUR 6.67M</td><td>None</td><td>None</td><td>MUR 616K</td><td>–MUR 376K</td><td><span class="b b-amber">Equity Erosion</span></td></tr>
+        <tr><td>Transmetal Ltd</td><td>$2.13M</td><td>$2,702</td><td>$3.57M</td><td>$60K</td><td>+$141K</td><td><span class="b b-amber">Fragile Positive</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Prometal — Debt Serviceability Under Stress</h3>
+  <p class="body-text">Prometal's MUR 9.15M cash position appears comfortable until it is placed against MUR 36.1M in total debt and –MUR 10.6M in retained earnings. The key question is how much of that debt is on floating versus fixed rates. A 50bps Mauritius interest rate increase — a plausible response to MUR depreciation pressure — would add approximately MUR 180K per year in finance costs on floating-rate debt. Finance costs already stand at MUR 2.23M (FY2025). Any increase is material against a thin profit base.</p>
+
+  <div class="exposure-grid">
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Lender Relationship Risk</div>
+        <span class="sev sev-critical">Critical</span>
+      </div>
+      <div class="exp-body">A negative-equity business presenting margin compression to its lenders without prior communication is the highest-risk version of this situation. Banks reprice facilities and restrict availability when surprises arrive. They negotiate constructively when clients come with a plan. Prometal must engage its senior lender proactively — before any covenant event — with a 12-month cash flow forecast under Scenario B conditions.
+        <div><span class="exp-tag">Priority: This month</span><span class="exp-tag">Finance costs: MUR 2.23M/yr</span></div>
+      </div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Transmetal PEB — Equity Runway</div>
+        <span class="sev sev-high">High Risk</span>
+      </div>
+      <div class="exp-body">PEB's MUR 6.67M equity is healthy relative to its balance sheet size, but it is being eroded by annual losses. At the FY2024 loss rate of MUR 376K, the runway is approximately 18 years — not an immediate crisis. But under Scenario B (steel +10%, construction volume –20%), annual losses could reach MUR 2–4M. At that rate, equity is exhausted in 2–3 years without remedial action.
+        <div><span class="exp-tag">FY2024 loss: –MUR 376K</span><span class="exp-tag">Equity: MUR 6.67M</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Group Working Capital — The Interconnection Problem</h3>
+  <p class="body-text">Transmetal Ltd provides trade finance and credit-risk services to its island customers. This means the group's financial risk is not siloed by entity — a deterioration in island customer creditworthiness flows back into Transmetal Ltd's receivables, which in turn constrains the group's ability to fund procurement, which strains the Prometal supply relationship. These are not independent balance sheet risks; they are a connected chain.</p>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     05  RECEIVABLES & LIQUIDITY
+══════════════════════════════════════════ -->
+<div id="receivables" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Receivables &amp; Liquidity</h2>
+  <p class="section-lead">Transmetal Ltd's trade receivables of USD 4,967,143 represent 65% of annual revenue and 84% of total assets. Against USD 60K in cash and USD 3.57M in short-term borrowings, this concentration is the group's most acute near-term crisis risk. It sits in island markets that are now under direct economic stress from the same shock.</p>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">236 Days Sales Outstanding — A Red Flag in Any Conditions</div>
+    A DSO of 236 days means Transmetal Ltd's average customer takes nearly 8 months to pay. This is an extremely high receivables cycle for a trading business with thin margins and a significant short-term debt facility. In normal conditions it is a structural inefficiency. In the current environment — where every island customer is absorbing rising import costs, weakening local currencies, and reduced economic activity — it is a potential liquidity trigger. A single major counterparty extending payment by 60–90 days would create a working capital gap against the $3.57M short-term borrowing facility.
+  </div>
+
+  <div class="math-block">
+    <div class="mb-title">Transmetal Ltd — Liquidity Stress Test</div>
+    <div class="math-row"><span class="mr-label">Trade receivables (USD)</span><span class="mr-val warn">$4,967,143</span></div>
+    <div class="math-row"><span class="mr-label">Cash and cash equivalents</span><span class="mr-val danger">$60,170</span></div>
+    <div class="math-row"><span class="mr-label">Short-term borrowings</span><span class="mr-val danger">$3,567,703</span></div>
+    <div class="math-row"><span class="mr-label">Days Sales Outstanding</span><span class="mr-val danger">~236 days</span></div>
+    <div class="math-row"><span class="mr-label">Net working capital position</span><span class="mr-val warn">$2,130,474</span></div>
+    <div class="math-row"><span class="mr-label">If top counterparty (est. 25% of receivables) delays 90 days</span><span class="mr-val critical">–$1.24M liquidity gap vs. ST debt maturity</span></div>
+    <div class="math-row"><span class="mr-label">Credit insurance cover status</span><span class="mr-val critical">Verify immediately — critical unknown</span></div>
+  </div>
+
+  <h3 class="subsection-title">Customer Geography — Stress by Market</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Customer Market</th><th>Currency</th><th>Crisis Impact on Market</th><th>Receivables Risk</th></tr></thead>
+      <tbody>
+        <tr class="heat-high"><td>Madagascar</td><td>Ariary (MGA)</td><td>Tourism-dependent economy; oil import shock; MGA historically volatile against USD</td><td><span class="b b-red">High</span></td></tr>
+        <tr class="heat-high"><td>Comoro Islands</td><td>KMF (pegged to EUR)</td><td>Small, highly import-dependent economy; limited forex reserves; construction reliant on diaspora remittances which may fall</td><td><span class="b b-red">High</span></td></tr>
+        <tr class="heat-moderate"><td>Seychelles</td><td>SCR</td><td>Tourism the primary driver; Gulf aviation disruption directly reduces arrivals; construction investment may pause</td><td><span class="b b-amber">Moderate-High</span></td></tr>
+        <tr><td>Réunion (France)</td><td>EUR</td><td>French overseas territory; stronger institutional buffers; but freight cost increase is direct</td><td><span class="b b-blue">Lower</span></td></tr>
+        <tr class="heat-moderate"><td>Sub-Saharan / West Africa</td><td>Various (often USD)</td><td>Variable — oil exporters may benefit; net importers are under pressure</td><td><span class="b b-amber">Moderate</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Immediate Receivables Management Priorities</h3>
+  <ul class="styled-list">
+    <li>Map every counterparty by country, outstanding amount, days outstanding, and credit insurance status. This must be done within 2 weeks — not as an annual exercise.</li>
+    <li>Any account over 90 days outstanding in the current environment should be placed on immediate active management — contact, payment schedule, partial security where possible.</li>
+    <li>Verify credit insurance cover for all accounts above a materiality threshold. Any account without cover in a market now experiencing economic stress requires a credit decision.</li>
+    <li>Consider requiring partial prepayment or letters of credit for any new orders from markets with active credit insurance deterioration.</li>
+    <li>Brief the short-term lending bank on the receivables position and the current environment proactively — before any collections slowdown manifests.</li>
+  </ul>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     06  RISK MAP
+══════════════════════════════════════════ -->
+<div id="riskmap" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Risk Exposure Map</h2>
+  <p class="section-lead">All major business areas, functions, and financial dimensions of the Transmetal Group rated by exposure level, primary risk driver, and urgency. This is the single-page summary of where to focus attention and in what order.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Business Area / Dimension</th><th>Entity</th><th>Exposure</th><th>Primary Risk Driver</th><th>Urgency</th></tr></thead>
+      <tbody>
+        <tr class="heat-critical">
+          <td>Steel procurement cost inflation</td><td>Transmetal Ltd</td>
+          <td><span class="b b-red">🔴 Critical</span></td>
+          <td>Mill price inflation; Gulf supply disruption; 10% increase → gross loss</td>
+          <td><span class="urg urg-now">Immediate</span></td>
+        </tr>
+        <tr class="heat-critical">
+          <td>Customer receivables creditworthiness</td><td>Transmetal Ltd</td>
+          <td><span class="b b-red">🔴 Critical</span></td>
+          <td>Island customer economic stress; 236 DSO; $3.57M ST debt exposure</td>
+          <td><span class="urg urg-now">Immediate</span></td>
+        </tr>
+        <tr class="heat-critical">
+          <td>Prometal solvency / debt serviceability</td><td>Prometal Négoce</td>
+          <td><span class="b b-red">🔴 Critical</span></td>
+          <td>–MUR 10.6M equity; MUR 36.1M debt; no buffer against margin compression</td>
+          <td><span class="urg urg-now">Immediate</span></td>
+        </tr>
+        <tr class="heat-critical">
+          <td>MUR/USD currency cost passthrough</td><td>Prometal Négoce</td>
+          <td><span class="b b-red">🔴 Critical</span></td>
+          <td>Buy USD, sell MUR; every MUR depreciation inflates COGS directly</td>
+          <td><span class="urg urg-now">Immediate</span></td>
+        </tr>
+        <tr class="heat-high">
+          <td>PEB construction pipeline freeze</td><td>Transmetal PEB</td>
+          <td><span class="b b-red">🔴 High</span></td>
+          <td>Tourism investment pause; Emirates suspension; developer caution</td>
+          <td><span class="urg urg-week">30–60 days</span></td>
+        </tr>
+        <tr class="heat-high">
+          <td>PEB steel component cost inflation</td><td>Transmetal PEB</td>
+          <td><span class="b b-red">🔴 High</span></td>
+          <td>Same mill price + freight exposure as Transmetal Ltd; no escalation clause</td>
+          <td><span class="urg urg-week">30–60 days</span></td>
+        </tr>
+        <tr class="heat-moderate">
+          <td>Freight / logistics cost and timing</td><td>Transmetal Ltd</td>
+          <td><span class="b b-amber">🟡 Moderate</span></td>
+          <td>Cape diversion adds 10–14 days; surcharges $1,500–4,000/TEU</td>
+          <td><span class="urg urg-week">4–8 weeks</span></td>
+        </tr>
+        <tr class="heat-moderate">
+          <td>Prometal inventory drawdown timing</td><td>Prometal Négoce</td>
+          <td><span class="b b-amber">🟡 Moderate</span></td>
+          <td>MUR 2.63M warehouse stock provides 4–6 week buffer</td>
+          <td><span class="urg urg-week">4–6 weeks</span></td>
+        </tr>
+        <tr class="heat-moderate">
+          <td>Working capital lending lines repricing</td><td>All entities</td>
+          <td><span class="b b-amber">🟡 Moderate</span></td>
+          <td>Bank line repricing if sector stress broadens; Mauritius rate environment</td>
+          <td><span class="urg urg-medium">60–90 days</span></td>
+        </tr>
+        <tr>
+          <td>Asian mill supply (India, South Korea, China)</td><td>Transmetal Ltd</td>
+          <td><span class="b b-green">🟢 Resilient</span></td>
+          <td>Indian Ocean routes less disrupted; rerouting opportunity if activated</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Prometal domestic Mauritius customer base</td><td>Prometal Négoce</td>
+          <td><span class="b b-green">🟢 Resilient (short-term)</span></td>
+          <td>Local construction/fabrication demand stable for next 30–60 days</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>PEB contracted project revenue</td><td>Transmetal PEB</td>
+          <td><span class="b b-green">🟢 Resilient (partial)</span></td>
+          <td>Existing project commitments locked in pending milestone delivery</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Freeport status as regional hub</td><td>Transmetal Ltd</td>
+          <td><span class="b b-blue">✦ Opportunity</span></td>
+          <td>Supply chain reorganisation elevates value of Mauritius Indian Ocean hub</td>
+          <td>Medium-term</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     07  SCENARIOS
+══════════════════════════════════════════ -->
+<div id="scenarios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Scenario Modelling — 6 to 24 Months</h2>
+  <p class="section-lead">Three scenarios with explicit probability weights. Scenario B is the base case to plan against. The group faces structurally different outcomes in each — ranging from manageable in A, to genuinely dangerous in B if Prometal's balance sheet is not addressed, to existential in C for certain entities.</p>
+
+  <div class="scenario-grid">
+    <div class="sc-card sc-a">
+      <div class="sc-head">
+        <div class="sc-prob">40%</div>
+        <div class="sc-name">Scenario A — De-escalation within 60 days</div>
+      </div>
+      <div class="sc-body">
+        <div class="sc-row">Brent retraces to $72–80; steel mill prices +2–5% only; absorbed with margin compression</div>
+        <div class="sc-row">Hormuz partially restored in 60–90 days; Gulf mill supply returns</div>
+        <div class="sc-row">Freight surcharges subside; Cape diversion reverses</div>
+        <div class="sc-row">MUR stable at 45–46; Prometal COGS pressure modest</div>
+        <div class="sc-row">Emirates resumes Mauritius service; PEB construction pipeline recovers Q3</div>
+        <div class="sc-row">Transmetal Ltd gross margin recovers to 8–9%</div>
+        <div class="sc-row">Structural vulnerabilities (Prometal equity, receivables DSO) remain — crisis did not cause them, cannot cure them</div>
+      </div>
+    </div>
+    <div class="sc-card sc-b">
+      <div class="sc-head">
+        <div class="sc-prob">40%</div>
+        <div class="sc-name">Scenario B — Prolonged Conflict through 2026</div>
+      </div>
+      <div class="sc-body">
+        <div class="sc-row">Brent sustains $85–100; steel mill prices +8–15%; Transmetal Ltd gross margin collapses to 3–6%</div>
+        <div class="sc-row">Gulf mills effectively offline; lead times extend 4–8 weeks for Asian substitution</div>
+        <div class="sc-row">Freight surcharges persist at $1,500–3,000/TEU for 6–12 months</div>
+        <div class="sc-row">MUR depreciates to 47–50; Prometal moves toward loss-making</div>
+        <div class="sc-row">Mauritius construction significant pause H1; selective recovery H2</div>
+        <div class="sc-row">PEB revenue –15–25%; equity erosion accelerates</div>
+        <div class="sc-row">1–2 major Transmetal Ltd receivable accounts require restructuring</div>
+        <div class="sc-row">Prometal lender engagement becomes non-optional</div>
+      </div>
+    </div>
+    <div class="sc-card sc-c">
+      <div class="sc-head">
+        <div class="sc-prob">20%</div>
+        <div class="sc-name">Scenario C — Regional War</div>
+      </div>
+      <div class="sc-body">
+        <div class="sc-row">Brent spikes to $110–130+; steel +20–30%; Transmetal Ltd in sustained gross loss</div>
+        <div class="sc-row">Middle East mills offline for 6+ months; no viable Gulf sourcing</div>
+        <div class="sc-row">Freight $3,000–5,000+/TEU chronic; Cape route congested</div>
+        <div class="sc-row">MUR depreciates to 52–58; Prometal in deep loss with MUR 36M debt</div>
+        <div class="sc-row">Mauritius construction major freeze; only government contracts proceed</div>
+        <div class="sc-row">PEB revenue –30–40%+; equity fully consumed within 2 years</div>
+        <div class="sc-row">Potential receivable write-offs $500K–1M+; liquidity crisis at Transmetal Ltd</div>
+        <div class="sc-row">Survival mode: cash preservation, creditor engagement, PEB rationalisation</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Scenario Comparison — Key Dimensions</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Dimension</th><th>🟢 A: De-escalation (40%)</th><th>🟡 B: Prolonged Conflict (40%)</th><th>🔴 C: Regional War (20%)</th></tr></thead>
+      <tbody>
+        <tr><td>Brent crude (USD/bbl)</td><td>$72–80 (retraces)</td><td>$85–100 (sustained)</td><td>$110–130+ (spike)</td></tr>
+        <tr><td>Steel mill prices</td><td>+2–5% (absorbed)</td><td>+8–15% (structurally damaging)</td><td>+20–30% (existential)</td></tr>
+        <tr><td>Gulf mill supply</td><td>Restored in 60–90 days</td><td>Disrupted 6–12 months</td><td>Effectively offline</td></tr>
+        <tr><td>MUR/USD rate</td><td>Stable ~45–46</td><td>47–50 (5–10% depreciation)</td><td>52–58 (15–30% depreciation)</td></tr>
+        <tr><td>Transmetal Ltd gross margin</td><td>8–9% (mild compression)</td><td>3–6% (severe)</td><td>Negative gross margin</td></tr>
+        <tr><td>Prometal net position</td><td>Marginally positive</td><td>Loss-making; debt risk</td><td>Deep loss; lender crisis</td></tr>
+        <tr><td>PEB construction pipeline</td><td>Stable; breakeven possible</td><td>–15–25% revenue decline</td><td>–30–40%+ revenue decline</td></tr>
+        <tr><td>Receivables risk (Transmetal Ltd)</td><td>Normal monitoring</td><td>1–2 accounts need restructuring</td><td>Potential write-offs $500K–1M+</td></tr>
+        <tr><td>Priority posture</td><td>Opportunistic improvement</td><td>Defensive margin management; debt management; Asian sourcing</td><td>Cash preservation; creditor engagement; rationalisation</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">The Decision That Cannot Wait — Scenario B</h3>
+  <p class="body-text">Even if the probability of Scenario B is exactly equal to Scenario A, the asymmetry of consequences demands planning against B. The single most important decision in B is whether the group can survive Prometal Négoce's balance sheet deterioration without an equity injection or a proactive debt restructuring. The options are:</p>
+  <ul class="styled-list">
+    <li><strong>Capital injection from shareholder/parent group</strong> — restores positive net worth, removes lender pressure, provides operating buffer. Most decisive solution.</li>
+    <li><strong>Formal debt restructuring / covenant renegotiation</strong> — extend maturities, reduce amortisation burden, potentially formalise inter-company loans as subordinated debt. Requires early banker engagement.</li>
+    <li><strong>Aggressive margin defence</strong> — implement steel price escalation clauses across all customer contracts; defend gross margin by passing through costs; retain every rupee of profit to rebuild equity. Slowest but self-funded route.</li>
+  </ul>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     08  EARLY WARNING DASHBOARD
+══════════════════════════════════════════ -->
+<div id="dashboard" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Early Warning Dashboard</h2>
+  <p class="section-lead">Ten indicators to monitor — a blend of macro signals and Transmetal Group-specific operational triggers. The company-specific indicators (marked with ✦) are the ones that no external source will monitor for you. They require internal tracking discipline to be actionable.</p>
+
+  <div class="table-wrap">
+    <table class="dashboard-table">
+      <thead><tr><th>#</th><th>Indicator</th><th>Current Reading</th><th>⚠️ Watch Threshold</th><th>🔴 Critical Threshold</th><th>Group Response</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>01</td>
+          <td class="ind-name">Brent Crude (USD/bbl)</td>
+          <td class="current">~$79–82</td>
+          <td><span class="watch-val">&gt;$90</span></td>
+          <td><span class="crit-val">&gt;$100</span></td>
+          <td>Activate steel price review with all mill counterparties; trigger customer price adjustment notices at both thresholds</td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td class="ind-name">MUR/USD Spot Rate</td>
+          <td class="current">~45–46</td>
+          <td><span class="watch-val">&gt;47</span></td>
+          <td><span class="crit-val">&gt;50</span></td>
+          <td>Prometal: immediate cost passthrough review; assess FX hedging with MCB/SBM; model combined steel+FX impact monthly</td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td class="ind-name">Freight Surcharge (Asia–Indian Ocean, per TEU)</td>
+          <td class="current">+$800–1,200 vs. norm</td>
+          <td><span class="watch-val">&gt;$2,000</span></td>
+          <td><span class="crit-val">&gt;$3,500</span></td>
+          <td>Restructure pending purchase orders; delay non-urgent restocking; revise customer delivery and pricing timelines</td>
+        </tr>
+        <tr>
+          <td>04</td>
+          <td class="ind-name">Hormuz Daily Transits (vessel count)</td>
+          <td class="current">~19/day</td>
+          <td><span class="watch-val">&gt;30/day (reopening signal)</span></td>
+          <td><span class="watch-val">&gt;80/day (normalisation)</span></td>
+          <td>Below 30: treat all Gulf mills as offline; activate Asian mill reallocation plan. Above 80: begin Gulf mill re-engagement</td>
+        </tr>
+        <tr>
+          <td>05</td>
+          <td class="ind-name">Emirates Airlines MRU Service Status</td>
+          <td class="current">Suspended</td>
+          <td><span class="watch-val">Partial resumption</span></td>
+          <td><span class="watch-val">Full resumption</span></td>
+          <td>PEB: monitor tourism forward booking data as leading indicator of construction investment sentiment and project restart timing</td>
+        </tr>
+        <tr>
+          <td>06</td>
+          <td class="ind-name">Mauritius CPI (month-on-month)</td>
+          <td class="current">~0.7–0.8% MOM</td>
+          <td><span class="watch-val">&gt;1.0% MOM</span></td>
+          <td><span class="crit-val">&gt;1.5% MOM</span></td>
+          <td>Prometal: monitor for domestic demand destruction in steel buying; review customer payment cycle for signs of squeeze</td>
+        </tr>
+        <tr class="dash-row-co">
+          <td>07</td>
+          <td class="ind-name">✦ Transmetal Ltd DSO (days)</td>
+          <td class="current">~236 days</td>
+          <td><span class="watch-val">&gt;270 days</span></td>
+          <td><span class="crit-val">&gt;300 days or any single account &gt;90 days overdue</span></td>
+          <td><span class="dash-company">Internal KPI — Weekly tracking required.</span> Immediate credit review on any account approaching threshold; require security or advance payment from stressed counterparties</td>
+        </tr>
+        <tr class="dash-row-co">
+          <td>08</td>
+          <td class="ind-name">✦ Prometal Cash Position (MUR)</td>
+          <td class="current">~MUR 9.15M</td>
+          <td><span class="watch-val">&lt;MUR 6.0M</span></td>
+          <td><span class="crit-val">&lt;MUR 3.5M</span></td>
+          <td><span class="dash-company">Internal KPI — Monthly minimum.</span> Negotiate standby facility with lender at Watch threshold; defer non-essential capex; review ST borrowing roll schedule</td>
+        </tr>
+        <tr class="dash-row-co">
+          <td>09</td>
+          <td class="ind-name">✦ Steel Mill Price Index — HRC Flat (USD/tonne)</td>
+          <td class="current">~$500–520/t</td>
+          <td><span class="watch-val">&gt;$570/t</span></td>
+          <td><span class="crit-val">&gt;$640/t</span></td>
+          <td><span class="dash-company">Internal KPI — Weekly via CRU/Platts.</span> At Watch: customer price adjustment letters issued. At Critical: freeze new orders pending repricing; trigger force majeure review on existing contracts</td>
+        </tr>
+        <tr class="dash-row-co">
+          <td>10</td>
+          <td class="ind-name">✦ PEB Project Pipeline — Committed Orders (MUR)</td>
+          <td class="current">Internal tracking required</td>
+          <td><span class="watch-val">&lt;75% of prior quarter</span></td>
+          <td><span class="crit-val">&lt;50% of prior quarter</span></td>
+          <td><span class="dash-company">Internal KPI — Monthly pipeline review.</span> At Watch: freeze overhead commitments and hiring. At Critical: rationalise to core team; freeze all new project bids at current steel assumptions</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     09  ACTIONS
+══════════════════════════════════════════ -->
+<div id="actions" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommended Actions</h2>
+  <p class="section-lead">Concrete, sequenced, and specific. Not "review your strategy" — each action names a decision, a timeline, and a reason grounded in the group's actual financial position. Short-term actions stop the bleeding. Medium-term actions restructure for resilience.</p>
+
+  <h3 class="subsection-title">Short-Term — 0 to 6 Months</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Action 01</div>
+      <h4>Audit and Stress-Test the Transmetal Ltd Receivables Book</h4>
+      <p>Map every counterparty by country, outstanding amount, days past due, and credit insurance status. Any account over 90 days in the current environment must be actively managed — not monitored. Any account without credit insurance cover needs an immediate credit decision. A 236-day DSO against $3.57M in short-term debt and $60K in cash is not a viable position. One major default or delay triggers a liquidity crisis.</p>
+      <span class="urg urg-now">Within 2 weeks</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 02</div>
+      <h4>Engage Prometal's Lenders Before Any Covenant Event</h4>
+      <p>Running –MUR 10.6M retained earnings into a period of margin compression without proactive lender communication is the highest-risk version of this situation. Prepare a 12-month cash flow forecast under Scenario B conditions and present it to the bank. Discuss whether a temporary facility adjustment, covenant waiver, or debt rescheduling is available. Early, honest engagement produces solutions. Surprises produce restrictions.</p>
+      <span class="urg urg-now">Within 30 days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 03</div>
+      <h4>Identify Gulf-Exposed Mill Volumes and Build an Asian Sourcing Reallocation Plan</h4>
+      <p>Transmetal Ltd works with ~30 mills. Document which of those are Gulf-based, what volume flows through them, and what Asian alternatives (India, South Korea, China) are available at comparable specifications and acceptable Indian Ocean routing. The reallocation does not need to be completed immediately — but a written plan with named alternatives and lead time estimates needs to exist before the next purchase order cycle.</p>
+      <span class="urg urg-now">Within 2 weeks</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 04</div>
+      <h4>Introduce Steel Price Escalation Clauses in All Prometal Customer Contracts</h4>
+      <p>Prometal cannot absorb a steel cost increase on a negative equity balance sheet. A steel index passthrough clause — linking sale prices to CRU or Platts HRC indices — is industry standard for industrial steel distributors. Not having it is the anomaly. Implement it for all new contracts immediately, and open renegotiation with key accounts for existing contract renewals. This is the single most effective margin protection tool available.</p>
+      <span class="urg urg-now">Within 30 days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 05</div>
+      <h4>Freeze All PEB Project Bids Using Pre-Crisis Steel Cost Assumptions</h4>
+      <p>Any bid submitted in the last 90 days using pre-conflict steel and freight assumptions is now underpriced. Before any new project commitment, reprice all steel component inputs using current and Scenario B prices. Include a material cost escalation clause in all new construction contracts. Do not accept a project at a fixed price that bakes in a loss before a shovel is in the ground.</p>
+      <span class="urg urg-now">Immediately</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Medium-Term — 6 to 24 Months</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Action 06</div>
+      <h4>Restructure Transmetal Group Sourcing Around Indian Ocean Routing</h4>
+      <p>The crisis has demonstrated that Gulf and European (Suez-routed) origins are structurally fragile for the group's supply chain. The target should be reducing the share of procurement through these origins to below 30% within 18 months, in favour of Indian, South Korean, and Chinese mills whose product routes direct to Port Louis via the Indian Ocean. This is a multi-year strategic shift but it needs to start now, when the commercial rationale is clearest.</p>
+      <span class="urg urg-medium">6–12 months</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 07</div>
+      <h4>Resolve Prometal's Balance Sheet — Equity Injection or Structured Debt Reduction</h4>
+      <p>Prometal cannot indefinitely operate as a technically insolvent entity. The options are: (a) shareholder equity injection to restore positive net worth; (b) formalise inter-company / shareholder loans as subordinated debt on concessional terms; or (c) aggressive margin retention to rebuild equity — which requires the price escalation clauses in Action 04. This is not optional in the medium term; it is a fundamental governance and credit risk issue.</p>
+      <span class="urg urg-medium">Within 12 months</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 08</div>
+      <h4>Build a Credit Risk Management Framework for Transmetal Ltd</h4>
+      <p>A 236-day DSO, $4.97M in receivables across island markets, and $3.57M in short-term borrowings is not a viable long-term model. Implement: explicit credit limits per counterparty; credit insurance on all accounts above MUR 500K equivalent; a collections escalation protocol; and a maximum unsecured exposure policy per island market. The crisis has made this urgent — but these controls are needed regardless of how the conflict resolves.</p>
+      <span class="urg urg-medium">Within 6 months</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 09</div>
+      <h4>Reposition PEB Toward Government and Infrastructure Contracts</h4>
+      <p>Tourism-driven private construction is the most vulnerable part of PEB's pipeline in a sustained shock. Government-contracted infrastructure — industrial buildings, SME parks, social housing, utility facilities — is less cyclical. PEB's contractor registration and track record should be actively deployed in Mauritius government tender pipelines, which continue to operate irrespective of tourist arrivals. This is a market diversification that reduces the single-sector dependency.</p>
+      <span class="urg urg-medium">Within 12 months</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Action 10</div>
+      <h4>Develop Transmetal Ltd's Mauritius Freeport Hub Strategy</h4>
+      <p>As global supply chains are being reorganised around the crisis, the value of Mauritius as an Indian Ocean intermediate hub is increasing. Transmetal Ltd's Freeport status, 25+ years of regional relationships, and logistics expertise are assets that become more valuable as competitors scramble to rebuild their own supply lines. There is a medium-term opportunity to position the business as the preferred regional steel consolidation platform — increasing throughput and fee income without proportionally increasing capital risk.</p>
+      <span class="urg urg-medium">12–24 months</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Three Signals to Watch in the Next 72 Hours</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Single Most Important Variable</h4>
+      <p>The steel mill price index for Hot Rolled Coil flat products (HRC, USD/tonne) is the primary determinant of whether the Transmetal Group is profitable or loss-making in the next 12 months. Brent, freight, and currency are secondary transmission channels — they all eventually resolve into mill pricing. Monitor CRU and Platts HRC weekly. Set an internal trigger price that automatically generates customer price adjustment communications. Right now the index sits at approximately $500–520/t. At $570, the group is in stress. At $640, the group has an existential problem.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>Three Signals — Next 72 Hours</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Hormuz transit count movement above 30 vessels/day. This is the earliest de-escalation signal and would be the first indicator of Gulf mill supply restoration timeline. Watch Lloyd's List Intelligence daily.</li>
+        <li><span class="sig-num">02</span>MCB Bank MUR/USD indicative rate. If it moves through 47, Prometal's margin position requires immediate management action — not a monthly review. The rate is the single fastest-moving variable that hits the most fragile entity.</li>
+        <li><span class="sig-num">03</span>Emirates Airlines announcement on Mauritius route resumption timeline. This is the most direct leading indicator of Mauritius construction investment sentiment, and therefore of PEB's order pipeline for the next 6–12 months. Any resumption signal materially improves the outlook for the group's weakest entity.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="alert alert-info" style="margin-top:28px;">
+    <div class="alert-title">Counterintuitive Opportunity</div>
+    The Hormuz closure and Red Sea disruption are damaging Middle Eastern and European steel distributors disproportionately. Transmetal Ltd has an opportunity that most competitors cannot easily replicate: pivot sourcing toward Asian mills via Indian Ocean routing quickly, while others are scrambling to rebuild supply lines. The group's island-market customer relationships — built over 25+ years — are durable. The question is whether the group arrives at the other side of this crisis still solvent, with those relationships intact. That is an active decision, not a passive one.
+  </div>
+
+</div>
+</div>
+
+
+<footer class="report-footer">
+  <div>Transmetal Group Strategic Risk Assessment · 16 March 2026 · Day 16 of Iran–US/Israel Conflict · thierrybechard.com</div>
+  <div>Sources: CBRIS/Registrar of Companies (16 Mar 2026) · transmetal.org · prometal.mu · Lloyd's List Intelligence · Drewry WCI · IEA Emergency Update · Bloomberg Commodity · Platts HRC Index · Bank of Mauritius</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
+HTMLEOF
+echo "Done — $(wc -l < /home/claude/transmetal_risk.html) lines"

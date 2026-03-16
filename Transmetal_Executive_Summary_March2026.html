@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transmetal Group — Executive Summary — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── COVER ── */
+  .cover { background: var(--iron); color: #fff; padding: 64px 72px 52px; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; top: -120px; right: -120px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(42,111,168,0.14) 0%, transparent 60%); pointer-events: none; }
+  .cover::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .cover-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #60b8f0; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .cover-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 2px; background: var(--steel); }
+  .cover h1 { font-family: 'Libre Baskerville', serif; font-size: 44px; line-height: 1.12; letter-spacing: -0.5px; margin-bottom: 10px; max-width: 700px; }
+  .cover h1 em { font-style: italic; color: #60b8f0; }
+  .cover .cover-sub { font-size: 16px; color: rgba(255,255,255,0.45); font-weight: 300; margin-bottom: 44px; max-width: 580px; }
+  .cover-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; max-width: 860px; }
+  .cm-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .cm-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 5px; }
+  .cm-val { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.88); line-height: 1.35; }
+  .cm-val.accent { color: #60b8f0; }
+  .cm-val.warn { color: #f5c47a; }
+  .cm-val.danger { color: #f09070; }
+
+  /* ── DISCLAIMER BAR ── */
+  .disclaimer-bar { background: #111f2e; border-top: 1px solid rgba(42,111,168,0.25); border-bottom: 1px solid rgba(42,111,168,0.25); padding: 14px 72px; display: flex; align-items: flex-start; gap: 12px; }
+  .disclaimer-bar .di-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+  .disclaimer-bar p { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.42); line-height: 1.7; letter-spacing: 0.01em; }
+  .disclaimer-bar strong { color: rgba(255,255,255,0.65); }
+
+  /* ── BODY ── */
+  .body-wrap { max-width: 900px; margin: 0 auto; padding: 60px 72px 80px; }
+
+  .part-label { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; margin-top: 52px; }
+  .part-label:first-child { margin-top: 0; }
+  .part-num { background: var(--iron); color: #60b8f0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 14px; border-radius: 4px; white-space: nowrap; }
+  .part-line { flex: 1; height: 1px; background: var(--border); }
+  .part-title { font-family: 'Libre Baskerville', serif; font-size: 24px; color: var(--iron); margin-bottom: 6px; letter-spacing: -0.2px; }
+  .part-lead { font-size: 14.5px; color: var(--text-mid); line-height: 1.72; margin-bottom: 28px; border-left: 3px solid var(--steel); padding-left: 16px; max-width: 740px; }
+  p.body { font-size: 14px; color: var(--text-mid); line-height: 1.78; margin-bottom: 16px; }
+
+  /* ── FINDINGS ── */
+  .findings { display: flex; flex-direction: column; gap: 11px; margin: 24px 0; }
+  .finding { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--steel); border-radius: 0 8px 8px 0; padding: 15px 20px; box-shadow: var(--shadow); display: flex; gap: 16px; align-items: flex-start; }
+  .finding.f-critical { border-left-color: var(--red); }
+  .finding.f-warning { border-left-color: var(--amber); }
+  .finding.f-opportunity { border-left-color: var(--emerald); }
+  .f-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+  .f-tag.critical { background: var(--red-pale); color: var(--red); border: 1px solid #f5c4c0; }
+  .f-tag.warning { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .f-tag.info { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+  .f-tag.opportunity { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .f-body { font-size: 13.5px; color: var(--text-mid); line-height: 1.65; }
+  .f-body strong { color: var(--text); }
+
+  /* ── RATIO STRIP ── */
+  .ratio-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin: 24px 0; box-shadow: var(--shadow); }
+  .rs-box { background: var(--white); padding: 14px 16px; }
+  .rs-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); margin-bottom: 6px; }
+  .rs-val { font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 500; line-height: 1.1; margin-bottom: 4px; }
+  .rs-val.ok { color: var(--emerald); }
+  .rs-val.warn { color: var(--amber); }
+  .rs-val.bad { color: var(--red); }
+  .rs-note { font-size: 11px; color: var(--text-light); line-height: 1.45; }
+
+  /* ── SCENARIO PILLS ── */
+  .scenario-row { display: flex; gap: 10px; margin: 22px 0; flex-wrap: wrap; }
+  .sc-pill { border-radius: 6px; padding: 14px 18px; font-size: 13px; flex: 1; min-width: 180px; color: #fff; }
+  .sc-pill .sc-prob { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; margin-bottom: 4px; }
+  .sc-pill .sc-name { font-size: 12px; opacity: 0.7; margin-bottom: 8px; }
+  .sc-pill .sc-note { font-size: 12px; line-height: 1.55; opacity: 0.85; }
+  .sc-a { background: var(--emerald); }
+  .sc-b { background: #7a4e00; }
+  .sc-c { background: #8a1a10; }
+
+  /* ── EOS BLOCK ── */
+  .eos-block { background: var(--iron); border-radius: 10px; padding: 28px 32px; margin: 24px 0; display: flex; gap: 32px; align-items: flex-start; color: #fff; }
+  .eos-score-box { text-align: center; flex-shrink: 0; }
+  .eos-big { font-family: 'Libre Baskerville', serif; font-size: 58px; line-height: 1; color: #60b8f0; }
+  .eos-denom { font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: rgba(255,255,255,0.3); }
+  .eos-lbl { font-family: 'IBM Plex Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.28); margin-top: 4px; }
+  .eos-text h4 { font-family: 'Libre Baskerville', serif; font-size: 18px; margin-bottom: 10px; }
+  .eos-text p { font-size: 13.5px; line-height: 1.7; color: rgba(255,255,255,0.72); }
+
+  /* ── SEQUENCE ── */
+  .sequence { background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin: 24px 0; box-shadow: var(--shadow); }
+  .seq-row { display: flex; align-items: flex-start; gap: 20px; padding: 16px 22px; border-bottom: 1px solid var(--border); }
+  .seq-row:last-child { border-bottom: none; }
+  .seq-num { background: var(--iron); color: #60b8f0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .seq-content h5 { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+  .seq-content p { font-size: 12.5px; color: var(--text-light); line-height: 1.58; }
+  .urg { display: inline-block; margin-top: 5px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: var(--red-pale); color: var(--red); }
+  .urg-soon { background: var(--amber-pale); color: #9a5000; }
+  .urg-med { background: var(--emerald-pale); color: var(--emerald); }
+
+  /* ── CTA ── */
+  .cta-block { background: linear-gradient(135deg, var(--iron) 0%, var(--iron-light) 100%); border-radius: 12px; padding: 40px 44px; margin: 52px 0 0; color: #fff; text-align: center; position: relative; overflow: hidden; }
+  .cta-block::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(42,111,168,0.18) 0%, transparent 65%); pointer-events: none; }
+  .cta-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #60b8f0; margin-bottom: 12px; }
+  .cta-block h3 { font-family: 'Libre Baskerville', serif; font-size: 28px; margin-bottom: 12px; letter-spacing: -0.2px; }
+  .cta-block p { font-size: 14.5px; color: rgba(255,255,255,0.58); line-height: 1.72; margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .cta-url { display: inline-block; background: var(--steel); color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 14.5px; font-weight: 500; padding: 13px 32px; border-radius: 6px; text-decoration: none; letter-spacing: 0.03em; transition: background 0.2s; margin-bottom: 16px; }
+  .cta-url:hover { background: var(--steel-mid); }
+  .cta-sub { font-size: 12px; color: rgba(255,255,255,0.28); font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.05em; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 72px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  @media (max-width: 800px) {
+    .cover, .disclaimer-bar, .body-wrap, .report-footer { padding-left: 24px; padding-right: 24px; }
+    .cover h1 { font-size: 30px; }
+    .cover-meta, .ratio-strip { grid-template-columns: 1fr 1fr; }
+    .eos-block { flex-direction: column; }
+    .scenario-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<header class="cover">
+  <div class="cover-eyebrow">Executive Summary · Transmetal Group · LMA Growth Partners</div>
+  <h1>Transmetal Group:<br><em>Two perspectives</em> on your business</h1>
+  <p class="cover-sub">Geopolitical risk analysis · Company analysis &amp; operational assessment · March 2026</p>
+  <div class="cover-meta">
+    <div class="cm-box">
+      <div class="cm-label">Documents attached</div>
+      <div class="cm-val">2 full reports</div>
+    </div>
+    <div class="cm-box">
+      <div class="cm-label">Sources used</div>
+      <div class="cm-val">CBRIS · transmetal.org · public data only</div>
+    </div>
+    <div class="cm-box">
+      <div class="cm-label">Financial data period</div>
+      <div class="cm-val warn">FY2024 / FY2025 — CBRIS filings</div>
+    </div>
+    <div class="cm-box">
+      <div class="cm-label">EOS Suitability Rating</div>
+      <div class="cm-val accent">6.5 / 10</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══ DISCLAIMER ══ -->
+<div class="disclaimer-bar">
+  <span class="di-icon">⚠</span>
+  <p>
+    <strong>Important before reading:</strong> This work is based exclusively on public data — primarily CBRIS filings at the Mauritius Registrar of Companies. Financial figures date from December 2024 at the most recent and may not reflect the group's current situation. As with all AI-assisted analysis, these reports may contain inaccuracies or conclusions you disagree with. They are shared as a starting point for conversation, not as established fact. You are best placed to judge their relevance.
+  </p>
+</div>
+
+<!-- ══ BODY ══ -->
+<div class="body-wrap">
+
+  <!-- DOCUMENT 01 -->
+  <div class="part-label">
+    <span class="part-num">Document 01</span>
+    <span class="part-line"></span>
+  </div>
+  <h2 class="part-title">Geopolitical Risk Analysis</h2>
+  <p class="part-lead">How the Iran–US/Israel conflict transmits concretely to the three entities of the group — on procurement costs, margins, customer markets, and the financial structure — over a 6 to 24-month horizon.</p>
+
+  <p class="body">Since 28 February 2026, the Iran–US/Israel conflict has created direct disruption to steel supply chains through the Gulf and Red Sea. This is not an indirect risk for the Transmetal Group: Gulf steel sources — Qatar Steel, Emirates Steel, Saudi producers — sit at the very heart of the procurement network. The Suez and Jebel Ali routes, standard for European and Gulf sourcing, are now compromised. The most immediate consequence is upward pressure on procurement costs in a group whose margins leave very little room to absorb them.</p>
+
+  <div class="findings">
+    <div class="finding f-critical">
+      <span class="f-tag critical">Critical</span>
+      <span class="f-body"><strong>Transmetal Ltd's gross profit is eliminated at +10% steel prices.</strong> On a cost base of USD 6.96M, a 10% increase wipes out the entire gross profit. This is the base case in a prolonged conflict scenario — not an extreme one.</span>
+    </div>
+    <div class="finding f-critical">
+      <span class="f-tag critical">Critical</span>
+      <span class="f-body"><strong>Prometal faces a compounding USD/MUR + steel inflation squeeze.</strong> It buys in dollars, sells in rupees. Every MUR depreciation directly inflates costs in a balance sheet that already carries negative equity. The combined scenario (+10% steel, –5% MUR) produces a net loss of MUR 2.5 million.</span>
+    </div>
+    <div class="finding f-warning">
+      <span class="f-tag warning">Watch</span>
+      <span class="f-body"><strong>Transmetal PEB is already loss-making, and its order book depends on tourism investment.</strong> The Emirates suspension (22% of Mauritius arrivals) slows hotel and IRS/ERS construction investment — precisely PEB's market. Project decisions are being frozen now.</span>
+    </div>
+    <div class="finding f-warning">
+      <span class="f-tag warning">Watch</span>
+      <span class="f-body"><strong>Transmetal Ltd's receivables book is the most immediate liquidity risk.</strong> USD 4.97M outstanding across island markets now under their own economic stress — against USD 60K in cash and USD 3.57M in short-term borrowings. A single large counterparty delay triggers a working capital gap.</span>
+    </div>
+    <div class="finding f-opportunity">
+      <span class="f-tag opportunity">Opportunity</span>
+      <span class="f-body"><strong>The Gulf and Suez disruption opens a strategic sourcing window.</strong> Asian steel mills — India, South Korea, China — serve the Indian Ocean via routes less affected by this conflict. Repositioning procurement toward these origins before competitors do means emerging from the shock with a more resilient supply chain.</span>
+    </div>
+  </div>
+
+  <p class="body">The full report models three scenarios with explicit probabilities and produces concrete recommendations per entity, a 10-indicator early warning dashboard with alert thresholds, and an action list sequenced by urgency.</p>
+
+  <div class="scenario-row">
+    <div class="sc-pill sc-a">
+      <div class="sc-prob">40%</div>
+      <div class="sc-name">Scenario A — De-escalation &lt;60 days</div>
+      <div class="sc-note">Temporary cost pressures. Structural vulnerabilities remain but are manageable.</div>
+    </div>
+    <div class="sc-pill sc-b">
+      <div class="sc-prob">40%</div>
+      <div class="sc-name">Scenario B — Prolonged Conflict (base case)</div>
+      <div class="sc-note">Steel +8–15%. MUR to 47–50. Prometal moves toward losses. Receivables need active management.</div>
+    </div>
+    <div class="sc-pill sc-c">
+      <div class="sc-prob">20%</div>
+      <div class="sc-name">Scenario C — Regional War</div>
+      <div class="sc-note">Steel +20–30%. Gulf sources offline. Survival mode: cash, creditors, rationalisation.</div>
+    </div>
+  </div>
+
+
+  <!-- DOCUMENT 02 -->
+  <div class="part-label">
+    <span class="part-num">Document 02</span>
+    <span class="part-line"></span>
+  </div>
+  <h2 class="part-title">Company Analysis &amp; Operational Assessment</h2>
+  <p class="part-lead">Financial performance with key ratios across all three entities, competitive positioning, and an operational maturity evaluation — including an EOS (Entrepreneurial Operating System) suitability assessment.</p>
+
+  <p class="body">The Transmetal Group is a regionally established business built over 25 years, with a commercial position that is genuinely difficult to replicate: a network of ~30 international steel mills, Mauritius Freeport status, and an integrated service model (procurement + logistics + trade finance) that addresses a real need in island markets. These are durable assets. But the financial analysis from CBRIS filings reveals structural vulnerabilities that deserve attention.</p>
+
+  <div class="ratio-strip">
+    <div class="rs-box">
+      <div class="rs-label">DSO — Transmetal Ltd</div>
+      <div class="rs-val bad">236 days</div>
+      <div class="rs-note">Industry benchmark: 60–90 days. Moving to 120 days would release ~USD 2.2M in working capital.</div>
+    </div>
+    <div class="rs-box">
+      <div class="rs-label">Equity — Prometal Négoce</div>
+      <div class="rs-val bad">–MUR 10.6M</div>
+      <div class="rs-note">Sustained by MUR 36.3M in bank debt. No equity buffer whatsoever.</div>
+    </div>
+    <div class="rs-box">
+      <div class="rs-label">Net Margin — Transmetal Ltd</div>
+      <div class="rs-val warn">1.8%</div>
+      <div class="rs-note">USD 141K on USD 7.67M revenue. Interest coverage only 1.57×.</div>
+    </div>
+    <div class="rs-box">
+      <div class="rs-label">Net Result — PEB</div>
+      <div class="rs-val bad">–MUR 376K</div>
+      <div class="rs-note">Net loss FY2024. Gross margin at 10.1% — insufficient to cover fixed overheads.</div>
+    </div>
+  </div>
+
+  <div class="findings">
+    <div class="finding">
+      <span class="f-tag info">Strength</span>
+      <span class="f-body"><strong>25 years of customer relationships across Indian Ocean island markets.</strong> This is the group's real competitive moat. Neither major international trading houses nor Chinese intermediaries have yet replicated this level of proximity and trust in these specific markets.</span>
+    </div>
+    <div class="finding">
+      <span class="f-tag info">Strength</span>
+      <span class="f-body"><strong>Freeport status becomes more valuable in a logistics disruption environment.</strong> The global supply chain reorganisation underway increases Mauritius's value as an Indian Ocean consolidation hub — and Transmetal's Freeport platform is positioned to benefit.</span>
+    </div>
+    <div class="finding f-critical">
+      <span class="f-tag critical">Key finding</span>
+      <span class="f-body"><strong>The receivables cycle is the group's most immediately actionable lever.</strong> A 236-day DSO at Transmetal Ltd is not a sector inevitability — it is a process problem. Correcting it unlocks more working capital than any external financing decision. It is also a perfect first EOS Rock.</span>
+    </div>
+    <div class="finding f-warning">
+      <span class="f-tag warning">Open question</span>
+      <span class="f-body"><strong>PEB's strategic place in the group deserves a deliberate answer.</strong> It is loss-making, operates on a project delivery model very different from trading, and depends on a tourism-sensitive construction market. Is it a strategic pillar, or an opportunistic 2018 addition that has not yet proven its place?</span>
+    </div>
+  </div>
+
+  <div class="eos-block">
+    <div class="eos-score-box">
+      <div class="eos-big">6.5</div>
+      <div class="eos-denom">/10</div>
+      <div class="eos-lbl">EOS Suitability</div>
+    </div>
+    <div class="eos-text">
+      <h4>A strong EOS candidate — with one prerequisite</h4>
+      <p>The group presents all the markers EOS was designed to address: a single director carrying all decisions across three entities, measurable performance gaps (DSO, margins, PEB results), multi-entity complexity without a formalised inter-entity operating system. The EOS toolbox — Accountability Chart, weekly Scorecard, quarterly Rocks, Level 10 Meetings — would directly address these. The one condition: stabilise Prometal Négoce's balance sheet first. You do not install an accountability system in a technically insolvent entity without first clarifying the structural environment it is operating in.</p>
+    </div>
+  </div>
+
+
+  <!-- SEQUENCE -->
+  <div class="part-label">
+    <span class="part-num">What these reports suggest</span>
+    <span class="part-line"></span>
+  </div>
+  <h2 class="part-title">Recommended Sequence</h2>
+  <p class="part-lead">The financial recommendations are prerequisites for the operational ones — not alternatives. Sequence matters here more than it does for most EOS candidates.</p>
+
+  <div class="sequence">
+    <div class="seq-row">
+      <span class="seq-num">01</span>
+      <div class="seq-content">
+        <h5>Engage Prometal's lender proactively — before any covenant event</h5>
+        <p>Prepare a 12-month cash flow forecast under stress conditions and open the conversation now. Proactive engagement produces solutions. A surprise produces restrictions.</p>
+        <span class="urg urg-now">Within 30 days</span>
+      </div>
+    </div>
+    <div class="seq-row">
+      <span class="seq-num">02</span>
+      <div class="seq-content">
+        <h5>Implement a systematic receivables management process</h5>
+        <p>Assign a named owner, set a DSO target of 120 days, track weekly. The working capital impact at Transmetal Ltd would be immediate and substantial — no external financing required.</p>
+        <span class="urg urg-now">Within 60 days</span>
+      </div>
+    </div>
+    <div class="seq-row">
+      <span class="seq-num">03</span>
+      <div class="seq-content">
+        <h5>Introduce steel price escalation clauses in Prometal and PEB contracts</h5>
+        <p>A price revision clause linked to CRU/Platts indices is standard in steel distribution. Its absence is the primary reason cost increases convert into balance sheet deficits.</p>
+        <span class="urg urg-soon">Within 60 days</span>
+      </div>
+    </div>
+    <div class="seq-row">
+      <span class="seq-num">04</span>
+      <div class="seq-content">
+        <h5>Begin the EOS conversation</h5>
+        <p>A 90-minute session is enough to assess whether the framework makes sense and identify the leadership team structure. The financial data in these reports is a good starting point for that conversation.</p>
+        <span class="urg urg-med">Once financial prerequisites are initiated</span>
+      </div>
+    </div>
+    <div class="seq-row">
+      <span class="seq-num">05</span>
+      <div class="seq-content">
+        <h5>Reposition steel procurement toward Indian Ocean-routed origins</h5>
+        <p>Reduce dependency on Gulf and Suez-routed sourcing in favour of Indian, South Korean, and Chinese mills routed direct to Port Louis. The current disruption provides the commercial justification — but the window is open now.</p>
+        <span class="urg urg-med">6 to 12 months</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-eyebrow">Want to take this further?</div>
+    <h3>See what I do</h3>
+    <p>If these documents gave you something useful to think about — or if you want to understand the approach that produced them — I invite you to visit my website.</p>
+    <a href="https://thierrybechard.com" target="_blank" class="cta-url">thierrybechard.com</a>
+    <div class="cta-sub">And if you'd like to talk it over — I'm available for a coffee, no agenda.</div>
+  </div>
+
+</div>
+
+<footer class="report-footer">
+  <div>Transmetal Group — Executive Summary · 16 March 2026 · LMA Growth Partners · Thierry Béchard · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies Mauritius (16 Mar 2026) · transmetal.org · prometal.mu · public data only</div>
+</footer>
+
+</body>
+</html>
