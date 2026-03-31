@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metinox — Comprehensive Company Analysis — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; background: var(--steel-ultra); }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel); color: #fff; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Light Engineering / Stainless Equipment</span>
+    <span class="badge badge-type">Private Company · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">31 March 2026</span>
+  </div>
+  <h1>Metinox:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Metinox Ltd · Company intelligence · Financial ratios · EOS implementation assessment · Pailles, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">Rs 16,950,646</div>
+      <div class="stat-delta">Year ended 31 March 2024 · MUR</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Margin</div>
+      <div class="stat-value emerald">10.5%</div>
+      <div class="stat-delta">Profitable operating SME</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">5.8 / 10</div>
+      <div class="stat-delta">Moderate-High fit · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">276 DSO</div>
+      <div class="stat-delta">Customers appear to be using Metinox as a bank</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>METINOX LTD — Company Analysis &amp; EOS Assessment · 31 March 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">Metinox is a long-standing Pailles-based stainless-equipment and metalwork business whose biggest constraint does not appear to be demand or profit generation, but working-capital discipline.</p>
+  <p class="body-text">Metinox Ltd was incorporated on 6 October 1995 and is registered in Mauritius as a live domestic private company. It operates from Junction Road, Pailles, and public business listings position it in stainless steel work, kitchen equipment, and related light-engineering activity for the Mauritian market.</p>
+  <p class="body-text">Ownership is clean at the immediate level: BCPM Limited owns 100% of Metinox. The director set overlaps heavily with other BCPM-linked entities, which strongly suggests Metinox sits inside a wider privately held group rather than functioning as a standalone one-owner business.</p>
+  <p class="body-text">Financially, this is not a basket case. FY2024 shows revenue of Rs 16,950,646, gross margin of 48.8%, and net profit after tax of Rs 1,775,915. The ugly bit is debtor days at roughly 276, which is absurdly high for an SME of this size and likely hides a cash-conversion problem that EOS could help expose and fix.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Profitable, but financing its customers</div>
+    Metinox looks like a commercially valid small industrial business with decent margins and no disclosed borrowing burden. The real strategic conversation is not “Can this business survive?” but “How much cash, speed and management bandwidth is being destroyed by weak operational discipline, role clarity and follow-through?”
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Healthy gross margin</strong>, long trading history, clear industrial niche, and public positioning in stainless equipment / kitchen solutions rather than generic commodity trading.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Receivables are too high relative to revenue</strong>, implying weak collections or slow project billing. Deferred-tax liabilities are also material relative to equity.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>This looks like a classic owner-influenced SME approaching a management ceiling</strong>: profitable enough to keep going, but likely leaking traction through execution friction rather than lack of opportunity.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">Metinox is a mature light-engineering business inside a broader private holding structure, operating in stainless fabrication and hospitality-oriented equipment supply.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Metinox Ltd was incorporated on 6 October 1995 under file number C15418. It is a live domestic private company with BRN C06015418 and registered office at Junction Road, Pailles, Port Louis, Mauritius. Stated capital stands at Rs 127,500 comprising 12,750 ordinary shares. A Pioneer Status Enterprise Certificate is recorded from 2 November 1995.</p>
+  <p class="body-text">The company filed financial summaries for FY2022, FY2023 and FY2024. Annual return history visible on the extract is patchy rather than perfect, with the most recent shown filed in April 2025 for the September 2024 annual return.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header"><h4>Metinox Ltd</h4><div class="ec-sub">Operating Entity</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shareholder</span><span class="mv">BCPM Limited</span></div>
+        <div class="ec-metric"><span class="mk">Ownership</span><span class="mv ok">100%</span></div>
+        <div class="ec-metric"><span class="mk">Activity</span><span class="mv">Stainless / metal equipment</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>BCPM Limited</h4><div class="ec-sub">Holding Company</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Nature</span><span class="mv">Holding / management / investment</span></div>
+        <div class="ec-metric"><span class="mk">Incorporated</span><span class="mv">10 Jan 2019</span></div>
+        <div class="ec-metric"><span class="mk">Board overlap</span><span class="mv warn">High</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>Group Context</h4><div class="ec-sub">Inference Zone</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Public clue</span><span class="mv">Sister-company mention</span></div>
+        <div class="ec-metric"><span class="mk">Confidence</span><span class="mv warn">Moderate</span></div>
+        <div class="ec-metric"><span class="mk">Takeaway</span><span class="mv">Not a lone SME</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Ownership Note</div>
+    Immediate legal ownership is clear: BCPM Limited owns Metinox. What remains less visible from public data alone is the practical decision-making map inside the wider group. That matters because group structures often create blurred accountability even when legal ownership is simple.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Andre François Gerard Couve — Chairman / Director</h4>
+      <p>Chairman from 4 June 2019 and director from 12 April 2019. Service address shown in Riche Terre. Appears repeatedly across related BCPM-linked entities.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Marie Roger Loic Bax de Keating — Director</h4>
+      <p>Director since 12 April 2019. Also appears in BCPM and related company extracts, suggesting group-level governance or shareholder involvement.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rehamtulah Alnoor Goulamaly Mandjee — Director</h4>
+      <p>Director since 12 April 2019 with Pailles-linked service address. Appears central to the group operating footprint around Junction Road, Pailles.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Louis Marie Frederic Merle — Director</h4>
+      <p>Director since 23 May 2019. Another overlapping name across sister entities, reinforcing the sense of collective group stewardship rather than an isolated board.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Simon Joseph Pougnet — Director</h4>
+      <p>Director since 12 April 2019. Also a visible shareholder / director in other BCPM-linked entities, making him an obvious focal point for strategic and EOS conversations.</p>
+    </div>
+    <div class="profile-card">
+      <h4>CAS Services Ltd — Secretary</h4>
+      <p>Corporate secretary since 19 November 2024, replacing earlier arrangements and suggesting some formal governance housekeeping.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">The registrar extract only explicitly records welding of metal work pieces, which is unhelpfully broad. Public listings are more revealing and position Metinox in home furniture / kitchen and dining products, while older industrial directory material describes stainless steel work and kitchen equipment. Combined, the picture is of a business involved in fabrication and supply of stainless equipment, likely with a hospitality, catering, or commercial-kitchen angle rather than generic steel trading.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Metinox appears centred on Mauritius, with its registered office and public listings anchored in Pailles. No reliable public evidence of exports or regional branches surfaced in this pass. The footprint looks domestic and project-led.</p>
+</div>
+</div>
+
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Data source is the CBRIS / Registrar of Companies summary filing for the year ended 31 March 2024, stated in Mauritius rupees. Public sources help with commercial positioning but not with detailed financial footnotes.</p>
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Private-company disclosure in the registrar summary is limited. The FY2024 summary provides a useful headline P&amp;L and balance sheet, but no detailed notes, no segment split, no ageing of receivables, no employee count, and no cash-flow statement. Prior-year summaries are listed as filed, but the detailed figures were not available in the uploaded extract for this report.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        
+<tr><td>Turnover (Revenue)</td><td>Rs 16,950,646</td><td>100.0%</td><td>Small but real operating manufacturer/supplier with meaningful commercial activity.</td></tr>
+<tr><td>Cost of Sales</td><td>Rs 8,671,974</td><td>51.2%</td><td>Direct cost base consumed just over half of sales.</td></tr>
+<tr class="heat-ok"><td>Gross Profit</td><td>Rs 8,278,672</td><td>48.8%</td><td>Gross margin is strong for a light-engineering / bespoke stainless business.</td></tr>
+<tr><td>Other Income</td><td>Rs 0</td><td>0.0%</td><td>No material reliance on non-operating income.</td></tr>
+<tr><td>Distribution Costs</td><td>Not separately disclosed</td><td>—</td><td>Registrar summary shows no distinct distribution-cost line.</td></tr>
+<tr class="heat-warn"><td>Administration Costs</td><td>Rs 6,127,914</td><td>36.2%</td><td>Admin overhead absorbs a big chunk of gross profit; this is where operating discipline matters.</td></tr>
+<tr><td>Other Expenses</td><td>Rs 0</td><td>0.0%</td><td>No other-expense burden disclosed in the summary filing.</td></tr>
+<tr><td>Finance Costs</td><td>Rs 0</td><td>0.0%</td><td>No finance-cost drag in FY2024.</td></tr>
+<tr><td>Profit Before Tax</td><td>Rs 2,150,758</td><td>12.7%</td><td>Business remained profitable after overheads.</td></tr>
+<tr><td>Tax Expense</td><td>Rs 374,843</td><td>2.2%</td><td>Normal tax charge relative to reported profit.</td></tr>
+<tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>Rs 1,775,915</strong></td><td><strong>10.5%</strong></td><td>Respectable bottom-line outcome for a company of this size.</td></tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 March 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        
+<tr><td>Non-current assets</td><td>Property, plant and equipment / other non-current assets</td><td>Rs 818,207</td><td>Very light fixed-asset base; suggests an asset-light operating model or aged/depreciated equipment base.</td></tr>
+<tr><td>Current assets</td><td>Cash and cash equivalents</td><td>Rs 7,162,763</td><td>Healthy cash cushion for the scale of business.</td></tr>
+<tr class="heat-warn"><td>Current assets</td><td>Trade and other receivables</td><td>Rs 12,821,950</td><td>Receivables dominate the balance sheet and are the single biggest working-capital issue.</td></tr>
+<tr><td>Current assets</td><td>Inventories</td><td>Rs 4,776</td><td>Negligible stock holding; likely project-driven procurement rather than warehouse-heavy trading.</td></tr>
+<tr><td>Current assets</td><td><strong>Total current assets</strong></td><td><strong>Rs 19,989,489</strong></td><td>Liquidity is ample on paper.</td></tr>
+<tr><td>Equity</td><td>Share capital</td><td>Rs 127,500</td><td>Very small nominal capital base.</td></tr>
+<tr><td>Equity</td><td>Retained earnings</td><td>Rs 12,495,524</td><td>Accumulated profits have built most of the equity position.</td></tr>
+<tr class="heat-ok"><td>Equity</td><td><strong>Total equity</strong></td><td><strong>Rs 12,623,024</strong></td><td>Company is solvent and profit-retentive.</td></tr>
+<tr class="heat-warn"><td>Non-current liabilities</td><td>Deferred tax</td><td>Rs 4,865,498</td><td>Large deferred-tax balance relative to equity; not a cash crisis today, but still a structural liability.</td></tr>
+<tr><td>Current liabilities</td><td>Trade and other payables</td><td>Rs 3,319,174</td><td>Payables are meaningful but far below receivables.</td></tr>
+<tr><td>Current liabilities</td><td><strong>Total current liabilities</strong></td><td><strong>Rs 3,319,174</strong></td><td>Short-term obligations are manageable relative to liquid assets.</td></tr>
+<tr><td>Total</td><td><strong>Total assets / equity and liabilities</strong></td><td><strong>Rs 20,807,696</strong></td><td>Compact but financially stable SME balance sheet.</td></tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">No charges are shown on the registrar extract. That is a positive signal. It suggests the business is not visibly reliant on secured bank financing or floating-charge structures, at least from what is publicly disclosed in the extract.</p>
+  <div class="alert alert-ok">
+    <div class="alert-title">Balance Sheet Signal</div>
+    No charge record plus no finance-cost line is a useful clue: Metinox is probably not being throttled by lenders. That makes its working-capital inefficiency even more frustrating, because the constraint appears self-inflicted rather than imposed.
+  </div>
+</div>
+</div>
+
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks used here are pragmatic Mauritius SME heuristics for light manufacturing / engineering and project-led services. Green = healthy, Amber = watch, Red = critical concern. With private-company summaries, exact precision is less important than direction and what the number implies operationally.</p>
+  
+<h3 class="subsection-title">Liquidity Ratios</h3>
+<div class="ratio-grid">
+  <div class="ratio-card">
+    <h4>Current Ratio</h4>
+    <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">6.02×</span></div>
+    <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.5×–2.5×</span></div>
+    <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+    <span class="ratio-interpret">On headline liquidity, Metinox looks comfortable. The catch is that much of that strength sits in receivables rather than pure cash, so collection discipline matters more than the headline ratio suggests.</span>
+  </div>
+  <div class="ratio-card">
+    <h4>Quick Ratio</h4>
+    <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">6.02×</span></div>
+    <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.0×–1.5×</span></div>
+    <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+    <span class="ratio-interpret">Because inventory is negligible, the quick ratio is almost identical to the current ratio. That points to an asset-light business with low stock risk and a cash/receivables-based working-capital cycle.</span>
+  </div>
+</div>
+
+<h3 class="subsection-title">Profitability Ratios</h3>
+<div class="ratio-grid">
+  <div class="ratio-card">
+    <h4>Gross Profit and EBIT Margin</h4>
+    <div class="ratio-row"><span class="ratio-label">Gross profit margin</span><span class="ratio-val ok">48.8%</span></div>
+    <div class="ratio-row"><span class="ratio-label">EBIT margin</span><span class="ratio-val ok">12.7%</span></div>
+    <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">GM 20%–35% · EBIT 5%–10%</span></div>
+    <span class="ratio-interpret">Gross margin is strong and says the company is not just a commodity reseller. The squeeze happens below gross profit, where overheads eat into the spread; that is classic EOS territory because it often reflects lack of role clarity, weak measurables, or reactive operations.</span>
+  </div>
+  <div class="ratio-card">
+    <h4>Net Margin, ROA and ROE</h4>
+    <div class="ratio-row"><span class="ratio-label">Net profit margin</span><span class="ratio-val ok">10.5%</span></div>
+    <div class="ratio-row"><span class="ratio-label">Return on assets</span><span class="ratio-val ok">8.5%</span></div>
+    <div class="ratio-row"><span class="ratio-label">Return on equity</span><span class="ratio-val ok">14.1%</span></div>
+    <span class="ratio-interpret">Bottom-line profitability is respectable, and return on equity is strong for a small privately held Mauritian industrial business. That tells you the business works; it just may not yet be run with the level of management discipline needed for scale.</span>
+  </div>
+</div>
+
+<h3 class="subsection-title">Leverage Ratios</h3>
+<div class="ratio-grid">
+  <div class="ratio-card">
+    <h4>Debt and Interest Burden</h4>
+    <div class="ratio-row"><span class="ratio-label">Debt-to-equity</span><span class="ratio-val ok">0.00×</span></div>
+    <div class="ratio-row"><span class="ratio-label">Interest coverage</span><span class="ratio-val">N/M</span></div>
+    <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">D/E &lt; 1.0×</span></div>
+    <span class="ratio-interpret">There is no disclosed borrowing load and no finance-cost charge in the FY2024 registrar summary. That gives the company breathing room; the real constraint is not lenders, it is operating execution and cash conversion.</span>
+  </div>
+  <div class="ratio-card">
+    <h4>Balance Sheet Pressure</h4>
+    <div class="ratio-row"><span class="ratio-label">Non-current liabilities</span><span class="ratio-val warn">Rs 4,865,498</span></div>
+    <div class="ratio-row"><span class="ratio-label">As % of equity</span><span class="ratio-val warn">38.5%</span></div>
+    <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+    <span class="ratio-interpret">The main structural liability is deferred tax, not bank debt. It does not scream distress, but it does mean the balance sheet is less pristine than the zero-borrowing headline first suggests.</span>
+  </div>
+</div>
+
+<h3 class="subsection-title">Efficiency Ratios</h3>
+<div class="ratio-grid">
+  <div class="ratio-card">
+    <h4>Asset and Inventory Efficiency</h4>
+    <div class="ratio-row"><span class="ratio-label">Asset turnover</span><span class="ratio-val warn">0.81×</span></div>
+    <div class="ratio-row"><span class="ratio-label">Inventory turnover</span><span class="ratio-val ok">1,815.7×</span></div>
+    <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">AT 0.8×–1.5×</span></div>
+    <span class="ratio-interpret">Asset turnover is healthy enough for a small project-oriented engineering business. Inventory turnover is mathematically huge because year-end stock is almost zero, which reinforces the point that receivables, not stock, drive working capital here.</span>
+  </div>
+  <div class="ratio-card">
+    <h4>Working Capital Cycle</h4>
+    <div class="ratio-row"><span class="ratio-label">Debtor days / DSO</span><span class="ratio-val bad">276 days</span></div>
+    <div class="ratio-row"><span class="ratio-label">Creditor days / DPO</span><span class="ratio-val bad">140 days</span></div>
+    <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">DSO 45–75 · DPO 45–75</span></div>
+    <span class="ratio-interpret">This is the big one. Debtor days are far too high and massively exceed creditor days, meaning Metinox is effectively financing its customers. That is the sort of hidden cash leak that can cap growth even in a profitable company.</span>
+  </div>
+</div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    The first is <strong>276 debtor days</strong>, which implies that a large portion of reported profit is tied up in slow collections rather than sitting in the bank. The second is the gap between that and creditor days at <strong>140</strong>: Metinox is paying suppliers materially faster than customers are paying Metinox. Fixing that cash-conversion mismatch will likely beat any heroic growth push.
+  </div>
+</div>
+</div>
+
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Metinox appears to operate across one main domain with several adjacent use cases: stainless fabrication, kitchen equipment, and light-engineering supply into domestic commercial and residential demand.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header"><h4>Commercial Kitchen / Hospitality</h4><div class="ec-sub">Core implied segment</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Positioning</span><span class="mv">Stainless equipment</span></div>
+        <div class="ec-metric"><span class="mk">Likely competitors</span><span class="mv">Kitchen-equipment fabricators</span></div>
+        <div class="ec-metric"><span class="mk">Edge</span><span class="mv ok">Bespoke local supply</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>Light Engineering / Metalwork</h4><div class="ec-sub">Adjacent segment</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Positioning</span><span class="mv">Welding / fabrication</span></div>
+        <div class="ec-metric"><span class="mk">Competitive basis</span><span class="mv">Responsiveness &amp; quality</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Price competition</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>Residential / Retail Kitchen Products</h4><div class="ec-sub">Possible side segment</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Public listing clue</span><span class="mv">Kitchen &amp; dining</span></div>
+        <div class="ec-metric"><span class="mk">Certainty</span><span class="mv warn">Moderate</span></div>
+        <div class="ec-metric"><span class="mk">Implication</span><span class="mv">Potential diversification</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text">The first real advantage is longevity: a company that has been around since 1995 and is still profitable clearly has some customer trust and execution know-how. The second is local fabrication capability, which matters in Mauritius because lead times, customisation, after-sales responsiveness and on-site adjustment often beat imported perfection. The third is group context: if Metinox can leverage a broader BCPM relationship network without inheriting group bureaucracy, that is useful. The danger, of course, is that group complexity helps sales but muddies accountability.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li>Mauritius hospitality refurbishment and food-service activity can support ongoing demand for stainless and kitchen-related equipment.</li>
+    <li>Project-led engineering businesses are vulnerable to delayed customer payments, which is already visible in Metinox’s balance sheet.</li>
+    <li>Imported alternatives put constant price pressure on local fabricators, so quality, speed and custom service matter more than ever.</li>
+    <li>Small industrial firms with weak process discipline often hit a ceiling where owner attention becomes the bottleneck; Metinox looks close to that zone.</li>
+    <li>Domestic fabrication remains attractive where clients need bespoke solutions, measurements, installation adjustments and short lead times.</li>
+  </ul>
+</div>
+</div>
+
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Metinox is too substantive to be a micro side-hustle but still small enough that leadership habits will disproportionately shape results. That is usually fertile EOS territory.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The company sits inside a formal holding structure and has an established board/director set, which suggests some governance maturity. What is missing is public evidence of operating-system discipline, so this scores mid rather than high.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">The business is profitable, asset-light and commercially real, yet working-capital drag and overhead absorption hint at the classic ceiling where owners can no longer run everything by feel.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The numbers suggest some operational capability exists, but debtor days that high usually mean the system between delivery, billing and collection is not tight enough.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Public data are thin on culture. Longevity and profitability are positives, but there is not enough evidence to assume a highly disciplined accountability culture.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">A defined shareholder and director structure exists, but the likely reality in a company of this size is still strong central decision-making rather than clean seat-based ownership.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">There is public evidence of product domain and heritage, but not much of explicit strategic articulation. It looks like a business that knows its trade better than it articulates its future.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No public signal of structured operating rhythm appears. In SMEs like this, that usually means meetings are ad hoc or owner-driven unless proven otherwise.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">5.8</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>Metinox looks like a good EOS prospect because it appears to be a real business with enough traction to matter and enough friction to benefit. The gating factor is not whether EOS would help; it is whether the real leaders of the business are willing to confront cash discipline, role clarity and operating habits rather than blaming “the market” or “clients who pay late”.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Metinox</h3>
+  
+<div class="profile-grid">
+  <div class="profile-card">
+    <h4>Scorecard &amp; Measurables</h4>
+    <p><strong>Receivables and collection discipline</strong> jump off the balance sheet. Weekly measurables around invoices due, aged debt, quotes issued, jobs completed, and gross margin by project would likely surface reality fast.</p>
+  </div>
+  <div class="profile-card">
+    <h4>Accountability Chart</h4>
+    <p>This looks like the kind of owner-influenced SME where roles can blur between sales, projects, workshop, purchasing and collections. <strong>Clear seat ownership</strong> would probably unlock margin and speed.</p>
+  </div>
+  <div class="profile-card">
+    <h4>Level 10 Meeting</h4>
+    <p>Public data do not show any sign of formal meeting rhythm. A disciplined weekly meeting would help move the company from <strong>reaction to traction</strong>, especially around jobs, cash and priorities.</p>
+  </div>
+  <div class="profile-card">
+    <h4>Issues List &amp; IDS</h4>
+    <p>When debtor days are this stretched, the root issue is rarely just “customers pay late”. It is usually quoting terms, project handover, billing discipline, escalation, or owner avoidance. <strong>IDS would force the truth out.</strong></p>
+  </div>
+  <div class="profile-card">
+    <h4>Rocks</h4>
+    <p>The first 90-day Rocks should probably be operational, not inspirational: reduce DSO, tighten quote-to-cash flow, and create visibility on job profitability. <strong>One quarter of focus could move cash materially.</strong></p>
+  </div>
+  <div class="profile-card">
+    <h4>Vision/Traction Organiser</h4>
+    <p>If the business is part of a wider BCPM orbit, it likely needs sharper strategic choices on positioning, target segments, and the relationship between group ownership and day-to-day execution. <strong>The V/TO would expose fuzziness.</strong></p>
+  </div>
+</div>
+
+</div>
+</div>
+
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations: four financial / operational and four EOS-specific. The sequencing principle is simple — fix the cash leak first, then install operating discipline so the same nonsense does not come back wearing a different shirt.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Attack receivables with a named owner and a 60-day target</h4>
+      <p>Name one person accountable for collections and impose a weekly aged-debt review. Success means reducing DSO from roughly 276 days to below 90 within two quarters, with every major overdue account assigned an action and escalation date.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Tighten the quote-to-cash process</h4>
+      <p>Map the full chain from quotation to delivery note to invoice to payment follow-up. The likely problem is not one broken step but a sloppy handoff between several. Success means invoices go out faster, disputes get surfaced earlier, and nobody gets to say “I thought someone else handled it.”</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Measure gross margin by job, not just by company</h4>
+      <p>Project and fabrication businesses lie to themselves when they only look at company-level profit. Create a simple per-job gross-margin view so unprofitable work, rework and underquoting become visible. Success means knowing which jobs create margin and which ones are vanity turnover.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Review deferred-tax position with the accountant</h4>
+      <p>The deferred-tax balance is too meaningful to ignore. Have finance explain exactly what created it, what reverses it, and whether it reflects timing issues, asset treatment, or something structural. Success means the leadership team can explain the liability in plain English, not accountant hieroglyphics.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Run a Focus Day with the real decision-makers, not the decorative ones</h4>
+      <p>Bring the people who actually shape priorities across sales, projects, workshop and cash. The point is to surface the real frustrations, not to stage a polite boardroom tea party. Success means the core issues list is brutally honest by the end of the day.</p>
+      <span class="urg urg-medium">During EOS Launch</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build an Accountability Chart around quote–build–bill–collect</h4>
+      <p>Start with a practical operating hypothesis: Sales / Estimating, Operations / Production, Finance / Collections, and a true Integrator seat if one actually exists. Success means every critical handoff has one owner and no grey fog.</p>
+      <span class="urg urg-medium">During EOS Launch</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Make the first Rock a cash-conversion Rock</h4>
+      <p>Do not waste the first quarter on vague culture slogans. Pick a Rock such as “Reduce overdue receivables by Rs 3m” or “Cut DSO below 120 days”. Success is numeric and weekly visible.</p>
+      <span class="urg urg-medium">During EOS Launch</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Use the V/TO to answer one hard strategic question</h4>
+      <p>Is Metinox primarily a fabrication specialist, a kitchen-equipment business, or a broader group relationship vehicle? Until that is clarified, growth can become messy and margin can get diluted. Success means strategic focus sharper than “we do a bit of everything”.</p>
+      <span class="urg urg-medium">During EOS Launch</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Metinox looks like a solid but probably under-managed SME, not a failing one. The opportunity is to convert existing commercial legitimacy into cleaner cash, clearer accountability and less owner drag. The obstacle is the usual one: successful people often tolerate operational mess precisely because the business is still making money.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Within 2 weeks: pull aged receivables and assign one accountable owner.</li>
+        <li><span class="sig-num">02</span>Within 30 days: map quote-to-cash process and identify breakpoints.</li>
+        <li><span class="sig-num">03</span>Within 45 days: run a Focus Day with true operating decision-makers.</li>
+        <li><span class="sig-num">04</span>Within 60 days: create first-cut Accountability Chart and weekly scorecard.</li>
+        <li><span class="sig-num">05</span>Within 90 days: run first cash-conversion Rock and start Level 10 rhythm.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="report-footer">
+  <div>METINOX LTD — Comprehensive Company Analysis &amp; EOS Assessment · 31 March 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius · public business listings · historical industrial directory references</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
