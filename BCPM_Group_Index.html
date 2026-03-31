@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BCPM Group Reports</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --line: #dbe4f0;
+      --blue: #1d5fd0;
+      --blue-dark: #1547a0;
+      --blue-soft: #eef4ff;
+      --shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, #ffffff 0%, #f4f7fb 45%),
+        linear-gradient(to bottom, #f4f7fb, #eef3f9);
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 56px auto;
+      padding: 0 24px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .hero {
+      padding: 40px 40px 24px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, #ffffff 0%, #f7fbff 100%);
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 44px;
+      line-height: 1.03;
+      letter-spacing: -0.03em;
+    }
+    .sub {
+      margin: 14px 0 0;
+      max-width: 760px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+    .section {
+      padding: 30px 40px 36px;
+    }
+    .section-title {
+      margin: 0 0 18px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .report-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px 18px 16px;
+      background: #fbfdff;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+    }
+    .report-link:hover {
+      transform: translateY(-2px);
+      border-color: #bfd2f3;
+      box-shadow: 0 10px 22px rgba(29, 95, 208, 0.08);
+      background: #ffffff;
+    }
+    .report-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue-dark);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .arrow {
+      font-size: 20px;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .report-name {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin: 0 0 6px;
+    }
+    .report-meta {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+    .note {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fcfdff;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .footer {
+      padding: 20px 40px 28px;
+      border-top: 1px solid var(--line);
+      background: #fcfdff;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 760px) {
+      .wrap { margin: 28px auto; }
+      .hero, .section, .footer { padding-left: 20px; padding-right: 20px; }
+      h1 { font-size: 34px; }
+      .report-grid { grid-template-columns: 1fr; }
+      .report-name { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="hero">
+        <div class="eyebrow">LMA Growth Partners</div>
+        <h1>BCPM Group</h1>
+        <p class="sub">Selected company intelligence reports prepared for internal review. Use this page as a clean front door to the currently available reports across the group.</p>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Available Reports</h2>
+
+        <div class="report-grid">
+          <a class="report-link" href="IHEML_Company_Analysis_March2026.html">
+            <div class="report-top">
+              <span class="pill">Company Analysis</span>
+              <span class="arrow">→</span>
+            </div>
+            <h3 class="report-name">IHEML</h3>
+            <p class="report-meta">Industrial and Hotel Equipment Manufacturers Limited · March 2026</p>
+          </a>
+
+          <a class="report-link" href="Metinox_Company_Analysis_March2026.html">
+            <div class="report-top">
+              <span class="pill">Company Analysis</span>
+              <span class="arrow">→</span>
+            </div>
+            <h3 class="report-name">Metinox</h3>
+            <p class="report-meta">Metinox Ltd · March 2026</p>
+          </a>
+
+          <a class="report-link" href="SkillRoofing_Company_Analysis_March2026.html">
+            <div class="report-top">
+              <span class="pill">Company Analysis</span>
+              <span class="arrow">→</span>
+            </div>
+            <h3 class="report-name">Skill Roofing</h3>
+            <p class="report-meta">Skill Roofing Limited · March 2026</p>
+          </a>
+        </div>
+
+        <div class="note">
+          Additional group entities can be added here as their reports are completed, such as BCPM Limited and BCPM Properties Ltd.
+        </div>
+      </div>
+
+      <div class="footer">
+        Hosted on GitHub Pages · Thierry Béchard · BCPM Group reports index
+      </div>
+    </div>
+  </div>
+</body>
+</html>
