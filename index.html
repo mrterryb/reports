@@ -5,44 +5,285 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reports</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-      line-height: 1.6;
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --line: #dbe4f0;
+      --blue: #1d5fd0;
+      --blue-dark: #1547a0;
+      --shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
+      --radius: 18px;
     }
-    h1 {
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, #ffffff 0%, #f4f7fb 45%),
+        linear-gradient(to bottom, #f4f7fb, #eef3f9);
+      color: var(--text);
+    }
+
+    .wrap {
+      max-width: 920px;
+      margin: 60px auto;
+      padding: 0 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 36px 36px 20px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(to right, #ffffff, #f8fbff);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
       margin-bottom: 10px;
     }
-    ul {
-      padding-left: 20px;
+
+    h1 {
+      margin: 0;
+      font-size: 42px;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
     }
-    li {
-      margin: 10px 0;
+
+    .sub {
+      margin: 12px 0 0;
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 700px;
     }
-    a {
+
+    .section {
+      padding: 28px 36px 36px;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .report-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .report-list li {
+      margin: 0;
+    }
+
+    .report-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
       text-decoration: none;
-      color: #0b57d0;
+      color: var(--text);
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfdff;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
     }
-    a:hover {
-      text-decoration: underline;
+
+    .report-list a:hover {
+      transform: translateY(-1px);
+      border-color: #bfd2f3;
+      box-shadow: 0 8px 18px rgba(29, 95, 208, 0.08);
+      background: #ffffff;
+    }
+
+    .report-main {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .report-name {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--text);
+    }
+
+    .report-meta {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .arrow {
+      flex-shrink: 0;
+      font-size: 22px;
+      color: var(--blue);
+      transition: transform 0.16s ease;
+    }
+
+    .report-list a:hover .arrow {
+      transform: translateX(3px);
+    }
+
+    .footer {
+      padding: 20px 36px 28px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+      background: #fcfdff;
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        margin: 28px auto;
+      }
+
+      .header,
+      .section,
+      .footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .report-name {
+        font-size: 16px;
+      }
+
+      .report-meta {
+        font-size: 13px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Company Reports</h1>
-  <p>Select a report below:</p>
+  <div class="wrap">
+    <div class="card">
+      <div class="header">
+        <div class="eyebrow">LMA Growth Partners</div>
+        <h1>Company Reports</h1>
+        <p class="sub">Select a report below. Clean, direct, no circus.</p>
+      </div>
 
-  <ul>
-    <li><a href="IHEML_Company_Analysis_March2026.html">IHEML Company Analysis — March 2026</a></li>
-    <li><a href="Mauritius_Strategic_Risk_Assessment_March11_2026.html">Mauritius Strategic Risk Assessment — March 11 2026</a></li>
-    <li><a href="SkillRoofing_Company_Analysis_March2026.html">SkillRoofing Company Analysis — March 2026</a></li>
-    <li><a href="DanPoly_Company_Analysis_March2026.html">DanPoly Company Analysis - March 2026</a></li>
-    <li><a href="Metinox_Company_Analysis_March2026.html">Metinox Company Analysis — March 2026</a></li>
-    <li><a href="Transmetal_Company_Analysis_March2026.html">Transmetal Company Analysis — March 2026</a></li>
-    <li><a href="Transmetal_Executive_Summary_March2026.html">Transmetal Executive Summary — March 2026</a></li>
-    <li><a href="Transmetal_Strategic_Risk_Assessment_March2026.html">Transmetal Strategic Risk Assessment — March 2026</a></li>
-  </ul>
+      <div class="section">
+        <h2 class="section-title">Available Reports</h2>
+        <ul class="report-list">
+          <li>
+            <a href="IHEML_Company_Analysis_March2026.html">
+              <div class="report-main">
+                <span class="report-name">IHEML Company Analysis</span>
+                <span class="report-meta">March 2026</span>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="Mauritius_Strategic_Risk_Assessment_March11_2026.html">
+              <div class="report-main">
+                <span class="report-name">Mauritius Strategic Risk Assessment</span>
+                <span class="report-meta">March 2026</span>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="SkillRoofing_Company_Analysis_March2026.html">
+              <div class="report-main">
+                <span class="report-name">Skill Roofing Company Analysis</span>
+                <span class="report-meta">March 2026</span>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="DanPoly_Company_Analysis_March2026.html">
+              <div class="report-main">
+                <span class="report-name">Dan Poly Company Analysis</span>
+                <span class="report-meta">March 2026</span>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="Metinox_Company_Analysis_March2026.html">
+              <div class="report-main">
+                <span class="report-name">Metinox Company Analysis</span>
+                <span class="report-meta">March 2026</span>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="Transmetal_Company_Analysis_March2026.html">
+              <div class="report-main">
+                <span class="report-name">Transmetal Company Analysis</span>
+                <span class="report-meta">March 2026</span>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="Transmetal_Executive_Summary_March2026.html">
+              <div class="report-main">
+                <span class="report-name">Transmetal Executive Summary</span>
+                <span class="report-meta">March 2026</span>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="Transmetal_Strategic_Risk_Assessment_March2026.html">
+              <div class="report-main">
+                <span class="report-name">Transmetal Strategic Risk Assessment</span>
+                <span class="report-meta">March 2026</span>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer">
+        Hosted on GitHub Pages · Thierry Béchard Reports Library
+      </div>
+    </div>
+  </div>
 </body>
 </html>
