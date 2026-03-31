@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill Roofing — Comprehensive Company Analysis — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s, background 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; border-top-left-radius: 8px; border-top-right-radius: 8px; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; background: var(--steel-ultra); box-shadow: inset 0 0 0 1px var(--steel-pale); }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: #dceeff; color: var(--steel); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Construction Materials &amp; Roofing Systems</span>
+    <span class="badge badge-type">Private Company · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">31 March 2026</span>
+  </div>
+  <h1>Skill Roofing:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">SKILL ROOFING LIMITED · Company intelligence · Financial ratios · EOS implementation assessment · Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">MUR 68,009,033</div>
+      <div class="stat-delta">Year ended 30 June 2025 · Mauritius Rupee</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit Margin</div>
+      <div class="stat-value emerald">9.8%</div>
+      <div class="stat-delta">Healthy bottom-line conversion for a specialist contractor</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.8 / 10</div>
+      <div class="stat-delta">Established operator with visible execution leverage points · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Supplier Stretch</div>
+      <div class="stat-delta">Trade payables imply roughly 152 days of COGS funding</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>Skill Roofing — Company Analysis &amp; EOS Assessment · 31 March 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A long-established specialist roofing contractor with solid profits and decent liquidity, but with a balance sheet that is much thinner than its operating scale and a working-capital model leaning heavily on suppliers.</p>
+
+  <p class="body-text">Skill Roofing Limited is a private Mauritian company incorporated on 21 January 1994 and registered at Lot No 4, Industrial Zone, Geoffroy, Bambous. Public-facing material positions the company as a specialist in pre-painted steel and aluminium roof coverings, metal works, partitions, insulation, and steel-building related work. The business presents itself as having operated continuously since 1994 and as a family business founded by Bernard Gallet.</p>
+  <p class="body-text">The corporate ownership picture is simple at the immediate level and fuzzy at the ultimate level. The CBRIS extract shows Skillsons Ltd holding 100% of the shares, while the operating directors are Bernard Gallet and Marie Sylvie Audrey Gallet. That strongly suggests family control, but the beneficial-owner picture cannot be fully completed from the documents currently in hand.</p>
+  <p class="body-text">Financially, the company is not distressed. FY2025 revenue reached MUR 68,009,033, gross margin was a robust 42.2%, and net profit after tax was MUR 6,660,966. The catch is in the structure underneath: equity is only MUR 6,608,333 against total liabilities of MUR 28,444,980, and trade payables sit at MUR 16,329,851, equivalent to around 152 days of cost of sales. That is not a collapse signal, but it is exactly the kind of hidden operational tension that makes EOS relevant.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Good Business, Thin Shock Absorbers</div>
+    Skill Roofing looks like a competent, profitable specialist contractor rather than a mess. The real issue is not obvious commercial weakness; it is the combination of thin capital, large supplier funding, and likely founder-centred decision flow. That is a very different EOS sales conversation. The entry point is not “you are chaotic.” It is “you have built something real, but you are carrying more execution and cash-cycle risk than your profit line suggests.”
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Thirty-plus years of operating history</strong>, clear specialist positioning in metal roofing, steel works and related installation, visible local contact infrastructure, and a profit profile that suggests the company is not competing purely on suicidal pricing.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Working-capital dependence on suppliers</strong> is the biggest red flag. Equity is thin for the level of activity, current liabilities are high relative to the capital base, and retained earnings are shown at nil despite profitable trading.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Established founder-led family business entering the “good company, fragile structure” zone.</strong> These businesses often need clearer accountability, better measurables, and leadership decongestion before the hidden bottlenecks start biting.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A mature Mauritian roofing and steel-works operator that appears commercially credible, family-influenced, and operationally specialised.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Skill Roofing Limited was incorporated on 21 January 1994 under file number C12213 and BRN C06012213. The registered office is Lot No 4 Industrial Zone Geoffroy, Bambous, Mauritius. The company is listed as a live private domestic company. Stated capital totals MUR 500,000, represented by 50,000 ordinary shares at par value MUR 10. The company secretary is Box Office Ltd, appointed on 24 October 2017.</p>
+  <p class="body-text">The public website states that the business was created by Bernard Gallet and introduced a new concept in Mauritius for fixing pre-painted steel and aluminium roof coverings. The same source describes the company as a family business and highlights long employee tenure, which matters because this is a craft-and-installation business where know-how retention is a genuine advantage.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Skill Roofing Limited</h4>
+        <div class="ec-sub">Operating Company</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Incorporated</span><span class="mv">21 Jan 1994</span></div>
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">Live</span></div>
+        <div class="ec-metric"><span class="mk">BRN</span><span class="mv">C06012213</span></div>
+        <div class="ec-metric"><span class="mk">Registered Office</span><span class="mv">Geoffroy, Bambous</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Skillsons Ltd</h4>
+        <div class="ec-sub">Immediate Shareholder</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Ownership</span><span class="mv">50,000 / 50,000 shares</span></div>
+        <div class="ec-metric"><span class="mk">Economic Stake</span><span class="mv">100%</span></div>
+        <div class="ec-metric"><span class="mk">Public Detail</span><span class="mv warn">Not established from supplied pack</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Control Picture</h4>
+        <div class="ec-sub">Interpretation</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Directors</span><span class="mv">B. Gallet / A. Gallet</span></div>
+        <div class="ec-metric"><span class="mk">Operating Signal</span><span class="mv">Family-led</span></div>
+        <div class="ec-metric"><span class="mk">Ultimate BO</span><span class="mv warn">Not fully evidenced</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Ownership Note</div>
+    Immediate ownership is clear. Ultimate beneficial ownership is not. For a real prospecting conversation, that matters because the decision-maker may sit one layer above the operating company. This is a document-gathering gap, not a reason to guess.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Bernard Gallet — Director</h4>
+      <p>Appointed on incorporation, 21 January 1994. Public sources identify him as founder/owner. That makes him the most likely historical visionary and still potentially the central decision node.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Marie Sylvie Audrey Gallet — Director</h4>
+      <p>Appointed 11 July 2007. Presence of a second Gallet director reinforces the family-business pattern and suggests continuity beyond the founder seat.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Box Office Ltd — Secretary</h4>
+      <p>Corporate secretarial support since 24 October 2017. No auditor is shown in the supplied extract, which is worth noting but not unusual in simplified private-company public extracts.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">The legal registration shows the activity simply as job contracting, which tells you almost nothing. The website and public executive profile are more useful: Skill Roofing positions itself around pre-painted steel and aluminium roof coverings, metal works, partitions, insulation, roof repairs, steel buildings, and related installation/execution capability. In plain English: this is a specialised building-envelope and light steel execution business, not just a commodity material reseller.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">The core base is Bambous / Geoffroy. The public website lists the same operating location and telephone contact, suggesting the registered office is also the real business hub. No export activity is evidenced in the public material reviewed. The address and project references imply a domestic Mauritius footprint, likely project-based across the island.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Signal</div>
+    The company has a functional website and directory presence, but the site is basic, Wix-built, and light on structured corporate information. That does not hurt execution, but it does signal a business that has probably grown operationally more than institutionally.
+  </div>
+</div>
+</div>
+
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS extract dated 31 March 2026 for the year ended 30 June 2025, in Mauritius Rupee. The extract provides the latest filed summary accounts, not full audited notes.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    The public extract gives the latest summary profit and loss statement and balance sheet only. It does not include detailed notes, ageing schedules, related-party disclosures, or prior-year comparative columns in the same extract view. That means the analysis here is useful and directionally strong, but not a substitute for a proper management-account review.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>MUR 68,009,033</td><td>100.0%</td><td>Respectable scale for a specialised Mauritian contractor.</td></tr>
+        <tr><td>Cost of Sales</td><td>MUR 39,335,637</td><td>57.8%</td><td>Materials, execution cost and project delivery spend consume a little under three-fifths of revenue.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>MUR 28,673,396</td><td>42.2%</td><td>Very solid gross margin for this type of trade-specialist business.</td></tr>
+        <tr><td>Other Income</td><td>MUR 1,240,927</td><td>1.8%</td><td>Helpful but not dominant; core profit still comes from operations.</td></tr>
+        <tr><td>Distribution Costs</td><td>MUR 0</td><td>0.0%</td><td>No separate distribution line disclosed in the summary.</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>MUR 18,339,399</td><td>27.0%</td><td>Heavy overhead line. Not disastrous, but big enough to deserve unpacking by function and owner.</td></tr>
+        <tr class="heat-warn"><td>Other Expenses</td><td>MUR 2,865,355</td><td>4.2%</td><td>Meaningful non-admin expense bucket. This line needs decoding in a live diagnostic.</td></tr>
+        <tr><td>Finance Costs</td><td>MUR 479,300</td><td>0.7%</td><td>Low relative to earnings; debt is present but not crushing.</td></tr>
+        <tr><td>Profit Before Tax</td><td>MUR 8,230,269</td><td>12.1%</td><td>Healthy pre-tax profitability.</td></tr>
+        <tr><td>Tax Expense</td><td>MUR 1,569,303</td><td>2.3%</td><td>Normal tax drag.</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>MUR 6,660,966</strong></td><td><strong>9.8%</strong></td><td>Good final result. This is a business earning real money, not merely surviving.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-current assets</td><td>Property, Plant and Equipment</td><td>MUR 8,009,956</td><td>Modest fixed-asset base; suggests a project business rather than an asset-heavy manufacturer.</td></tr>
+        <tr><td>Current assets</td><td>Cash and Cash Equivalents</td><td>MUR 10,850,457</td><td>Strong cash balance on the face of it.</td></tr>
+        <tr class="heat-warn"><td>Current assets</td><td>Trade and Other Receivables</td><td>MUR 10,792,344</td><td>Receivables are material; collection discipline matters.</td></tr>
+        <tr><td>Current assets</td><td>Inventories</td><td>MUR 5,400,556</td><td>Reasonable stock holding for a roofing / metal project business.</td></tr>
+        <tr><td>Current assets</td><td>Total Current Assets</td><td>MUR 27,043,357</td><td>Current assets exceed current liabilities, but not by a giant margin.</td></tr>
+        <tr><td>Equity</td><td>Share Capital</td><td>MUR 500,000</td><td>Thin formal capital.</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Retained Earnings</td><td>MUR 0</td><td>Nil retained earnings is odd in a profitable company and should be explained.</td></tr>
+        <tr class="heat-warn"><td>Equity</td><td>Other Reserves</td><td>MUR 6,108,333</td><td>Reserves carry the weight of net worth; composition matters.</td></tr>
+        <tr class="heat-warn"><td>Equity</td><td>Total Equity</td><td>MUR 6,608,333</td><td>Too slim relative to annual revenue and total liabilities.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Long Term Borrowings</td><td>MUR 5,170,881</td><td>Borrowing exists but is not extreme in earnings terms.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Deferred Tax</td><td>MUR 2,069,508</td><td>Standard deferred tax line.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Long Term Provisions</td><td>MUR 2,996,369</td><td>Provisions are meaningful and need operational interpretation.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Total Non-current Liabilities</td><td>MUR 10,236,758</td><td>Long-tail obligations are significant versus equity.</td></tr>
+        <tr><td>Current liabilities</td><td>Short Term Borrowings</td><td>MUR 244,850</td><td>Small short-term debt component.</td></tr>
+        <tr><td>Current liabilities</td><td>Current Tax Payable</td><td>MUR 1,633,521</td><td>Normal current tax build.</td></tr>
+        <tr class="heat-critical"><td>Current liabilities</td><td>Trade and Other Payables</td><td>MUR 16,329,851</td><td>Huge supplier / creditor funding line. This is the big one.</td></tr>
+        <tr class="heat-warn"><td>Current liabilities</td><td>Total Current Liabilities</td><td>MUR 18,208,222</td><td>Current liabilities are manageable only because supplier terms appear stretched.</td></tr>
+        <tr><td>Total</td><td>Total Assets</td><td>MUR 35,053,313</td><td>Lean asset base relative to turnover.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">No registered charges are shown in the supplied CBRIS extract. That is interesting because borrowings do appear on the balance sheet. The cleanest reading is that current financing may be unsecured, non-charge-backed, or simply not visible through historical registered charges in this extract. Either way, the absence of registered charges removes one obvious balance-sheet alarm but does not cancel the working-capital risk.</p>
+</div>
+</div>
+
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks below are practical screening ranges used for Mauritius manufacturing / specialised construction SMEs in advisory work: Green = healthy, Amber = watch, Red = critical concern. They are decision-useful, not statutory thresholds.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.49×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.30× – 2.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">On paper the company covers its short-term obligations. The catch is that the ratio is flattered by very large trade payables and therefore says less than it first appears.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.19×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.90× – 1.30×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Even excluding inventory, near-term liquidity is adequate. That is the good news. The bad news is that this comfort can vanish quickly if creditors tighten terms.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">42.2%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">25% – 35%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Strong</span></span></div>
+      <span class="ratio-interpret">This is the standout number. Skill Roofing appears to sell differentiated execution, not just sheets and screws. Gross margin says the market values what they do.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">12.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">6% – 10%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Strong</span></span></div>
+      <span class="ratio-interpret">The company still keeps good profit after covering operating overheads. That means the model works. It also means cash discipline, not growth, is the main lever.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">9.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">4% – 8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Strong</span></span></div>
+      <span class="ratio-interpret">Nearly 10% net margin is excellent for a specialist contractor in Mauritius. It weakens any “we just need more sales” story and strengthens the case for tightening management structure instead.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Returns on Capital</h4>
+      <div class="ratio-row"><span class="ratio-label">ROA</span><span class="ratio-val ok">19.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">ROE</span><span class="ratio-val warn">100.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Read carefully</span></span></div>
+      <span class="ratio-interpret">ROA is strong. ROE is spectacularly high, but for the wrong reason: equity is thin. That is not a medal. It is a sign the company is doing a lot with not much cushion.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt to Equity</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.82×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.30× – 0.80×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Borrowings themselves are not terrifying. The issue is that they sit on top of a thin equity base. This business can carry debt; it just does not have much margin for a bad season or a dispute-heavy project cycle.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">18.2×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt; 4.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Earnings comfortably cover finance costs. So no, debt service is not the current fire. Working capital and leadership capacity are the more likely future fires.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.94×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.20× – 1.80×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Strong</span></span></div>
+      <span class="ratio-interpret">The company generates a lot of revenue relative to assets employed. That fits a specialist contractor model with execution know-how as the core asset.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">7.28×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">4.0× – 8.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Inventory appears reasonably controlled. Stock is not where the cash is getting stuck.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debtor Days / DSO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">58 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Collections are not catastrophic, but they are not crisp either. In project businesses, this is where good profit quietly turns into cash stress.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days / DPO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">152 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">45 – 90 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">This is the number that matters most. The company is effectively using creditors as a financing layer. That can work right up until one supplier stops playing nice.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    DPO at roughly 152 days is the loudest warning sign, because it says a large chunk of the company’s operating oxygen comes from supplier patience. The second is total equity of only MUR 6,608,333 against MUR 68,009,033 of annual revenue. Fixing these structural issues will probably create more resilience than chasing another revenue surge.
+  </div>
+</div>
+</div>
+
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">One core segment, one obvious positioning angle: specialist roofing and steel-envelope execution with a long local operating history.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Residential Roofing</h4>
+        <div class="ec-sub">Homeowners / Renovations</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Offer</span><span class="mv">Steel / aluminium roof coverings</span></div>
+        <div class="ec-metric"><span class="mk">Buyer Logic</span><span class="mv">Trust, durability, finish</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Price comparison pressure</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Commercial / Industrial</h4>
+        <div class="ec-sub">Warehouses / Buildings / Retrofit</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Offer</span><span class="mv">Metal works, steel buildings, repairs</span></div>
+        <div class="ec-metric"><span class="mk">Edge</span><span class="mv">Experience and specialist crew continuity</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Project execution bottlenecks</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Related Envelope Works</h4>
+        <div class="ec-sub">Partitions / Insulation / Custom</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Offer</span><span class="mv">Adjacency services</span></div>
+        <div class="ec-metric"><span class="mk">Strategic Value</span><span class="mv">Higher-margin specialist bundle</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Founder dependency in quoting / decisions</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text">The first defensible advantage is longevity. In roofing and specialised steel work, 30+ years of survival matters because it implies reference projects, supplier credibility and practical know-how. The second is skill continuity: the company publicly claims unusually long employee tenure, which is not easy to replicate in a craft-heavy execution business. The third is focused positioning. The business is not trying to be everything in construction; it appears to sit in a specialised slice where competence is visible and margins can still exist.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li>Demand for lighter, faster-to-install roofing and steel building systems remains structurally attractive in Mauritius.</li>
+    <li>Construction and project businesses are brutally exposed to labour quality, site coordination and rework risk; margin can disappear fast when leadership bandwidth is thin.</li>
+    <li>Clients increasingly expect better finishing, insulation and system quality, which favours specialists over random generalists.</li>
+    <li>Working-capital pressure in the local market can quietly punish even profitable contractors through slow debtor collection and stretched supplier terms.</li>
+    <li>A basic digital presence is no longer fatal, but it does cap credibility with certain commercial buyers and consultants.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Competitive Gap</div>
+    Skill Roofing’s public positioning is credible, but the digital presentation is still old-school and founder-centric. In a tighter market, that can become a subtle drag on higher-value commercial opportunities and recruitment.
+  </div>
+</div>
+</div>
+
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension below is rated from public data, corporate records and the financial pattern visible in the latest filing.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Headcount is not publicly confirmed, so no fantasy here. Still, the revenue scale, 30-year history and service complexity strongly suggest a real operating company rather than a micro-operator with a pickup truck and a prayer.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">There is no public evidence of modern management systems, but the existence of a maintained website, visible founder profile and continuity of corporate filings suggests this is not a closed bunker either. Open-minded enough to engage; not yet proven willing to install hard accountability.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">This is where the fit is strongest. Good gross margin, good net margin, big payables, thin equity, and likely founder-led operational concentration — classic signs of a company that has grown into complexity and now needs stronger internal structure.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The company looks competent operationally, but the financial structure hints that process discipline around cash, quoting, collections or project handoff is not fully institutionalised. Good companies often hide messy inner plumbing.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">The public claim that employees average more than two decades of service, if broadly true, is a huge signal. That usually points to craft pride, loyalty and continuity. It can also point to informal power structures. Both are real.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">The governance picture suggests a small family leadership circle. That usually means decisions can be fast, but ownership of roles may be blurry and too much may still route through one or two people.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The market identity is clear enough: specialist roofing and related metal works. What is not visible publicly is a sharper strategic direction around growth, capacity, margins, customer mix or leadership succession.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">There is simply no evidence of structured meeting rhythm. In founder-led Mauritian SMEs, reactive coordination is still the default until proven otherwise. I would assume firefighting until shown otherwise.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.8</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Good Candidate with Real Leverage</h4>
+      <p>Skill Roofing does not look like a turnaround case. It looks like the more interesting kind of EOS candidate: a real business that has probably succeeded through technical competence and founder drive, but now carries avoidable strain in cash cycle, accountability and leadership concentration. The gating factor is whether leadership sees those issues as strategic rather than merely “normal business headaches.”</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Skill Roofing</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>The business needs a brutally practical weekly view of quoted jobs, awarded jobs, cash collected, aged receivables, supplier exposure, site issues and labour capacity. Right now the balance sheet is telling us the scorecard story after the damage.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>Founder-led specialists usually blur sales, estimating, purchasing, site execution and collections. A real Accountability Chart would expose where the business is still person-dependent instead of seat-dependent.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks</h4>
+      <p>The first 90 days should not be philosophical. They should attack debtor discipline, creditor discipline, job costing visibility and one leadership bottleneck that everyone already knows is there.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>This company likely has recurring “same movie, different week” issues hiding under operational normality. IDS is useful precisely because profitable founder-led businesses are excellent at tolerating problems for years.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>If there is no structured weekly leadership rhythm, this is low-hanging fruit. It turns tribal knowledge into shared visibility and stops everything from living in Bernard’s head or in corridor conversations.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision / Traction Organizer</h4>
+      <p>The business identity is clear, but the next-stage strategic direction is not. V/TO would force clarity around ideal projects, profit expectations, capacity ceilings, and what the company should stop doing.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total: four financial / operational and four EOS-specific. Sequence matters. First stabilise the cash and control picture; then institutionalise the business without breaking what already works.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Attack creditor stretch before it attacks you</h4>
+      <p>Have finance and leadership map the top 10 suppliers by exposure, current days outstanding, and dependency risk within 14 days. The goal is not to pay everyone overnight like a hero in a bad movie. The goal is to identify who can hurt the business first and create a controlled reduction plan.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Decode the other-expense and reserves lines</h4>
+      <p>The CFO-equivalent or external accountant should reconcile admin costs, other expenses, other reserves and nil retained earnings into something leadership can actually understand. Success looks like a management pack where nobody needs a Ouija board to interpret the equity section.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Install project-by-project cash visibility</h4>
+      <p>For every major job, track quote, revised budget, materials committed, labour used, billing issued, cash collected and margin left. Give one named owner responsibility for the report every week. This is where hidden profitability leakage usually lives.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Formalise receivables discipline</h4>
+      <p>Set a weekly aged-debt review with clear escalation rules, not vague hope. Success means no receivable over agreed threshold days without a documented action owner and next step. In this business, cash collection is operations wearing a finance hat.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Run a real Focus Day around leadership load and cash-cycle pain</h4>
+      <p>Do not begin with motivational wallpaper. Start with the practical truth: where jobs stall, where decisions bunch up, where supplier pressure shows up, and where the founder is still the unofficial answer to everything.</p>
+      <span class="urg urg-medium">During EOS Kickoff</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the first Accountability Chart hypothesis</h4>
+      <p>At minimum, separate Sales / Estimating, Operations / Sites, Procurement / Supply, Finance / Administration and Leadership. The point is to expose role confusion fast. This alone will reveal whether the company is organised by seats or by personalities.</p>
+      <span class="urg urg-medium">During EOS Kickoff</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Make the first Rock a cash-and-margin control Rock</h4>
+      <p>Not “improve communication.” That is fluffy nonsense. The first Rock should target a concrete result such as reducing DPO concentration risk, tightening DSO, and installing weekly job margin visibility for all active major projects.</p>
+      <span class="urg urg-medium">First 90 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Use the V/TO to answer one hard strategic question</h4>
+      <p>What business should Skill Roofing deliberately become over the next three years: premium specialist installer, broader steel-envelope contractor, or more process-driven scalable operator? The answer changes hiring, pricing, and structure.</p>
+      <span class="urg urg-medium">First 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Skill Roofing looks like a good underlying business with more structural fragility than its profit line admits. That is exactly why it is interesting. The opportunity is not to rescue the company; it is to help leadership convert long-built know-how into a sturdier, less person-dependent, better-controlled machine.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Within 2 weeks: validate supplier exposure, debtor ageing and the meaning of reserves / retained earnings.</li>
+        <li><span class="sig-num">02</span>Within 30 days: map leadership roles, decision bottlenecks and live-project reporting gaps.</li>
+        <li><span class="sig-num">03</span>Within 45 days: run Focus Day and surface the real issues list, not the polite version.</li>
+        <li><span class="sig-num">04</span>Within 60 days: install first weekly scorecard and Level 10 meeting rhythm.</li>
+        <li><span class="sig-num">05</span>Within 90 days: launch first Rocks around cash discipline, accountability and project-margin visibility.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="report-footer">
+  <div>Skill Roofing — Comprehensive Company Analysis &amp; EOS Assessment · 31 March 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (31 March 2026) · Skill Roofing public website · LinkedIn profile snippet · Yelo Mauritius directory</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
