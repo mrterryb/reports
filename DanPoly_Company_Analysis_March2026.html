@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DanPoly_Company_Analysis_March2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; background: linear-gradient(180deg, var(--steel-ultra) 0%, rgba(194,223,242,0.35) 100%); box-shadow: inset 0 -2px 0 var(--steel); }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel); color: #fff; }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+
+</style>
+</head>
+<body>
+
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Building Materials &amp; Specialist Polycarbonate Solutions</span>
+    <span class="badge badge-type">Private Company · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">31 March 2026</span>
+  </div>
+  <h1>Dan Poly:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">DAN POLY CO. LTD · Company intelligence · Financial ratios · EOS implementation assessment · Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">MUR 21,332,445</div>
+      <div class="stat-delta">Year ended 30 June 2025 · Mauritius Rupee</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit Margin</div>
+      <div class="stat-value emerald">12.3%</div>
+      <div class="stat-delta">PAT of MUR 2,626,952 on MUR 21,332,445 revenue</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">5.6 / 10</div>
+      <div class="stat-delta">Profitable owner-led SME with likely execution ceiling</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">None Acute</div>
+      <div class="stat-delta">Main risk is key-person dependence, not financial distress</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>DAN POLY CO. LTD — Company Analysis &amp; EOS Assessment · 31 March 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">Dan Poly is not a distressed turnaround story at all; it is a profitable, cash-rich specialist Mauritian SME that looks more likely to be constrained by management bandwidth than by money.</p>
+
+  <p class="body-text">DAN POLY CO. LTD was incorporated on 9 July 2004 and is registered at Lot 16, Morcellement Domain Gros Cailloux, Mauritius. The CBRIS business descriptions are generic wholesale and retail, but public-facing materials position the company much more specifically as a polycarbonate, façade and skylight specialist serving Mauritius and the wider Indian Ocean context.</p>
+  <p class="body-text">Ownership is simple and concentrated: Christian Bellouard holds 75 ordinary shares and Marie Blanche Madeleine Bellouard holds 25 ordinary shares. That means this is a tight owner-led business with very little ambiguity on ultimate control, but likely a high degree of decision concentration as well.</p>
+  <p class="body-text">Financially, the business is in good shape. FY2025 revenue reached MUR 21,332,445, net profit after tax was MUR 2,626,952, current ratio was 2.59×, quick ratio 2.17×, and no borrowings were reported. That combination screams operationally sound business with room to grow — but also a company that can easily become dependent on a few people, a few routines, and a few informal ways of working.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Healthy Business, Likely Ceiling</div>
+    Dan Poly does not appear to need EOS because of financial pain. It appears to need EOS because profitable owner-led businesses like this often hit the exact kind of ceiling EOS is built for: priorities spread across too many fronts, decisions flowing through one or two people, process knowledge living in heads rather than in seats, and growth becoming harder than it should be.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Specialist positioning</strong> in polycarbonate, façade and skylight solutions, a profitable FY2025, fast collections, and a light-asset model that converts revenue into cash unusually well for a Mauritian SME.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p>No acute balance-sheet problem is visible. The real vulnerability is <strong>concentration risk</strong>: owner dependence, specialist know-how concentration, and the possibility that the business remains too personality-driven.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Good businesses make the best EOS candidates</strong> when they want to scale without chaos. Dan Poly looks disciplined enough to implement, but informal enough to benefit materially from structure.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A compact, profitable, owner-led specialist solutions business that sits between trading, technical product representation and project execution.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Dan Poly Co. Ltd was incorporated on 09/07/2004 under file number C51776 and BRN C07051776. Its registered office is Lot 16 Morcellement Domain Gros Cailloux, Mauritius. The company is live. Its latest available financials are for the year ended 30/06/2025, approved on 29/12/2025.</p>
+  <p class="body-text">CBRIS categorises the business broadly as a general retailer and non-specialised wholesaler of foodstuff and non-foodstuff. That description is clearly too generic to be commercially useful. Public-facing materials show the real market identity more accurately: specialist polycarbonate sheets, daylighting, façade and skylight solutions, and representation of DANPAL-related products.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header"><h4>Christian Bellouard</h4><div class="ec-sub">Shareholder / Director</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares</span><span class="mv">75</span></div>
+        <div class="ec-metric"><span class="mk">Ownership</span><span class="mv ok">75%</span></div>
+        <div class="ec-metric"><span class="mk">Control signal</span><span class="mv warn">Primary decision centre</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>Marie Blanche Madeleine Bellouard</h4><div class="ec-sub">Shareholder / Director</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares</span><span class="mv">25</span></div>
+        <div class="ec-metric"><span class="mk">Ownership</span><span class="mv">25%</span></div>
+        <div class="ec-metric"><span class="mk">Control signal</span><span class="mv">Aligned family ownership</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>Ownership Implication</h4><div class="ec-sub">Assessment note</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Complexity</span><span class="mv ok">Low</span></div>
+        <div class="ec-metric"><span class="mk">Speed</span><span class="mv ok">Potentially high</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv danger">Key-person dependency</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Ownership Note</div>
+    Unlike group structures with layers of holding companies and cousin entities, Dan Poly’s legal ownership is refreshingly simple. That removes political complexity. It does not remove management complexity. In businesses like this, the bottleneck is usually not ownership; it is bandwidth, priorities and clarity of roles.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Christian Bellouard — Director</h4>
+      <p>Appointed on 22/02/2008. Majority shareholder and likely key commercial / decision figure. Public brand visibility suggests a strong founder-owner imprint on the company.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Marie Blanche Madeleine Bellouard — Director</h4>
+      <p>Appointed on 01/07/2016. Co-owner and board-level counterpart. The compact leadership structure can be efficient but may also blur strategic and day-to-day roles.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Management Observation</h4>
+      <p>No broader executive bench is visible in public registry data. That usually means either a very lean team or a business still organised around owner control rather than around an explicit leadership team.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Public-facing descriptions position Dan Poly as a specialist in polycarbonate sheets, façades, skylights and related daylighting / architectural envelope solutions. A DANPAL-linked case study also points to external louvre and sun-shading applications delivered in Mauritius. That is a much more attractive commercial story than the bland CBRIS category suggests: this looks like solution-led specification work, not just simple resale.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Legally the company is registered in Gros Cailloux. Public contact points show visibility around Triolet / Bon Air Road and a Petite Rivière / Gros Cailloux presence. Market reach appears primarily Mauritian, with public wording implying a broader Indian Ocean representation footprint for certain product lines.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Note</div>
+    Dan Poly does have a website and social footprint, which is already better than many Mauritian SMEs. But the public identity appears fragmented across addresses and pages, suggesting the external brand could still be sharpened.
+  </div>
+</div>
+</div>
+
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS financial summary for year ended 30 June 2025, currency Mauritius Rupee. Ratios and commentary are based on filed summary figures only.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    This is private-company summary data, not a full audited report pack. The filing provides the standard summarised P&amp;L and balance sheet lines, but not detailed notes, segment analysis, cash-flow statement or management commentary. Prior-year comparatives exist in filing history, but only the latest-year summary was provided in the extract used for this report.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>MUR 21,332,445</td><td>100.0%</td><td>Healthy medium-enterprise revenue scale in Mauritian SME terms.</td></tr>
+        <tr><td>Cost of Sales</td><td>MUR 13,888,244</td><td>65.1%</td><td>Material input / resale component is significant but leaves solid room above the line.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>MUR 7,444,201</td><td>34.9%</td><td>Strong gross margin for a specialist product-and-solution business.</td></tr>
+        <tr><td>Other Income</td><td>MUR 0</td><td>0.0%</td><td>No dependence on one-off income props.</td></tr>
+        <tr><td>Distribution Costs</td><td>MUR 0</td><td>0.0%</td><td>No separate distribution cost disclosed.</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>MUR 3,811,974</td><td>17.9%</td><td>Admin spend absorbs 17.9% of revenue; not alarming, but worth unpacking operationally.</td></tr>
+        <tr><td>Other Expenses</td><td>MUR 344,473</td><td>1.6%</td><td>Modest miscellaneous expense load.</td></tr>
+        <tr><td>Finance Costs</td><td>MUR 59,815</td><td>0.3%</td><td>Very light finance burden.</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>MUR 3,227,939</td><td>15.1%</td><td>Excellent pre-tax profitability for a privately held SME.</td></tr>
+        <tr><td>Tax Expense</td><td>MUR 600,987</td><td>2.8%</td><td>Normal tax drag relative to earnings.</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>MUR 2,626,952</strong></td><td><strong>12.3%</strong></td><td>Good business. Full stop. This is not a rescue case.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-current assets</td><td>Property, Plant and Equipment</td><td>MUR 834,629</td><td>Lean fixed-asset base. This is not an asset-heavy industrial model.</td></tr>
+        <tr><td>Current assets</td><td>Cash and Cash Equivalents</td><td>MUR 6,945,303</td><td>Very healthy cash position for the size of the company.</td></tr>
+        <tr><td>Current assets</td><td>Trade and Other Receivables</td><td>MUR 432,471</td><td>Low debtors balance aligns with very low DSO.</td></tr>
+        <tr class="heat-ok"><td>Current assets</td><td>Inventories</td><td>MUR 1,420,947</td><td>Inventory is meaningful but not excessive relative to turnover.</td></tr>
+        <tr><td>Current assets</td><td>Total Current Assets</td><td>MUR 8,798,721</td><td>Short-term resource base is strong relative to current liabilities.</td></tr>
+        <tr class="heat-ok"><td>Total assets</td><td>Total Assets</td><td>MUR 9,633,350</td><td>Compact balance sheet generating a lot of earnings.</td></tr>
+        <tr><td>Equity</td><td>Share Capital</td><td>MUR 10,000</td><td>Nominal stated capital; the real substance sits in retained earnings.</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Retained Earnings</td><td>MUR 5,714,520</td><td>Internally generated capital has built the balance sheet.</td></tr>
+        <tr><td>Equity</td><td>Total Equity</td><td>MUR 5,724,520</td><td>Healthy equity base for a business of this scale.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Deferred Tax</td><td>MUR 505,569</td><td>Only disclosed non-current liability item.</td></tr>
+        <tr><td>Current liabilities</td><td>Current Tax Payable</td><td>MUR 600,987</td><td>Tax accrual consistent with profit generation.</td></tr>
+        <tr class="heat-warn"><td>Current liabilities</td><td>Trade and Other Payables</td><td>MUR 2,802,274</td><td>Supplier and operating creditors fund a useful portion of the working-capital cycle.</td></tr>
+        <tr><td>Current liabilities</td><td>Total Current Liabilities</td><td>MUR 3,403,261</td><td>Covered 2.6 times by current assets.</td></tr>
+        <tr><td>Total liabilities</td><td>Total Liabilities</td><td>MUR 3,908,830</td><td>Manageable liability load and no reported borrowings.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">No charges were listed in the supplied CBRIS extract. That is consistent with the no-borrowings picture seen in the filed balance sheet. The company therefore appears to be operating without a visible registered security burden, which materially reduces financial fragility.</p>
+
+  <div class="alert alert-ok">
+    <div class="alert-title">Financial Readout</div>
+    This balance sheet is clean. Cash is strong, debtors are tiny, borrowings are nil, and profitability is more than respectable. The conversation with Dan Poly should not start with “How do we save this business?” It should start with “How do we make sure this good business does not get capped by structure?”
+  </div>
+</div>
+</div>
+
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks used here are practical Mauritius SME manufacturing / specialist-trade heuristics: Green = healthy, Amber = watch, Red = critical concern. They are meant for diagnostic conversation, not fake precision theatre.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">2.59×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.5×–2.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">Liquidity is comfortably above the danger zone. Dan Poly has enough current assets to cover short-term obligations without looking bloated or trapped in dead cash.</span>
+    </div>
+
+    
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">2.17×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.0×–2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">Even after stripping inventory, the company still covers current liabilities more than twice. That is a strong signal for resilience and working-capital discipline.</span>
+    </div>
+
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">34.9%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">25%–40%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">Gross margin is strong for a building-materials / specialist solutions business. This suggests Dan Poly is not trapped in pure price-only distribution.</span>
+    </div>
+
+    
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">15.4%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">8%–15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">AMBER</span></span></div>
+      <span class="ratio-interpret">Operating margin sits slightly above the practical comfort range. That is not a problem; it is a sign the business converts gross margin into real operating profit.</span>
+    </div>
+
+    
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">12.3%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5%–10%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">AMBER</span></span></div>
+      <span class="ratio-interpret">Net margin north of 12% is excellent for a Mauritian SME in this space. There is room to self-fund growth if execution stays disciplined.</span>
+    </div>
+
+    
+    <div class="ratio-card">
+      <h4>Return on Assets</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">27.3%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">8%–15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">AMBER</span></span></div>
+      <span class="ratio-interpret">Assets are working hard. This is a compact business generating a lot of profit for each rupee tied up in the balance sheet.</span>
+    </div>
+
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    
+    <div class="ratio-card">
+      <h4>Return on Equity</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">45.9%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">12%–25%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">AMBER</span></span></div>
+      <span class="ratio-interpret">ROE is very high. In plain English: the shareholders are getting a strong return, helped by lean equity and good profitability.</span>
+    </div>
+
+    
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.3×–1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">There are no reported borrowings. That makes the capital structure very conservative and gives management optionality.</span>
+    </div>
+
+    
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">55.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">>4.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">Finance costs are almost irrelevant relative to operating profit. That means earnings are not being eaten alive by lenders.</span>
+    </div>
+
+    
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">2.21×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.2×–2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">AMBER</span></span></div>
+      <span class="ratio-interpret">This is a fast-turning, light-asset model. Revenue generation per rupee of assets is high, which usually points to good commercial velocity.</span>
+    </div>
+
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">9.77×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">4×–8×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">AMBER</span></span></div>
+      <span class="ratio-interpret">Stock is turning quickly. That is usually what you want in a specialist trading / project-support model: enough stock to serve, not so much that cash goes to sleep.</span>
+    </div>
+
+    
+    <div class="ratio-card">
+      <h4>Debtor Days / DSO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">7.4 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30–60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">This number is brutally good. Debtors are not where this business is leaking cash; management appears to collect fast.</span>
+    </div>
+
+    
+    <div class="ratio-card">
+      <h4>Creditor Days / DPO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">73.6 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30–75 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">Supplier credit is being used but not obviously abused. The business is effectively funding part of its cycle through payables without the usual stress signals.</span>
+    </div>
+
+    <div class="ratio-card">
+      <h4>Working-Capital Snapshot</h4>
+      <div class="ratio-row"><span class="ratio-label">Cash</span><span class="ratio-val ok">MUR 6,945,303</span></div>
+      <div class="ratio-row"><span class="ratio-label">Receivables</span><span class="ratio-val ok">MUR 432,471</span></div>
+      <div class="ratio-row"><span class="ratio-label">Payables</span><span class="ratio-val warn">MUR 2,802,274</span></div>
+      <span class="ratio-interpret">This is the bit that matters: Dan Poly is not financing lazy debtors. It appears to collect quickly and use supplier credit intelligently. That is a great place to build from.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    The most revealing numbers are not the sexy ones. First, DSO at 7.4 days means cash is coming in fast; that protects the business better than almost any sales speech. Second, no reported borrowings means the company has strategic room to choose growth deliberately instead of being pushed around by lenders. Fixing structure before complexity rises is smarter than chasing growth first and cleaning up the mess later.
+  </div>
+</div>
+</div>
+
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Three overlapping segments are visible: specialist polycarbonate products, architectural daylighting / façade applications, and project-based technical supply. Positioning is niche, not mass-market.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header"><h4>Polycarbonate Sheets</h4><div class="ec-sub">Core specialist product</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">General building suppliers, importers, roofing players</span></div>
+        <div class="ec-metric"><span class="mk">Positioning</span><span class="mv ok">Specialist rather than generic</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Commoditisation if not specified upstream</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>Façade / Skylight Solutions</h4><div class="ec-sub">Higher-value application</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Glazing, aluminium and building-envelope firms</span></div>
+        <div class="ec-metric"><span class="mk">Positioning</span><span class="mv ok">Technical solution sale</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Project pipeline lumpiness</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>Architect-Specified Systems</h4><div class="ec-sub">Upstream influence</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Any firm with specification access</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv ok">Brand / system representation</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv danger">Relationship dependence</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text">First, Dan Poly appears to sell expertise, not just product. That matters. Second, specialist product representation creates differentiation that ordinary traders cannot easily fake. Third, the company’s working-capital profile suggests it is commercially disciplined, which is a hidden advantage in Mauritius where many SMEs quietly bleed cash through debtors and stock.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li>Architectural daylighting, shading and façade treatments can command better margins than pure commodity roofing or sheet resale.</li>
+    <li>Specification-led selling is powerful, but it creates relationship concentration risk if too much sits with one owner or one commercial person.</li>
+    <li>Mauritian construction cycles can be lumpy; a specialist player needs a strong project pipeline view, not just reactive quoting.</li>
+    <li>Energy efficiency, shading and aesthetic envelope solutions are structural tailwinds for specialist systems, especially in tropical climates.</li>
+    <li>Imported specialist materials create exposure to FX, lead-time and supplier concentration even when the local balance sheet looks strong.</li>
+    <li>A clean digital presence helps specifiers and clients trust technical products; fragmented branding quietly weakens premium positioning.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Competitive Gap to Watch</div>
+    Dan Poly’s real moat is not “having stock”. It is know-how, specification access and trusted execution. If those live mainly in one owner’s head and relationships, the moat is weaker than it looks.
+  </div>
+</div>
+</div>
+
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Revenue at MUR 21.3m puts Dan Poly squarely inside the Mauritian medium-enterprise band, but the balance sheet and registry profile still suggest a compact owner-led structure. That is actually good EOS territory: big enough for complexity to hurt, small enough to fix quickly.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Public data alone cannot prove openness. However, the company keeps current filings, maintains an active market-facing presence, and appears to position itself around specialist solutions rather than commodity trading. That is a tentative positive, not a conviction call.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">A profitable specialist distributor/installer with good cash, low receivables and no bank debt usually hits a ceiling through owner dependence, inconsistent priorities, and execution bottlenecks rather than through pure financial distress. Those are classic EOS-addressable symptoms.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The business looks disciplined financially, but there is no public sign of a formal management system, operating cadence, or published structure. The company may be running on experience and practical know-how more than documented process.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The available evidence points to a stable, family-owned business that has survived for two decades and built specialist product representation. That usually implies some cultural coherence, but there is no direct evidence yet on accountability depth or people quality.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The ownership and director structure is tight and concentrated. That is efficient until everything routes through one or two people. It often produces speed at the top and ambiguity below it.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Externally, Dan Poly is clearer than many Mauritian SMEs: it presents itself as a polycarbonate, façade and skylight specialist rather than a generic trader. Internally, we still do not know whether the leadership team has a shared written vision.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No public signal of a structured meeting rhythm. In businesses of this size, meetings often happen ad hoc around jobs, suppliers and cash rather than through a disciplined weekly pulse. That is a probable gap, and EOS can clean it up fast.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">5.6</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>Dan Poly looks like the kind of company EOS can help a lot: profitable, owner-led, commercially differentiated, and likely starting to feel the invisible tax of informal management. The gating factor is not need; it is willingness. If leadership wants to keep everything intuitive and founder-centred, EOS will stall. If they want scale with less friction, the fit is good.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Dan Poly</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The first problem to test is role clarity. In businesses like this, sales, supplier management, quoting, project follow-up and operations often swirl around the same person. The Accountability Chart forces clarity fast.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>Dan Poly likely needs a real weekly pulse. Not random updates. Not firefighting chats. A disciplined weekly meeting rhythm would expose issues earlier and stop things living in heads and WhatsApp threads.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard</h4>
+      <p>The business already manages cash well, which is a good sign. But it probably needs a sharper weekly measurable set: quotes out, conversion, project backlog, receivables due, stock exceptions and installation capacity.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks</h4>
+      <p>If management is trying to improve too many things at once, nothing really moves. A quarterly Rock discipline would force the company to pick the few moves that actually matter.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision / Traction Organiser</h4>
+      <p>Externally the niche is clearer than in many SMEs. Internally, the real question is whether the leadership team is aligned on where Dan Poly wants to play, how it wins, and what it will deliberately not chase.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Process Component</h4>
+      <p>Specialist businesses are notorious for undocumented genius. Dan Poly would benefit from documenting the handful of core ways it sells, specifies, orders, installs and follows up, before growth makes inconsistency expensive.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations: four financial / operational and four EOS-specific. Sequence matters here because the company does not first need fixing; it needs structuring for controlled growth.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Map the real commercial model, not the legal category fiction</h4>
+      <p>Document the actual revenue mix by product line, project type, client type and specification channel. Owner: Christian Bellouard and finance/admin support. Success looks like one page showing where gross margin really comes from, because “general retailer / wholesaler” tells you absolutely nothing useful.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Stress-test supplier and brand concentration</h4>
+      <p>Identify which brands, imported systems or key supplier relationships drive most gross profit, then assess substitution risk, FX exposure and lead-time risk. Success looks like a ranked dependency map with mitigation actions for the top three exposures.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Protect the working-capital advantage</h4>
+      <p>The company’s cash discipline is a real asset. Build a simple weekly dashboard for cash, collections due, payables due, open quotes, open jobs and stock exceptions. Success looks like maintaining DSO below 20 days and avoiding lazy stock creep while the business grows.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Clarify the external brand and route-to-market</h4>
+      <p>Consolidate addresses, public pages and core positioning into one coherent market-facing story: what Dan Poly is, what it solves, who it is for, and why specifiers should trust it. Success looks like a cleaner premium specialist brand rather than a scattered small-business footprint.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Run a Focus Day with the owner-led leadership group</h4>
+      <p>Start with a real EOS Focus Day, not a watered-down chat. The goal is to expose the actual friction points: decision bottlenecks, role confusion, lack of weekly visibility, and process dependence on a few people. Success looks like agreement on the top issues and willingness to install cadence.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build an Accountability Chart hypothesis before touching structure</h4>
+      <p>Draft the future-state seats first: Sales / Specification, Operations / Projects, Procurement / Logistics, Finance / Admin, and Leadership. Only then test whether existing people are in the right seats. Success looks like fewer hidden hats and clearer ownership.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Make the first Rock about removing owner bottlenecks</h4>
+      <p>The first quarterly Rock should not be “grow sales”. It should be a structural move such as documenting the quote-to-project workflow, delegating a recurring decision cluster, or creating a weekly dashboard. Success looks like less dependence on the owner for normal execution.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Use the V/TO to answer one strategic question brutally clearly</h4>
+      <p>What does Dan Poly want to be in five years: premium specialist system integrator, trusted architectural-envelope partner, or simply a profitable trader? Until that is nailed, the business risks drifting between opportunity types. Success looks like a clear answer that drives what to pursue and what to refuse.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Dan Poly looks like a good Mauritian SME, not a messy one. That is exactly why it is worth paying attention to. The real opportunity is to turn a profitable owner-led specialist business into a more scalable, less person-dependent machine. What stands in the way is the usual silent killer: “it works well enough, so we never stop to structure it properly.”</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Within 2 weeks: map actual revenue, margin and dependency drivers by segment.</li>
+        <li><span class="sig-num">02</span>Within 30 days: build a weekly cash / quotes / jobs / stock dashboard.</li>
+        <li><span class="sig-num">03</span>Within 45 days: hold a Focus Day with the real decision-makers.</li>
+        <li><span class="sig-num">04</span>Within 60–90 days: draft and test the Accountability Chart.</li>
+        <li><span class="sig-num">05</span>During first EOS quarter: run one Rock specifically aimed at reducing owner dependency.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="report-footer">
+  <div>DAN POLY CO. LTD — Comprehensive Company Analysis &amp; EOS Assessment · 31 March 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (31 March 2026) · Dan Poly public website / Facebook presence · DANPAL partner case material · MRA VAT register</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
