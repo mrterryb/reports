@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BCPM — Comprehensive Company Analysis — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; background: var(--steel-ultra); }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel); color: #fff; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Holding / Investment Company</span>
+    <span class="badge badge-type">Private Company · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">31 March 2026</span>
+  </div>
+  <h1>BCPM:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">BCPM LIMITED · Group holding and investment platform · Financial ratios · EOS implementation assessment · Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">Rs 0</div>
+      <div class="stat-delta">No operating turnover disclosed in FY2025</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Other Income FY2025</div>
+      <div class="stat-value emerald">Rs 18,500,000</div>
+      <div class="stat-delta">Primary earnings driver in the year</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">5.6 / 10</div>
+      <div class="stat-delta">Governance use case, not a classic operating-company rollout</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Liquidity</div>
+      <div class="stat-delta">Current assets cover barely 0.5% of current liabilities</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>BCPM LIMITED — Company Analysis &amp; EOS Assessment · 31 March 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">BCPM is not an operating SME in the usual EOS sense; it is the group’s equity and investment hub, profitable on paper but alarmingly illiquid at entity level.</p>
+  <p class="body-text">BCPM Limited was incorporated on 10 January 2019 as a private domestic company in Mauritius and is registered at Junction Road, Pailles. Its declared business is holding, management and investment activities rather than direct operations.</p>
+  <p class="body-text">The company sits at the centre of the group structure. On the evidence available, it directly owns 100% of IHEML and 100% of Metinox, while its own shareholder base is split among Simon Pougnet, Rehamtulah Mandjee, Bax de Keating, Stamford Bridge Investment Ltd and Riche Terre Business Park Ltd.</p>
+  <p class="body-text">Financially, FY2025 shows zero turnover but Rs 18.5m of other income and Rs 18.49m of net profit. That sounds pretty until you look at working capital: current assets of only Rs 150k against current liabilities of Rs 28.22m. This is a governance and balance-sheet coordination issue far more than a sales issue.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Parent Entity, Weak Cash Position</div>
+    BCPM looks like a parent or investment vehicle that depends on value upstreamed from the group rather than operating revenue generated inside the entity itself. The real conversation is not “how do we grow sales?” but “how do we govern the group, document intercompany balances, and stop the parent from looking cash-starved while reporting strong profits?”
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card"><h4>Commercial Strengths</h4><p><strong>Clear control platform for group assets</strong>, established ownership base, and a portfolio position anchored by sizeable investment assets and profitable subsidiaries.</p></div>
+    <div class="profile-card"><h4>Financial Vulnerabilities</h4><p><strong>Extreme liquidity weakness</strong> at entity level, heavy current liabilities, and earnings quality that depends on non-turnover income rather than core recurring operating revenue.</p></div>
+    <div class="profile-card"><h4>EOS Readiness Signal</h4><p><strong>The biggest likely issue is role clarity across the group</strong>: parent-company governance, intercompany decisions, and ownership accountability rather than day-to-day factory execution.</p></div>
+  </div>
+</div>
+</div>
+
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">BCPM appears to function as the ownership and investment spine of the group rather than as a standalone trading business.</p>
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Incorporated on 10 January 2019, File No. C161423, BRN C19161423. Registered office: Junction Road, Pailles, Mauritius. Stated capital stands at Rs 1,084,290 divided into 108,429 ordinary shares. The company is live and annual returns and financial statements have been filed through FY2025.</p>
+  <p class="body-text">The declared business activity is “activities of holding / management / investment companies”. That matters: this is not meant to be judged like a factory or contractor; it should be judged like a parent entity coordinating capital, ownership and strategic control.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card"><div class="ec-header"><h4>BCPM Limited</h4><div class="ec-sub">Parent / Investment Vehicle</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Shareholders</span><span class="mv">5</span></div>
+      <div class="ec-metric"><span class="mk">Stated capital</span><span class="mv">Rs 1,084,290</span></div>
+      <div class="ec-metric"><span class="mk">Registered office</span><span class="mv">Pailles</span></div>
+    </div></div>
+    <div class="entity-card"><div class="ec-header"><h4>Owned Subsidiaries</h4><div class="ec-sub">Direct shareholding evidence</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">IHEML</span><span class="mv ok">100%</span></div>
+      <div class="ec-metric"><span class="mk">Metinox</span><span class="mv ok">100%</span></div>
+      <div class="ec-metric"><span class="mk">Operating role</span><span class="mv">Indirect via holdings</span></div>
+    </div></div>
+    <div class="entity-card"><div class="ec-header"><h4>Shareholder Mix</h4><div class="ec-sub">Control concentrated</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Simon Pougnet</span><span class="mv">34,519</span></div>
+      <div class="ec-metric"><span class="mk">RT Business Park</span><span class="mv">32,610</span></div>
+      <div class="ec-metric"><span class="mk">Other holders</span><span class="mv">41,300</span></div>
+    </div></div>
+  </div>
+
+  <div class="alert alert-info"><div class="alert-title">Strategic Ownership Note</div>BCPM is best understood as a group-control layer. For an EOS conversation, this changes the entry point completely: the first question is not “what seat owns production?” but “what decisions belong in the parent, and what decisions belong inside each subsidiary?”</div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card"><h4>Loic Bax de Keating — Director</h4><p>Appointed 10 January 2019. Service address at 1 Steel Avenue, Riche Terre. Also appears across related entities, suggesting cross-group leadership involvement.</p></div>
+    <div class="profile-card"><h4>André François Gérard Couve — Director</h4><p>Appointed 10 January 2019. Service address at 1 Steel Avenue, Riche Terre. Appears to be part of the same core governance cluster.</p></div>
+    <div class="profile-card"><h4>Rehamtulah A. G. Mandjee — Director</h4><p>Appointed 10 January 2019. Also appears in IHEML, Metinox and BCPM Properties, reinforcing the group-governance pattern.</p></div>
+    <div class="profile-card"><h4>Simon Joseph Pougnet — Director</h4><p>Appointed 10 January 2019. Shareholder and director. Central figure for any ownership, succession, or decision-rights discussion.</p></div>
+    <div class="profile-card"><h4>Navitas Corporate Services Ltd — Secretary</h4><p>Appointed 27 February 2019. Corporate secretarial support indicates formal governance hygiene at statutory level.</p></div>
+    <div class="profile-card"><h4>Operating Management</h4><p>No public operating-management structure is disclosed for BCPM itself, which is consistent with a holding-company role.</p></div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">No external product portfolio is disclosed for BCPM itself. Its effective “product” is capital allocation, ownership control, and group oversight. That makes the real outputs of the entity things like shareholder alignment, board discipline, intercompany funding decisions, and strategic direction across subsidiaries.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">The entity is Mauritius-based and centred on Junction Road, Pailles. Geographic reach comes via the underlying subsidiaries rather than via independent parent-company commercial operations.</p>
+  <div class="alert alert-warning"><div class="alert-title">Digital Presence Gap</div>There is no meaningful public-facing digital footprint that clearly explains BCPM Limited as a Mauritian group parent. That is not fatal, but it reinforces the sense that this is a private control vehicle, not a market-facing brand.</div>
+</div>
+</div>
+
+<div id="financial" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS summary filing for year ended 31 March 2025, in Mauritius Rupees. As a holding company, some classic operating lines are absent or not economically meaningful.</p>
+  <div class="alert alert-info"><div class="alert-title">Data Scope and Limitations</div>Private company disclosures provide condensed financial summaries only. No notes to accounts are available here, so the exact composition of “other income”, “other investments”, and trade payables cannot be broken down. Prior-year trend detail is limited to the existence of filed statements, not the underlying full note disclosures.</div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2025, MUR)</h3>
+  <div class="table-wrap"><table><thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead><tbody>
+    <tr class="heat-warn"><td>Turnover (Revenue)</td><td>Rs 0</td><td>N/M</td><td>No operating turnover reported.</td></tr>
+    <tr><td>Cost of Sales</td><td>Rs 0</td><td>N/M</td><td>No direct trading activity disclosed.</td></tr>
+    <tr class="heat-warn"><td>Gross Profit</td><td>Rs 0</td><td>N/M</td><td>Gross margin concepts do not really apply here.</td></tr>
+    <tr class="heat-ok"><td>Other Income</td><td>Rs 18,500,000</td><td>N/M</td><td>Entire year’s profitability is driven by other income.</td></tr>
+    <tr><td>Distribution Costs</td><td>Rs 0</td><td>N/M</td><td>Nil.</td></tr>
+    <tr><td>Administration Costs</td><td>Rs 6,013</td><td>N/M</td><td>Minimal overhead inside the parent entity.</td></tr>
+    <tr><td>Other Expenses</td><td>Rs 0</td><td>N/M</td><td>Nil.</td></tr>
+    <tr><td>Finance Costs</td><td>Rs 0</td><td>N/M</td><td>Nil at entity level.</td></tr>
+    <tr class="heat-ok"><td>Profit Before Tax</td><td>Rs 18,493,987</td><td>N/M</td><td>Strong accounting result.</td></tr>
+    <tr><td>Tax Expense</td><td>Rs 0</td><td>N/M</td><td>No tax charge recorded in the summary.</td></tr>
+    <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>Rs 18,493,987</strong></td><td><strong>N/M</strong></td><td>Healthy accounting earnings, but not backed by liquid current assets.</td></tr>
+  </tbody></table></div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 March 2025, MUR)</h3>
+  <div class="table-wrap"><table><thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead><tbody>
+    <tr><td>Non-current assets</td><td>Property, plant and equipment</td><td>Rs 0</td><td>Nil.</td></tr>
+    <tr class="heat-ok"><td>Non-current assets</td><td>Other investments</td><td>Rs 47,597,802</td><td>Core asset base; likely equity positions in subsidiaries.</td></tr>
+    <tr class="heat-critical"><td>Current assets</td><td>Cash and cash equivalents</td><td>Rs 150,000</td><td>Tiny cash position.</td></tr>
+    <tr class="heat-critical"><td>Current assets</td><td>Trade and other receivables</td><td>Rs 461</td><td>Negligible near-term receivables.</td></tr>
+    <tr><td>Current assets</td><td>Inventories</td><td>Rs 0</td><td>Not applicable.</td></tr>
+    <tr><td>Equity</td><td>Share capital</td><td>Rs 1,084,290</td><td>Stated capital.</td></tr>
+    <tr><td>Equity</td><td>Retained earnings</td><td>Rs 18,441,433</td><td>Accumulated profit base.</td></tr>
+    <tr class="heat-critical"><td>Current liabilities</td><td>Trade and other payables</td><td>Rs 28,222,540</td><td>Very large relative to current assets; needs explanation.</td></tr>
+    <tr><td>Total</td><td>Total assets</td><td>Rs 47,748,263</td><td>Asset base dominated by long-term investments.</td></tr>
+    <tr><td>Total</td><td>Total equity</td><td>Rs 19,525,723</td><td>Moderate equity cushion.</td></tr>
+    <tr class="heat-critical"><td>Total</td><td>Total liabilities</td><td>Rs 28,222,540</td><td>All liabilities shown as current in the summary.</td></tr>
+  </tbody></table></div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">No registered charges are shown on the CBRIS extract. That is cleaner than some of the operating entities, but it does not solve the immediate liquidity question raised by the very large current payables balance.</p>
+</div></div>
+
+<div id="ratios" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks used here are practical Mauritius SME heuristics, adjusted for the fact that BCPM is a holding company. Green = healthy, Amber = watch, Red = critical concern.</p>
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.01×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.20×–2.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">This is brutally weak. The parent company has almost no liquid cover for its current obligations, which strongly suggests that intercompany balances, settlement timing, or shareholder funding arrangements need to be cleaned up.</span>
+    </div>
+    
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.01×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.00×+</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Because there is no inventory buffer to remove, the quick ratio is effectively the same disaster as the current ratio. This entity can look profitable while still being structurally cash-thin.</span>
+    </div>
+  </div>
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    
+    <div class="ratio-card">
+      <h4>Return on Assets</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">38.7%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5%–10%+</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">ROA is strong because the entity booked a large profit against an investment-heavy balance sheet. The catch is that the income source is not operating turnover, so sustainability depends on what sits inside other income.</span>
+    </div>
+    
+    <div class="ratio-card">
+      <h4>Return on Equity</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">94.7%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">12%–20%+</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">ROE is extremely high. Nice headline, but before celebrating, management should separate recurring economic returns from one-off or intercompany accounting movements.</span>
+    </div>
+  </div>
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val"><1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">No borrowings are disclosed, so formal balance-sheet leverage looks clean. That said, the economic burden may have migrated into payables or intercompany obligations instead of borrowings.</span>
+    </div>
+    
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">N/M</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">3.0×+</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-blue">N/M</span></span></div>
+      <span class="ratio-interpret">There are no finance costs in the summary. This metric is therefore not meaningful for the year, and governance attention should shift instead to current liability composition and cash planning.</span>
+    </div>
+  </div>
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.5×+</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Again, this is not an operating company. Asset turnover is technically awful because the entity is holding assets rather than trading through them directly.</span>
+    </div>
+    
+    <div class="ratio-card">
+      <h4>Debtor Days / DSO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">N/M</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val"><60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-blue">N/M</span></span></div>
+      <span class="ratio-interpret">With no turnover and negligible receivables, debtor days are not useful. The more relevant working-capital question is what exactly makes up the Rs 28.2m payable balance.</span>
+    </div>
+  </div>
+  <div class="alert alert-critical"><div class="alert-title">The 2 Numbers That Matter Most</div>Ignore the pretty profit line for a second. The two numbers that matter are the current ratio of 0.01× and current liabilities of Rs 28,222,540 sitting against just Rs 150,461 of current assets. Fixing the parent-company balance-sheet plumbing will probably create more real control than any strategic growth discussion at parent level.</div>
+</div></div>
+
+<div id="market" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">BCPM does not compete as a market-facing operating company; its strategic position comes from how well it allocates capital and governs the group underneath it.</p>
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card"><div class="ec-header"><h4>Holding / Investment Function</h4><div class="ec-sub">Internal strategic role</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Competes on</span><span class="mv">Capital discipline</span></div><div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Control of assets</span></div><div class="ec-metric"><span class="mk">Risk</span><span class="mv danger">Opaque intercompany flows</span></div></div></div>
+    <div class="entity-card"><div class="ec-header"><h4>Group Governance</h4><div class="ec-sub">Decision architecture</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Competes on</span><span class="mv">Speed and clarity</span></div><div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Shared directors</span></div><div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Role overlap</span></div></div></div>
+    <div class="entity-card"><div class="ec-header"><h4>Subsidiary Oversight</h4><div class="ec-sub">Portfolio value creation</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Core assets</span><span class="mv">IHEML, Metinox</span></div><div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Concentrated ownership</span></div><div class="ec-metric"><span class="mk">Risk</span><span class="mv danger">No clear group dashboard</span></div></div></div>
+  </div>
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text">The real advantages here are not branding or digital marketing. They are (1) concentrated control across related entities, (2) an existing industrial asset base through subsidiaries, and (3) the ability to reallocate capital and management attention across the group. Those are meaningful advantages if governed well; if governed badly, they just become a fog machine.</p>
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li>Private Mauritian groups increasingly need better governance as founder-led structures become more complex.</li>
+    <li>Intercompany complexity tends to rise faster than management discipline, especially where the same people sit across multiple boards.</li>
+    <li>Capital-heavy subsidiaries create value only if the parent allocates cash and attention with discipline.</li>
+    <li>Weak documentation around related-party balances can quietly destroy trust and decision speed.</li>
+    <li>Private groups with no shared scorecard often mistake activity for control.</li>
+  </ul>
+</div></div>
+
+<div id="eos" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. In BCPM’s case, the likely application is at group-governance level rather than as a classic standalone operating-company rollout.</p>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">BCPM matters because it sits above multiple entities. Even if the parent itself has a small headcount, the group complexity makes it relevant for EOS-style structure and meeting discipline.</p>
+  </div>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The statutory filings show formal governance hygiene, but public evidence is thin on whether the leadership team actively embraces transparency, measurables and clean decision rights.</p>
+  </div>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The likely pain points are classic: cross-entity coordination, ambiguity over ownership of issues, and parent-versus-subsidiary decision friction.</p>
+  </div>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">There is enough structure to file properly and hold the group together legally, but not enough public evidence of a disciplined management operating system.</p>
+  </div>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Culture cannot be read directly from statutory data. The neutral score reflects a plausible mix of strong entrepreneurial control and potential over-centralisation.</p>
+  </div>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Shared directors across entities suggest decisions may be fast when the principals align and muddy when they do not. EOS could clarify where authority should sit.</p>
+  </div>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">There is no clear public articulation of group strategy. That does not mean the vision is absent; it means it is not visible and may not yet be translated into a shared operating framework.</p>
+  </div>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No public evidence of structured management rhythms. This is exactly where parent-level EOS could add value fast if the group currently runs on ad hoc conversations.</p>
+  </div>
+  <div class="eos-overall"><div class="eos-overall-score"><div class="big-num">5.6</div><div class="big-denom">/ 10</div><div class="big-label">EOS Suitability</div></div>
+    <div class="eos-overall-text"><h4>Overall Rating: Moderate — Governance-Focused Fit</h4><p>BCPM is not a textbook EOS target if judged as a single non-trading entity. It becomes a much better candidate when viewed as the control room for a group of operating companies. The gating factor is whether the principals want genuine clarity around group roles, intercompany accountabilities and meeting discipline — or whether they prefer to keep everything in people’s heads.</p></div></div>
+  <h3 class="subsection-title">Highest-Priority EOS Tools for BCPM</h3>
+  <div class="profile-grid">
+    <div class="profile-card"><h4>Accountability Chart</h4><p>To separate board, shareholder, group CEO / integrator, and subsidiary leadership responsibilities.</p></div>
+    <div class="profile-card"><h4>V/TO</h4><p>To define what belongs to the parent, what belongs to each subsidiary, and what the group is actually trying to build.</p></div>
+    <div class="profile-card"><h4>Level 10 Meeting</h4><p>To replace ad hoc cross-company conversations with a fixed governance cadence.</p></div>
+    <div class="profile-card"><h4>Scorecard</h4><p>To track intercompany balances, liquidity, subsidiary performance, and strategic priorities on one page.</p></div>
+    <div class="profile-card"><h4>Rocks</h4><p>To force 90-day progress on group-level priorities such as funding structure, reporting discipline and management clarity.</p></div>
+    <div class="profile-card"><h4>Issues List &amp; IDS</h4><p>To surface the real tensions: who decides, who funds, which entity carries cost, and where cash gets stuck.</p></div>
+  </div>
+</div></div>
+
+<div id="recs" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations: four financial / operational and four EOS-specific, sequenced to clean up the parent-company plumbing before trying to install a bigger operating rhythm.</p>
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Break down the Rs 28.2m payable balance by counterparty and age</h4>
+      <p>The finance owner should produce a one-page schedule showing exactly who is owed what, whether each item is third-party or intercompany, when it is due, and what settlement plan exists. Success looks like complete visibility within two weeks, not hand-waving.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Separate recurring income from non-recurring or intercompany income</h4>
+      <p>Management should identify what portion of the Rs 18.5m other income is truly repeatable. Success means a clean view of sustainable parent-company earnings rather than flattering accounting noise.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Define a formal parent-company liquidity policy</h4>
+      <p>Set minimum cash cover, dividend upstream rules, and intercompany settlement expectations. Success looks like the parent never again presenting with effectively no liquid cover.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Map every material intercompany relationship</h4>
+      <p>Document who owns which entity, what services flow where, who funds whom, and which balances are meant to clear. Success means the group can explain its own structure without needing a whiteboard rescue mission.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+  </div>
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Run a parent-group Focus Day</h4>
+      <p>Do not start with a factory-floor EOS rollout at parent level. Start with the principals and key leaders to define the scope of the parent, the group issues list, and the governance problems worth solving.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Draft a group Accountability Chart hypothesis</h4>
+      <p>Create a first-pass chart that distinguishes shareholder, board, group integrator, and subsidiary roles. Success looks like cleaner decision rights and fewer ghost responsibilities.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Set one first Rock around group reporting discipline</h4>
+      <p>Example: by quarter-end, produce a single monthly dashboard for BCPM, IHEML and Metinox including revenue, EBITDA, cash, receivables, payables, and key operational KPIs.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Answer the strategic V/TO question: what is BCPM actually for?</h4>
+      <p>Is it a pure holding company, a capital allocator, a governance layer, or the embryonic centre of a more integrated group? Until that is explicit, every other conversation stays muddy.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+  </div>
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box"><h4>The Bottom Line</h4><p>BCPM looks like the group’s ownership and capital hub, not a standalone trading company. That means the opportunity is not operational heroics inside the parent; it is sharper governance, cleaner reporting, and far less ambiguity around intercompany decisions. The obstacle is the same as always: successful private groups often tolerate fuzzy structure until it becomes expensive.</p></div>
+    <div class="closing-box steel-box"><h4>The Recommended Sequence</h4><ol class="signal-list">
+      <li><span class="sig-num">01</span>Within 2 weeks, produce a full payable and intercompany-balance map.</li>
+      <li><span class="sig-num">02</span>Within 30 days, classify parent-company income into recurring vs non-recurring.</li>
+      <li><span class="sig-num">03</span>Within 45 days, hold a group-level Focus Day with the principals.</li>
+      <li><span class="sig-num">04</span>Within 60 days, agree a first-cut group Accountability Chart and meeting cadence.</li>
+      <li><span class="sig-num">05</span>Within 90 days, install one shared scorecard and one Rock around reporting discipline.</li>
+    </ol></div>
+  </div>
+</div></div>
+
+<footer class="report-footer">
+  <div>BCPM LIMITED — Comprehensive Company Analysis &amp; EOS Assessment · 31 March 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (31 March 2026) · group-related registry extracts reviewed for IHEML and Metinox</div>
+</footer>
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>

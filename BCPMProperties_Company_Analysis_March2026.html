@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BCPM Properties — Comprehensive Company Analysis — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; background: var(--steel-ultra); }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel); color: #fff; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Property / Event Venue Asset</span>
+    <span class="badge badge-type">Private Company · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">31 March 2026</span>
+  </div>
+  <h1>BCPM Properties:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">BCPM Properties Ltd · Single-asset property / venue vehicle · Financial ratios · EOS implementation assessment · Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">Rs 5,153,151</div>
+      <div class="stat-delta">Property / venue income, year ended 31 March 2025</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit FY2025</div>
+      <div class="stat-value emerald">Rs 1,974,824</div>
+      <div class="stat-delta">Profitable, but heavily levered</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">4.8 / 10</div>
+      <div class="stat-delta">Useful for cash and ownership clarity, not a classic EOS target</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Leverage</div>
+      <div class="stat-delta">Debt-to-equity above 21× and liquidity is razor-thin</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>BCPM Properties Ltd — Company Analysis &amp; EOS Assessment · 31 March 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+<div id="exec" class="tab-content active"><div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">BCPM Properties is a young property vehicle that is already profitable, but the balance sheet is carrying aggressive leverage and very weak short-term liquidity.</p>
+  <p class="body-text">BCPM Properties Ltd was incorporated on 23 September 2022 as a private domestic company in Mauritius. Its registered office is at Junction Road, Pailles, and its declared activity is real-estate operations with own or leased property, specifically a multi-purpose hall including wedding hall use.</p>
+  <p class="body-text">Ownership is not through BCPM Limited. Instead, the shareholding sits with individuals and related entities around the same core circle: Simon Pougnet, Rehamtulah Mandjee, Loic Bax de Keating, Stamford Bridge Investment Ltd and Riche Terre Business Park Ltd.</p>
+  <p class="body-text">FY2025 revenue was Rs 5.15m and net profit after tax was Rs 1.97m, which is perfectly respectable. The problem is the capital structure: long-term borrowings of Rs 29.42m, payables of Rs 15.38m, equity of only Rs 1.35m, and a current ratio of just 0.06×. That is not elegant. That is a financing story wearing a profitability costume.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Profitable Asset, Fragile Balance Sheet</div>
+    BCPM Properties looks like a viable income-producing asset vehicle, but the financing structure is tight enough to create pressure even when the P&amp;L looks fine. The real conversation should be about debt service, liquidity buffers, and whether this entity is meant to stay a standalone property SPV or become part of a more integrated group governance system.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card"><h4>Commercial Strengths</h4><p><strong>Income-generating real asset</strong>, positive net profit, and a clear use-case as a venue / property platform.</p></div>
+    <div class="profile-card"><h4>Financial Vulnerabilities</h4><p><strong>Very high leverage</strong>, wafer-thin liquidity, and a balance sheet that leaves little room for operational surprises.</p></div>
+    <div class="profile-card"><h4>EOS Readiness Signal</h4><p><strong>This is not a classic 10–250 person operating-company EOS target</strong>; the likely value is in financial discipline, role clarity and group-level review cadence.</p></div>
+  </div>
+</div></div>
+
+<div id="overview" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">BCPM Properties appears to be a purpose-built property holding / venue entity tied to the wider Pougnet–Mandjee–Bax de Keating circle rather than a broad operating business.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Incorporated on 23 September 2022, File No. C190852, BRN C22190852. Registered office: Junction Road, Pailles, Mauritius. Stated capital is just Rs 11,911 over 11,911 ordinary shares, which immediately tells you the real financing of the asset came from debt and payables, not paid-in equity.</p>
+  <p class="body-text">The business description is “real estate activities with own or leased property (Multi-purpose hall-including wedding hall)”. This is important because it frames the entity more like a project or asset company than a diversified operating SME.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card"><div class="ec-header"><h4>BCPM Properties Ltd</h4><div class="ec-sub">Property Asset Vehicle</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Property focus</span><span class="mv">Venue / hall</span></div>
+      <div class="ec-metric"><span class="mk">Registered office</span><span class="mv">Pailles</span></div>
+      <div class="ec-metric"><span class="mk">Year incorporated</span><span class="mv">2022</span></div>
+    </div></div>
+    <div class="entity-card"><div class="ec-header"><h4>Shareholder Group</h4><div class="ec-sub">Same strategic circle</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Simon Pougnet</span><span class="mv">3,790</span></div>
+      <div class="ec-metric"><span class="mk">RT Business Park</span><span class="mv">3,580</span></div>
+      <div class="ec-metric"><span class="mk">Other holders</span><span class="mv">4,541</span></div>
+    </div></div>
+    <div class="entity-card"><div class="ec-header"><h4>Capital Structure</h4><div class="ec-sub">Balance-sheet reality</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Equity</span><span class="mv danger">Rs 1,346,190</span></div>
+      <div class="ec-metric"><span class="mk">LT Borrowings</span><span class="mv warn">Rs 29,424,515</span></div>
+      <div class="ec-metric"><span class="mk">Charge</span><span class="mv warn">Rs 25,000,000</span></div>
+    </div></div>
+  </div>
+
+  <div class="alert alert-info"><div class="alert-title">Strategic Note</div>BCPM Properties is best analysed as a special-purpose property entity with group connections, not as a normal services company. That distinction matters because the management questions shift from sales-force productivity to debt servicing, utilisation and asset governance.</div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card"><h4>Loic Bax de Keating — Director</h4><p>Appointed 23 September 2022. Present elsewhere in the wider group circle.</p></div>
+    <div class="profile-card"><h4>André François Gérard Couve — Director</h4><p>Appointed 23 September 2022. Also present in IHEML / Metinox-related governance.</p></div>
+    <div class="profile-card"><h4>Rehamtulah A. G. Mandjee — Director</h4><p>Appointed 23 September 2022. Service address connected to IHEML, reinforcing the group linkage.</p></div>
+    <div class="profile-card"><h4>Simon Joseph Pougnet — Director</h4><p>Appointed 23 September 2022. Also a significant shareholder. Key decision-maker for any property strategy discussion.</p></div>
+    <div class="profile-card"><h4>Navitas Corporate Services Ltd — Secretary</h4><p>Corporate secretarial support since incorporation.</p></div>
+    <div class="profile-card"><h4>Operating Leadership</h4><p>No separate GM or property manager is publicly disclosed in the registry extract.</p></div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">The disclosed commercial proposition is effectively venue or hall-based property use. Depending on actual use on the ground, this could function as a rental / event asset, a group-owned premises play, or a mixed property-income vehicle.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">The asset is centred on Junction Road, Pailles. Public evidence points to a Mauritius-only footprint at this stage.</p>
+
+  <div class="alert alert-warning"><div class="alert-title">Digital Presence Gap</div>No meaningful dedicated public digital profile was found for the entity itself. That may be fine for a private property SPV, but it makes market positioning and utilisation analysis harder from outside.</div>
+</div></div>
+
+<div id="financial" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS summary filing for year ended 31 March 2025, in Mauritius Rupees. This looks more like an asset-income vehicle than an operating company with conventional cost of sales.</p>
+
+  <div class="alert alert-info"><div class="alert-title">Data Scope and Limitations</div>Private-company summary filings do not provide the notes needed to break down revenue type, tenant / event mix, occupancy, debt terms, or exact composition of trade payables. Cost of sales is nil in the filing, so some classic operating ratios look artificially flattering.</div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2025, MUR)</h3>
+  <div class="table-wrap"><table><thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead><tbody>
+    <tr><td>Turnover (Revenue)</td><td>Rs 5,153,151</td><td>100.0%</td><td>Income-generating property / venue revenue.</td></tr>
+    <tr><td>Cost of Sales</td><td>Rs 0</td><td>0.0%</td><td>No direct cost of sales disclosed.</td></tr>
+    <tr class="heat-ok"><td>Gross Profit</td><td>Rs 5,153,151</td><td>100.0%</td><td>Looks superb, but partly because the filing format shows zero COGS.</td></tr>
+    <tr><td>Other Income</td><td>Rs 0</td><td>0.0%</td><td>Nil.</td></tr>
+    <tr><td>Distribution Costs</td><td>Rs 0</td><td>0.0%</td><td>Nil.</td></tr>
+    <tr><td>Administration Costs</td><td>Rs 666,385</td><td>12.9%</td><td>Reasonable for the scale of revenue.</td></tr>
+    <tr><td>Other Expenses</td><td>Rs 0</td><td>0.0%</td><td>Nil.</td></tr>
+    <tr class="heat-warn"><td>Finance Costs</td><td>Rs 2,511,942</td><td>48.7%</td><td>The real drag in the model.</td></tr>
+    <tr><td>Profit Before Tax</td><td>Rs 1,974,824</td><td>38.3%</td><td>Still profitable despite financing burden.</td></tr>
+    <tr><td>Tax Expense</td><td>Rs 0</td><td>0.0%</td><td>No tax charge shown.</td></tr>
+    <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>Rs 1,974,824</strong></td><td><strong>38.3%</strong></td><td>Profitable asset entity, though capital structure is the real issue.</td></tr>
+  </tbody></table></div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 March 2025, MUR)</h3>
+  <div class="table-wrap"><table><thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead><tbody>
+    <tr class="heat-ok"><td>Non-current assets</td><td>Property, plant and equipment</td><td>Rs 45,243,728</td><td>The core asset base.</td></tr>
+    <tr class="heat-critical"><td>Current assets</td><td>Cash and cash equivalents</td><td>Rs 50,491</td><td>Very little cash.</td></tr>
+    <tr><td>Current assets</td><td>Trade and other receivables</td><td>Rs 93,472</td><td>Small receivable book.</td></tr>
+    <tr><td>Current assets</td><td>Inventories</td><td>Rs 760,460</td><td>Unusual for a property-type entity; likely supplies or ancillary stock.</td></tr>
+    <tr class="heat-critical"><td>Equity</td><td>Total equity</td><td>Rs 1,346,190</td><td>Tiny equity cushion versus asset base.</td></tr>
+    <tr class="heat-warn"><td>Non-current liabilities</td><td>Long-term borrowings</td><td>Rs 29,424,515</td><td>Core leverage driver.</td></tr>
+    <tr><td>Current liabilities</td><td>Current tax payable</td><td>Rs 600,987</td><td>Current tax exposure.</td></tr>
+    <tr class="heat-critical"><td>Current liabilities</td><td>Trade and other payables</td><td>Rs 15,377,446</td><td>Large short-term burden for the scale of the entity.</td></tr>
+    <tr><td>Total</td><td>Total assets</td><td>Rs 46,148,151</td><td>Property-heavy balance sheet.</td></tr>
+    <tr class="heat-critical"><td>Total</td><td>Total liabilities</td><td>Rs 44,801,961</td><td>Almost the whole balance sheet is debt / obligations.</td></tr>
+  </tbody></table></div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">A fixed charge of Rs 25,000,000 was registered, charged on 16 November 2022 and filed on 28 April 2023. That aligns with the story told by the balance sheet: this asset was funded with significant secured debt and needs disciplined financial oversight.</p>
+  <div class="alert alert-warning"><div class="alert-title">Charge Interpretation</div>The charge itself is not shocking for a property vehicle. What matters is whether the asset generates enough predictable cash to service the debt comfortably while also absorbing maintenance, vacancy or utilisation dips.</div>
+</div></div>
+
+<div id="ratios" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks here are interpreted cautiously because BCPM Properties looks like a property SPV rather than a normal manufacturing or services SME. Green = healthy, Amber = watch, Red = critical concern.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.06×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.20×–2.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">This is extremely weak. Short-term obligations dwarf current assets, which means even modest timing issues in collections or disbursements can create stress.</span>
+    </div>
+    
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.01×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.00×+</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Strip out inventory and the liquidity picture gets even uglier. There is almost no liquid buffer.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">100.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">25%–45%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">This number is flattering rather than informative because no cost of sales is recorded. The real economic drag sits in finance costs and obligations.</span>
+    </div>
+    
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">38.3%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">8%–15%+</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">On the face of it, the asset is profitable. The trouble is not the income statement; it is the balance sheet wrapped around it.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">21.86×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val"><1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">This is brutally levered. Equity is tiny relative to long-term debt, leaving almost no margin for valuation or cash-flow shocks.</span>
+    </div>
+    
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">1.79×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">3.0×+</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">The property is covering finance costs, but only just. That is survivable, not comfortable.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.11×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.20×–0.40×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Low asset turnover is common in property vehicles, but at this level it reinforces how dependent returns are on financing structure and utilisation.</span>
+    </div>
+    
+    <div class="ratio-card">
+      <h4>Debtor Days / DSO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">6.6 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val"><60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Receivables are not the issue here. This entity gets paid quickly enough; the problem is leverage and liquidity.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical"><div class="alert-title">The 2 Numbers That Matter Most</div>The two numbers that matter most are debt-to-equity of 21.86× and current ratio of 0.06×. In plain English: the asset may earn money, but the balance sheet leaves almost no room for bad luck, delays or underutilisation.</div>
+</div></div>
+
+<div id="market" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">BCPM Properties appears to sit in the intersection of commercial property and event / venue utilisation, with its competitive position driven more by location, asset quality and utilisation than by classic operating scale.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card"><div class="ec-header"><h4>Event / Hall Use</h4><div class="ec-sub">Wedding / multi-purpose venue</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Competes with</span><span class="mv">Other halls</span></div>
+      <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Asset control</span></div>
+      <div class="ec-metric"><span class="mk">Risk</span><span class="mv danger">Utilisation swings</span></div>
+    </div></div>
+    <div class="entity-card"><div class="ec-header"><h4>Property Income</h4><div class="ec-sub">Asset-backed returns</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Competes on</span><span class="mv">Yield &amp; occupancy</span></div>
+      <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Real asset base</span></div>
+      <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Debt burden</span></div>
+    </div></div>
+    <div class="entity-card"><div class="ec-header"><h4>Group Support Role</h4><div class="ec-sub">Related-entity optionality</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Potential role</span><span class="mv">Strategic asset</span></div>
+      <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Connected owners</span></div>
+      <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Blurred purpose</span></div>
+    </div></div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text">The defensible advantage is straightforward: a controlled physical asset in a group-connected ecosystem. If the venue is well located and well utilised, that matters. What is not defensible is sloppy financing or unclear purpose. Those two will kneecap the asset faster than competition will.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li>Well-located event and commercial-use assets can produce stable income, but only with disciplined utilisation and pricing.</li>
+    <li>Property vehicles funded aggressively with debt become sensitive to interest rates and occupancy volatility.</li>
+    <li>Private groups increasingly use dedicated entities to ring-fence property assets from operating entities.</li>
+    <li>Thin-equity structures may work during stable periods and become painful the moment cash timing slips.</li>
+    <li>Where the same principals span multiple entities, asset purpose must be explicit or governance gets muddy fast.</li>
+  </ul>
+</div></div>
+
+<div id="eos" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is designed for operating businesses with meaningful management complexity. BCPM Properties is a more limited-fit case: the real need is management clarity, financial rhythm and decision discipline around an asset-heavy entity.</p>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score low">3 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:30%"></div></div>
+    <p class="eos-rationale">By itself, this entity does not look like a classic 10–250 person operating company. Complexity is more financial than organisational.</p>
+  </div>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The same ownership circle appears across entities, which could support disciplined governance if the principals actually want it.</p>
+  </div>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The pain points are leverage, entity purpose and oversight, not sales-team chaos. EOS can help, but indirectly.</p>
+  </div>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">Statutory compliance is there, but public evidence of a management operating rhythm is absent.</p>
+  </div>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">Culture is hard to assess in a property SPV. The score stays below neutral because the entity itself may not have much standalone organisational life.</p>
+  </div>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Shared shareholders and directors imply decisions may depend heavily on a small circle of principals rather than a structured management framework.</p>
+  </div>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">The visible purpose is narrow and tactical. It is unclear whether this entity has a defined strategic role beyond holding and monetising an asset.</p>
+  </div>
+  
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of structured operating meetings. If it is reviewed at all, it is likely reviewed informally within a broader group conversation.</p>
+  </div>
+  <div class="eos-overall"><div class="eos-overall-score"><div class="big-num">4.8</div><div class="big-denom">/ 10</div><div class="big-label">EOS Suitability</div></div>
+    <div class="eos-overall-text"><h4>Overall Rating: Moderate-Low — Better as a Governance Module</h4><p>BCPM Properties is not the kind of entity you would normally choose as the starting point for a pure EOS rollout. It becomes more relevant inside a wider group EOS conversation where the objective is to clarify ownership, financial review cadence, and the strategic role of the asset inside the group.</p></div></div>
+  <h3 class="subsection-title">Highest-Priority EOS Tools for BCPM Properties</h3>
+  <div class="profile-grid">
+    <div class="profile-card"><h4>Scorecard &amp; Measurables</h4><p>Weekly or monthly visibility on cash, debt service, utilisation, bookings, receivables and payables.</p></div>
+    <div class="profile-card"><h4>Accountability Chart</h4><p>To make it explicit who owns utilisation, finance, maintenance, and strategic decisions for the asset.</p></div>
+    <div class="profile-card"><h4>Issues List &amp; IDS</h4><p>To surface the real questions: refinance, utilisation, asset purpose, and group role.</p></div>
+    <div class="profile-card"><h4>Level 10 Meeting</h4><p>A short disciplined review cadence is probably all this entity needs if run as a standalone vehicle.</p></div>
+    <div class="profile-card"><h4>Rocks</h4><p>To force 90-day action on refinancing, utilisation improvement or role clarification.</p></div>
+    <div class="profile-card"><h4>V/TO Linkage</h4><p>Not a standalone full V/TO priority perhaps, but the entity’s role should be spelled out in the group V/TO.</p></div>
+  </div>
+</div></div>
+
+<div id="recs" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations: four hard financial / operational moves first, then four lighter EOS-style governance moves to make the entity less fragile and more intelligible.</p>
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Stress-test debt service against three utilisation scenarios</h4>
+      <p>The finance owner should model base, downside and severe-downside cases using current revenue, vacancy or booking dips, and actual debt-service terms. Success means knowing exactly how much headroom exists before pain starts.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Create a minimum liquidity buffer policy</h4>
+      <p>The entity should not be run with effectively no cash. Set a minimum cash floor and build a monthly cash forecast. Success means stopping last-minute financing panic.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Interrogate the Rs 15.4m payables balance</h4>
+      <p>Break down payables by supplier, related party, due date and criticality. Success means understanding whether this is normal project residue, intercompany funding, or a hidden liquidity bomb.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Clarify the commercial model of the asset</h4>
+      <p>Is this primarily a wedding / events hall, a broader venue, or a strategic property with mixed use? Success means one clear commercial model, one owner, and one utilisation plan.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+  </div>
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Review the entity inside a group-level Focus Day</h4>
+      <p>Do not over-engineer EOS here. Use a group governance session to define the role of BCPM Properties inside the wider structure.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Install a tight asset-review scorecard</h4>
+      <p>Keep it simple: bookings / occupancy, revenue, cash, debt service, payables, and maintenance issues. Success means the principals can spot trouble early.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Assign one accountable owner for the entity</h4>
+      <p>Someone must own the number, the asset, and the plan. Shared ownership without a clear owner is how private groups create fog.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+    
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Define one first Rock around refinancing or utilisation</h4>
+      <p>Pick the bigger constraint and attack it. Example Rock: improve utilisation to target level or restructure financing by a fixed date.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+  </div>
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box"><h4>The Bottom Line</h4><p>BCPM Properties is not broken. It is simply tight. The asset appears capable of generating profit, but the financing structure leaves almost no grace. The opportunity is to turn a leveraged property vehicle into a deliberately managed strategic asset instead of leaving it as a profitable but nervous balance-sheet contraption.</p></div>
+    <div class="closing-box steel-box"><h4>The Recommended Sequence</h4><ol class="signal-list">
+      <li><span class="sig-num">01</span>Within 2 weeks, model cash and debt-service stress scenarios.</li>
+      <li><span class="sig-num">02</span>Within 30 days, break down payables and define a minimum cash policy.</li>
+      <li><span class="sig-num">03</span>Within 45 days, clarify the commercial model and accountable owner.</li>
+      <li><span class="sig-num">04</span>Within 60 days, review the entity in a group Focus Day context.</li>
+      <li><span class="sig-num">05</span>Within 90 days, install the scorecard and one Rock around utilisation or refinancing.</li>
+    </ol></div>
+  </div>
+</div></div>
+
+<footer class="report-footer">
+  <div>BCPM Properties Ltd — Comprehensive Company Analysis &amp; EOS Assessment · 31 March 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (31 March 2026)</div>
+</footer>
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
