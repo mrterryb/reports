@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRALAIN LTD — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; }
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); } .alert-warning .alert-title { color: var(--amber); } .alert-ok .alert-title { color: var(--emerald); } .alert-info .alert-title { color: var(--steel); }
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; } .heat-warn { background: #fef8f0 !important; } .heat-ok { background: #edf8f2 !important; }
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; } .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; } .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; } .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); } .urg-medium { background: var(--emerald-pale); color: var(--emerald); } .urg-week { background: var(--amber-pale); color: #9a5000; }
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">C9228 · BRN C07009228</span>
+    <span class="badge badge-type">Specialty Retail · Sanitary Ware</span>
+    <span class="badge badge-eos">EOS Suitability 7/10</span>
+    <span class="badge badge-date">Issued 31 March 2026</span>
+  </div>
+  <h1>FRALAIN <span>LTD</span></h1>
+  <div class="report-subtitle">Comprehensive Company Analysis · Prepared by Rex / PKA Research · April 2026</div>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 73.2M</div>
+      <div class="stat-delta">Year ended 30 June 2024</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit</div>
+      <div class="stat-value emerald">MUR 9.9M</div>
+      <div class="stat-delta">13.5% net margin</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Total Assets</div>
+      <div class="stat-value">MUR 68.8M</div>
+      <div class="stat-delta">76.2% equity funded</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Incorporated</div>
+      <div class="stat-value amber">35 Years</div>
+      <div class="stat-delta">Since 10 January 1991</div>
+    </div>
+  </div>
+</div>
+
+<!-- PREPARED FOR BAR -->
+<div class="prepared-for">
+  <span>PREPARED FOR: THIERRY · LMAGP · PKA SYSTEM</span>
+  <div class="author-links">
+    <a href="https://fralain.com" target="_blank">fralain.com</a>
+    <a href="https://www.facebook.com/FralainMauritius/" target="_blank">Facebook</a>
+    <a href="https://www.linkedin.com/company/fralain-ltd" target="_blank">LinkedIn</a>
+  </div>
+</div>
+
+<!-- TAB NAVIGATION -->
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('t1',this)"><span class="tab-num">01</span> Executive Summary</button>
+  <button class="tab-btn" onclick="showTab('t2',this)"><span class="tab-num">02</span> Company Overview</button>
+  <button class="tab-btn" onclick="showTab('t3',this)"><span class="tab-num">03</span> Financial Performance</button>
+  <button class="tab-btn" onclick="showTab('t4',this)"><span class="tab-num">04</span> Financial Ratios</button>
+  <button class="tab-btn" onclick="showTab('t5',this)"><span class="tab-num">05</span> Market &amp; Competitive Position</button>
+  <button class="tab-btn" onclick="showTab('t6',this)"><span class="tab-num">06</span> EOS Assessment</button>
+  <button class="tab-btn" onclick="showTab('t7',this)"><span class="tab-num">07</span> Recommendations</button>
+</nav>
+
+<!-- ===================== TAB 01: EXECUTIVE SUMMARY ===================== -->
+<div id="t1" class="tab-content active">
+  <div class="content-wrap">
+    <h2 class="section-title">Executive Summary</h2>
+    <p class="section-lead">Fralain Ltd is Mauritius' leading specialist in premium tapware, showers, sanitary ware and bathroom accessories — a family-owned SME with 35 years of continuous trading, a concentrated family ownership structure, strong profitability, and a growing dual-showroom presence serving both the hospitality and residential sectors.</p>
+
+    <div class="alert alert-ok">
+      <div class="alert-title">Strong Candidate</div>
+      Fralain presents as a financially healthy, founder-led family business at an inflection point: it is scaling (second showroom opened at Pinpoint Business Park), recognised as a Great Place to Work, and serving blue-chip hospitality clients (Beachcomber, Constance, Attitude). The combination of family succession dynamics, operational scaling, and a growing team creates genuine EOS pain-point conditions.
+    </div>
+
+    <div class="subsection-title">At a Glance</div>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h4>Legal Identity</h4>
+        <p><strong>FRALAIN LTD</strong><br>File No. C9228 | BRN C07009228<br>Incorporated 10 January 1991<br>Status: Live &amp; Active<br>Annual reg. fee paid: 2026</p>
+      </div>
+      <div class="profile-card">
+        <h4>Registered Office</h4>
+        <p>School Lane, Cite Leal<br>Pailles, Mauritius<br><br>Second location:<br>Pinpoint Business Park, Calebasses</p>
+      </div>
+      <div class="profile-card">
+        <h4>Ownership</h4>
+        <p>100% held by<br><strong>Vefra Investment Holding Ltd</strong><br>10,000 ordinary shares<br>Stated capital: MUR 1,000,000<br>Par value: MUR 100/share</p>
+      </div>
+      <div class="profile-card">
+        <h4>Leadership</h4>
+        <p><strong>Lenoir Francois Rene Louis</strong> — Chairman &amp; Director (since 1991)<br><strong>Lenoir Stephanie</strong> — Director &amp; Managing Director (since 2015)<br><strong>Lenoir Veronique M.T.</strong> — Director (since 2010)</p>
+      </div>
+      <div class="profile-card">
+        <h4>Secretarial &amp; Audit</h4>
+        <p><strong>Secretary:</strong> CAS Services Ltd, UHY House, Vivea Business Park, Moka (since 2004)<br><strong>Auditor:</strong> Margeot &amp; Associates, C&amp;R Court, Port Louis (since 1997)</p>
+      </div>
+      <div class="profile-card">
+        <h4>Financials Snapshot</h4>
+        <p>Revenue: <strong>MUR 73.2M</strong><br>Gross Margin: <strong>46.7%</strong><br>Net Margin: <strong>13.5%</strong><br>Total Equity: <strong>MUR 52.4M</strong><br>Cash on hand: <strong>MUR 26.7M</strong></p>
+      </div>
+    </div>
+
+    <div class="subsection-title">Key Findings</div>
+    <div class="alert alert-ok">
+      <div class="alert-title">Financial Strength</div>
+      Exceptional liquidity (current ratio 6.14x), zero charges on register, robust 13.5% net margin, and MUR 26.7M cash — this is a conservatively managed, debt-light business with substantial retained earnings of MUR 51.4M built over 35 years.
+    </div>
+    <div class="alert alert-warning">
+      <div class="alert-title">Operational Watch Point</div>
+      Inventory turnover of 1.55x indicates slow-moving stock typical of high-value, specialist sanitary ware. With MUR 25.2M tied up in inventory (37% of total assets), a disciplined product rationalisation and stock management process would release meaningful working capital and is a natural EOS conversation opener.
+    </div>
+    <div class="alert alert-info">
+      <div class="alert-title">EOS Opportunity</div>
+      Family succession is in motion — Stephanie Lenoir joined as director in 2015 and is LinkedIn-confirmed as Managing Director. The company simultaneously serves hospitality (Beachcomber, Constance) and residential markets, recently opened a second design showroom, and has been Great Place to Work certified, indicating genuine culture-building intent but likely underdeveloped management systems beneath the founder layer.
+    </div>
+    <div class="alert alert-info">
+      <div class="alert-title">Charge Register</div>
+      No floating charges registered. The MUR 6.7M long-term borrowing and MUR 3.75M short-term facility are entirely uncollateralised at CBRIS, suggesting clean bank relationships or recently discharged securities.
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TAB 02: COMPANY OVERVIEW ===================== -->
+<div id="t2" class="tab-content">
+  <div class="content-wrap">
+    <h2 class="section-title">Company Overview</h2>
+    <p class="section-lead">A 35-year-old Mauritian family enterprise that has evolved from a general retail operation into the island's recognised premium bathroom specialist, with deep roots in the hospitality supply chain and a growing residential design showroom model.</p>
+
+    <div class="subsection-title">Corporate Structure</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="heat-ok"><td>Full Legal Name</td><td>FRALAIN LTD</td></tr>
+          <tr><td>File Number</td><td>C9228</td></tr>
+          <tr><td>Business Registration No.</td><td>C07009228</td></tr>
+          <tr class="heat-ok"><td>Date of Incorporation</td><td>10 January 1991</td></tr>
+          <tr><td>Nature</td><td>Private / Domestic</td></tr>
+          <tr class="heat-ok"><td>Status</td><td>Live</td></tr>
+          <tr><td>SME Certificate</td><td>Small and Medium Enterprise — effective 24 September 1999 (no expiry listed)</td></tr>
+          <tr><td>Registered Office</td><td>C/O Fralain Ltd, School Lane, Cite Leal, Pailles, Mauritius (effective 22/11/2007)</td></tr>
+          <tr><td>Second Business Location</td><td>Pinpoint Business Park, Calebasses, Mauritius (design showroom, no stock)</td></tr>
+          <tr><td>Share Capital</td><td>10,000 ordinary shares at MUR 100 par value = MUR 1,000,000 stated capital; fully paid</td></tr>
+          <tr><td>Sole Shareholder</td><td>Vefra Investment Holding Ltd — 100% of ordinary shares</td></tr>
+          <tr><td>Annual Registration Fee</td><td>Paid for 2026</td></tr>
+          <tr><td>Charges on Register</td><td>None registered</td></tr>
+          <tr><td>Winding-Up / Removal</td><td>None</td></tr>
+          <tr><td>Objections</td><td>None</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title">Directors &amp; Office Bearers</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Name</th>
+            <th>Appointed</th>
+            <th>Service Address</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="heat-ok">
+            <td>Chairman &amp; Director</td>
+            <td>Lenoir Francois Rene Louis</td>
+            <td>10/01/1991 (Dir) · 20/05/1998 (Chair)</td>
+            <td>Not listed</td>
+            <td>Founding director; patriarch of the family group</td>
+          </tr>
+          <tr class="heat-ok">
+            <td>Director (MD)</td>
+            <td>Lenoir Stephanie</td>
+            <td>30/06/2015</td>
+            <td>21 John Kennedy Avenue, Floreal, Mauritius</td>
+            <td>LinkedIn-confirmed Managing Director; second generation; driving current growth</td>
+          </tr>
+          <tr>
+            <td>Director</td>
+            <td>Lenoir Veronique M.T.</td>
+            <td>12/06/2010</td>
+            <td>Not listed</td>
+            <td>Family member; decade of board tenure</td>
+          </tr>
+          <tr>
+            <td>Secretary</td>
+            <td>CAS Services Ltd</td>
+            <td>22/06/2004</td>
+            <td>71 Impasse Saipan, UHY House, Vivea Business Park, Moka</td>
+            <td>Professional corporate secretary</td>
+          </tr>
+          <tr>
+            <td>Auditor</td>
+            <td>Margeot &amp; Associates</td>
+            <td>30/06/1997</td>
+            <td>7th Floor, C &amp; R Court, Labourdonnais Street, Port Louis</td>
+            <td>Long-standing relationship; 29 years</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title">Products &amp; Services</div>
+    <p class="body-text">Fralain is Mauritius' leading specialist in premium bathroom products. Its curated portfolio spans the full bathroom fit-out spectrum, sourced exclusively from European and premium international brands.</p>
+
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h4>Core Product Lines</h4>
+        <p>
+          Tapware (mixers, basin, bath &amp; kitchen taps)<br>
+          Showers &amp; shower enclosures<br>
+          Sanitary ware (WCs, basins, bidets)<br>
+          Bathroom accessories &amp; fittings<br>
+          Bathroom furniture &amp; vanity units
+        </p>
+      </div>
+      <div class="profile-card">
+        <h4>Key Brands Carried</h4>
+        <p>
+          <strong>Huayi</strong> (tapware)<br>
+          <strong>Teorema</strong> (bathroom design)<br>
+          <strong>OLI</strong> (cisterns &amp; in-wall systems)<br>
+          <strong>Kassel Sanitar</strong> (sanitary ware)<br>
+          <strong>Alfiere Bagno</strong> (bathroom furniture)
+        </p>
+      </div>
+      <div class="profile-card">
+        <h4>Services Offered</h4>
+        <p>
+          Project specification &amp; design consultation<br>
+          Hospitality sector tailor-made amenity packages<br>
+          After-sales support &amp; technical service<br>
+          On-site product exploration (Calebasses showroom)<br>
+          Delivery &amp; fulfilment from Pailles warehouse
+        </p>
+      </div>
+    </div>
+
+    <div class="subsection-title">Target Markets &amp; Client Segments</div>
+    <div class="profile-grid two-col">
+      <div class="profile-card">
+        <h4>Hospitality (Core / Legacy)</h4>
+        <p>Main supplier of bathroom amenities to major hotel groups since founding. Named clients include <strong>Beachcomber Hotels</strong>, <strong>Constance Hotels &amp; Resorts</strong>, and <strong>Attitude Hotels</strong>. Also supplied tapware and accessories to IRS/RES projects including Villas Valriche, Sofitel, Les Allees d'Helvetia, and Domaines des Alizees. Regional reach extends beyond Mauritius into the broader Indian Ocean.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Residential &amp; Commercial (Growing)</h4>
+        <p>Serving individual homeowners, interior designers, architects, and construction contractors. The Pinpoint Business Park design showroom (no stock; display and specification only) targets upmarket residential projects and the design professional community. This segment is actively being grown as a complement to the hospitality core.</p>
+      </div>
+    </div>
+
+    <div class="subsection-title">Locations &amp; Operations</div>
+    <div class="profile-grid two-col">
+      <div class="profile-card">
+        <h4>Pailles — Head Office &amp; Warehouse</h4>
+        <p>School Lane, Cite Leal, 11220, Pailles. Primary operations hub: stock holding, dispatch, administration, sales, and after-sales service. Hours: Mon–Fri 08:00–16:00/17:00. This is the fulfilment centre and main customer-facing location.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Calebasses — Design Showroom</h4>
+        <p>Pinpoint Business Park, Calebasses. Display-only, no stock. Targets design professionals and residential customers in the north. Hours: Mon–Fri 09:00–17:00, Sat 09:30–12:30. Represents Fralain's deliberate upmarket repositioning and retail expansion strategy.</p>
+      </div>
+    </div>
+
+    <div class="subsection-title">Key Operational Staff (from public sources)</div>
+    <div class="alert alert-info">
+      <div class="alert-title">Team Intelligence</div>
+      Beyond the registered directors, public sources identify: <strong>Nadine</strong> (operational leadership, described as having an inspirational and meticulous approach); <strong>Shirley</strong> (30-year administrative veteran); <strong>Ravin, Suresh, Yashil, Arno, Otto</strong> as named team members. Total headcount is not publicly disclosed but the Great Place to Work certification and LinkedIn activity suggest a team of approximately 15–30 staff.
+    </div>
+
+    <div class="subsection-title">Digital Presence &amp; Communications</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Channel</th><th>Handle / URL</th><th>Activity Level</th></tr>
+        </thead>
+        <tbody>
+          <tr class="heat-ok"><td>Website</td><td>fralain.com (GA4-tracked, modern stack)</td><td>Active — product catalogue and project gallery</td></tr>
+          <tr class="heat-ok"><td>Facebook</td><td>facebook.com/FralainMauritius</td><td>Active — regular product and project posts</td></tr>
+          <tr><td>LinkedIn</td><td>linkedin.com/company/fralain-ltd (168 followers)</td><td>Active — milestone and recruitment posts</td></tr>
+          <tr><td>Instagram</td><td>@fralain.mauritius</td><td>Active — project photography, bathroom designs</td></tr>
+          <tr><td>TikTok</td><td>@fralain.mauritius</td><td>Present — early stage</td></tr>
+          <tr><td>WhatsApp Business</td><td>+230 5851 6876</td><td>Customer enquiries channel</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title">Recent Developments</div>
+    <ul class="styled-list">
+      <li>35th anniversary milestone celebrated in 2026 — LinkedIn posts signal heightened brand storytelling and public profile</li>
+      <li>Second showroom opened at Pinpoint Business Park, Calebasses — strategic move to capture north-island residential market</li>
+      <li>Great Place to Work Mauritius certification obtained — signals deliberate investment in people and culture</li>
+      <li>LinkedIn post indicates active sales team expansion — recruitment underway</li>
+      <li>Annual accounts filed on time (FY2024 approved December 2024); compliance is current</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== TAB 03: FINANCIAL PERFORMANCE ===================== -->
+<div id="t3" class="tab-content">
+  <div class="content-wrap">
+    <h2 class="section-title">Financial Performance</h2>
+    <p class="section-lead">Full P&amp;L and Balance Sheet for the financial year ended 30 June 2024 (the most recent filed, approved 26 December 2024). All figures in Mauritius Rupees (MUR). Unit: 1.</p>
+
+    <div class="subsection-title">Profit &amp; Loss Statement — FY2024</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Line Item</th>
+            <th style="text-align:right">MUR</th>
+            <th style="text-align:right">% of Revenue</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="heat-ok">
+            <td>Turnover (Revenue)</td>
+            <td style="text-align:right; font-family:'IBM Plex Mono',monospace; font-weight:600;">73,203,853</td>
+            <td style="text-align:right">100.0%</td>
+          </tr>
+          <tr>
+            <td>Less: Cost of Sales</td>
+            <td style="text-align:right; font-family:'IBM Plex Mono',monospace;">(38,989,656)</td>
+            <td style="text-align:right">53.3%</td>
+          </tr>
+          <tr class="heat-ok">
+            <td><strong>GROSS PROFIT</strong></td>
+            <td style="text-align:right; font-family:'IBM Plex Mono',monospace; font-weight:700;">34,214,197</td>
+            <td style="text-align:right; font-weight:700; color:var(--emerald);">46.7%</td>
+          </tr>
+          <tr>
+            <td>Add: Other Income</td>
+            <td style="text-align:right; font-family:'IBM Plex Mono',monospace;">2,334,053</td>
+            <td style="text-align:right">3.2%</td>
+          </tr>
+          <tr>
+            <td>Less: Distribution Costs</td>
+            <td style="text-align:right; font-family:'IBM Plex Mono',monospace;">(584,948)</td>
+            <td style="text-align:right">0.8%</td>
+          </tr>
+          <tr>
+            <td>Less: Administration Costs</td>
+            <td style="text-align:right; font-family:'IBM Plex Mono',monospace;">(22,678,894)</td>
+            <td style="text-align:right">31.0%</td>
+          </tr>
+          <tr>
+            <td>Less: Other Expenses</td>
+            <td style="text-align:right; font-family:'IBM Plex Mono',monospace;">0</td>
+            <td style="text-align:right">0.0%</td>
+          </tr>
+          <tr>
+            <td>Less: Finance Costs</td>
+            <td style="text-align:right; font-family:'IBM Plex Mono',monospace;">(1,151,917)</td>
+            <td style="text-align:right">1.6%</td>
+          </tr>
+          <tr class="heat-ok">
+            <td><strong>PROFIT BEFORE TAX</strong></td>
+            <td style="text-align:right; font-family:'IBM Plex Mono',monospace; font-weight:700;">12,132,491</td>
+            <td style="text-align:right; font-weight:700; color:var(--emerald);">16.6%</td>
+          </tr>
+          <tr>
+            <td>Tax Expense</td>
+            <td style="text-align:right; font-family:'IBM Plex Mono',monospace;">(2,240,952)</td>
+            <td style="text-align:right">3.1%</td>
+          </tr>
+          <tr class="heat-ok">
+            <td><strong>PROFIT FOR THE PERIOD</strong></td>
+            <td style="text-align:right; font-family:'IBM Plex Mono',monospace; font-weight:700;">9,891,539</td>
+            <td style="text-align:right; font-weight:700; color:var(--emerald);">13.5%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-warning">
+      <div class="alert-title">Administration Cost Watch</div>
+      Administration costs of MUR 22.7M represent 31.0% of revenue — the single largest cost line after COGS. With gross margin at 46.7%, this indicates a significant overhead structure. As the business scales (new showroom, larger team), this ratio warrants close monitoring. EOS's People Analyser and Accountability Chart are directly applicable here.
+    </div>
+
+    <div class="subsection-title">Balance Sheet — as at 30 June 2024</div>
+    <div class="profile-grid two-col">
+      <div class="profile-card">
+        <h4>Assets</h4>
+        <p style="font-family:'IBM Plex Mono',monospace; font-size:12px; line-height:2;">
+          <strong>Non-Current Assets</strong><br>
+          Property, Plant &amp; Equipment: 5,718,656<br>
+          Others (deposits/prepayments): 3,659,765<br>
+          <strong>Total NCA: 9,378,421</strong><br><br>
+          <strong>Current Assets</strong><br>
+          Inventories: 25,196,196<br>
+          Trade &amp; Other Receivables: 7,507,934<br>
+          Cash &amp; Cash Equivalents: 26,687,501<br>
+          <strong>Total CA: 59,391,631</strong><br><br>
+          <strong>TOTAL ASSETS: 68,770,052</strong>
+        </p>
+      </div>
+      <div class="profile-card">
+        <h4>Equity &amp; Liabilities</h4>
+        <p style="font-family:'IBM Plex Mono',monospace; font-size:12px; line-height:2;">
+          <strong>Equity</strong><br>
+          Share Capital: 1,000,000<br>
+          Retained Earnings: 51,398,894<br>
+          <strong>Total Equity: 52,398,894</strong><br><br>
+          <strong>Non-Current Liabilities</strong><br>
+          Long-Term Borrowings: 6,700,000<br>
+          <strong>Total NCL: 6,700,000</strong><br><br>
+          <strong>Current Liabilities</strong><br>
+          Trade &amp; Other Payables: 5,044,339<br>
+          Short-Term Borrowings: 3,749,511<br>
+          Current Tax Payable: 811,877<br>
+          Others: 65,431<br>
+          <strong>Total CL: 9,671,158</strong><br><br>
+          <strong>TOTAL EQUITY &amp; LIABILITIES: 68,770,052</strong>
+        </p>
+      </div>
+    </div>
+
+    <div class="subsection-title">Balance Sheet Commentary</div>
+    <ul class="styled-list">
+      <li><strong>Cash richness:</strong> MUR 26.7M in cash (38.8% of total assets) is exceptionally high for a trading SME — indicates the business generates strong free cash flow and is not aggressively reinvesting, or is holding reserves for a planned investment (e.g., further expansion)</li>
+      <li><strong>Inventory concentration:</strong> MUR 25.2M in stock (36.6% of total assets) — typical of a specialist importer holding European brand lines; slow inventory turn is a structural feature, not necessarily a distress signal</li>
+      <li><strong>Retained earnings depth:</strong> MUR 51.4M retained earnings dwarfs the MUR 1M share capital — 35 years of profit accumulation; the business has been consistently profitable</li>
+      <li><strong>Low debt:</strong> Total borrowings of MUR 10.45M (LT MUR 6.7M + ST MUR 3.75M) against equity of MUR 52.4M gives a D/E ratio of 0.31x — very conservative</li>
+      <li><strong>Clean charge register:</strong> No floating charges registered at CBRIS; borrowings appear unsecured or secured by assets not registered at CBRIS level</li>
+    </ul>
+
+    <div class="subsection-title">Charge Register</div>
+    <div class="alert alert-ok">
+      <div class="alert-title">No Charges Registered</div>
+      The CBRIS charge register for Fralain Ltd shows no floating or fixed charges of any kind. There are no winding-up proceedings, no objections, and no removal proceedings on file. The company's annual registration fee is paid for 2026.
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TAB 04: FINANCIAL RATIOS ===================== -->
+<div id="t4" class="tab-content">
+  <div class="content-wrap">
+    <h2 class="section-title">Financial Ratios</h2>
+    <p class="section-lead">All ratios calculated from CBRIS-filed financials for the year ended 30 June 2024. Benchmarks are indicative Mauritius SME norms for specialty retail / distribution businesses. Traffic-light ratings: Green = healthy, Amber = monitor, Red = concern.</p>
+
+    <div class="ratio-grid">
+
+      <!-- Liquidity -->
+      <div class="ratio-card">
+        <h4>Liquidity Ratios</h4>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Current Ratio</div>
+            <span class="ratio-interpret">CA / CL = 59.4M / 9.7M | Benchmark: 1.5–2.0x</span>
+          </div>
+          <div>
+            <div class="ratio-val ok">6.14x</div>
+            <span class="b b-green" style="margin-top:4px;display:block;text-align:right;">GREEN</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Quick Ratio</div>
+            <span class="ratio-interpret">(CA - Inv) / CL = 34.2M / 9.7M | Benchmark: &gt;1.0x</span>
+          </div>
+          <div>
+            <div class="ratio-val ok">3.54x</div>
+            <span class="b b-green" style="margin-top:4px;display:block;text-align:right;">GREEN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profitability -->
+      <div class="ratio-card">
+        <h4>Profitability Ratios</h4>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Gross Profit Margin</div>
+            <span class="ratio-interpret">GP / Revenue = 34.2M / 73.2M | Benchmark: 25–35%</span>
+          </div>
+          <div>
+            <div class="ratio-val ok">46.7%</div>
+            <span class="b b-green" style="margin-top:4px;display:block;text-align:right;">GREEN</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">EBIT Margin</div>
+            <span class="ratio-interpret">EBIT / Revenue = 13.28M / 73.2M | Benchmark: 8–12%</span>
+          </div>
+          <div>
+            <div class="ratio-val ok">18.1%</div>
+            <span class="b b-green" style="margin-top:4px;display:block;text-align:right;">GREEN</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Net Profit Margin</div>
+            <span class="ratio-interpret">Net Profit / Revenue = 9.9M / 73.2M | Benchmark: 5–8%</span>
+          </div>
+          <div>
+            <div class="ratio-val ok">13.5%</div>
+            <span class="b b-green" style="margin-top:4px;display:block;text-align:right;">GREEN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Returns -->
+      <div class="ratio-card">
+        <h4>Return Ratios</h4>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Return on Assets (ROA)</div>
+            <span class="ratio-interpret">Net Profit / Total Assets = 9.9M / 68.8M | Benchmark: 5–8%</span>
+          </div>
+          <div>
+            <div class="ratio-val ok">14.4%</div>
+            <span class="b b-green" style="margin-top:4px;display:block;text-align:right;">GREEN</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Return on Equity (ROE)</div>
+            <span class="ratio-interpret">Net Profit / Equity = 9.9M / 52.4M | Benchmark: 10–15%</span>
+          </div>
+          <div>
+            <div class="ratio-val ok">18.9%</div>
+            <span class="b b-green" style="margin-top:4px;display:block;text-align:right;">GREEN</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Asset Turnover</div>
+            <span class="ratio-interpret">Revenue / Total Assets = 73.2M / 68.8M | Benchmark: 1.5–2.0x</span>
+          </div>
+          <div>
+            <div class="ratio-val warn">1.06x</div>
+            <span class="b b-amber" style="margin-top:4px;display:block;text-align:right;">AMBER</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leverage -->
+      <div class="ratio-card">
+        <h4>Leverage &amp; Coverage</h4>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Debt-to-Equity</div>
+            <span class="ratio-interpret">Total Liabilities / Equity = 16.4M / 52.4M | Benchmark: &lt;1.0x</span>
+          </div>
+          <div>
+            <div class="ratio-val ok">0.31x</div>
+            <span class="b b-green" style="margin-top:4px;display:block;text-align:right;">GREEN</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Interest Coverage</div>
+            <span class="ratio-interpret">EBIT / Finance Costs = 13.28M / 1.15M | Benchmark: &gt;3.0x</span>
+          </div>
+          <div>
+            <div class="ratio-val ok">11.5x</div>
+            <span class="b b-green" style="margin-top:4px;display:block;text-align:right;">GREEN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Working Capital Efficiency -->
+      <div class="ratio-card">
+        <h4>Working Capital Efficiency</h4>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Inventory Turnover</div>
+            <span class="ratio-interpret">COGS / Inventory = 39.0M / 25.2M | Benchmark: 4–6x</span>
+          </div>
+          <div>
+            <div class="ratio-val warn">1.55x</div>
+            <span class="b b-amber" style="margin-top:4px;display:block;text-align:right;">AMBER</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Debtor Days (DSO)</div>
+            <span class="ratio-interpret">Receivables / Revenue × 365 = 7.5M / 73.2M × 365 | Benchmark: 30–45 days</span>
+          </div>
+          <div>
+            <div class="ratio-val ok">37.4 days</div>
+            <span class="b b-green" style="margin-top:4px;display:block;text-align:right;">GREEN</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Creditor Days (DPO)</div>
+            <span class="ratio-interpret">Payables / COGS × 365 = 5.0M / 39.0M × 365 | Benchmark: 30–60 days</span>
+          </div>
+          <div>
+            <div class="ratio-val ok">47.2 days</div>
+            <span class="b b-green" style="margin-top:4px;display:block;text-align:right;">GREEN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary Scorecard -->
+      <div class="ratio-card">
+        <h4>Ratio Scorecard Summary</h4>
+        <div class="ratio-row">
+          <div class="ratio-label">GREEN (Healthy)</div>
+          <div><span class="b b-green">10 of 13</span></div>
+        </div>
+        <div class="ratio-row">
+          <div class="ratio-label">AMBER (Monitor)</div>
+          <div><span class="b b-amber">3 of 13</span></div>
+        </div>
+        <div class="ratio-row">
+          <div class="ratio-label">RED (Concern)</div>
+          <div><span class="b b-red">0 of 13</span></div>
+        </div>
+        <div class="ratio-row">
+          <div class="ratio-label">Overall Financial Health</div>
+          <div><span class="b b-green">STRONG</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="subsection-title">Ratio Interpretation &amp; Flags</div>
+    <div class="alert alert-ok">
+      <div class="alert-title">Exceptional Liquidity</div>
+      A current ratio of 6.14x and quick ratio of 3.54x are well above any distress threshold. The business holds MUR 26.7M in cash — more than 2.75x its total current liabilities. This represents strong operational safety but also a potential opportunity cost: capital could be deployed into inventory rationalisation, showroom expansion, or ERP/systems investment.
+    </div>
+    <div class="alert alert-warning">
+      <div class="alert-title">Inventory Turnover — Amber Flag</div>
+      At 1.55x, inventory turns slowly. For a specialist bathroom product importer carrying European brands (long lead times, minimum order quantities, bespoke specifications), this is structurally expected rather than alarming. However, with MUR 25.2M tied up in stock, implementing an EOS-style data-driven scorecard with weekly inventory metrics and a disciplined stock management process could release meaningful working capital over 12–24 months.
+    </div>
+    <div class="alert alert-warning">
+      <div class="alert-title">Asset Turnover — Amber Flag</div>
+      Asset turnover of 1.06x is below the 1.5–2.0x benchmark, largely driven by the large cash balance inflating the asset base. Adjusted for cash (i.e., operating assets only), the ratio improves significantly. This is not a structural concern but reinforces the observation that the business is holding surplus capital.
+    </div>
+    <div class="alert alert-warning">
+      <div class="alert-title">Administration Costs — Amber Flag</div>
+      At 31.0% of revenue, admin costs are high for a business of this size. As headcount grows with the second showroom and sales team expansion, this ratio will come under further pressure unless systems, process, and accountability structures are strengthened — a direct EOS value proposition.
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TAB 05: MARKET & COMPETITIVE POSITION ===================== -->
+<div id="t5" class="tab-content">
+  <div class="content-wrap">
+    <h2 class="section-title">Market &amp; Competitive Position</h2>
+    <p class="section-lead">Fralain operates in the premium bathroom products segment of Mauritius — a market driven by luxury hotel construction, IRS/RES development, high-end residential demand, and ongoing hospitality refurbishment cycles.</p>
+
+    <div class="subsection-title">Primary Market</div>
+    <p class="body-text">Mauritius is the core market. The island's economy is heavily tourism-dependent, with a well-established luxury hotel sector (Beachcomber, Constance, Attitude, Sofitel, Sun Resorts) that requires continuous restocking and refurbishment of bathroom fittings. Fralain has a 35-year entrenched position as the preferred supplier to these groups.</p>
+
+    <div class="subsection-title">Geographic Reach</div>
+    <div class="profile-grid two-col">
+      <div class="profile-card">
+        <h4>Domestic (Primary)</h4>
+        <p>Two physical locations: Pailles (head office/warehouse) and Calebasses Pinpoint Business Park (design showroom). National delivery capability. Serving hotels, IRS/RES projects, architects, contractors, and homeowners across the island.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Indian Ocean Region (Secondary)</h4>
+        <p>Public sources confirm supply into Indian Ocean hotel projects beyond Mauritius. The regional hospitality market (Seychelles, Maldives, Reunion, Rodrigues) represents an extension of the same buyer relationships. Scale and extent of this revenue stream is not independently verifiable from filed accounts.</p>
+      </div>
+    </div>
+
+    <div class="subsection-title">Blue-Chip Client Portfolio</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Client / Project</th><th>Segment</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr class="heat-ok"><td>Beachcomber Hotels &amp; Resorts</td><td>Hospitality</td><td>Long-standing preferred supplier; one of Mauritius' largest hotel groups</td></tr>
+          <tr class="heat-ok"><td>Constance Hotels &amp; Resorts</td><td>Hospitality</td><td>Premium resort group; Indian Ocean-wide presence</td></tr>
+          <tr class="heat-ok"><td>Attitude Hotels</td><td>Hospitality</td><td>Mauritian boutique hotel group</td></tr>
+          <tr><td>Villas Valriche</td><td>IRS/RES</td><td>Luxury integrated resort scheme — tapware &amp; accessories supplied</td></tr>
+          <tr><td>Sofitel Mauritius</td><td>Hospitality</td><td>International luxury brand project</td></tr>
+          <tr><td>Les Allees d'Helvetia</td><td>IRS/RES</td><td>Residential development project</td></tr>
+          <tr><td>Domaines des Alizees</td><td>IRS/RES</td><td>Residential estate project</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title">Competitive Landscape</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Competitor</th><th>Positioning</th><th>Brands / Strengths</th><th>Threat Level</th></tr>
+        </thead>
+        <tbody>
+          <tr class="heat-warn"><td>Clardy Mauritius</td><td>European sanitary ware importer</td><td>Roca, Cersanit, Valvex, Deante — strong European brand stable</td><td><span class="b b-amber">MEDIUM</span></td></tr>
+          <tr><td>Independent importers / grey market</td><td>Price-competitive, lower service</td><td>Asian brands; no design or specification support</td><td><span class="b b-amber">MEDIUM</span></td></tr>
+          <tr><td>Hardware chains (e.g. ABC Hardware)</td><td>Mass market, convenience</td><td>Volume play; not premium positioned</td><td><span class="b b-green">LOW</span></td></tr>
+          <tr><td>International online / direct import</td><td>Design-led homeowners bypassing distributors</td><td>Growing trend; Fralain's service and specification expertise is the defence</td><td><span class="b b-amber">MEDIUM (growing)</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title">Fralain's Competitive Differentiators</div>
+    <ul class="styled-list">
+      <li><strong>35-year established relationships</strong> with Mauritius' top hotel groups — deeply embedded in procurement processes and specifications</li>
+      <li><strong>Specification and design service</strong> — not just a product supplier; acts as bathroom design partner for architects, developers, and hotel operators</li>
+      <li><strong>Premium European brand portfolio</strong> — curated from Huayi, Teorema, OLI, Kassel Sanitar, Alfiere Bagno; positioned above mass-market competitors</li>
+      <li><strong>After-sales service and technical support</strong> — a differentiator vs. grey market importers who offer no service layer</li>
+      <li><strong>Showroom experience</strong> — two physical showrooms enable tactile specification; the Calebasses design showroom signals upmarket repositioning</li>
+      <li><strong>Great Place to Work certification</strong> — attracts quality staff, which supports service quality; a reputational asset in a small market</li>
+      <li><strong>Indian Ocean regional capability</strong> — ability to supply beyond Mauritius is a barrier to purely local competitors</li>
+    </ul>
+
+    <div class="subsection-title">Market Risks</div>
+    <div class="alert alert-warning">
+      <div class="alert-title">Tourism Dependency Risk</div>
+      Heavy reliance on the Mauritian hotel sector creates concentration risk. Any tourism downturn (pandemic, geopolitical, climate events) directly impacts the hospitality procurement budget, as demonstrated during COVID-19. The residential segment growth at Pinpoint is a sensible risk mitigation strategy.
+    </div>
+    <div class="alert alert-warning">
+      <div class="alert-title">Import Chain &amp; Currency Risk</div>
+      As a pure importer of European brands, Fralain is exposed to EUR/MUR and USD/MUR exchange rate movements, as well as European supply chain disruptions. The elevated inventory holding (MUR 25.2M) may partly reflect strategic buffer stocking against supply variability.
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TAB 06: EOS ASSESSMENT ===================== -->
+<div id="t6" class="tab-content">
+  <div class="content-wrap">
+    <h2 class="section-title">EOS Assessment</h2>
+    <p class="section-lead">Assessment of Fralain Ltd's fit for the Entrepreneurial Operating System across eight dimensions. Ratings are evidence-based, drawing from corporate filings, financial data, public digital presence, and industry context.</p>
+
+    <!-- Dimension 1 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">1. Organisational Size and Complexity</div>
+        <div class="eos-score high">7<span style="font-size:14px;opacity:0.4;">/10</span></div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+      <div class="eos-rationale">Fralain operates two physical locations (Pailles warehouse/office + Calebasses showroom), serves two distinct market segments (hospitality B2B and residential B2C), manages an import supply chain, holds inventory, and has a growing team of approximately 15–30 staff. It has three family-member directors, a professional corporate secretary, and long-standing external auditor. This is exactly the 10–250 employee range and multi-site, multi-market complexity that EOS was designed for. Not a micro-business, not yet a corporation — the EOS sweet spot.</div>
+    </div>
+
+    <!-- Dimension 2 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">2. Leadership Openness</div>
+        <div class="eos-score high">7<span style="font-size:14px;opacity:0.4;">/10</span></div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+      <div class="eos-rationale">The Great Place to Work certification is a strong positive signal — no founder-led SME pursues that certification without genuine openness to external frameworks and people-measurement tools. Stephanie Lenoir's LinkedIn activity (celebrating milestones, posting about team growth and recruitment) indicates a modern, outward-facing management style. The second-generation transition from Francois to Stephanie suggests willingness to evolve leadership. One risk: family businesses can be resistant to structural accountability (e.g., telling a family member they are in the wrong seat). The GPTW certification partially mitigates this concern.</div>
+    </div>
+
+    <!-- Dimension 3 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">3. Growth Stage and Pain Points</div>
+        <div class="eos-score high">8<span style="font-size:14px;opacity:0.4;">/10</span></div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+      <div class="eos-rationale">Fralain is in a classic EOS "growth pain" stage: it has a strong foundation (35 years, profitable, financially healthy) but is actively scaling (second showroom, expanding sales team). This is precisely where founders lose control of execution without systems. The admin cost ratio of 31% suggests overhead is growing. Inventory at 1.55x turn suggests stock management is not systematised. The dual-segment (hospitality + residential) strategy requires clear accountability and scorecards to manage both without losing focus. Classic EOS traction pain points are almost certainly present.</div>
+    </div>
+
+    <!-- Dimension 4 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">4. Current Systems and Processes</div>
+        <div class="eos-score mid">5<span style="font-size:14px;opacity:0.4;">/10</span></div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+      <div class="eos-rationale">No evidence of a formal ERP or structured process management system in public sources. The company operates a modern website with GA4 analytics, WhatsApp Business, and multi-channel social media — digital hygiene is reasonable for a Mauritian SME. However, the combination of slow inventory turns, high admin costs, and the absence of any publicly mentioned management system or tool suggests process documentation is informal and largely held in people's heads. The 30-year tenure of Shirley in administration suggests institutional knowledge concentration — a classic EOS dependency risk. Score reflects moderate current systems with clear headroom for EOS process documentation and Core Processes crystallisation.</div>
+    </div>
+
+    <!-- Dimension 5 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">5. Company Culture</div>
+        <div class="eos-score high">8<span style="font-size:14px;opacity:0.4;">/10</span></div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+      <div class="eos-rationale">The Great Place to Work certification is the most powerful data point available on culture — this requires genuine employee satisfaction, management trust, and a consistent workplace experience. The family-business ethos (team members described as "family", long tenures for Shirley and Nadine) suggests a high-care, high-loyalty culture. This is an EOS accelerant: companies with strong culture but weak systems respond faster to EOS implementation because the people are already aligned on values; they just need the tools. Fralain appears to have the cultural raw material. Core Values likely exist implicitly; EOS would make them explicit.</div>
+    </div>
+
+    <!-- Dimension 6 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">6. Decision-Making Patterns</div>
+        <div class="eos-score mid">6<span style="font-size:14px;opacity:0.4;">/10</span></div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+      <div class="eos-rationale">Three family-member directors (Francois as Chairman, Stephanie as MD, Veronique as Director) constitute the decision-making core. With a founding chairman still active and a second-generation MD driving operations, the risk of decision bottlenecks at the top is real. Family dynamics can create ambiguity about who decides what — the EOS Accountability Chart is a direct solution to this. Stephanie's active LinkedIn and management presence suggests she is effectively running day-to-day operations, which is a positive sign. Score reflects the typical family-business decision pattern: good instincts, but potentially slow and personality-dependent without formal issue-resolution structures (EOS IDS framework).</div>
+    </div>
+
+    <!-- Dimension 7 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">7. Vision Clarity</div>
+        <div class="eos-score mid">6<span style="font-size:14px;opacity:0.4;">/10</span></div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+      <div class="eos-rationale">There are positive signals: the Pinpoint showroom opening indicates strategic intentionality about the residential segment, the 35th anniversary milestone is being used for brand building, and the GPTW certification reflects an intentional employer brand. However, no publicly articulated 3-year or 10-year vision is discernible from available sources. The EOS V/TO (Vision/Traction Organiser) with its 10-year target, 3-year picture, and 1-year plan would provide structure to what appears to be an instinct-driven growth strategy. The dual-segment push (hospitality + residential) without a clear priority framework is a typical sign of vision fog that EOS directly addresses.</div>
+    </div>
+
+    <!-- Dimension 8 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">8. Meeting Culture</div>
+        <div class="eos-score mid">5<span style="font-size:14px;opacity:0.4;">/10</span></div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+      <div class="eos-rationale">No direct data is available on meeting discipline. However, CBRIS annual meeting records show meetings being called between December and April each year — standard compliance rhythm. For an SME of this profile, the typical pattern is infrequent, unstructured leadership discussions with no weekly cadence, no Level 10 Meeting equivalent, and issue-resolution happening in ad-hoc bilateral conversations. The GPTW certification implies some structured people management practices are in place. Absent clear counter-evidence, a mid-range score reflects likely reliance on informal communication rather than a structured meeting pulse. EOS Level 10 Meetings would be a direct and visible early win here.</div>
+    </div>
+
+    <!-- Overall Score -->
+    <div class="eos-overall">
+      <div class="eos-overall-score">
+        <div class="big-num">7</div>
+        <div class="big-denom">/10</div>
+        <div class="big-label">EOS Suitability</div>
+      </div>
+      <div class="eos-overall-text">
+        <h4>Strong EOS Candidate — Recommend Active Pursuit</h4>
+        <p>Fralain scores 7/10 overall. It is a financially strong, culturally healthy, second-generation family business in active scaling mode. The conditions that generate EOS demand — growth pain, role ambiguity, information concentration in key people, vision without execution rigour — are present or emerging. The GPTW certification signals a leadership team that is genuinely open to frameworks and external input. The recommended opening tools are the <strong>Accountability Chart</strong> (to resolve family role clarity), the <strong>V/TO</strong> (to codify the residential/hospitality dual-growth strategy), and the <strong>Scorecard</strong> (weekly inventory and sales KPIs to address the amber financial flags). The primary contact is Stephanie Lenoir as Managing Director.</p>
+      </div>
+    </div>
+
+    <div class="subsection-title">Recommended EOS Tools by Priority</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>EOS Tool</th><th>Business Problem Addressed</th><th>Priority</th></tr>
+        </thead>
+        <tbody>
+          <tr class="heat-ok"><td>Accountability Chart</td><td>Clarifies family-member roles (Chairman vs MD vs Director), prevents overlap and decision bottlenecks</td><td><span class="b b-red">HIGH</span></td></tr>
+          <tr class="heat-ok"><td>V/TO (Vision/Traction Organiser)</td><td>Codifies 10-year target, 3-year picture, 1-year plan for dual-segment growth (hospitality + residential)</td><td><span class="b b-red">HIGH</span></td></tr>
+          <tr class="heat-ok"><td>Scorecard</td><td>Weekly KPIs for inventory turns, sales pipeline, revenue per segment, debtor days — addresses amber financial ratios</td><td><span class="b b-red">HIGH</span></td></tr>
+          <tr class="heat-warn"><td>Level 10 Meetings</td><td>Installs structured weekly meeting pulse; replaces ad-hoc bilateral decision-making</td><td><span class="b b-amber">MEDIUM</span></td></tr>
+          <tr class="heat-warn"><td>Core Processes (The Fralain Way)</td><td>Documents hospitality project delivery, residential showroom sales, and import/inventory management processes</td><td><span class="b b-amber">MEDIUM</span></td></tr>
+          <tr><td>People Analyser / GWC</td><td>Evaluates team as headcount grows; ensures right people in right seats in both locations</td><td><span class="b b-green">STANDARD</span></td></tr>
+          <tr><td>Rocks (90-Day Priorities)</td><td>Structures the showroom expansion, sales team growth, and systems investment into quarterly execution units</td><td><span class="b b-green">STANDARD</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TAB 07: RECOMMENDATIONS ===================== -->
+<div id="t7" class="tab-content">
+  <div class="content-wrap">
+    <h2 class="section-title">Recommendations</h2>
+    <p class="section-lead">Prioritised actions for approaching, qualifying, and developing Fralain Ltd as an EOS prospect. Based on all research, financial analysis, and EOS assessment findings.</p>
+
+    <div class="subsection-title">Approach Strategy</div>
+    <div class="action-grid">
+
+      <div class="action-card">
+        <div class="ac-num">Action 01</div>
+        <h4>First Contact — Stephanie Lenoir, Managing Director</h4>
+        <p>Stephanie is the identified operational lead and second-generation MD. She is LinkedIn-active, publicly associated with the company's growth narrative, and joined the board in 2015 — the right moment to be feeling growth pain. Approach via LinkedIn with a reference to the 35th anniversary milestone and the Pinpoint expansion as conversation anchors. Her address on record (21 John Kennedy Avenue, Floreal) confirms she is resident and reachable. Do not approach Francois (Chairman) first — he is the founder/patriarch; going through the operating MD is the correct entry point.</p>
+        <span class="urg urg-now">Primary Contact</span>
+      </div>
+
+      <div class="action-card">
+        <div class="ac-num">Action 02</div>
+        <h4>Opening Conversation Frame — Growth &amp; Scaling</h4>
+        <p>Frame the conversation around the natural tensions of scaling a family business: second location opened, team growing, serving two distinct markets (hospitality + residential), 35 years of success creating complexity. Do not lead with "EOS" — lead with the pain. Key questions: "How are you managing accountability across two sites?" "How do you ensure the residential showroom has the same service standards as Pailles?" "How do you plan the inventory split between both locations?" These questions will surface the need for systems, scorecards, and structure.</p>
+        <span class="urg urg-week">Qualification</span>
+      </div>
+
+      <div class="action-card">
+        <div class="ac-num">Action 03</div>
+        <h4>Financial Conversation Hooks</h4>
+        <p>The financials offer two natural EOS entry points: (1) Admin costs at 31% of revenue — as they scale, this will compress margins unless systems and accountability catch up with headcount. (2) Inventory turns at 1.55x — MUR 25.2M locked in slow stock with MUR 26.7M in cash signals a business that could operate with greater precision if it had weekly data and a buying discipline process. Both are Scorecard and Process conversations, not financial restructuring conversations.</p>
+        <span class="urg urg-week">Talking Points</span>
+      </div>
+
+      <div class="action-card">
+        <div class="ac-num">Action 04</div>
+        <h4>Great Place to Work — Use as a Bridge</h4>
+        <p>The GPTW certification is a direct signal that Stephanie and/or her team are open to external frameworks and measurement tools for culture and people. Reference this in the conversation: "I noticed Fralain is Great Place to Work certified — that tells me leadership here takes people and culture seriously. EOS complements that by giving the management team the structural tools to match the cultural ambition." This positions EOS as an upgrade to what they are already doing, not a disruption.</p>
+        <span class="urg urg-week">Positioning</span>
+      </div>
+
+      <div class="action-card">
+        <div class="ac-num">Action 05</div>
+        <h4>Family Business Sensitivity Protocol</h4>
+        <p>With Chairman, MD, and a third director all from the Lenoir family, the Accountability Chart conversation must be handled carefully. In the initial Discovery call, do not reference family dynamics directly. Let the pain surface naturally. Once there is engagement, the Accountability Chart (who does what, who reports to whom, what decisions belong to which seat) will be the most valued tool — family businesses almost universally lack this clarity. Frame it as a growth enabler, not a criticism of the current structure.</p>
+        <span class="urg urg-medium">Handle With Care</span>
+      </div>
+
+      <div class="action-card">
+        <div class="ac-num">Action 06</div>
+        <h4>Vefra Investment Holding Ltd — Group Context</h4>
+        <p>Fralain is wholly owned by Vefra Investment Holding Ltd — a holding structure that suggests the Lenoir family may own other operating businesses or investments. If EOS traction is achieved at Fralain, explore whether Vefra has other portfolio companies that could benefit from EOS. This could expand a single SME engagement into a multi-entity relationship. Do not raise this in initial conversations — it is a follow-on opportunity once trust is established.</p>
+        <span class="urg urg-medium">Future Opportunity</span>
+      </div>
+
+    </div>
+
+    <div class="subsection-title">Signals to Watch</div>
+    <div class="closing-grid">
+      <div class="closing-box">
+        <h4>Positive Buying Signals</h4>
+        <ul class="signal-list">
+          <li><span class="sig-num">01</span>Stephanie mentions frustration with team accountability or communication across two sites</li>
+          <li><span class="sig-num">02</span>She references difficulty maintaining service standards as the team grows</li>
+          <li><span class="sig-num">03</span>She brings up the challenge of managing the hospitality and residential pipelines simultaneously</li>
+          <li><span class="sig-num">04</span>She references difficulty delegating decisions that currently sit with her or Francois</li>
+          <li><span class="sig-num">05</span>She asks about how other family businesses have handled the transition to professional management systems</li>
+        </ul>
+      </div>
+      <div class="closing-box steel-box">
+        <h4>Recommended First Step</h4>
+        <p>Send a LinkedIn connection request to Stephanie Lenoir with a personalised note referencing Fralain's 35th anniversary and the Pinpoint expansion. No pitch in the first message — just acknowledgement of the milestone and a genuine question about her vision for the next chapter of the business. If she responds, suggest a 20-minute discovery call. The financial health of this business means budget is not a barrier — the question is whether the leadership team recognises the need for structure at this growth stage.</p>
+      </div>
+    </div>
+
+    <div class="subsection-title">EOS Implementation Outlook</div>
+    <div class="alert alert-ok">
+      <div class="alert-title">Prognosis — Positive</div>
+      Fralain presents as one of the stronger EOS prospects a practitioner could encounter in the Mauritian SME market: 35-year trading history (no existential risk), strong and consistent profitability (can afford EOS investment), active scaling phase (feels the pain), Great Place to Work certified (culture receptivity), second-generation leadership transition underway (natural inflection point), and no competing management framework in place (no ERP, no Scaling Up, no Gazelles). The combination of financial strength, cultural readiness, and operational growth pain puts Fralain in the top tier of EOS suitability for the Mauritius market.
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="report-footer">
+  <span>FRALAIN LTD · C9228 · BRN C07009228 · CBRIS Data Issued 31/03/2026 · Analysis April 2026</span>
+  <span>Prepared by Rex — PKA Research Agent · For internal use only · LMAGP</span>
+</div>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
