@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arthur &amp; Morgane Ltd — Comprehensive Company Analysis — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Golf · Hospitality · Real Estate · Leisure</span>
+    <span class="badge badge-type">Private Company · Domestic · Live</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">31 March 2026</span>
+  </div>
+  <h1>Arthur &amp; Morgane Ltd:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Arthur &amp; Morgane Ltd · t/a .THE BUNKER AVALON · Avalon Golf Estate, Bois Chéri · Company intelligence · Financial ratios · EOS implementation assessment · Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 149.3M</div>
+      <div class="stat-delta">Year ended 30 June 2024</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Gross Profit Margin</div>
+      <div class="stat-value emerald">54.6%</div>
+      <div class="stat-delta">Strong operational margin on turnover</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">5.5 / 10</div>
+      <div class="stat-delta">Qualified candidate · Governance clarity needed first</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Negative Equity</div>
+      <div class="stat-delta">Total equity −MUR 7.1M · Insolvency risk signal</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Arthur &amp; Morgane Ltd — Company Analysis &amp; EOS Assessment · 31 March 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION — 7 tabs, always this order
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 14-year-old multi-shareholder property development vehicle that built and operates Avalon Golf Estate — one of Mauritius's top-two championship golf courses — but whose FY2024 accounts reveal a structurally loss-making operation sitting on a mountain of developer debt with negative equity of MUR 7.1 million.</p>
+
+  <p class="body-text">Arthur &amp; Morgane Ltd (File No. C105063, BRN C11105063) was incorporated on 7 September 2011 as Lignecaliste Property Company Ltd before being renamed. The company is the legal owner and operator of Avalon Golf Estate at Bois Chéri in southern Mauritius — a 220-hectare integrated lifestyle development comprising an 18-hole championship golf course designed by Peter Matkovich, two restaurants (Magic Spoon and The Bunker), a full-service country club, wellness facilities, a real estate morcellement of 314+ residential plots, and ancillary retail and beauty services. The company also operates a real estate agency out of Shop No 3, Newton Tower, Port Louis. Trading publicly as <em>.THE BUNKER AVALON</em>, the entity registered its stated capital at MUR 5,000,000 (500,000 ordinary shares fully paid), with its last annual registration fee paid for 2026. FY2024 financial statements were most recently filed as at 30 June 2024.</p>
+
+  <p class="body-text">Ownership is spread across 14 shareholders — a constellation of individuals and sociétés — with no single controlling party. The largest single holder is Société MCSK at 24.13%, a vehicle associated with Michel Chan Sui Ko, Chairman of the NeXTeracom Group, which served as promoter and marketing agent for the estate. The second-largest shareholder is Gerald Lincoln (23.13%), Country Managing Partner at Ernst &amp; Young Mauritius and co-founder of Lincoln Realty Group, which currently markets unsold residential plots. Both are founding directors. NeXTeracom's registered address (Level 12, Tower 1, Nexteracom Cybercity, Ebene) is also the registered office of Arthur &amp; Morgane, making the NeXTeracom group the de facto institutional backbone of the company. The remaining 52.74% is held across 12 further individual and corporate shareholders, including Csizmadia Daryl Matthew and Lai Wan Loong Andre Young, who joined as directors in September 2022 — suggesting a governance restructure at that time.</p>
+
+  <p class="body-text">Financially, the picture is sharply bifurcated. The operating business generates a strong 54.6% gross profit margin on MUR 149.3M in turnover — consistent with a premium hospitality and golf operation. But administration costs of MUR 87.1M (58.3% of revenue) swamp gross profit, producing an EBIT loss of MUR 5.4M and a pre-tax loss of the same. The anomalous tax expense of MUR 34.4M on a pre-tax loss then produces a reported net loss of MUR 39.7M, wiping equity into negative territory of MUR -7.1M. The balance sheet is dominated by MUR 403.6M of "inventories" and MUR 556.1M of "trade and other receivables" — almost certainly unsold residential plots and intercompany/developer loans rather than operational current assets. Against total liabilities of MUR 1.41 billion, the company is technically insolvent by equity measures, though the asset base (PP&amp;E of MUR 431.4M) is substantial. EOS suitability scores 5.5/10: the complexity, multi-owner structure, and clear operational growing pains make this a legitimate EOS candidate — but the financial distress and governance opacity are gating factors.</p>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">Critical Finding — Structural Insolvency Signal &amp; Anomalous Tax Charge</div>
+    Arthur &amp; Morgane Ltd reports negative total equity of MUR −7,133,067 as at 30 June 2024, meaning total liabilities of MUR 1.41 billion exceed total assets of MUR 1.40 billion. Additionally, a tax expense of MUR 34,355,519 has been booked against a pre-tax <em>loss</em> of MUR 5,380,735 — a combination that is highly unusual and requires explanation. This may reflect deferred tax movements on the large property asset base, prior-year adjustments, or a reporting anomaly. Until this is clarified, the true economic picture of the P&amp;L cannot be considered reliable. Any engagement with this company should begin with a request for the detailed tax note to the FY2024 accounts.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Avalon Golf Estate is ranked #2 in Mauritius</strong> (Top 100 Golf Courses, 4.7/5 on TripAdvisor from 255 reviews). Strong gross margin of 54.6%. Premium positioning with championship course, fine dining, wellness, and residential lifestyle. Active LinkedIn hiring and new 2026 membership programme signals operational investment. Real estate inventory of MUR 403M represents latent monetisation upside.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Negative equity of MUR −7.1M signals technical insolvency</strong> by conventional measures. Admin costs absorbing 58.3% of revenue produce an operating loss despite strong gross margin. Tax expense of MUR 34.4M on a pre-tax loss is unexplained and distorts the net figure. MUR 640M of non-current "other liabilities" — likely developer financing — is an undisclosed obligation. No charges registered, but lender exposures may be held at holding/partner entity level.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Classic multi-owner complexity: 14 shareholders and 9 directors with no dominant controller</strong> — a textbook Accountability Chart vacuum. The 2022 appointment of five new directors suggests organisational growing pains. Active hiring for senior commercial and kitchen roles (March 2026) indicates operational scale-up intent. Administration cost overrun at 58.3% of revenue is a process and accountability failure that EOS's Rocks and Scorecard discipline would directly address.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A multi-shareholder Mauritian property development and hospitality company built around one flagship asset — Avalon Golf Estate — with tentacles into real estate agency, wellness, retail, and beauty, all under the trading brand .THE BUNKER AVALON.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Arthur &amp; Morgane Ltd was incorporated on 7 September 2011 under the original name <em>Lignecaliste Property Company Ltd</em>, reflecting its initial purpose as a land holding and property development vehicle. The name change to Arthur &amp; Morgane Ltd preceded the 2013 ground-breaking of Avalon Golf Estate, with the project inaugurated in 2015. The company is registered as a Live, Private, Domestic company under File No. C105063 (BRN: C11105063). Its registered office is Level 12, Tower 1, Nexteracom Cybercity, Ebene, Mauritius — co-located with the NeXTeracom Group. Secretary since 9 January 2012 is Chung Kai Shing Michael Francis Y.C, who is simultaneously a shareholder (5.33%), director (appointed 22/12/2011), and CEO of Lincoln Realty Group. Stated share capital is MUR 5,000,000 (500,000 ordinary shares, all fully paid). Annual registration fees are current for 2026. Financial statements have been filed for FY2022, FY2023, and FY2024 (year ended 30 June). No charges are registered against the company at CBRIS. Total project investment in Avalon Golf Estate has been publicly stated at MUR 1.70 billion.</p>
+
+  <p class="body-text">The company acquired 544.78 arpents (approximately 220–230 hectares) of land in Bois Sec from Union Sugar Estate Ltd, transforming former tea and sugar land into an integrated lifestyle development. Construction commenced 1 June 2013 under main contractor PAD &amp; Co Ltd. The estate's three-storey country clubhouse became operational in 2015, with the golf course, restaurants, and residential morcellement following. Residential lots (ranging from MUR 3.9M to MUR 20M) were marketed to both Mauritian families (314 lots) and foreign investors under Mauritius's Real Estate Scheme (approximately 111 RES-eligible units). Over 70% of local plots were reportedly sold by late 2014.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Société MCSK</h4>
+        <div class="ec-sub">Largest Shareholder · 24.13%</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares</span><span class="mv">120,650</span></div>
+        <div class="ec-metric"><span class="mk">Beneficial Owner</span><span class="mv" style="font-family:inherit;font-size:11.5px;font-weight:500;">Michel Chan Sui Ko</span></div>
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv" style="font-family:inherit;font-size:11px;font-weight:400;text-align:right;">Chairman, NeXTeracom Group; Founding Director A&amp;M</span></div>
+        <div class="ec-metric"><span class="mk">Group Connection</span><span class="mv" style="font-family:inherit;font-size:11px;font-weight:400;text-align:right;">NeXTeracom served as Promoter &amp; Marketing Agent for Avalon Golf Estate</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Lincoln Paul Gerald</h4>
+        <div class="ec-sub">Second Shareholder · 23.13%</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares</span><span class="mv">115,650</span></div>
+        <div class="ec-metric"><span class="mk">Professional Role</span><span class="mv" style="font-family:inherit;font-size:11px;font-weight:400;text-align:right;">Country Managing Partner, EY Mauritius</span></div>
+        <div class="ec-metric"><span class="mk">Other Entity</span><span class="mv" style="font-family:inherit;font-size:11px;font-weight:400;text-align:right;">Chairman, Lincoln Realty Group (founded 2019 with M. Chung)</span></div>
+        <div class="ec-metric"><span class="mk">Prior Role</span><span class="mv" style="font-family:inherit;font-size:11px;font-weight:400;text-align:right;">Chairman, Nexteracom Group</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Remaining 12 Shareholders</h4>
+        <div class="ec-sub">Collective 52.74%</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Lai Wan Loong André Young</span><span class="mv">6.67%</span></div>
+        <div class="ec-metric"><span class="mk">Ramgoolam Shailendra</span><span class="mv">5.67%</span></div>
+        <div class="ec-metric"><span class="mk">Societe Enviroland</span><span class="mv">5.67%</span></div>
+        <div class="ec-metric"><span class="mk">Leung Hing Wah Marcello</span><span class="mv">5.33%</span></div>
+        <div class="ec-metric"><span class="mk">Chung Kai Shing MFY</span><span class="mv">5.33%</span></div>
+        <div class="ec-metric"><span class="mk">Poo-Kim-Li Fu Li Kune Lan</span><span class="mv">5.00%</span></div>
+        <div class="ec-metric"><span class="mk">Lam Po Tang Wellington</span><span class="mv">5.00%</span></div>
+        <div class="ec-metric"><span class="mk">Others (6)</span><span class="mv">13.07%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Ownership Observation — No Controlling Shareholder</div>
+    No single party holds more than 24.13%. The largest two shareholders (Soc. MCSK and G. Lincoln) together control 47.26% — a blocking minority rather than a majority. Major decisions likely require broad coalition-building across 14 shareholders, which creates structural friction in strategy setting and execution. Three of the shareholders are sociétés (MCSK, Enviroland, Mijikawa) whose own beneficial ownership is not publicly disclosed at CBRIS level.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Chan Sui Ko Teck Yan</h4>
+      <p><strong>Founding Director</strong> — Appointed 22/12/2011. Michel Chan Sui Ko is Chairman of NeXTeracom Group, Mauritius's leading commercial property developer responsible for Nexteracom Towers in Ebene Cybercity and Newton Tower in Port Louis. NeXTeracom served as promoter and marketing agent for Avalon Golf Estate. Over 40 years of industry experience. Holds shares via Société MCSK (24.13%).</p>
+    </div>
+    <div class="profile-card">
+      <h4>Chung Kai Shing Michael Francis Y.C.</h4>
+      <p><strong>Founding Director &amp; Company Secretary</strong> — Appointed 22/12/2011. CEO of Lincoln Realty Group (co-founded 2019 with G. Lincoln). Former General Manager of NeXTeracom Group. 15+ years in finance and administration. Certified Chartered Accountant, MIPA member. Also holds 5.33% in shares personally. Current commercial face of the residential sales programme.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Lincoln Paul Gerald</h4>
+      <p><strong>Founding Director</strong> — Appointed 22/12/2011. Country Managing Partner, Ernst &amp; Young Mauritius. Former Chairman, Nexteracom Group. Co-founder, Lincoln Realty Group. Fellow of ICAEW; BSc Economics, London School of Economics. 25+ years in transaction advisory. Holds 23.13% personally. The senior financial and advisory brain of the founding group.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Csizmadia Daryl Matthew</h4>
+      <p><strong>Director</strong> — Appointed 15/09/2022. Holds 4.00% (20,000 shares) in addition to board seat. Joined in the September 2022 governance restructure alongside four other new directors. No public professional profile found — background unclear.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Lai Wan Loong Andre Young</h4>
+      <p><strong>Director</strong> — Appointed 15/09/2022. Second-largest individual shareholder outside the founding trio with 6.67% (33,350 shares). Joined in the 2022 restructure. No public professional profile identified in research.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Operational Leadership — Ryan Dodds (Managing Director) &amp; Corinne Yan (Club Manager)</h4>
+      <p><strong>Day-to-day management</strong> — Ryan Dodds is publicly identified as Managing Director of Avalon Golf Estate, with Corinne Yan as Club Manager. Neither appears as a registered director at CBRIS, suggesting a separation between the shareholder/governance layer and the professional management team. Bookings managed by Divya and Reshika. Amben Runghen serves as Cost &amp; Purchasing Controller per LinkedIn.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Arthur &amp; Morgane Ltd operates a diversified lifestyle and hospitality cluster, all physically anchored at Avalon Golf Estate, Bois Chéri, with one satellite office in Port Louis:</p>
+
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Golf &amp; Sports</h4>
+        <div class="ec-sub">Primary Revenue Driver</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Course</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">18-hole championship, 6,318m, Peter Matkovich design</span></div>
+        <div class="ec-metric"><span class="mk">Green Fees</span><span class="mv">MUR 6,950 / round</span></div>
+        <div class="ec-metric"><span class="mk">Membership</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">4 tiers; access to 200+ reciprocal global clubs (Links2Golf)</span></div>
+        <div class="ec-metric"><span class="mk">Academy</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">The Islander Golf Academy — professional tuition</span></div>
+        <div class="ec-metric"><span class="mk">Other Sports</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Tennis, volleyball, football, petanque, pool</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Food &amp; Beverage / Events</h4>
+        <div class="ec-sub">Two Restaurants + Event Hire</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Magic Spoon</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Fine dining, up to 350 seated; Creole-European; course views</span></div>
+        <div class="ec-metric"><span class="mk">The Bunker</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Casual lounge bar, 80 pax; post-round meals</span></div>
+        <div class="ec-metric"><span class="mk">Multi-purpose Hall</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Weddings, corporate, year-end events</span></div>
+        <div class="ec-metric"><span class="mk">Liquor Licence</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Yes — registered business activity</span></div>
+        <div class="ec-metric"><span class="mk">Entertainment Licence</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Yes — registered business activity</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Real Estate &amp; Retail</h4>
+        <div class="ec-sub">Developer Inventory + Agency</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Residential Lots</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">314 local + 111 RES (foreign buyer) plots; 1,600–8,000m²</span></div>
+        <div class="ec-metric"><span class="mk">Lot Pricing</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">MUR 3.9M – MUR 20M (original launch)</span></div>
+        <div class="ec-metric"><span class="mk">Real Estate Agency</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Shop No 3, Newton Tower, Port Louis</span></div>
+        <div class="ec-metric"><span class="mk">Clothing Retail</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">On-estate retail — golf apparel &amp; accessories</span></div>
+        <div class="ec-metric"><span class="mk">General Retail</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Foodstuff &amp; Non-Foodstuff on-estate</span></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="body-text">Additional registered activities include beauty treatment (fish spa, tattoo, nail bar, pet care and grooming), a museum/art gallery function (confirmed by November 2025 pop-up art exhibition), and general retail — indicating the company is pursuing an ambitious lifestyle-destination positioning beyond a pure golf club.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Arthur &amp; Morgane Ltd operates from two physical locations in Mauritius. The primary site is Avalon Golf Estate, Bois Sec, Bois Chéri (Savanne district), southern Mauritius — approximately 20km from Sir Seewoosagur Ramgoolam International Airport and 15km from the southern beaches. The estate spans approximately 220 hectares at altitude, in the tea-growing highlands, with helicopter access. The secondary location is Shop No 3, Newton Tower, Bank Street, Port Louis — the company's real estate agency office, located in a premium commercial building also associated with the NeXTeracom / Lincoln group. The company's registered office at Level 12, Tower 1, Nexteracom, Ebene serves as its corporate/administrative address. The company has no known international operations, but its RES residential product attracts foreign buyers, and its golf membership affords reciprocal access to 200+ global clubs via Links2Golf, giving the club an international marketing hook.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS / Registrar of Companies, Mauritius — FY2024 financial statements (year ended 30 June 2024). Currency: Mauritian Rupee (MUR). The company files accounts as a private company — detailed segmental, cash flow, and notes data are not available at CBRIS level without the full statutory accounts.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Arthur &amp; Morgane Ltd is a private company. CBRIS provides summary P&amp;L and balance sheet data only — no segmental breakdown, no cash flow statement, no detailed notes. FY2023 and FY2022 comparatives are on file at CBRIS but only FY2024 data has been disclosed in this research brief. The "Inventories" and "Trade &amp; Other Receivables" line items on the balance sheet almost certainly contain unsold residential land plots and developer/intercompany loan balances respectively — they must not be read as conventional operational working capital. The stated tax expense requires independent verification via the notes to the accounts.
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">Anomalous Tax Charge — Flag for Immediate Clarification</div>
+    The company reports a pre-tax <em>loss</em> of MUR 5,380,735 yet books a <em>tax expense</em> of MUR 34,355,519 — producing a net loss of MUR 39,736,254. A tax charge on a loss is unusual. Possible explanations include: (a) large deferred tax liabilities arising from accelerated depreciation on PP&amp;E of MUR 431M; (b) revaluation of deferred tax on property assets; (c) prior-year tax adjustments; or (d) a tax on unrealised gains. Until the tax note is examined, the reported net loss of MUR 39.7M should be treated as indicative only. The pre-tax loss of MUR 5.4M is likely the more operationally meaningful figure.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY ended 30 June 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>149,342,264</td><td>100.0%</td><td>Covers golf, F&amp;B, events, real estate, retail, beauty, and club memberships</td></tr>
+        <tr><td>Cost of Sales</td><td>67,853,508</td><td>45.4%</td><td>Direct costs of services; golf, F&amp;B inputs, course maintenance portion</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>81,488,756</td><td>54.6%</td><td>Strong operational margin; consistent with premium leisure/hospitality</td></tr>
+        <tr><td>Other Income</td><td>217,800</td><td>0.1%</td><td>Minimal; likely incidental — sundry or investment income</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>87,087,291</td><td>58.3%</td><td>Critical overrun — exceeds gross profit; staff, management, overhead; multi-location cost burden</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>Nil reported</td></tr>
+        <tr><td>Finance Costs</td><td>0</td><td>0.0%</td><td>Nil reported — anomalous given MUR 640M of NCL "other liabilities"; interest may be capitalised or borne at holding level</td></tr>
+        <tr class="heat-warn"><td>EBIT / PBT (Loss)</td><td>(5,380,735)</td><td>(3.6%)</td><td>Operational loss after admin burden; finance costs absent distorts true debt service position</td></tr>
+        <tr class="heat-critical"><td>Tax Expense</td><td>34,355,519</td><td>23.0%</td><td>ANOMALOUS — tax charge on a pre-tax loss; requires explanation via detailed tax notes</td></tr>
+        <tr class="heat-critical"><td><strong>Net Loss for Period</strong></td><td><strong>(39,736,254)</strong></td><td><strong>(26.6%)</strong></td><td>Tax-inflated loss; wipes prior retained earnings and drives equity negative</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>PP&amp;E</td><td>431,439,882</td><td>Land, course infrastructure, country club building — core estate value; depreciation profile not disclosed</td></tr>
+        <tr><td>Non-Current Assets</td><td>Investment in Subsidiaries</td><td>20,000</td><td>Nominal — small subsidiary holding, nature unknown</td></tr>
+        <tr class="heat-ok"><td>Non-Current Assets Total</td><td></td><td>431,459,882</td><td>Substantial physical asset base underwriting the enterprise</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Inventories</td><td>403,602,403</td><td>Almost certainly unsold residential plots and/or construction stock — NOT operating inventory; distorts all turnover-based ratios</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>556,077,612</td><td>Extremely high relative to revenue (MUR 149M); likely includes intercompany loans, developer advances, and lot sale receivables</td></tr>
+        <tr><td>Current Assets</td><td>Cash &amp; Equivalents</td><td>12,446,986</td><td>Thin cash buffer — 8.3% of monthly revenue equivalent; limited operational liquidity headroom</td></tr>
+        <tr><td>Current Assets Total</td><td></td><td>972,127,001</td><td>Dominated by developer balances rather than liquid assets</td></tr>
+        <tr class="heat-ok"><td><strong>Total Assets</strong></td><td></td><td><strong>1,403,586,883</strong></td><td>MUR 1.40 billion asset base anchored in real estate</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Share Capital</td><td>5,000,000</td><td>500,000 ordinary shares, fully paid</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Retained Earnings</td><td>(12,133,067)</td><td>Accumulated losses — FY2024 net loss of MUR 39.7M wipes prior surplus</td></tr>
+        <tr class="heat-critical"><td><strong>Total Equity</strong></td><td></td><td><strong>(7,133,067)</strong></td><td>NEGATIVE — technical insolvency by equity measure</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Deferred Tax</td><td>3,320,719</td><td>Deferred tax liability — consistent with accelerated depreciation on large PP&amp;E base</td></tr>
+        <tr class="heat-warn"><td>Non-Current Liabilities</td><td>Others</td><td>640,664,195</td><td>Large undisclosed long-term obligation — likely developer financing, shareholder loans, or institutional debt; no charges registered at CBRIS suggesting off-balance-sheet or holding-level structures</td></tr>
+        <tr><td>Non-Current Liabilities Total</td><td></td><td>643,984,914</td><td></td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>732,365,091</td><td>Extremely elevated relative to COGS (MUR 68M); likely includes lot-sale deposits, intercompany balances, and related-party obligations</td></tr>
+        <tr><td>Current Liabilities</td><td>Others</td><td>34,369,945</td><td>Other current obligations — accruals, tax payable, other</td></tr>
+        <tr class="heat-critical"><td><strong>Total Current Liabilities</strong></td><td></td><td><strong>766,735,036</strong></td><td>Far exceeds operational working capital needs — developer-inflated</td></tr>
+        <tr class="heat-critical"><td><strong>Total Liabilities</strong></td><td></td><td><strong>1,410,719,950</strong></td><td>MUR 7.1M in excess of total assets — company is technically balance sheet insolvent</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">No charges are registered against Arthur &amp; Morgane Ltd at the CBRIS registry as at the date of this report. This is noteworthy given the MUR 640.7M of undisclosed non-current liabilities. It may indicate that: (a) financing is structured at a holding or related-entity level rather than at Arthur &amp; Morgane Ltd directly; (b) obligations are in the form of unsecured shareholder loans or developer advances; or (c) security has been taken over land that was separately title-structured. This ambiguity is a material information gap. Any due diligence or engagement should include a request for the full notes to the accounts and any shareholder loan agreements.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">All ratios calculated from CBRIS FY2024 data (year ended 30 June 2024). Benchmarks: Mauritius hospitality/leisure sector and global golf &amp; country club industry norms. <span class="b b-green">Green</span> = healthy. <span class="b b-amber">Amber</span> = watch. <span class="b b-red">Red</span> = critical concern. Note: Several ratios are distorted by developer-nature balance sheet items (inventory = unsold plots; receivables = intercompany; payables = developer obligations). Operational ratios (GP margin, EBIT margin) are more reliable than balance-sheet-derived ratios.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Important Interpretive Note — Dual-Nature Balance Sheet</div>
+    Arthur &amp; Morgane Ltd is simultaneously a property developer (with unsold residential lots on the balance sheet as inventory) and an operating hospitality/golf business. The balance sheet reflects the developer entity, not just the club operator. Ratios such as inventory turnover, DSO, DPO, and asset turnover must be interpreted in this context — they do not reflect the operating club's actual liquidity or efficiency, but rather the project's overall development financing structure.
+  </div>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.27×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Hospitality)</span><span class="ratio-val">1.0 – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber</span></span></div>
+      <span class="ratio-interpret">Technically within range, but heavily distorted by MUR 403M of inventory (unsold plots) and MUR 556M of receivables (likely intercompany) that are not liquid in any conventional sense. Strip these out and operational liquidity is critically low. The MUR 12.4M cash balance against MUR 766M of current liabilities is the real concern.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.74×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Hospitality)</span><span class="ratio-val">&gt; 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red</span></span></div>
+      <span class="ratio-interpret">(Current Assets − Inventory) / Current Liabilities = MUR 568.5M / MUR 766.7M. Below the 1.0x threshold even with the inflated receivables included. If receivables are also excluded as non-liquid, the quick ratio collapses to near zero (cash MUR 12.4M / CL MUR 766.7M = 0.016×). The operating business has essentially no liquid reserves.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">54.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Golf / Hospitality)</span><span class="ratio-val">40 – 60%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green</span></span></div>
+      <span class="ratio-interpret">Genuinely strong. GP of MUR 81.5M on MUR 149.3M revenue reflects premium pricing power — consistent with the #2 ranked golf course in Mauritius charging MUR 6,950 per round. This is the most reliable indicator of underlying business quality. The margin problem is entirely at the overhead level.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">−3.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Hospitality SME)</span><span class="ratio-val">8 – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red</span></span></div>
+      <span class="ratio-interpret">EBIT of −MUR 5.4M. Admin costs of MUR 87.1M consume 106.9% of gross profit. The gap between GP margin (54.6%) and EBIT margin (−3.6%) — a swing of 58.2 percentage points — is almost entirely attributable to uncontrolled administration overhead. This is a management and accountability failure, not a market failure.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">−26.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Hospitality SME)</span><span class="ratio-val">5 – 12%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red — Tax-Distorted</span></span></div>
+      <span class="ratio-interpret">Net loss of MUR 39.7M is materially inflated by the anomalous tax expense (MUR 34.4M on a pre-tax loss). The pre-tax net margin of −3.6% is a better operational indicator, though still negative. The "true" net margin of the operating business cannot be determined without full account notes.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">−2.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Hospitality)</span><span class="ratio-val">3 – 8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red</span></span></div>
+      <span class="ratio-interpret">Net loss of MUR 39.7M against total assets of MUR 1.40B = −2.83%. Even using PBT (−MUR 5.4M) the figure is −0.38%. The MUR 1.4B asset base is producing negative returns. The PP&amp;E base (MUR 431M) is depreciating while generating insufficient net income to justify its cost.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">N/M</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">10 – 20%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red — Not Meaningful</span></span></div>
+      <span class="ratio-interpret">Total equity is negative (−MUR 7.1M). A net loss divided by negative equity produces a mathematically positive result (+557%) that is economically meaningless. When equity is negative, ROE loses analytical value entirely. The more salient fact is that shareholders have zero recoverable equity on current book values.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">N/M</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Hospitality)</span><span class="ratio-val">0.5 – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red — Negative Equity</span></span></div>
+      <span class="ratio-interpret">Total liabilities of MUR 1.41B divided by negative equity of −MUR 7.1M is not meaningful. The company is technically balance sheet insolvent: total liabilities exceed total assets by MUR 7.1M. The MUR 640M of NCL "other liabilities" and MUR 732M of trade payables are the dominant obligations — neither category is disclosed in detail at CBRIS level.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">N/A</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt; 3.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red — Flag</span></span></div>
+      <span class="ratio-interpret">Finance costs are reported as MUR 0. With MUR 640M of non-current liabilities, zero interest expense is implausible for arm's-length debt. Interest is most likely capitalised into PP&amp;E, borne by a related party, or structured as a profit participation arrangement. This is a significant accounting presentation concern that masks the true cost of capital.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.11×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Hospitality)</span><span class="ratio-val">0.3 – 0.6×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red</span></span></div>
+      <span class="ratio-interpret">Revenue of MUR 149.3M against total assets of MUR 1.40B = 0.11×. Extremely low, but structurally expected: MUR 1B+ of assets are developer inventory and receivables not yet converted to revenue. The operating club's asset turnover (revenue vs. PP&amp;E only: MUR 149M / MUR 431M = 0.35×) is within the benchmark range.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.17×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Operational F&amp;B)</span><span class="ratio-val">4 – 8×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red — Not Comparable</span></span></div>
+      <span class="ratio-interpret">COGS MUR 67.9M / Inventory MUR 403.6M = 0.17×. This ratio is not operationally meaningful here — inventory almost certainly represents unsold residential land plots, not food, beverage, or golf consumables. The actual F&amp;B and golf operational inventory would be a small fraction of the MUR 403M reported. Do not use this for hospitality benchmarking.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debtor Days / DSO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">1,359 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Hospitality)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red — Not Comparable</span></span></div>
+      <span class="ratio-interpret">Trade &amp; Other Receivables MUR 556.1M / Revenue MUR 149.3M × 365 = 1,359 days. This extreme figure confirms that "Trade &amp; Other Receivables" contains predominantly intercompany balances, developer advances, lot-sale deferred receivables, or related-party loans — not customer trade debtors. Operationally meaningless as stated.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days / DPO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">3,940 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Hospitality)</span><span class="ratio-val">30 – 90 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red — Not Comparable</span></span></div>
+      <span class="ratio-interpret">Trade &amp; Other Payables MUR 732.4M / COGS MUR 67.9M × 365 = 3,940 days. As with DSO, the payables figure is dominated by developer obligations — lot-buyer deposits, intercompany advances, or related-party financing — rather than operational trade creditors. The operating club's supplier payment terms cannot be derived from this figure.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Operational Asset Turnover (PP&amp;E only)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.35×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Golf / Club)</span><span class="ratio-val">0.25 – 0.50×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber</span></span></div>
+      <span class="ratio-interpret">Revenue MUR 149.3M / PP&amp;E MUR 431.4M = 0.35×. This supplementary ratio strips the developer balances and measures only how efficiently the operating estate (clubhouse, course, restaurants) generates revenue from its fixed asset base. Within the benchmark range — indicating the club is generating reasonable revenue from its physical infrastructure, but with room for improvement through higher utilisation.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 3 Numbers That Matter Most</div>
+    <strong>1. Admin costs at 58.3% of revenue (MUR 87.1M):</strong> This single line item is the difference between a profitable premium club and a loss-making one. Reducing admin costs by even 10 percentage points to 48% of revenue would swing the company from an EBIT loss of −MUR 5.4M to an EBIT profit of +MUR 9.5M — a turnaround of MUR 14.9M without a single additional customer.<br><br>
+    <strong>2. Negative equity of −MUR 7.1M:</strong> On a total asset base of MUR 1.40B, this is a thin margin. Any further net losses — whether from operations or additional deferred tax charges — deepen insolvency. Shareholder recapitalisation or a formal restructuring of the MUR 640M NCL is needed to restore balance sheet health.<br><br>
+    <strong>3. Zero reported finance costs on MUR 640M of long-term debt:</strong> This is almost certainly not the economic reality. Finding and understanding the true cost of carrying MUR 640M in long-term obligations is essential before any financial projection or valuation exercise.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Arthur &amp; Morgane Ltd competes across three distinct segments — premium golf &amp; club membership, upscale hospitality and events, and lifestyle real estate — each with different dynamics, and each leveraging the shared Avalon Golf Estate physical asset.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Golf &amp; Club Membership</h4>
+        <div class="ec-sub">Primary Revenue Driver</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Market context</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Mauritius has 10 championship-calibre courses; golf tourism growing at ~7.8% CAGR globally</span></div>
+        <div class="ec-metric"><span class="mk">Avalon ranking</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">#2 in Mauritius (Top 100 Golf Courses); 4.7/5 TripAdvisor (255 reviews)</span></div>
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Heritage Golf Club, Tamarina Golf Spa &amp; Beach Club, Île aux Cerfs, Constance Belle Mare Plage</span></div>
+        <div class="ec-metric"><span class="mk">Green fee</span><span class="mv">MUR 6,950 / round</span></div>
+        <div class="ec-metric"><span class="mk">Differentiation</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Inland mountain setting; limited membership model; altitude climate; Links2Golf global reciprocity</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Hospitality, F&amp;B &amp; Events</h4>
+        <div class="ec-sub">High-Margin Ancillary</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Market context</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Mauritius tourism record: 1.44M visitors in 2025; hotel occupancy 84%; event weddings growing</span></div>
+        <div class="ec-metric"><span class="mk">Capacity</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Magic Spoon: 350 guests; The Bunker: 80 pax; Wedding hall; outdoor decking</span></div>
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Hotel-attached golf course restaurants; standalone event venues; luxury villa estates</span></div>
+        <div class="ec-metric"><span class="mk">Differentiation</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Unique mountain/tea-field backdrop; helicopter access; non-hotel, independent setting</span></div>
+        <div class="ec-metric"><span class="mk">Weak point</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Mixed TripAdvisor feedback on service consistency; pricing perception issues</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Lifestyle Real Estate</h4>
+        <div class="ec-sub">Balance Sheet-Dominant</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Market context</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Mauritius luxury property remains attractive to HNW buyers; MIC debt at 3-4% supports sector</span></div>
+        <div class="ec-metric"><span class="mk">Inventory</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Est. MUR 403M of residential plots on balance sheet; 314 local + 111 RES foreign investor units</span></div>
+        <div class="ec-metric"><span class="mk">Agent</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Lincoln Realty Group (co-founded by two largest shareholders) markets estate lots</span></div>
+        <div class="ec-metric"><span class="mk">Pricing</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">MUR 3.9M – MUR 20M per plot (2014 launch pricing)</span></div>
+        <div class="ec-metric"><span class="mk">Catalyst</span><span class="mv" style="font-family:inherit;font-size:11px;text-align:right;">Clearing remaining lot inventory would dramatically improve balance sheet position</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Location scarcity and physical irreproducibility.</strong> Avalon Golf Estate occupies 220 hectares in the south-central highlands of Mauritius — a terrain that no competitor can replicate. The combination of tea-field panoramas, mountain elevation, cooler climate (advantageous for golfers in tropical heat), and helicopter access creates a genuinely differentiated setting. No new comparable site in southern Mauritius is publicly known to be in development.</p>
+  <p class="body-text"><strong>2. Ranking and brand equity in the Mauritius golf market.</strong> The #2 ranking in Mauritius (Top 100 Golf Courses) and 4.7/5 TripAdvisor rating (255 reviews) represent accumulated brand trust that is difficult to displace. Peter Matkovich's design credentials, the championship-length layout (6,318m from the gold tees), and the Links2Golf global reciprocity network give the club genuine international standing. This supports premium green-fee and membership pricing above many local competitors.</p>
+  <p class="body-text"><strong>3. Vertically integrated lifestyle offering.</strong> Few competitors in Mauritius combine a championship golf course with fine dining (350-person capacity), wellness (Bodhi Centre), sports (tennis, volleyball, football), beauty and retail, events/weddings, and residential real estate in a single estate. This vertical integration drives multiple revenue streams from a shared fixed cost base — in theory. In practice, admin cost discipline is needed to realise the margin potential.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Mauritius tourism at record levels:</strong> 1.44M visitors in 2025 with record earnings of MUR 103.4Bn. Hotel occupancy at 84% — driving demand for non-hotel leisure destinations like Avalon for day visitors, corporate events, and golf tourism packages.</li>
+    <li><strong>Golf tourism growth:</strong> Global golf tourism CAGR of 7.8% through 2033, driven by rising disposable incomes and wellness-aligned leisure preferences. Mauritius benefits from European and South African source markets with strong golf culture.</li>
+    <li><strong>Premiumisation of Mauritius hospitality:</strong> 4+ star hotels now account for 85%+ of room supply. This creates a matched customer segment for Avalon's premium positioning — corporate and HNW visitors expect quality leisure facilities.</li>
+    <li><strong>Residential real estate demand from diaspora and foreign investors:</strong> Mauritius's RES/PDS framework continues to attract HNW foreign buyers. Clearing Avalon's remaining plot inventory at current market prices could generate significant cash inflows to reduce the balance sheet debt burden.</li>
+    <li><strong>Headwind — cost of living pressures on discretionary leisure:</strong> Real EUR tourist spending (EUR 121/day) remains below the 30-year average of EUR 139/day, suggesting budget consciousness even among international visitors. Premium green fees of MUR 6,950 (approx. EUR 129) draw occasional pushback in TripAdvisor reviews as high for non-members.</li>
+    <li><strong>Headwind — weather-related operational disruption:</strong> Multiple TripAdvisor reviews cite waterlogged fairways during Mauritius's rainy season (January–April), restricting play days and revenue. The mountain location, while scenic, amplifies weather sensitivity versus coastal courses.</li>
+  </ul>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data, CBRIS filings, LinkedIn activity, and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">LinkedIn lists 27 employees with a company size bracket of 51–200, suggesting actual headcount in the 50–100 range across golf operations, F&amp;B, club management, real estate, wellness, and retail. This sits squarely in the EOS sweet spot (10–250). The structure is genuinely complex: multiple business lines (golf, two restaurants, wedding events, real estate, beauty, retail, museum/gallery) operating from a single physical site with a satellite office in Port Louis, under a 9-director board and 14-shareholder ownership structure. Active hiring for kitchen, stewarding, and senior commercial management (March 2026) indicates ongoing organisational scaling. Scores high because the complexity is real, not manufactured — this is exactly the kind of business that struggles without clear operating rhythm.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The founding leadership includes Gerald Lincoln (Country Managing Partner, EY — a professional whose entire career is built on advisory frameworks and accountability) and Michael Chung Kai Shing (Certified Chartered Accountant — data-oriented). On paper, this is a leadership group that understands and values structure. However, two factors temper the score: (1) The 14-shareholder / 9-director structure makes collective leadership change inherently slow — any EOS implementation would require alignment across a large governance group before a single new system can be installed. (2) The operational management layer (Ryan Dodds, MD; Corinne Yan, Club Manager) is separate from the shareholder directors — creating a potential two-tier dynamic where governance intent and operational execution may not be aligned. No public evidence of prior operating system adoption. Medium score reflecting latent openness, structural constraint.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">This company exhibits multiple classic EOS-addressable pain points simultaneously. Admin costs at 58.3% of revenue — absorbing 106.9% of gross profit — is a textbook "everyone's wearing too many hats, no one owns the number" scenario. The company is active hiring a Senior Commercial Manager, multiple kitchen roles, and a Club Manager (March 2026), signalling rapid operational scaling without yet having the management systems to absorb growth efficiently. The estate is simultaneously trying to run: a championship golf club, two restaurants, a wedding venue, real estate sales, beauty services, a museum, a retail store, and a Port Louis agency office. Without Rocks, clear departmental ownership, and weekly L10 meetings, this degree of operational breadth will continue to produce the cost overruns visible in FY2024. Growth pain score is high because the symptoms are financially documented.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of any documented operating framework, ERP, or structured management system beyond what is standard for a Mauritius private company of this type. The golf club uses tee-time booking software (evident from online booking capability) and employs a Cost &amp; Purchasing Controller (Amben Runghen, per LinkedIn), suggesting some procurement process exists. However, the 58.3% admin-to-revenue ratio and the absence of any public communication about management systems or operational frameworks suggests process documentation is weak. The 2022 addition of five new directors without a visible governance framework adjustment is a further signal. Systems score is low — which is precisely why EOS would be most impactful here.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The customer-facing culture scores well: TripAdvisor reviewers consistently praise staff friendliness, course quality, and the welcoming atmosphere. The March 2026 "Welcome Cocktail" for new members and beginner golfers shows deliberate community-building intent. The LinkedIn posts demonstrate active external communication and pride in the product. Negative cultural signals: TripAdvisor reviewers mention occasional service inconsistency and one corporate event where staff were described as unprofessional — suggesting the front-line culture is not yet systematised. The art exhibition (November 2025) and pop-up events indicate creative ambition. Overall, a team that cares about the product but lacks the internal operational discipline that culture-building systems create. Promising raw material for EOS Core Values work.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score low">3 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:30%"></div></div>
+    <p class="eos-rationale">Fourteen shareholders and nine directors — no single individual holds more than 24.13%. This is structurally one of the most decision-making-challenged ownership structures an EOS Implementer will encounter. The two-tier system (shareholder directors vs. professional management) creates a further ambiguity: who actually makes operating decisions day-to-day? Does Ryan Dodds (MD) have autonomous P&amp;L authority, or does he escalate to the founding directors? The September 2022 governance restructure — adding five new directors simultaneously — suggests the company has been trying to resolve this ambiguity but without a clear framework. The low score reflects the structural reality, not individuals' competence. EOS's Accountability Chart would be transformative here — but requires all 9 directors to agree on its shape first.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The public-facing vision is reasonably clear: Mauritius's premier integrated lifestyle golf estate, combining championship golf, premium F&amp;B, wellness, and real estate. The website, LinkedIn, and marketing materials articulate this positioning consistently. However, a ten-year-old development company that is still carrying MUR 403M of unsold residential land inventory and is simultaneously expanding into beauty services, pet grooming, tattoo services, and art galleries has not clearly defined where it is going beyond the initial development concept. Is the long-term vision a pure golf club, a lifestyle resort, a real estate developer, or all three? The V/TO exercise in EOS would force a concrete answer. Score reflects coherent short-term positioning but unclear 10-year horizon.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No public evidence of structured meeting rhythms (weekly leadership team, quarterly planning sessions, annual strategy retreats). With 9 directors spread across major professional roles (EY Country Managing Partner, NeXTeracom Chairman, Lincoln Realty CEO), convening a structured weekly leadership meeting would require significant governance commitment. The current meeting structure is likely reactive — triggered by operational issues, member complaints, or financial reporting cycles — rather than proactive and rhythmic. The admin cost overrun visible in FY2024 is partly a symptom of not having a weekly leadership team sitting around a common Scorecard. The EOS Level 10 Meeting structure would be a significant cultural shift but the most immediately impactful single intervention.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">5.5</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Qualified Candidate — Governance Gate Required First</h4>
+      <p>Arthur &amp; Morgane Ltd is a genuine EOS candidate — the complexity, operational pain, multi-line business structure, and growth ambitions are textbook EOS terrain. The strong gross margin (54.6%) proves the underlying economics work; the admin cost overrun proves the execution system doesn't. However, the 14-shareholder / 9-director governance structure is an unusual gating factor: EOS works best when a leadership team of 3–7 aligned people agree to run the system together. Before an EOS engagement can succeed here, the company needs to define who its Leadership Team actually is — and that group must have genuine operational authority, not just governance titles. The score of 5.5 reflects high potential tempered by structural governance complexity. It would rise to 7.5+ if a clear 5–6 person leadership team with delegated P&amp;L authority could be identified and committed.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Arthur &amp; Morgane Ltd</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The most urgent EOS tool for this company. With 14 shareholders, 9 directors, a professional MD, and a Club Manager, no one can tell you with certainty who owns what. The A/C would force clarity: which 5–6 seats constitute the Leadership Team? Does Ryan Dodds own all operational revenue? Who owns the real estate sales function? Who owns the F&amp;B P&amp;L? Every seat, every responsibility, one owner.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard</h4>
+      <p>The 58.3% admin-to-revenue ratio exists because no one is watching the right numbers weekly. A Scorecard of 5–15 weekly measurables — green fees collected, covers served, membership revenue, admin cost run-rate, residential plot deposits received — would surface the admin overrun every Monday morning rather than in the annual CBRIS filing. Evidence-based management replacing reactive firefighting.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>The company is simultaneously running golf, fine dining, beauty, retail, real estate, events, and art exhibitions. Without quarterly Rocks, every initiative is equally important — which means the admin team is spread across too many fronts. Three to seven company Rocks per quarter (e.g., "Launch 2026 membership tier by April 30," "Reduce admin cost ratio to 50% by Q2") would create the focus the FY2024 numbers show is currently missing.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision / Traction Organiser (V/TO)</h4>
+      <p>Is Arthur &amp; Morgane Ltd a golf club that sells land, or a property developer that runs a golf club to protect asset values? The answer determines everything: staffing model, capital allocation, partnership strategy, and exit planning. The V/TO's 10-year picture and 3-year picture exercises would force the 9 directors to reach a written, shared answer — which they visibly have not yet done, given the eclectic mix of registered business activities.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting (L10)</h4>
+      <p>A weekly 90-minute structured leadership meeting — same agenda every week — would be transformative in a business where the senior leadership is split between Ebene (NeXTeracom headquarters), Port Louis (EY offices), and Bois Chéri (the estate). The L10 rhythm creates the weekly accountability cadence that prevents admin costs from drifting unchecked for a full fiscal year before anyone formally reviews them.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues Solving Track (IDS)</h4>
+      <p>TripAdvisor reviews reveal recurring operational issues: service inconsistency, communication gaps on reservations, waterlogged fairway management, pricing clarity for non-members. These are the symptoms of issues that get raised but never permanently resolved. The IDS framework (Identify, Discuss, Solve) in the L10 meeting structure would build the discipline of permanent resolution over symptomatic firefighting — directly addressing the culture inconsistency flagged in reviews.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total: four financial and operational priorities that must be addressed before or alongside any EOS engagement; four EOS implementation recommendations sequenced for maximum impact given the governance complexity of this business.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Obtain and Review the Full FY2024 Tax Note</h4>
+      <p>Before any commercial engagement, request the detailed notes to the FY2024 accounts — specifically the tax note — to understand the MUR 34.4M charge booked against a pre-tax loss. This is non-negotiable: without this information, the true P&amp;L, the nature of the deferred tax liability (MUR 3.3M on the balance sheet), and the integrity of the net loss figure (MUR 39.7M) cannot be assessed. Any EOS or consulting proposal submitted without this clarity is built on an unreliable financial foundation.</p>
+      <span class="urg urg-now">Immediate Priority — Before Any Engagement</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Identify and Quantify the MUR 640M Non-Current Liability</h4>
+      <p>The "Other NCL" of MUR 640.7M — the largest single item on the balance sheet — is undisclosed. Understanding whether this is shareholder loans (at what interest rate?), third-party developer financing (which institution?), or lot-buyer deposits (repayable on what conditions?) is critical to assessing true solvency and identifying who has economic leverage over the company's strategy. No charges are registered at CBRIS, suggesting either unsecured lending or off-entity structuring. Request a liability schedule with counterparty, terms, and security position for each obligation.</p>
+      <span class="urg urg-now">Immediate Priority — Before Any Engagement</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Target Admin Cost Reduction to 48% of Revenue (from 58.3%)</h4>
+      <p>This single intervention is worth more than any revenue growth strategy. Reducing admin costs by 10 percentage points — from MUR 87.1M to approximately MUR 71.7M (a MUR 15.4M reduction) — would swing EBIT from a loss of −MUR 5.4M to a profit of approximately +MUR 10M. The cost reduction programme should begin with a zero-based budget review of all admin line items, benchmarking against comparable golf and country clubs in the Indian Ocean region. Success metric: admin costs below MUR 72M in FY2025, reported in the next CBRIS filing.</p>
+      <span class="urg urg-week">90-Day Priority</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Accelerate Residential Lot Sales to Clear Developer Inventory</h4>
+      <p>The MUR 403.6M of inventory — almost certainly unsold residential plots — is the single most impactful balance sheet lever available to the company. Selling these lots converts balance sheet debt into equity, reduces the payables overhang (MUR 732M trade payables likely includes lot-buyer deposits and intercompany advances), and enables the company to refinance or repay the MUR 640M NCL. Lincoln Realty Group is already the marketing agent — the action required is an explicit sales acceleration programme with quarterly plot-sales Rocks, pricing review for remaining lots, and a potential international marketing push targeting the South African and European HNW buyer segments via the RES/PDS framework.</p>
+      <span class="urg urg-week">90-Day Priority</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Conduct a Leadership Team Definition Session Before Focus Day</h4>
+      <p>Do not attempt to run a Focus Day with all 9 directors in the room. The EOS model requires a Leadership Team of 3–7 people with genuine operational accountability. The first step is a facilitated session (half-day, with the founding trio: Chan Sui Ko, Lincoln, and Chung) to agree: (a) who constitutes the Leadership Team for EOS purposes, (b) what authority that team has — specifically the MD Ryan Dodds — to make operational decisions without shareholder director approval, and (c) which directors remain as governance board members versus operational leaders. This clarity is the prerequisite for everything that follows.</p>
+      <span class="urg urg-week">EOS Step 1 — Before Focus Day</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Run an EOS Focus Day Focused on the Accountability Chart</h4>
+      <p>Once the Leadership Team is defined, the Focus Day should concentrate its energy on building the Accountability Chart for Arthur &amp; Morgane Ltd — the most complex and highest-value deliverable for this specific company. The chart must answer: who owns Golf Operations, F&amp;B, Real Estate Sales, Events, Wellness &amp; Beauty, Retail, Finance, and People? Each seat must have one name — not two. The MD (Ryan Dodds) should be formally confirmed or restructured as Integrator. The founding directors, if not in day-to-day roles, should be formally positioned as Visionary and/or Shareholders — not as operational seat-holders.</p>
+      <span class="urg urg-week">EOS Step 2 — Month 1–2</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Implement a Financial Scorecard as the First Company-Wide Rock</h4>
+      <p>The first quarterly Rock for the Leadership Team should be: "Build and run the company Scorecard — 10 weekly measurables tracked by the Finance seat." Non-negotiables on the Scorecard: admin cost run-rate (weekly), golf revenue (daily/weekly), F&amp;B covers and revenue, membership sign-ups, residential plot enquiries and deposits, event bookings. The Scorecard should be reviewed at the first L10 meeting of every week. Success metric: 13 consecutive weeks of Scorecard completion by Q3 2026.</p>
+      <span class="urg urg-medium">EOS Step 3 — Month 2–4</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Facilitate the V/TO Strategic Question: Golf Club or Property Developer?</h4>
+      <p>The most valuable long-term EOS contribution for Arthur &amp; Morgane Ltd is forcing the 10-year vision question in writing: when all residential lots are sold, what is this company? A members' golf and lifestyle club (in which case equity should be restructured, assets monetised, and the club model professionalised) or a property group that will re-deploy capital into a new development? This question — answered in writing by the founding shareholders — determines the 3-year picture, the hiring plan, the capital structure, and the competitive strategy for the next decade. The V/TO exercise is the vehicle. Schedule for the first Annual EOS retreat (Q3 or Q4 2026).</p>
+      <span class="urg urg-medium">EOS Step 4 — Month 6–12</span>
+    </div>
+  </div>
+
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Arthur &amp; Morgane Ltd has built something genuinely special — the #2 golf course in Mauritius on a 220-hectare estate generating MUR 149M in annual revenue with a 54.6% gross margin. That is real commercial achievement. But 14 shareholders, 9 directors, no dominant controller, negative equity, an unexplained tax charge, MUR 640M of undisclosed debt, and admin costs that consume every rupee of gross profit represent a perfect storm of structural and operational dysfunction. The opportunity for an EOS Implementer is clear — but the financial distress and governance opacity mean the first conversation must be diagnostic, not prescriptive. Propose a no-cost 90-minute "Clarity Session" with the two or three key principals (Lincoln, Chan Sui Ko, Chung) to establish financial ground truth before any EOS proposal is tabled.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Request FY2024 account notes and liability schedule — clarify tax charge and MUR 640M NCL (Immediate — before first meeting)</li>
+        <li><span class="sig-num">02</span>Conduct 90-minute Clarity Session with Lincoln / Chan Sui Ko / Chung — establish financial ground truth and leadership appetite (Month 1)</li>
+        <li><span class="sig-num">03</span>Facilitate Leadership Team Definition Session — identify who constitutes the EOS Leadership Team, confirm MD authority (Month 1–2)</li>
+        <li><span class="sig-num">04</span>Run EOS Focus Day — Accountability Chart as primary deliverable; install weekly L10 and Scorecard (Month 2–3)</li>
+        <li><span class="sig-num">05</span>First Annual V/TO retreat — answer the "Golf Club or Developer?" strategic question in writing; set 3-year picture and Rocks for balance sheet recovery (Month 6–12)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Arthur &amp; Morgane Ltd — Comprehensive Company Analysis &amp; EOS Assessment · 31 March 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (March 2026) · avalon.mu · lincolnrealty.mu · nexteracom.mu · ey.com/en_mu · tripadvisor.com · linkedin.com/company/avalon-golf · top100golfcourses.com · 1golf.eu · business-magazine.mu · axys-group.com · pukaarnews.com</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
