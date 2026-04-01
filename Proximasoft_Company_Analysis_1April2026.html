@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProximaSoft — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">ICT Services &amp; Software</span>
+    <span class="badge badge-type">Private Company · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">1 April 2026</span>
+  </div>
+  <h1>ProximaSoft:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">ProximaSoft Ltd · Company intelligence · Financial ratios · EOS implementation assessment · Phoenix, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 38.8M</div>
+      <div class="stat-delta">Year ended 30 Sept 2024 · Mauritius Rupee</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit After Tax</div>
+      <div class="stat-value emerald">MUR 4.0M</div>
+      <div class="stat-delta">10.3% net margin · Profitable and growing</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.4 / 10</div>
+      <div class="stat-delta">Moderate-High — Qualified Positive · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Debt/Equity 15×</div>
+      <div class="stat-delta">Equity base severely thin relative to total liabilities</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>ProximaSoft Ltd — Company Analysis &amp; EOS Assessment · 1 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION — 7 tabs, always this order
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 25-year-old Mauritius ICT firm with an exceptional gross margin and genuine regional reach — but a balance sheet so thin on equity that one bad quarter could trigger a liquidity crisis.</p>
+
+  <p class="body-text">ProximaSoft Ltd (File No. C25647, BRN C07025647) was incorporated on 10 October 2000 under the former name G2D Development Services Co Ltd, and has traded from The Cubicle, 2nd Floor, 35-37 Royal Road, Phoenix for over five years. The company operates three declared business lines: Computer/ICT Related Activities, Distribution of General Merchandise, and Training Institution. Its primary commercial identity is as a B2B ICT services and software company, offering the Solis ERP suite, the ProximaCloud managed hosting platform, IT infrastructure managed services, and custom software development using WinDev/WebDev. Regional markets include Reunion Island and Madagascar.</p>
+
+  <p class="body-text">The company is 100% owned by Business Boosters Investments Ltd (BBI Group), a Mauritian holding entity (Reg. No. C076899) whose Group Chief Executive Officer is Jean Philippe Marrier d'Unienville — the same individual who has served as ProximaSoft's sole director since its founding in October 2000. This means ProximaSoft is effectively a wholly-owned operating subsidiary within the BBI Group ecosystem, with the founder occupying both the operational leadership of ProximaSoft and the group holding company simultaneously. This concentration of authority in a single person is the defining structural characteristic of the business.</p>
+
+  <p class="body-text">For the financial year ended 30 September 2024, ProximaSoft reported revenue of MUR 38.8M, a spectacular gross profit margin of 87.9%, and a net profit of MUR 4.0M (10.3% margin). These are strong operational signals. The critical counterweight is the balance sheet: total equity stands at just MUR 1.39M against total liabilities of MUR 21.15M — a debt-to-equity ratio of 15.2×. The bulk of current liabilities (MUR 9.1M in trade payables and MUR 6.4M in short-term borrowings) dwarfs the equity cushion. The EOS suitability score of 6.4/10 reflects genuine readiness signals — primarily the growth complexity, founder-centric decision-making, and multi-product sprawl — balanced against leadership depth constraints.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — The Profitable Prisoner of Its Own Structure</div>
+    ProximaSoft is operationally excellent — its 87.9% gross margin is best-in-class for a Mauritian ICT firm and its 10.3% net margin is solid. The business is genuinely good at what it does. The strategic problem is structural: a single director who is simultaneously running the parent holding company, a balance sheet funded almost entirely by payables and short-term debt rather than equity, and three business lines competing for management attention without a clear prioritisation framework. This is the classic EOS entry scenario: a profitable business that is growing in spite of its structure, not because of it. The conversation opener is not "you are struggling" — it is "imagine what this business does when its founder is free to lead instead of operate."
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Exceptional gross margin of 87.9%</strong> confirms a service-led, IP-based revenue model with minimal cost of goods. 25-year brand presence in Mauritius ICT, proprietary Solis ERP suite tailored to local compliance needs, and active regional expansion into Reunion and Madagascar give meaningful competitive moats versus pure resellers.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Debt-to-equity of 15.2× and debt-to-assets of 93.8%</strong> mean the company is almost entirely financed by creditors. Short-term borrowings of MUR 6.4M and trade payables of MUR 9.1M create significant refinancing risk. A loss of a key client or delay in receivables collection (currently running at 64 days) could create immediate cash pressure despite healthy underlying profitability.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Single director managing three business lines, a regional operation, and a group holding company</strong> is the textbook EOS pain point. Admin costs running at 68.6% of revenue with no visible management layer signals that the founder is doing operational work that should be delegated. The absence of a documented leadership team is the clearest entry signal.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A founder-built Mauritian ICT business with a 25-year track record, a proprietary ERP product, and a holding company structure that concentrates all authority in one individual.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">ProximaSoft Ltd was incorporated on 10 October 2000 as a private domestic company under the Companies Act, originally registered under the name G2D Development Services Co Ltd. The name change to ProximaSoft reflects a rebranding around the company's core ICT identity, though the exact date of the name change is not recorded in the CBRIS extract. The company holds File No. C25647 and Business Registration No. C07025647. Its registered office has been at 35-37 Royal Road, The Cubicle, 2nd Floor, Phoenix since 12 March 2020. The secretary is ECS Secretaries Ltd, appointed 31 October 2019, operating from Sir William Newton Street, 3rd Floor, Labama House, Port Louis — a professional corporate secretarial firm. Annual returns have been filed consistently for 2020, 2021, and 2022 (the three most recently shown), and financial statements have been filed for FY2022, FY2023, and FY2024, all approved within the statutory deadlines. Last annual registration fee paid: 2026. No charges, objections, or winding-up proceedings are recorded. The charge register is completely clean.</p>
+  <p class="body-text">The stated capital structure comprises two tranches of ordinary shares: 300 shares at MUR 100 par value (total MUR 30,000) and 9,700 shares at MUR 0 par value (total MUR 970,000), giving a total stated capital of MUR 1,000,000. All 10,000 shares are held by Business Boosters Investments Ltd — the company has a single corporate shareholder and therefore no minority interests or external investor dilution to manage.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Business Boosters Investments Ltd</h4>
+        <div class="ec-sub">Ultimate Shareholder · 100% · BBI Group</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Reg. No.</span><span class="mv">C076899</span></div>
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">Live</span></div>
+        <div class="ec-metric"><span class="mk">Nature</span><span class="mk">Holding company for BBI Group operating entities</span></div>
+        <div class="ec-metric"><span class="mk">Group Brand</span><span class="mv">bbigroup.mu</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>ProximaSoft Ltd</h4>
+        <div class="ec-sub">Operating Subsidiary · 100% owned</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">File No.</span><span class="mv">C25647</span></div>
+        <div class="ec-metric"><span class="mk">BRN</span><span class="mv">C07025647</span></div>
+        <div class="ec-metric"><span class="mk">Shares</span><span class="mv">10,000 ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Capital</span><span class="mv">MUR 1,000,000</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>ProxiPass Ltd</h4>
+        <div class="ec-sub">Related Entity · BBI Group</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Nature</span><span class="mk">E-wallet / loyalty product linked to ProximaSoft's Pass service</span></div>
+        <div class="ec-metric"><span class="mk">Director</span><span class="mv">Jean Philippe M. d'Unienville</span></div>
+        <div class="ec-metric"><span class="mk">Relationship</span><span class="mk">Likely product spin-off or sister entity within BBI Group</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Note — BBI Group Ecosystem</div>
+    ProximaSoft operates within the BBI Group holding structure. Jean Philippe Marrier d'Unienville is simultaneously Group CEO of BBI Group and the sole director of ProximaSoft. This dual role means that strategic decisions, capital allocation, and management bandwidth are all governed by a single individual across multiple entities. The "Others" line in non-current liabilities (MUR 4,698,002) and the large "Others" in non-current assets (MUR 4,024,036) likely represent inter-company balances within the BBI Group — a common feature of Mauritian group structures that significantly affects how the standalone balance sheet should be interpreted.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Marrier d'Unienville Joseph Jean Philippe — Founder &amp; Sole Director</h4>
+      <p>Appointed: <strong>10 October 2000</strong> (inception). No service address recorded in CBRIS — operates from the Phoenix registered office. Confirmed externally as Group CEO of BBI Group, the 100% parent. Also confirmed as director of ProxiPass Ltd. 25 years of uninterrupted leadership. Single point of authority for all strategic and operational decisions. No co-directors, no deputy, no formal management board visible from public records.</p>
+    </div>
+    <div class="profile-card">
+      <h4>ECS Secretaries Ltd — Company Secretary</h4>
+      <p>Appointed: <strong>31 October 2019</strong>. Address: Sir William Newton Street, 3rd Floor, Labama House, Port Louis. Professional corporate secretarial firm — responsible for statutory filings, annual returns, and compliance. Timely filing record confirms this function is well-managed. ECS is a well-established Mauritian corporate services provider.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Management Team — No Public Record</h4>
+      <p>No additional directors or named executives are recorded in CBRIS. LinkedIn (295 followers) and ZoomInfo list a small team consistent with the confirmed headcount of approximately 24 employees. <strong>No CFO, CTO, or Sales Director is publicly identifiable</strong> — the leadership structure appears entirely founder-centric with no formal C-suite layer.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">ProximaSoft operates across three declared business lines. The ICT core comprises: (1) the Solis ERP suite — a proprietary modular business management platform covering accounting, HR, inventory, POS and sector-specific variants for retail, hospitality and finance, built on WinDev/WebDev development frameworks; (2) ProximaCloud — a managed application hosting and digital business platform offering cloud deployment, managed services, business continuity and project management; (3) IT infrastructure managed services — covering networking, security (firewall, antivirus), backup systems, and end-to-end on-site and remote IT support. A fourth product, Pass, is described as an e-wallet/loyalty service enabling customers to save money while shopping — this appears to be the commercial product associated with the related entity ProxiPass Ltd.</p>
+  <p class="body-text">The second declared business line — Distributor of General Merchandise — is registered at the same address. This is likely a legacy or ancillary revenue stream and does not appear to be the company's strategic focus. The Training Institution registration suggests ProximaSoft also delivers ICT and software training, which is consistent with the onboarding and user training component of ERP deployments.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">ProximaSoft's principal place of business is The Cubicle, 2nd Floor, 35-37 Royal Road, Phoenix — a commercial office hub in the Plaines Wilhems district of Mauritius. External sources confirm active market presence in Reunion Island and Madagascar in addition to the domestic Mauritius market, positioning the company as a genuine sub-regional ICT provider rather than a purely local operator. No additional physical offices in Reunion or Madagascar are publicly documented, suggesting these markets are served remotely or through partner arrangements. The company's website (proximasoft.com) and Facebook page (1,533 likes) confirm an active if modest digital footprint.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Gap</div>
+    For a company whose core value proposition is digitising other businesses, ProximaSoft's own digital presence is thin: 295 LinkedIn followers and 1,533 Facebook likes. There is no LinkedIn company page with employee listings that would confirm team depth. This creates a credibility gap when prospecting enterprise clients and limits inbound lead generation — a classic symptom of a technically-driven founder who has not invested in commercial marketing infrastructure.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">All figures from CBRIS statutory financial summary for the year ended 30 September 2024, approved 31 March 2025, denominated in Mauritius Rupee (MUR). Single-year data only — no prior-year comparatives are available from the CBRIS summary format.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    ProximaSoft is a private company and is not required to publish full IFRS-compliant accounts in its CBRIS filing — only the statutory financial summary is publicly available. This means: (1) no notes to the accounts, (2) no prior-year comparatives, (3) no segment reporting, (4) no cash flow statement, and (5) the "Others" lines in non-current assets (MUR 4.0M) and non-current liabilities (MUR 4.7M) likely represent intra-group balances that cannot be verified without access to the full accounts. All analysis is based on the single-year summary filed. Revenue appears to be fully recognised in MUR with no foreign currency breakdown disclosed.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY ended 30 Sept 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>38,777,870</td><td>100.0%</td><td>~USD 860K at current rates. Solid for a 24-person ICT SME in Mauritius.</td></tr>
+        <tr><td>Cost of Sales</td><td>4,678,909</td><td>12.1%</td><td>Very low COGS confirms a services/IP-led model — minimal hardware or third-party software pass-through.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>34,098,961</td><td>87.9%</td><td>Exceptional. Best-in-class for Mauritius ICT. Indicates pricing power and proprietary product advantage.</td></tr>
+        <tr><td>Other Income</td><td>538,128</td><td>1.4%</td><td>Minor ancillary income — likely interest, intra-group fees, or sundry.</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>Zero — consistent with a direct B2B sales model without a distribution channel.</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>26,590,238</td><td>68.6%</td><td>The dominant cost line. Covers all staff, premises, and overhead. High ratio warrants interrogation — what is in here?</td></tr>
+        <tr><td>Other Expenses</td><td>2,763,960</td><td>7.1%</td><td>Likely includes marketing, software licences, and sundry operating costs.</td></tr>
+        <tr><td>Finance Costs</td><td>547,740</td><td>1.4%</td><td>Relatively modest given the MUR 6.7M total debt load — suggests favourable interest terms or significant intra-group borrowing at low rates.</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>4,735,151</td><td>12.2%</td><td>Strong operating performance net of all costs.</td></tr>
+        <tr><td>Tax Expense</td><td>721,397</td><td>1.9%</td><td>Effective tax rate of 15.2% — consistent with Mauritius standard corporate rate of 15%.</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>4,013,754</strong></td><td><strong>10.3%</strong></td><td>Healthy. Retained earnings balance (MUR 392K) implies prior-year losses or distributions have offset most cumulative earnings.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 Sept 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>1,484,968</td><td>Low fixed asset base — consistent with an asset-light ICT services model.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Others (NCA)</td><td>4,024,036</td><td>Unspecified — likely intra-group loans or investments in BBI Group entities.</td></tr>
+        <tr><td>Non-Current Assets</td><td><strong>Total NCA</strong></td><td><strong>5,509,004</strong><td></td></tr>
+        <tr class="heat-ok"><td>Current Assets</td><td>Cash and Cash Equivalents</td><td>10,250,352</td><td>Strong cash position — 63.2 days of revenue. Positive liquidity signal at face value.</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Trade and Other Receivables</td><td>6,783,211</td><td>DSO of ~64 days — above the 30–45 day benchmark. Slow collections from B2B clients.</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>0</td><td>Zero stock — confirms pure services model.</td></tr>
+        <tr><td>Current Assets</td><td><strong>Total CA</strong></td><td><strong>17,033,563</strong></td><td></td></tr>
+        <tr><td></td><td><strong>Total Assets</strong></td><td><strong>22,542,567</strong></td><td></td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Share Capital</td><td>1,000,000</td><td>The entire equity base is paper-thin relative to the liability stack.</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Retained Earnings</td><td>392,276</td><td>After 25 years of trading, retained earnings of MUR 392K signals significant prior distributions or historical losses.</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>1,392,276</strong></td><td>6.2% of total assets financed by equity. Critically thin.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Borrowings</td><td>230,461</td><td>Minimal formal long-term debt.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Others (NCL)</td><td>4,698,002</td><td>Likely intra-group payables to BBI Group entities — not arm's-length commercial debt.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td><strong>Total NCL</strong></td><td><strong>4,928,463</strong></td><td></td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td>Trade and Other Payables</td><td>9,056,487</td><td>Very high. Implies DPO of 124+ days using admin costs as proxy — very slow payment of creditors.</td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td>Short-Term Borrowings</td><td>6,443,944</td><td>Significant short-term debt — refinancing risk if credit conditions tighten.</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax Payable</td><td>721,397</td><td>Matches tax expense — on-schedule payment expected.</td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td><strong>Total CL</strong></td><td><strong>16,221,828</strong></td><td>91.8% of current assets — leaves minimal buffer.</td></tr>
+        <tr><td></td><td><strong>Total Liabilities</strong></td><td><strong>21,150,291</strong></td><td>93.8% of total assets financed by liabilities.</td></tr>
+        <tr><td></td><td><strong>Total Equity &amp; Liabilities</strong></td><td><strong>22,542,567</strong></td><td>Balance sheet confirms.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The CBRIS charge register for ProximaSoft Ltd is completely clean — no charges, debentures, mortgages, or fixed/floating charges are recorded against any property or assets of the company. This is a positive finding. It suggests the short-term borrowings of MUR 6.44M are either unsecured facilities (possibly intra-group) or secured by means not registered against the company itself. The absence of registered charges does not eliminate refinancing risk but removes the additional concern of encumbered assets.</p>
+  <p class="body-text">No removal or winding-up proceedings are recorded. No objections appear on file. The company is in good standing with the Registrar of Companies as at 1 April 2026, with the last annual registration fee paid for 2026.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks drawn from Mauritius SME ICT sector norms and general SME guidelines from the Bank of Mauritius and SMEDA Mauritius. Colour key: <span class="b b-green">Green</span> = healthy, <span class="b b-amber">Amber</span> = watch, <span class="b b-red">Red</span> = critical concern. All calculations from FY ended 30 September 2024.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">1.05×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (ICT SME)</span><span class="ratio-val">1.5× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Current assets cover current liabilities by only 5% — a razor-thin margin. While the absolute cash balance (MUR 10.25M) looks healthy, the short-term borrowings of MUR 6.44M and trade payables of MUR 9.06M together leave almost no buffer. Any delay in receivables collection or a call on a credit line would create an immediate cash shortfall. This ratio needs to improve to at least 1.5× before the business can be considered operationally safe.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.05×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (ICT SME)</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Because ProximaSoft carries zero inventory, the quick ratio equals the current ratio at 1.05×. It technically meets the minimum benchmark of 1.0× but sits at the very floor. The company is not in acute liquidity distress but has no margin for error. Any deterioration in receivables or a tightening of credit lines would push this ratio below the critical threshold.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Cash Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.63×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.5× – 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Acceptable</span></span></div>
+      <span class="ratio-interpret">MUR 10.25M cash covers 63% of current liabilities — within the acceptable range. This is the most reassuring liquidity signal in the dataset. However, if the short-term borrowings were called simultaneously with slow receivables, even this cash position would be insufficient to clear all current obligations without additional financing.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">87.9%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (ICT services)</span><span class="ratio-val">40% – 65%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Exceptional</span></span></div>
+      <span class="ratio-interpret">A gross margin of 87.9% is outstanding and confirms that ProximaSoft's revenue model is almost entirely services and IP-based, with minimal cost of goods. This is the hallmark of a proprietary software or managed services provider. The margin leaves substantial room to invest in sales, marketing, and management depth — if the founder chooses to do so.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">10.3%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (ICT SME)</span><span class="ratio-val">5% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Net margin of 10.3% falls comfortably within the benchmark range. The gap between gross (87.9%) and net (10.3%) is explained almost entirely by admin costs (68.6% of revenue) — suggesting the business has a significant overhead base relative to its revenue. Margin improvement is available if admin costs can be better controlled or if revenue scales without proportional overhead growth.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">17.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt; 10%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Strong</span></span></div>
+      <span class="ratio-interpret">The business generates MUR 17.80 of profit for every MUR 100 of assets deployed — well above the 10% benchmark. This reflects an asset-light model where revenue is generated primarily from people and IP rather than physical or financial assets. It confirms that the fundamental business economics are sound.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">288%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">15% – 25%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Distorted — Equity Too Thin</span></span></div>
+      <span class="ratio-interpret">ROE of 288% is not a sign of exceptional profitability — it is a sign that the equity base (MUR 1.39M) is catastrophically small relative to profits (MUR 4.01M). This ratio has been distorted by years of profit distributions or historical losses that have kept retained earnings near zero. The number signals structural under-capitalisation, not performance excellence. The company is earning far more than its equity base would suggest — which only works as long as creditors continue to provide the working capital that equity should be providing.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">15.2×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&lt; 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Total liabilities of MUR 21.15M against equity of MUR 1.39M is a 15.2× leverage ratio — 7.6× the maximum benchmark. This is the single most critical number in the entire analysis. The company is almost entirely creditor-financed. Note: a significant portion of the "debt" may be intra-group (the MUR 4.7M NCL "Others" line), which would reduce the effective commercial leverage — but this cannot be confirmed without access to the full accounts.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debt-to-Assets</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">93.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&lt; 50%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">93.8% of assets are financed by liabilities — only 6.2% by equity. This is nearly twice the maximum acceptable ratio. In the event of a downturn or credit withdrawal, there is almost no equity cushion to absorb losses. The asset base would need to decline by only 6.2% before the company is technically insolvent on a balance sheet basis.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">8.6×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt; 3.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Comfortable</span></span></div>
+      <span class="ratio-interpret">Despite the extreme leverage ratios, interest coverage of 8.6× is reassuring — the business generates MUR 8.60 of operating profit for every MUR 1.00 of interest expense. Finance costs of MUR 547,740 are low relative to the debt stack, confirming that much of the "debt" is either intra-group at minimal rates or structured with deferred interest terms. The company can comfortably service its current interest obligations.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.72×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (ICT)</span><span class="ratio-val">0.8× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Efficient</span></span></div>
+      <span class="ratio-interpret">The company generates MUR 1.72 of revenue for every MUR 1.00 of assets — above the ICT sector benchmark. This confirms high asset utilisation consistent with a services business where the primary productive asset is human capital (not captured on the balance sheet). It also partly explains why the thin equity base has not caused operational problems — the business turns its assets over rapidly.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Days Sales Outstanding (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">63.8 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 45 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Clients take on average 64 days to pay — 19 to 34 days longer than the benchmark. For a B2B software/services business, this suggests insufficient credit control processes, clients with strong negotiating power, or informal payment terms. Tightening DSO from 64 to 45 days would release approximately MUR 2.0M of cash into the business — enough to materially improve the current ratio.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Days Payable Outstanding (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value (proxy)</span><span class="ratio-val bad">124 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">With near-zero COGS, standard DPO using cost of sales is not meaningful. Using admin costs as the proxy denominator (MUR 26.59M), trade payables of MUR 9.06M imply ~124 days to pay suppliers and staff-related creditors. This is more than double the benchmark. The company is using its creditor base as a primary source of working capital — which works until supplier relationships deteriorate or credit terms are tightened. This is the hidden cash management risk that the liquidity ratios partially obscure.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. Debt-to-Equity: 15.2× (benchmark &lt;2×).</strong> The equity base of MUR 1.39M is so thin that the company is effectively operating on creditor goodwill. If BBI Group's intra-group balances were restructured or withdrawn, ProximaSoft would face an immediate balance sheet crisis. The fix requires either retained earnings accumulation (halting distributions) or a formal equity injection. At the FY2024 PAT of MUR 4.01M, retaining earnings for two years without distributions would more than treble the equity base and bring D/E down to approximately 4×.<br><br>
+    <strong>2. DPO: 124 days (benchmark 30–60 days).</strong> The company owes MUR 9.06M to trade creditors and is paying them in approximately four months. This is the structural funding mechanism — but it is fragile. If three or four key suppliers simultaneously tightened terms to 60 days, ProximaSoft would need to find MUR 4–5M in additional short-term funding almost immediately. Improving collections (DSO) and renegotiating formal credit facilities would reduce this exposure.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">ProximaSoft competes across three ICT market segments in Mauritius and sub-regionally — proprietary ERP software, managed IT infrastructure, and cloud-hosted applications — in a market with an expected value of USD 156M by 2025 and growing at 5.4% per annum.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Proprietary ERP Software</h4>
+        <div class="ec-sub">Solis Suite · WinDev/WebDev Platform</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Target clients</span><span class="mv">SMEs in retail, hospitality, finance</span></div>
+        <div class="ec-metric"><span class="mk">Key advantage</span><span class="mv">Local compliance, MUR pricing, on-island support</span></div>
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Odoo (open-source), Sage, Microsoft Dynamics 365, local resellers</span></div>
+        <div class="ec-metric"><span class="mk">ProximaSoft edge</span><span class="mv">25-year local track record, sector-specific modules, no per-user licence model</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Managed IT Infrastructure</h4>
+        <div class="ec-sub">On-site &amp; Remote Support · Security · Backup</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Target clients</span><span class="mv">SMEs without internal IT departments</span></div>
+        <div class="ec-metric"><span class="mk">Key advantage</span><span class="mv">Bundled with Solis deployments — sticky recurring revenue</span></div>
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Emtel Business, Mauritius Telecom ICT, smaller MSPs</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv">Commoditising — cloud providers encroaching on traditional MSP services</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>ProximaCloud &amp; Hosted Services</h4>
+        <div class="ec-sub">Cloud Platform · Sub-Regional (MU, RE, MG)</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Target clients</span><span class="mv">B2B clients wanting local data hosting</span></div>
+        <div class="ec-metric"><span class="mk">Key advantage</span><span class="mv">Data sovereignty for Mauritius-regulated sectors; local latency</span></div>
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">AWS, Azure, Google Cloud (price), local datacentre providers</span></div>
+        <div class="ec-metric"><span class="mk">Opportunity</span><span class="mv">Reunion and Madagascar underserved by local cloud providers</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Local-first proprietary ERP with 25-year compliance depth.</strong> Solis is built specifically for Mauritius regulatory and accounting requirements (MRA compliance, MUR currency, local labour law). This is genuinely hard to replicate quickly — it represents decades of embedded domain knowledge. Global competitors like Odoo or Sage require significant localisation investment to match this.</p>
+  <p class="body-text"><strong>2. Bundled product-service stickiness.</strong> Clients who adopt Solis ERP typically also take managed IT services and ProximaCloud hosting — creating a multi-product relationship that is costly and disruptive to exit. This recurring revenue bundle (software + infrastructure + support) is the most defensible part of the business model and a key driver of the 87.9% gross margin.</p>
+  <p class="body-text"><strong>3. Sub-regional positioning in underserved markets.</strong> Active presence in Reunion Island and Madagascar gives ProximaSoft a genuine first-mover advantage in markets where local Mauritius-built ICT solutions are rare. This geographic spread reduces dependency on the Mauritius domestic market alone.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Mauritius ICT market growing at 5.4% CAGR</strong> to USD 203.9M by 2030 — structural tailwind for all ICT service providers. Government digitisation programmes (Smart Mauritius, Digital Economy Strategy) are creating demand for ERP adoption among SMEs that have historically operated manually.</li>
+    <li><strong>SME ERP adoption accelerating</strong> as post-pandemic operational pressures drive smaller businesses toward digitalisation. ProximaSoft's affordable, locally-hosted Solis suite is well-positioned to capture this demand — particularly against expensive global ERPs with long implementation timelines.</li>
+    <li><strong>Data sovereignty concerns favour local cloud providers.</strong> Mauritius financial services and healthcare sectors face increasing regulatory pressure around data localisation — creating demand for ProximaCloud's on-island hosting proposition over AWS/Azure deployments that route data internationally.</li>
+    <li><strong>Cybersecurity demand rising sharply.</strong> ProximaSoft's firewall, antivirus, and backup services are benefiting from increased corporate awareness of cyber risk following high-profile incidents in the Indian Ocean region. This is a growth vector within the existing managed services bundle.</li>
+    <li><strong>AI and automation integration risk.</strong> Global ERP vendors (Microsoft Dynamics, SAP, Odoo) are integrating AI features at speed. ProximaSoft's WinDev/WebDev-based platform will need continuous investment to remain competitive with AI-assisted features — a risk for a small team without a dedicated R&amp;D budget.</li>
+    <li><strong>Talent competition intensifying in Mauritius ICT.</strong> The island's positioning as an Africa-facing tech hub (Accenture, Concentrix, Allianz presence) is creating wage pressure for ICT professionals — a headwind for a 24-person company competing for the same talent as multinationals.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Marketing &amp; Digital Presence Gap</div>
+    ProximaSoft's digital footprint (295 LinkedIn followers, 1,533 Facebook likes) is severely underdeveloped relative to its 25-year track record and genuine product quality. In a market where SME buyers increasingly conduct pre-purchase research online, an invisible digital presence means ProximaSoft is entirely dependent on referral and relationship-driven sales — which is both a strength (trusted relationships) and a strategic vulnerability (no inbound pipeline, founder-dependent selling).
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">At approximately 24 employees, ProximaSoft sits precisely in the EOS sweet spot of 10–250 people. The company operates three declared business lines (ICT services, general merchandise, training), a proprietary ERP product, a cloud platform, a sub-regional presence across three markets (Mauritius, Reunion, Madagascar), and an intra-group relationship with BBI Group. This is considerable complexity for a 24-person firm — exactly the kind of multi-threaded operation that benefits most from EOS structure. The company is not too small to justify the investment, and not so large that cultural change becomes unwieldy.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Jean Philippe Marrier d'Unienville is an entrepreneurial founder who has built a 25-year business and simultaneously leads a holding group — signals of strategic thinking and willingness to grow. However, a sole director structure maintained for 25 years with no co-directors or named management layer suggests a strong preference for personal control. Founders who have never operated with a formal leadership team sometimes find EOS disciplines (accountability, transparency, letting go) personally uncomfortable. Score is neutral pending a direct conversation — the BBI Group role suggests he thinks in terms of systems, which is an encouraging signal.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">MUR 38.8M revenue, three business segments, active regional expansion, a proprietary product line, and a parallel holding company leadership role — this is a company at the precise growth inflection point where EOS delivers maximum value. The financial data reveals the classic pain symptoms: admin costs running at 68.6% of revenue with no visible management overhead suggests the founder is still doing operational work that should be delegated. DSO of 64 days and DPO of 124 days indicate no systematic process ownership for collections and creditor management. These are textbook EOS entry pain points.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">There is a productive irony in a company that builds ERP and process management tools for its clients while its own balance sheet shows the hallmarks of informal internal management: a 124-day DPO, a 64-day DSO, and an equity base that implies profits have not been systematically retained according to a capital plan. ProximaSoft almost certainly has good technical processes (its product quality and 25-year track record confirm this) but likely lacks documented operational processes for non-technical functions: sales pipeline, credit control, cash management, and people management. This gap is exactly what EOS process documentation addresses.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Twenty-five years of continuous operation with a stable founder suggests a cohesive culture — likely values-driven around technical excellence and client service. However, founder-centric cultures can be resistant to the accountability and transparency disciplines EOS introduces. No public signals of staff turnover, culture initiatives, or team development programmes are visible. The score is neutral — the culture may be a facilitator or a barrier to EOS adoption, and this can only be assessed in a direct conversation with Jean Philippe.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">This is the highest-confidence dimension. A sole director who has held uninterrupted authority since October 2000, simultaneously leads the parent holding company, and has not appointed a co-director or deputy in 25 years is — by definition — a centralised decision-maker. Every strategic and operational decision passes through one person. This creates a classic EOS bottleneck: the founder is the constraint on the company's growth, not the market. The Accountability Chart and Delegate &amp; Elevate tools would have immediate and measurable impact for this company.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Three declared business lines — ICT services, general merchandise, and training — without an obvious strategic narrative connecting them suggests that growth has been opportunistic rather than vision-directed. The combination of a proprietary ERP product, a managed cloud platform, sub-regional expansion, and an e-wallet product (ProxiPass) is either a coherent ecosystem play or a collection of disconnected opportunities — and this distinction matters enormously for what the next five years should look like. A V/TO exercise would force the clarity that 25 years of organic growth has not produced.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No public data on meeting cadence or structure is available. In a founder-led SME of this profile, meetings are typically ad hoc, founder-convened, and unstructured — effective for rapid small-team decisions but inadequate for driving accountability across a multi-segment business with regional operations. The absence of any visible management rhythm (no published quarterly updates, no management team references) is consistent with an informal meeting culture that EOS Level 10 Meetings would transform.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.4</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>ProximaSoft is a strong EOS candidate on the structural dimensions that matter most — size, growth complexity, centralised decision-making, and multi-segment vision ambiguity. The company is profitable enough to afford EOS, operationally complex enough to need it, and small enough for cultural change to be achievable. The qualifier is leadership openness: the founder has operated with complete autonomy for 25 years, and EOS requires a genuine commitment to accountability, transparency, and delegation that not every long-tenure founder is ready to make. The gating factor is a direct conversation with Jean Philippe Marrier d'Unienville to assess his personal readiness for structured leadership. If he is open — and his track record of building a group structure suggests strategic thinking — this moves to a 7.5–8/10 candidate.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for ProximaSoft</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The single most urgent tool. With one director managing three business lines, a cloud platform, regional markets, and a parent holding company, ProximaSoft has no defined leadership structure below the founder. <strong>Building the Accountability Chart will force the question of who owns what</strong> — and surface the leadership gaps that currently bottleneck growth.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Delegate &amp; Elevate</h4>
+      <p>Directly connected to the Accountability Chart finding. Jean Philippe is doing work that should be owned by others — the DSO and DPO data suggests no one owns collections or creditor management with clear accountability. <strong>Delegate &amp; Elevate identifies what the founder should stop doing</strong> and creates the mandate to build or hire the management layer.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision / Traction Organiser (V/TO)</h4>
+      <p>Three business lines, a cloud platform, an e-wallet product, and regional expansion — with no public articulation of a 3-year or 10-year vision. <strong>The V/TO will force ProximaSoft to choose its identity</strong>: is it an ERP company, a managed services company, or a regional digital platform? This decision has enormous capital allocation implications.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>DSO of 64 days and DPO of 124 days are symptoms of a business with no weekly measurables dashboard. <strong>A Scorecard with 5–10 leading indicators</strong> (pipeline, new client activations, DSO trend, cash balance, support ticket resolution time) would give Jean Philippe visibility into the business without needing to be involved in every operational decision.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>With three business lines competing for attention, strategic priorities likely shift based on whichever crisis is most urgent. <strong>Quarterly Rocks for each business segment</strong> would ensure that regional expansion, ProximaCloud development, and Solis roadmap all receive disciplined execution attention — not just the one the founder happens to be focused on.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>A 25-year business accumulates structural issues that everyone knows about but no one has solved: the equity structure, the DPO/DSO imbalance, the missing marketing function, the lack of a succession plan. <strong>The Issues List and Identify-Discuss-Solve process</strong> gives the leadership team a disciplined mechanism to surface and permanently resolve issues rather than managing around them indefinitely.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total — four financial/operational and four EOS-specific. Financial recommendations are prerequisites: they address immediate structural risks that must be stabilised before EOS implementation can deliver maximum value. Sequenced from urgent to medium-term.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Stop Distributing Profits — Rebuild the Equity Base</h4>
+      <p>Retained earnings of MUR 392,276 after 25 years of trading signals that virtually all profits have been distributed to BBI Group. With a net profit of MUR 4.01M in FY2024, retaining 100% of earnings for two years would bring total equity to approximately MUR 9.4M — reducing debt-to-equity from 15.2× to approximately 2.4×. Jean Philippe should implement a formal dividend policy that targets a minimum equity ratio of 20% of total assets before any future distributions are made. This is a board-level BBI Group decision, but the financial case is unambiguous.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Formalise Creditor Management — Renegotiate Short-Term Debt</h4>
+      <p>Short-term borrowings of MUR 6.44M carry refinancing risk if credit conditions change. ProximaSoft should approach its banking relationships to convert a portion of short-term borrowings into a formal 3-year term facility, removing the rollover risk. Simultaneously, the trade payables DPO of 124 days should be actively managed down to 75 days through explicit supplier payment terms — reducing supplier relationship risk and improving the company's creditor reputation. Owner: Jean Philippe and Group Accountant (Neelam Soocheta at BBI Group). Target: complete within 90 days.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Implement Systematic Collections — Reduce DSO from 64 to 45 Days</h4>
+      <p>Trade receivables of MUR 6.78M at 64 DSO represent approximately MUR 2.0M of cash that could be released by tightening collection to 45 days. Specific action: appoint a named owner (Finance/Admin Manager) responsible for weekly aged debtors review; implement automated 30/45/60-day invoice reminders; introduce a credit limit policy for new clients; and escalate overdue accounts beyond 60 days to the director immediately. This single initiative would improve the current ratio from 1.05× to approximately 1.18× with no additional financing required.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Build a Digital Marketing Presence — Unlock Inbound Pipeline</h4>
+      <p>For a company that sells digital transformation to its clients, ProximaSoft's own digital presence is negligible (295 LinkedIn followers). A structured 90-day digital activation — LinkedIn company page with team profiles, monthly thought leadership content on ERP adoption and cloud for Mauritius SMEs, and Google Ads targeting "ERP Mauritius" and "IT support Mauritius" — would cost MUR 150,000–200,000 and could generate 10–15 qualified inbound leads per quarter. This reduces dependency on the founder for all new business development. Owner: hire or assign a Marketing Executive within 60 days.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Begin with a Focus Day — Establish the Baseline</h4>
+      <p>The EOS Focus Day is the right entry point for ProximaSoft. It will allow Jean Philippe and any members of his informal leadership team to experience EOS tools in practice — particularly the Accountability Chart and V/TO — without committing to a full implementation. The Focus Day will surface the leadership team gap (who would be in the L10 if they started tomorrow?) and the vision ambiguity (what does ProximaSoft look like in 10 years?) in a structured way. Recommend scheduling within 60 days of first contact.</p>
+      <span class="urg urg-week">Within 60 Days of First Contact</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the Accountability Chart — Name the Leadership Team</h4>
+      <p>The most impactful single output of the Focus Day will be a draft Accountability Chart for ProximaSoft. Hypothesis for discussion: Jean Philippe holds Integrator and Visionary simultaneously — the first structural question is whether to separate these roles by promoting an internal Integrator or hiring one. Each of the three business lines (ICT services, cloud/hosting, training) should have a named owner with clear GWC (Gets It, Wants It, Capacity) assessment. This conversation will identify whether the talent to build a leadership team exists internally or must be recruited.</p>
+      <span class="urg urg-week">Focus Day Output</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Set the First Rock — Fix the Equity Structure</h4>
+      <p>The most important Q1 Rock for ProximaSoft's leadership team is not a growth initiative — it is Recommendation 01 above: implement a formal dividend moratorium and begin rebuilding the equity base. This Rock is measurable (equity target: MUR 3.0M by 30 September 2025), has a named owner (Jean Philippe + BBI Group board), and addresses the single biggest structural risk in the business. Starting EOS with a financial stabilisation Rock demonstrates to the team that EOS is about running the business better, not just growing faster.</p>
+      <span class="urg urg-medium">Q1 Rock — First 90 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>V/TO — Answer the Strategic Identity Question</h4>
+      <p>ProximaSoft needs to answer one question before it can scale: is it a product company (Solis ERP is the core asset, everything else supports it) or a managed services company (the ERP is just the entry point to a broader IT relationship)? These are different businesses requiring different capital allocation, hiring profiles, and go-to-market strategies. The V/TO 10-Year Target for ProximaSoft could be: "The leading locally-built ERP and digital infrastructure platform for SMEs across the Indian Ocean islands — 500 active clients, Mauritius + Reunion + Madagascar + Comoros, by 2035." This gives the team a destination — and EOS gives them the system to get there.</p>
+      <span class="urg urg-medium">V/TO Session — Within 90 Days of Focus Day</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>ProximaSoft is a genuinely good business hiding inside a structurally fragile balance sheet and a founder-as-single-point-of-failure model. The 87.9% gross margin and 10.3% net margin confirm that the core economic engine works. The 15.2× debt-to-equity and 124-day DPO confirm that 25 years of growth without structural discipline has created hidden vulnerabilities. The real opportunity here is not just EOS adoption — it is helping Jean Philippe build a business that works without him in every room, which is both a growth strategy and a personal liberation. The conversation opener is straightforward: "You have built something that is genuinely excellent. What would it look like if it could grow without you being the constraint?"</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>First contact with Jean Philippe Marrier d'Unienville — introduce EOS concept, qualify leadership openness (by 2 April 2026)</li>
+        <li><span class="sig-num">02</span>Share this research report as evidence of preparation and seriousness — schedule a 60-minute discovery call (within 7 days of first contact)</li>
+        <li><span class="sig-num">03</span>Implement Recommendations 01–03 as pre-EOS financial stabilisation commitments — demonstrate immediate value before a single EOS tool is deployed (within 30 days)</li>
+        <li><span class="sig-num">04</span>Run Focus Day with Jean Philippe and any identified leadership team members — deliver draft Accountability Chart and V/TO outline (within 60 days of first contact)</li>
+        <li><span class="sig-num">05</span>Begin full EOS implementation — quarterly sessions, weekly L10 cadence, Scorecard in place (Q3 2026 start target)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>ProximaSoft Ltd — Comprehensive Company Analysis &amp; EOS Assessment · 1 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (1 April 2026) · proximasoft.com · LinkedIn · ZoomInfo · RocketReach · bbigroup.mu · siloi.net · africanadvice.com · EDB Mauritius ICT sector data</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
