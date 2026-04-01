@@ -78,12 +78,57 @@
     }
 
     .section-title {
-      margin: 0 0 18px;
+      margin: 0 0 14px;
       font-size: 14px;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--muted);
+    }
+
+    /* ── SEARCH BOX ── */
+    .search-wrap {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 16px;
+      pointer-events: none;
+    }
+
+    #search {
+      width: 100%;
+      padding: 11px 16px 11px 40px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--text);
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      outline: none;
+      transition: border-color 0.18s, box-shadow 0.18s;
+    }
+
+    #search::placeholder { color: var(--muted); }
+
+    #search:focus {
+      border-color: #a0bfee;
+      box-shadow: 0 0 0 3px rgba(29, 95, 208, 0.08);
+      background: #ffffff;
+    }
+
+    .no-results {
+      display: none;
+      padding: 20px 0;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
     }
 
     .report-list {
@@ -176,91 +221,30 @@
 
       <div class="section">
         <h2 class="section-title">Available Reports</h2>
-        <ul class="report-list">
+
+        <div class="search-wrap">
+          <span class="search-icon">⌕</span>
+          <input type="text" id="search" placeholder="Search by company or date…" autocomplete="off" />
+        </div>
+
+        <p class="no-results" id="no-results">No reports match your search.</p>
+
+        <ul class="report-list" id="report-list">
+
           <li>
-            <a href="BCPM_Group_Index.html">
+            <a href="Emcar_Company_Analysis_March2026.html">
               <div class="report-main">
-                <span class="report-name">BCPM Group</span>
-                <span class="report-meta">Group reports hub</span>
+                <span class="report-name">Emcar Company Analysis</span>
+                <span class="report-meta">31 March 2026</span>
               </div>
               <span class="arrow">→</span>
             </a>
           </li>
 
           <li>
-            <a href="IHEML_Company_Analysis_March2026.html">
+            <a href="Transmetal_Strategic_Risk_Assessment_March2026.html">
               <div class="report-main">
-                <span class="report-name">IHEML Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="Mauritius_Strategic_Risk_Assessment_March11_2026.html">
-              <div class="report-main">
-                <span class="report-name">Mauritius Strategic Risk Assessment</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="SkillRoofing_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Skill Roofing Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="DanPoly_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Dan Poly Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="Metinox_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Metinox Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="BCPM_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">BCPM Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="BCPMProperties_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">BCPM Properties Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="Transmetal_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Transmetal Company Analysis</span>
+                <span class="report-name">Transmetal Strategic Risk Assessment</span>
                 <span class="report-meta">March 2026</span>
               </div>
               <span class="arrow">→</span>
@@ -278,23 +262,95 @@
           </li>
 
           <li>
-            <a href="Transmetal_Strategic_Risk_Assessment_March2026.html">
+            <a href="Transmetal_Company_Analysis_March2026.html">
               <div class="report-main">
-                <span class="report-name">Transmetal Strategic Risk Assessment</span>
+                <span class="report-name">Transmetal Company Analysis</span>
                 <span class="report-meta">March 2026</span>
               </div>
               <span class="arrow">→</span>
             </a>
           </li>
+
           <li>
-            <a href="Emcar_Company_Analysis_March2026.html">
+            <a href="BCPMProperties_Company_Analysis_March2026.html">
               <div class="report-main">
-                <span class="report-name">Emcar Company Analysis</span>
+                <span class="report-name">BCPM Properties Company Analysis</span>
                 <span class="report-meta">March 2026</span>
               </div>
               <span class="arrow">→</span>
             </a>
           </li>
+
+          <li>
+            <a href="BCPM_Company_Analysis_March2026.html">
+              <div class="report-main">
+                <span class="report-name">BCPM Company Analysis</span>
+                <span class="report-meta">March 2026</span>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="Metinox_Company_Analysis_March2026.html">
+              <div class="report-main">
+                <span class="report-name">Metinox Company Analysis</span>
+                <span class="report-meta">March 2026</span>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="DanPoly_Company_Analysis_March2026.html">
+              <div class="report-main">
+                <span class="report-name">Dan Poly Company Analysis</span>
+                <span class="report-meta">March 2026</span>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="SkillRoofing_Company_Analysis_March2026.html">
+              <div class="report-main">
+                <span class="report-name">Skill Roofing Company Analysis</span>
+                <span class="report-meta">March 2026</span>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="Mauritius_Strategic_Risk_Assessment_March11_2026.html">
+              <div class="report-main">
+                <span class="report-name">Mauritius Strategic Risk Assessment</span>
+                <span class="report-meta">March 2026</span>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="IHEML_Company_Analysis_March2026.html">
+              <div class="report-main">
+                <span class="report-name">IHEML Company Analysis</span>
+                <span class="report-meta">March 2026</span>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="BCPM_Group_Index.html">
+              <div class="report-main">
+                <span class="report-name">BCPM Group</span>
+                <span class="report-meta">Group reports hub</span>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+
         </ul>
       </div>
 
@@ -303,5 +359,29 @@
       </div>
     </div>
   </div>
+
+  <script>
+    const input = document.getElementById('search');
+    const list = document.getElementById('report-list');
+    const noResults = document.getElementById('no-results');
+
+    input.addEventListener('input', function () {
+      const query = this.value.toLowerCase().trim();
+      const items = list.querySelectorAll('li');
+      let visible = 0;
+
+      items.forEach(function (item) {
+        const text = item.textContent.toLowerCase();
+        if (!query || text.includes(query)) {
+          item.style.display = '';
+          visible++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      noResults.style.display = visible === 0 ? 'block' : 'none';
+    });
+  </script>
 </body>
 </html>
