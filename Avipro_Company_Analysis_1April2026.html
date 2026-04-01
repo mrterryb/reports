@@ -1,1866 +1,938 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Avipro — Comprehensive Company Analysis — 1 April 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    /* ── CSS Variable Palette ── */
-    :root {
-      --color-bg:           #F8F6F1;
-      --color-surface:      #FFFFFF;
-      --color-border:       #E2DDD6;
-      --color-border-light: #EDE9E3;
-      --color-text-primary: #1A1714;
-      --color-text-secondary:#4A4540;
-      --color-text-muted:   #7A746E;
-      --color-accent:       #8B2E2E;
-      --color-accent-light: #F2E8E8;
-      --color-accent-mid:   #B85C5C;
-      --color-green:        #1E6641;
-      --color-green-light:  #E6F2EC;
-      --color-amber:        #8B6914;
-      --color-amber-light:  #FBF3DC;
-      --color-red:          #8B2E2E;
-      --color-red-light:    #F7E8E8;
-      --color-navy:         #1A2744;
-      --color-navy-light:   #E8EBF2;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
-      --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
-      --shadow-lg: 0 10px 30px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.06);
-      --radius-sm: 4px;
-      --radius-md: 8px;
-      --radius-lg: 12px;
-      --font-serif: 'Libre Baskerville', Georgia, serif;
-      --font-sans:  'IBM Plex Sans', system-ui, sans-serif;
-      --font-mono:  'IBM Plex Mono', 'Courier New', monospace;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avipro — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
 
-    /* ── Reset & Base ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-sans);
-      background: var(--color-bg);
-      color: var(--color-text-primary);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
 
-    /* ── Header ── */
-    .report-header {
-      background: var(--color-navy);
-      color: #FFFFFF;
-      padding: 48px 48px 36px;
-      position: relative;
-      overflow: hidden;
-    }
-    .report-header::before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 400px; height: 100%;
-      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.04) 100%);
-    }
-    .header-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 12px;
-    }
-    .header-company {
-      font-family: var(--font-serif);
-      font-size: 38px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      line-height: 1.15;
-      margin-bottom: 6px;
-    }
-    .header-subtitle {
-      font-size: 15px;
-      color: rgba(255,255,255,0.65);
-      font-weight: 300;
-      margin-bottom: 28px;
-    }
-    .header-badges {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 500;
-      font-family: var(--font-mono);
-      letter-spacing: 0.03em;
-    }
-    .badge-live    { background: var(--color-green); color: #fff; }
-    .badge-private { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); }
-    .badge-date    { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); }
-    .badge-dot     { width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: 0.7; }
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
 
-    /* ── Prepared-for strip ── */
-    .prepared-strip {
-      background: var(--color-accent);
-      color: #fff;
-      padding: 10px 48px;
-      font-size: 12px;
-      font-family: var(--font-mono);
-      letter-spacing: 0.06em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
 
-    /* ── Navigation tabs ── */
-    .tab-nav {
-      background: var(--color-surface);
-      border-bottom: 2px solid var(--color-border);
-      padding: 0 48px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: var(--shadow-sm);
-    }
-    .tab-list {
-      display: flex;
-      gap: 0;
-      list-style: none;
-      overflow-x: auto;
-    }
-    .tab-list li { flex-shrink: 0; }
-    .tab-btn {
-      display: block;
-      padding: 16px 20px;
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--color-text-muted);
-      text-decoration: none;
-      border-bottom: 3px solid transparent;
-      margin-bottom: -2px;
-      transition: color 0.2s, border-color 0.2s;
-      cursor: pointer;
-      background: none;
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      white-space: nowrap;
-    }
-    .tab-btn:hover { color: var(--color-text-primary); }
-    .tab-btn.active {
-      color: var(--color-accent);
-      border-bottom-color: var(--color-accent);
-      font-weight: 600;
-    }
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
 
-    /* ── Tab panels ── */
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
 
-    /* ── Main content container ── */
-    .content {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 48px 80px;
-    }
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
 
-    /* ── Section headings ── */
-    .section-title {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--color-text-primary);
-      margin-bottom: 6px;
-      margin-top: 36px;
-    }
-    .section-title:first-child { margin-top: 0; }
-    .section-divider {
-      width: 40px;
-      height: 3px;
-      background: var(--color-accent);
-      margin-bottom: 20px;
-      border-radius: 2px;
-    }
-    .subsection-title {
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      margin-top: 28px;
-      margin-bottom: 12px;
-    }
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
 
-    /* ── Cards ── */
-    .card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      box-shadow: var(--shadow-sm);
-      margin-bottom: 20px;
-    }
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-    .card-grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-bottom: 20px;
-    }
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
 
-    /* ── KV (key-value) pairs ── */
-    .kv-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px 32px;
-    }
-    .kv-item {}
-    .kv-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      margin-bottom: 2px;
-      font-family: var(--font-mono);
-    }
-    .kv-value {
-      font-size: 14px;
-      color: var(--color-text-primary);
-      font-weight: 500;
-    }
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
 
-    /* ── Financial tables ── */
-    .fin-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13.5px;
-      font-family: var(--font-sans);
-      margin-bottom: 8px;
-    }
-    .fin-table th {
-      background: var(--color-navy);
-      color: #fff;
-      padding: 10px 14px;
-      text-align: left;
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-    .fin-table th.right { text-align: right; }
-    .fin-table td {
-      padding: 9px 14px;
-      border-bottom: 1px solid var(--color-border-light);
-      color: var(--color-text-primary);
-    }
-    .fin-table td.right {
-      text-align: right;
-      font-family: var(--font-mono);
-      font-size: 13px;
-    }
-    .fin-table tr:last-child td { border-bottom: none; }
-    .fin-table tr:nth-child(even) { background: #FAFAF8; }
-    .fin-table .subtotal td {
-      background: var(--color-navy-light);
-      font-weight: 600;
-    }
-    .fin-table .total td {
-      background: var(--color-navy);
-      color: #fff;
-      font-weight: 700;
-      font-family: var(--font-mono);
-    }
-    .fin-table .section-header td {
-      background: var(--color-border-light);
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--color-text-secondary);
-      padding: 7px 14px;
-    }
-    .fin-table .indent td:first-child { padding-left: 28px; }
-    .fin-table .indent2 td:first-child { padding-left: 44px; }
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
 
-    /* ── Ratio table ── */
-    .ratio-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-    .ratio-table th {
-      background: var(--color-navy);
-      color: #fff;
-      padding: 9px 14px;
-      text-align: left;
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .ratio-table td {
-      padding: 9px 14px;
-      border-bottom: 1px solid var(--color-border-light);
-    }
-    .ratio-table tr:nth-child(even) { background: #FAFAF8; }
-    .ratio-table .mono { font-family: var(--font-mono); font-size: 13px; font-weight: 500; }
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
 
-    /* ── RAG badges ── */
-    .rag {
-      display: inline-block;
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 11px;
-      font-weight: 700;
-      font-family: var(--font-mono);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    .rag-green { background: var(--color-green-light); color: var(--color-green); }
-    .rag-amber { background: var(--color-amber-light); color: var(--color-amber); }
-    .rag-red   { background: var(--color-red-light);   color: var(--color-red); }
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
 
-    /* ── EOS score cards ── */
-    .eos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .eos-card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      box-shadow: var(--shadow-sm);
-    }
-    .eos-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 10px;
-    }
-    .eos-dimension {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      line-height: 1.3;
-      flex: 1;
-      margin-right: 12px;
-    }
-    .eos-score {
-      font-family: var(--font-serif);
-      font-size: 28px;
-      font-weight: 700;
-      line-height: 1;
-      flex-shrink: 0;
-    }
-    .score-high  { color: var(--color-green); }
-    .score-mid   { color: var(--color-amber); }
-    .score-low   { color: var(--color-red); }
-    .eos-bar-track {
-      height: 5px;
-      background: var(--color-border);
-      border-radius: 3px;
-      margin-bottom: 10px;
-      overflow: hidden;
-    }
-    .eos-bar-fill {
-      height: 100%;
-      border-radius: 3px;
-      transition: width 0.4s ease;
-    }
-    .fill-green { background: var(--color-green); }
-    .fill-amber { background: var(--color-amber); }
-    .fill-red   { background: var(--color-red); }
-    .eos-evidence {
-      font-size: 12.5px;
-      color: var(--color-text-secondary);
-      line-height: 1.55;
-    }
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
 
-    /* ── Overall EOS summary ── */
-    .eos-overall {
-      background: var(--color-navy);
-      color: #fff;
-      border-radius: var(--radius-lg);
-      padding: 28px 32px;
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      margin-bottom: 24px;
-    }
-    .eos-overall-score {
-      font-family: var(--font-serif);
-      font-size: 64px;
-      font-weight: 700;
-      line-height: 1;
-      color: #E8C840;
-      flex-shrink: 0;
-    }
-    .eos-overall-label {
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      font-family: var(--font-mono);
-      margin-bottom: 6px;
-    }
-    .eos-overall-text {
-      font-size: 17px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .eos-overall-desc {
-      font-size: 13.5px;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.6;
-    }
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
 
-    /* ── Director table ── */
-    .dir-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-    .dir-table th {
-      background: var(--color-navy);
-      color: #fff;
-      padding: 9px 14px;
-      text-align: left;
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .dir-table td {
-      padding: 9px 14px;
-      border-bottom: 1px solid var(--color-border-light);
-      vertical-align: top;
-    }
-    .dir-table tr:nth-child(even) { background: #FAFAF8; }
-    .position-tag {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 10px;
-      font-size: 10px;
-      font-weight: 600;
-      font-family: var(--font-mono);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .tag-chair     { background: #FBF3DC; color: #8B6914; }
-    .tag-director  { background: var(--color-navy-light); color: var(--color-navy); }
-    .tag-alt       { background: #F0EBF8; color: #6A3D9A; }
-    .tag-gm        { background: var(--color-green-light); color: var(--color-green); }
-    .tag-secretary { background: #F2F2F2; color: #444; }
-    .tag-auditor   { background: var(--color-accent-light); color: var(--color-accent); }
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
 
-    /* ── Charge table ── */
-    .charge-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 12.5px;
-    }
-    .charge-table th {
-      background: var(--color-navy);
-      color: #fff;
-      padding: 8px 12px;
-      text-align: left;
-      font-size: 10.5px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .charge-table th.right { text-align: right; }
-    .charge-table td {
-      padding: 8px 12px;
-      border-bottom: 1px solid var(--color-border-light);
-      font-family: var(--font-mono);
-      font-size: 12px;
-    }
-    .charge-table td.label { font-family: var(--font-sans); }
-    .charge-table tr:nth-child(even) { background: #FAFAF8; }
-    .charge-table .total-row td {
-      background: var(--color-accent-light);
-      font-weight: 700;
-      color: var(--color-accent);
-    }
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
 
-    /* ── Insight boxes ── */
-    .insight-box {
-      border-left: 4px solid var(--color-accent);
-      background: var(--color-accent-light);
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      padding: 16px 20px;
-      margin: 16px 0;
-      font-size: 13.5px;
-      color: var(--color-text-secondary);
-      line-height: 1.6;
-    }
-    .insight-box.green {
-      border-color: var(--color-green);
-      background: var(--color-green-light);
-    }
-    .insight-box.amber {
-      border-color: var(--color-amber);
-      background: var(--color-amber-light);
-    }
-    .insight-box strong { color: var(--color-text-primary); }
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
 
-    /* ── Bullet list ── */
-    .bullet-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 16px 0;
-    }
-    .bullet-list li {
-      padding: 7px 0 7px 22px;
-      position: relative;
-      font-size: 13.5px;
-      color: var(--color-text-secondary);
-      border-bottom: 1px solid var(--color-border-light);
-      line-height: 1.5;
-    }
-    .bullet-list li:last-child { border-bottom: none; }
-    .bullet-list li::before {
-      content: '▸';
-      position: absolute;
-      left: 0;
-      color: var(--color-accent);
-      font-size: 12px;
-      top: 9px;
-    }
-
-    /* ── Stat pills (summary overview) ── */
-    .stat-pills {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-    .stat-pill {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: 16px;
-      text-align: center;
-      box-shadow: var(--shadow-sm);
-    }
-    .stat-pill-value {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--color-navy);
-      line-height: 1.1;
-      margin-bottom: 4px;
-    }
-    .stat-pill-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-    }
-
-    /* ── Footer ── */
-    .report-footer {
-      background: var(--color-navy);
-      color: rgba(255,255,255,0.45);
-      padding: 20px 48px;
-      font-size: 11px;
-      font-family: var(--font-mono);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      .report-header, .content, .prepared-strip, .tab-nav, .report-footer { padding-left: 20px; padding-right: 20px; }
-      .kv-grid { grid-template-columns: 1fr; }
-      .eos-overall { flex-direction: column; gap: 16px; }
-      .header-company { font-size: 28px; }
-    }
-
-    /* ── Print ── */
-    @media print {
-      .tab-nav { position: static; }
-      .tab-panel { display: block !important; page-break-before: always; }
-      .tab-panel:first-of-type { page-break-before: avoid; }
-    }
-  </style>
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════════════════════════
      HEADER
-════════════════════════════════════════ -->
+══════════════════════════════════════════ -->
 <header class="report-header">
-  <div class="header-eyebrow">PKA Research Report · EOS Lead Qualification</div>
-  <div class="header-company">Avipro Co Ltd</div>
-  <div class="header-subtitle">Comprehensive Company Analysis — Mauritius Poultry & Agribusiness Sector</div>
-  <div class="header-badges">
-    <span class="badge badge-live"><span class="badge-dot"></span>Live</span>
-    <span class="badge badge-private">Private Company</span>
+  <div class="header-meta">
+    <span class="badge badge-co">Poultry &amp; Agribusiness — Mauritius</span>
+    <span class="badge badge-type">Private Company · Domestic · Eclosia Group</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
     <span class="badge badge-date">1 April 2026</span>
-    <span class="badge badge-private">File No. C1481</span>
-    <span class="badge badge-private">BRN C06001481</span>
+  </div>
+  <h1>Avipro:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Avipro Co Ltd · File No. C1481 · BRN C06001481 · Company intelligence · Financial ratios · EOS implementation assessment · Gentilly, Moka, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">MUR 2.94B</div>
+      <div class="stat-delta">Year ended 30 June 2025 · Mauritius Rupee</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit FY2025</div>
+      <div class="stat-value emerald">MUR 354M</div>
+      <div class="stat-delta">Net margin 12.0% · Effective tax rate 6.4%</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">7.0 / 10</div>
+      <div class="stat-delta">Strong Candidate — Recommended for Approach · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">DSO 126 Days</div>
+      <div class="stat-delta">Trade receivables MUR 1.017B — likely intercompany Eclosia balance</div>
+    </div>
   </div>
 </header>
 
-<div class="prepared-strip">
-  <span>PREPARED FOR: THIERRY · LMAGP PKA SYSTEM</span>
-  <span>1 APRIL 2026 · CONFIDENTIAL</span>
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Avipro Co Ltd — Company Analysis &amp; EOS Assessment · 1 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     TAB NAVIGATION
-════════════════════════════════════════ -->
-<nav class="tab-nav">
-  <ul class="tab-list">
-    <li><button class="tab-btn active" onclick="showTab('overview')">1 · Overview</button></li>
-    <li><button class="tab-btn" onclick="showTab('leadership')">2 · Leadership &amp; Ownership</button></li>
-    <li><button class="tab-btn" onclick="showTab('business')">3 · Business &amp; Market</button></li>
-    <li><button class="tab-btn" onclick="showTab('financials')">4 · Financials</button></li>
-    <li><button class="tab-btn" onclick="showTab('ratios')">5 · Ratios &amp; Analysis</button></li>
-    <li><button class="tab-btn" onclick="showTab('charges')">6 · Charges Register</button></li>
-    <li><button class="tab-btn" onclick="showTab('eos')">7 · EOS Assessment</button></li>
-  </ul>
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION — 7 tabs, always this order
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
 </nav>
 
-<!-- ══════════════════════════════════════
-     TAB 1 · OVERVIEW
-════════════════════════════════════════ -->
-<div id="tab-overview" class="tab-panel active">
-  <div class="content">
 
-    <div class="stat-pills">
-      <div class="stat-pill">
-        <div class="stat-pill-value">MUR 2.94B</div>
-        <div class="stat-pill-label">FY2025 Revenue</div>
-      </div>
-      <div class="stat-pill">
-        <div class="stat-pill-value">MUR 354M</div>
-        <div class="stat-pill-label">Net Profit</div>
-      </div>
-      <div class="stat-pill">
-        <div class="stat-pill-value">12.0%</div>
-        <div class="stat-pill-label">Net Margin</div>
-      </div>
-      <div class="stat-pill">
-        <div class="stat-pill-value">MUR 4.71B</div>
-        <div class="stat-pill-label">Total Assets</div>
-      </div>
-      <div class="stat-pill">
-        <div class="stat-pill-value">60 years</div>
-        <div class="stat-pill-label">In Operation</div>
-      </div>
-      <div class="stat-pill">
-        <div class="stat-pill-value">7 / 10</div>
-        <div class="stat-pill-label">EOS Suitability</div>
-      </div>
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 60-year-old institution — Mauritius's largest integrated poultry group — entering a leadership transition with strong financials, a complex multi-site operation, and textbook EOS conditions ready to be unlocked.</p>
+
+  <p class="body-text">Avipro Co Ltd is Mauritius's oldest and largest integrated poultry group, founded in 1965 (operational from 1966) as Food and Allied Industries Limited and rebranded Avipro. It is the founding entity of the Eclosia Group, one of Mauritius's Top-5 diversified conglomerates with annual group turnover exceeding MUR 20 billion and over 5,300 employees. Avipro's sole shareholder is Management and Development Company Limited, a holding vehicle within the Eclosia–ENL/ER ecosystem.</p>
+  <p class="body-text">The company operates a fully integrated poultry value chain: grandparent and parent breeder farms, a state-of-the-art hatchery, broiler grow-out farms across the island (20+ sites), a processing plant at Pont Fer Phoenix, and consumer-facing retail and food service through the Stop Frais and Chantefrais franchise network and Avishop. A subsidiary, Agrifarm, handles duck and guinea fowl. International operations span Madagascar (Avitech Madagascar), Kenya, and export to Comoros, Seychelles, Tanzania, and Uganda.</p>
+  <p class="body-text">FY2025 (year ended 30 June 2025) delivered revenue of MUR 2.94 billion, gross margin of 21.4%, and a net profit of MUR 354 million — a financially robust performance. With 10+ directors (many from the founding Doger de Spéville family), a newly appointed General Manager (Denis Pilot, July 2025), and a large multi-site operational footprint, the organisation exhibits clear EOS-relevant complexity: growth pains, multi-site coordination challenges, and potential leadership alignment needs. EOS suitability score: 7.0 / 10.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Leadership Transition Window</div>
+    Denis Pilot was appointed as Director and General Manager in July 2025 — placing us at the 9-month mark of his tenure in April 2026. This is the ideal EOS approach window: he has identified his operational frustrations, does not yet have entrenched habits, and has the authority to sponsor a management-team-level engagement. He is a finance professional by background (accountant, 7 years Australia; Eclosia finance 2010; hotel finance GM; Avipro GM from Jan 2024). He will respond to data-backed, structured arguments. Frame EOS as an operating system for his management team — not a board-level governance change — to bypass family-board conservatism.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Full vertical integration breed-to-retail</strong> is the defining advantage — no Mauritian competitor replicates this. 60-year first-mover position. Eclosia Group brand halo and shared infrastructure. ISA Brown authorised distributor (Hendrix Genetics). Chantefrais franchise network creates island-wide distribution without capital. Regional expansion in Madagascar (25 years), Kenya, Tanzania, Uganda creates a growing African footprint.</p>
     </div>
-
-    <div class="section-title">Corporate Identity</div>
-    <div class="section-divider"></div>
-
-    <div class="card">
-      <div class="kv-grid">
-        <div class="kv-item">
-          <div class="kv-label">Legal Name</div>
-          <div class="kv-value">AVIPRO CO LTD</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Formerly Known As</div>
-          <div class="kv-value">Food and Allied Industries Limited</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">File Number</div>
-          <div class="kv-value" style="font-family:var(--font-mono)">C1481</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Business Registration No.</div>
-          <div class="kv-value" style="font-family:var(--font-mono)">C06001481</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Date Incorporated</div>
-          <div class="kv-value">23 July 1965</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Nature</div>
-          <div class="kv-value">Private Company (Domestic)</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Status</div>
-          <div class="kv-value"><span class="rag rag-green">Live</span></div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Financial Year End</div>
-          <div class="kv-value">30 June</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Registered Office</div>
-          <div class="kv-value">C/o Eclosia Group Headquarters, Gentilly, Moka, Mauritius</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Effective Date (Reg. Office)</div>
-          <div class="kv-value">28 October 2016</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Secretary</div>
-          <div class="kv-value">Eclosia Secretarial Services Ltd</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Auditor</div>
-          <div class="kv-value">BDO &amp; Co, Port Louis</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Stated Capital</div>
-          <div class="kv-value" style="font-family:var(--font-mono)">MUR 1,646,714,920</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Shares Outstanding</div>
-          <div class="kv-value" style="font-family:var(--font-mono)">164,671,492 ordinary shares @ par MUR 10</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Website</div>
-          <div class="kv-value"><a href="https://www.avipro.mu" style="color:var(--color-accent)">www.avipro.mu</a></div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Annual Returns Filed</div>
-          <div class="kv-value">FY2025 filed 19 Jan 2026 · FY2024 filed 14 Jan 2025 · FY2023 filed 24 Jan 2024</div>
-        </div>
-      </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Trade receivables of MUR 1.017B (DSO 126 days)</strong> is the headline flag — 34.6% of revenue tied up in receivables. Almost certainly intercompany Eclosia Group balances rather than credit risk, but needs clarification. "Others" in current liabilities of MUR 562M is opaque. Deferred tax liability of MUR 245M is material (accelerated depreciation on farm assets). Otherwise, the balance sheet is conservative and well-capitalised.</p>
     </div>
-
-    <div class="section-title">Executive Summary</div>
-    <div class="section-divider"></div>
-
-    <div class="card">
-      <p style="font-size:14px; color:var(--color-text-secondary); line-height:1.75; margin-bottom:16px;">
-        Avipro Co Ltd is Mauritius's oldest and largest integrated poultry group, founded in 1965 (operational from 1966) as Food and Allied Industries Limited and rebranded Avipro. It is the founding entity of the <strong>Eclosia Group</strong>, one of Mauritius's Top-5 diversified conglomerates with annual group turnover exceeding MUR 20 billion and over 5,300 employees. Avipro's sole shareholder is Management and Development Company Limited, a holding vehicle within the Eclosia–ENL/ER ecosystem.
-      </p>
-      <p style="font-size:14px; color:var(--color-text-secondary); line-height:1.75; margin-bottom:16px;">
-        The company operates a fully integrated poultry value chain: grandparent and parent breeder farms, a state-of-the-art hatchery, broiler grow-out farms across the island (20+ sites), a processing plant at Pont Fer Phoenix, and consumer-facing retail/food service through the Stop Frais and Chantefrais franchise network and Avishop. A subsidiary, Agrifarm, handles duck and guinea fowl. International operations span Madagascar (Avitech Madagascar), Kenya, and export to Comoros, Seychelles, Tanzania, and Uganda.
-      </p>
-      <p style="font-size:14px; color:var(--color-text-secondary); line-height:1.75;">
-        FY2025 (year ended 30 June 2025) delivered revenue of MUR 2.94 billion, gross margin of 21.4%, and a net profit of MUR 354 million — a financially robust performance. With 10+ directors (many from the founding Doger de Spéville family), a newly appointed General Manager (Denis Pilot, July 2025), and a large multi-site operational footprint, the organisation exhibits clear EOS-relevant complexity: growth pains, multi-site coordination challenges, and potential leadership alignment needs.
-      </p>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>New GM 9 months into post</strong> is the clearest EOS signal — he will have identified his top frustrations and is primed for a structured solution. Multi-site coordination (20+ farms, processing, retail, international) with no visible structured meeting cadence. Family-influenced board creates governance complexity that an EOS engagement scoped at management-team level can avoid. Strong financial health means budget resistance is minimal.</p>
     </div>
-
-    <div class="insight-box green">
-      <strong>EOS Opportunity:</strong> Avipro is a 60-year-old institution undergoing a leadership transition (new GM appointed July 2025). Large operational complexity (20+ farms, processing plant, retail network, international ops) and a family-influenced board create fertile ground for EOS implementation — particularly around the Vision/Traction Organizer, Accountability Chart, Meeting Pulse, and Rocks.
-    </div>
-
   </div>
 </div>
-
-<!-- ══════════════════════════════════════
-     TAB 2 · LEADERSHIP & OWNERSHIP
-════════════════════════════════════════ -->
-<div id="tab-leadership" class="tab-panel">
-  <div class="content">
-
-    <div class="section-title">Ownership Structure</div>
-    <div class="section-divider"></div>
-
-    <div class="card">
-      <div class="subsection-title">Shareholder of Record</div>
-      <table class="fin-table">
-        <thead>
-          <tr>
-            <th>Shareholder</th>
-            <th class="right">No. of Shares</th>
-            <th class="right">% Held</th>
-            <th>Type</th>
-            <th>Currency</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Management and Development Company Limited</td>
-            <td class="right">164,671,492</td>
-            <td class="right">100%</td>
-            <td>Ordinary Shares</td>
-            <td>Mauritius Rupee</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="subsection-title" style="margin-top:20px;">Group Structure &amp; Beneficial Ownership</div>
-      <ul class="bullet-list">
-        <li><strong>Management and Development Company Limited (MDCL)</strong> — 100% shareholder of Avipro Co Ltd; a holding entity within the Eclosia ecosystem.</li>
-        <li><strong>Eclosia Group</strong> — parent conglomerate; privately owned; headquarters at Gentilly, Moka. One of Mauritius's Top-5 diversified groups (MUR 20B+ annual turnover, 5,300+ employees, 20+ businesses across food, retail, hospitality, packaging, logistics, education).</li>
-        <li><strong>ER Group (formerly ENL–Rogers, merged 2025)</strong> — holds approximately 39% of Eclosia. ENL/ER is listed on the Stock Exchange of Mauritius. The Doger de Spéville and Espitalier Noël families are significant beneficial owners through ENL heritage and direct Eclosia board representation.</li>
-        <li><strong>Agrifarm</strong> — wholly owned subsidiary of Avipro handling duck and guinea fowl production.</li>
-        <li><strong>Avitech Madagascar</strong> — Avipro's regional operating entity in Madagascar, exporting chicks to Comoros.</li>
-      </ul>
-    </div>
-
-    <div class="section-title">Board of Directors &amp; Office Bearers</div>
-    <div class="section-divider"></div>
-
-    <div class="card" style="overflow-x:auto;">
-      <table class="dir-table">
-        <thead>
-          <tr>
-            <th>Position</th>
-            <th>Name</th>
-            <th>Appointed</th>
-            <th>Service Address</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="position-tag tag-chair">Chairman</span></td>
-            <td><strong>Doger de Spéville, Cédric</strong></td>
-            <td>14 Apr 2023</td>
-            <td>Eclosia Group HQ, Gentilly, Moka</td>
-          </tr>
-          <tr>
-            <td><span class="position-tag tag-director">Director</span></td>
-            <td>Boullé, Gérard Louis</td>
-            <td>21 Sep 2023</td>
-            <td>C/o Eclosia Group HQ, Gentilly Moka</td>
-          </tr>
-          <tr>
-            <td><span class="position-tag tag-director">Director</span></td>
-            <td>Doger de Spéville, André Patrice</td>
-            <td>01 Mar 2020</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><span class="position-tag tag-director">Director</span></td>
-            <td>Doger de Spéville, Marie Joseph Thierry</td>
-            <td>01 Mar 2020</td>
-            <td>C/o Avipro Co Ltd, Eclosia HQ, Gentilly Moka</td>
-          </tr>
-          <tr>
-            <td><span class="position-tag tag-director">Director</span></td>
-            <td>Doger de Spéville, Michel Cédric</td>
-            <td>01 Mar 2020</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><span class="position-tag tag-director">Director</span></td>
-            <td>Doger de Spéville, Pierre Elysée Michel</td>
-            <td>01 Mar 2020</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><span class="position-tag tag-director">Director</span></td>
-            <td>Espitalier Noël, Marie André Eric</td>
-            <td>01 Mar 2020</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><span class="position-tag tag-director">Director</span></td>
-            <td>Espitalier Noël, Marie Edouard Gilbert</td>
-            <td>24 Aug 2023</td>
-            <td>ENL House, Vivea Business Park, Moka</td>
-          </tr>
-          <tr>
-            <td><span class="position-tag tag-director">Director</span></td>
-            <td>Pougnet, Marie François Pierre Yves</td>
-            <td>01 Mar 2020</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><span class="position-tag tag-gm">Director / GM</span></td>
-            <td><strong>Pilot, Denis Claude</strong></td>
-            <td>01 Jul 2025</td>
-            <td>C/o Avipro Co Ltd, Eclosia HQ, Gentilly Moka</td>
-          </tr>
-          <tr>
-            <td><span class="position-tag tag-alt">Alt. Director</span></td>
-            <td>Doger de Spéville, Michel Cédric</td>
-            <td>01 Mar 2020</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><span class="position-tag tag-secretary">Secretary</span></td>
-            <td>Eclosia Secretarial Services Ltd</td>
-            <td>01 Mar 2020</td>
-            <td>C/o Eclosia Group HQ, Gentilly, Moka</td>
-          </tr>
-          <tr>
-            <td><span class="position-tag tag-auditor">Auditor</span></td>
-            <td>BDO &amp; Co</td>
-            <td>31 Dec 2010</td>
-            <td>10 Frère Felix de Valois Street, Port Louis</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="insight-box amber">
-      <strong>Family Concentration Note:</strong> Four directors (and the alternate director) carry the Doger de Spéville surname — the founding family of the Eclosia Group. This is a tightly governed family-influenced board. Two Espitalier Noël directors represent the ENL/ER Group's 39% stake in Eclosia. Denis Pilot (appointed July 2025) is the operational General Manager and most logical first point of contact.
-    </div>
-
-    <div class="section-title">Recommended First Contact</div>
-    <div class="section-divider"></div>
-
-    <div class="card">
-      <div class="kv-grid">
-        <div class="kv-item">
-          <div class="kv-label">Name</div>
-          <div class="kv-value"><strong>Denis Claude Pilot</strong></div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Position</div>
-          <div class="kv-value">Director &amp; General Manager</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Appointed</div>
-          <div class="kv-value">1 July 2025 (recently onboarded)</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Background</div>
-          <div class="kv-value">Accountant (7 yrs Australia); joined Eclosia finance 2010; led hotel finance; GM Avipro from Jan 2024</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Service Address</div>
-          <div class="kv-value">C/o Avipro Co Ltd, Eclosia Group HQ, Gentilly, Moka</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">LinkedIn</div>
-          <div class="kv-value"><a href="https://www.linkedin.com/in/denis-claude-pilot-b252b352/" style="color:var(--color-accent)">linkedin.com/in/denis-claude-pilot-b252b352</a></div>
-        </div>
-      </div>
-      <div class="insight-box" style="margin-top:16px; margin-bottom:0;">
-        <strong>Rationale:</strong> As a recently promoted operational GM with a finance background, Denis Pilot is likely navigating new organisational challenges — team alignment, farm-level accountability, cross-functional coordination. This makes him highly receptive to EOS tools. He sits on the board as of July 2025, giving him the authority to sponsor an EOS engagement.
-      </div>
-    </div>
-
-  </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     TAB 3 · BUSINESS & MARKET
-════════════════════════════════════════ -->
-<div id="tab-business" class="tab-panel">
-  <div class="content">
 
-    <div class="section-title">Products &amp; Services</div>
-    <div class="section-divider"></div>
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A 60-year-old private Mauritian company — the founding entity of the Eclosia Group — operating the island's most integrated poultry value chain with a growing regional African presence.</p>
 
-    <div class="card-grid">
-      <div class="card" style="margin-bottom:0;">
-        <div class="subsection-title" style="margin-top:0;">Core Poultry Operations</div>
-        <ul class="bullet-list">
-          <li><strong>Breeding &amp; Farming:</strong> 20+ broiler grow-out farms across the island raising poultry above 5,000 birds each; grandparent and parent breeder flocks; state-of-the-art hatchery supplying day-old chicks.</li>
-          <li><strong>Processing:</strong> Slaughter and processing plant at Pont Fer, Phoenix meeting international hygiene standards; produces fresh and frozen chicken cuts.</li>
-          <li><strong>Retail &amp; Food Service:</strong> Stop Frais outlets (Telfair/Moka) — fresh chicken retail and cooked food victualler. Chantefrais franchise network across the island promoting entrepreneurship through fresh chicken.</li>
-          <li><strong>Avishop:</strong> Inaugurated 1985 as La Maison du Petit Aviculteur; rebranded 2016. Supplies broiler and laying chicks, feed, sanitary products and equipment to small breeders. Commercial Centre, Kendra House, St Pierre.</li>
-          <li><strong>Agrifarm (subsidiary):</strong> Duck and guinea fowl production for premium market segments.</li>
-        </ul>
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Avipro Co Ltd was incorporated on 23 July 1965 (operational from 1966) under its original name Food and Allied Industries Limited. File Number C1481, Business Registration Number C06001481. The company is a private domestic company with a financial year ending 30 June. Registered office: C/o Eclosia Group Headquarters, Gentilly, Moka, Mauritius (effective 28 October 2016). Secretary: Eclosia Secretarial Services Ltd. Auditor: BDO &amp; Co, 10 Frère Felix de Valois Street, Port Louis (appointed 31 December 2010). Stated capital: MUR 1,646,714,920. Shares outstanding: 164,671,492 ordinary shares at par MUR 10. Annual returns are filed consistently: FY2025 filed 19 January 2026; FY2024 filed 14 January 2025; FY2023 filed 24 January 2024.</p>
+  <p class="body-text">The company was renamed from Food and Allied Industries Limited to Avipro Co Ltd. It is the founding entity of the Eclosia Group — one of Mauritius's Top-5 diversified conglomerates with annual group turnover exceeding MUR 20 billion and over 5,300 employees across 20+ businesses in food, retail, hospitality, packaging, logistics, and education. Status: Live.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Avipro Co Ltd</h4>
+        <div class="ec-sub">Operating Entity — File C1481</div>
       </div>
-      <div class="card" style="margin-bottom:0;">
-        <div class="subsection-title" style="margin-top:0;">Additional &amp; Ancillary Activities</div>
-        <ul class="bullet-list">
-          <li><strong>Medical Laboratories:</strong> Licensed medical laboratory operations at Gentilly Branch Road, Moka — likely supporting biosecurity and quality control functions.</li>
-          <li><strong>Import &amp; Export:</strong> Licensed importer and exporter; principal place of business Gentilly, Moka.</li>
-          <li><strong>ISA Brown Distribution:</strong> Authorised Mauritius distributor of ISA Brown laying hens (Hendrix Genetics partnership).</li>
-          <li><strong>Franchise Support:</strong> Provides infrastructure and supply to Chantefrais franchise partners across the island.</li>
-        </ul>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">BRN</span><span class="mv">C06001481</span></div>
+        <div class="ec-metric"><span class="mk">Incorporated</span><span class="mv">23 Jul 1965</span></div>
+        <div class="ec-metric"><span class="mk">Stated Capital</span><span class="mv">MUR 1.647B</span></div>
+        <div class="ec-metric"><span class="mk">Shares</span><span class="mv">164,671,492 ord.</span></div>
+        <div class="ec-metric"><span class="mk">FY Revenue</span><span class="mv ok">MUR 2.94B</span></div>
       </div>
     </div>
-
-    <div class="section-title" style="margin-top:28px;">Geographic Presence</div>
-    <div class="section-divider"></div>
-
-    <div class="card-grid-3">
-      <div class="card" style="margin-bottom:0;">
-        <div class="subsection-title" style="margin-top:0; color:var(--color-navy);">Mauritius — Primary Market</div>
-        <ul class="bullet-list">
-          <li>HQ: Gentilly, Moka</li>
-          <li>Processing: Pont Fer, Phoenix</li>
-          <li>Retail: Stop Frais (Telfair/Moka), Avishop (St Pierre)</li>
-          <li>20+ broiler farms: Cyclamen Farm, Joli Bois, Côte d'Or, Espérance, Bout du Monde, Minissy, Verdun, Valetta, La Gervaise, Bassin Farm Lane, Cascade Bassin, Henrietta, Magenta, Cressonville, Pierrefonds, Lazaret, Trois Ilots, Providence, Alma, Arnot, L'Avenir, L'Assurance, Beau Climat, Bonne Veine</li>
-        </ul>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Management &amp; Development Company Ltd</h4>
+        <div class="ec-sub">100% Shareholder — Eclosia Holding Vehicle</div>
       </div>
-      <div class="card" style="margin-bottom:0;">
-        <div class="subsection-title" style="margin-top:0; color:var(--color-green);">Africa &amp; Indian Ocean</div>
-        <ul class="bullet-list">
-          <li><strong>Madagascar:</strong> Established ~25 years ago; Avitech Madagascar subsidiary; parent hatchery + breeding farm at Ivato, ~30km from Antananarivo; re-exports chicks to Comoros.</li>
-          <li><strong>Kenya:</strong> Operational presence (recent); exports broiler chicks.</li>
-          <li><strong>Tanzania:</strong> Exports broiler chicks.</li>
-          <li><strong>Uganda:</strong> Exports broiler chicks (commenced after Tanzania).</li>
-        </ul>
-      </div>
-      <div class="card" style="margin-bottom:0;">
-        <div class="subsection-title" style="margin-top:0; color:var(--color-accent);">Island Export Markets</div>
-        <ul class="bullet-list">
-          <li><strong>Seychelles:</strong> Commercial chicken exports (suspended then resumed with Air Seychelles flights).</li>
-          <li><strong>Comoros:</strong> Commercial chicken exports (via Avitech Madagascar for chicks).</li>
-        </ul>
-        <p style="font-size:12.5px;color:var(--color-text-muted);margin-top:8px;">Island exports are logistics-dependent on air freight availability.</p>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares Held</span><span class="mv">164,671,492</span></div>
+        <div class="ec-metric"><span class="mk">Ownership</span><span class="mv ok">100%</span></div>
+        <div class="ec-metric"><span class="mk">Type</span><span class="mv">Ordinary Shares · MUR</span></div>
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Eclosia Group holding entity</span></div>
       </div>
     </div>
-
-    <div class="section-title" style="margin-top:28px;">Competitive Landscape</div>
-    <div class="section-divider"></div>
-
-    <div class="card">
-      <ul class="bullet-list">
-        <li><strong>Market Position:</strong> Avipro is widely recognised as Mauritius's largest and most integrated poultry producer, with first-mover advantage dating to 1966. It dominates fresh and frozen chicken supply.</li>
-        <li><strong>Import Competition:</strong> Mauritius imports frozen poultry (particularly from Brazil and EU) at lower price points. Avipro competes on freshness, local provenance, and biosecurity credentials.</li>
-        <li><strong>Local Competitors:</strong> Smaller-scale local breeders and processors exist but lack Avipro's vertical integration and scale. Avipro's Avishop network paradoxically supports small breeders while maintaining supply chain control.</li>
-        <li><strong>Differentiation:</strong> Full vertical integration (breed to retail); strict biosecurity protocols; ISA Brown authorised distributor; international quality processing plant; Eclosia Group brand halo; established franchise (Chantefrais) and distribution network.</li>
-        <li><strong>Regional Competitive Moat:</strong> First integrated poultry operation in Madagascar and East Africa gives significant head start for regional chick supply contracts.</li>
-      </ul>
-    </div>
-
-    <div class="section-title">Digital Presence</div>
-    <div class="section-divider"></div>
-
-    <div class="card">
-      <div class="kv-grid">
-        <div class="kv-item">
-          <div class="kv-label">Website</div>
-          <div class="kv-value"><a href="https://www.avipro.mu" style="color:var(--color-accent)">www.avipro.mu</a> — bilingual (EN/FR), professional, covers products, team, sustainability, careers and regional presence</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">LinkedIn</div>
-          <div class="kv-value"><a href="https://www.linkedin.com/company/aviprogroup" style="color:var(--color-accent)">linkedin.com/company/aviprogroup</a> — company page active</div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Facebook</div>
-          <div class="kv-value"><a href="https://www.facebook.com/pages/AVIPRO-CO-LTD/214192178740193" style="color:var(--color-accent)">facebook.com — AVIPRO CO LTD page</a></div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Parent Group</div>
-          <div class="kv-value"><a href="https://www.eclosia.com/en/nourish/production/avipro" style="color:var(--color-accent)">eclosia.com — Avipro profile page</a></div>
-        </div>
-        <div class="kv-item">
-          <div class="kv-label">Digital Assessment</div>
-          <div class="kv-value">Solid, professional digital presence. Website well-structured. Social media presence consistent but not highly active. No Instagram presence confirmed. ER/ENL group stock exchange filings publicly available.</div>
-        </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Eclosia Group / ER Group</h4>
+        <div class="ec-sub">Ultimate Parent — ~39% via ENL/ER</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Group Turnover</span><span class="mv">MUR 20B+</span></div>
+        <div class="ec-metric"><span class="mk">Employees</span><span class="mv">5,300+</span></div>
+        <div class="ec-metric"><span class="mk">ER Group stake</span><span class="mv">~39% of Eclosia</span></div>
+        <div class="ec-metric"><span class="mk">Families</span><span class="mv">Doger de Spéville · Espitalier Noël</span></div>
       </div>
     </div>
+  </div>
 
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Group Note</div>
+    Avipro is 100% owned by Management and Development Company Limited, a holding entity within the Eclosia Group. ER Group (formed from the 2025 merger of ENL and Rogers) holds approximately 39% of Eclosia and is listed on the Stock Exchange of Mauritius. The Doger de Spéville and Espitalier Noël founding families are significant beneficial owners. Any EOS engagement at Avipro operates within this group governance context — the management team layer (below board level) is the most tractable entry point.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Doger de Spéville, Cédric — Chairman</h4>
+      <p>Appointed 14 April 2023. Service address: Eclosia Group HQ, Gentilly, Moka. Founding family representative. Board chair role reflects family governance of the founding Eclosia entity.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Pilot, Denis Claude — Director &amp; GM</h4>
+      <p><strong>Most important contact.</strong> Appointed 1 July 2025. Accountant (7 yrs Australia); joined Eclosia finance 2010; led hotel finance; GM Avipro from Jan 2024. LinkedIn: linkedin.com/in/denis-claude-pilot-b252b352. Recently promoted operational leader — prime EOS entry point.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Boullé, Gérard Louis — Director</h4>
+      <p>Appointed 21 September 2023. Service address: C/o Eclosia Group HQ, Gentilly Moka. Eclosia Group professional director.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Doger de Spéville, André Patrice — Director</h4>
+      <p>Appointed 1 March 2020. Founding family member. One of four Doger de Spéville surnames on the board.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Doger de Spéville, Marie Joseph Thierry — Director</h4>
+      <p>Appointed 1 March 2020. Service address: C/o Avipro Co Ltd, Eclosia HQ, Gentilly Moka. Founding family member.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Espitalier Noël, Marie André Eric — Director</h4>
+      <p>Appointed 1 March 2020. ENL/ER Group representative on the Avipro board. Reflects ER Group's ~39% stake in Eclosia. Two Espitalier Noël directors on the board.</p>
+    </div>
+  </div>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Family Concentration — Board Governance Note</div>
+    Four directors (plus one alternate) carry the Doger de Spéville surname — the founding family of the Eclosia Group. Two Espitalier Noël directors represent ENL/ER Group's stake. This is a tightly governed family-influenced board. Additional directors: Doger de Spéville, Michel Cédric (Director and Alternate Director, appointed 1 March 2020); Doger de Spéville, Pierre Elysée Michel (Director, 1 March 2020); Espitalier Noël, Marie Edouard Gilbert (Director, 24 August 2023, ENL House, Vivea Business Park, Moka); Pougnet, Marie François Pierre Yves (Director, 1 March 2020). Denis Pilot (GM) is the operational leader and most logical first point of contact for EOS.
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text"><strong>Core Poultry Operations:</strong> Breeding and farming — 20+ broiler grow-out farms across the island raising poultry above 5,000 birds each; grandparent and parent breeder flocks; state-of-the-art hatchery supplying day-old chicks. Processing — slaughter and processing plant at Pont Fer, Phoenix meeting international hygiene standards; produces fresh and frozen chicken cuts. Retail and food service — Stop Frais outlets (Telfair/Moka) for fresh chicken retail and cooked food; Chantefrais franchise network across the island promoting entrepreneurship through fresh chicken. Avishop (inaugurated 1985 as La Maison du Petit Aviculteur, rebranded 2016) — supplies broiler and laying chicks, feed, sanitary products, and equipment to small breeders from Commercial Centre, Kendra House, St Pierre. Agrifarm (subsidiary) — duck and guinea fowl production for premium market segments.</p>
+  <p class="body-text"><strong>Additional Activities:</strong> Licensed medical laboratory operations at Gentilly Branch Road, Moka (biosecurity and quality control support). Licensed importer and exporter. Authorised Mauritius distributor of ISA Brown laying hens (Hendrix Genetics partnership). Franchise support infrastructure and supply to Chantefrais franchise partners.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text"><strong>Mauritius — Primary Market:</strong> HQ at Gentilly, Moka. Processing plant at Pont Fer, Phoenix. Retail: Stop Frais (Telfair/Moka), Avishop (St Pierre). 20+ named broiler farms across the island: Cyclamen Farm, Joli Bois, Côte d'Or, Espérance, Bout du Monde, Minissy, Verdun, Valetta, La Gervaise, Bassin Farm Lane, Cascade Bassin, Henrietta, Magenta, Cressonville, Pierrefonds, Lazaret, Trois Ilots, Providence, Alma, Arnot, L'Avenir, L'Assurance, Beau Climat, Bonne Veine.</p>
+  <p class="body-text"><strong>Africa &amp; Indian Ocean:</strong> Madagascar — established ~25 years ago; Avitech Madagascar subsidiary; parent hatchery and breeding farm at Ivato (~30km from Antananarivo); re-exports chicks to Comoros. Kenya — operational presence (recent); exports broiler chicks. Tanzania — exports broiler chicks. Uganda — exports broiler chicks (commenced after Tanzania). Seychelles — commercial chicken exports (suspended then resumed with Air Seychelles flights). Comoros — commercial chicken exports (via Avitech Madagascar for chicks). Island exports are logistics-dependent on air freight availability.</p>
+
+  <div class="alert alert-ok">
+    <div class="alert-title">Digital Presence — Strong</div>
+    Website avipro.mu is bilingual (EN/FR), professional, covering products, team, sustainability, careers, and regional presence. LinkedIn company page active (linkedin.com/company/aviprogroup). Facebook page active. Parent group profile at eclosia.com/en/nourish/production/avipro. Digital presence is solid and professional — no gaps requiring immediate attention.
   </div>
 </div>
-
-<!-- ══════════════════════════════════════
-     TAB 4 · FINANCIALS
-════════════════════════════════════════ -->
-<div id="tab-financials" class="tab-panel">
-  <div class="content">
-
-    <div class="section-title">Profit &amp; Loss Statement</div>
-    <div class="section-divider"></div>
-    <p style="font-size:12px;color:var(--color-text-muted);font-family:var(--font-mono);margin-bottom:16px;">Financial Year Ended 30 June 2025 · Currency: Mauritius Rupee · Unit: MUR '000 · Approved 27 November 2025 · Auditor: BDO &amp; Co</p>
-
-    <div class="card" style="overflow-x:auto;">
-      <table class="fin-table">
-        <thead>
-          <tr>
-            <th>Line Item</th>
-            <th class="right">MUR '000</th>
-            <th class="right">% of Revenue</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Turnover (Revenue)</strong></td>
-            <td class="right"><strong>2,939,736</strong></td>
-            <td class="right">100.0%</td>
-          </tr>
-          <tr class="indent">
-            <td>Less: Cost of Sales</td>
-            <td class="right">(2,310,208)</td>
-            <td class="right">78.6%</td>
-          </tr>
-          <tr class="subtotal">
-            <td><strong>Gross Profit</strong></td>
-            <td class="right"><strong>629,528</strong></td>
-            <td class="right"><strong>21.4%</strong></td>
-          </tr>
-          <tr class="indent">
-            <td>Add: Other Income</td>
-            <td class="right">110,670</td>
-            <td class="right">3.8%</td>
-          </tr>
-          <tr class="indent">
-            <td>Less: Distribution Costs</td>
-            <td class="right">—</td>
-            <td class="right">0.0%</td>
-          </tr>
-          <tr class="indent">
-            <td>Less: Administration Costs</td>
-            <td class="right">(340,452)</td>
-            <td class="right">11.6%</td>
-          </tr>
-          <tr class="indent">
-            <td>Less: Other Expenses</td>
-            <td class="right">—</td>
-            <td class="right">0.0%</td>
-          </tr>
-          <tr class="indent">
-            <td>Less: Finance Costs</td>
-            <td class="right">(21,495)</td>
-            <td class="right">0.7%</td>
-          </tr>
-          <tr class="subtotal">
-            <td><strong>EBIT (calculated)</strong></td>
-            <td class="right"><strong>399,746</strong></td>
-            <td class="right"><strong>13.6%</strong></td>
-          </tr>
-          <tr class="subtotal">
-            <td><strong>Profit / (Loss) Before Tax</strong></td>
-            <td class="right"><strong>378,251</strong></td>
-            <td class="right"><strong>12.9%</strong></td>
-          </tr>
-          <tr class="indent">
-            <td>Less: Tax Expense</td>
-            <td class="right">(24,320)</td>
-            <td class="right">0.8%</td>
-          </tr>
-          <tr class="total">
-            <td><strong>Profit / (Loss) for the Period</strong></td>
-            <td class="right"><strong>353,931</strong></td>
-            <td class="right"><strong>12.0%</strong></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="insight-box green" style="margin-top:8px;">
-      <strong>P&amp;L Commentary:</strong> Revenue of MUR 2.94B is substantial for a private Mauritian agribusiness. Gross margin of 21.4% reflects efficient processing relative to COGS-heavy poultry operations. The effective tax rate is only 6.4% (MUR 24M on MUR 378M PBT), well below the standard Mauritian corporate rate of 15% — likely reflecting agricultural tax incentives, deferred tax movements, and Agrifarm subsidiary structuring. Other income of MUR 111M (3.8% of revenue) is significant and may include rental income, management fees, or biological asset fair value adjustments.
-    </div>
-
-    <div class="section-title">Balance Sheet</div>
-    <div class="section-divider"></div>
-    <p style="font-size:12px;color:var(--color-text-muted);font-family:var(--font-mono);margin-bottom:16px;">As at 30 June 2025 · Currency: Mauritius Rupee · Unit: MUR '000</p>
-
-    <div class="card-grid" style="align-items:start;">
-      <div class="card" style="margin-bottom:0; overflow-x:auto;">
-        <div class="subsection-title" style="margin-top:0;">Assets</div>
-        <table class="fin-table">
-          <thead>
-            <tr><th>Item</th><th class="right">MUR '000</th></tr>
-          </thead>
-          <tbody>
-            <tr class="section-header"><td colspan="2">NON-CURRENT ASSETS</td></tr>
-            <tr class="indent"><td>Property, Plant &amp; Equipment</td><td class="right">2,620,457</td></tr>
-            <tr class="indent"><td>Investment Properties</td><td class="right">11,218</td></tr>
-            <tr class="indent"><td>Intangible Assets</td><td class="right">22,023</td></tr>
-            <tr class="indent"><td>Investment in Subsidiaries</td><td class="right">693,659</td></tr>
-            <tr class="indent"><td>Biological Assets</td><td class="right">28,678</td></tr>
-            <tr class="indent"><td>Other Investments</td><td class="right">—</td></tr>
-            <tr class="indent"><td>Others</td><td class="right">10</td></tr>
-            <tr class="subtotal"><td><strong>Total Non-Current Assets</strong></td><td class="right"><strong>3,376,045</strong></td></tr>
-            <tr class="section-header"><td colspan="2">CURRENT ASSETS</td></tr>
-            <tr class="indent"><td>Inventories</td><td class="right">104,154</td></tr>
-            <tr class="indent"><td>Trade &amp; Other Receivables</td><td class="right">1,017,514</td></tr>
-            <tr class="indent"><td>Cash &amp; Cash Equivalents</td><td class="right">11,405</td></tr>
-            <tr class="indent"><td>Others</td><td class="right">201,431</td></tr>
-            <tr class="subtotal"><td><strong>Total Current Assets</strong></td><td class="right"><strong>1,334,504</strong></td></tr>
-            <tr class="total"><td><strong>TOTAL ASSETS</strong></td><td class="right"><strong>4,710,549</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="card" style="margin-bottom:0; overflow-x:auto;">
-        <div class="subsection-title" style="margin-top:0;">Equity &amp; Liabilities</div>
-        <table class="fin-table">
-          <thead>
-            <tr><th>Item</th><th class="right">MUR '000</th></tr>
-          </thead>
-          <tbody>
-            <tr class="section-header"><td colspan="2">EQUITY</td></tr>
-            <tr class="indent"><td>Share Capital</td><td class="right">1,646,714</td></tr>
-            <tr class="indent"><td>Other Reserves</td><td class="right">561,566</td></tr>
-            <tr class="indent"><td>Retained Earnings</td><td class="right">980,808</td></tr>
-            <tr class="indent"><td>Others</td><td class="right">—</td></tr>
-            <tr class="subtotal"><td><strong>Total Equity</strong></td><td class="right"><strong>3,189,088</strong></td></tr>
-            <tr class="section-header"><td colspan="2">NON-CURRENT LIABILITIES</td></tr>
-            <tr class="indent"><td>Long-Term Borrowings</td><td class="right">165,352</td></tr>
-            <tr class="indent"><td>Deferred Tax</td><td class="right">244,831</td></tr>
-            <tr class="indent"><td>Long-Term Provisions</td><td class="right">156,670</td></tr>
-            <tr class="indent"><td>Others</td><td class="right">—</td></tr>
-            <tr class="subtotal"><td><strong>Total Non-Current Liabilities</strong></td><td class="right"><strong>566,853</strong></td></tr>
-            <tr class="section-header"><td colspan="2">CURRENT LIABILITIES</td></tr>
-            <tr class="indent"><td>Trade &amp; Other Payables</td><td class="right">385,411</td></tr>
-            <tr class="indent"><td>Short-Term Borrowings</td><td class="right">—</td></tr>
-            <tr class="indent"><td>Current Tax Payable</td><td class="right">7,688</td></tr>
-            <tr class="indent"><td>Short-Term Provisions</td><td class="right">—</td></tr>
-            <tr class="indent"><td>Others</td><td class="right">561,509</td></tr>
-            <tr class="subtotal"><td><strong>Total Current Liabilities</strong></td><td class="right"><strong>954,608</strong></td></tr>
-            <tr class="subtotal"><td><strong>Total Liabilities</strong></td><td class="right"><strong>1,521,461</strong></td></tr>
-            <tr class="total"><td><strong>TOTAL EQUITY &amp; LIABILITIES</strong></td><td class="right"><strong>4,710,549</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="insight-box amber">
-      <strong>Balance Sheet Commentary:</strong> Trade receivables of MUR 1.017B represent 34.6% of revenue (DSO ~126 days) — an elevated figure warranting clarification. This may reflect intercompany receivables within Eclosia Group rather than third-party debtors, or extended credit terms to the franchise network. PP&amp;E of MUR 2.62B underpins the farm network and processing infrastructure. Investment in subsidiaries of MUR 694M reflects Agrifarm and Avitech Madagascar. Deferred tax of MUR 245M is material (likely accelerated depreciation on farm assets). The "Others" in current liabilities of MUR 562M is opaque and warrants further investigation.
-    </div>
-
-    <div class="section-title">Financial Statements Filing History</div>
-    <div class="section-divider"></div>
-    <div class="card" style="overflow-x:auto;">
-      <table class="fin-table">
-        <thead>
-          <tr>
-            <th>Financial Year Ended</th>
-            <th>Currency</th>
-            <th>Date Approved</th>
-            <th>Filing Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="font-family:var(--font-mono)">30 June 2025</td>
-            <td>Mauritius Rupee</td>
-            <td>27 November 2025</td>
-            <td><span class="rag rag-green">Filed</span></td>
-          </tr>
-          <tr>
-            <td style="font-family:var(--font-mono)">30 June 2024</td>
-            <td>Mauritius Rupee</td>
-            <td>29 November 2024</td>
-            <td><span class="rag rag-green">Filed</span></td>
-          </tr>
-          <tr>
-            <td style="font-family:var(--font-mono)">30 June 2023</td>
-            <td>Mauritius Rupee</td>
-            <td>14 December 2023</td>
-            <td><span class="rag rag-green">Filed</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-  </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     TAB 5 · RATIOS & ANALYSIS
-════════════════════════════════════════ -->
-<div id="tab-ratios" class="tab-panel">
-  <div class="content">
 
-    <div class="section-title">Financial Ratio Analysis</div>
-    <div class="section-divider"></div>
-    <p style="font-size:13px; color:var(--color-text-muted); margin-bottom:20px;">All ratios calculated from the FY2025 (30 June 2025) filed financial statements. Benchmarks reflect Mauritius SME/mid-market agribusiness/food processing norms. All currency figures in MUR '000.</p>
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Financial data sourced from CBRIS-filed annual financial statements. Financial year ended 30 June 2025. Currency: Mauritius Rupee (MUR). Unit: MUR '000. Accounts approved 27 November 2025. Auditor: BDO &amp; Co. No prior-year comparatives available from current filing.</p>
 
-    <div class="subsection-title">Liquidity Ratios</div>
-    <div class="card" style="overflow-x:auto; margin-bottom:20px;">
-      <table class="ratio-table">
-        <thead>
-          <tr>
-            <th>Ratio</th>
-            <th>Formula</th>
-            <th>Inputs (MUR '000)</th>
-            <th>Result</th>
-            <th>Benchmark</th>
-            <th>Flag</th>
-            <th>Commentary</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Current Ratio</strong></td>
-            <td class="mono">CA / CL</td>
-            <td class="mono">1,334,504 / 954,608</td>
-            <td class="mono"><strong>1.40x</strong></td>
-            <td>1.2 – 2.0x</td>
-            <td><span class="rag rag-green">Green</span></td>
-            <td>Adequate liquidity; within healthy range for the sector.</td>
-          </tr>
-          <tr>
-            <td><strong>Quick Ratio</strong></td>
-            <td class="mono">(CA–Inv) / CL</td>
-            <td class="mono">1,230,350 / 954,608</td>
-            <td class="mono"><strong>1.29x</strong></td>
-            <td>0.8 – 1.5x</td>
-            <td><span class="rag rag-green">Green</span></td>
-            <td>Strong quick ratio. Inventory is relatively low vs receivables, which drives this metric up.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Avipro is a private company — detailed segment reporting, management accounts, and comparative prior-year figures are not publicly available beyond the CBRIS filing. The FY2025 financial statements (year ended 30 June 2025) have been filed and are the primary data source. Three years of annual returns are filed and on record (FY2025, FY2024, FY2023), but only the most recent year's financial data is used for ratio analysis. The large "Other Income" (MUR 110.7M) and "Others" in current liabilities (MUR 561.5M) are not further disaggregated in the public filing and may reflect intercompany transactions within the Eclosia Group.
+  </div>
 
-    <div class="subsection-title">Profitability Ratios</div>
-    <div class="card" style="overflow-x:auto; margin-bottom:20px;">
-      <table class="ratio-table">
-        <thead>
-          <tr>
-            <th>Ratio</th>
-            <th>Formula</th>
-            <th>Inputs (MUR '000)</th>
-            <th>Result</th>
-            <th>Benchmark</th>
-            <th>Flag</th>
-            <th>Commentary</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Gross Profit Margin</strong></td>
-            <td class="mono">GP / Rev</td>
-            <td class="mono">629,528 / 2,939,736</td>
-            <td class="mono"><strong>21.4%</strong></td>
-            <td>15 – 25%</td>
-            <td><span class="rag rag-green">Green</span></td>
-            <td>Healthy for an integrated poultry processor. Vertical integration protects margin versus pure processors.</td>
-          </tr>
-          <tr>
-            <td><strong>EBIT Margin</strong></td>
-            <td class="mono">EBIT / Rev</td>
-            <td class="mono">399,746 / 2,939,736</td>
-            <td class="mono"><strong>13.6%</strong></td>
-            <td>8 – 15%</td>
-            <td><span class="rag rag-green">Green</span></td>
-            <td>Strong operating margin. Admin costs (MUR 340M = 11.6% revenue) are the primary operating cost driver.</td>
-          </tr>
-          <tr>
-            <td><strong>Net Profit Margin</strong></td>
-            <td class="mono">PAT / Rev</td>
-            <td class="mono">353,931 / 2,939,736</td>
-            <td class="mono"><strong>12.0%</strong></td>
-            <td>5 – 12%</td>
-            <td><span class="rag rag-green">Green</span></td>
-            <td>At the top of benchmark range; boosted by a low effective tax rate of 6.4% vs standard 15%.</td>
-          </tr>
-          <tr>
-            <td><strong>Return on Assets (ROA)</strong></td>
-            <td class="mono">PAT / TA</td>
-            <td class="mono">353,931 / 4,710,549</td>
-            <td class="mono"><strong>7.5%</strong></td>
-            <td>4 – 10%</td>
-            <td><span class="rag rag-green">Green</span></td>
-            <td>Good ROA for a capital-intensive agribusiness with extensive farm and processing infrastructure.</td>
-          </tr>
-          <tr>
-            <td><strong>Return on Equity (ROE)</strong></td>
-            <td class="mono">PAT / Equity</td>
-            <td class="mono">353,931 / 3,189,088</td>
-            <td class="mono"><strong>11.1%</strong></td>
-            <td>8 – 18%</td>
-            <td><span class="rag rag-green">Green</span></td>
-            <td>Solid shareholder return for a private, capital-intensive business. Leverage is low so ROE upside from gearing is not maximised.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <h3 class="subsection-title">P&amp;L Summary (FY2025, MUR '000)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR '000</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>2,939,736</td><td>100.0%</td><td>Substantial for a private Mauritian agribusiness</td></tr>
+        <tr><td>Cost of Sales</td><td>(2,310,208)</td><td>78.6%</td><td>COGS-heavy poultry operations; feed, labour, farm costs</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>629,528</td><td>21.4%</td><td>Healthy for integrated poultry processor; vertical integration protects margin</td></tr>
+        <tr><td>Other Income</td><td>110,670</td><td>3.8%</td><td>Significant; likely rental income, management fees, or biological asset fair value adjustments</td></tr>
+        <tr><td>Distribution Costs</td><td>—</td><td>0.0%</td><td>Not separately disclosed; likely included in Admin Costs</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>(340,452)</td><td>11.6%</td><td>Primary operating cost driver; high for agribusiness — reflects multi-site overhead</td></tr>
+        <tr><td>Other Expenses</td><td>—</td><td>0.0%</td><td>Not separately disclosed</td></tr>
+        <tr><td>Finance Costs</td><td>(21,495)</td><td>0.7%</td><td>Very low — minimal debt service pressure</td></tr>
+        <tr class="heat-ok"><td>EBIT (calculated)</td><td>399,746</td><td>13.6%</td><td>Strong operating margin; within top of sector benchmark</td></tr>
+        <tr class="heat-ok"><td>Profit / (Loss) Before Tax</td><td>378,251</td><td>12.9%</td><td>Robust pre-tax profitability</td></tr>
+        <tr><td>Tax Expense</td><td>(24,320)</td><td>0.8%</td><td>Effective rate 6.4% vs standard 15% — agricultural incentives, deferred tax, Agrifarm structuring</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>353,931</strong></td><td><strong>12.0%</strong></td><td>At top of benchmark range; strong result</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="subsection-title">Leverage &amp; Solvency Ratios</div>
-    <div class="card" style="overflow-x:auto; margin-bottom:20px;">
-      <table class="ratio-table">
-        <thead>
-          <tr>
-            <th>Ratio</th>
-            <th>Formula</th>
-            <th>Inputs (MUR '000)</th>
-            <th>Result</th>
-            <th>Benchmark</th>
-            <th>Flag</th>
-            <th>Commentary</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Debt-to-Equity</strong></td>
-            <td class="mono">TL / Equity</td>
-            <td class="mono">1,521,461 / 3,189,088</td>
-            <td class="mono"><strong>0.48x</strong></td>
-            <td>0.3 – 1.0x</td>
-            <td><span class="rag rag-green">Green</span></td>
-            <td>Conservative leverage. LT borrowings of only MUR 165M is very low for an asset base of MUR 4.7B, suggesting group-level debt may sit elsewhere.</td>
-          </tr>
-          <tr>
-            <td><strong>Interest Coverage</strong></td>
-            <td class="mono">EBIT / Fin. Costs</td>
-            <td class="mono">399,746 / 21,495</td>
-            <td class="mono"><strong>18.6x</strong></td>
-            <td>&gt; 3.0x</td>
-            <td><span class="rag rag-green">Green</span></td>
-            <td>Exceptionally strong. Finance costs are minimal relative to operating profit — no debt service pressure.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="alert alert-ok">
+    <div class="alert-title">P&amp;L Commentary</div>
+    Revenue of MUR 2.94B is substantial for a private Mauritian agribusiness. Gross margin of 21.4% reflects efficient processing relative to COGS-heavy poultry operations — vertical integration protects margin versus pure processors. The effective tax rate is only 6.4% (MUR 24M on MUR 378M PBT), well below the standard Mauritian corporate rate of 15% — likely reflecting agricultural tax incentives, deferred tax movements, and Agrifarm subsidiary structuring. Other income of MUR 111M (3.8% of revenue) is significant and warrants clarification on breakdown.
+  </div>
 
-    <div class="subsection-title">Efficiency Ratios</div>
-    <div class="card" style="overflow-x:auto; margin-bottom:20px;">
-      <table class="ratio-table">
-        <thead>
-          <tr>
-            <th>Ratio</th>
-            <th>Formula</th>
-            <th>Inputs (MUR '000)</th>
-            <th>Result</th>
-            <th>Benchmark</th>
-            <th>Flag</th>
-            <th>Commentary</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Asset Turnover</strong></td>
-            <td class="mono">Rev / TA</td>
-            <td class="mono">2,939,736 / 4,710,549</td>
-            <td class="mono"><strong>0.62x</strong></td>
-            <td>0.5 – 1.2x</td>
-            <td><span class="rag rag-amber">Amber</span></td>
-            <td>Below mid-range. Asset-heavy model (farms, plant) naturally constrains turnover. Within acceptable range for vertically integrated agribusiness.</td>
-          </tr>
-          <tr>
-            <td><strong>Inventory Turnover</strong></td>
-            <td class="mono">COGS / Inv</td>
-            <td class="mono">2,310,208 / 104,154</td>
-            <td class="mono"><strong>22.2x</strong></td>
-            <td>8 – 20x</td>
-            <td><span class="rag rag-green">Green</span></td>
-            <td>High inventory turnover consistent with perishable fresh poultry. Lean stock holdings indicate efficient production-to-market flow.</td>
-          </tr>
-          <tr>
-            <td><strong>Debtor Days (DSO)</strong></td>
-            <td class="mono">Rec / Rev × 365</td>
-            <td class="mono">1,017,514 / 2,939,736 × 365</td>
-            <td class="mono"><strong>126 days</strong></td>
-            <td>30 – 60 days</td>
-            <td><span class="rag rag-red">Red</span></td>
-            <td>Significantly above benchmark. Most likely driven by large intercompany receivables within Eclosia Group rather than slow-paying external customers. Requires clarification on breakdown.</td>
-          </tr>
-          <tr>
-            <td><strong>Creditor Days (DPO)</strong></td>
-            <td class="mono">Payables / COGS × 365</td>
-            <td class="mono">385,411 / 2,310,208 × 365</td>
-            <td class="mono"><strong>61 days</strong></td>
-            <td>30 – 60 days</td>
-            <td><span class="rag rag-amber">Amber</span></td>
-            <td>Marginally above benchmark. The company takes slightly extended credit from suppliers — acceptable and common for large buyers in the food supply chain.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2025, MUR '000)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR '000</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>2,620,457</td><td>Farm network and processing infrastructure</td></tr>
+        <tr><td>Non-Current Assets</td><td>Investment Properties</td><td>11,218</td><td>Minor holding</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>22,023</td><td>Brands, licences, or software</td></tr>
+        <tr><td>Non-Current Assets</td><td>Investment in Subsidiaries</td><td>693,659</td><td>Agrifarm and Avitech Madagascar</td></tr>
+        <tr><td>Non-Current Assets</td><td>Biological Assets</td><td>28,678</td><td>Breeder flocks at fair value</td></tr>
+        <tr><td>Non-Current Assets</td><td>Others</td><td>10</td><td>Negligible</td></tr>
+        <tr class="heat-ok"><td><strong>Non-Current Assets</strong></td><td><strong>Total Non-Current Assets</strong></td><td><strong>3,376,045</strong></td><td>71.7% of total assets — capital intensive, as expected</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>104,154</td><td>Low relative to revenue — lean stock; perishable product</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>1,017,514</td><td>34.6% of revenue — DSO 126 days; likely intercompany Eclosia balances</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Cash &amp; Cash Equivalents</td><td>11,405</td><td>Very low cash — operations funded via group treasury</td></tr>
+        <tr><td>Current Assets</td><td>Others</td><td>201,431</td><td>Prepayments or intercompany items</td></tr>
+        <tr><td><strong>Current Assets</strong></td><td><strong>Total Current Assets</strong></td><td><strong>1,334,504</strong></td><td>28.3% of total assets</td></tr>
+        <tr class="heat-ok"><td><strong>Total Assets</strong></td><td></td><td><strong>4,710,549</strong></td><td>Well-capitalised asset base</td></tr>
+        <tr><td>Equity</td><td>Share Capital</td><td>1,646,714</td><td>Par MUR 10; 164.7M shares</td></tr>
+        <tr><td>Equity</td><td>Other Reserves</td><td>561,566</td><td>Revaluation and other reserves</td></tr>
+        <tr><td>Equity</td><td>Retained Earnings</td><td>980,808</td><td>Strong retained earnings base</td></tr>
+        <tr class="heat-ok"><td><strong>Equity</strong></td><td><strong>Total Equity</strong></td><td><strong>3,189,088</strong></td><td>67.7% equity ratio — very conservative capital structure</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Borrowings</td><td>165,352</td><td>Very low for MUR 4.7B asset base — group debt may sit elsewhere</td></tr>
+        <tr class="heat-warn"><td>Non-Current Liabilities</td><td>Deferred Tax</td><td>244,831</td><td>Material — likely accelerated depreciation on farm assets</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Provisions</td><td>156,670</td><td>Employee benefits / restoration obligations</td></tr>
+        <tr><td><strong>Non-Current Liabilities</strong></td><td><strong>Total Non-Current Liabilities</strong></td><td><strong>566,853</strong></td><td>12.0% of total liabilities + equity</td></tr>
+        <tr><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>385,411</td><td>DPO 61 days — marginally above benchmark</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax Payable</td><td>7,688</td><td>Low — consistent with low effective tax rate</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Others</td><td>561,509</td><td>Opaque — likely intercompany payables within Eclosia Group; warrants investigation</td></tr>
+        <tr><td><strong>Current Liabilities</strong></td><td><strong>Total Current Liabilities</strong></td><td><strong>954,608</strong></td><td>Current ratio 1.40x — adequate</td></tr>
+        <tr><td><strong>Total Equity &amp; Liabilities</strong></td><td></td><td><strong>4,710,549</strong></td><td>Balances</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="insight-box green">
-      <strong>Overall Financial Health:</strong> Avipro is financially strong across all core metrics. Profitability is excellent (12% net margin, 11.1% ROE). Leverage is low. Liquidity is adequate. The only flag is DSO at 126 days, which is almost certainly an intercompany balance artefact within the Eclosia Group structure rather than a credit risk. The company is well-capitalised, profitable, and carries minimal debt service burden — a positive indicator that EOS implementation costs would not face budget resistance.
-    </div>
-
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">25 floating charges are registered against Avipro Co Ltd, totalling MUR 676 million, spanning from 2000 to 2021. All charges are floating in nature, secured over movable and/or immovable assets, and registered with the Registrar of Companies, Mauritius. The largest single charge is CH202008/000200 (MUR 200 million, August 2020 — a COVID-era credit facility). A 2016 charge (CH201603/000396, MUR 15M) represents a renewal of the earlier CH2569/62 facility. A 2019 charge (MUR 50M) and the 2020 COVID charge (MUR 200M) are the most recent, with no new charges post-2021.</p>
+  <div class="alert alert-warning">
+    <div class="alert-title">Charge Pattern — Monitoring Note</div>
+    The balance sheet shows only MUR 165M in long-term borrowings against MUR 676M in registered charge facilities — suggesting many facilities are either partially drawn, undrawn revolving lines, or relate to group-level banking arrangements where Avipro's assets serve as security for Eclosia Group borrowings. No removal or winding-up proceedings recorded. No objections filed. No new charges post-2021 is consistent with the balance sheet showing minimal net debt. The charge pattern is not a credit concern, but the group-level nature of these facilities should be clarified in any due diligence conversation.
   </div>
 </div>
-
-<!-- ══════════════════════════════════════
-     TAB 6 · CHARGES REGISTER
-════════════════════════════════════════ -->
-<div id="tab-charges" class="tab-panel">
-  <div class="content">
-
-    <div class="section-title">Floating Charges Register</div>
-    <div class="section-divider"></div>
-    <p style="font-size:13px; color:var(--color-text-muted); margin-bottom:16px;">All charges are floating in nature, secured over movable and immovable assets. Registered with the Registrar of Companies, Mauritius. All amounts in Mauritius Rupee.</p>
-
-    <div class="card" style="overflow-x:auto;">
-      <table class="charge-table">
-        <thead>
-          <tr>
-            <th>Volume Ref</th>
-            <th>Property / Assets</th>
-            <th>Nature</th>
-            <th class="right">Amount (MUR)</th>
-            <th>Date Charged</th>
-            <th>Date Filed</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>CH2330/37</td>
-            <td class="label">Movable &amp; Immovable</td>
-            <td>Floating</td>
-            <td class="right">1,000,000</td>
-            <td>24/03/2000</td>
-            <td>17/05/2000</td>
-          </tr>
-          <tr>
-            <td>CH2569/62</td>
-            <td class="label">Mov. &amp; Immov. Properties</td>
-            <td>Floating</td>
-            <td class="right">15,000,000</td>
-            <td>21/03/2001</td>
-            <td>07/05/2001</td>
-          </tr>
-          <tr>
-            <td>CH2665/44</td>
-            <td class="label">Mov/Immov</td>
-            <td>Floating</td>
-            <td class="right">5,000,000</td>
-            <td>01/08/2001</td>
-            <td>27/09/2001</td>
-          </tr>
-          <tr>
-            <td>CH2968/30</td>
-            <td class="label">Company's Assets</td>
-            <td>Floating</td>
-            <td class="right">35,000,000</td>
-            <td>10/10/2002</td>
-            <td>24/10/2002</td>
-          </tr>
-          <tr>
-            <td>CH 3031/57</td>
-            <td class="label">Company's Assets</td>
-            <td>Floating</td>
-            <td class="right">20,000,000</td>
-            <td>21/01/2003</td>
-            <td>21/02/2003</td>
-          </tr>
-          <tr>
-            <td>CH3032/15</td>
-            <td class="label">Company's Assets</td>
-            <td>Floating</td>
-            <td class="right">20,000,000</td>
-            <td>22/01/2003</td>
-            <td>21/02/2003</td>
-          </tr>
-          <tr>
-            <td>CH 3067/61</td>
-            <td class="label">Company's Assets</td>
-            <td>Floating</td>
-            <td class="right">12,000,000</td>
-            <td>27/03/2003</td>
-            <td>18/04/2003</td>
-          </tr>
-          <tr>
-            <td>CH 3174/21</td>
-            <td class="label">Company's Assets</td>
-            <td>Floating</td>
-            <td class="right">5,000,000</td>
-            <td>17/09/2003</td>
-            <td>23/10/2003</td>
-          </tr>
-          <tr>
-            <td>CH 3484/53</td>
-            <td class="label">Company's Assets</td>
-            <td>Floating</td>
-            <td class="right">25,000,000</td>
-            <td>25/10/2004</td>
-            <td>30/11/2004</td>
-          </tr>
-          <tr>
-            <td>CH3904/47</td>
-            <td class="label">Company's Assets</td>
-            <td>Floating</td>
-            <td class="right">35,000,000</td>
-            <td>08/03/2006</td>
-            <td>07/04/2006</td>
-          </tr>
-          <tr>
-            <td>CH4775/15</td>
-            <td class="label">Company's Asset</td>
-            <td>Floating</td>
-            <td class="right">10,000,000</td>
-            <td>06/06/2008</td>
-            <td>25/11/2008</td>
-          </tr>
-          <tr>
-            <td>CH4896/09</td>
-            <td class="label">Mov/Immov</td>
-            <td>Floating</td>
-            <td class="right">1,000,000</td>
-            <td>13/03/2009</td>
-            <td>09/03/2010</td>
-          </tr>
-          <tr>
-            <td>CH5052/74</td>
-            <td class="label">Mov/Immov</td>
-            <td>Floating</td>
-            <td class="right">50,000,000</td>
-            <td>01/10/2009</td>
-            <td>17/02/2010</td>
-          </tr>
-          <tr>
-            <td>CH5156/41</td>
-            <td class="label">Mov/Immov</td>
-            <td>Floating</td>
-            <td class="right">1,000,000</td>
-            <td>26/01/2010</td>
-            <td>01/07/2010</td>
-          </tr>
-          <tr>
-            <td>CH5610/17</td>
-            <td class="label">Company's Assets</td>
-            <td>Floating</td>
-            <td class="right">6,000,000</td>
-            <td>30/06/2011</td>
-            <td>15/04/2014</td>
-          </tr>
-          <tr>
-            <td>CH5610/18</td>
-            <td class="label">Company's Assets</td>
-            <td>Floating</td>
-            <td class="right">4,000,000</td>
-            <td>30/06/2011</td>
-            <td>15/04/2014</td>
-          </tr>
-          <tr>
-            <td>CH5610/19</td>
-            <td class="label">Company's Assets</td>
-            <td>Floating</td>
-            <td class="right">1,500,000</td>
-            <td>30/06/2011</td>
-            <td>15/04/2014</td>
-          </tr>
-          <tr>
-            <td>CH5610/20</td>
-            <td class="label">Company's Assets</td>
-            <td>Floating</td>
-            <td class="right">500,000</td>
-            <td>30/06/2011</td>
-            <td>15/04/2014</td>
-          </tr>
-          <tr>
-            <td>CH5610/21</td>
-            <td class="label">Company's Assets</td>
-            <td>Floating</td>
-            <td class="right">2,500,000</td>
-            <td>30/06/2011</td>
-            <td>15/04/2014</td>
-          </tr>
-          <tr>
-            <td>CH5610/22</td>
-            <td class="label">Company's Assets</td>
-            <td>Floating</td>
-            <td class="right">1,500,000</td>
-            <td>30/06/2011</td>
-            <td>15/04/2014</td>
-          </tr>
-          <tr>
-            <td>C/H6424/37</td>
-            <td class="label">Mov/Immov</td>
-            <td>Floating</td>
-            <td class="right">100,000,000</td>
-            <td>18/03/2014</td>
-            <td>15/04/2014</td>
-          </tr>
-          <tr>
-            <td>CH201603/000396</td>
-            <td class="label">Renewal Ch 2569/62 — Mov. &amp; Immov.</td>
-            <td>Floating</td>
-            <td class="right">15,000,000</td>
-            <td>15/03/2016</td>
-            <td>23/05/2016</td>
-          </tr>
-          <tr>
-            <td>CH202001/000245</td>
-            <td class="label">Charged Assets — refer charge document p.4</td>
-            <td>Floating</td>
-            <td class="right">60,000,000</td>
-            <td>08/01/2020</td>
-            <td>17/01/2020</td>
-          </tr>
-          <tr>
-            <td>CH201904/000524</td>
-            <td class="label">All undertaking, goodwill, mov. &amp; immov.</td>
-            <td>Floating</td>
-            <td class="right">50,000,000</td>
-            <td>15/04/2019</td>
-            <td>08/04/2021</td>
-          </tr>
-          <tr>
-            <td>CH202008/000200</td>
-            <td class="label">All assets, undertakings, goodwill, mov. &amp; immov.</td>
-            <td>Floating</td>
-            <td class="right">200,000,000</td>
-            <td>07/08/2020</td>
-            <td>08/04/2021</td>
-          </tr>
-          <tr class="total-row">
-            <td colspan="3"><strong>TOTAL REGISTERED CHARGES (25 charges)</strong></td>
-            <td class="right"><strong>676,000,000</strong></td>
-            <td colspan="2"></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="insight-box amber">
-      <strong>Charge Register Commentary:</strong> 25 floating charges totalling MUR 676 million are registered, spanning 2000 to 2021. All are floating charges over movable and/or immovable assets. The largest single charge is CH202008/000200 (MUR 200M, August 2020 — COVID-era facility). Note that the balance sheet shows only MUR 165M in long-term borrowings, suggesting that many registered charge facilities are either partially drawn, undrawn revolving lines, or relate to group-level banking arrangements. No new charges have been registered post-2021, consistent with the balance sheet showing minimal debt. No removal/winding-up proceedings recorded. No objections filed.
-    </div>
-
-  </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     TAB 7 · EOS ASSESSMENT
-════════════════════════════════════════ -->
-<div id="tab-eos" class="tab-panel">
-  <div class="content">
 
-    <div class="section-title">EOS Suitability Assessment</div>
-    <div class="section-divider"></div>
-    <p style="font-size:13px;color:var(--color-text-muted);margin-bottom:24px;">Each dimension rated 1–10. Score reflects EOS need and readiness — a high score means strong suitability for EOS. Evidence drawn from CBRIS data, financials, and web research.</p>
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">All ratios calculated from FY2025 (30 June 2025) filed financial statements. Benchmarks reflect Mauritius SME/mid-market agribusiness and food processing norms. Colour key: <span class="b b-green">Green</span> = healthy · <span class="b b-amber">Amber</span> = watch · <span class="b b-red">Red</span> = critical concern. All currency figures MUR '000.</p>
 
-    <div class="eos-overall">
-      <div>
-        <div class="eos-overall-label">Overall EOS Suitability Score</div>
-        <div class="eos-overall-score">7 / 10</div>
-      </div>
-      <div>
-        <div class="eos-overall-text">Strong Candidate — Recommended for Approach</div>
-        <div class="eos-overall-desc">
-          Avipro is a 60-year-old, financially healthy, operationally complex business entering a leadership transition. The combination of a new GM, a large multi-site operation, a family-influenced board, and significant geographic expansion creates textbook EOS conditions: misaligned accountability, unclear priorities across business units, and the need for a disciplined meeting and goal-setting cadence. The main constraint is that ultimate authority sits with the Eclosia Group board — any EOS engagement would require group-level buy-in or must be scoped at the Avipro operational entity level.
-        </div>
-      </div>
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.40×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">CA / CL</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inputs (MUR '000)</span><span class="ratio-val">1,334,504 / 954,608</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.2 – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green</span></span></div>
+      <span class="ratio-interpret">Adequate liquidity; within healthy range for the sector. Current assets comfortably cover current obligations. The high receivables balance inflates this ratio — underlying cash liquidity is tighter than the headline suggests (cash only MUR 11.4M).</span>
     </div>
-
-    <div class="eos-grid">
-
-      <div class="eos-card">
-        <div class="eos-card-header">
-          <div class="eos-dimension">1. Organisational Size &amp; Complexity</div>
-          <div class="eos-score score-high">8</div>
-        </div>
-        <div class="eos-bar-track"><div class="eos-bar-fill fill-green" style="width:80%"></div></div>
-        <div class="eos-evidence">20+ broiler farm sites across Mauritius, a processing plant at Phoenix, retail outlets (Stop Frais, Avishop), a subsidiary (Agrifarm), and international operations (Madagascar, Kenya, Comoros, Seychelles, Tanzania, Uganda). 10+ directors. Revenue MUR 2.94B. This is a large, multi-layered operation that clearly exceeds the scale where informal management breaks down — squarely in EOS's ideal zone (typically 10–250 people per entity, but the farm-network model multiplies coordination complexity).</div>
-      </div>
-
-      <div class="eos-card">
-        <div class="eos-card-header">
-          <div class="eos-dimension">2. Leadership Openness</div>
-          <div class="eos-score score-mid">6</div>
-        </div>
-        <div class="eos-bar-track"><div class="eos-bar-fill fill-amber" style="width:60%"></div></div>
-        <div class="eos-evidence">Denis Pilot (GM, appointed July 2025) has a finance and management background and was recently promoted — likely ambitious and open to operational improvement frameworks. However, the board is dominated by the founding Doger de Spéville family and ENL representatives, who may be conservative about external operating system adoption. The Eclosia Group context adds a layer of parent-company governance that could slow decisions. Score tempered by family-board conservatism; GM is the most receptive entry point.</div>
-      </div>
-
-      <div class="eos-card">
-        <div class="eos-card-header">
-          <div class="eos-dimension">3. Growth Stage &amp; Pain Points</div>
-          <div class="eos-score score-high">8</div>
-        </div>
-        <div class="eos-bar-track"><div class="eos-bar-fill fill-green" style="width:80%"></div></div>
-        <div class="eos-evidence">Company is mature domestically but actively growing regionally (Kenya added, Uganda, Tanzania exports expanded). New GM transition (July 2025) is a classic pain-point inflection. Multi-site farm coordination, franchise management (Chantefrais), international subsidiary oversight, and a complex product portfolio (fresh chicken, frozen, duck, guinea fowl, live chicks, feed) are hallmarks of a business that has outgrown informal management. High EOS need score.</div>
-      </div>
-
-      <div class="eos-card">
-        <div class="eos-card-header">
-          <div class="eos-dimension">4. Current Systems &amp; Processes</div>
-          <div class="eos-score score-mid">6</div>
-        </div>
-        <div class="eos-bar-track"><div class="eos-bar-fill fill-amber" style="width:60%"></div></div>
-        <div class="eos-evidence">As part of the Eclosia Group, Avipro benefits from group-level financial controls (BDO audit, timely annual return filings), secretarial services, and likely shared ERP infrastructure. The company files accounts consistently and on time. This suggests reasonable back-office process discipline. However, operational coordination across 20+ farms, a processing plant, retail, and international entities almost certainly relies on informal management routines rather than a structured EOS-style system. Process maturity is moderate — the EOS Operating System would add structured accountability without displacing existing financial controls.</div>
-      </div>
-
-      <div class="eos-card">
-        <div class="eos-card-header">
-          <div class="eos-dimension">5. Company Culture</div>
-          <div class="eos-score score-mid">6</div>
-        </div>
-        <div class="eos-bar-track"><div class="eos-bar-fill fill-amber" style="width:60%"></div></div>
-        <div class="eos-evidence">60-year history and founding-family board suggest a strong institutional culture with deep loyalty and long-tenured staff. Avipro's website emphasises quality, biosecurity, and community (Avishop supports small breeders). The Chantefrais franchise model reflects an entrepreneurial streak within the group. However, long-established organisations can develop cultural inertia resistant to structural change. The new GM appointment signals a willingness to evolve. Cultural alignment with EOS values (accountability, transparency, discipline) is plausible but not confirmed without direct engagement.</div>
-      </div>
-
-      <div class="eos-card">
-        <div class="eos-card-header">
-          <div class="eos-dimension">6. Decision-Making Patterns</div>
-          <div class="eos-score score-mid">5</div>
-        </div>
-        <div class="eos-bar-track"><div class="eos-bar-fill fill-amber" style="width:50%"></div></div>
-        <div class="eos-evidence">A 10-person board with four family members, two ENL representatives, and an operational GM suggests layered decision-making. Major strategic decisions are likely made at the Eclosia Group level. Operational decisions may be delegated to Denis Pilot, but the board composition implies significant oversight and potential consensus requirements. This is a constraint for EOS: the "Leadership Team" must have genuine authority to implement EOS tools. An EOS engagement scoped at the Avipro management team (below board level) could be more tractable.</div>
-      </div>
-
-      <div class="eos-card">
-        <div class="eos-card-header">
-          <div class="eos-dimension">7. Vision Clarity</div>
-          <div class="eos-score score-high">7</div>
-        </div>
-        <div class="eos-bar-track"><div class="eos-bar-fill fill-green" style="width:70%"></div></div>
-        <div class="eos-evidence">Avipro's mission — food security through integrated poultry production in Mauritius and the region — is clear and well-articulated on their website and in the Eclosia Group narrative. Regional expansion (Madagascar, Kenya, East Africa, Indian Ocean islands) reflects a coherent long-term direction. However, it is unclear whether this vision is crystallised into a 3-Year Picture, 1-Year Plan, and Rocks at the management team level — which is exactly what the V/TO provides. The Vision is present at brand level; EOS would sharpen it into a traction tool.</div>
-      </div>
-
-      <div class="eos-card">
-        <div class="eos-card-header">
-          <div class="eos-dimension">8. Meeting Culture</div>
-          <div class="eos-score score-mid">5</div>
-        </div>
-        <div class="eos-bar-track"><div class="eos-bar-fill fill-amber" style="width:50%"></div></div>
-        <div class="eos-evidence">No direct evidence of meeting cadence or structure from public sources. Annual returns filed promptly (within 3 weeks of year-end) suggests good governance discipline at board level. However, coordinating 20+ farm sites, processing, retail, and international operations without a structured Level 10 Meeting cadence would be challenging. The annual meeting dates (31 Dec for all three years) suggest formal governance compliance but reveal nothing about operational meeting rhythms. This is an area where EOS would likely deliver immediate, visible improvement.</div>
-      </div>
-
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.29×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">(CA–Inv) / CL</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inputs (MUR '000)</span><span class="ratio-val">1,230,350 / 954,608</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.8 – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green</span></span></div>
+      <span class="ratio-interpret">Strong quick ratio. Inventory is relatively low versus receivables (perishable fresh poultry means lean stock), which drives this metric up. The quality of the receivables (intercompany vs external) is the key question.</span>
     </div>
+  </div>
 
-    <div class="section-title">Recommended EOS Tools &amp; Entry Strategy</div>
-    <div class="section-divider"></div>
-
-    <div class="card">
-      <div class="subsection-title" style="margin-top:0;">Priority EOS Tools for Avipro</div>
-      <ul class="bullet-list">
-        <li><strong>Vision/Traction Organizer (V/TO):</strong> Articulate the 10-Year Target, 3-Year Picture, 1-Year Plan, and Rocks. Avipro has a clear brand mission but likely lacks a traction-ready Vision document that cascades to operational teams across farms, processing, and retail.</li>
-        <li><strong>Accountability Chart:</strong> With 20+ farm sites, a processing plant, retail outlets, Avishop, Agrifarm, and international ops — plus a 10-person board — role clarity and functional ownership will be a major immediate win. Map who owns what: Farming, Processing, Retail/Franchise, Export, and Support functions.</li>
-        <li><strong>Level 10 Meeting (L10) Cadence:</strong> Weekly management team L10s would transform coordination across business units. The new GM (Denis Pilot) would likely see immediate value in structured weekly accountability rhythms.</li>
-        <li><strong>Rocks (Quarterly Priorities):</strong> With regional expansion ongoing and a new GM setting direction, defining 3–7 Rocks per quarter at the leadership team level would focus effort and prevent the organisation from "chasing everything".</li>
-        <li><strong>Scorecard:</strong> Key metrics across the farm-to-retail chain (FCR per farm, processing throughput, Avishop chick sales, export volumes) would benefit from a weekly Scorecard reviewed in L10 meetings.</li>
-        <li><strong>Issues List (IDS):</strong> Multi-site operations accumulate recurring operational issues. A structured Identify-Discuss-Solve process in L10s would systematically clear the backlog of bottlenecks the GM inherits.</li>
-      </ul>
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">21.4%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">GP / Revenue</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inputs (MUR '000)</span><span class="ratio-val">629,528 / 2,939,736</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">15 – 25%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green</span></span></div>
+      <span class="ratio-interpret">Healthy for an integrated poultry processor. Vertical integration (breed-to-retail) protects margin versus pure processors who buy live birds. Admin costs (MUR 340M, 11.6% of revenue) are the primary operating cost driver below gross profit.</span>
     </div>
-
-    <div class="card">
-      <div class="subsection-title" style="margin-top:0;">Entry Strategy</div>
-      <ul class="bullet-list">
-        <li><strong>First Contact:</strong> Denis Pilot, GM. Approach via LinkedIn or direct outreach to Eclosia HQ. Lead with operational challenges of multi-site coordination and post-transition priorities as the new GM.</li>
-        <li><strong>Framing:</strong> Position EOS as an operating system for the management team — not a board-level governance change. This avoids triggering family-board conservatism and keeps the engagement within Denis Pilot's sphere of authority.</li>
-        <li><strong>Scoping:</strong> Propose a 90-Minute Meeting / Focus Day with the Avipro management team (GM + heads of Farming, Processing, Retail/Avishop, Finance, International). Eclosia Group's professional culture means a well-prepared, data-backed pitch will be expected.</li>
-        <li><strong>Timing:</strong> With the new GM 9 months into post (July 2025 → April 2026), he will have identified his top frustrations and will be receptive to a structured solution. This is an ideal window.</li>
-        <li><strong>Group Context:</strong> Be aware that Eclosia Group may already use management frameworks. Frame EOS as complementary to, not replacing, group governance. Emphasise the operational (not strategic) layer.</li>
-      </ul>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">13.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">EBIT / Revenue</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inputs (MUR '000)</span><span class="ratio-val">399,746 / 2,939,736</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">8 – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green</span></span></div>
+      <span class="ratio-interpret">Strong operating margin at top of benchmark. Other income (MUR 111M) contributes materially to this figure. Finance costs (MUR 21.5M) are minimal — negligible debt service burden.</span>
     </div>
-
-    <div class="insight-box green">
-      <strong>EOS Score Summary:</strong> Overall 7/10. Dimension breakdown — Organisational Complexity: 8; Leadership Openness: 6; Growth Stage &amp; Pain Points: 8; Current Systems: 6; Culture: 6; Decision-Making: 5; Vision Clarity: 7; Meeting Culture: 5. Average: 6.4. Composite weighted judgment: 7/10 (complexity and growth-pain weighting elevated). <strong>Recommendation: Proceed to first contact with Denis Pilot.</strong>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">12.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">PAT / Revenue</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inputs (MUR '000)</span><span class="ratio-val">353,931 / 2,939,736</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5 – 12%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green</span></span></div>
+      <span class="ratio-interpret">At the top of the benchmark range; boosted by a low effective tax rate of 6.4% versus the standard 15% Mauritian corporate rate. Agricultural incentives, deferred tax movements, and Agrifarm subsidiary structuring contribute to the tax efficiency.</span>
     </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">7.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">PAT / Total Assets</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inputs (MUR '000)</span><span class="ratio-val">353,931 / 4,710,549</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">4 – 10%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green</span></span></div>
+      <span class="ratio-interpret">Good ROA for a capital-intensive agribusiness with extensive farm and processing infrastructure. The asset base (MUR 4.7B) is large relative to revenue, but earnings generation justifies the capital employed.</span>
+    </div>
+  </div>
 
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">11.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">PAT / Total Equity</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inputs (MUR '000)</span><span class="ratio-val">353,931 / 3,189,088</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">8 – 18%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green</span></span></div>
+      <span class="ratio-interpret">Solid shareholder return for a private, capital-intensive business. Leverage is low (D/E 0.48x), so ROE upside from gearing is not maximised — the Eclosia Group choice to hold this as an under-leveraged entity is a deliberate capital structure decision.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage and Solvency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.48×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">Total Liabilities / Equity</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inputs (MUR '000)</span><span class="ratio-val">1,521,461 / 3,189,088</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.3 – 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green</span></span></div>
+      <span class="ratio-interpret">Conservative leverage. Long-term borrowings of only MUR 165M is very low for an asset base of MUR 4.7B, suggesting group-level debt may sit elsewhere in the Eclosia structure and Avipro's assets serve as security for group facilities.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">18.6×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">EBIT / Finance Costs</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inputs (MUR '000)</span><span class="ratio-val">399,746 / 21,495</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt; 3.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green</span></span></div>
+      <span class="ratio-interpret">Exceptionally strong. Finance costs are minimal relative to operating profit. No debt service pressure whatsoever. This is a positive indicator that EOS implementation costs would face no budget resistance.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.62×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">Revenue / Total Assets</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inputs (MUR '000)</span><span class="ratio-val">2,939,736 / 4,710,549</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.5 – 1.2×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber</span></span></div>
+      <span class="ratio-interpret">Below mid-range benchmark. Asset-heavy model (farms, processing plant, subsidiary investments) naturally constrains turnover. Within acceptable range for vertically integrated agribusiness — this is a structural characteristic, not a performance failure.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">22.2×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">COGS / Inventories</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inputs (MUR '000)</span><span class="ratio-val">2,310,208 / 104,154</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">8 – 20×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green</span></span></div>
+      <span class="ratio-interpret">High inventory turnover consistent with perishable fresh poultry. Lean stock holdings indicate efficient production-to-market flow. Biological asset valuation (breeder flocks) is held separately at MUR 28.7M.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debtor Days (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">126 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">Receivables / Revenue × 365</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inputs (MUR '000)</span><span class="ratio-val">1,017,514 / 2,939,736 × 365</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red</span></span></div>
+      <span class="ratio-interpret">Significantly above benchmark. Almost certainly driven by large intercompany receivables within Eclosia Group rather than slow-paying external customers. Fresh poultry sold to supermarkets typically collects in 30–45 days. The MUR 1.017B receivables figure demands clarification on the intercompany versus third-party breakdown before drawing any credit risk conclusions.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">61 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">Payables / COGS × 365</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inputs (MUR '000)</span><span class="ratio-val">385,411 / 2,310,208 × 365</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber</span></span></div>
+      <span class="ratio-interpret">Marginally above benchmark. The company takes slightly extended credit from suppliers — acceptable and common for large buyers in the food supply chain. Not a concern at this level.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-ok">
+    <div class="alert-title">The 1 Number That Matters Most — DSO Clarification</div>
+    Avipro is financially strong across all core metrics: 12% net margin, 11.1% ROE, 18.6× interest coverage, 1.40× current ratio, and conservative leverage (D/E 0.48×). The sole red flag is DSO at 126 days — MUR 1.017B in trade receivables against MUR 2.94B revenue. This is almost certainly an intercompany balance artefact within the Eclosia Group structure rather than a credit risk. If confirmed as intercompany, this is a balance sheet management/treasury structuring issue, not a collection problem. The company is well-capitalised, profitable, and carries minimal debt service burden — EOS implementation costs would face zero financial resistance.
   </div>
 </div>
+</div>
 
-<!-- ══════════════════════════════════════
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Avipro operates across three market segments — domestic Mauritius, island export markets, and African regional expansion — and holds an unassailable first-mover position in each due to 60 years of vertical integration and infrastructure investment.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Domestic Mauritius</h4>
+        <div class="ec-sub">Primary Market — ~85% of Revenue Estimated</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv ok">Market Leader</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Small-scale local breeders; frozen imports (Brazil, EU)</span></div>
+        <div class="ec-metric"><span class="mk">Avipro Edge</span><span class="mv">Freshness · vertical integration · biosecurity · brand</span></div>
+        <div class="ec-metric"><span class="mk">Key Channels</span><span class="mv">Supermarkets · Stop Frais · Chantefrais franchise · food service</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Frozen imports at lower price points</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Indian Ocean Islands</h4>
+        <div class="ec-sub">Export Markets — Seychelles · Comoros</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Seychelles</span><span class="mv">Commercial chicken exports — air freight dependent</span></div>
+        <div class="ec-metric"><span class="mk">Comoros</span><span class="mv">Chick exports via Avitech Madagascar</span></div>
+        <div class="ec-metric"><span class="mk">Constraint</span><span class="mv warn">Air freight availability (Air Seychelles disruptions)</span></div>
+        <div class="ec-metric"><span class="mk">Avipro Edge</span><span class="mv">Only integrated regional supplier of biosecure chicks</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Africa — Regional Expansion</h4>
+        <div class="ec-sub">Madagascar · Kenya · Tanzania · Uganda</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Madagascar</span><span class="mv ok">25 years — Avitech subsidiary; hatchery at Ivato</span></div>
+        <div class="ec-metric"><span class="mk">Kenya</span><span class="mv">Recent entry — broiler chick exports</span></div>
+        <div class="ec-metric"><span class="mk">Tanzania</span><span class="mv">Broiler chick exports</span></div>
+        <div class="ec-metric"><span class="mk">Uganda</span><span class="mv">Broiler chick exports (post-Tanzania)</span></div>
+        <div class="ec-metric"><span class="mk">Moat</span><span class="mv ok">First integrated poultry op in region — head start</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>Full vertical integration from breed to retail</strong> is Avipro's defining and most defensible advantage. No local competitor replicates the full chain: grandparent flocks → parent flocks → hatchery → broiler grow-out → processing → retail/franchise/export. This integration provides cost control, biosecurity assurance, and margin protection that pure processors cannot match.</p>
+  <p class="body-text"><strong>60-year first-mover infrastructure</strong> — 20+ established farm sites, the Phoenix processing plant, biosecurity protocols, cold chain, and the Chantefrais franchise network — represents a capital investment base that would take a competitor 10–15 years to replicate. The Eclosia Group ownership provides financial stability and shared infrastructure (logistics, finance, secretarial, ERP) that would otherwise burden a standalone business.</p>
+  <p class="body-text"><strong>ISA Brown authorised distributorship</strong> (Hendrix Genetics partnership) gives Avipro exclusive access to the most productive laying hen genetics in Mauritius, cementing its Avishop-led small-breeder supply chain dominance and creating a recurring revenue stream that competitors cannot easily displace.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Mauritius food security policy:</strong> Government policy prioritises local production of poultry protein — tailwind for domestic production volumes and potential subsidy/incentive support for large producers like Avipro.</li>
+    <li><strong>African protein demand growth:</strong> Sub-Saharan Africa is the fastest-growing poultry market globally. Avipro's 25-year Madagascar head start and East Africa expansion positions it ahead of the curve on regional chick supply contracts.</li>
+    <li><strong>Consumer freshness preference:</strong> Mauritius consumers increasingly prefer fresh, locally-sourced chicken over frozen imports — direct tailwind for Avipro's fresh product positioning and premium channel (Stop Frais, Chantefrais).</li>
+    <li><strong>Air freight dependency risk:</strong> Island export markets (Seychelles, Comoros) are vulnerable to airline schedule disruptions — the Air Seychelles suspension episode illustrates this structural constraint. Exports to island markets will remain capacity-constrained.</li>
+    <li><strong>Feed cost volatility:</strong> Poultry farming is highly sensitive to grain and soy prices. Avipro's COGS (78.6% of revenue) will fluctuate with global commodity markets — particularly feed inputs imported into Mauritius.</li>
+    <li><strong>Biosecurity risk:</strong> Avian influenza and other livestock diseases represent ongoing operational risk for any large-scale poultry operation. Avipro's biosecurity protocols and licensed medical laboratory are a mitigant, but the risk cannot be eliminated.</li>
+  </ul>
+
+  <div class="alert alert-ok">
+    <div class="alert-title">Competitive Position Summary</div>
+    Avipro's market position is structurally sound and defensible. The combination of vertical integration, 60-year infrastructure investment, Eclosia Group backing, and growing African footprint creates a competitive moat that no short-term entrant can replicate. The primary strategic risks are commodity input costs and air freight logistics dependency for island exports — both manageable at current financial health levels.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from CBRIS data, filed financials, and web research. Score reflects EOS need and readiness — a high score means strong suitability.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">20+ broiler farm sites across Mauritius, a processing plant at Phoenix, retail outlets (Stop Frais, Avishop), a subsidiary (Agrifarm), and international operations spanning Madagascar, Kenya, Comoros, Seychelles, Tanzania, and Uganda. 10+ directors on the board. Revenue MUR 2.94B. This is a large, multi-layered operation that clearly exceeds the scale where informal management breaks down — squarely in EOS's ideal zone. The farm-network model multiplies coordination complexity beyond what headcount alone would suggest.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Denis Pilot (GM, appointed July 2025) has a finance and management background and was recently promoted — likely ambitious and open to operational improvement frameworks. However, the board is dominated by the founding Doger de Spéville family and ENL representatives, who may be conservative about external operating system adoption. The Eclosia Group context adds a layer of parent-company governance that could slow decisions. Score tempered by family-board conservatism; the GM is the most receptive entry point and can champion EOS at the management team level without requiring board sign-off for initial engagement.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">Company is mature domestically but actively growing regionally (Kenya added, Uganda and Tanzania exports expanded). The new GM transition (July 2025) is a classic pain-point inflection — he inherits accumulated operational bottlenecks from his predecessor. Multi-site farm coordination, franchise management (Chantefrais), international subsidiary oversight, and a complex product portfolio (fresh chicken, frozen, duck, guinea fowl, live chicks, feed) are hallmarks of a business that has outgrown informal management. High EOS need score.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">As part of the Eclosia Group, Avipro benefits from group-level financial controls (BDO audit, timely annual return filings), secretarial services, and likely shared ERP infrastructure. The company files accounts consistently and on time — suggesting reasonable back-office process discipline. However, operational coordination across 20+ farms, a processing plant, retail, and international entities almost certainly relies on informal management routines rather than a structured EOS-style system. The EOS Operating System would add structured accountability without displacing the existing Eclosia Group financial controls.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">60-year history and founding-family board suggest a strong institutional culture with deep loyalty and long-tenured staff. Avipro's website emphasises quality, biosecurity, and community (Avishop supports small breeders). The Chantefrais franchise model reflects an entrepreneurial streak within the group. However, long-established organisations can develop cultural inertia resistant to structural change. The new GM appointment signals a willingness to evolve. Cultural alignment with EOS values (accountability, transparency, discipline) is plausible but not confirmed without direct engagement.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">A 10-person board with four Doger de Spéville family members, two ENL representatives, and an operational GM suggests layered decision-making. Major strategic decisions are likely made at the Eclosia Group level. Operational decisions may be delegated to Denis Pilot, but the board composition implies significant oversight and potential consensus requirements. This is a constraint for EOS: the "Leadership Team" must have genuine authority to implement EOS tools. An EOS engagement scoped at the Avipro management team (below board level) would be more tractable and should be the proposed structure.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Avipro's mission — food security through integrated poultry production in Mauritius and the region — is clear and well-articulated on their website and in the Eclosia Group narrative. Regional expansion (Madagascar, Kenya, East Africa, Indian Ocean islands) reflects a coherent long-term direction. However, it is unclear whether this vision is crystallised into a 3-Year Picture, 1-Year Plan, and Rocks at the management team level. The Vision is present at brand level; EOS would sharpen it into a traction tool — exactly what the V/TO delivers.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No direct evidence of meeting cadence or structure from public sources. Annual returns filed promptly (within 3 weeks of year-end) suggests good governance discipline at board level. However, coordinating 20+ farm sites, processing, retail, and international operations without a structured Level 10 Meeting cadence would be extremely challenging. The annual meeting dates (31 December for all three years) suggest formal governance compliance but reveal nothing about operational meeting rhythms. This is an area where EOS would likely deliver immediate, visible improvement for Denis Pilot.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">7.0</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Strong Candidate — Recommended for Approach</h4>
+      <p>Avipro is a 60-year-old, financially healthy, operationally complex business entering a leadership transition. The combination of a new GM, a large multi-site operation, a family-influenced board, and significant geographic expansion creates textbook EOS conditions: misaligned accountability, unclear priorities across business units, and the need for a disciplined meeting and goal-setting cadence. The main constraint is that ultimate authority sits with the Eclosia Group board — any EOS engagement must be scoped at the Avipro operational management team level to remain tractable. Dimension scores: Complexity 8 · Leadership Openness 6 · Growth Pain 8 · Systems 6 · Culture 6 · Decision-Making 5 · Vision 7 · Meeting Culture 5. Composite weighted judgment: 7.0 / 10 (complexity and growth-pain weighting elevated).</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Avipro</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Vision / Traction Organizer (V/TO)</h4>
+      <p>Avipro has a clear brand mission but <strong>likely lacks a traction-ready Vision document</strong> that cascades to operational teams. Articulating the 10-Year Target, 3-Year Picture, 1-Year Plan, and Rocks — specific to the Avipro management team — is the foundational EOS tool. This is what Denis Pilot needs to align his team around regional growth priorities.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>With 20+ farm sites, processing, retail (Stop Frais, Avishop), Agrifarm, Chantefrais franchise, and international ops — plus a 10-person board — <strong>role clarity and functional ownership is the most immediate win</strong>. Map who owns what: Farming, Processing, Retail/Franchise, Export/International, and Support functions. This is a direct gift to a new GM inheriting a complex org.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting Cadence</h4>
+      <p>Weekly management team L10s would <strong>transform multi-site coordination</strong> across Avipro's business units. Denis Pilot — a finance professional who values structured data — would likely see immediate, tangible value in a weekly accountability rhythm with a defined Issues List and Scorecard review. This is the highest-visibility EOS tool for a new GM.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (Quarterly Priorities)</h4>
+      <p>With regional expansion ongoing, a new GM setting direction, and multiple business units competing for attention, <strong>defining 3–7 Rocks per quarter</strong> at the leadership team level would focus effort and prevent the organisation from "chasing everything." Kenya expansion, domestic margin improvement, and Chantefrais growth are natural Rock candidates for Q1.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard with Farm-Level Metrics</h4>
+      <p>Key metrics across the farm-to-retail chain — FCR (feed conversion ratio) per farm, processing throughput, Avishop chick sales, export volumes, franchise network performance — <strong>would benefit from a weekly Scorecard</strong> reviewed in L10 meetings. Denis Pilot's finance background means he already thinks in metrics; EOS gives them a structured weekly home.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List and IDS Process</h4>
+      <p>Multi-site operations accumulate recurring operational issues — biosecurity incidents, processing bottlenecks, franchise supply complaints, export logistics failures. A structured <strong>Identify-Discuss-Solve process</strong> in L10 meetings would systematically clear the backlog of bottlenecks Denis Pilot inherits from his predecessor and from the organisation's operational complexity.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total — four financial and operational, four EOS-specific — sequenced by urgency. Financial recommendations are framed as pre-EOS context questions for the first conversation; EOS recommendations define the engagement scope and entry strategy.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Clarify the MUR 1.017B Receivables Balance</h4>
+      <p>The 126-day DSO is almost certainly intercompany Eclosia Group balances, not slow-paying external customers. Before or during the first EOS conversation, ask Denis Pilot directly: "What percentage of your trade receivables are intercompany versus third-party?" This question signals financial literacy and opens a treasury management discussion. If confirmed as intercompany, this removes the only financial flag on the balance sheet and strengthens the case that Avipro's operational issues are management/coordination-related, not financial.</p>
+      <span class="urg urg-now">Ask in First Conversation</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Probe the MUR 562M "Other" Current Liabilities</h4>
+      <p>The MUR 561.5M in "Others" within current liabilities (59% of total current liabilities) is opaque and likely reflects intercompany payables to the Eclosia Group treasury or parent. Understanding this balance clarifies Avipro's true standalone liquidity position and the extent to which its balance sheet is managed as part of a group cash pool. Frame this as curiosity about how Avipro's treasury interacts with the Eclosia Group — not as a concern.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Understand the Admin Cost Structure (MUR 340M — 11.6% of Revenue)</h4>
+      <p>Administration costs at 11.6% of revenue are high for an agribusiness. For a company with 20+ farm sites, a processing plant, and international operations, this may be entirely justified by the headcount and infrastructure. However, understanding the cost structure — how much is allocated from Eclosia Group shared services versus Avipro standalone — is important context for positioning EOS accountability tools. Organisations with opaque cost allocations from parent companies are particularly receptive to Scorecards and Rocks that make their own cost drivers visible.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Map the Charge Register to Current Banking Relationships</h4>
+      <p>25 floating charges totalling MUR 676M span 2000–2021, but the balance sheet shows only MUR 165M in long-term borrowings. Before any financing discussion arises, clarify which facilities are active versus dormant, and whether any charges secure Eclosia Group obligations rather than Avipro-specific debt. This information is useful context for understanding how much financial flexibility Avipro has independently of the Group — relevant if Thierry ever proposes an EOS-linked advisory retainer or investment in process improvement tooling.</p>
+      <span class="urg urg-medium">Within 90 Days — During EOS</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>First Contact — Denis Pilot via LinkedIn</h4>
+      <p>Reach Denis Pilot at linkedin.com/in/denis-claude-pilot-b252b352 or via Eclosia HQ (+230 xxx xxxx, Gentilly, Moka). Lead with: "I work with management teams of complex, multi-site businesses helping them build alignment and accountability across their operations — I came across Avipro and was struck by the scale and regional ambition. I'd value 20 minutes to share what I'm seeing." Do not lead with EOS by name — lead with his problem (new GM, multi-site coordination, regional growth). The 9-month post timing makes this an ideal window.</p>
+      <span class="urg urg-now">Immediate — This Week</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Scope EOS at Management Team Level — Not Board</h4>
+      <p>Position EOS explicitly as an operating system for Denis Pilot's management team (GM + heads of Farming, Processing, Retail/Avishop, Finance, International) — not a board-level governance change. This framing: (a) stays within Denis Pilot's sphere of authority without requiring family-board approval; (b) avoids triggering Eclosia Group governance review; (c) allows a 90-minute meeting or Focus Day to be arranged quickly. The Eclosia Group's professional culture means a data-backed, structured proposal will be expected — bring the financials and the EOS assessment to the first conversation.</p>
+      <span class="urg urg-now">Frame from Day One</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Propose a 90-Minute Meeting as First Step</h4>
+      <p>Propose a 90-Minute Meeting with Denis Pilot and his direct reports (heads of Farming, Processing, Retail, Finance, International) as the first EOS milestone. Agenda: (1) share the external view of Avipro's operational complexity and the management coordination challenge; (2) walk through the EOS Operating System overview (V/TO, Accountability Chart, L10, Rocks, Scorecard, Issues); (3) define whether a Focus Day makes sense. The 90-Minute Meeting is low-commitment for Denis Pilot and creates the emotional buy-in needed before proposing a full EOS engagement.</p>
+      <span class="urg urg-week">Within 30 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Address the Eclosia Group Context Proactively</h4>
+      <p>Avipro sits within one of Mauritius's most sophisticated corporate groups. Eclosia may already use management frameworks (Balanced Scorecard, OKRs, or group-level governance tools). Frame EOS as complementary to, not replacing, Eclosia Group governance — emphasise the operational (not strategic) layer. Acknowledge that Avipro's ultimate Vision sits at the Group level; EOS at the Avipro entity level translates Group direction into a weekly operational traction system. This framing neutralises the most likely objection from a professionally managed group: "We already have strategic planning processes."</p>
+      <span class="urg urg-medium">Ongoing Positioning</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Avipro Co Ltd is a financially robust, strategically sound, operationally complex institution at a genuine leadership inflection point. It is not a troubled company seeking rescue — it is a successful company that can become more effective. The EOS opportunity is real and the timing is optimal: a new GM 9 months into post, multi-site coordination challenges that are structural and permanent, and a budget that can absorb any reasonable professional services engagement. The primary constraint is Eclosia Group governance — but this is navigable by scoping the engagement at the management team level and positioning Denis Pilot as the internal champion.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>LinkedIn outreach to Denis Pilot this week — lead with multi-site coordination challenge, not EOS by name</li>
+        <li><span class="sig-num">02</span>Secure a 20-minute discovery call within 2 weeks — ask the receivables and admin cost questions as financial context-setters</li>
+        <li><span class="sig-num">03</span>Propose a 90-Minute Meeting with Denis Pilot and his management team within 30 days</li>
+        <li><span class="sig-num">04</span>Deliver the Focus Day — V/TO draft, Accountability Chart hypothesis, first Rock identification — within 60 days</li>
+        <li><span class="sig-num">05</span>Propose full EOS engagement (quarterly sessions, L10 coaching) with Denis Pilot as Visionary/Integrator clarity — within 90 days</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
      FOOTER
-════════════════════════════════════════ -->
+══════════════════════════════════════════ -->
 <footer class="report-footer">
-  <span>AVIPRO CO LTD · FILE NO. C1481 · BRN C06001481 · MAURITIUS</span>
-  <span>PKA RESEARCH REPORT · 1 APRIL 2026 · PREPARED BY REX FOR LMAGP / THIERRY</span>
-  <span>SOURCES: CBRIS EXTRACT 01/04/2026 · AVIPRO.MU · ECLOSIA.COM · LINKEDIN · ENL/ER GROUP</span>
+  <div>Avipro Co Ltd — Comprehensive Company Analysis &amp; EOS Assessment · 1 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (01 April 2026) · avipro.mu · eclosia.com · LinkedIn · ENL/ER Group stock exchange filings</div>
 </footer>
 
-<!-- ══════════════════════════════════════
-     JAVASCRIPT — TAB SWITCHER
-════════════════════════════════════════ -->
 <script>
-  function showTab(id) {
-    // Hide all panels
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    // Deactivate all buttons
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    // Show target panel
-    document.getElementById('tab-' + id).classList.add('active');
-    // Activate corresponding button
-    event.target.classList.add('active');
-    // Scroll to top of content
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
   }
 </script>
-
 </body>
 </html>
