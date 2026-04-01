@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMCAR LIMITED — Comprehensive Company Analysis — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); } .alert-warning .alert-title { color: var(--amber); } .alert-ok .alert-title { color: var(--emerald); } .alert-info .alert-title { color: var(--steel); }
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; } .heat-warn { background: #fef8f0 !important; } .heat-ok { background: #edf8f2 !important; }
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; } .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; } .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; } .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '->'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); } .urg-medium { background: var(--emerald-pale); color: var(--emerald); } .urg-week { background: var(--amber-pale); color: #9a5000; }
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">C14 &bull; C07000014</span>
+    <span class="badge badge-type">Private Domestic</span>
+    <span class="badge badge-eos">EOS Candidate</span>
+    <span class="badge badge-date">March 2026</span>
+  </div>
+  <h1>EMCAR <span>LIMITED</span></h1>
+  <div class="report-subtitle">Comprehensive Company Analysis &mdash; Prepared for EOS Rollout Assessment &mdash; FY2025 Financials</div>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue (FY2025)</div>
+      <div class="stat-value steel">MUR 667M</div>
+      <div class="stat-delta">Year ended 30 June 2025</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit</div>
+      <div class="stat-value emerald">MUR 30M</div>
+      <div class="stat-delta">Net margin 4.5%</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Total Assets</div>
+      <div class="stat-value">MUR 695M</div>
+      <div class="stat-delta">Equity MUR 385M</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Incorporated</div>
+      <div class="stat-value amber">1913</div>
+      <div class="stat-delta">113 years in operation</div>
+    </div>
+  </div>
+</div>
+
+<!-- PREPARED FOR BAR -->
+<div class="prepared-for">
+  <span>PREPARED FOR: THIERRY &mdash; LMAGP &mdash; EOS ASSESSMENT USE ONLY</span>
+  <div class="author-links">
+    <a href="https://emcar.mu" target="_blank">emcar.mu</a>
+    <a href="https://www.facebook.com/emcarmauritius/" target="_blank">Facebook</a>
+    <a href="https://www.linkedin.com/company/emcar-ltd" target="_blank">LinkedIn</a>
+  </div>
+</div>
+
+<!-- TAB NAVIGATION -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('t1',this)"><span class="tab-num">01</span> Executive Summary</button>
+  <button class="tab-btn" onclick="showTab('t2',this)"><span class="tab-num">02</span> Company Overview</button>
+  <button class="tab-btn" onclick="showTab('t3',this)"><span class="tab-num">03</span> Financial Performance</button>
+  <button class="tab-btn" onclick="showTab('t4',this)"><span class="tab-num">04</span> Financial Ratios</button>
+  <button class="tab-btn" onclick="showTab('t5',this)"><span class="tab-num">05</span> Market &amp; Competition</button>
+  <button class="tab-btn" onclick="showTab('t6',this)"><span class="tab-num">06</span> EOS Assessment</button>
+  <button class="tab-btn" onclick="showTab('t7',this)"><span class="tab-num">07</span> Recommendations</button>
+</div>
+
+<!-- TAB 1: EXECUTIVE SUMMARY -->
+<div id="t1" class="tab-content active">
+  <div class="content-wrap">
+    <div class="section-title">Executive Summary</div>
+    <div class="section-lead">Emcar Limited is one of Mauritius's oldest and most diversified private companies, incorporated in 1913 and rooted in a history stretching back to 1898. A tightly held Rogers family business, Emcar operates across seven distinct business lines — motorcycles, marine, sports, tyres, workshops, spare parts, and shipping — with revenues of MUR 667M and net profit of MUR 30M for FY2025. The company is structurally sound, debt-free at the long-term borrowing level, and actively investing in digital and retail expansion. It presents a compelling EOS opportunity.</div>
+
+    <div class="alert alert-ok">
+      <div class="alert-title">Overall Assessment</div>
+      A financially robust, multi-division SME with over 110 years of operating history. Strong gross margins (37.4%), zero long-term debt, and a diversified revenue base position Emcar well. The key risk areas are a heavy administrative cost base (25.6% of revenue), high inventory days (150), and the characteristic structural opacity of a closely held family business.
+    </div>
+
+    <div class="subsection-title">Snapshot: Key Facts</div>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h4>Legal Name</h4>
+        <p><strong>Emcar Limited</strong><br>File No. C14 &bull; BRN C07000014<br>Private Domestic Company</p>
+      </div>
+      <div class="profile-card">
+        <h4>Incorporation</h4>
+        <p><strong>24 April 1913</strong><br>Status: Live<br>Annual fee paid: 2026</p>
+      </div>
+      <div class="profile-card">
+        <h4>Registered Address</h4>
+        <p><strong>Old Moka Road, Bell Village</strong><br>Mauritius (since 22/11/2007)</p>
+      </div>
+      <div class="profile-card">
+        <h4>CEO</h4>
+        <p><strong>Marc Rogers</strong><br>Director since 06/05/1998<br>~37 years sector experience</p>
+      </div>
+      <div class="profile-card">
+        <h4>Secretary &amp; Auditor</h4>
+        <p><strong>Secretary:</strong> ECS Secretaries Ltd (since 01/03/2024)<br><strong>Auditor:</strong> Deloitte (since 09/07/1980)</p>
+      </div>
+      <div class="profile-card">
+        <h4>Stated Capital</h4>
+        <p><strong>MUR 59.5M</strong><br>1,700,000 ordinary @ MUR 10<br>4,250,000 preference @ MUR 0 par</p>
+      </div>
+    </div>
+
+    <div class="subsection-title">Critical Flags</div>
+    <div class="alert alert-warning">
+      <div class="alert-title">Amber Flag — Quick Ratio</div>
+      Quick ratio of 0.56 is below the 1.0 benchmark. With MUR 172M tied up in inventory, short-term liquidity is reliant on inventory conversion. Monitor cash cycle closely.
+    </div>
+    <div class="alert alert-warning">
+      <div class="alert-title">Amber Flag — Admin Cost Burden</div>
+      Administration costs of MUR 170.7M represent 25.6% of revenue — unusually high for a distributor/retailer. This compresses the net margin to 4.5% despite a healthy 37.4% gross margin. Likely reflects the cost of running seven business units without a shared services model.
+    </div>
+    <div class="alert alert-ok">
+      <div class="alert-title">Green Flag — Zero Long-Term Debt</div>
+      Long-term borrowings are MUR 0. The company is entirely equity-funded at the long-term level, with a conservative debt-to-equity ratio of 0.81 (largely driven by non-current provisions and deferred tax).
+    </div>
+    <div class="alert alert-info">
+      <div class="alert-title">EOS Signal — Multi-Division Complexity Without Shared OS</div>
+      Seven business lines across five physical locations in Mauritius plus Rodrigues, run by a family-owned leadership team with no public evidence of a structured operating system. Classic EOS candidate profile.
+    </div>
+  </div>
+</div>
+
+<!-- TAB 2: COMPANY OVERVIEW -->
+<div id="t2" class="tab-content">
+  <div class="content-wrap">
+    <div class="section-title">Company Overview</div>
+    <div class="section-lead">Emcar Limited traces its roots to 1898 when Engineering and Cycle Works introduced cars, bicycles and Dunlop tyres to Mauritius. Incorporated formally in 1913 (file C14 — one of the first 15 companies registered in Mauritius), the business was acquired by Mr Reginald Rogers and family from the Harel Mallac Group and has remained a Rogers family enterprise ever since. Today it is one of the island's most multi-faceted privately held companies.</div>
+
+    <div class="subsection-title">Corporate Structure &amp; Ownership</div>
+    <p class="body-text">Emcar Limited is wholly owned by members of the Rogers family. There is no listed holding company and no external institutional investor. Ownership is spread across ordinary and preference shares held by multiple Rogers family members and related succession estates.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Shareholder</th><th>Ordinary Shares</th><th>Preference Shares</th><th>Note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Rogers Reginald Raffray &amp; Aline Marie</td><td>864,645</td><td>1,230,000</td><td>Largest combined position</td></tr>
+          <tr><td>Rogers Marc</td><td>299,110</td><td>—</td><td>CEO</td></tr>
+          <tr><td>Rogers Philip Reginald / Georgina</td><td>166,584</td><td>—</td><td>Director &amp; spouse</td></tr>
+          <tr><td>Rogers Marie Claudine</td><td>117,890</td><td>—</td><td></td></tr>
+          <tr><td>Rogers Hubert Andre</td><td>117,890</td><td>—</td><td></td></tr>
+          <tr><td>Rogers Philip Reginald</td><td>64,342</td><td>—</td><td></td></tr>
+          <tr><td>Rogers Jason</td><td>22,728</td><td>—</td><td></td></tr>
+          <tr><td>Rogers Oliver</td><td>22,728</td><td>—</td><td></td></tr>
+          <tr><td>Rogers Joana</td><td>22,728</td><td>—</td><td></td></tr>
+          <tr><td>Rogers Reginald Raffray</td><td>1,355</td><td>—</td><td></td></tr>
+          <tr><td>Rogers Anne Sonia</td><td>—</td><td>1,500,000</td><td></td></tr>
+          <tr><td>Succession Philip Rogers</td><td>—</td><td>1,500,000</td><td>Estate holding</td></tr>
+          <tr><td>Rogers Aline Marie</td><td>—</td><td>20,000</td><td></td></tr>
+          <tr class="heat-ok"><td><strong>Total</strong></td><td><strong>1,700,000</strong></td><td><strong>4,250,000</strong></td><td>Fully paid / no unpaid ordinary</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title">Board of Directors</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Position</th><th>Appointed</th><th>Service Address</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Rogers Marc</td><td>Director / CEO</td><td>06/05/1998</td><td>Not disclosed (Bell Village HQ)</td></tr>
+          <tr><td>Rogers Georgina Marie-Therese</td><td>Director</td><td>28/04/2017</td><td>Old Moka Road, Bell Village</td></tr>
+          <tr><td>Chauveau Jean Philippe Andre</td><td>Director</td><td>15/03/2010</td><td>Not disclosed</td></tr>
+          <tr><td>Douteau Florence Claire</td><td>Director</td><td>15/05/2024</td><td>17 Avenue des Loriers, Pointes aux Cannoniers</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="body-text">Florence Douteau is the most recently appointed director (May 2024), potentially signalling a governance refresh or professionalisation push. Chauveau Jean Philippe Andre has served since 2010, likely an independent or professional director. The board is small (4 directors) for a MUR 667M revenue business.</p>
+
+    <div class="subsection-title">Management Team (Web-sourced)</div>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h4>Marc Rogers — CEO</h4>
+        <p>Director since 1998. Approximately 37 years of industry experience. The primary decision-maker across all seven business lines. Listed on ZoomInfo and LinkedIn as CEO of Emcar.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Adrian Marino — Director General</h4>
+        <p>Operational general manager overseeing day-to-day business unit management. Likely the key interface between the CEO and the division heads.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Mathilde Rogers — Head of E-Commerce</h4>
+        <p>Leading Emcar's digital expansion via emcarshop.mu. Signals a next-generation Rogers family member taking on a strategic digital role.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Sacha Lagesse — Business Unit Manager</h4>
+        <p>Manager for Emcar Ltd and Maison de la Moto Ltd — indicating a subsidiary or related entity in the motorcycle retail space.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Brice Lalaoui — Marketing Manager</h4>
+        <p>Handles brand marketing and communications across business lines.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Ashley Mahadoo — Head of Credit</h4>
+        <p>Manages trade receivables and customer credit — relevant given MUR 87.8M in trade and other receivables.</p>
+      </div>
+    </div>
+
+    <div class="subsection-title">Business Lines</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Division</th><th>Key Brands / Activities</th><th>Primary Locations</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Motorcycles &amp; Quads</td><td>Suzuki (official dealer), Kymco scooters, quad bikes</td><td>Bell Village, Forbach, Flacq, Black River, Rodrigues</td></tr>
+          <tr><td>Marine &amp; Power</td><td>Suzuki Marine, Tohatsu, Yanmar inboards; outboard sales &amp; service</td><td>Bell Village, island-wide</td></tr>
+          <tr><td>Sports</td><td>Cannondale bicycles; racket sports; trail running gear</td><td>Bell Village, Forbach, Flacq, Mont Choisy, Black River</td></tr>
+          <tr><td>Tyres</td><td>Fleet tyre management; high-quality tyre supply; Dunlop heritage</td><td>Roche Bois, island-wide</td></tr>
+          <tr><td>Workshop &amp; Automotive</td><td>Motorcycle &amp; vehicle servicing (10+ persons); motor vehicle parts &amp; accessories</td><td>Bell Village, Forbach, Flacq, Roche Bois, Rodrigues</td></tr>
+          <tr><td>Spare Parts</td><td>Genuine spare parts for motorcycles; wholesale of machinery &amp; equipment</td><td>Roche Bois, Forbach</td></tr>
+          <tr><td>Shipping</td><td>Port agency services; cargo handling; crew changes; bunkering; logistics</td><td>Pailles (Bonded Warehouse at G R N W Road)</td></tr>
+          <tr><td>Energy</td><td>Himoinsa generators; Victron Energy solar &amp; battery systems</td><td>Bell Village / Pailles</td></tr>
+          <tr><td>E-Commerce</td><td>emcarshop.mu — online retail portal for all product categories</td><td>Digital, island-wide delivery</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title">Physical Locations</div>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h4>Bell Village (HQ)</h4>
+        <p>Old Moka Road, Port Louis. Registered office. Showroom, workshop, wholesale, e-commerce base. +230 405 1000</p>
+      </div>
+      <div class="profile-card">
+        <h4>Forbach (Circle Square)</h4>
+        <p>Circle Square Retail Park, Forbach. Recently renovated showroom. Motorcycles, workshop, sports retail, spare parts, showroom/advertising.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Central Flacq (La Source)</h4>
+        <p>La Source, Central Flacq. Full multi-line presence: motorcycles, bicycles, workshop, appliances, retail.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Black River (Vanilla Village)</h4>
+        <p>Vanilla Village, Royal Road, Black River. Sports and cycling retail.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Mont Choisy</h4>
+        <p>Mont Choisy Shopping Promenade. Sports retail including bicycles.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Rodrigues</h4>
+        <p>Camp du Roi, Port Mathurin, Rodrigues. Full presence: motorcycles, bicycles, workshop, spare parts, retail. Mon–Fri 08:00–16:15.</p>
+      </div>
+    </div>
+
+    <div class="subsection-title">Digital Presence</div>
+    <ul class="styled-list">
+      <li><strong>Website:</strong> emcar.mu — modern e-commerce capable site with product catalogue, business line pages, and brand pages</li>
+      <li><strong>E-Commerce:</strong> emcarshop.mu — dedicated online shop with island-wide delivery</li>
+      <li><strong>Facebook:</strong> facebook.com/emcarmauritius — active page with store updates (e.g. Forbach showroom renovation posts)</li>
+      <li><strong>LinkedIn:</strong> linkedin.com/company/emcar-ltd — company page active</li>
+      <li><strong>Sub-domains:</strong> moto.emcar.mu (motorcycle division), marine.emcar.mu (marine division), emcar.mu/en/ (French-language version)</li>
+    </ul>
+
+    <div class="subsection-title">Charge Register</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Volume</th><th>Property</th><th>Nature</th><th>Amount (MUR)</th><th>Date Charged</th><th>Date Filed</th></tr>
+        </thead>
+        <tbody>
+          <tr class="heat-warn"><td>CH1917/90</td><td>Movable</td><td>Mortgaged</td><td>4,000,000</td><td>24/10/1994</td><td>16/02/1995</td></tr>
+          <tr class="heat-warn"><td>CH2382/64</td><td>Movable &amp; Immovable</td><td>Floating</td><td>1,300,000</td><td>12/06/2000</td><td>07/07/2000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="alert alert-info">
+      <div class="alert-title">Charge Note</div>
+      Both charges are legacy instruments dating from 1994 and 2000 respectively. Neither has been discharged on the register, but given zero long-term borrowings on the current balance sheet, these likely reflect dormant or historically satisfied facilities that were never formally vacated at CBRIS. Combined historic charge value is MUR 5.3M — immaterial relative to current asset base.
+    </div>
+  </div>
+</div>
+
+<!-- TAB 3: FINANCIAL PERFORMANCE -->
+<div id="t3" class="tab-content">
+  <div class="content-wrap">
+    <div class="section-title">Financial Performance</div>
+    <div class="section-lead">All figures are sourced from the CBRIS-filed financial summary for the year ended 30 June 2025, approved by the board on 23 December 2025 and audited by Deloitte. Currency: Mauritius Rupee (MUR). Comparative prior-year figures are not published at CBRIS summary level.</div>
+
+    <div class="subsection-title">Profit &amp; Loss Statement — FY2025</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Comment</th></tr>
+        </thead>
+        <tbody>
+          <tr class="heat-ok"><td>Turnover (Revenue)</td><td>667,127,440</td><td>100.0%</td><td>MUR 667M — significant scale for a private Mauritian SME</td></tr>
+          <tr><td>Less: Cost of Sales</td><td>(417,359,406)</td><td>62.6%</td><td>Includes cost of goods, motorcycles, parts, equipment</td></tr>
+          <tr class="heat-ok"><td><strong>Gross Profit</strong></td><td><strong>249,768,034</strong></td><td><strong>37.4%</strong></td><td>Strong gross margin for a multi-line distributor</td></tr>
+          <tr><td>Add: Other Income</td><td>40,180,429</td><td>6.0%</td><td>Service income, rentals, commissions, shipping fees</td></tr>
+          <tr><td>Less: Distribution Costs</td><td>(12,575,162)</td><td>1.9%</td><td>Logistics and delivery costs — well contained</td></tr>
+          <tr class="heat-warn"><td>Less: Administration Costs</td><td>(170,740,334)</td><td>25.6%</td><td>The dominant cost driver — likely multi-division overhead</td></tr>
+          <tr class="heat-warn"><td>Less: Other Expenses</td><td>(51,406,210)</td><td>7.7%</td><td>Depreciation, provisions, and other operational charges</td></tr>
+          <tr><td>Less: Finance Costs</td><td>(12,239,513)</td><td>1.8%</td><td>Finance charges despite nil long-term borrowings — likely leases or trade finance</td></tr>
+          <tr class="heat-ok"><td><strong>Profit Before Tax</strong></td><td><strong>42,987,244</strong></td><td><strong>6.4%</strong></td><td>Reasonable PBT margin</td></tr>
+          <tr><td>Less: Tax Expense</td><td>(12,968,042)</td><td>1.9%</td><td>Effective tax rate 30.2%</td></tr>
+          <tr class="heat-ok"><td><strong>Net Profit for Period</strong></td><td><strong>30,019,202</strong></td><td><strong>4.5%</strong></td><td>Healthy absolute profit; margin constrained by admin costs</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-warning">
+      <div class="alert-title">Key Observation — Admin Cost Compression</div>
+      The gap between gross margin (37.4%) and net margin (4.5%) is 32.9 percentage points. Administration costs alone consume 25.6% of revenue. This is the single largest structural inefficiency and the strongest EOS argument for Emcar: multiple divisions likely running siloed overheads without a unified management operating system.
+    </div>
+
+    <div class="subsection-title">Balance Sheet — 30 June 2025</div>
+    <div class="entity-grid">
+      <div class="entity-card">
+        <div class="ec-header"><h4>Non-Current Assets</h4><div class="ec-sub">MUR 415,428,717</div></div>
+        <div class="ec-body">
+          <div class="ec-metric"><span class="mk">PP&amp;E</span><span class="mv">381,712,546</span></div>
+          <div class="ec-metric"><span class="mk">Subsidiaries</span><span class="mv">14,510,000</span></div>
+          <div class="ec-metric"><span class="mk">Others (NCAs)</span><span class="mv">16,464,190</span></div>
+          <div class="ec-metric"><span class="mk">Intangibles</span><span class="mv">2,741,981</span></div>
+          <div class="ec-metric"><span class="mk">Inv. Properties</span><span class="mv ok">0</span></div>
+        </div>
+      </div>
+      <div class="entity-card">
+        <div class="ec-header"><h4>Current Assets</h4><div class="ec-sub">MUR 279,425,136</div></div>
+        <div class="ec-body">
+          <div class="ec-metric"><span class="mk">Inventories</span><span class="mv warn">171,955,111</span></div>
+          <div class="ec-metric"><span class="mk">Receivables</span><span class="mv">87,790,931</span></div>
+          <div class="ec-metric"><span class="mk">Cash &amp; Equiv.</span><span class="mv">19,528,718</span></div>
+          <div class="ec-metric"><span class="mk">Others</span><span class="mv">150,376</span></div>
+        </div>
+      </div>
+      <div class="entity-card">
+        <div class="ec-header"><h4>Equity</h4><div class="ec-sub">MUR 384,768,753</div></div>
+        <div class="ec-body">
+          <div class="ec-metric"><span class="mk">Share Capital</span><span class="mv">17,000,000</span></div>
+          <div class="ec-metric"><span class="mk">Other Reserves</span><span class="mv">42,500,000</span></div>
+          <div class="ec-metric"><span class="mk">Retained Earnings</span><span class="mv ok">136,852,680</span></div>
+          <div class="ec-metric"><span class="mk">Others</span><span class="mv">188,416,073</span></div>
+        </div>
+      </div>
+      <div class="entity-card">
+        <div class="ec-header"><h4>Non-Current Liabilities</h4><div class="ec-sub">MUR 117,685,163</div></div>
+        <div class="ec-body">
+          <div class="ec-metric"><span class="mk">LT Borrowings</span><span class="mv ok">0</span></div>
+          <div class="ec-metric"><span class="mk">Deferred Tax</span><span class="mv">10,811,811</span></div>
+          <div class="ec-metric"><span class="mk">LT Provisions</span><span class="mv">53,307,839</span></div>
+          <div class="ec-metric"><span class="mk">Others</span><span class="mv">53,565,513</span></div>
+        </div>
+      </div>
+      <div class="entity-card">
+        <div class="ec-header"><h4>Current Liabilities</h4><div class="ec-sub">MUR 192,399,937</div></div>
+        <div class="ec-body">
+          <div class="ec-metric"><span class="mk">Trade Payables</span><span class="mv">75,645,294</span></div>
+          <div class="ec-metric"><span class="mk">ST Borrowings</span><span class="mv ok">0</span></div>
+          <div class="ec-metric"><span class="mk">Tax Payable</span><span class="mv">2,384,105</span></div>
+          <div class="ec-metric"><span class="mk">Others</span><span class="mv warn">114,370,538</span></div>
+        </div>
+      </div>
+      <div class="entity-card">
+        <div class="ec-header"><h4>Summary</h4><div class="ec-sub">MUR 694,853,853 Total</div></div>
+        <div class="ec-body">
+          <div class="ec-metric"><span class="mk">Total Assets</span><span class="mv">694,853,853</span></div>
+          <div class="ec-metric"><span class="mk">Total Equity</span><span class="mv ok">384,768,753</span></div>
+          <div class="ec-metric"><span class="mk">Total Liabilities</span><span class="mv">310,085,100</span></div>
+          <div class="ec-metric"><span class="mk">D/E Ratio</span><span class="mv ok">0.81x</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info">
+      <div class="alert-title">Balance Sheet Note — "Others" in Current Liabilities</div>
+      MUR 114.4M classified as "Other" current liabilities is a substantial and unexplained line. This likely includes deferred revenue, accruals, related-party balances, lease liabilities (IFRS 16), or customer deposits. This warrants direct enquiry in any first meeting.
+    </div>
+  </div>
+</div>
+
+<!-- TAB 4: FINANCIAL RATIOS -->
+<div id="t4" class="tab-content">
+  <div class="content-wrap">
+    <div class="section-title">Financial Ratios</div>
+    <div class="section-lead">All ratios calculated from CBRIS-filed FY2025 financials (year ended 30 June 2025). Benchmarks drawn from Mauritius SME / private distributor and retail norms. Traffic-light ratings: Green = strong, Amber = watch, Red = concern.</div>
+
+    <div class="ratio-grid">
+      <!-- LIQUIDITY -->
+      <div class="ratio-card">
+        <h4>Liquidity Ratios</h4>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Current Ratio</div>
+            <span class="ratio-interpret">CA / CL &bull; Benchmark: &gt;1.5</span>
+          </div>
+          <div style="text-align:right">
+            <div class="ratio-val warn">1.45x</div>
+            <span class="b b-amber">AMBER</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Quick Ratio</div>
+            <span class="ratio-interpret">(CA - Inventory) / CL &bull; Benchmark: &gt;1.0</span>
+          </div>
+          <div style="text-align:right">
+            <div class="ratio-val bad">0.56x</div>
+            <span class="b b-red">RED</span>
+          </div>
+        </div>
+        <div style="margin-top:10px; font-size:12.5px; color:var(--text-light); line-height:1.6;">
+          Liquidity is heavily dependent on inventory conversion. With MUR 172M in stock and only MUR 19.5M cash, the company needs to keep inventory moving. DSO of 48 days is manageable but adds pressure alongside the quick ratio deficit.
+        </div>
+      </div>
+
+      <!-- PROFITABILITY -->
+      <div class="ratio-card">
+        <h4>Profitability Ratios</h4>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Gross Profit Margin</div>
+            <span class="ratio-interpret">Gross Profit / Revenue &bull; Benchmark: 25–35%</span>
+          </div>
+          <div style="text-align:right">
+            <div class="ratio-val ok">37.4%</div>
+            <span class="b b-green">GREEN</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">EBIT Margin</div>
+            <span class="ratio-interpret">EBIT / Revenue &bull; Benchmark: &gt;8%</span>
+          </div>
+          <div style="text-align:right">
+            <div class="ratio-val ok">8.3%</div>
+            <span class="b b-green">GREEN</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Net Profit Margin</div>
+            <span class="ratio-interpret">Net Profit / Revenue &bull; Benchmark: &gt;5%</span>
+          </div>
+          <div style="text-align:right">
+            <div class="ratio-val warn">4.5%</div>
+            <span class="b b-amber">AMBER</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">ROA</div>
+            <span class="ratio-interpret">Net Profit / Total Assets &bull; Benchmark: &gt;5%</span>
+          </div>
+          <div style="text-align:right">
+            <div class="ratio-val warn">4.3%</div>
+            <span class="b b-amber">AMBER</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">ROE</div>
+            <span class="ratio-interpret">Net Profit / Equity &bull; Benchmark: &gt;10%</span>
+          </div>
+          <div style="text-align:right">
+            <div class="ratio-val warn">7.8%</div>
+            <span class="b b-amber">AMBER</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LEVERAGE -->
+      <div class="ratio-card">
+        <h4>Leverage &amp; Coverage Ratios</h4>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Debt-to-Equity</div>
+            <span class="ratio-interpret">Total Liabilities / Equity &bull; Benchmark: &lt;1.0</span>
+          </div>
+          <div style="text-align:right">
+            <div class="ratio-val ok">0.81x</div>
+            <span class="b b-green">GREEN</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Interest Coverage</div>
+            <span class="ratio-interpret">EBIT / Finance Costs &bull; Benchmark: &gt;3.0x</span>
+          </div>
+          <div style="text-align:right">
+            <div class="ratio-val ok">4.51x</div>
+            <span class="b b-green">GREEN</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">LT Borrowings</div>
+            <span class="ratio-interpret">Balance sheet position</span>
+          </div>
+          <div style="text-align:right">
+            <div class="ratio-val ok">MUR 0</div>
+            <span class="b b-green">GREEN</span>
+          </div>
+        </div>
+        <div style="margin-top:10px; font-size:12.5px; color:var(--text-light); line-height:1.6;">
+          Zero long-term debt is exceptional for a company of this scale. Finance costs of MUR 12.2M likely relate to lease liabilities (IFRS 16) and trade finance facilities. The balance sheet is conservatively structured.
+        </div>
+      </div>
+
+      <!-- EFFICIENCY -->
+      <div class="ratio-card">
+        <h4>Efficiency Ratios</h4>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Asset Turnover</div>
+            <span class="ratio-interpret">Revenue / Total Assets &bull; Benchmark: &gt;1.0x</span>
+          </div>
+          <div style="text-align:right">
+            <div class="ratio-val warn">0.96x</div>
+            <span class="b b-amber">AMBER</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Inventory Turnover</div>
+            <span class="ratio-interpret">COGS / Inventory &bull; Benchmark: &gt;4.0x</span>
+          </div>
+          <div style="text-align:right">
+            <div class="ratio-val bad">2.43x</div>
+            <span class="b b-red">RED</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Inventory Days (DIO)</div>
+            <span class="ratio-interpret">365 / Inventory Turnover &bull; Benchmark: &lt;90 days</span>
+          </div>
+          <div style="text-align:right">
+            <div class="ratio-val bad">150 days</div>
+            <span class="b b-red">RED</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Debtor Days (DSO)</div>
+            <span class="ratio-interpret">Receivables / Revenue &times; 365 &bull; Benchmark: &lt;45 days</span>
+          </div>
+          <div style="text-align:right">
+            <div class="ratio-val warn">48 days</div>
+            <span class="b b-amber">AMBER</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Creditor Days (DPO)</div>
+            <span class="ratio-interpret">Payables / COGS &times; 365 &bull; Benchmark: 30–60 days</span>
+          </div>
+          <div style="text-align:right">
+            <div class="ratio-val ok">66 days</div>
+            <span class="b b-green">GREEN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection-title">Ratio Summary vs. Mauritius SME Benchmarks</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Ratio</th><th>Emcar FY2025</th><th>MU SME Benchmark</th><th>Status</th><th>Interpretation</th></tr>
+        </thead>
+        <tbody>
+          <tr class="heat-warn"><td>Current Ratio</td><td>1.45x</td><td>&gt;1.5x</td><td><span class="b b-amber">AMBER</span></td><td>Marginally below benchmark; manageable</td></tr>
+          <tr class="heat-critical"><td>Quick Ratio</td><td>0.56x</td><td>&gt;1.0x</td><td><span class="b b-red">RED</span></td><td>High inventory dependency; watch closely</td></tr>
+          <tr class="heat-ok"><td>Gross Margin</td><td>37.4%</td><td>25–35%</td><td><span class="b b-green">GREEN</span></td><td>Above benchmark; strong product mix</td></tr>
+          <tr class="heat-ok"><td>EBIT Margin</td><td>8.3%</td><td>&gt;8%</td><td><span class="b b-green">GREEN</span></td><td>At benchmark threshold</td></tr>
+          <tr class="heat-warn"><td>Net Margin</td><td>4.5%</td><td>&gt;5%</td><td><span class="b b-amber">AMBER</span></td><td>Below benchmark; admin costs the culprit</td></tr>
+          <tr class="heat-warn"><td>ROA</td><td>4.3%</td><td>&gt;5%</td><td><span class="b b-amber">AMBER</span></td><td>Asset base is large relative to earnings</td></tr>
+          <tr class="heat-warn"><td>ROE</td><td>7.8%</td><td>&gt;10%</td><td><span class="b b-amber">AMBER</span></td><td>Return on owners' equity below target</td></tr>
+          <tr class="heat-ok"><td>Debt-to-Equity</td><td>0.81x</td><td>&lt;1.0x</td><td><span class="b b-green">GREEN</span></td><td>Conservative leverage</td></tr>
+          <tr class="heat-ok"><td>Interest Coverage</td><td>4.51x</td><td>&gt;3.0x</td><td><span class="b b-green">GREEN</span></td><td>Comfortable coverage</td></tr>
+          <tr class="heat-warn"><td>Asset Turnover</td><td>0.96x</td><td>&gt;1.0x</td><td><span class="b b-amber">AMBER</span></td><td>Revenue not quite keeping pace with asset base</td></tr>
+          <tr class="heat-critical"><td>Inventory Days</td><td>150 days</td><td>&lt;90 days</td><td><span class="b b-red">RED</span></td><td>Slow-moving stock; multi-brand complexity likely cause</td></tr>
+          <tr class="heat-warn"><td>Debtor Days (DSO)</td><td>48 days</td><td>&lt;45 days</td><td><span class="b b-amber">AMBER</span></td><td>Slightly elevated; fleet/B2B customers likely</td></tr>
+          <tr class="heat-ok"><td>Creditor Days (DPO)</td><td>66 days</td><td>30–60 days</td><td><span class="b b-green">GREEN</span></td><td>Good supplier payment terms; slight extension</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-warning">
+      <div class="alert-title">Primary Financial Risk: Inventory Management</div>
+      150 days of inventory on hand (MUR 172M) against a COGS base of MUR 417M is the most significant operational concern. This is characteristic of a multi-brand distributor managing model year cycles, slow-moving SKUs, and stock across multiple locations in Mauritius and Rodrigues. It also directly explains the poor quick ratio. An EOS-driven Process Component review focused on inventory and procurement would likely yield significant working capital release.
+    </div>
+  </div>
+</div>
+
+<!-- TAB 5: MARKET & COMPETITIVE POSITION -->
+<div id="t5" class="tab-content">
+  <div class="content-wrap">
+    <div class="section-title">Market &amp; Competitive Position</div>
+    <div class="section-lead">Emcar operates across several distinct markets in Mauritius: powered two-wheelers, marine equipment, sports retail, tyres, and logistics. In each segment it occupies a premium branded distribution position backed by long-standing official distributor agreements.</div>
+
+    <div class="subsection-title">Primary Markets</div>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h4>Powered Two-Wheelers</h4>
+        <p>Official Suzuki motorcycle and Kymco scooter distributor. Motorcycles are a primary transport mode in Mauritius. Emcar claims market leadership in motorcycle sales across Mauritius and Rodrigues. Competitors include IBL Group (Yamaha), MTML (Honda), and smaller independents.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Marine Outboard Engines</h4>
+        <p>Official distributor for Suzuki Marine, Tohatsu, and Yanmar in Mauritius. Claims leadership in outboard sales. Target markets: commercial fishermen, leisure users, tourism operators, and the inter-island maritime sector.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Sports &amp; Cycling Equipment</h4>
+        <p>Official Cannondale bicycle distributor. Multiple retail locations from Mont Choisy to Flacq to Black River. Target market: Mauritius's growing cycling and triathlon community, as well as racket sports. Competition from sports chains (Courts Mammouth, Mr Sport).</p>
+      </div>
+      <div class="profile-card">
+        <h4>Tyres &amp; Fleet Management</h4>
+        <p>Dunlop heritage brand. Fleet tyre management solutions for corporate customers. Competes with Leal &amp; Co (Michelin/Bridgestone), Toolshed, and independent tyre dealers.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Energy Solutions</h4>
+        <p>Official Himoinsa (generators) and Victron Energy (solar/battery) distributor. Growing segment driven by Mauritius' renewable energy policy push. Competes with GML/ENGIE, Alternergy, and other solar integrators.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Shipping &amp; Port Agency</h4>
+        <p>Port agency, cargo handling, bunkering, crew changes. Operates from bonded warehouse at Pailles. Competes with IBL Shipping, ABC Shipping, and other Port Louis maritime agents.</p>
+      </div>
+    </div>
+
+    <div class="subsection-title">Competitive Differentiation</div>
+    <ul class="styled-list">
+      <li><strong>Brand depth:</strong> Official distributor status for Suzuki (motorcycles + marine), Kymco, Cannondale, Himoinsa, Victron, Tohatsu, Yanmar — rare multi-brand portfolio in Mauritius</li>
+      <li><strong>Geographic reach:</strong> Only operator with meaningful presence in both mainland Mauritius and Rodrigues across multiple product lines</li>
+      <li><strong>Heritage and trust:</strong> Over 125 years of brand history; one of the first 15 companies registered in Mauritius — strong institutional trust</li>
+      <li><strong>Integrated service model:</strong> Retail + workshop + spare parts + e-commerce under one roof at each location creates switching costs</li>
+      <li><strong>Digital leadership:</strong> emcarshop.mu — among the few traditional Mauritius SMEs with a functioning e-commerce channel</li>
+      <li><strong>Bonded warehouse:</strong> G R N W Road, Pailles — a strategic logistics asset enabling import clearance and duty-deferred storage</li>
+    </ul>
+
+    <div class="subsection-title">Key Risks &amp; Market Threats</div>
+    <div class="alert alert-warning">
+      <div class="alert-title">Electric Vehicle Disruption Risk</div>
+      The Government of Mauritius has accelerated EV adoption incentives. Suzuki's motorcycle lineup is predominantly ICE-based. Emcar's core revenue from motorcycle sales and workshop services faces medium-term disruption as EV two-wheelers (particularly from Chinese brands) gain share.
+    </div>
+    <div class="alert alert-warning">
+      <div class="alert-title">Concentration Risk — Suzuki Dependency</div>
+      A significant portion of revenue (motorcycles + marine) depends on the Suzuki franchise relationship. Loss or renegotiation of this distribution agreement would be material to the business.
+    </div>
+    <div class="alert alert-info">
+      <div class="alert-title">Growth Opportunity — Energy Division</div>
+      Mauritius has committed to 60% renewable energy by 2030. Emcar's Himoinsa/Victron Energy portfolio positions it well for both backup power (generators) and renewable transition (solar/battery). This is a high-growth adjacency with strong B2B margins.
+    </div>
+    <div class="alert alert-info">
+      <div class="alert-title">Growth Opportunity — E-Commerce Scaling</div>
+      emcarshop.mu is a first-mover advantage in Mauritius's nascent online retail for powered equipment. The platform, led by Mathilde Rogers, could drive incremental revenue at lower marginal cost than physical stores.
+    </div>
+
+    <div class="subsection-title">Geographic Reach</div>
+    <p class="body-text">Emcar is one of very few private companies in Mauritius operating simultaneously across Port Louis, the North (Mont Choisy), the East (Flacq), the West (Black River), the North-West (Forbach/Circle Square), and the outer island of Rodrigues. This multi-geography footprint creates both scale advantages and coordination challenges — the latter being a clear EOS opportunity.</p>
+  </div>
+</div>
+
+<!-- TAB 6: EOS ASSESSMENT -->
+<div id="t6" class="tab-content">
+  <div class="content-wrap">
+    <div class="section-title">EOS Suitability Assessment</div>
+    <div class="section-lead">Each of the 8 EOS dimensions is rated 1–10 based on evidence from CBRIS records, web research, financial analysis, and industry context. A score of 7+ is a strong signal. The overall score synthesises the full picture.</div>
+
+    <!-- D1 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">1. Organisational Size &amp; Complexity</div>
+        <div class="eos-score high">8 / 10</div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+      <div class="eos-rationale">Emcar has approximately 110 employees across seven distinct business lines, five physical locations in mainland Mauritius, and a Rodrigues operation. It manages manufacturing (vehicle assembly at Pailles), retail (6+ showrooms), services (workshops, shipping, port agency), wholesale, and e-commerce simultaneously. This is precisely the organisational complexity that makes EOS valuable — multiple functions, multiple sites, a leadership team that cannot be in all places at once. The company is firmly in the EOS sweet spot of 10–250 employees with multi-division complexity.</div>
+    </div>
+
+    <!-- D2 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">2. Leadership Openness</div>
+        <div class="eos-score mid">6 / 10</div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+      <div class="eos-rationale">Marc Rogers has been CEO since 1998 — approximately 28 years in the seat. Long-tenured family business CEOs are often proud of what they have built and can be resistant to external operating frameworks. However, two signals are encouraging: (1) a new director (Florence Douteau) was appointed in May 2024, suggesting openness to outside perspectives; and (2) Mathilde Rogers' appointment as Head of E-Commerce suggests the family is actively investing in modernisation. The risk is CEO entrenchment. The opportunity is to frame EOS as professionalisation and succession-readiness, not as criticism of the existing model.</div>
+    </div>
+
+    <!-- D3 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">3. Growth Stage &amp; Pain Points</div>
+        <div class="eos-score high">8 / 10</div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+      <div class="eos-rationale">Emcar exhibits multiple classic growth-stage pain points: (1) Admin costs are 25.6% of revenue — a structural inefficiency characteristic of siloed divisional overheads without a shared OS; (2) Inventory days of 150 suggests cross-divisional procurement and stock management issues; (3) The "Other" current liabilities line of MUR 114M needs explanation — likely reflects accruals and provisions building up without systematic resolution; (4) Finance costs of MUR 12.2M exist despite zero formal borrowings, suggesting lease and off-balance-sheet complexity. These are textbook symptoms of a company that has grown beyond its informal management systems.</div>
+    </div>
+
+    <!-- D4 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">4. Current Systems &amp; Processes</div>
+        <div class="eos-score mid">5 / 10</div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+      <div class="eos-rationale">No public evidence of ERP, structured OKRs, or a formal management operating system. The company has restructured its divisions since 2013 (Motorcycles, Marine, Sports, Workshop, Spare Parts, Tyres, Shipping) — evidence of organisational thinking — but the financial ratios suggest execution gaps. The launch of emcarshop.mu and the e-commerce division suggests some process digitisation is underway. Deloitte has been auditor since 1980, providing long-term financial discipline, but audit discipline is not the same as operational process maturity. Score reflects likely informality at the management level despite solid financial controls.</div>
+    </div>
+
+    <!-- D5 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">5. Company Culture</div>
+        <div class="eos-score high">7 / 10</div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+      <div class="eos-rationale">A 113-year-old family company that has survived multiple economic cycles, expanded to Rodrigues, and modernised into e-commerce demonstrates cultural resilience and adaptability. The Rogers family's multi-generational involvement (Reginald Raffray, Marc, Philip, Georgina, Mathilde) signals strong cultural ownership and commitment. The recently renovated Forbach showroom and active social media presence suggest a culture that takes pride in its brand. The risk is that long-tenured family culture may resist external accountability structures. EOS's People Component (Right People, Right Seats) would need careful framing in a family context.</div>
+    </div>
+
+    <!-- D6 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">6. Decision-Making Patterns</div>
+        <div class="eos-score mid">5 / 10</div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+      <div class="eos-rationale">With a 4-person board, a CEO in post for 28 years, and a family ownership structure, decision-making is almost certainly highly centralised around Marc Rogers and possibly Adrian Marino (Director General). There is no evidence of a formal leadership team (L10) meeting cadence or structured quarterly review process. The appointment of a Director General (Adrian Marino) is a positive signal — it suggests delegation is beginning. The 150-day inventory situation and the high admin cost burden are consistent with decisions being made informally across divisions without a shared accountability framework.</div>
+    </div>
+
+    <!-- D7 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">7. Vision Clarity</div>
+        <div class="eos-score mid">6 / 10</div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+      <div class="eos-rationale">Emcar's website articulates a clear positioning ("bringing the world's best brands to Mauritius") and the company has a defined set of business lines. The 2013 structural reorganisation into seven divisions signals some strategic clarity. However, there is no publicly articulated 3-year or 10-year vision (no "BHAG"). The simultaneous expansion into energy (Himoinsa, Victron), e-commerce, and retail renovation at Forbach suggests strategic activity, but it is unclear whether these are coordinated around a single vision or reactive to opportunities. EOS's Vision/Traction Organiser (V/TO) would be a high-value tool here.</div>
+    </div>
+
+    <!-- D8 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <div class="eos-dim-title">8. Meeting Culture</div>
+        <div class="eos-score mid">4 / 10</div>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:40%"></div></div>
+      <div class="eos-rationale">No public evidence of any structured meeting rhythm. Annual returns are filed consistently (on time in 2024, 2023, 2021) suggesting basic governance discipline, but this is board-level compliance rather than operational meeting culture. A company managing 7 business lines, 6 locations, and 110+ staff across Mauritius and Rodrigues without a structured weekly L10 meeting, quarterly rocks review, or annual planning day is almost certainly experiencing coordination friction. This is one of the dimensions where EOS would deliver the fastest visible impact — the Meeting Pulse alone can transform multi-site operations.</div>
+    </div>
+
+    <!-- OVERALL -->
+    <div class="eos-overall">
+      <div class="eos-overall-score">
+        <div class="big-num">6.1</div>
+        <div class="big-denom">/ 10</div>
+        <div class="big-label">EOS Suitability</div>
+      </div>
+      <div class="eos-overall-text">
+        <h4>Strong EOS Candidate — Proceed with Confidence</h4>
+        <p>Emcar scores 6.1/10 overall, which is a strong signal for an initial approach. The company has the right size and complexity to benefit from EOS, clear financial pain points that EOS would address (admin costs, inventory, coordination friction), and a family leadership that is actively modernising. The primary friction point will be the long-tenured CEO and the family dynamics around "Right People, Right Seats." The recommended approach is to lead with operational ROI — show Marc Rogers how EOS can close the gap between his 37.4% gross margin and his 4.5% net margin by attacking the admin cost structure and inventory management system. The EOS pitch for Emcar is: "You are making great product margins. You are leaving MUR 150M+ on the table in admin and stock inefficiency. EOS is how you capture it."</p>
+      </div>
+    </div>
+
+    <div class="subsection-title">Recommended EOS Tools — Priority Order</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>EOS Tool</th><th>Why It Fits Emcar</th><th>Priority</th></tr>
+        </thead>
+        <tbody>
+          <tr class="heat-ok"><td>Meeting Pulse (L10 + Quarterly)</td><td>7 business lines across 6 locations with no evident meeting rhythm. Immediate coordination gain.</td><td><span class="b b-green">FIRST</span></td></tr>
+          <tr class="heat-ok"><td>Rocks (Quarterly Priorities)</td><td>Multi-division complexity with unclear cross-divisional prioritisation. Rocks will create focus.</td><td><span class="b b-green">FIRST</span></td></tr>
+          <tr class="heat-ok"><td>Scorecard</td><td>With 7 divisions, a weekly scorecard will surface inventory, DSO, and admin cost issues faster than monthly management accounts.</td><td><span class="b b-green">FIRST</span></td></tr>
+          <tr class="heat-warn"><td>Process Component (3 Core Processes)</td><td>Inventory management, customer service, and workshop workflow are the three processes most likely to reduce the 150-day inventory and admin cost burden.</td><td><span class="b b-amber">SECOND</span></td></tr>
+          <tr class="heat-warn"><td>V/TO (Vision/Traction Organiser)</td><td>Emcar lacks a documented 3-year picture and 10-year BHAG. The energy and e-commerce pushes need to be unified into a single directional vision.</td><td><span class="b b-amber">SECOND</span></td></tr>
+          <tr><td>Accountability Chart</td><td>Family business with a 28-year CEO — the Accountability Chart conversation will be the most sensitive but potentially most valuable. Treat with care.</td><td><span class="b b-blue">THIRD</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 7: RECOMMENDATIONS -->
+<div id="t7" class="tab-content">
+  <div class="content-wrap">
+    <div class="section-title">Recommendations &amp; Action Plan</div>
+    <div class="section-lead">Based on the full research and EOS assessment, the following actions are recommended for the first contact and initial engagement with Emcar Limited.</div>
+
+    <div class="action-grid">
+      <div class="action-card">
+        <div class="ac-num">Action 01</div>
+        <h4>Open with the Financial Gap Narrative</h4>
+        <p>Lead the first conversation with the insight that Emcar has a 37.4% gross margin but only a 4.5% net margin — a 32.9-point gap. Frame EOS as the operational system to close this gap by addressing the admin cost burden (25.6% of revenue) and inventory inefficiency (150 days). This is a CFO-level hook that will resonate with Marc Rogers as CEO.</p>
+        <span class="urg urg-now">First Contact</span>
+      </div>
+      <div class="action-card">
+        <div class="ac-num">Action 02</div>
+        <h4>Request a Discovery Meeting with Marc Rogers</h4>
+        <p>Contact Marc Rogers directly at m***@emcar.mu or via +230 405 1000. Introduce LMAGP and EOS. Request a 45-minute discovery call. Do not pitch EOS in the first contact — ask questions about how he manages seven divisions across six locations and what his biggest operational frustrations are.</p>
+        <span class="urg urg-now">First Contact</span>
+      </div>
+      <div class="action-card">
+        <div class="ac-num">Action 03</div>
+        <h4>Identify the Real Decision-Maker Alongside Marc</h4>
+        <p>Adrian Marino (Director General) is likely the operational decision-maker who would champion an EOS implementation day-to-day. Any engagement strategy should include Marino alongside Rogers. Do not attempt to go around Rogers — he controls the equity and has 28 years of tenure.</p>
+        <span class="urg urg-week">Week 1</span>
+      </div>
+      <div class="action-card">
+        <div class="ac-num">Action 04</div>
+        <h4>Frame EOS Around the Multi-Division Coordination Problem</h4>
+        <p>The Meeting Pulse and Scorecard components directly address Emcar's largest pain: coordinating 7 business lines and 6 locations without a shared operating rhythm. Use this framing in the Clarity Break / Focus Day pitch — it is concrete, operational, and not threatening to the CEO's authority.</p>
+        <span class="urg urg-week">Discovery Meeting</span>
+      </div>
+      <div class="action-card">
+        <div class="ac-num">Action 05</div>
+        <h4>Acknowledge the Family Succession Angle</h4>
+        <p>With a 113-year-old family business and Mathilde Rogers (next generation) already in an operational role, succession planning is a live concern. EOS's Accountability Chart and Right People Right Seats framework are powerful tools for structuring next-generation transitions. Raise this carefully as a value-add, not a critique.</p>
+        <span class="urg urg-medium">First Meeting</span>
+      </div>
+      <div class="action-card">
+        <div class="ac-num">Action 06</div>
+        <h4>Investigate the "Other" Current Liabilities (MUR 114M)</h4>
+        <p>The MUR 114.4M in unspecified current liabilities is a material and unexplained item — 59% of total current liabilities. Before any deep financial conversation, understand what this contains. It may include IFRS 16 lease liabilities, related-party balances, or customer advance payments. This is both a due diligence item and a natural conversation opener about financial visibility.</p>
+        <span class="urg urg-week">Discovery Meeting</span>
+      </div>
+    </div>
+
+    <div class="subsection-title">Approach Strategy Summary</div>
+    <div class="closing-grid">
+      <div class="closing-box">
+        <h4>Why Emcar Is a Strong Lead</h4>
+        <ul class="signal-list">
+          <li><span class="sig-num">01</span>MUR 667M revenue — meaningful EOS engagement fee potential</li>
+          <li><span class="sig-num">02</span>7 divisions, 6 locations, ~110 staff — textbook EOS complexity profile</li>
+          <li><span class="sig-num">03</span>Clear financial pain: MUR 170M admin cost vs MUR 30M net profit</li>
+          <li><span class="sig-num">04</span>Zero debt, MUR 385M equity — financially capable of investing in EOS</li>
+          <li><span class="sig-num">05</span>Next-generation Rogers (Mathilde) already in business — succession trigger</li>
+          <li><span class="sig-num">06</span>New director (Douteau, 2024) signals governance modernisation appetite</li>
+        </ul>
+      </div>
+      <div class="closing-box steel-box">
+        <h4>Watch Points</h4>
+        <ul class="signal-list">
+          <li><span class="sig-num">!</span>Marc Rogers: 28-year CEO tenure — high autonomy, potential resistance to external framework</li>
+          <li><span class="sig-num">!</span>Family business dynamics — Right People Right Seats conversation is sensitive</li>
+          <li><span class="sig-num">!</span>Suzuki franchise dependency — any disruption to this relationship changes the business materially</li>
+          <li><span class="sig-num">!</span>Quick ratio 0.56 and 150-day inventory — cash cycle is under pressure; ensure EOS pitch addresses working capital, not just strategic vision</li>
+          <li><span class="sig-num">!</span>Legacy charges on CBRIS not formally vacated — minor, but worth noting if a due diligence conversation arises</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="subsection-title">Suggested First Contact Message</div>
+    <div class="alert alert-info">
+      <div class="alert-title">Suggested Opening for First Call / Email to Marc Rogers</div>
+      "Mr Rogers, I run an EOS implementation practice in Mauritius. I have been looking at companies that have reached the scale and complexity where a structured operating system typically adds the most value — and Emcar is on that list. With seven business lines and operations across Mauritius and Rodrigues, I suspect coordinating the team and keeping all divisions focused on the same priorities is one of your bigger challenges. I would love 30 minutes to share what I have seen work for companies at your stage. Would you be open to a brief call?"
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="report-footer">
+  <span>EMCAR LIMITED &bull; File C14 &bull; BRN C07000014 &bull; Comprehensive Company Analysis &bull; March 2026</span>
+  <span>Prepared by Rex (Research Agent) &bull; LMAGP PKA System &bull; Sources: CBRIS 31/03/2026 &bull; emcar.mu &bull; ZoomInfo &bull; LinkedIn</span>
+</div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+
+</body>
+</html>
