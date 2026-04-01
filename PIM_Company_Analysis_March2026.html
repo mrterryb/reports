@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIM Limited — Comprehensive Company Analysis — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Plastic Manufacturing & Recycling</span>
+    <span class="badge badge-type">Public Company · Domestic · SEM Listed</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">26 March 2026</span>
+  </div>
+  <h1>PIM:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">PIM Limited · Company intelligence · Financial ratios · EOS implementation assessment · Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">Rs 340,931,196</div>
+      <div class="stat-delta">Company-only CBRIS summary · year ended 30 June 2025</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Gross Margin</div>
+      <div class="stat-value emerald">22.6%</div>
+      <div class="stat-delta">Adequate trading spread, but overheads consume most of it</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.8 / 10</div>
+      <div class="stat-delta">Strong fit if leadership is ready to confront complexity and margin discipline</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Weak Quick Liquidity</div>
+      <div class="stat-delta">0.47× quick ratio and cash of only Rs 4,072,286</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>PIM Limited — Company Analysis &amp; EOS Assessment · 26 March 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 55-year-old listed plastics manufacturer with real scale, credible governance and a sustainability story, but still carrying the classic mid-market tension of thin profits, heavy inventory and a balance sheet that does not leave much room for sloppy execution.</p>
+
+  <p class="body-text">PIM Limited is a long-established Mauritian plastics manufacturer incorporated on 1 June 1970 and listed on the Stock Exchange of Mauritius since 1993. It manufactures a broad range of industrial and household plastic products serving local and regional markets, and it now pairs the legacy manufacturing platform with a newer circular-economy proposition through PIM Recycling Ltd.</p>
+  <p class="body-text">Strategically, the company sits in a useful place: established factory base, recognised certifications, large product breadth, and a controlling relationship with Mauritius Oil Refineries in practice. That gives it more institutional depth than the average SME. It also creates the usual group-dynamics question: how much of the business is run with crisp operating accountability versus board-level oversight and legacy habits.</p>
+  <p class="body-text">Financially, FY2025 was profitable but not comfortably so. Revenue was Rs 340,931,196 and net profit after tax just Rs 5,994,298, a net margin of 1.8%. Liquidity is the pressure point: current ratio is only 1.23×, quick ratio 0.47×, and inventory alone absorbs Rs 76,313,049. That is exactly the kind of operational drag EOS can expose and attack fast, provided leadership is willing to translate broad intent into measurable weekly discipline.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Operationally Serious, But Margin-Thin</div>
+    PIM does not look like a broken company. It looks like a serious mid-market operator that has already built the basics — manufacturing footprint, governance scaffolding, product range, certifications, export capability and a sustainability narrative. The real issue is that the economics are still tighter than the strategic ambition. That mismatch is where an EOS conversation gets interesting: not “do you need management 101?” but “how do you convert scale, complexity and initiatives into cleaner accountability, faster decisions, tighter inventory control and more profit?”
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Broad manufacturing capability</strong>, long market presence, local-plus-regional reach, recognised certifications, Coca-Cola supplier status, and a credible recycling angle that can differentiate the company in tenders and strategic accounts.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Liquidity is the weak spot</strong>. Quick assets are thin, cash is low, working capital is tied up in stock, and FY2025 profit is positive but too modest relative to the asset base and operating complexity.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>The company is complex enough to need EOS</strong>: multiple directors, listed-company governance, 165 employees, manufacturing plus recycling, export ambitions and a clear need for tighter cross-functional execution.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">An established Mauritian plastics platform evolving from legacy manufacturing into a broader packaging and circular-economy operator.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">PIM Limited was incorporated on 1 June 1970 under the former name Plastic Industry (Mauritius) Ltd. CBRIS shows file number C1808, BRN C06001808, status Live, and registered office at Level 3, Alexander House, 35 Cybercity, Ebene. Stated capital is Rs 20,000,000. Secretary: OneLink Ltd. Auditor: Deloitte Solutions Ltd.</p>
+  <p class="body-text">The head office and factory are at Quay Road, Port Louis, with additional warehouse activity at Muslim Cemetery Road, Riche Terre. The business has long-standing export and industrial development certificates and has maintained annual return filings for the last three years. The company rebranded to PIM Limited in 2020, shifting from a purely industrial identity to a more modern, sustainability-aware positioning.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header"><h4>Mauritius Oil Refineries Ltd</h4><div class="ec-sub">Largest disclosed shareholder</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">CBRIS holding</span><span class="mv">645,146 shares</span></div>
+        <div class="ec-metric"><span class="mk">Annual report view</span><span class="mv">32.26%</span></div>
+        <div class="ec-metric"><span class="mk">Implication</span><span class="mv ok">Strategic anchor</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>National Pensions Fund</h4><div class="ec-sub">Institutional shareholder</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">CBRIS holding</span><span class="mv">298,715 shares</span></div>
+        <div class="ec-metric"><span class="mk">Annual report view</span><span class="mv">14.94%</span></div>
+        <div class="ec-metric"><span class="mk">Implication</span><span class="mv ok">Stability signal</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>Promotion &amp; Development Ltd</h4><div class="ec-sub">Substantial shareholder</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">CBRIS holding</span><span class="mv">310,519 shares</span></div>
+        <div class="ec-metric"><span class="mk">Annual report view</span><span class="mv">11.20%</span></div>
+        <div class="ec-metric"><span class="mk">Implication</span><span class="mv warn">Needs verification</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Note — Ownership Data Discrepancy</div>
+    The CBRIS shareholder extract and the 2025 annual report do not reconcile cleanly on share counts and percentage holdings. That does not invalidate the ownership picture — Mauritius Oil Refineries is clearly the anchor shareholder — but it does mean any live prospecting conversation should verify the latest register or SEM shareholder disclosures before stating exact ownership percentages as fact.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card"><h4>Mushtaq Mohamed O. N. Oosman — Chairman</h4><p>Independent non-executive chairman. Joined the board on 3 March 2021 and became chairman after the resignation of Raoul Joseph Paul Clarenc at the end of 2024. Governance-heavy profile; sits on several listed-company boards.</p></div>
+    <div class="profile-card"><h4>M. Paul Eric Piat Corson — Executive Director / Managing Director</h4><p>Joined PIM in 2013, became General Manager on 1 January 2014 and executive director in November 2014. He appears to be the real operating nerve centre of the business and also leads PIM Recycling.</p></div>
+    <div class="profile-card"><h4>Jinny C. Chan Chang — Independent Non-Executive Director</h4><p>Director since 8 February 2013. Finance Director of Jade Group of companies. Chairs the Audit and Risk Committee.</p></div>
+    <div class="profile-card"><h4>Marie Joseph Nicolas Merven — Non-Executive Director</h4><p>Director since 1 December 2022. Also a director of Mauritius Oil Refineries, reinforcing the practical group linkage.</p></div>
+    <div class="profile-card"><h4>Jerome Paul Edouard Clarenc — Non-Executive Director</h4><p>Appointed 6 February 2025. Also linked to Mauritius Oil Refineries. Suggests continued board refresh while preserving group influence.</p></div>
+    <div class="profile-card"><h4>Roseline Marie-Noelle Elissac-Foy — Director</h4><p>Appointed 3 November 2025 per CBRIS extract. Newer appointment worth probing in any live discussion because it may indicate governance renewal or specific strategic capability being added.</p></div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">PIM manufactures across injection, blow moulding and extrusion. The product catalogue is broad: household items, jars, bottles, jerrycans, caps, containers, buckets, crates, dustbins, flower pots, stools and chairs. End-markets include chemical, detergent, paint, beverages, food, pharmaceutical, cosmetics, industrial and environmental applications. Sales analysis in the 2025 annual report splits revenue mainly between industrial products and a smaller household consumables segment.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">The operational footprint is clearly Mauritian at plant level, but the commercial footprint is wider. PIM serves the local market and exports into regional Indian Ocean markets. FY2025 export sales were much smaller than local sales, however, which suggests the export story remains strategically important but not yet dominant. The newer recycling entity at Riche Terre adds a second operational node and extends the footprint from manufacturing into waste collection and valorisation.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Note</div>
+    PIM’s website is active, informative and more polished than the average Mauritian industrial SME. That is good. The weak spot is not presence but conversion: there is limited public evidence of a sharp commercial message around sector priorities, account focus or a clear “why choose us” narrative beyond heritage, breadth and sustainability.
+  </div>
+</div>
+</div>
+
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Primary numbers below are from the last CBRIS financial summary filed for year ended 30 June 2025, in Mauritius rupees. Supplemental qualitative context comes from the company’s public annual report and SEM interim release.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    This report uses the condensed financial summary available on CBRIS, not the full audited financial statements. That means certain details are either absent or compressed: depreciation is not separately disclosed, current liabilities are only partly broken down, and short-term bank overdrafts may sit inside “others” rather than stand alone. Prior-year comparative detail is limited in the CBRIS extract, so trend commentary is supplemented, cautiously, with the public 2025 annual report and the December 2025 SEM interim statement.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>Rs 340,931,196</td><td>100.0%</td><td>Solid top line for a Mauritian mid-market manufacturer.</td></tr>
+        <tr><td>Cost of Sales</td><td>Rs 263,962,917</td><td>77.4%</td><td>Direct cost base is heavy but still leaves a usable gross spread.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>Rs 76,968,279</td><td>22.6%</td><td>Commercially respectable. The business can create gross value; the issue is what happens after that.</td></tr>
+        <tr><td>Other Income</td><td>Rs 5,802,803</td><td>1.7%</td><td>Helpful, but not transformational.</td></tr>
+        <tr><td>Distribution Costs</td><td>Rs 11,727,426</td><td>3.4%</td><td>Manageable in isolation.</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>Rs 56,423,621</td><td>16.5%</td><td>This is the line that bites. Overhead consumes most of gross profit.</td></tr>
+        <tr><td>Other Expenses</td><td>Rs 0</td><td>0.0%</td><td>No separate other-expense burden disclosed in the CBRIS summary.</td></tr>
+        <tr class="heat-warn"><td>Finance Costs</td><td>Rs 5,652,438</td><td>1.7%</td><td>Noticeable drag relative to modest operating profit.</td></tr>
+        <tr class="heat-warn"><td>Profit Before Tax</td><td>Rs 8,967,597</td><td>2.6%</td><td>Positive, but thin for a business with this asset intensity and complexity.</td></tr>
+        <tr><td>Tax Expense</td><td>Rs 2,973,299</td><td>0.9%</td><td>Normal tax drag on already-thin earnings.</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>Rs 5,994,298</strong></td><td><strong>1.8%</strong></td><td>Profitable, yes. Comfortable, no. There is little room for operational slippage.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-current assets</td><td>Property, plant and equipment</td><td>Rs 153,368,684</td><td>Factory-based business. Real operating asset base.</td></tr>
+        <tr><td>Non-current assets</td><td>Intangible assets</td><td>Rs 112,150</td><td>Immaterial.</td></tr>
+        <tr><td>Non-current assets</td><td>Investment in subsidiaries and other investments</td><td>Rs 1,000,001</td><td>Likely reflects the recycling subsidiary and small investments.</td></tr>
+        <tr><td>Current assets</td><td>Inventories</td><td>Rs 76,313,049</td><td>Very large working-capital tie-up. This is the balance-sheet line to interrogate hard.</td></tr>
+        <tr><td>Current assets</td><td>Trade and other receivables</td><td>Rs 42,820,869</td><td>Manageable in size, but still material.</td></tr>
+        <tr class="heat-critical"><td>Current assets</td><td>Cash and cash equivalents</td><td>Rs 4,072,286</td><td>Thin cash cushion relative to the scale of operations.</td></tr>
+        <tr><td>Equity</td><td>Share capital</td><td>Rs 20,000,000</td><td>Stable stated capital base.</td></tr>
+        <tr><td>Equity</td><td>Reserves and retained earnings</td><td>Rs 87,146,206</td><td>Retained capital exists, but returns on that capital are not strong enough yet.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Long-term borrowings</td><td>Rs 39,531,000</td><td>Moderate structural debt.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Deferred tax</td><td>Rs 31,174,183</td><td>Meaningful deferred tax balance.</td></tr>
+        <tr class="heat-warn"><td>Current liabilities</td><td>Trade and other payables</td><td>Rs 56,899,443</td><td>Supplier funding is material and clearly part of the working-capital model.</td></tr>
+        <tr><td>Current liabilities</td><td>Current tax payable</td><td>Rs 3,938,853</td><td>Routine liability.</td></tr>
+        <tr class="heat-warn"><td>Current liabilities</td><td>Others</td><td>Rs 42,889,968</td><td>This line is chunky and deserves decoding in the full accounts or management pack.</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>Total assets / total equity &amp; liabilities</strong></td><td><strong>Rs 277,687,038</strong></td><td><strong>The balance sheet is not distressed, but it is not lazy-capital friendly either.</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The CBRIS extract reviewed on 25 March 2026 shows no registered charges listed. That is cleaner than many Mauritian industrial businesses and removes one obvious balance-sheet complication. It does not mean the company is debt free — long-term borrowings are clearly disclosed — only that the charge register itself appears empty on the extract reviewed.</p>
+  <div class="alert alert-ok">
+    <div class="alert-title">Charge Register Signal</div>
+    No registered charges were shown on the reviewed extract. That is a positive simplification for diligence, though the debt and lease picture should still be cross-checked against the full audited accounts.
+  </div>
+</div>
+</div>
+
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks below are pragmatic Mauritius mid-market manufacturing/service bands used for advisory interpretation, not an official single-source league table. Green = healthy, Amber = watch, Red = critical concern.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.23×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.50–2.20×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber</span></span></div>
+      <span class="ratio-interpret">Current assets cover current liabilities, but without much slack. This is not a cliff-edge problem yet; it is a “don’t mess around with execution” problem.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.47×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.80–1.20×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red</span></span></div>
+      <span class="ratio-interpret">This is the nasty one. Strip out stock and liquid cover drops sharply. PIM is depending heavily on inventory turning and creditors behaving.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">22.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">20%–35%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green</span></span></div>
+      <span class="ratio-interpret">The company can still make acceptable gross margin. Translation: the product/market engine is not the main villain. Overhead and working capital are.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">4.3%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">6%–12%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber</span></span></div>
+      <span class="ratio-interpret">Operating profit exists, but it is not where it should be for a company carrying this much plant, stock and management complexity.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">1.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">4%–10%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red</span></span></div>
+      <span class="ratio-interpret">This is subscale profitability. One bad quarter, one pricing miss, or one inventory mistake and the year gets ugly fast.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Returns on Capital</h4>
+      <div class="ratio-row"><span class="ratio-label">ROA</span><span class="ratio-val warn">2.2%</span></div>
+      <div class="ratio-row"><span class="ratio-label">ROE</span><span class="ratio-val warn">5.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Mixed</span></span></div>
+      <span class="ratio-interpret">Return on assets is weak and return on equity is only moderate. That screams under-monetised asset base rather than outright distress.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.37×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.30–0.80×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green</span></span></div>
+      <span class="ratio-interpret">Leverage is not reckless based on disclosed borrowings alone. The problem is less “too much debt” than “not enough cash generation relative to the capital employed.”</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">2.59×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">>3.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber</span></span></div>
+      <span class="ratio-interpret">The company can cover interest, but not by an absurdly safe margin. Finance costs still matter because operating profit is not fat enough.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.23×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.00–1.80×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green</span></span></div>
+      <span class="ratio-interpret">This is acceptable. The asset base is working, just not producing enough clean profit.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">3.46×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">4.0–8.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber</span></span></div>
+      <span class="ratio-interpret">Inventory movement is not catastrophic, but the absolute stock number is still doing too much damage to liquidity. This is why turnover ratio alone can flatter the picture.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debtor Days / DSO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">46 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30–60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green</span></span></div>
+      <span class="ratio-interpret">Receivables are not the main crisis. Around a month and a half is workable in this market if credit control is disciplined.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days / DPO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">79 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">45–75 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber</span></span></div>
+      <span class="ratio-interpret">PIM is using supplier credit meaningfully. That helps cash in the short term, but it also means operations cannot afford a planning mess or a margin squeeze.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    The ugly duo is the 0.47× quick ratio and the 1.8% net margin. The first says cash resilience is weak once stock is stripped out. The second says there is not enough earnings room to absorb mistakes. Fixing inventory discipline and overhead conversion will create more value than chasing sexy new growth stories before the engine is tighter.
+  </div>
+</div>
+</div>
+
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Three practical arenas define PIM’s position: industrial packaging, household plastics, and the emerging circular-economy / recycling proposition.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header"><h4>Industrial Packaging</h4><div class="ec-sub">Core revenue engine</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Typical offer</span><span class="mv">Bottles, jars, caps, jerrycans, containers</span></div>
+        <div class="ec-metric"><span class="mk">Likely rivals</span><span class="mv">Plaspak, Explast, Plasticon, importers</span></div>
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv ok">Breadth + certification</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>Household &amp; Utility Plastics</h4><div class="ec-sub">Broader catalogue play</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Typical offer</span><span class="mv">Chairs, crates, dustbins, pots, stools</span></div>
+        <div class="ec-metric"><span class="mk">Likely rivals</span><span class="mv">Imports, local fabricators, general traders</span></div>
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv warn">Range over sharp niche</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>Recycling &amp; Circular Solutions</h4><div class="ec-sub">New strategic lever</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Typical offer</span><span class="mv">Collection, crushing, reprocessing</span></div>
+        <div class="ec-metric"><span class="mk">Likely rivals</span><span class="mv">Fragmented recyclers, NGO-linked initiatives</span></div>
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv ok">Differentiated story</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text">The first real advantage is manufacturing breadth. PIM is not a one-trick moulding shop; it covers multiple product families and process types, which matters in a small island market where customers like consolidation. The second is institutional credibility: listed status, board structure, ISO/HACCP/Coca-Cola credentials and long operating history reduce perceived supplier risk. The third is that the recycling activity gives PIM a narrative many competitors cannot yet match credibly — not just “we sell plastic,” but “we can help you use, recover and re-enter plastic more responsibly.”</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li>Demand for reliable local packaging remains resilient because import substitution and supply-chain risk still matter in island economies.</li>
+    <li>Environmental scrutiny of plastics is rising, which hurts undifferentiated players but can favour manufacturers with recycling capability and certification.</li>
+    <li>Export markets are attractive, but they are lumpy and harder to win consistently; PIM’s own FY2025 export sales dipped sharply.</li>
+    <li>Customers increasingly expect both compliance and sustainability, which plays to PIM’s strengths if commercial teams monetise it properly.</li>
+    <li>Commodity, resin and energy cost volatility can savage already-thin margins, especially when pricing discipline is weak.</li>
+    <li>Operational complexity grows fast when a manufacturer adds sustainability projects, public visibility and a new subsidiary without an equally strong management system.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Competitive Gap</div>
+    PIM’s public message says “broad range” and “quality” very well. It says “why a serious B2B account should choose us over the next capable local plastics supplier” less sharply. That is a positioning problem, not a product problem.
+  </div>
+</div>
+</div>
+
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">01 — Organisational Size and Complexity</span><span class="eos-score high">8 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">At about 165 employees, with a listed-company governance overlay, a factory, a warehouse, a recycling subsidiary and both local and export activity, PIM is squarely in the zone where informal management becomes expensive.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">02 — Leadership Openness</span><span class="eos-score mid">6 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">There are positive signs: governance committees, quarterly board meetings, public reporting and strategic initiatives such as recycling. But listed-company governance is not the same thing as genuine operating-system openness. The gating question is whether leaders want more transparency once the numbers become uncomfortable.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">03 — Growth Stage and Pain Points</span><span class="eos-score high">8 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">This is classic EOS territory: legacy business, newer strategic initiative, margin pressure, working-capital drag, export ambitions and the need to convert “many moving parts” into fewer real priorities.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">04 — Current Systems and Processes</span><span class="eos-score mid">6 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">PIM clearly has systems; this is not chaos. But the financials suggest that existing systems are not yet producing enough speed, simplicity or margin protection. In EOS terms, structure probably exists, traction probably leaks.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">05 — Company Culture</span><span class="eos-score mid">6 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">There are good cultural signals: longevity, safety language, certifications, unionised employees and sustainability messaging. But none of that proves execution accountability. The real test is whether underperformance gets named and solved cleanly.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">06 — Decision-Making Patterns</span><span class="eos-score mid">6 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The governance structure is clear at board level, but operational ownership is less visible publicly. A managing director exists, yet group ties and board presence may still blur where final operating accountability truly sits.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">07 — Vision Clarity</span><span class="eos-score high">7 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Publicly, the company has a coherent strategic arc: heritage manufacturing plus circularity, recycling and smarter plastics. That is more vision than most. The missing piece is ruthless narrowing into a few company priorities that hit profit and cash, not just reputation.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">08 — Meeting Culture</span><span class="eos-score high">7 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Board meetings occur quarterly with agendas and committee structures. That is a better starting point than most SMEs. Still, board rhythm is not the same as an operational Level 10 cadence. EOS would need to build that layer beneath governance.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.8</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>PIM looks like a very plausible EOS candidate. It has enough complexity, enough management drag and enough strategic ambition to benefit meaningfully. The gating factor is not need; it is willingness. If leadership wants a sharper operating machine, EOS fits. If they only want better-looking governance language, it won’t.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for PIM Limited</h3>
+  <div class="profile-grid">
+    <div class="profile-card"><h4>Scorecard &amp; Measurables</h4><p>PIM needs a weekly leadership scorecard around stock days, production efficiency, scrap, contribution by segment, overdue receivables, export pipeline conversion and cash. Right now the financials tell the story too late.</p></div>
+    <div class="profile-card"><h4>Accountability Chart</h4><p>The business needs clarity between board governance, MD control, plant leadership, supply chain, sales/export and recycling. This is exactly where role fog quietly kills profit.</p></div>
+    <div class="profile-card"><h4>Rocks</h4><p>PIM should force the strategy into 90-day priorities: inventory reduction, export recovery, recycling commercialisation and overhead clean-up. Not 19 initiatives. A handful.</p></div>
+    <div class="profile-card"><h4>V/TO</h4><p>The company already has a public narrative. EOS would force leadership to turn that narrative into a real target market, uniques, 3-year picture and one-year plan that can actually be executed.</p></div>
+    <div class="profile-card"><h4>Issues List &amp; IDS</h4><p>PIM likely has hidden operational friction buried under board papers and departmental conversations. IDS would drag those issues into the open and stop them breeding in the dark.</p></div>
+    <div class="profile-card"><h4>Level 10 Meeting</h4><p>This is the missing bridge between quarterly governance and weekly execution. Without it, the company risks managing through after-the-fact financials and fragmented departmental updates.</p></div>
+  </div>
+</div>
+</div>
+
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations: four financial/operational first, then four EOS-specific. Sequence matters. Fix immediate cash visibility and execution control first, then install the wider operating system.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Launch a 13-week cash and working-capital war room</h4>
+      <p>The MD, finance manager and operations lead should start a rolling 13-week cash forecast immediately. Success means weekly visibility on collections, supplier payments, inventory purchases and production cash burn. The aim is simple: no surprises and no lazy stock build.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Attack inventory by category, not in aggregate</h4>
+      <p>Inventory at Rs 76,313,049 is too heavy to leave as one giant number. Break it into fast-moving, strategic buffer, obsolete and low-rotation stock. Assign one accountable owner. Success means a measurable cash release within 90 days without service collapse.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Rebuild margin visibility by customer / product family</h4>
+      <p>PIM should stop judging the business at total-company gross margin only. Finance and sales need a simple contribution view by segment, account and product family. Success means knowing which products and customers are carrying the business and which are freeloading.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Decode the “other current liabilities” line fully</h4>
+      <p>The Rs 42,889,968 sitting in other current liabilities is too large to ignore. Finance should unpack it into operationally meaningful categories and link each to an owner and a due-date profile. Success means no mystery liabilities sitting outside leadership attention.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Run a Focus Day with the real operating leadership team</h4>
+      <p>Do not make this a board-seminar vanity exercise. Bring the MD, finance, operations, supply chain, sales/export and recycling leadership together. The output should be an honest diagnosis of the three biggest constraints hurting profit and cash right now.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build an Accountability Chart hypothesis before touching organisation design</h4>
+      <p>Map the seats first: Visionary/board role, Integrator/MD role, Sales, Operations, Supply Chain, Finance, Quality, Recycling. Success means each major result has a clear seat, not a committee blur.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Make the first Rock a working-capital Rock, not a fluffy strategic one</h4>
+      <p>The first 90-day Rock should be something like “Release Rs 10m–15m of working capital through stock and collections discipline while maintaining service levels.” That creates immediate proof EOS is not just management theatre.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Use the V/TO to answer one brutal strategic question</h4>
+      <p>What business is PIM really trying to become over the next three years: broad plastics manufacturer, higher-value packaging specialist, or circular solutions platform with manufacturing attached? Until leadership answers that cleanly, priorities will keep multiplying.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>PIM is a credible, serious industrial company — not a basket case and not a miracle either. The opportunity is obvious: a decent commercial platform, real assets, credible governance and a sustainability lever. What stands in the way is also obvious: thin conversion of effort into profit, too much cash parked in stock, and likely more operational ambiguity than the public narrative admits.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Within 2 weeks: establish weekly cash, stock and collections visibility.</li>
+        <li><span class="sig-num">02</span>Within 30 days: unpack inventory and other current liabilities into real management categories.</li>
+        <li><span class="sig-num">03</span>Within 45 days: run a Focus Day with the actual operating leadership team.</li>
+        <li><span class="sig-num">04</span>Within 60 days: finalise the Accountability Chart and leadership scorecard.</li>
+        <li><span class="sig-num">05</span>Within 90 days: execute the first working-capital Rock and install Level 10 meetings.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="report-footer">
+  <div>PIM Limited — Comprehensive Company Analysis &amp; EOS Assessment · 26 March 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius · PIM website · PIM annual report 2025 · SEM interim results (Dec 2025)</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
