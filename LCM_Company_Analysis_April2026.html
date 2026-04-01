@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LCM Limited — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; }
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); } .alert-warning .alert-title { color: var(--amber); } .alert-ok .alert-title { color: var(--emerald); } .alert-info .alert-title { color: var(--steel); }
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; } .heat-warn { background: #fef8f0 !important; } .heat-ok { background: #edf8f2 !important; }
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; } .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; } .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; } .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); } .urg-medium { background: var(--emerald-pale); color: var(--emerald); } .urg-week { background: var(--amber-pale); color: #9a5000; }
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">C44965</span>
+    <span class="badge badge-type">Equipment Distribution &amp; Rental</span>
+    <span class="badge badge-eos">EOS Prospect</span>
+    <span class="badge badge-date">April 2026</span>
+  </div>
+  <h1><span>LCM</span> Limited</h1>
+  <p class="report-subtitle">Comprehensive Company Analysis — Material Handling &amp; Construction Equipment, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue (FY2024)</div>
+      <div class="stat-value steel">MUR 290M</div>
+      <div class="stat-delta">~USD 6.5M · Strong growth trajectory</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit (FY2024)</div>
+      <div class="stat-value amber">MUR 15.8M</div>
+      <div class="stat-delta">5.4% net margin · Margin pressure evident</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Total Assets</div>
+      <div class="stat-value steel">MUR 387M</div>
+      <div class="stat-delta">Equity MUR 155M · D/E 1.49x</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability</div>
+      <div class="stat-value emerald">7 / 10</div>
+      <div class="stat-delta">Moderate-High Potential · Recommended</div>
+    </div>
+  </div>
+</div>
+
+<div class="prepared-for">
+  <span>Prepared for: Thierry — LMAGP PKA System · Research Agent Rex · 31 March 2026</span>
+  <div class="author-links">
+    <a href="https://lcm-mu.com/en/" target="_blank">lcm-mu.com</a>
+    <a href="https://www.cbris.gov.mu" target="_blank">CBRIS Registry</a>
+  </div>
+</div>
+
+<!-- TAB NAV -->
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('t1',this)"><span class="tab-num">01</span> Executive Summary</button>
+  <button class="tab-btn" onclick="showTab('t2',this)"><span class="tab-num">02</span> Company Overview</button>
+  <button class="tab-btn" onclick="showTab('t3',this)"><span class="tab-num">03</span> Financial Performance</button>
+  <button class="tab-btn" onclick="showTab('t4',this)"><span class="tab-num">04</span> Financial Ratios</button>
+  <button class="tab-btn" onclick="showTab('t5',this)"><span class="tab-num">05</span> Market &amp; Competitive Position</button>
+  <button class="tab-btn" onclick="showTab('t6',this)"><span class="tab-num">06</span> EOS Assessment</button>
+  <button class="tab-btn" onclick="showTab('t7',this)"><span class="tab-num">07</span> Recommendations</button>
+</nav>
+
+<!-- TAB 01: EXECUTIVE SUMMARY -->
+<div id="t1" class="tab-content active">
+  <div class="content-wrap">
+    <h2 class="section-title">Executive Summary</h2>
+    <p class="section-lead">LCM Limited is a 20+ year old Mauritian specialist in material handling equipment, construction machinery and industrial shelving. Part of the French-Mauritian Groupe De Courcy (DMP Group), it has nearly tripled revenue in five years and is now at a strategic inflection point where operational systems must keep pace with growth complexity.</p>
+
+    <div class="alert alert-ok">
+      <div class="alert-title">Verdict — Pursue EOS Engagement</div>
+      LCM is an EOS sweet-spot company: privately held, 30–50 employees, MUR 290M revenue, family-owned with professional directors, growing rapidly, and showing clear signs of needing an operating system to translate top-line strength into sustained profitability and execution discipline.
+    </div>
+
+    <h3 class="subsection-title">Identity at a Glance</h3>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h4>Legal Name</h4>
+        <p><strong>LCM Limited</strong><br>File No. C44965<br>BRN: C07044965</p>
+      </div>
+      <div class="profile-card">
+        <h4>Incorporated</h4>
+        <p><strong>14 February 2003</strong><br>Status: Live &amp; Active<br>Last ARF paid: 2025</p>
+      </div>
+      <div class="profile-card">
+        <h4>Registered Address</h4>
+        <p><strong>Arsenal Link Road</strong><br>Calebasses, Mauritius<br>Effective 28 Aug 2025</p>
+      </div>
+      <div class="profile-card">
+        <h4>Stated Capital</h4>
+        <p><strong>MUR 6,025,000</strong><br>60,250 ordinary shares<br>No par value · Fully paid</p>
+      </div>
+      <div class="profile-card">
+        <h4>Shareholder</h4>
+        <p><strong>DE COURCY</strong> (100%)<br>Groupe De Courcy / DMP<br>Family-owned holding entity</p>
+      </div>
+      <div class="profile-card">
+        <h4>Secretary</h4>
+        <p><strong>Knowledge Process Outsourcing Ltd</strong><br>1A Manita House, Royal Road<br>Quatre Bornes — since Feb 2015</p>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Directors &amp; Key People</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Appointed</th>
+            <th>Service Address</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jean Luc Jacques Potier</td>
+            <td>Director (Chairman)</td>
+            <td>14/02/2003</td>
+            <td>—</td>
+            <td>Founding director; patriarch of Groupe De Courcy; took over DMP in 1984; led group to 200+ employee regional operation</td>
+          </tr>
+          <tr>
+            <td>Aurélien Roger Henri Potier</td>
+            <td>Director</td>
+            <td>17/08/2017</td>
+            <td>57B Rue des Sables, Saint Gilles les Bains, France</td>
+            <td>Second-generation family; regional oversight; continuity of family leadership</td>
+          </tr>
+          <tr>
+            <td>G. François Jacques Brousse de Laborde</td>
+            <td>Director</td>
+            <td>01/06/2010</td>
+            <td>—</td>
+            <td>Non-family professional director; likely Finance/COO function; 15+ year tenure signals trust</td>
+          </tr>
+          <tr>
+            <td>Louis Laurent Rouge</td>
+            <td>Director (Managing Director, Mauritius)</td>
+            <td>17/03/2021</td>
+            <td>1 Steel Avenue, Riche Terre, Mauritius</td>
+            <td>Day-to-day operational head for LCM Mauritius; recent appointment signals deliberate local leadership investment</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="subsection-title">Three-Point Financial Snapshot (FY2024)</h3>
+    <div class="alert alert-info">
+      <div class="alert-title">Data Source Note</div>
+      All financial figures are taken directly from the CBRIS-filed statements (FY ended 31 December 2024, approved 30 June 2025). No auditor is named in the CBRIS extract; no charges are registered. Three years of annual returns have been filed on time.
+    </div>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h4>Profitability</h4>
+        <p>Revenue <strong>MUR 289.8M</strong> · Gross Profit MUR 104.7M (36.1% margin) · Net Profit <strong>MUR 15.8M</strong> (5.4% net margin). Finance costs of MUR 16.2M are near-equal to PBT — a key risk signal.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Liquidity</h4>
+        <p>Current ratio <strong>2.19x</strong> — strong. Quick ratio 1.09x — adequate. Cash MUR 25.4M. Inventories heavy at MUR 116M (40% of assets). Working capital well-managed.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Leverage</h4>
+        <p>Total liabilities MUR 231M · Equity MUR 155M · D/E <strong>1.49x</strong>. No registered charges. Non-current "Others" of MUR 117M likely represents group intercompany loans. Interest coverage a slim <strong>1.22x</strong> — watch closely.</p>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Charge Register</h3>
+    <div class="alert alert-ok">
+      <div class="alert-title">Charges — Clear</div>
+      The CBRIS extract as of 4 November 2025 shows <strong>no floating charges, no fixed charges, and no winding-up proceedings</strong> registered against LCM Limited. No objections on file. This is a clean registry position.
+    </div>
+  </div>
+</div>
+
+<!-- TAB 02: COMPANY OVERVIEW -->
+<div id="t2" class="tab-content">
+  <div class="content-wrap">
+    <h2 class="section-title">Company Overview</h2>
+    <p class="section-lead">LCM Limited is Mauritius's specialist distributor and rental operator for material handling equipment, construction machinery, warehouse racking systems and related services. Backed by the Groupe De Courcy (DMP) — a French family conglomerate with operations across Réunion, Mauritius, Mayotte and Madagascar — LCM brings 40+ years of group expertise to the Mauritian market.</p>
+
+    <h3 class="subsection-title">Business Activities</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Activity</th><th>Detail</th><th>Principal Place</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Import and Export</td><td>Importing capital machinery, spare parts and equipment for resale</td><td>Arsenal Link Rd, Calebasses</td></tr>
+          <tr><td>Wholesale of Machinery &amp; Equipment</td><td>Sales of forklift trucks, construction equipment, warehouse racking — exclusive brand rights</td><td>Arsenal Link Rd, Calebasses</td></tr>
+          <tr><td>Rental of Construction Machinery</td><td>Short-term, long-term and rent-to-own arrangements; dedicated LCM Rental branch (Bambous, 2020)</td><td>Arsenal Link Rd, Calebasses</td></tr>
+          <tr><td>After-Sales Service</td><td>Maintenance contracts, workshop repairs, spare parts, operator training per brand</td><td>Riche Terre workshop / Bambous branch</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="subsection-title">Products &amp; Brands Represented</h3>
+    <ul class="styled-list">
+      <li><strong>Forklift Trucks:</strong> Fenwick-Linde (electric, combustion, reach trucks), Unicarriers / Nissan — exclusive distributorship</li>
+      <li><strong>Construction &amp; Compact Equipment:</strong> Manitou (telehandlers, rough-terrain forklifts), Kubota (excavators, tractors, utility vehicles)</li>
+      <li><strong>Heavy Handling:</strong> Kalmar (port and logistics heavy stackers and reach stackers)</li>
+      <li><strong>Lifting:</strong> Liebherr (tower cranes and mobile cranes)</li>
+      <li><strong>Warehouse Racking &amp; Shelving:</strong> Industrial storage systems, mezzanine floors</li>
+      <li><strong>Second-hand Equipment:</strong> Certified pre-owned machinery via LCM Rental / Bambous outlet</li>
+    </ul>
+
+    <h3 class="subsection-title">Locations &amp; Facilities</h3>
+    <div class="profile-grid two-col">
+      <div class="profile-card">
+        <h4>Head Office &amp; Main Workshop — Riche Terre</h4>
+        <p>Primary commercial and service base. Includes showroom, offices, maintenance depot with trained technicians, and spare parts warehouse. Serves the north and central industrial belt of Mauritius.</p>
+      </div>
+      <div class="profile-card">
+        <h4>LCM Rental Branch — Bambous (Medine), opened 2020</h4>
+        <p>Dedicated rental and second-hand equipment centre opened in 2020. Fleet storage yard, rental operations and rent-to-own servicing. Covers the west of the island. Strategic expansion reflecting growing demand for leasing over ownership.</p>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Group Structure &amp; Ownership</h3>
+    <p class="body-text">LCM operates as the Mauritian arm of <strong>Groupe De Courcy (DMP Group)</strong>, a French family enterprise founded in Réunion in 1972 and taken over by Jean-Luc Potier in 1984. The group spans Réunion (home base), Mauritius (LCM), Mayotte, and Madagascar — employing 200+ people regionally. In Réunion, the group commands over 60% market share in material handling equipment. The group's philosophy: exclusive brand representation, full lifecycle service, and long-term regional dominance.</p>
+    <p class="body-text">All 60,250 shares of LCM Limited are held by "DE COURCY" — the family holding entity. This is a 100% family-owned business with no external shareholders. Strategic decisions flow from the Potier family, with operational management increasingly delegated to professional directors including local MD Louis Laurent Rouge.</p>
+
+    <h3 class="subsection-title">Digital &amp; Public Presence</h3>
+    <ul class="styled-list">
+      <li><strong>Website:</strong> lcm-mu.com/en/ — bilingual (French/English), professional, showcases brands, services, rental offerings and client testimonials ("They trust us" gallery)</li>
+      <li><strong>Facebook:</strong> LCM Ltd Calebasses — 1,600+ followers; active posts on product launches, trade show attendance and customer success stories</li>
+      <li><strong>Instagram:</strong> Active presence marketing rental and rent-to-own solutions</li>
+      <li><strong>Microsoft 365:</strong> Adopted in 2019 — confirms commitment to modern internal collaboration infrastructure</li>
+      <li><strong>Kubota Europe Profile:</strong> Group featured as esteemed distributor — third-party industry validation of service quality and market leadership</li>
+    </ul>
+  </div>
+</div>
+
+<!-- TAB 03: FINANCIAL PERFORMANCE -->
+<div id="t3" class="tab-content">
+  <div class="content-wrap">
+    <h2 class="section-title">Financial Performance</h2>
+    <p class="section-lead">All figures drawn directly from the CBRIS-filed financial statements for the year ended 31 December 2024, approved 30 June 2025. Currency: Mauritius Rupee (MUR). Unit: 1 (figures are exact as filed).</p>
+
+    <h3 class="subsection-title">Profit &amp; Loss — FY2024</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr>
+        </thead>
+        <tbody>
+          <tr class="heat-ok"><td>Turnover</td><td>289,811,964</td><td>100.0%</td><td>~USD 6.5M; revenue nearly tripled from ~MUR 105M in 2019</td></tr>
+          <tr><td>Cost of Sales</td><td>185,096,198</td><td>63.9%</td><td>Equipment purchase cost, import duties, freight; typical for distribution</td></tr>
+          <tr class="heat-ok"><td>Gross Profit</td><td>104,715,766</td><td><strong>36.1%</strong></td><td>Strong gross margin for an equipment distributor/rental hybrid</td></tr>
+          <tr><td>Other Income</td><td>4,308,432</td><td>1.5%</td><td>Ancillary income — rental income extras, service fees, forex gains</td></tr>
+          <tr><td>Distribution Costs</td><td>0</td><td>0%</td><td>Included in CoS or categorised separately; nil as filed</td></tr>
+          <tr class="heat-warn"><td>Administration Costs</td><td>72,972,280</td><td>25.2%</td><td>Primary overhead — wages, premises, depreciation on rental fleet; heavy relative to gross profit</td></tr>
+          <tr><td>Other Expenses</td><td>0</td><td>0%</td><td>Nil as filed</td></tr>
+          <tr class="heat-critical"><td>Finance Costs</td><td>16,214,403</td><td>5.6%</td><td>Interest and loan charges; almost equals PBT — critical flag for leverage risk</td></tr>
+          <tr class="heat-ok"><td>Profit Before Tax</td><td>19,837,515</td><td><strong>6.8%</strong></td><td>EBIT proxy; squeezed by high admin and finance costs</td></tr>
+          <tr><td>Tax Expense</td><td>4,051,001</td><td>1.4%</td><td>Effective tax rate ~20.4%; in line with Mauritius corporate rate</td></tr>
+          <tr class="heat-ok"><td>Net Profit for Period</td><td><strong>15,786,514</strong></td><td><strong>5.4%</strong></td><td>Profitable; net margin acceptable for distribution but leaves little buffer</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-warning">
+      <div class="alert-title">Finance Cost Risk</div>
+      Finance costs of MUR 16.2M represent 81.7% of Profit Before Tax. If revenue softens or interest rates rise, the company could move to a loss. This is the single most important financial risk flag. EOS financial discipline — clear Rocks around cost control and revenue targets — directly addresses this exposure.
+    </div>
+
+    <h3 class="subsection-title">Balance Sheet — 31 December 2024</h3>
+    <div class="entity-grid">
+      <div class="entity-card">
+        <div class="ec-header"><h4>Non-Current Assets</h4><div class="ec-sub">MUR 155,079,864 Total</div></div>
+        <div class="ec-body">
+          <div class="ec-metric"><span class="mk">PP&amp;E</span><span class="mv ok">139,859,224</span></div>
+          <div class="ec-metric"><span class="mk">Intangible Assets</span><span class="mv">15,220,640</span></div>
+          <div class="ec-metric"><span class="mk">Investment Props</span><span class="mv">0</span></div>
+          <div class="ec-metric"><span class="mk">Subsidiaries / Invests</span><span class="mv">0</span></div>
+        </div>
+      </div>
+      <div class="entity-card">
+        <div class="ec-header"><h4>Current Assets</h4><div class="ec-sub">MUR 231,550,869 Total</div></div>
+        <div class="ec-body">
+          <div class="ec-metric"><span class="mk">Inventories</span><span class="mv warn">116,291,634</span></div>
+          <div class="ec-metric"><span class="mk">Trade Receivables</span><span class="mv warn">87,566,857</span></div>
+          <div class="ec-metric"><span class="mk">Cash &amp; Equivalents</span><span class="mv ok">25,384,863</span></div>
+          <div class="ec-metric"><span class="mk">Others</span><span class="mv">2,307,515</span></div>
+        </div>
+      </div>
+      <div class="entity-card">
+        <div class="ec-header"><h4>Equity</h4><div class="ec-sub">MUR 155,464,553 Total</div></div>
+        <div class="ec-body">
+          <div class="ec-metric"><span class="mk">Share Capital</span><span class="mv">6,025,000</span></div>
+          <div class="ec-metric"><span class="mk">Retained Earnings</span><span class="mv ok">148,879,187</span></div>
+          <div class="ec-metric"><span class="mk">Other Reserves</span><span class="mv">560,366</span></div>
+        </div>
+      </div>
+      <div class="entity-card">
+        <div class="ec-header"><h4>Non-Current Liabilities</h4><div class="ec-sub">MUR 125,307,261 Total</div></div>
+        <div class="ec-body">
+          <div class="ec-metric"><span class="mk">LT Borrowings</span><span class="mv ok">0</span></div>
+          <div class="ec-metric"><span class="mk">Others (Interco.)</span><span class="mv warn">117,360,428</span></div>
+          <div class="ec-metric"><span class="mk">Deferred Tax</span><span class="mv">7,035,965</span></div>
+          <div class="ec-metric"><span class="mk">LT Provisions</span><span class="mv">910,868</span></div>
+        </div>
+      </div>
+      <div class="entity-card">
+        <div class="ec-header"><h4>Current Liabilities</h4><div class="ec-sub">MUR 105,858,919 Total</div></div>
+        <div class="ec-body">
+          <div class="ec-metric"><span class="mk">Trade Payables</span><span class="mv warn">48,844,580</span></div>
+          <div class="ec-metric"><span class="mk">Others</span><span class="mv warn">56,826,924</span></div>
+          <div class="ec-metric"><span class="mk">Current Tax</span><span class="mv">187,415</span></div>
+          <div class="ec-metric"><span class="mk">ST Borrowings</span><span class="mv ok">0</span></div>
+        </div>
+      </div>
+      <div class="entity-card">
+        <div class="ec-header"><h4>Summary Balances</h4><div class="ec-sub">MUR 386,630,733 Total Assets</div></div>
+        <div class="ec-body">
+          <div class="ec-metric"><span class="mk">Total Assets</span><span class="mv">386,630,733</span></div>
+          <div class="ec-metric"><span class="mk">Total Equity</span><span class="mv ok">155,464,553</span></div>
+          <div class="ec-metric"><span class="mk">Total Liabilities</span><span class="mv warn">231,166,180</span></div>
+          <div class="ec-metric"><span class="mk">Equity %</span><span class="mv ok">40.2%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Filing Compliance (3-Year Record)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Financial Year Ended</th><th>Date Approved</th><th>Annual Return Filed</th><th>Annual Meeting</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr class="heat-ok"><td>31 December 2024</td><td>30 June 2025</td><td>—</td><td>—</td><td><span class="b b-green">Approved</span></td></tr>
+          <tr class="heat-ok"><td>31 December 2023</td><td>30 June 2024</td><td>01 December 2023</td><td>30 June 2023</td><td><span class="b b-green">Filed on time</span></td></tr>
+          <tr class="heat-ok"><td>31 December 2022</td><td>30 June 2023</td><td>22 August 2022</td><td>26 July 2022</td><td><span class="b b-green">Filed on time</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="body-text">Three consecutive years of timely filing. No charges. No winding-up proceedings. No objections. This is an exemplary registry compliance record and signals a well-governed company.</p>
+  </div>
+</div>
+
+<!-- TAB 04: FINANCIAL RATIOS -->
+<div id="t4" class="tab-content">
+  <div class="content-wrap">
+    <h2 class="section-title">Financial Ratios</h2>
+    <p class="section-lead">All ratios calculated from CBRIS-filed figures for FY2024. Benchmarks are based on Mauritius SME/distribution sector norms and international equipment distributor averages. RAG status: Green = healthy · Amber = monitor · Red = flag.</p>
+
+    <div class="ratio-grid">
+      <!-- LIQUIDITY -->
+      <div class="ratio-card">
+        <h4>Liquidity Ratios</h4>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Current Ratio</div>
+            <span class="ratio-interpret">Current Assets / Current Liabilities · Benchmark: &gt;1.5 = Green</span>
+          </div>
+          <div>
+            <span class="ratio-val ok">2.19x</span>
+            <span class="b b-green" style="margin-left:8px">Green</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Quick Ratio</div>
+            <span class="ratio-interpret">(Current Assets − Inventory) / CL · Benchmark: &gt;1.0 = Green</span>
+          </div>
+          <div>
+            <span class="ratio-val ok">1.09x</span>
+            <span class="b b-green" style="margin-left:8px">Green</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROFITABILITY -->
+      <div class="ratio-card">
+        <h4>Profitability Ratios</h4>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Gross Profit Margin</div>
+            <span class="ratio-interpret">Gross Profit / Revenue · Benchmark Distrib.: 25–40% = Green</span>
+          </div>
+          <div>
+            <span class="ratio-val ok">36.1%</span>
+            <span class="b b-green" style="margin-left:8px">Green</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">EBIT Margin (PBT proxy)</div>
+            <span class="ratio-interpret">PBT / Revenue · Benchmark: &gt;8% = Green · 4–8% = Amber</span>
+          </div>
+          <div>
+            <span class="ratio-val warn">6.8%</span>
+            <span class="b b-amber" style="margin-left:8px">Amber</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Net Profit Margin</div>
+            <span class="ratio-interpret">Net Profit / Revenue · Benchmark: &gt;5% = Green · 2–5% = Amber</span>
+          </div>
+          <div>
+            <span class="ratio-val ok">5.4%</span>
+            <span class="b b-green" style="margin-left:8px">Green</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RETURNS -->
+      <div class="ratio-card">
+        <h4>Return Ratios</h4>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Return on Assets (ROA)</div>
+            <span class="ratio-interpret">Net Profit / Total Assets · Benchmark: &gt;5% = Green · 2–5% = Amber</span>
+          </div>
+          <div>
+            <span class="ratio-val warn">4.1%</span>
+            <span class="b b-amber" style="margin-left:8px">Amber</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Return on Equity (ROE)</div>
+            <span class="ratio-interpret">Net Profit / Equity · Benchmark: &gt;10% = Green · 5–10% = Amber</span>
+          </div>
+          <div>
+            <span class="ratio-val ok">10.2%</span>
+            <span class="b b-green" style="margin-left:8px">Green</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Asset Turnover</div>
+            <span class="ratio-interpret">Revenue / Total Assets · Benchmark: &gt;0.8x = Green for distrib.</span>
+          </div>
+          <div>
+            <span class="ratio-val warn">0.75x</span>
+            <span class="b b-amber" style="margin-left:8px">Amber</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LEVERAGE & COVERAGE -->
+      <div class="ratio-card">
+        <h4>Leverage &amp; Coverage</h4>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Debt-to-Equity Ratio</div>
+            <span class="ratio-interpret">Total Liabilities / Equity · Benchmark: &lt;1.5 = Green · 1.5–2.5 = Amber</span>
+          </div>
+          <div>
+            <span class="ratio-val warn">1.49x</span>
+            <span class="b b-amber" style="margin-left:8px">Amber</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Interest Coverage Ratio</div>
+            <span class="ratio-interpret">PBT / Finance Costs · Benchmark: &gt;3x = Green · 1.5–3x = Amber · &lt;1.5x = Red</span>
+          </div>
+          <div>
+            <span class="ratio-val bad">1.22x</span>
+            <span class="b b-red" style="margin-left:8px">Red</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WORKING CAPITAL -->
+      <div class="ratio-card">
+        <h4>Working Capital Efficiency</h4>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Inventory Turnover</div>
+            <span class="ratio-interpret">CoS / Avg. Inventory (single year) · Benchmark: &gt;3x = Green · 1.5–3x = Amber</span>
+          </div>
+          <div>
+            <span class="ratio-val warn">1.59x</span>
+            <span class="b b-amber" style="margin-left:8px">Amber</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Debtor Days (DSO)</div>
+            <span class="ratio-interpret">(Receivables / Revenue) × 365 · Benchmark: &lt;60 days = Green · 60–90 = Amber · &gt;90 = Red</span>
+          </div>
+          <div>
+            <span class="ratio-val bad">110 days</span>
+            <span class="b b-red" style="margin-left:8px">Red</span>
+          </div>
+        </div>
+        <div class="ratio-row">
+          <div>
+            <div class="ratio-label">Creditor Days (DPO)</div>
+            <span class="ratio-interpret">(Payables / CoS) × 365 · Benchmark: 30–60 days = Green · &gt;90 = Amber</span>
+          </div>
+          <div>
+            <span class="ratio-val warn">96 days</span>
+            <span class="b b-amber" style="margin-left:8px">Amber</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RAG SUMMARY -->
+      <div class="ratio-card">
+        <h4>RAG Summary vs Benchmarks</h4>
+        <div class="ratio-row">
+          <span class="ratio-label">Green (healthy)</span>
+          <span class="ratio-val ok">5 ratios</span>
+        </div>
+        <div class="ratio-row">
+          <span class="ratio-label">Amber (monitor)</span>
+          <span class="ratio-val warn">5 ratios</span>
+        </div>
+        <div class="ratio-row">
+          <span class="ratio-label">Red (flag)</span>
+          <span class="ratio-val bad">2 ratios</span>
+        </div>
+        <div class="ratio-row">
+          <span class="ratio-label">Top concern</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--red);">Interest Coverage + DSO</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-critical">
+      <div class="alert-title">Two Critical Flags Requiring Attention</div>
+      <strong>1. Interest Coverage 1.22x:</strong> Finance costs of MUR 16.2M represent nearly all pre-tax profit. Any revenue dip or rate increase tips LCM into a loss. This likely reflects group intercompany financing for equipment stock rather than external bank debt — but the exposure must be understood and managed.<br><br>
+      <strong>2. Debtor Days 110 days:</strong> Trade receivables of MUR 87.6M outstanding against revenue of MUR 289.8M implies clients are taking ~3.7 months to pay on average. For a capital-intensive business with high inventory, this puts significant strain on cash conversion. An EOS scorecard with a weekly DSO metric tracked at leadership level is directly applicable here.
+    </div>
+
+    <div class="alert alert-warning">
+      <div class="alert-title">Amber Signals to Monitor</div>
+      <strong>Inventory Turnover 1.59x:</strong> Equipment inventory turns slowly by design (capital items), but at MUR 116M it represents 40% of total assets. Rental fleet expansion explains the growth. EBIT margin at 6.8% signals the gap between gross margin (36%) and operating profit is being consumed by admin/overhead — identifying and reducing waste here is a primary EOS use case.
+    </div>
+
+    <div class="alert alert-ok">
+      <div class="alert-title">Strengths Confirmed</div>
+      Current ratio (2.19x), quick ratio (1.09x), gross profit margin (36.1%), net profit margin (5.4%), ROE (10.2%) and registry compliance are all healthy. The business is financially viable and growing — the task is converting top-line strength into better operating leverage and cash conversion.
+    </div>
+  </div>
+</div>
+
+<!-- TAB 05: MARKET & COMPETITIVE -->
+<div id="t5" class="tab-content">
+  <div class="content-wrap">
+    <h2 class="section-title">Market &amp; Competitive Position</h2>
+    <p class="section-lead">LCM operates in the Mauritius industrial equipment distribution and rental market — a specialised B2B sector serving construction, logistics, manufacturing, agriculture and port operations. The market is characterised by long sales cycles, high client retention, and significant after-sales dependency.</p>
+
+    <h3 class="subsection-title">Market Positioning</h3>
+    <p class="body-text">LCM is positioned as Mauritius's <strong>leading one-stop specialist</strong> for material handling and construction equipment. Its differentiation rests on three pillars: exclusive brand rights to globally respected manufacturers, comprehensive lifecycle service (sales → rental → maintenance → spare parts), and the institutional backing of a 40+ year regional group.</p>
+    <p class="body-text">The parent Groupe De Courcy commands over <strong>60% market share</strong> in material handling equipment in Réunion — a market with comparable characteristics to Mauritius. LCM's strategy mirrors this: establish brand exclusivity, deliver unmatched after-sales, and become embedded in client operations through service contracts and operator training.</p>
+
+    <h3 class="subsection-title">Target Markets &amp; Client Segments</h3>
+    <ul class="styled-list">
+      <li><strong>Construction:</strong> Major contractors, civil works firms — for compact equipment, loaders, crane solutions</li>
+      <li><strong>Logistics &amp; Warehousing:</strong> Freight operators, cold chain, retail distribution — for forklift fleets, racking systems</li>
+      <li><strong>Manufacturing &amp; Industry:</strong> Production facilities requiring material handling inside plants</li>
+      <li><strong>Agriculture:</strong> Sugar estates, aquaculture, food processing — Kubota tractors, utility vehicles</li>
+      <li><strong>Port &amp; Heavy Industry:</strong> Kalmar reach stackers and heavy lift for port operations</li>
+      <li><strong>SMEs via Rental:</strong> Businesses preferring opex over capex — served by LCM Rental (Bambous)</li>
+    </ul>
+
+    <h3 class="subsection-title">Competitive Landscape</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Competitor Type</th><th>Examples</th><th>Strengths</th><th>LCM Advantage</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Other authorised brand distributors</td>
+            <td>Toyota Material Handling (Caterpillar), JCB agents, independent importers</td>
+            <td>Brand loyalty for specific niches</td>
+            <td>Multi-brand exclusivity; after-sales infrastructure; group inventory depth</td>
+          </tr>
+          <tr>
+            <td>General construction equipment firms</td>
+            <td>Taylor Smith Group (equipment div.), Mechanical Handling Ltd</td>
+            <td>Established local relationships; sometimes lower price</td>
+            <td>Full lifecycle offering (sales + rental + service); regional group sourcing pipeline</td>
+          </tr>
+          <tr>
+            <td>Independent rental operators</td>
+            <td>Small local rental yards</td>
+            <td>Price flexibility; fast turnaround</td>
+            <td>Rent-to-own innovation; certified pre-owned; trained technicians; manufacturer support</td>
+          </tr>
+          <tr>
+            <td>Grey market / second-hand importers</td>
+            <td>Ad hoc importers via Asia</td>
+            <td>Price</td>
+            <td>Brand quality, warranty, parts availability, OEM support — no risk of orphaned equipment</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="subsection-title">Strategic Differentiators</h3>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h4>Exclusive Brand Representation</h4>
+        <p>Fenwick-Linde, Unicarriers, Manitou, Kubota, Kalmar, Liebherr and others. Exclusivity creates a captive market for after-sales — clients who buy LCM must service with LCM. This is a recurring revenue moat.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Full Lifecycle Value Chain</h4>
+        <p>New sale → rental → rent-to-own → second-hand resale → maintenance contracts → spare parts. No competitor in Mauritius covers the full chain with this breadth and technical depth.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Group Infrastructure &amp; Sourcing</h4>
+        <p>Access to Réunion/France inventory when Mauritius stock is insufficient. Shared training programmes. Group financial capacity. Manufacturer relationships at group level — not just local entity level.</p>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Growth Initiatives &amp; Recent Developments</h3>
+    <ul class="styled-list">
+      <li><strong>2020:</strong> Opened LCM Rental branch at Medine, Bambous — dedicated rental and second-hand yard, rent-to-own offering launched</li>
+      <li><strong>2019:</strong> Adopted Microsoft 365 — investment in operational modernisation and digital collaboration</li>
+      <li><strong>Ongoing:</strong> Progressive expansion of brand portfolio (agricultural machinery, heavy lift added alongside core forklift range)</li>
+      <li><strong>Revenue trajectory:</strong> ~MUR 105M (2019) → ~MUR 290M (2024) — 176% growth in 5 years; partly organic, partly fleet investment</li>
+      <li><strong>Asset investment:</strong> PP&amp;E of MUR 139.9M reflects significant rental fleet and workshop investment; evidence of deliberate capacity building</li>
+    </ul>
+
+    <h3 class="subsection-title">Industry Trends Favouring LCM</h3>
+    <ul class="styled-list">
+      <li>Mauritius infrastructure investment driving sustained construction equipment demand</li>
+      <li>Shift from equipment ownership to rental/leasing — LCM's 2020 rental branch a timely strategic move</li>
+      <li>Clients demanding higher service standards — advantages quality-focused, service-backed operators over price-only competitors</li>
+      <li>Manufacturers increasing authorised dealer support (training, marketing co-op, financing) — rewards LCM's exclusive relationships</li>
+      <li>ESG trends favouring electric forklifts (Fenwick-Linde range) — LCM well positioned for green transition in material handling</li>
+    </ul>
+
+    <h3 class="subsection-title">Reputation &amp; Public Perception</h3>
+    <div class="alert alert-ok">
+      <div class="alert-title">Sentiment Assessment — Positive</div>
+      No adverse press coverage, no legal disputes, no CBRIS objections. Kubota Europe featured the Courcy/DMP group as an esteemed distributor. Client testimonial gallery on website ("They trust us") features major Mauritian enterprises. Facebook engagement positive and professional. Employee retention indicators suggest a stable, loyal workforce. LCM's reputation is a genuine commercial asset.
+    </div>
+  </div>
+</div>
+
+<!-- TAB 06: EOS ASSESSMENT -->
+<div id="t6" class="tab-content">
+  <div class="content-wrap">
+    <h2 class="section-title">EOS Assessment</h2>
+    <p class="section-lead">Eight-dimension EOS readiness evaluation based on all available data from CBRIS financials, company website, published group information, and deep research analysis. Each dimension scored 1–10 with evidence-based rationale.</p>
+
+    <!-- OVERALL SCORE BLOCK -->
+    <div class="eos-overall">
+      <div class="eos-overall-score">
+        <div class="big-num">7</div>
+        <div class="big-denom">/10</div>
+        <div class="big-label">EOS Suitability</div>
+      </div>
+      <div class="eos-overall-text">
+        <h4>Moderate–High Potential: Recommended for Engagement</h4>
+        <p>LCM sits squarely in the EOS sweet spot: a family-owned, privately-held business of 30–50 people with MUR 290M revenue, growing fast, increasingly complex, and not yet running on a formal operating system. The leadership is capable and demonstrably open to improvement. The pain points — margin compression, high DSO, vision siloed in the family, and operational complexity from multi-location multi-brand growth — are precisely what EOS is designed to address. Engagement is strongly recommended. The score of 7 reflects genuine high potential tempered only by the learning curve expected in a family-controlled business adopting structured accountability for the first time.</p>
+      </div>
+    </div>
+
+    <!-- DIMENSION 1 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <span class="eos-dim-title">1. Organisational Size &amp; Complexity</span>
+        <span class="eos-score high">8/10</span>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+      <p class="eos-rationale">LCM is ideal EOS size — approximately 30–50 employees, a leadership team of likely 5–7 (MD, Sales, Service, Finance, Operations), two physical locations, and multiple product lines across five distinct business activities (new sales, rental, second-hand, maintenance, spare parts). Complexity has increased materially since 2020 with the Bambous branch opening and portfolio expansion. The company is large enough to benefit immediately from EOS tools (Accountability Chart, Scorecard, Rocks) but small enough to implement without change management paralysis. Revenue of MUR 290M is well inside the EOS-applicable range.</p>
+    </div>
+
+    <!-- DIMENSION 2 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <span class="eos-dim-title">2. Leadership Openness</span>
+        <span class="eos-score mid">6/10</span>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+      <p class="eos-rationale">The leadership has demonstrated openness to change — adoption of Microsoft 365 in 2019, appointment of professional non-family MD in 2021, engagement of external company secretary since 2015. Jean-Luc Potier is a multi-decade entrepreneur who has successfully scaled a regional group, which indicates strategic vision. However, as a family-controlled business with decision-making concentrated at the top, there is no evidence of prior use of structured management frameworks like EOS. The score of 6 reflects genuine openness to improvement (not resistant) but acknowledges the need for education, buy-in cultivation, and demonstration of value before full commitment is secured. If the MD (Louis Laurent Rouge) is the primary contact, buy-in may be achieved faster as he is a professional leader rather than a family owner.</p>
+    </div>
+
+    <!-- DIMENSION 3 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <span class="eos-dim-title">3. Growth Stage &amp; Pain Points</span>
+        <span class="eos-score high">9/10</span>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:90%"></div></div>
+      <p class="eos-rationale">This is the strongest EOS signal. Revenue has tripled in five years. A new branch was opened. Product lines have multiplied. Staff numbers have grown. Yet net margin sits at 5.4% and interest coverage is a thin 1.22x — the hallmark of a company where top-line growth is not yet translating into bottom-line efficiency. Debtor days of 110 signal collection process gaps. These are classic "growing pains" — the precise scenario EOS was designed for. The company needs a shared vision, defined accountability, disciplined execution (Rocks), and data-driven management (Scorecard) before the next growth phase strains the organisation further. Timing is excellent: the company is not in distress (which would be too late for EOS) but clearly experiencing the friction of outgrowing informal management.</p>
+    </div>
+
+    <!-- DIMENSION 4 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <span class="eos-dim-title">4. Current Systems &amp; Processes</span>
+        <span class="eos-score mid">6/10</span>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+      <p class="eos-rationale">LCM has been operating successfully for 22 years and benefits from group-inherited processes and practices (sales methodologies, service SOPs, inventory management). The external company secretary ensures governance processes are maintained. Microsoft 365 adoption signals a functioning digital infrastructure. However, the high DSO (110 days) and thin interest coverage suggest that financial management processes are not sufficiently data-driven or proactively managed. There is likely no formal Scorecard or KPI cadence at the leadership level. Strategy likely resides primarily in the heads of the family directors rather than a documented V/TO. Core processes may exist informally but have not been documented, simplified and followed by all. Significant gain available from EOS process documentation and meeting rhythm.</p>
+    </div>
+
+    <!-- DIMENSION 5 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <span class="eos-dim-title">5. Company Culture</span>
+        <span class="eos-score mid">7/10</span>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+      <p class="eos-rationale">LCM's stated culture — "the customer at the centre of our priorities" — aligns strongly with EOS's people-and-values orientation. Long employee tenure (group-wide) signals loyalty and stability. The workforce has adapted to multiple expansions and system changes positively. No toxicity or dysfunction is evident. The family business model creates a close-knit, loyal culture that is generally receptive to improvement if led from the top. The risk is a tendency toward top-down decision-making and deference to hierarchy, which may initially resist EOS's accountability-and-transparency model. A score of 7 reflects a genuinely healthy culture with EOS-compatible values, needing some mindset coaching around open issue-solving and scorecard accountability.</p>
+    </div>
+
+    <!-- DIMENSION 6 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <span class="eos-dim-title">6. Decision-Making Patterns</span>
+        <span class="eos-score mid">5/10</span>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+      <p class="eos-rationale">Family-owned companies typically exhibit centralised decision-making, and LCM is no exception. Strategic and major commercial decisions likely require Potier family approval, which may be based in Réunion/France rather than Mauritius. Operational decisions on the ground are managed by MD Louis Laurent Rouge (appointed 2021), suggesting some delegation is already occurring. However, there is no evidence of a structured Leadership Team cadence — weekly Level 10 meetings, defined Rocks, or scorecard reviews. Decision-making is likely reactive-relational rather than proactive-systematic. EOS's GWC framework (Get it, Want it, Capacity) and Accountability Chart would be transformative tools for clarifying and distributing decision authority appropriately.</p>
+    </div>
+
+    <!-- DIMENSION 7 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <span class="eos-dim-title">7. Vision Clarity</span>
+        <span class="eos-score mid">6/10</span>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+      <p class="eos-rationale">LCM's strategic direction is clear at a high level — grow the Mauritius arm of Groupe De Courcy, deepen brand exclusivity, expand rental capacity, and maintain market leadership. The parent group's long-term orientation provides a stable vision backdrop. The company website communicates a coherent value proposition. However, there is no evidence of a formal Vision/Traction Organizer, 3-Year Picture, or 10-Year Target communicated to the full organisation. Vision likely lives in the family leadership's heads and is communicated top-down informally. EOS's V/TO process would be immediately valuable: externalising, debating and committing the vision to paper as a shared leadership document is typically a breakthrough moment for companies at this stage.</p>
+    </div>
+
+    <!-- DIMENSION 8 -->
+    <div class="eos-dimension">
+      <div class="eos-dim-header">
+        <span class="eos-dim-title">8. Meeting Culture</span>
+        <span class="eos-score mid">5/10</span>
+      </div>
+      <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+      <p class="eos-rationale">No public evidence of a structured meeting rhythm. As a family-run equipment distribution business, meetings are most likely held as needed — operational briefings, customer reviews, annual planning sessions influenced by group directives. There is likely no weekly Level 10 meeting, no Quarterly Rocks review, and no Annual Planning Day in the EOS sense. The two-location structure (Riche Terre + Bambous) adds coordination complexity that a structured meeting pulse would directly resolve. This dimension scores 5 — not hostile to meetings, but no formal cadence in place. This is one of the highest-gain areas for EOS implementation: introducing the meeting pulse is often the first visible win that leadership teams notice within weeks of starting EOS.</p>
+    </div>
+
+    <h3 class="subsection-title">EOS Tools Recommended for LCM</h3>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h4>Priority 1 — Vision/Traction Organizer (V/TO)</h4>
+        <p>Get the family and professional leadership aligned on Core Values, Core Focus, 10-Year Target, 3-Year Picture, and 1-Year Plan. Currently siloed in family heads. Getting this onto paper is the highest-leverage first action.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Priority 2 — Scorecard with DSO &amp; Margin Metrics</h4>
+        <p>Weekly leadership Scorecard with a maximum of 5–15 measurables. Must include: DSO (currently 110 days — target &lt;60), gross margin%, finance cost as % of PBT, and rental utilisation rate. Immediate financial impact expected.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Priority 3 — Accountability Chart</h4>
+        <p>Replace the informal org chart with a seat-by-seat accountability map. Clarify the MD vs Directors vs function heads. Resolve the dual-location coordination challenge. Define who owns what — especially critical as the team grows.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Priority 4 — Rocks (90-Day Priorities)</h4>
+        <p>Set 3–7 company Rocks for the first quarter: likely include reducing DSO, documenting core service processes, launching a Bambous branch review, and a finance cost reduction initiative. Immediate traction.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Priority 5 — Weekly Level 10 Meeting</h4>
+        <p>Introduce the meeting pulse at leadership level. The two-site structure makes a weekly structured check-in essential. This is often the tool that generates the fastest observable cultural shift in the first 30–60 days.</p>
+      </div>
+      <div class="profile-card">
+        <h4>Priority 6 — Core Process Documentation</h4>
+        <p>Document and simplify the 6–10 core processes: sales, rental contract, maintenance, spare parts, invoice-to-cash (address DSO directly), and HR onboarding. Followed by all means followed by everyone in both locations.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 07: RECOMMENDATIONS -->
+<div id="t7" class="tab-content">
+  <div class="content-wrap">
+    <h2 class="section-title">Recommendations</h2>
+    <p class="section-lead">Actionable recommendations for initial engagement and EOS implementation approach, sequenced by priority and urgency. Based on all research findings and financial analysis.</p>
+
+    <h3 class="subsection-title">Immediate Actions</h3>
+    <div class="action-grid">
+      <div class="action-card">
+        <div class="ac-num">Action 01</div>
+        <h4>Initiate First Contact — Target the MD</h4>
+        <p>Louis Laurent Rouge (Managing Director, Mauritius) is the optimal first contact. As a professional leader appointed in 2021 to strengthen local management, he is most likely to be open to operational improvement tools like EOS. The approach should lead with pain points: "How are you managing the growing complexity since you opened Bambous?" and "What systems do you have in place to hit your financial targets consistently?" Do not lead with EOS methodology — lead with curiosity and discovery.</p>
+        <span class="urg urg-now">Immediate</span>
+      </div>
+      <div class="action-card">
+        <div class="ac-num">Action 02</div>
+        <h4>Frame the Conversation Around Financial Pain</h4>
+        <p>The financial data provides the perfect conversation opener. Interest coverage of 1.22x and DSO of 110 days are tangible, quantifiable pain points that any MD will recognise immediately. Frame EOS not as a methodology but as a practical system that gives leadership teams the tools to reduce debtor days, control overhead, and make disciplined quarterly decisions. Reference similar distribution/service company EOS success stories in your opening.</p>
+        <span class="urg urg-now">Immediate</span>
+      </div>
+      <div class="action-card">
+        <div class="ac-num">Action 03</div>
+        <h4>Respect the Family Ownership Layer</h4>
+        <p>Any EOS engagement at LCM will require Jean-Luc Potier's (or the family's) awareness and tacit approval. The MD cannot commit to a multi-year programme without family buy-in. Budget a Discovery Meeting step that includes at minimum one family director — likely Jean-Luc or Aurélien Potier. Position EOS as consistent with the group's values and growth history, not a disruption to what has made the business successful.</p>
+        <span class="urg urg-week">Within week 1</span>
+      </div>
+      <div class="action-card">
+        <div class="ac-num">Action 04</div>
+        <h4>Propose a 90-Day Pilot Around DSO Reduction</h4>
+        <p>For a financially vigilant family business, a defined ROI pilot reduces the perceived risk of committing to full EOS. Propose: "Let me work with your leadership team for 90 days. We'll install a Scorecard, set 3 Rocks around your collection process and cost discipline, and run weekly Level 10s. At day 90 you can measure the delta." A 30-day reduction in DSO from 110 to 80 days would release approximately MUR 22M in cash — that is the ROI story.</p>
+        <span class="urg urg-week">Within week 2</span>
+      </div>
+      <div class="action-card">
+        <div class="ac-num">Action 05</div>
+        <h4>Address Interest Coverage in the V/TO</h4>
+        <p>The single greatest financial risk is the 1.22x interest coverage ratio. This must be surfaced explicitly in the first V/TO session. The 1-Year Plan and 90-day Rocks should include a specific financial target: increase EBIT margin from 6.8% to at least 9% (which would bring coverage to ~1.6x). Levers: collections (DSO), admin cost review, rental utilisation rate improvement, pricing discipline on maintenance contracts.</p>
+        <span class="urg urg-medium">First quarter</span>
+      </div>
+      <div class="action-card">
+        <div class="ac-num">Action 06</div>
+        <h4>Build the Accountability Chart for Two Sites</h4>
+        <p>The Riche Terre + Bambous two-location structure is a common source of coordination friction. An early deliverable of EOS implementation should be a clear Accountability Chart that explicitly defines the Bambous branch lead's seat, their direct reports, and the interface with the MD. This removes ambiguity and empowers the branch to operate with clear authority while reporting against a consistent Scorecard.</p>
+        <span class="urg urg-medium">First quarter</span>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Engagement Strategy Summary</h3>
+    <div class="closing-grid">
+      <div class="closing-box steel-box">
+        <h4>Why LCM Will Say Yes</h4>
+        <ul class="signal-list">
+          <li><span class="sig-num">01</span>Revenue has tripled but profit margin is under pressure — they feel it</li>
+          <li><span class="sig-num">02</span>Two locations now require coordination systems they don't have</li>
+          <li><span class="sig-num">03</span>MD is a professional leader, not a family owner — more open to structured frameworks</li>
+          <li><span class="sig-num">04</span>Already adopted Microsoft 365 — openness to operational tools is proven</li>
+          <li><span class="sig-num">05</span>Interest coverage of 1.22x creates genuine urgency — this is a board-level concern</li>
+          <li><span class="sig-num">06</span>DSO of 110 days is a MUR 22M+ cash flow problem with an obvious EOS solution</li>
+        </ul>
+      </div>
+      <div class="closing-box">
+        <h4>Risks &amp; Mitigations</h4>
+        <ul class="signal-list">
+          <li><span class="sig-num">R1</span>Family may see EOS as threatening their control — mitigate: position as amplifying, not replacing, family vision</li>
+          <li><span class="sig-num">R2</span>MD appointed only in 2021 — still establishing authority — mitigate: involve a family director in Discovery to signal endorsement</li>
+          <li><span class="sig-num">R3</span>Thin margin means ROI scrutiny will be high — mitigate: lead with measurable pilot (DSO + EBIT targets)</li>
+          <li><span class="sig-num">R4</span>Group parent may have its own management system — mitigate: confirm whether DMP group uses any framework; EOS can coexist with group reporting</li>
+          <li><span class="sig-num">R5</span>No auditor named in CBRIS — accounts may not be independently audited — gap in financial verification</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="alert alert-ok">
+      <div class="alert-title">Final Recommendation</div>
+      <strong>Pursue LCM Limited as an EOS prospect with high confidence.</strong> The company has the right size, the right pain points, the right financial profile, and a leadership structure that is demonstrably open to improvement. The timing is near-optimal: LCM is in the "growing pains" phase, complexity is increasing, and no formal operating system is yet in place. An EOS engagement initiated now — before the next phase of growth — positions the Implementer as a strategic partner in LCM's next chapter rather than a remedial consultant brought in after the problems deepen. Overall EOS Suitability: <strong>7/10 — Moderate-High Potential. Engage.</strong>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="report-footer">
+  <span>LCM Limited — Comprehensive Company Analysis — April 2026 — LMAGP PKA System</span>
+  <span>Sources: CBRIS Registry (04/11/2025) · lcm-mu.com · Kubota Europe distributor profile · Facebook · Deep Research EOS Fit (ChatGPT, 2025)</span>
+  <span>Prepared by Rex (Research Agent) — All financial figures from CBRIS-filed statements FY2024 — For internal use only</span>
+</div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
