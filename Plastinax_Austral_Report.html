@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plastinax Austral Limited — Company Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1a2e45;
+    --navy-light: #243d57;
+    --gold: #c9a84c;
+    --gold-light: #e4c97e;
+    --gold-pale: #f5edd6;
+    --cream: #faf8f3;
+    --white: #ffffff;
+    --text: #1a1a2e;
+    --text-mid: #3d4a5c;
+    --text-light: #6b7a8d;
+    --border: #e2ddd4;
+    --red: #c0392b;
+    --green: #1a6b3c;
+    --amber: #b8860b;
+    --shadow: 0 4px 24px rgba(13,27,42,0.10);
+    --shadow-lg: 0 12px 48px rgba(13,27,42,0.16);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--navy);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 40px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: end;
+  }
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold-light);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+  .header-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .header h1 span { color: var(--gold-light); }
+  .header-sub {
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+  .header-meta {
+    text-align: right;
+  }
+  .meta-item {
+    color: rgba(255,255,255,0.45);
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    line-height: 2;
+    letter-spacing: 0.04em;
+  }
+  .meta-item strong {
+    color: var(--gold-light);
+    font-weight: 500;
+  }
+
+  /* ── OVERALL RATING STRIP ── */
+  .rating-strip {
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  .rating-strip-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+  .strip-label {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    white-space: nowrap;
+  }
+  .strip-stats {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .strip-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .strip-stat .val {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+  .strip-stat .lbl {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+  }
+  .strip-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* ── TABS ── */
+  .tabs-wrapper {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(13,27,42,0.07);
+  }
+  .tabs-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs-inner::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    background: none;
+    border: none;
+    padding: 18px 24px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-light);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    position: relative;
+    letter-spacing: 0.01em;
+  }
+  .tab-btn:hover { color: var(--navy); }
+  .tab-btn.active {
+    color: var(--navy);
+    border-bottom-color: var(--gold);
+    font-weight: 600;
+  }
+  .tab-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px; height: 18px;
+    background: var(--gold-pale);
+    color: var(--amber);
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 50%;
+    margin-right: 7px;
+    font-family: 'DM Mono', monospace;
+  }
+  .tab-btn.active .tab-num {
+    background: var(--gold);
+    color: var(--navy);
+  }
+
+  /* ── CONTENT ── */
+  .content-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: fadeUp 0.3s ease; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .section-subtitle {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+  .subsection {
+    margin-bottom: 36px;
+  }
+  .subsection-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--gold-pale);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .subsection-title::before {
+    content: '';
+    width: 4px; height: 16px;
+    background: var(--gold);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  p {
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: var(--text-mid);
+    margin-bottom: 14px;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+  }
+  .card-label {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 6px;
+  }
+  .card-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .card-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+  .card.highlight { border-left: 4px solid var(--gold); }
+  .card.warning   { border-left: 4px solid var(--red); }
+  .card.positive  { border-left: 4px solid var(--green); }
+
+  /* ── TABLES ── */
+  .table-wrap {
+    overflow-x: auto;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    background: var(--white);
+  }
+  thead th {
+    background: var(--navy);
+    color: var(--white);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  thead th:first-child { border-radius: 7px 0 0 0; }
+  thead th:last-child  { border-radius: 0 7px 0 0; }
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:nth-child(even) { background: #fafaf8; }
+  tbody tr:hover { background: var(--gold-pale); transition: background 0.15s; }
+  td { padding: 11px 16px; color: var(--text-mid); line-height: 1.5; vertical-align: top; }
+  td strong { color: var(--navy); font-weight: 600; }
+  td.number { font-family: 'DM Mono', monospace; font-size: 13px; }
+  td.flag-red    { color: var(--red); font-weight: 600; }
+  td.flag-green  { color: var(--green); font-weight: 600; }
+  td.flag-amber  { color: var(--amber); font-weight: 600; }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .callout-warning {
+    background: #fdf0ee;
+    border-left: 4px solid var(--red);
+    color: #7a1f15;
+  }
+  .callout-info {
+    background: #eef4fb;
+    border-left: 4px solid #3a86c8;
+    color: #1a3a5c;
+  }
+  .callout-gold {
+    background: var(--gold-pale);
+    border-left: 4px solid var(--gold);
+    color: #5a3e00;
+  }
+  .callout-title {
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    opacity: 0.75;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 28px; margin-bottom: 24px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--border));
+  }
+  .timeline-item { position: relative; margin-bottom: 22px; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -25px; top: 5px;
+    width: 10px; height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 2px solid var(--cream);
+  }
+  .timeline-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    margin-bottom: 3px;
+  }
+  .timeline-text { font-size: 13.5px; color: var(--text-mid); line-height: 1.65; }
+
+  /* ── EOS RATINGS ── */
+  .eos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 700px) { .eos-grid { grid-template-columns: 1fr; } }
+  .eos-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+  }
+  .eos-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  .eos-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.4;
+    max-width: 70%;
+  }
+  .eos-score {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .eos-score.low    { color: var(--red); }
+  .eos-score.medium { color: var(--amber); }
+  .eos-score.high   { color: var(--green); }
+  .eos-bar-bg {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .eos-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.6s ease;
+  }
+  .eos-bar-fill.low    { background: var(--red); }
+  .eos-bar-fill.medium { background: var(--amber); }
+  .eos-bar-fill.high   { background: var(--green); }
+  .eos-card-note {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  .overall-score-box {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-lg);
+  }
+  .overall-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .overall-number span {
+    font-size: 32px;
+    color: rgba(255,255,255,0.3);
+  }
+  .overall-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .overall-text p {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── LIST STYLES ── */
+  .styled-list {
+    list-style: none;
+    margin-bottom: 16px;
+  }
+  .styled-list li {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    padding: 6px 0 6px 22px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .styled-list li strong { color: var(--navy); font-weight: 600; }
+
+  .check-list {
+    list-style: none;
+    margin-bottom: 16px;
+  }
+  .check-list li {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    padding: 5px 0 5px 26px;
+    position: relative;
+  }
+  .check-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+  }
+  .check-list.cross li::before {
+    content: '✗';
+    color: var(--red);
+  }
+
+  /* ── PEOPLE CARD ── */
+  .people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .person-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+  }
+  .person-role {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .person-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .person-detail {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  /* ── SOURCES ── */
+  .sources-bar {
+    max-width: 1100px;
+    margin: 0 auto 0;
+    padding: 20px 40px;
+    border-top: 1px solid var(--border);
+    font-size: 11.5px;
+    color: var(--text-light);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.02em;
+    line-height: 1.8;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .header-inner { grid-template-columns: 1fr; padding: 32px 20px 24px; }
+    .header-meta { text-align: left; }
+    .header h1 { font-size: 26px; }
+    .tabs-inner { padding: 0 16px; }
+    .content-wrapper { padding: 24px 16px 60px; }
+    .rating-strip-inner { padding: 16px 20px; gap: 16px; flex-wrap: wrap; }
+    .card-grid { grid-template-columns: 1fr 1fr; }
+    .overall-score-box { flex-direction: column; gap: 16px; padding: 24px; }
+    .sources-bar { padding: 16px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div>
+      <div class="header-badge">Confidential — Executive Use Only</div>
+      <h1>Plastinax Austral <span>Limited</span></h1>
+      <div class="header-sub">Comprehensive Company Analysis &amp; EOS Suitability Assessment</div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-item"><strong>Prepared by</strong> LMA Growth Partners</div>
+      <div class="meta-item"><strong>Date</strong> March 2026</div>
+      <div class="meta-item"><strong>FY Data</strong> 30 June 2025</div>
+      <div class="meta-item"><strong>Source</strong> CBRIS / Public Records</div>
+    </div>
+  </div>
+</div>
+
+<!-- KEY STATS STRIP -->
+<div class="rating-strip">
+  <div class="rating-strip-inner">
+    <div class="strip-label">Key Figures</div>
+    <div class="strip-stats">
+      <div class="strip-stat"><span class="val">Rs 341.6M</span><span class="lbl">Revenue FY2025</span></div>
+      <div class="strip-divider"></div>
+      <div class="strip-stat"><span class="val">28.4%</span><span class="lbl">Gross Margin</span></div>
+      <div class="strip-divider"></div>
+      <div class="strip-stat"><span class="val">350</span><span class="lbl">Employees</span></div>
+      <div class="strip-divider"></div>
+      <div class="strip-stat"><span class="val">1976</span><span class="lbl">Founded</span></div>
+      <div class="strip-divider"></div>
+      <div class="strip-stat"><span class="val">4.5<span style="font-size:16px;opacity:0.5">/10</span></span><span class="lbl">EOS Rating</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrapper">
+  <div class="tabs-inner">
+    <button class="tab-btn active" onclick="showTab('exec')"><span class="tab-num">0</span>Executive Summary</button>
+    <button class="tab-btn" onclick="showTab('overview')"><span class="tab-num">1</span>Company Overview</button>
+    <button class="tab-btn" onclick="showTab('financial')"><span class="tab-num">2</span>Financial Analysis</button>
+    <button class="tab-btn" onclick="showTab('eos')"><span class="tab-num">3</span>EOS Assessment</button>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrapper">
+
+  <!-- ══ TAB 0: EXECUTIVE SUMMARY ══ -->
+  <div id="tab-exec" class="tab-panel active">
+    <div class="section-title">Executive Summary</div>
+    <div class="section-subtitle">High-level synthesis across company intelligence, financial performance, and EOS suitability</div>
+
+    <div class="card-grid">
+      <div class="card highlight">
+        <div class="card-label">Company Profile</div>
+        <div class="card-value">49 Years</div>
+        <div class="card-desc">Founded 1976. Wholly-owned subsidiary of ER Group (formerly ENL). Export manufacturer of injected plastic eyewear.</div>
+      </div>
+      <div class="card warning">
+        <div class="card-label">Balance Sheet Status</div>
+        <div class="card-value">–Rs 35.4M</div>
+        <div class="card-desc">Negative equity. Technically insolvent on a standalone basis. Prior accumulated losses not yet fully offset.</div>
+      </div>
+      <div class="card positive">
+        <div class="card-label">FY2025 Net Profit</div>
+        <div class="card-value">Rs 21.4M</div>
+        <div class="card-desc">Genuine return to profitability. 6.3% net margin. Zero tax expense (loss carry-forward utilised).</div>
+      </div>
+      <div class="card highlight">
+        <div class="card-label">EOS Suitability</div>
+        <div class="card-value">4.5 / 10</div>
+        <div class="card-desc">Borderline. Structural constraints (size, subsidiary governance) limit full EOS. Targeted tool deployment recommended.</div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Company at a Glance</div>
+      <p>Plastinax Austral Limited is a Mauritius-based manufacturer of injected plastic eyewear — sunglasses, optical frames, safety eyewear — and, more recently, general plastic outsourcing services. The company employs approximately 350 people, operates a 5,000+ m² factory in the Industrial Zone at St. Pierre, and exports predominantly to the United States and Europe with a monthly production capacity of ~100,000 eyewear frames. Its proprietary brand, Helios Eyewear, is the first and only Mauritian-made polarised sunglasses carrying the "Made in Moris" label.</p>
+      <p>A key technical differentiator is the company's claimed patented Triple Injection technology — a process that injects three layers of Grilamid TR-90 polymer in different colours into a single frame, achieving the visual richness of acetate with the lightweight durability of performance polymers.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Financial Picture</div>
+      <p>The financial position presents a contradictory picture. Operating performance in FY2025 is genuinely solid — a 28.4% gross margin, 6.3% net margin, and Rs 21.4M net profit signal a business that is producing real value. However, the balance sheet has not recovered from prior-period losses: total equity stands at –Rs 35.4M, liabilities exceed assets by Rs 17.7M, and trade payables of Rs 120.4M reflect a 180-day payment cycle that warrants scrutiny. The ER Group parent provides an implicit backstop, but standalone solvency is a material concern.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">EOS Verdict</div>
+      <p>Standard full EOS implementation is not the right prescription. Plastinax is 40% above EOS's 250-employee ceiling, operates as a subsidiary with constrained strategic autonomy, and is simultaneously managing three distinct business units. However, Managing Director Nicholas Park — 15+ years at the company, recently elevated to MD at 57 — represents an ideal EOS champion: institutional knowledge, a transformation agenda, and a legacy to build. The recommendation is a targeted EOS tools approach (V/TO, Scorecard, Accountability Chart) at leadership team level with explicit ER Group endorsement.</p>
+    </div>
+
+    <div class="callout callout-gold">
+      <div class="callout-title">Strategic Moment</div>
+      Plastinax is at a genuine inflection point: a new outsourcing unit to prove out, a brand refresh underway, a parent company mid-merger integration, and an MD with both the experience and the motivation to build something that outlasts his tenure. The timing for structured operational discipline is well-aligned.
+    </div>
+  </div>
+
+  <!-- ══ TAB 1: COMPANY OVERVIEW ══ -->
+  <div id="tab-overview" class="tab-panel">
+    <div class="section-title">Company Overview &amp; Intelligence</div>
+    <div class="section-subtitle">History, business model, leadership, operations, competitive positioning, and recent developments</div>
+
+    <div class="subsection">
+      <div class="subsection-title">History and Evolution</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1976</div>
+          <div class="timeline-text">Incorporated 5 July 1976 as a 50/50 joint venture between French group Plastinax France (later "Airess") and the Espitalier-Noël group. Export Enterprise Certificate issued. Factory established at Industrial Zone, St. Pierre.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2008</div>
+          <div class="timeline-text">Nicholas Park joins as General Manager. Espitalier-Noël group consolidates full ownership as French partner exits.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2021</div>
+          <div class="timeline-text">BDO &amp; Co appointed as auditor. ISO 9001:2015 certification obtained (February 2022, valid to February 2025). Decathlon Mauritius opens, signalling ENL Group's expanding commerce footprint.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2022</div>
+          <div class="timeline-text">Helios Eyewear achieves "Made in Moris" label — first Mauritian polarised sunglasses brand. Top 10 Great Place to Work Mauritius (50+ employee category). Rs 8.3M floating charge registered.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-text">Brand identity refresh — new logo, new tagline "Crafted visions, realised." Launch of Plastinax Outsourcing unit. Nicholas Park elevated from GM to Managing Director (October 2023). Gilbert Espitalier-Noël joins Board as Director (July 2023).</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-text">ENL-Rogers merger completes 1 July 2025, creating ER Group (ticker: ERL). Registered office updated to ER House, Moka. Partnership with Plastic Odyssey for ocean-plastic eyewear prototypes. FY2025 financial accounts approved December 2025.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Business Model &amp; Revenue Streams</div>
+      <div class="card-grid">
+        <div class="card highlight">
+          <div class="card-label">Primary</div>
+          <div class="card-value" style="font-size:17px">Eyewear OEM / Private Label</div>
+          <div class="card-desc">Contract manufacturing for international brands. US and European markets. ~100,000 frames/month. B2B order-based model.</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Secondary — Growth</div>
+          <div class="card-value" style="font-size:17px">Plastinax Outsourcing</div>
+          <div class="card-desc">Industrial plastic injection beyond eyewear. Target: 10% of company revenue within 3 years. Led by Simon Gaboriaud.</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Consumer Brand</div>
+          <div class="card-value" style="font-size:17px">Helios Eyewear</div>
+          <div class="card-desc">Own-brand polarised sunglasses. "Made in Moris" certified. Mauritius retail via 2 specialised stores.</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Ancillary</div>
+          <div class="card-value" style="font-size:17px">Worker Accommodation</div>
+          <div class="card-desc">2 registered hostel/boarding facilities near factory. Consistent with large-scale manufacturing operations.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Products &amp; Technology</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Category</th><th>Products</th><th>Technology</th><th>Key Differentiator</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Sunglasses</strong></td><td>Injected plastic, polarised, eco-friendly</td><td>Single, double, triple injection</td><td>Triple Injection (company claims patent)</td></tr>
+            <tr><td><strong>Optical Frames</strong></td><td>Prescription frame manufacturing</td><td>Grilamid TR-90, standard polymers</td><td>Lightweight performance polymer</td></tr>
+            <tr><td><strong>Safety Eyewear</strong></td><td>Industrial/protective frames</td><td>Standard injection</td><td>Durability, compliance</td></tr>
+            <tr><td><strong>Helios Brand</strong></td><td>Consumer polarised sunglasses</td><td>Triple injection</td><td>"Made in Moris" certified — only one in Mauritius</td></tr>
+            <tr><td><strong>Outsourcing</strong></td><td>Custom plastic components, cosmetic packaging</td><td>IMD, overmolding, SLA/SLS 3D printing</td><td>Full production chain capability</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout callout-info">
+        <div class="callout-title">Triple Injection Technology</div>
+        Plastinax claims a patented Triple Injection process that injects three layers of Grilamid TR-90 in different colours into a single frame in one cycle. The result combines TR-90's lightweight flexibility and durability with the layered colour depth previously only achievable in acetate — bridging performance and premium aesthetics. Patent jurisdiction and registration details are not publicly available; this reflects the company's own claim.
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Board of Directors</div>
+      <div class="people-grid">
+        <div class="person-card" style="border-top: 3px solid var(--gold)">
+          <div class="person-role">Managing Director</div>
+          <div class="person-name">Nicholas Park</div>
+          <div class="person-detail">At Plastinax since 2008 as GM; elevated to MD October 2023. Age 57. Architect of current transformation: brand refresh, Outsourcing launch, sustainability agenda. 15+ years of institutional knowledge. Also the operational head of the business.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-role">Director / ER Group CEO</div>
+          <div class="person-name">Gilbert Espitalier-Noël</div>
+          <div class="person-detail">Appointed July 2023. Also serves as CEO of ER Group (the listed parent). Confirms that strategic decisions flow to group level — capital allocation, major hires, and new business unit approvals require parent endorsement.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-role">Director</div>
+          <div class="person-name">Eric Espitalier-Noël</div>
+          <div class="person-detail">Long-standing director since February 1999. Represents founding family continuity on the board.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-role">Director</div>
+          <div class="person-name">Jean Olivier Lagesse</div>
+          <div class="person-detail">Director since April 2011.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-role">Auditor</div>
+          <div class="person-name">BDO &amp; Co</div>
+          <div class="person-detail">Appointed March 2021. Top-tier international audit firm. Annual accounts consistently filed on schedule.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-role">Company Secretary</div>
+          <div class="person-name">ER Secretarial Services Ltd</div>
+          <div class="person-detail">Appointed December 2018. ER Group internal secretarial entity.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Operational Leadership</div>
+      <div class="callout callout-info" style="margin-bottom:16px">
+        <div class="callout-title">Data Limitation</div>
+        Nicholas Park's direct reports — the actual operational leadership team — are not publicly disclosed. Only one name beyond Park has surfaced in public sources. Roles such as Finance Director, Operations Manager, Production Manager, Sales Director, and HR Manager are unknown.
+      </div>
+      <div class="people-grid">
+        <div class="person-card" style="border-top: 3px solid var(--gold)">
+          <div class="person-role">Managing Director</div>
+          <div class="person-name">Nicholas Park</div>
+          <div class="person-detail">The sole publicly identified operational leader. Responsible for all three business units: Eyewear OEM, Helios brand, and Plastinax Outsourcing. His direct reports are not publicly known.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-role">Head — Plastinax Outsourcing</div>
+          <div class="person-name">Simon Gaboriaud</div>
+          <div class="person-detail">Leads the Outsourcing unit. Identified in ENL communications as the catalyst for the Outsourcing launch. Background and broader role not publicly detailed.</div>
+        </div>
+        <div class="person-card" style="background:var(--cream);border-style:dashed">
+          <div class="person-role">Unknown</div>
+          <div class="person-name">Finance / Operations / Sales</div>
+          <div class="person-detail">Remaining first-layer leadership not identified in any public source. A key gap in the available intelligence — and a critical factor for any EOS Accountability Chart exercise.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Competitive Position</div>
+      <p>Plastinax positions itself as <em>the leading manufacturer of injected sunglasses and optical frames in the Indian Ocean</em> — a credible geographic claim for a niche market. Globally, competition comes from Chinese manufacturers competing aggressively on price; Plastinax competes on quality, IP, proximity to European markets, confidentiality, and supply chain reliability.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+        <div>
+          <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--green);margin-bottom:8px">Competitive Strengths</p>
+          <ul class="check-list">
+            <li>49 years of injection expertise</li>
+            <li>Patented Triple Injection technology (company claim)</li>
+            <li>ISO 9001-certified quality system (pending recertification)</li>
+            <li>Sustainability credentials — ocean-plastic collaboration</li>
+            <li>ER Group financial backing and corporate network</li>
+            <li>Great Place to Work recognition — stable, skilled workforce</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--red);margin-bottom:8px">Competitive Risks</p>
+          <ul class="check-list cross">
+            <li>Price pressure from Asian manufacturers</li>
+            <li>Export concentration — US and Europe only</li>
+            <li>OEM dependency — clients could reshore or switch</li>
+            <li>Outsourcing unit unproven — no client base yet</li>
+            <li>ISO certificate expired February 2025 — recertification unconfirmed</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Recent Developments (2023–2026)</div>
+      <ul class="styled-list">
+        <li><strong>Brand Refresh (2023):</strong> New logo and tagline "Crafted visions, realised" — signalling transformation agenda under new MD.</li>
+        <li><strong>Outsourcing Launch (2023):</strong> Plastinax Outsourcing unit created, targeting non-eyewear industrial plastic injection. 3-year revenue target: 10% of company total.</li>
+        <li><strong>ER Group Merger (July 2025):</strong> ENL and Rogers merge to form ER Group. Plastinax becomes subsidiary of the new listed entity. Registered office relocated to ER House, Moka.</li>
+        <li><strong>Plastic Odyssey Partnership (2025):</strong> Collaboration with international ocean-plastic recycling vessel to develop sustainable eyewear prototypes. Strong ESG positioning signal.</li>
+        <li><strong>Financial Recovery (FY2025):</strong> Rs 21.4M net profit on Rs 341.6M revenue — genuine return to profitability after prior accumulated losses.</li>
+        <li><strong>ISO Status (2025):</strong> ISO 9001:2015 certificate expired February 2025. Recertification not confirmed in public records — a process discipline risk.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══ TAB 2: FINANCIAL ANALYSIS ══ -->
+  <div id="tab-financial" class="tab-panel">
+    <div class="section-title">Financial Performance Analysis</div>
+    <div class="section-subtitle">FY ended 30 June 2025 — CBRIS filed accounts. All figures in Mauritius Rupees (MUR). Note: summary accounts only; no segmental data, cash flow statement, or prior-year comparatives available.</div>
+
+    <div class="subsection">
+      <div class="subsection-title">Profit &amp; Loss — FY2025</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Turnover (Revenue)</strong></td><td class="number">341,593,558</td><td class="number">100.0%</td><td>~USD 7.3M / EUR 6.9M at current rates</td></tr>
+            <tr><td>Cost of Sales</td><td class="number">244,649,631</td><td class="number">71.6%</td><td>Materials, labour, direct manufacturing</td></tr>
+            <tr><td><strong>Gross Profit</strong></td><td class="number flag-green">96,943,927</td><td class="number flag-green">28.4%</td><td>Solid for contract manufacturing</td></tr>
+            <tr><td>Other Income</td><td class="number">3,049,566</td><td class="number">0.9%</td><td>Sundry / grants / insurance</td></tr>
+            <tr><td>Distribution Costs</td><td class="number">23,070,989</td><td class="number">6.8%</td><td>Export logistics — consistent with US/Europe focus</td></tr>
+            <tr><td>Administration Costs</td><td class="number">47,071,968</td><td class="number">13.8%</td><td>High relative to revenue — worth monitoring</td></tr>
+            <tr><td>Finance Costs</td><td class="number flag-amber">8,414,432</td><td class="number flag-amber">2.5%</td><td>Debt servicing on Rs 63.7M long-term borrowings</td></tr>
+            <tr><td><strong>Profit Before Tax</strong></td><td class="number flag-green">21,436,104</td><td class="number flag-green">6.3%</td><td></td></tr>
+            <tr><td>Tax Expense</td><td class="number">0</td><td class="number">—</td><td>Zero — prior losses utilised as carry-forward</td></tr>
+            <tr><td><strong>Net Profit</strong></td><td class="number flag-green">21,436,104</td><td class="number flag-green">6.3%</td><td>Genuine profitability return</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Balance Sheet — 30 June 2025</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div class="table-wrap" style="margin-bottom:0">
+          <table>
+            <thead><tr><th colspan="2">Assets</th></tr></thead>
+            <tbody>
+              <tr><td>Property, Plant &amp; Equipment</td><td class="number">41,558,126</td></tr>
+              <tr><td>Intangible Assets</td><td class="number">1,225,666</td></tr>
+              <tr><td>Other Non-Current Assets</td><td class="number">50,692,170</td></tr>
+              <tr><td><strong>Total Non-Current Assets</strong></td><td class="number"><strong>93,475,962</strong></td></tr>
+              <tr><td>Inventories</td><td class="number">27,037,245</td></tr>
+              <tr><td>Trade &amp; Other Receivables</td><td class="number">61,645,370</td></tr>
+              <tr><td>Cash &amp; Equivalents</td><td class="number flag-green">91,237,028</td></tr>
+              <tr><td><strong>Total Current Assets</strong></td><td class="number"><strong>179,919,643</strong></td></tr>
+              <tr style="background:var(--navy);color:white"><td><strong>TOTAL ASSETS</strong></td><td class="number"><strong>273,395,605</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap" style="margin-bottom:0">
+          <table>
+            <thead><tr><th colspan="2">Equity &amp; Liabilities</th></tr></thead>
+            <tbody>
+              <tr><td>Share Capital</td><td class="number">13,679,365</td></tr>
+              <tr><td>Retained Earnings</td><td class="number flag-red">(31,401,228)</td></tr>
+              <tr><td>Other Reserves</td><td class="number flag-red">(17,721,863)</td></tr>
+              <tr style="background:#fdf0ee"><td><strong>Total Equity</strong></td><td class="number flag-red"><strong>(35,443,726)</strong></td></tr>
+              <tr><td>Long-Term Borrowings</td><td class="number">63,683,000</td></tr>
+              <tr><td>Long-Term Provisions</td><td class="number flag-amber">78,134,680</td></tr>
+              <tr><td>Deferred Tax</td><td class="number">129,980</td></tr>
+              <tr><td><strong>Total Non-Current Liabilities</strong></td><td class="number"><strong>141,947,660</strong></td></tr>
+              <tr><td>Trade &amp; Other Payables</td><td class="number flag-amber">120,386,204</td></tr>
+              <tr><td>Other Current Liabilities</td><td class="number">28,783,604</td></tr>
+              <tr><td><strong>Total Current Liabilities</strong></td><td class="number"><strong>149,169,808</strong></td></tr>
+              <tr style="background:var(--navy);color:white"><td><strong>TOTAL EQUITY + LIABILITIES</strong></td><td class="number"><strong>273,395,605</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="callout callout-warning" style="margin-top:16px">
+        <div class="callout-title">⚠ Critical Finding — Negative Equity</div>
+        Total equity is –Rs 35.4M. The company is technically insolvent on a standalone balance sheet basis — liabilities exceed assets by Rs 17.7M. This reflects accumulated losses from prior periods not yet offset by FY2025's Rs 21.4M profit. Viability depends on ER Group support. The Rs 78.1M in long-term provisions (likely employee end-of-service obligations) and Rs 120.4M in trade payables warrant further investigation.
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Key Financial Ratios</div>
+
+      <p style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin-bottom:10px">Liquidity</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Ratio</th><th>Value</th><th>Benchmark</th><th>Status</th><th>Interpretation</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Current Ratio</strong></td><td class="number">1.21x</td><td class="number">&gt; 1.5</td><td class="flag-amber">Below</td><td>Adequate but thin. Dependent on timely receivables collection.</td></tr>
+            <tr><td><strong>Quick Ratio</strong></td><td class="number">1.02x</td><td class="number">&gt; 1.0</td><td class="flag-amber">Marginal</td><td>Just above minimum threshold. Cash-heavy current asset base.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin:20px 0 10px">Profitability</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Ratio</th><th>Value</th><th>Benchmark</th><th>Status</th><th>Interpretation</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Gross Margin</strong></td><td class="number">28.4%</td><td class="number">25–35%</td><td class="flag-green">Within range</td><td>Solid for contract manufacturing. Room to improve via mix shift.</td></tr>
+            <tr><td><strong>Net Margin</strong></td><td class="number">6.3%</td><td class="number">3–8%</td><td class="flag-green">Good</td><td>Respectable for labour-intensive manufacturing.</td></tr>
+            <tr><td><strong>Return on Assets</strong></td><td class="number">7.8%</td><td class="number">5–10%</td><td class="flag-green">Healthy</td><td>Assets are deployed productively.</td></tr>
+            <tr><td><strong>Return on Equity</strong></td><td class="number">N/M</td><td class="number">—</td><td class="flag-red">N/A</td><td>Negative equity makes this ratio meaningless.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin:20px 0 10px">Leverage</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Ratio</th><th>Value</th><th>Benchmark</th><th>Status</th><th>Interpretation</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Debt-to-Equity</strong></td><td class="number">N/M</td><td class="number">&lt; 2.0</td><td class="flag-red">N/A</td><td>Negative equity makes this unmeasurable.</td></tr>
+            <tr><td><strong>Debt-to-Assets</strong></td><td class="number">1.065</td><td class="number">&lt; 0.6</td><td class="flag-red">Critical</td><td>Liabilities exceed assets — confirms technical insolvency.</td></tr>
+            <tr><td><strong>Interest Coverage</strong></td><td class="number">~3.5x</td><td class="number">&gt; 3x</td><td class="flag-amber">Barely adequate</td><td>Finance costs covered 3.5x by operating profit. Margin is thin.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin:20px 0 10px">Efficiency</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Ratio</th><th>Value</th><th>Benchmark</th><th>Status</th><th>Interpretation</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Asset Turnover</strong></td><td class="number">1.25x</td><td class="number">1.0–2.0x</td><td class="flag-green">Good</td><td>Efficient deployment of asset base.</td></tr>
+            <tr><td><strong>Inventory Turnover</strong></td><td class="number">9.1x</td><td class="number">6–12x</td><td class="flag-green">Strong</td><td>Inventory moving quickly. No significant overstocking.</td></tr>
+            <tr><td><strong>Days Sales Outstanding</strong></td><td class="number">65.9 days</td><td class="number">30–60 days</td><td class="flag-amber">Slightly elevated</td><td>Export B2B terms often extend beyond 60 days. Monitor closely.</td></tr>
+            <tr><td><strong>Payables Days</strong></td><td class="number flag-red">179.6 days</td><td class="number">30–60 days</td><td class="flag-red">Red flag</td><td>~6 months to pay suppliers. Deliberate strategy or cash flow stress — requires clarification.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Financial Strengths and Weaknesses</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div>
+          <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--green);margin-bottom:8px">Strengths</p>
+          <ul class="check-list">
+            <li>Genuine operating profitability — Rs 21.4M net profit</li>
+            <li>Strong cash position — Rs 91.2M (53% of current assets)</li>
+            <li>Good gross margin for contract manufacturing (28.4%)</li>
+            <li>Efficient inventory management (9.1x turnover)</li>
+            <li>Zero tax expense — loss carry-forward benefit</li>
+            <li>ER Group financial backstop</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--red);margin-bottom:8px">Red Flags</p>
+          <ul class="check-list cross">
+            <li>Negative equity (–Rs 35.4M) — technically insolvent standalone</li>
+            <li>Accumulated retained earnings deficit of –Rs 31.4M</li>
+            <li>Payables days ~180 — abnormally high</li>
+            <li>Finance costs consuming 39% of net profit</li>
+            <li>Long-term provisions Rs 78.1M — large and unexplained</li>
+            <li>No segmental data — division performance opaque</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TAB 3: EOS ASSESSMENT ══ -->
+  <div id="tab-eos" class="tab-panel">
+    <div class="section-title">EOS Suitability Assessment</div>
+    <div class="section-subtitle">Entrepreneurial Operating System readiness — eight dimensions rated 1–10 with evidence-based justification</div>
+
+    <div class="callout callout-info" style="margin-bottom:28px">
+      <div class="callout-title">Context Note</div>
+      EOS is designed for entrepreneurially-led companies with 10–250 employees where the leadership team has genuine autonomy over direction, people, and processes. Plastinax is a 350-person subsidiary of a listed conglomerate. This structural reality shapes every dimension below.
+    </div>
+
+    <div class="overall-score-box">
+      <div class="overall-number">4.5<span>/10</span></div>
+      <div class="overall-text">
+        <h3>Borderline EOS Candidate</h3>
+        <p>The structural constraints — subsidiary governance, 350 employees, three concurrent business units — make full EOS implementation inadvisable. However, the MD's profile, genuine growth pains, and absence of operational cadence make targeted EOS tool deployment a strong opportunity. The right entry point is a tools-first approach with explicit ER Group endorsement, not a full Six Components rollout.</p>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Dimensional Ratings</div>
+      <div class="eos-grid">
+
+        <div class="eos-card">
+          <div class="eos-card-header">
+            <div class="eos-card-title">Organizational Size &amp; Complexity</div>
+            <div class="eos-score medium">5<span style="font-size:14px;opacity:0.4">/10</span></div>
+          </div>
+          <div class="eos-bar-bg"><div class="eos-bar-fill medium" style="width:50%"></div></div>
+          <div class="eos-card-note">At 350 employees, Plastinax is 40% above EOS's 250-person upper bound. Three distinct operating units add further complexity. EOS scoped to leadership team only (6–10 people) mitigates this — but it remains a structural constraint.</div>
+        </div>
+
+        <div class="eos-card">
+          <div class="eos-card-header">
+            <div class="eos-card-title">Leadership Openness</div>
+            <div class="eos-score high">7<span style="font-size:14px;opacity:0.4">/10</span></div>
+          </div>
+          <div class="eos-bar-bg"><div class="eos-bar-fill high" style="width:70%"></div></div>
+          <div class="eos-card-note">Nicholas Park (MD, 57, 15+ years at Plastinax) explicitly frames the business around startup philosophy, team motivation, and transformation. Leaders at this stage — with institutional knowledge and a legacy to build — are typically more open to structured systems. Constraint: parent company approval required for meaningful investment.</div>
+        </div>
+
+        <div class="eos-card">
+          <div class="eos-card-header">
+            <div class="eos-card-title">Growth Stage &amp; Challenges</div>
+            <div class="eos-score medium">6<span style="font-size:14px;opacity:0.4">/10</span></div>
+          </div>
+          <div class="eos-bar-bg"><div class="eos-bar-fill medium" style="width:60%"></div></div>
+          <div class="eos-card-note">Classic EOS-addressable symptoms: new business unit (Outsourcing) without proven traction, leader managing existing operations while building new ones, team motivation challenges, and a balance sheet recovering from prior losses. The "growth pain" profile fits.</div>
+        </div>
+
+        <div class="eos-card">
+          <div class="eos-card-header">
+            <div class="eos-card-title">Current Systems &amp; Processes</div>
+            <div class="eos-score medium">5<span style="font-size:14px;opacity:0.4">/10</span></div>
+          </div>
+          <div class="eos-bar-bg"><div class="eos-bar-fill medium" style="width:50%"></div></div>
+          <div class="eos-card-note">ISO 9001:2015 history indicates documented manufacturing processes. No evidence of EOS-style operational cadence (L10s, Scorecards, Rocks). ISO certificate expired February 2025 — recertification unconfirmed. A mild process discipline risk at the wrong moment.</div>
+        </div>
+
+        <div class="eos-card">
+          <div class="eos-card-header">
+            <div class="eos-card-title">Company Culture</div>
+            <div class="eos-score medium">5<span style="font-size:14px;opacity:0.4">/10</span></div>
+          </div>
+          <div class="eos-bar-bg"><div class="eos-bar-fill medium" style="width:50%"></div></div>
+          <div class="eos-card-note">Great Place to Work recognition and long tenure signal strong loyalty. However, EOS requires accountability-first culture — long-tenure, family-oriented workplaces often prioritise harmony over accountability. Cultural reorientation needed before EOS takes root.</div>
+        </div>
+
+        <div class="eos-card">
+          <div class="eos-card-header">
+            <div class="eos-card-title">Decision-Making Patterns</div>
+            <div class="eos-score low">4<span style="font-size:14px;opacity:0.4">/10</span></div>
+          </div>
+          <div class="eos-bar-bg"><div class="eos-bar-fill low" style="width:40%"></div></div>
+          <div class="eos-card-note">Most structurally problematic dimension. Strategic decisions — capital, major hires, new units — flow to ER Group board. EOS's Accountability Chart assumes the leadership team in the room can commit. In a subsidiary context, that assumption is only partially valid.</div>
+        </div>
+
+        <div class="eos-card">
+          <div class="eos-card-header">
+            <div class="eos-card-title">Vision Clarity</div>
+            <div class="eos-score medium">5<span style="font-size:14px;opacity:0.4">/10</span></div>
+          </div>
+          <div class="eos-bar-bg"><div class="eos-bar-fill medium" style="width:50%"></div></div>
+          <div class="eos-card-note">Park has articulated a clear directional intent (eyewear excellence + outsourcing + sustainability). But no documented 10-year vision, 3-year picture, or 1-year plan in EOS terms. Critically, Plastinax's vision must derive from ER Group's 10-year roadmap — not be constructed independently.</div>
+        </div>
+
+        <div class="eos-card">
+          <div class="eos-card-header">
+            <div class="eos-card-title">Meeting Culture</div>
+            <div class="eos-score low">4<span style="font-size:14px;opacity:0.4">/10</span></div>
+          </div>
+          <div class="eos-bar-bg"><div class="eos-bar-fill low" style="width:40%"></div></div>
+          <div class="eos-card-note">No evidence of structured leadership meeting rhythm. Manufacturing shift briefings and production reviews exist, but not the disciplined weekly L10s, quarterly planning sessions, and annual retreats EOS prescribes. Team motivation struggles suggest insufficient structured alignment. High potential for EOS impact here — but built from scratch.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Most Valuable EOS Tools</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>EOS Tool</th><th>Why It Fits Plastinax</th><th>Priority</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>Vision/Traction Organizer (V/TO)</strong></td><td>Aligning three business units under one leadership vision. Park has the intent; the V/TO forces it to be committed to by the full team.</td><td class="flag-green">High</td></tr>
+            <tr><td>2</td><td><strong>Scorecard</strong></td><td>Weekly 5–15 metric visibility across eyewear OEM, Helios, and Outsourcing simultaneously. Monthly financial reports are not sufficient for three running units.</td><td class="flag-green">High</td></tr>
+            <tr><td>3</td><td><strong>Accountability Chart</strong></td><td>Resource sharing between units creates ambiguity on ownership. Critical for the Outsourcing unit launch.</td><td class="flag-green">High</td></tr>
+            <tr><td>4</td><td><strong>Rocks (90-Day Priorities)</strong></td><td>The Outsourcing ramp is exactly the initiative that gets diluted without 90-day ownership and accountability.</td><td class="flag-amber">Medium</td></tr>
+            <tr><td>5</td><td><strong>Issues List (IDS)</strong></td><td>Manufacturing operations accumulate recurring operational issues. Weekly IDS discipline would surface and solve what currently circulates without resolution.</td><td class="flag-amber">Medium</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Implementation Challenges</div>
+      <ul class="styled-list">
+        <li><strong>Parent Company Misalignment:</strong> Without explicit ER Group endorsement, EOS risks being overruled or deprioritised when group priorities compete. This is the single biggest risk.</li>
+        <li><strong>Cultural Resistance:</strong> Long-tenured employees and a "family" culture may resist the accountability-first mechanisms of EOS — particularly holding each other accountable in weekly meetings.</li>
+        <li><strong>MD Bandwidth:</strong> Park's MD transition brought expanded strategic responsibilities alongside operational management. EOS adds to that load — bandwidth must be explicitly protected.</li>
+        <li><strong>ISO Recertification Gap:</strong> Process discipline should not be decaying at the same time EOS is being installed. Recertification is a prerequisite signal.</li>
+        <li><strong>Three-Unit Complexity:</strong> Standard EOS assumes one business model, one V/TO. Three distinct units with different economics and growth stages require significant adaptation of the framework.</li>
+      </ul>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Prerequisites Before EOS Adoption</div>
+      <div class="card-grid">
+        <div class="card warning">
+          <div class="card-label">Prerequisite 1</div>
+          <div class="card-value" style="font-size:15px">ER Group Endorsement</div>
+          <div class="card-desc">Explicit written endorsement from ER Group board — with allocated budget and protected leadership time. Without this, any implementation will stall.</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Prerequisite 2</div>
+          <div class="card-value" style="font-size:15px">MD Mandate Clarity</div>
+          <div class="card-desc">Understand precisely how much strategic autonomy Park's MD elevation granted. The boundaries of his authority must be explicit before a V/TO can be built with integrity.</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Prerequisite 3</div>
+          <div class="card-value" style="font-size:15px">ISO Recertification</div>
+          <div class="card-desc">Renew ISO 9001 before EOS implementation begins. Expiring process standards while installing new ones sends contradictory signals to the organisation.</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Prerequisite 4</div>
+          <div class="card-value" style="font-size:15px">Business Unit Structure</div>
+          <div class="card-desc">Decide definitively whether Plastinax Outsourcing remains an internal unit or becomes a separate legal entity. Ambiguous structure creates Accountability Chart confusion.</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Prerequisite 5</div>
+          <div class="card-value" style="font-size:15px">Financial Transparency</div>
+          <div class="card-desc">The negative equity and Rs 78.1M in long-term provisions need full explanation before leadership can honestly construct a realistic 3-year picture.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-gold">
+      <div class="callout-title">The Nicholas Park Angle</div>
+      Park is the strongest signal in Plastinax's favour. At 57, with 15+ years at the company and a recent elevation to MD, he has both the institutional knowledge to know what hasn't worked and the personal motivation to leave something lasting. Leaders at this stage tend to be more open to structured systems that can outlast their tenure than younger leaders still operating on instinct. If ER Group endorsement can be secured, this is a real engagement — built on a leader who already thinks in the right direction, and simply needs the system to execute consistently.
+    </div>
+  </div>
+
+</div><!-- /content-wrapper -->
+
+<!-- SOURCES -->
+<div class="sources-bar">
+  <strong>Sources:</strong> CBRIS company filing (02/03/2026) · Plastinax Eyewear website (plastinax.com) · Plastinax Outsourcing website (plastinaxoutsourcing.com) · ENL/ER Group corporate communications (enl.mu) · ENL Enlighten magazine · Business Magazine Mauritius · BIZWEEK · LinkedIn (Plastinax Eyewear) · Helios Polarized website · Financial data: CBRIS financial summary FY2025. All MUR figures as filed. Note: summary accounts only — no cash flow statement, segmental data, or prior-year comparatives available.
+</div>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+</script>
+</body>
+</html>
