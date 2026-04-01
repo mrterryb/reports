@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ducray Lenoir Limited — Comprehensive Company Analysis — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric { display: flex; justify-content: space-between; align-items: baseline; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Healthcare &amp; Agro-Chemicals Distribution</span>
+    <span class="badge badge-type">Private Company · Domestic · C971</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">16 March 2026</span>
+  </div>
+  <h1>Ducray Lenoir:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Ducray Lenoir Limited · Company intelligence · Financial ratios · EOS implementation assessment · Port Louis, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 1.05B</div>
+      <div class="stat-delta">FY ended 31 Dec 2024 · Mauritius Rupee</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit After Tax</div>
+      <div class="stat-value amber">MUR 28.6M</div>
+      <div class="stat-delta">2.72% net margin · Other income-dependent</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">5.8 / 10</div>
+      <div class="stat-delta">Moderate — Conditional Positive · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">DSO 140 Days</div>
+      <div class="stat-delta">MUR 405M tied in receivables · liquidity at risk</div>
+    </div>
+  </div>
+</header>
+
+<!-- PREPARED-FOR STRIP -->
+<div class="prepared-for">
+  <span>Ducray Lenoir Limited — Company Analysis &amp; EOS Assessment · 16 March 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- TAB NAV -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A nearly 70-year-old healthcare and agro-chemicals distributor generating MUR 1.05 billion in revenue — but whose core trading business is structurally loss-making without MUR 66.8M of "Other Income" that it cannot explain in one line of its P&L.</p>
+
+  <p class="body-text">Ducray Lenoir Limited (C971, BRN C07000971) is one of Mauritius's most established medical equipment, pharmaceutical, and agro-chemical distributors. Incorporated in 1956 to serve the sugar industry, the company pivoted into healthcare in the early 1990s under Dominique Galea's leadership, adding pharmaceuticals and veterinary products at the turn of the millennium. Today it represents a diverse portfolio of international brands — including Philips medical imaging — and holds trusted supplier status with the Ministry of Health & Wellness, the Ministry of Agro-Industry, most private hospitals, and a growing network of African markets through its subsidiary Medical International (Madagascar) and operations in Seychelles, Comoros, Rwanda, Eritrea, and South Sudan.</p>
+
+  <p class="body-text">The company is 88.9% owned by Kasa Holdings Ltd, itself wholly owned by the Kasa Group — the family conglomerate of Dominique Galea (HEC, born 1952), who acquired Ducray Lenoir in 1988 and has since built a Mauritius-spanning group that includes Rey & Lenferna, La Prudence Leasing, and several manufacturing entities. A meaningful group restructuring in 2021 transferred Ducray Lenoir from KASA Investments Ltd to the newly incorporated Kasa Holdings Ltd. December 2024 saw a board refresh: Stéphanie de La Hogue (Galea's daughter, who manages the family corporate office) became Chairman, and two new directors were appointed — signalling a generational handover in governance oversight.</p>
+
+  <p class="body-text">Financially, FY2024 tells two stories simultaneously. The headline is impressive: MUR 1.05B turnover, MUR 28.6M PAT, 11.9% ROE, and an E&Y-audited balance sheet. The underlying story is more concerning: gross profit of MUR 165M is entirely consumed by admin costs of MUR 171.7M plus finance costs of MUR 27.6M, producing a trading loss of MUR 34.3M. The company is rescued only by MUR 66.8M of "Other Income" — whose nature (management fees, investment returns, government rebates?) is undisclosed in the CBRIS filing. Simultaneously, MUR 404.7M sits in trade receivables (140-day DSO), cash is MUR 7.9M (0.8% of revenue), and a new floating charge of MUR 131.8M was filed in August 2025 — post-balance sheet — suggesting FY2025 liquidity pressure has already materialised into formal debt. EOS suitability sits at 5.8/10, conditional on access to the MD and clarity on the Dec 2024 governance transition.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — The Other Income Problem</div>
+    Ducray Lenoir's core healthcare and agro-chemicals trading business generated a <strong>MUR 34.3M operating loss</strong> in FY2024 (GP MUR 165M minus admin MUR 171.7M minus finance costs MUR 27.6M). Profitability is entirely dependent on MUR 66.8M of "Other Income" — a figure representing 6.3% of revenue and 234% of PAT — whose source is not disclosed in the CBRIS filing. If that income is intercompany transfers, it is subject to group decisions outside management's control. If it is government rebates or tender bonuses, it is lumpy and non-recurring. Until this line is understood and stress-tested, any EOS or strategic conversation with this company must treat the MUR 28.6M PAT as fragile. The August 2025 floating charge of MUR 131.8M — filed after a balance sheet showing zero borrowings — confirms that FY2025 is already under meaningful pressure.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>70-year track record and government trusted-supplier status</strong> with the Ministry of Health &amp; Wellness and Ministry of Agro-Industry. Premium brand portfolio anchored by Philips medical imaging. Multi-country African presence through subsidiaries. E&amp;Y-audited accounts. Scale of MUR 1B+ creates procurement leverage and barriers to new entrants in regulated categories.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Core trading is structurally loss-making without unexplained Other Income of MUR 66.8M.</strong> DSO of 140 days locks MUR 404.7M in receivables against cash of only MUR 7.9M. New MUR 131.8M floating charge in Aug 2025 signals deteriorating liquidity. Admin costs exceed gross profit — an unsustainable ratio for any distribution business. Interest coverage at 2.18× despite zero disclosed borrowings on the balance sheet.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>December 2024 governance transition (new Chairman + 2 new directors) is the clearest EOS entry signal.</strong> A new generation of leadership taking the chair in a MUR 1B business with growing international complexity, working capital stress, and three distinct business divisions is exactly the moment when structure, accountability, and a shared V/TO become urgent. The MD (Dharmen Betchoo, ex-IBL, ESSEC-trained) presents as a professional manager receptive to systematic tools.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A family-controlled, professionally managed, nearly 70-year-old distributor that has reinvented itself three times — from sugar technology to healthcare to a multi-country pharma and agro-chemicals group — and is now navigating a generational governance transition.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Ducray Lenoir Limited was incorporated on <strong>26 July 1956</strong> as a private domestic company under File No. C971, BRN C07000971. Its registered office is at 19 De Poivre Street, Port Louis, with a secondary operational base (showroom and warehouse) at 20 Black River Road, Camp Benoit, Petite Rivière. Stated capital is MUR 12,000,000 across 1,200,000 ordinary shares at par value MUR 10. The company files annual returns and financial statements consistently — FY2022, FY2023, and FY2024 statements are all filed on time, approved within six months of year-end — a signal of governance discipline. Auditor is Ernst &amp; Young Ltd (Ébène), appointed 31 December 2004. Secretarial services are provided by ECS Secretaries Ltd (appointed 10 February 2023). The last Annual Registration Fee was paid in 2026, confirming live and compliant status as at the CBRIS extract date of 5 March 2026.</p>
+  <p class="body-text">The company has five registered business activities spanning import/export, pharmaceutical wholesale, pharmaceutical retail, pesticide/herbicide retail, and warehousing. Dominique Galea's leadership is documented in the company's own history from the early 1990s through to the present day, though he does not appear as a named director in the CBRIS record — suggesting his influence operates at the Kasa Group / Kasa Holdings level rather than at the board of Ducray Lenoir directly.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Kasa Holdings Ltd (KHL)</h4>
+        <div class="ec-sub">88.9% — Controlling Shareholder</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">1,066,667</span></div>
+        <div class="ec-metric"><span class="mk">Ownership</span><span class="mv">88.9%</span></div>
+        <div class="ec-metric"><span class="mk">Parent</span><span class="mv">KASA Group Ltd</span></div>
+        <div class="ec-metric"><span class="mk">Ultimate Beneficial Owner</span><span class="mv">Dominique Galea &amp; family</span></div>
+        <div class="ec-metric"><span class="mk">Incorporated</span><span class="mv">2021 (group restructuring)</span></div>
+        <div class="ec-metric"><span class="mk">Primary income</span><span class="mv">Dividends from subsidiaries</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Société de Beau Port</h4>
+        <div class="ec-sub">11.1% — Minority Shareholder</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">133,333</span></div>
+        <div class="ec-metric"><span class="mk">Ownership</span><span class="mv">11.1%</span></div>
+        <div class="ec-metric"><span class="mk">Nature</span><span class="mv">Société civile (likely family)</span></div>
+        <div class="ec-metric"><span class="mk">Voting power</span><span class="mv">Minority, no veto</span></div>
+        <div class="ec-metric"><span class="mk">Public info</span><span class="mv">Limited — private entity</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>KASA Group — Wider Ecosystem</h4>
+        <div class="ec-sub">Ultimate Control · Group Context</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Ducray Lenoir International Ltd</span><span class="mv">Sister company</span></div>
+        <div class="ec-metric"><span class="mk">Medical International</span><span class="mv">Subsidiary (Madagascar)</span></div>
+        <div class="ec-metric"><span class="mk">MedLife Supplies Ltd</span><span class="mv">Former sister, now KHL</span></div>
+        <div class="ec-metric"><span class="mk">Watertech Ltd</span><span class="mv">Water treatment (KHL)</span></div>
+        <div class="ec-metric"><span class="mk">Rey &amp; Lenferna Ltd</span><span class="mv">Distribution group (listed)</span></div>
+        <div class="ec-metric"><span class="mk">La Prudence Leasing</span><span class="mv">Financial services</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Note — Group Context and 2021 Restructuring</div>
+    In 2021, the Galea family restructured the group: Kasa Holdings Ltd was created to hold all medical and services assets, separating them from the property business (KASA Properties Ltd). In early 2022, Ducray Lenoir Ltd was transferred from KASA Investments Ltd to KHL. This restructuring — combined with the December 2024 board refresh — suggests the group is actively preparing for a generational handover. Dominique Galea (born 1952, now 73) appears to be transitioning operational governance to the next generation via Stéphanie de La Hogue's appointment as Chairman. Understanding this succession dynamic is critical: EOS would accelerate the handover by building the structural permanence that protects the business from founder-dependency.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Stéphanie de La Hogue — Chairman</h4>
+      <p>Appointed Director 26/07/2011; elevated to Chairman <strong>10/12/2024</strong>. Born 1982, Bachelor's in Marketing from Institut de Management International de Paris. Manages Poivre Corporate Services Ltd — the Galea family group corporate office. Director across multiple Kasa Group entities including La Prudence Leasing and Rey &amp; Lenferna. Represents family governance oversight. Key EOS contact for the ownership conversation.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Dharmen Betchoo — Managing Director</h4>
+      <p>Professional manager, not a Galea family member. Previously at <strong>IBL Ltd</strong> (one of Mauritius's largest conglomerates); holds an ESSEC Business School qualification (2014–2015). LinkedIn describes him as a "Transformative Healthcare Strategist." Highly active on LinkedIn posting about Ducray Lenoir client wins (Philips Azurion at C-Care Darné, Philips RT CT scanner at new Cancer Hospital). Primary operational contact and most likely EOS champion if introduced.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Gianni Apollon — Chief Operating Officer</h4>
+      <p>COO role suggests operational depth below the MD. Responsible for day-to-day execution across three business divisions. Presence of a distinct COO role in a 62–80 person company is a positive signal: it suggests some deliberate structural thinking about operational vs. commercial leadership. No public biography available.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Patricia Cheung Chan Hee Fan — Director</h4>
+      <p>Long-tenured director, appointed <strong>01/01/2008</strong>. Historical sources describe her in a Managing Director capacity in earlier records. Likely represents institutional continuity and deep product/market knowledge. Service address not publicly listed in CBRIS.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Antoine Galea — Director</h4>
+      <p>Appointed <strong>09/02/2018</strong>. Registered service address is the Ducray Lenoir registered office (19 Poivre Street). Likely a member of the Galea family in an operational or oversight capacity — the family name aligns with the founding/controlling family. Represents family interests at the board level alongside Stéphanie de La Hogue.</p>
+    </div>
+    <div class="profile-card">
+      <h4>New Directors (Dec 2024)</h4>
+      <p><strong>Linda Diane Mamet</strong> (appointed 01/12/2024, address: Poste Lafayette, Flacq) and <strong>Deepti Itasha Thacoor</strong> (appointed 01/12/2024, address: Floreal) — both appointed simultaneously with De La Hogue's elevation to Chairman. Their profiles suggest external or professional directors brought in to support the governance transition. Board refresh signals awareness that the business needs stronger oversight infrastructure.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Key Operational Staff</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Jimmy Jean Jacques — HR Manager</h4>
+      <p>10+ years in the HR role — significant tenure that signals workforce stability and institutional memory. Represents a key node in the people-management process. In EOS terms, a long-tenured HR manager who has survived multiple leadership cycles is often either a culture carrier or a culture bottleneck — worth understanding early.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Other Key Roles Identified</h4>
+      <p>Clyde Anodin (Head of Accounting), Geraldine Antoine (Marketing &amp; Communications), Kailash Emrith (Head of IT), Pramod Kulpoo (Business Development Manager), Melissa C. (Head of Purchasing), Zaynah Emamdee (Sales &amp; Marketing Executive). Company size estimated at 62–80 employees across sources.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Contact Note</h4>
+      <p>The <strong>primary EOS conversation</strong> should be with Dharmen Betchoo (MD) — professional manager, ESSEC-trained, visibly growth-oriented. The <strong>ownership buy-in conversation</strong> needs to happen with Stéphanie de La Hogue (Chairman) and ultimately Dominique Galea. Without both levels aligned, any EOS engagement risks stalling at the governance layer.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text"><strong>Division 1 — Medical Equipment and Healthcare Technology:</strong> Sole distributor for Philips Healthcare imaging products in Mauritius (including the Philips Azurion 7 Cathlab and Philips Big Bore RT CT scanner recently installed at C-Care Darné and the New Cancer Hospital). Also distributes other diagnostic, surgical, and laboratory equipment to government hospitals, private clinics, and educational institutions. This is the highest-value, longest-cycle, relationship-intensive segment — sales are project-based and capital in nature, explaining both the high DSO and the lumpy revenue profile.</p>
+  <p class="body-text"><strong>Division 2 — Pharmaceuticals and Veterinary Products:</strong> Wholesale and retail distribution of pharmaceutical goods through 19 Poivre Street (Port Louis). Registered for pharmaceutical retail and wholesale under CBRIS business activities. Serves Ministry of Health tenders and private pharmacy/clinic channels. Veterinary products added at the turn of the millennium. This segment likely generates the most consistent, recurring revenue.</p>
+  <p class="body-text"><strong>Division 3 — Agro-Chemicals and Pesticides:</strong> Dealer and retail seller of pesticides, herbicides, fertilisers, and listed chemicals (Cantin Dr Yves Street, Mauritius). Serves Ministry of Agro-Industry tenders and the agricultural sector. This segment leverages the same regulatory relationships and supply-chain infrastructure as the pharmaceutical division. The large warehouse at Camp Benoit likely supports both pharma and agro-chemical storage.</p>
+
+  <h3 class="subsection-title">Geographic Presence and International Reach</h3>
+  <p class="body-text">Ducray Lenoir operates from two primary locations in Mauritius: 19 De Poivre Street (Port Louis, HQ, registered office, pharma and medical) and 20 Black River Road, Camp Benoit, Petite Rivière (showroom, warehouse &gt;100m²). Internationally, the company operates through Medical International (subsidiary, Madagascar) and Ducray Lenoir International (sister company under KHL) which covers Seychelles, Comoros, Rwanda, Eritrea, and South Sudan. This multi-country footprint — across six African markets — represents a genuine competitive differentiator and a significant growth platform, but also introduces foreign exchange exposure, credit risk concentration, and operational complexity that a 62–80 person head-office team must manage.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Digital Presence Note</div>
+    Website (ducray-lenoir.com) is live and functional. LinkedIn presence is highly active — MD Dharmen Betchoo posts client wins, product installations, and thought leadership content regularly. This is above-average for a Mauritius private company of this type and signals a marketing-conscious management team. No significant red flags on digital presence, though the website content appears somewhat generic and template-driven rather than differentiated.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS / Registrar of Companies extract (issued 5 March 2026) — FY ended 31 December 2024, currency Mauritius Rupee (MUR). Approved 30 June 2025. No prior-year comparative figures available from CBRIS filing; single-year analysis only.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    This analysis is based solely on the summarised financials filed with the Registrar of Companies under the CBRIS system. Ducray Lenoir is a private company and is not required to publish full IFRS-compliant notes. The P&amp;L line items are high-level aggregates; the most critical limitation is that "Other Income" (MUR 66.8M) and "Others" in both non-current assets (MUR 186.6M) and current liabilities (MUR 212.5M) are not disaggregated. No prior-year comparatives are available from this source, so trend analysis is impossible. The charge register provides some signal on post-balance-sheet financing activity.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>1,052,813,035</td><td>100.0%</td><td>Crossing the MUR 1 billion threshold — significant scale for a Mauritius private distributor. Mix: medical equipment (project-based, lumpy), pharma (recurring), agro-chemicals.</td></tr>
+        <tr><td>Cost of Sales</td><td>887,765,349</td><td>84.3%</td><td>High COGS ratio is expected for a pure-play distributor with no manufacturing. Reflects pass-through pricing model on imported brands.</td></tr>
+        <tr class="heat-warn"><td>Gross Profit</td><td>165,047,686</td><td>15.7%</td><td><span class="b b-amber">Amber</span> — Gross margin of 15.7% is thin for a three-division distributor. Medical equipment typically commands 20–35% margin; pharma 10–20%; agro-chemicals 15–25%. Blended 15.7% suggests either margin compression, heavy government tender pricing, or mix shift toward lower-margin products.</td></tr>
+        <tr class="heat-ok"><td>Other Income</td><td>66,755,983</td><td>6.3%</td><td><span class="b b-green">Green — but opaque</span> — This line rescues the entire P&amp;L. Likely includes management fees from subsidiaries (Medical International, DLI), investment returns on the MUR 186.6M NCA "Others" balance, and/or government tender rebates. Nature must be verified — if intercompany, it is group-decision-dependent.</td></tr>
+        <tr><td>Distribution Costs</td><td>1</td><td>0.0%</td><td>Negligible (likely a system entry rather than a true zero). Warehouse and logistics costs are almost certainly embedded in Admin or COGS.</td></tr>
+        <tr class="heat-critical"><td>Administration Costs</td><td>171,709,158</td><td>16.3%</td><td><span class="b b-red">Critical</span> — Admin costs <em>exceed</em> gross profit by MUR 6.7M. This means the trading business alone generates a loss. A 62–80 person company with MUR 171.7M in admin costs implies average fully-loaded cost per head of MUR 2.1–2.8M (~USD 46–62K). Government-sector selling overhead and multi-country management costs are likely drivers.</td></tr>
+        <tr class="heat-critical"><td>Finance Costs</td><td>27,601,317</td><td>2.6%</td><td><span class="b b-red">Flag</span> — MUR 27.6M finance cost against a balance sheet showing zero formal borrowings is anomalous. Possible explanations: IFRS 16 right-of-use asset interest, intercompany financing charges passed down from KHL, or short-term import finance not classified as a borrowing. Must be clarified.</td></tr>
+        <tr><td>Profit / (Loss) Before Tax</td><td>32,493,194</td><td>3.1%</td><td>PBT is entirely dependent on Other Income. Without it: (MUR 34.3M loss). With it: MUR 32.5M profit. This is not a sustainable structure.</td></tr>
+        <tr><td>Tax Expense</td><td>3,882,658</td><td>0.4%</td><td>Effective tax rate 11.9% — below the standard Mauritius 15% corporate rate. Likely reflects deductions, deferred tax adjustments, or exempt income from group dividends.</td></tr>
+        <tr class="heat-warn"><td><strong>Net Profit After Tax</strong></td><td><strong>28,610,536</strong></td><td><strong>2.72%</strong></td><td><span class="b b-amber">Amber</span> — PAT of MUR 28.6M sounds acceptable until you stress-test the Other Income dependency. If Other Income normalises to zero, this becomes a MUR 34M+ loss. The published profit is real but fragile.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">Core Trading Loss — The Critical Structural Issue</div>
+    Gross Profit (MUR 165.0M) minus Admin Costs (MUR 171.7M) minus Finance Costs (MUR 27.6M) = <strong>MUR −34.3M operating loss</strong> before Other Income. The company's published MUR 28.6M PAT exists only because Other Income of MUR 66.8M bridges the gap. This means Ducray Lenoir's distribution operations are not self-funding — which is either an accounting artefact (costs are being managed correctly but classified differently), or a genuine structural problem that the board must address.
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 Dec 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>9,669,675</td><td>Very low PP&amp;E for a MUR 1B turnover company — confirms asset-light distribution model. Physical assets are primarily vehicles, office equipment, and warehouse fit-out.</td></tr>
+        <tr><td></td><td>Intangible Assets</td><td>263,900</td><td>Negligible — no significant IP or goodwill on book.</td></tr>
+        <tr><td></td><td>Other Investments</td><td>24,558,884</td><td>Likely equity stakes in subsidiaries or related entities at cost.</td></tr>
+        <tr class="heat-warn"><td></td><td>NCA Others (intercompany/deferred)</td><td>186,632,718</td><td><span class="b b-amber">Flag</span> — The largest single asset class in NCA. Almost certainly intercompany loans receivable from Medical International and/or Ducray Lenoir International. MUR 186.6M deployed in related entities but not labelled or disaggregated. If these are non-performing loans, the balance sheet overstates asset quality significantly.</td></tr>
+        <tr><td></td><td><strong>Total NCA</strong></td><td><strong>221,125,177</strong></td><td>30.7% of total assets — primarily illiquid intercompany exposure.</td></tr>
+        <tr class="heat-critical"><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>404,702,999</td><td><span class="b b-red">Critical</span> — MUR 404.7M in receivables on MUR 1.05B revenue = 140-day DSO. Likely driven by government account receivables (Ministry of Health, Ministry of Agro-Industry) with extended settlement cycles and large medical equipment project payments. This is the primary liquidity risk.</td></tr>
+        <tr><td></td><td>Inventories</td><td>76,952,775</td><td>MUR 77M inventory = 31.6 inventory days on COGS. Reasonable for a medical/pharma/agro distributor managing regulated stock with minimum order quantities.</td></tr>
+        <tr class="heat-critical"><td></td><td>Cash and Cash Equivalents</td><td>7,907,948</td><td><span class="b b-red">Critical</span> — MUR 7.9M cash against MUR 477M current liabilities = cash ratio of 0.017×. The company has less than 3 days of COGS in cash. Operational survival depends entirely on rolling over trade payables and drawing on banking facilities.</td></tr>
+        <tr><td></td><td>Other Current Assets</td><td>9,575,820</td><td>Likely prepayments, tax credits, or other short-term receivables.</td></tr>
+        <tr><td></td><td><strong>Total Current Assets</strong></td><td><strong>499,139,542</strong></td><td>81% of CA is receivables — an illiquid current asset profile.</td></tr>
+        <tr><td></td><td><strong>Total Assets</strong></td><td><strong>720,264,719</strong></td><td></td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital</td><td>12,000,000</td><td>Par value MUR 10 × 1,200,000 shares.</td></tr>
+        <tr class="heat-ok"><td></td><td>Retained Earnings</td><td>113,623,306</td><td>Accumulated profits — reasonable for a 70-year-old company.</td></tr>
+        <tr class="heat-ok"><td></td><td>Other Reserves</td><td>114,161,461</td><td>Likely revaluation reserves or capital reserves. Adds stability to equity base.</td></tr>
+        <tr class="heat-ok"><td></td><td><strong>Total Equity</strong></td><td><strong>239,784,767</strong></td><td>33.3% of total assets — adequate equity ratio for a distribution business.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Deferred Tax Liability</td><td>3,415,922</td><td>Standard deferred tax provision — no concern.</td></tr>
+        <tr><td></td><td><strong>Total NCL</strong></td><td><strong>3,415,922</strong></td><td>Zero long-term borrowings on balance sheet as at 31 Dec 2024. Note: the Aug 2025 floating charge of MUR 131.8M suggests this changed materially in 2025.</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>264,601,075</td><td>MUR 264.6M in trade payables = 108.8-day DPO against COGS. The company is stretching supplier payment to fund its extended customer receivables cycle — a classic working capital squeeze.</td></tr>
+        <tr class="heat-critical"><td></td><td>Other Current Liabilities</td><td>212,462,955</td><td><span class="b b-red">Flag</span> — MUR 212.5M in undisclosed "Other" current liabilities is the second-largest balance on the entire balance sheet. Could include: accrued liabilities, related-party payables to Kasa Holdings, short-term bank overdraft classified outside "borrowings", or advance payments. This line requires explanation before any credit or strategic assessment is complete.</td></tr>
+        <tr><td></td><td><strong>Total Current Liabilities</strong></td><td><strong>477,064,030</strong></td><td></td></tr>
+        <tr><td></td><td><strong>Total Liabilities</strong></td><td><strong>480,479,952</strong></td><td>66.7% of total assets funded by liabilities — weighted entirely toward trade and short-term credit rather than formal long-term debt.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register — Financing History</h3>
+  <p class="body-text">Seven charges are registered against Ducray Lenoir's movable and immovable property. The earlier charges (1998–2005) — totalling approximately MUR 33.3M in floating charges plus a MUR 975K charge — represent legacy banking facilities likely established when the company was smaller and revenue was in the tens of millions. These charges have not been discharged from the register, which is common in Mauritius even after facilities are repaid, and should not be over-interpreted unless the amounts remain outstanding.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Post-Balance Sheet Financing — A Red Flag Requiring Explanation</div>
+    Two recent charges demand attention: (1) A <strong>USD 765,000 floating charge</strong> (equivalent ~MUR 34M) filed in October 2024, likely representing import trade finance or an international credit line established for the African subsidiaries. (2) A <strong>MUR 131,765,000 floating charge</strong> filed 12 September 2025 — eight months after the FY2024 balance sheet showed zero formal borrowings. A MUR 131.8M new floating charge on a company with MUR 7.9M cash and MUR 28.6M PAT strongly suggests FY2025 liquidity deteriorated materially, forcing the company to convert trade credit pressure into formal secured debt. This is the most significant negative signal in this entire report. Any engagement with Ducray Lenoir in 2026 should begin by understanding what drove this charge.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">All ratios calculated from CBRIS FY2024 filing (MUR). Benchmarks reference Mauritius distribution/services SME norms and general emerging-market distributor standards. <span class="b b-green">Green</span> = healthy, <span class="b b-amber">Amber</span> = watch, <span class="b b-red">Red</span> = critical concern.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.05×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius distributor)</span><span class="ratio-val">1.2× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber — Below Benchmark</span></span></div>
+      <span class="ratio-interpret">At 1.05×, Ducray Lenoir has barely MUR 1.05 of current assets for every MUR 1.00 of current liabilities. This provides negligible buffer. Any receivables impairment or creditor pressure could push liquidity below 1. The ratio overstates safety because 81% of current assets are receivables (140-day DSO) — not liquid.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.89×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red — Below 1.0×</span></span></div>
+      <span class="ratio-interpret">Excluding inventory of MUR 77M, liquid assets cover only 89% of current liabilities. The company cannot meet its near-term obligations from liquid assets alone — it relies on receivables converting and trade credit rolling over. A customer default or supplier tightening could cause a liquidity event.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Cash Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.017×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (minimum floor)</span><span class="ratio-val">0.10× – 0.20×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical — Near-Zero Cash</span></span></div>
+      <span class="ratio-interpret">MUR 7.9M cash against MUR 477M current liabilities. The company covers fewer than 3 days of operating costs in cash. This is not unusual for a distributor in Mauritius that relies on banking facilities, but it means any credit line disruption is immediately existential.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Working Capital</h4>
+      <div class="ratio-row"><span class="ratio-label">Working capital (CA − CL)</span><span class="ratio-val warn">MUR 22.1M</span></div>
+      <div class="ratio-row"><span class="ratio-label">As % of revenue</span><span class="ratio-val warn">2.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber — Razor-Thin</span></span></div>
+      <span class="ratio-interpret">Only MUR 22.1M net working capital cushion on MUR 1.05B revenue. A 2.1% working capital ratio means any revenue growth requires significant additional working capital that the company currently cannot self-fund — confirming the need for the external financing now visible in the 2025 charge register.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">15.67%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius distributor)</span><span class="ratio-val">18% – 28%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber — Below Range</span></span></div>
+      <span class="ratio-interpret">15.7% gross margin is below what a mixed medical equipment / pharma / agro-chemicals distributor should be achieving. Medical equipment alone should deliver 20–35% margins. If the blended margin is 15.7%, either the mix is heavily weighted toward lower-margin government tender pharma, or there is margin leakage in the medical equipment contracts.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">EBIT (PBT + Finance Costs)</span><span class="ratio-val warn">MUR 60.1M</span></div>
+      <div class="ratio-row"><span class="ratio-label">EBIT margin</span><span class="ratio-val warn">5.71%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber — Other Income dependent</span></span></div>
+      <span class="ratio-interpret">EBIT of 5.71% is entirely dependent on Other Income (MUR 66.8M) being classified above the EBIT line. If Other Income is stripped out (as it should be for core trading analysis), EBIT becomes deeply negative. As reported, the ratio appears adequate but it is not a reliable signal of operational health.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">2.72%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius distributor)</span><span class="ratio-val">2% – 5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber — Within range, fragile</span></span></div>
+      <span class="ratio-interpret">2.72% net margin is within the distribution benchmark range and would be acceptable — except that it depends entirely on MUR 66.8M Other Income. The underlying trading margin is negative. This is the difference between a business that is marginally profitable and one that is structurally loss-making.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets / Return on Equity</h4>
+      <div class="ratio-row"><span class="ratio-label">ROA (PAT / Total Assets)</span><span class="ratio-val warn">3.97%</span></div>
+      <div class="ratio-row"><span class="ratio-label">ROE (PAT / Total Equity)</span><span class="ratio-val warn">11.93%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark ROE</span><span class="ratio-val">10% – 18%</span></div>
+      <span class="ratio-interpret">ROE of 11.93% sits within the acceptable range for a Mauritius distributor and demonstrates reasonable return on the equity base. ROA of 3.97% reflects the large balance sheet (especially the MUR 186.6M NCA "Others") relative to profits generated. Both ratios are acceptable in isolation but fragile given Other Income dependency.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Formal long-term borrowings (BS)</span><span class="ratio-val ok">MUR 0</span></div>
+      <div class="ratio-row"><span class="ratio-label">D/E ratio (formal debt)</span><span class="ratio-val ok">0.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green — Balance sheet</span> <span class="b b-red">Red — 2025 charges</span></span></div>
+      <span class="ratio-interpret">The FY2024 balance sheet shows zero formal long-term borrowings — superficially healthy. However: (1) MUR 212.5M in "Other Current Liabilities" is unexplained and could include financing; (2) the Aug 2025 floating charge of MUR 131.8M has materially changed this picture. The zero-debt balance sheet is a snapshot that expired by mid-2025.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">EBIT</span><span class="ratio-val">MUR 60.1M</span></div>
+      <div class="ratio-row"><span class="ratio-label">Finance Costs</span><span class="ratio-val">MUR 27.6M</span></div>
+      <div class="ratio-row"><span class="ratio-label">Interest Coverage</span><span class="ratio-val warn">2.18×</span></div>
+      <span class="ratio-interpret">Coverage of 2.18× is marginal — the standard minimum is 3×. More concerning: this EBIT figure includes MUR 66.8M Other Income. On a pure trading basis, EBIT is negative and finance costs are unserviceable from operations alone. The source of the MUR 27.6M finance cost on a zero-borrowings balance sheet also remains unexplained — likely IFRS 16 lease interest or intercompany charges.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debtor Days (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Trade Receivables</span><span class="ratio-val">MUR 404.7M</span></div>
+      <div class="ratio-row"><span class="ratio-label">DSO (Receivables / Revenue × 365)</span><span class="ratio-val bad">140.3 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius B2B)</span><span class="ratio-val">45 – 90 days</span></div>
+      <span class="ratio-interpret">140-day DSO is the single most damaging number in this report. Receivables of MUR 404.7M against cash of MUR 7.9M means the company has 51× more money owed by customers than it holds in cash. Government healthcare procurement in Mauritius and across African markets is notoriously slow-paying. This is structurally characteristic of the sector — but at this scale, it creates an existential liquidity dependency on banking facilities.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Trade Payables</span><span class="ratio-val">MUR 264.6M</span></div>
+      <div class="ratio-row"><span class="ratio-label">DPO (Payables / COGS × 365)</span><span class="ratio-val warn">108.8 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (import distributor)</span><span class="ratio-val">60 – 90 days</span></div>
+      <span class="ratio-interpret">DPO of 108.8 days means Ducray Lenoir is already stretching supplier payment terms well beyond the typical 60–90 day window. This is unsurprising — the company has to fund a 140-day receivables cycle somehow — but it creates supplier relationship risk and potentially constrains access to preferred pricing tiers.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Inventory</span><span class="ratio-val">MUR 76.95M</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inventory Days (Inventory / COGS × 365)</span><span class="ratio-val ok">31.6 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inventory Turnover</span><span class="ratio-val ok">11.5×</span></div>
+      <span class="ratio-interpret">Inventory turnover of 11.5× (31.6 days on hand) is actually healthy for a distributor managing multiple regulated product categories. It suggests efficient stock management and minimal slow-moving or obsolete inventory build-up. This is one of the few genuinely positive operational metrics in the analysis.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Revenue</span><span class="ratio-val">MUR 1,052.8M</span></div>
+      <div class="ratio-row"><span class="ratio-label">Total Assets</span><span class="ratio-val">MUR 720.3M</span></div>
+      <div class="ratio-row"><span class="ratio-label">Asset Turnover</span><span class="ratio-val ok">1.46×</span></div>
+      <span class="ratio-interpret">Asset turnover of 1.46× is reasonable for a distribution business, confirming the asset-light model is working effectively. The company generates MUR 1.46 of revenue for every MUR 1.00 of assets deployed — a creditable ratio, though the asset base includes MUR 186.6M of opaque NCA "Others."</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Cash Conversion Cycle</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Cash Conversion Cycle</h4>
+      <div class="ratio-row"><span class="ratio-label">DSO (days)</span><span class="ratio-val bad">140.3</span></div>
+      <div class="ratio-row"><span class="ratio-label">+ Inventory Days</span><span class="ratio-val ok">31.6</span></div>
+      <div class="ratio-row"><span class="ratio-label">− DPO</span><span class="ratio-val warn">108.8</span></div>
+      <div class="ratio-row"><span class="ratio-label">Cash Conversion Cycle</span><span class="ratio-val bad">63.1 days</span></div>
+      <span class="ratio-interpret">A 63-day cash conversion cycle means the company takes 63 days to convert a MUR 1 of inventory purchase into MUR 1 of cash receipts, net of supplier credit. On MUR 887M COGS, this requires MUR 153M of permanent working capital financing. The company currently funds this through stretched payables and banking facilities — hence the 2025 floating charge.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Working Capital Funding Gap</h4>
+      <div class="ratio-row"><span class="ratio-label">Receivables locked up</span><span class="ratio-val bad">MUR 404.7M</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inventory locked up</span><span class="ratio-val">MUR 77.0M</span></div>
+      <div class="ratio-row"><span class="ratio-label">Funded by payables</span><span class="ratio-val warn">(MUR 264.6M)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Net unfunded gap</span><span class="ratio-val bad">MUR 217.1M</span></div>
+      <span class="ratio-interpret">MUR 217M of working capital is unfunded by payables alone — covered by the MUR 212.5M "Other Current Liabilities" (likely bank facilities) and the equity base. This is the core structural tension: every MUR 1 of revenue growth requires ~MUR 0.21 of additional working capital funding that the company does not have in cash.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. DSO 140 days (MUR 404.7M in receivables):</strong> If Ducray Lenoir could compress DSO from 140 to 90 days — still above Mauritius benchmark but realistic for government-heavy B2B — it would release approximately MUR 144M in cash. That is equivalent to 5× its current cash holdings, eliminates the need for the 2025 floating charge, and fundamentally changes the company's strategic options. A 10-day DSO improvement releases MUR 28.8M — more than the entire FY2024 PAT. No growth strategy, cost programme, or EOS implementation delivers results at this scale, this fast. <strong>2. Admin-to-GP ratio (104% — costs exceed gross profit):</strong> Until admin costs are brought below MUR 165M gross profit, the company is structurally dependent on Other Income for survival. Understanding whether the MUR 6.7M GP-admin gap can be closed through pricing (margin recovery) or cost (admin reduction) is the most important strategic question on the P&amp;L.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Three distinct market segments — medical equipment, pharmaceuticals, agro-chemicals — each with different competitive dynamics, margin profiles, and customer relationships. Ducray Lenoir's core competitive advantage is its 70-year government trusted-supplier status, which functions as a structural moat in all three segments.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Medical Equipment &amp; Healthcare Technology</h4>
+        <div class="ec-sub">Highest Margin · Project-Based · Government &amp; Private</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key clients</span><span class="mv">Ministry of Health, C-Care, New Cancer Hospital, City Clinic</span></div>
+        <div class="ec-metric"><span class="mk">Flagship brand</span><span class="mv">Philips Healthcare (imaging, cathlab, RT CT)</span></div>
+        <div class="ec-metric"><span class="mk">Primary competitor</span><span class="mv">Grays (GE Healthcare distributor, Beau Plan)</span></div>
+        <div class="ec-metric"><span class="mk">Differentiation</span><span class="mv">Philips exclusivity + 30 years clinical relationships</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv ok">Philips distribution agreement renewal risk</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Pharmaceuticals &amp; Veterinary Products</h4>
+        <div class="ec-sub">Recurring Revenue · Tender-Driven · Regulated</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key clients</span><span class="mv">Ministry of Health (tenders), private pharmacies, clinics</span></div>
+        <div class="ec-metric"><span class="mk">Competitor 1</span><span class="mv">CIEL Médical (part of CIEL Group)</span></div>
+        <div class="ec-metric"><span class="mk">Competitor 2</span><span class="mv">MedLife Supplies Ltd (former sister, now KHL separate)</span></div>
+        <div class="ec-metric"><span class="mk">Differentiation</span><span class="mv">Breadth of international brand portfolio</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Government tender resets; generic substitution pressure</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Agro-Chemicals, Pesticides &amp; Fertilisers</h4>
+        <div class="ec-sub">Regulated · Ministry of Agro-Industry · Seasonal</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key clients</span><span class="mv">Ministry of Agro-Industry, agricultural sector, cane</span></div>
+        <div class="ec-metric"><span class="mk">Listed chemical dealer</span><span class="mv">Yes — regulated category, high barrier</span></div>
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Terra (Rogers), Panagora, smaller local distributors</span></div>
+        <div class="ec-metric"><span class="mk">Differentiation</span><span class="mv">Trusted listed-chemical dealer status; sugar industry legacy</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Sugar industry decline; biosecurity regulatory tightening</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Government trusted-supplier status across three ministries:</strong> Having earned and maintained approval from the Ministry of Health &amp; Wellness and the Ministry of Agro-Industry over multiple decades is not easily replicable. Tender approval processes, product registration, and inspector relationships represent a multi-year investment that functions as a structural entry barrier. This is Ducray Lenoir's most defensible competitive asset.</p>
+  <p class="body-text"><strong>2. Philips Healthcare exclusivity (if maintained):</strong> The Philips medical imaging distribution relationship — evidenced by recent installations of the Azurion 7 Cathlab at C-Care Darné and the Big Bore RT CT scanner at the new Cancer Hospital — is the highest-value commercial relationship in the portfolio. Any distributor with exclusive rights to Philips medical imaging in a small-island healthcare market has a semi-monopoly position for major hospital procurement. The risk is that Philips could reconfigure its regional distribution strategy.</p>
+  <p class="body-text"><strong>3. Multi-country African platform:</strong> The combination of Medical International (Madagascar subsidiary) and Ducray Lenoir International (DLI, covering Seychelles, Comoros, Rwanda, Eritrea, South Sudan) creates a multi-country distribution footprint that very few Mauritius-based companies of this size can match. This African presence is a genuine growth platform — and likely a major contributor to the MUR 66.8M Other Income (through intercompany fees or dividends from profitable African operations).</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds / Headwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Tailwind — New Cancer Hospital infrastructure spend:</strong> The Mauritius government's new dedicated cancer centre represents a multi-year capex programme that directly benefits Ducray Lenoir as the Philips imaging distributor. The RT CT scanner installation is already confirmed. Further radiotherapy and diagnostic imaging procurement is likely.</li>
+    <li><strong>Tailwind — Private healthcare growth in Mauritius:</strong> C-Care Group (formerly Clinique Darné) and other private hospital operators are expanding clinical capabilities. Major equipment investment decisions flow through specialist distributors like Ducray Lenoir.</li>
+    <li><strong>Tailwind — African healthcare access investment:</strong> International and government funding into healthcare infrastructure across sub-Saharan Africa creates a long-term growth runway for medical equipment distribution. Ducray Lenoir's existing African platform positions it ahead of later entrants.</li>
+    <li><strong>Headwind — Government procurement delays and DSO:</strong> Mauritius government healthcare procurement is characterised by slow payment cycles — structurally producing the 140-day DSO visible in FY2024. Without policy change, this problem does not resolve itself.</li>
+    <li><strong>Headwind — Sugar industry contraction:</strong> Mauritius sugar output has declined materially over the past two decades, directly shrinking the agro-chemicals market that gave Ducray Lenoir its original foothold. This division faces structural volume pressure unless the company pivots to fruit, vegetable, and food-security agriculture.</li>
+    <li><strong>Risk — Philips distribution agreement concentration:</strong> If Philips Healthcare reorganises its Indian Ocean distribution (as global OEMs increasingly do in response to digital health market changes), Ducray Lenoir's most profitable segment faces existential disruption. The company appears to have no disclosed mitigation for this single-partner dependency.</li>
+    <li><strong>Risk — Currency exposure from African operations:</strong> Operations in Madagascar, Rwanda, South Sudan, and Eritrea involve currencies with variable stability. The USD 765,000 floating charge (Sept 2024) may reflect exposure management for the African business.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Transformation Gap</div>
+    For a company representing Philips Healthcare — one of the world's leading health technology brands — Ducray Lenoir's own digital presence and technology adoption appears modest. The website is functional but not differentiated. There is no visible evidence of a customer portal, tender management system, or field service platform. In a sector where OEM partners increasingly require digital integration (service contracts, remote diagnostics, e-procurement), this gap could become a contract renewal risk with Philips over the medium term.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data, financial analysis, and CBRIS records. The December 2024 governance transition is the key EOS timing signal for this company.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">At 62–80 employees and MUR 1.05B revenue, Ducray Lenoir sits at the upper end of the EOS sweet spot. More importantly, its <em>organisational complexity</em> exceeds its headcount: three distinct business divisions (medical equipment, pharma, agro-chemicals), an international subsidiary (Madagascar), a sister-company African network (6 countries), government tender management, and a 2021 group restructuring all create the coordination and accountability challenges that EOS is specifically designed to resolve. The presence of a separate MD, COO, HR Manager, Head of Purchasing, Head of IT, and Business Development Manager confirms a multi-layer management structure that needs deliberate systems — not more informal oversight.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Two positive signals: (1) MD Dharmen Betchoo is a professional manager (not a family member) with IBL and ESSEC credentials — professional managers typically respond well to EOS because it gives them structured authority without family friction. (2) The Ernst &amp; Young audit relationship indicates willingness to engage external professional scrutiny. The unknowns: Stéphanie de La Hogue (family Chairman, 40 years old, just appointed Dec 2024) has not yet demonstrated her appetite for structural change. Dominique Galea (ultimate beneficial owner, 73) is the critical variable — a founder who has controlled this group since 1988 may resist the accountability transparency that EOS requires. Score assumes Betchoo is the champion; the family owner buy-in is the gating risk.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">The EOS pain point profile here is near-textbook. The company has: (1) a working capital crisis (140-day DSO, MUR 7.9M cash) that cannot be solved by the founder working harder — it requires systematic process change; (2) three business divisions with different rhythms, customers, and margin profiles that need distinct but coordinated accountability structures; (3) a MUR 131.8M new debt charge in 2025 suggesting that growth has outrun the management system's capacity to control cash; (4) a generational handover in governance creating the "new chapter" moment that makes CEOs receptive to new operating systems; (5) international expansion (6 African countries) adding foreign complexity to domestic accountability gaps. This is exactly the company at exactly the moment EOS is designed for.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Some baseline systems exist: E&Y audit implies financial controls above the Mauritius average; a 10-year HR Manager suggests HR processes have some stability; a Head of IT (Kailash Emrith) signals technology investment. However, the financial analysis reveals process failures at scale: a 140-day DSO is not a market problem, it is a collections process problem; admin costs exceeding gross profit is a cost management process problem. There is no public evidence of formal EOS-compatible frameworks (documented processes, scorecards, meeting rhythms). The "Others" opacity on the balance sheet (MUR 186.6M NCA + MUR 212.5M CL) suggests financial reporting systems do not demand sufficient line-item discipline.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Positive signals: 70 years of operation with trusted-supplier status across multiple government ministries suggests a culture of reliability and quality. Long-tenured HR Manager (10 years) and consistent annual return filings signal institutional stability. MD Betchoo's LinkedIn activity ("Transformative Healthcare Strategist") suggests ambition and identity investment in the brand. The EOS culture risk: a family-controlled business with a patriarch who has run it for 38 years may have deep founder-dependency embedded in how decisions are made — even if Betchoo has operational authority, key commercial decisions may still require Galea sign-off.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The most significant structural ambiguity in this report. There are at least three decision-making layers visible: (1) Dominique Galea / Kasa Group — ultimate strategic and capital decisions; (2) Stéphanie de La Hogue (new Chairman) — governance oversight and family representation; (3) Dharmen Betchoo (MD) — operational authority. Whether these layers have clear, documented ownership boundaries is unknown — and in a family group with a 73-year-old patriarch who has controlled the business for 38 years, ambiguity at the top tends to create cascading ambiguity throughout. The three-division structure adds a further layer: who owns the P&L of each division, and to whom are they accountable?</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Dharmen Betchoo's LinkedIn language ("Transformative Healthcare Strategist | Championing Innovation for Better Lives") and the company website's mission language suggest aspirational direction — but aspiration is not a V/TO. There is no public evidence of a documented 10-year target, 3-year picture, or 1-year plan. The three-division structure, African expansion, and post-restructuring integration all require a shared, written direction to avoid each division pulling toward its own interpretation of "growth." The December 2024 board transition is the natural moment to write this down for the first time.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of structured meeting rhythms is available from public sources. In a company with three divisions, international operations, a new board configuration, and a working capital crisis, the absence of visible meeting discipline is telling. A 140-day DSO problem in a professionally managed company suggests that no one is IDS-ing (Identify, Discuss, Solve) on the receivables issue every week. That is a meeting culture problem before it is a process problem. The lowest-scoring EOS dimension — and paradoxically the easiest to fix once leadership buys in.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">5.8</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate — Conditional Positive with a Clear Timing Window</h4>
+      <p>Ducray Lenoir is a qualified EOS candidate — the pain is real, the complexity is right, and the timing (post-governance transition, pre-2025 debt crisis resolution) is the best it will be for several years. The conditional is the Galea family ownership layer. EOS cannot be installed below the ownership level — if Dominique Galea is not aligned or Stéphanie de La Hogue has not been given genuine authority to mandate structural change, any programme will stall at the first Board discussion. The engagement strategy is: Betchoo first (MD buy-in, easy), De La Hogue second (family governance conversation), Galea confirmation third. If all three align, this scores 7.5+. Without Galea clarity, it stays at 5.8.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Ducray Lenoir</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The most urgent tool. Three divisions, a subsidiary, a sister-company network, an MD, a COO, and a new Chairman — with no publicly documented ownership structure below the board. Before any other EOS tool lands, the company needs a single page that answers: who runs what, who reports to whom, and what does each seat own? The dual MD/family-Chairman structure makes this both urgent and politically sensitive.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>A 140-day DSO visible in the annual accounts is a management information failure — the leadership team should be seeing DSO, cash, payables, and gross margin by division every week, not every year. Building a 13-week rolling Scorecard with 5–15 weekly measurables — DSO trend, cash position, payables ageing, division GP — would be the single fastest way to surface the receivables crisis and assign ownership to fix it.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO (Vision / Traction Organizer)</h4>
+      <p>The December 2024 board transition is the natural trigger for a written V/TO. The new Chairman needs to lead a process that answers: where is Ducray Lenoir going in 10 years? What does 3 years look like (African market share? New Cancer Hospital as anchor client? Digital service platform?)? What are the 3–7 Rocks for 2026? Without this, Betchoo's "transformative healthcare" aspiration remains a LinkedIn tagline rather than a company direction.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (Quarterly Priorities)</h4>
+      <p>The company has at least four mission-critical priorities competing simultaneously: resolving the working capital crisis (DSO programme), renegotiating or managing the MUR 131.8M 2025 debt, integrating the post-2021 group restructuring operationally, and growing the African platform. EOS Rocks force the leadership team to choose the 3–7 most important things for the next 90 days — preventing the paralysis of doing everything poorly at once.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List and IDS</h4>
+      <p>The receivables crisis, the Other Income opacity, the admin-exceeds-GP structural problem, the Philips agreement concentration — these are Issues in EOS terms. They are sitting in the business unresolved because no formal Issues List and IDS (Identify, Discuss, Solve) discipline compels the leadership team to confront them weekly. The Level 10 meeting's Issues List section would have forced a DSO conversation months before it became a MUR 131M charge.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>The most structurally impactful EOS tool for a company whose divisions, geographies, and ownership layers all create information silos. A weekly 90-minute Level 10 Meeting attended by the leadership team (MD, COO, division heads) would create the cadence that is visibly absent from the financial signals. Meeting discipline is the lowest-scoring EOS dimension here precisely because no visible rhythm exists — making it the highest-leverage starting point after the Accountability Chart.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total — four financial/operational (addressing the structural vulnerabilities before or in parallel with EOS) and four EOS-specific (sequenced for the December 2024 governance transition window). Financial stabilisation is prerequisite to EOS uptake: no leadership team installs a new operating system while managing an active liquidity crisis.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Diagnose and Disclose the "Other Income" Line</h4>
+      <p>The MUR 66.8M Other Income is the single most important unknown in this report. Before any EOS engagement or strategic conversation proceeds, the MD must be able to explain — to the new Chairman, to any EOS implementer, and to potential lenders — what this income consists of, how recurring it is, and whether it is subject to group-level decisions. If it is intercompany management fees, a written intercompany agreement should exist. If it is tender rebates, the pipeline should be modelled. If it is investment income on the MUR 186.6M NCA "Others," those underlying assets need to be disclosed and valued. Assign Clyde Anodin (Head of Accounting) to produce a one-page Other Income breakdown by category within 30 days. This is not optional — it is the starting point for every other decision.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Launch a Structured DSO Reduction Programme — Target 90 Days in 12 Months</h4>
+      <p>The 140-day DSO is not a market problem — it is a process problem. A 50-day reduction (from 140 to 90) releases MUR 144M in cash. The programme must be three-pronged: (1) segment receivables by client type (Ministry of Health, private hospitals, African subsidiaries) and assign named ownership for each segment; (2) negotiate milestone payment structures for large medical equipment projects (Philips installations) rather than single invoice at delivery; (3) introduce a weekly cash collections dashboard as part of the Scorecard. Success metric: DSO below 100 days by December 2026, below 90 by June 2027. Owner: CFO (or COO Gianni Apollon if no CFO). No EOS programme will succeed if the leadership team is managing a cash crisis every week — this must be stabilised first.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Investigate and Explain the August 2025 MUR 131.8M Floating Charge</h4>
+      <p>A MUR 131.8M secured charge filed against a company that showed zero borrowings six months earlier demands an explanation. In the first EOS conversation with Dharmen Betchoo, this needs to be understood: What was the facility used for? Is it a revolving trade finance line or a term loan? What are the covenants? Does the new Chairman (De La Hogue) understand it fully? The charge was filed against movable and immovable properties — meaning the company's physical assets are now encumbered. This constrains future financing flexibility and must be factored into any 3-year picture. If the charge was required to fund working capital because receivables ballooned further in 2025, it confirms the DSO programme in Rec 02 is urgent.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Close the Admin-to-GP Gap: Margin Recovery or Cost Restructure</h4>
+      <p>Admin costs exceeding gross profit (MUR 171.7M vs MUR 165M GP) is a structural issue that has two solutions — and likely requires both. <em>Margin side:</em> Review the pricing structure for government tender contracts in pharma and agro-chemicals; if the company is consistently winning on price and sacrificing margin to maintain volume, that model is loss-making at scale. The medical equipment division (Philips) should be delivering 20–25% GP — investigate why the blended margin is only 15.7%. <em>Cost side:</em> MUR 171.7M admin in a 62–80 person company = MUR 2.1–2.8M per head fully loaded. Identify the 3–4 largest cost categories within admin (likely sales overhead, vehicle fleet, premises, and intercompany charges) and set a 15% reduction target over 18 months. Success metric: admin costs below MUR 155M by FY2026, GP-to-admin ratio positive by FY2027.</p>
+      <span class="urg urg-week">Within 60 Days — In Parallel with EOS Start</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Enter via the MD — Propose a Focus Day as the First Step</h4>
+      <p>The entry conversation should be with Dharmen Betchoo (MD), not the Chairman. Betchoo is a professional manager who self-identifies as a transformation leader — he will recognise EOS language and respond to the Scorecard and Accountability Chart frameworks immediately. The pitch is: "You have a MUR 1B business with three divisions, six African markets, a new Chairman, and a working capital crisis — and no formal operating system. EOS gives your leadership team the tools to run the business rather than react to it." Propose a Focus Day (half-day, leadership team only: Betchoo + Apollon + 2–3 division heads) before any full organisational commitment. This builds Betchoo's confidence in the process and surfaces the ownership question organically.</p>
+      <span class="urg urg-week">Within 30–60 Days — First Contact</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the Accountability Chart Hypothesis Before the First Session</h4>
+      <p>Based on available public data, draft a hypothetical Accountability Chart for Ducray Lenoir before the Focus Day: three Division Seats (Medical Equipment, Pharma/Vet, Agro-Chemicals), an Operations seat (COO Apollon), a Finance seat (Head of Accounting Anodin), a People seat (HR Manager Jean Jacques), and an MD seat (Betchoo) with a Chairman role above. Present this hypothesis to Betchoo in the pre-meeting and ask: "What's wrong with this picture?" That conversation surfaces every ambiguity about who actually owns what — and creates the shared problem that the Focus Day exists to solve. The hypothesis will be wrong in at least two places; that is its purpose.</p>
+      <span class="urg urg-week">Prepare Before Focus Day</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Frame the First Rock Around DSO — Connect Financial Pain to EOS Tools</h4>
+      <p>The most powerful way to demonstrate EOS value in the first 90-day cycle is to make the DSO reduction programme a Rock. This connects the financial emergency (Rec 02) to the EOS meeting rhythm: the Scorecard shows DSO weekly, the Issues List captures blockers, IDS produces solutions, and the Scorecard holds the owner accountable. By the end of Quarter 1, the leadership team will have experienced EOS solving a real problem — not just learning a framework. If DSO moves from 140 to 120 days in the first quarter, that releases MUR 57M in cash. No other EOS benefit in Year 1 will be visible faster or more financially measurable.</p>
+      <span class="urg urg-medium">Q1 of EOS Engagement</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Design the V/TO Around the Generational Transition Narrative</h4>
+      <p>The most strategic EOS moment available here is the V/TO session with Stéphanie de La Hogue as new Chairman. The question she needs to answer is not "what is your company's 10-year target" — it is "what does Ducray Lenoir become under your generation's leadership?" The Galea family acquired this company in 1988. In 10 years it will be 80 years old. What does the next chapter look like? Is it the dominant healthcare distributor in the Indian Ocean? A vertically integrated African health platform? A digital-first medical technology company? Getting De La Hogue and Betchoo aligned on the Core Focus and 10-Year Target in a V/TO session is the single act most likely to produce a durable EOS engagement — because it makes the work personal, not just operational.</p>
+      <span class="urg urg-medium">V/TO Session in Month 2–3</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Ducray Lenoir is a MUR 1 billion distributor with a 70-year track record, genuine government relationships, and a Philips Healthcare partnership that most competitors cannot match. It is also a company whose core trading business is structurally loss-making, whose cash position is existentially thin, and whose leadership is navigating a generational governance transition while simultaneously managing a working capital crisis. The opportunity and the urgency are both real. The EOS conversation is not a nice-to-have — it is the framework that turns a 2024 governance reset into a 2026 operating transformation. The risk is the family ownership layer: if Dominique Galea (73) has not explicitly transferred decision authority to De La Hogue, any EOS programme will encounter the founder at the worst possible moment. Clarify ownership before committing to a full engagement.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Weeks 1–2: Research + contact Dharmen Betchoo (MD). Frame conversation around three-division complexity and December 2024 governance transition. Propose a diagnostic meeting, not a sales pitch.</li>
+        <li><span class="sig-num">02</span>Weeks 2–4: Focus Day with Betchoo + Apollon + 1–2 division heads. Introduce EOS, build draft Accountability Chart, test appetite. Confirm authority structure re: Stéphanie de La Hogue and Galea.</li>
+        <li><span class="sig-num">03</span>Month 2: If Focus Day positive, schedule 90-minute session with De La Hogue (Chairman) to present EOS concept at board level and secure governance buy-in. This is the gate-keeper meeting — do not skip it.</li>
+        <li><span class="sig-num">04</span>Month 2–3: Formal EOS engagement begins. First Rock is DSO reduction (Rec 02). First Scorecard built. Issues List activated. Level 10 Meeting cadence starts.</li>
+        <li><span class="sig-num">05</span>Month 3–6: V/TO session with De La Hogue and Betchoo. Define 10-year target, 3-year picture, and 2026 Rocks. This is the moment EOS moves from operational tool to strategic transformation engine for the Galea family's next generation.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- FOOTER -->
+<footer class="report-footer">
+  <div>Ducray Lenoir Limited — Comprehensive Company Analysis &amp; EOS Assessment · 16 March 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (issued 5 Mar 2026) · ducray-lenoir.com · LinkedIn · ZoomInfo · RocketReach · CARE Ratings Africa (Kasa Holdings Ltd press release, Nov 2024) · Rey &amp; Lenferna corporate governance disclosures</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
