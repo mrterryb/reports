@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espace Marin — Comprehensive Company Analysis — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric { display: flex; justify-content: space-between; align-items: baseline; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Marine Equipment Retail &amp; Distribution</span>
+    <span class="badge badge-type">Private Company · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">25 March 2026</span>
+  </div>
+  <h1>Espace Marin:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">ESPACE MARIN LTD · Company intelligence · Financial ratios · EOS implementation assessment · Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">Rs 193,566,283</div>
+      <div class="stat-delta">Year ended 30 June 2025 · Mauritius Rupee</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit Margin</div>
+      <div class="stat-value emerald">5.9%</div>
+      <div class="stat-delta">Rs 11,405,070 PAT on Rs 193,566,283 sales</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.0 / 10</div>
+      <div class="stat-delta">Moderate fit · Execution discipline likely matters more than strategy theatre</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Inventory Drag</div>
+      <div class="stat-delta">Inventory equals 77.5% of current assets and turns only 1.20×</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>ESPACE MARIN LTD — Company Analysis &amp; EOS Assessment · 25 March 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A long-established specialist marine retailer with credible market positioning, solid profitability, and a very obvious working-capital problem hiding in plain sight.</p>
+
+  <p class="body-text">ESPACE MARIN LTD is a Mauritian private domestic company incorporated on 2 March 1993 and operating from Pailles with showrooms in Grand Baie, Forbach and Rivière Noire. Public-facing materials position the company as a specialist in fishing gear, boat accessories, water sports equipment, boats and Mercury marine engines, with after-sales service as part of the offer.</p>
+  <p class="body-text">Ownership appears concentrated around a small set of long-standing family surnames and one corporate shareholder, Nieluj Investments Ltd. The director base has deep continuity dating back to incorporation, which usually means strong institutional memory but can also mean decision-making gravity stays concentrated at the top unless management disciplines are explicit.</p>
+  <p class="body-text">Financially, the business is profitable and not obviously overleveraged. Gross margin at 36.2% and EBIT margin at 9.4% are respectable for a specialist import-and-retail model. The real tension is balance-sheet efficiency: inventory sits at Rs 103,237,605, receivables at Rs 23,430,718, and supplier credit appears to be carrying a lot of the working-capital load. That combination pushes the EOS story away from vague “growth” and toward execution, measurables, accountability and branch-by-branch operating discipline.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Profitability Is Not the Problem</div>
+    Espace Marin does not look like a turnaround case. It looks like a business that has already built a defendable niche and now needs sharper operating cadence. The biggest gain is likely not “more vision” but better inventory discipline, clearer ownership of showroom economics, and a regular management rhythm that stops cash from being trapped in stock while the company still appears healthy on the surface.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Thirty-plus years in a specialist niche</strong>, four showrooms in key coastal and affluent catchments, recognised dealer positioning in boats and engines, and an after-sales service promise that weaker pure-play resellers struggle to match.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Inventory absorption is the loudest red flag</strong>. Stock turns are slow, current liquidity is only moderate, and long supplier-payment days suggest part of the cash model is being propped up by creditor stretch rather than pure operating speed.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Multi-site complexity with likely centralised ownership</strong> is exactly where EOS becomes useful: enough scale to suffer from misalignment, but still small enough for a leadership team to install simple disciplines and feel the result quickly.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A specialist Mauritian marine and outdoor equipment retailer built on niche product expertise, showroom reach and service credibility rather than mass-market volume.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">ESPACE MARIN LTD was incorporated on 2 March 1993 under file number C11029 and business registration number C06011029. It is listed as a live private domestic company with registered office at Avenue Grewals, Pailles, Mauritius. The current extract shows CAS Services Ltd as secretary and a stated capital disclosure made up of two ordinary-share lines totalling Rs 25,080,000 in stated capital disclosure, although equity share capital in the latest financial summary is reported at Rs 25,200,000.</p>
+  <p class="body-text">The public company extract also shows financial statements filed for financial years ended 30 June 2023, 30 June 2024 and 30 June 2025. The annual-return display is less clean than ideal and should not be over-read; it shows three historical entries but not a full continuous annual-return history in the extract alone.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Founding-Family Cluster</h4>
+        <div class="ec-sub">Concentrated private ownership</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Names visible</span><span class="mv">Couve / Couacaud / Doger de Speville</span></div>
+        <div class="ec-metric"><span class="mk">Ownership signal</span><span class="mv ok">Long-term continuity</span></div>
+        <div class="ec-metric"><span class="mk">Interpretation</span><span class="mv warn">Likely centralised influence</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Nieluj Investments Ltd</h4>
+        <div class="ec-sub">Corporate shareholder</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares disclosed</span><span class="mv">107,111</span></div>
+        <div class="ec-metric"><span class="mk">Role in structure</span><span class="mv">Minority corporate block</span></div>
+        <div class="ec-metric"><span class="mk">Interpretation</span><span class="mv">Possible family/group vehicle</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Beneficial Ownership</h4>
+        <div class="ec-sub">Public visibility constraint</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Public clarity</span><span class="mv danger">Limited</span></div>
+        <div class="ec-metric"><span class="mk">Need for meeting</span><span class="mv">High</span></div>
+        <div class="ec-metric"><span class="mk">Why it matters</span><span class="mv">Decision rights and succession</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Ownership Note</div>
+    The register clearly suggests an owner-led structure with deep historical continuity. That is usually good for speed and conviction, but it also raises the classic EOS question: where does founder/owner instinct stop and where does leadership-team accountability begin?
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Joseph René Herbert Maingard Couacaud — Chairman / Director</h4>
+      <p>Chairman since 26 March 2025 and director since 27 December 2019. Service address shown at Avenue Grewals, Pailles. The title change suggests a recent formalisation of board leadership, even if operational power may still be informal.</p>
+    </div>
+    <div class="profile-card">
+      <h4>André François Gérard Couve — Director</h4>
+      <p>Director since incorporation on 2 March 1993. This is one of several signals of long institutional memory and a likely durable founder-family influence within the governance structure.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Julien Arthur Roland Doger de Speville — Director</h4>
+      <p>Director since incorporation on 2 March 1993. Long tenure typically means continuity, but also makes leadership clarity more important when a company reaches multi-site complexity.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Philippe Jean Alain Doger de Speville — Director</h4>
+      <p>Director since incorporation on 2 March 1993. Another continuity signal in a tightly held company structure.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Joseph Bertrand Julien Harel — Director</h4>
+      <p>Director since 26 June 2023, service address at Petite Rivière Noire. This is one of the few publicly visible newer governance additions.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Operational Management — Publicly visible but thinly disclosed</h4>
+      <p>LinkedIn indicates a general manager profile and shows 11–50 employees, but public evidence on formal management structure beneath the board is limited. That gap is itself useful: it often means role clarity lives more in people’s heads than on paper.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">The portfolio spans boat equipment, fishing gear, boat accessories, water sports and sailing equipment, diving equipment, boats, Mercury engines and after-sales service. This matters because it is not just a simple store business; it is a mixed model combining retail, import/distribution, technical support and showroom sales.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Public sources point to headquarters in Pailles and four island-wide showroom locations: Pailles, Forbach, Grand Baie and Rivière Noire. That footprint gives access to both north and west leisure/marine demand and reduces dependence on a single catchment, but it also creates the operational headache of inventory placement, branch economics and management oversight across sites.</p>
+</div>
+</div>
+
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source is the latest public financial summary filed with the Registrar for year ended 30 June 2025, in Mauritius Rupees. This is summary-level private-company disclosure, not a full audited annual report.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    The public filing provides a usable profit-and-loss summary and a reasonably detailed balance-sheet summary for FY2025, but not management notes, cash-flow statement detail, segment reporting, or full prior-year comparatives in the extract used here. That means the ratios are meaningful, but trend analysis is limited and should be treated as a direction signal rather than gospel.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>Rs 193,566,283</td><td>100.0%</td><td>Healthy scale for a niche Mauritian specialist retailer-distributor.</td></tr>
+        <tr><td>Cost of Sales</td><td>Rs 123,410,776</td><td>63.8%</td><td>Import and stocked-product model keeps direct cost base heavy, which is normal.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>Rs 70,155,507</td><td>36.2%</td><td>Strong enough to fund operating overhead if stock turns improve.</td></tr>
+        <tr><td>Other Income</td><td>Rs 1,654,700</td><td>0.9%</td><td>Modest supplementary income, not material to the core story.</td></tr>
+        <tr><td>Distribution Costs</td><td>Rs 840,047</td><td>0.4%</td><td>Very light distribution line; likely reflects the showroom-led model more than heavy logistics.</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>Rs 52,416,530</td><td>27.1%</td><td>The biggest operating-cost block. Multi-site specialist retail always pays a people-and-overhead tax.</td></tr>
+        <tr><td>Other Expenses</td><td>Rs 286,529</td><td>0.1%</td><td>Not material.</td></tr>
+        <tr class="heat-warn"><td>Finance Costs</td><td>Rs 3,993,186</td><td>2.1%</td><td>Manageable, but still enough to make working-capital efficiency worth serious attention.</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>Rs 14,273,915</td><td>7.4%</td><td>Respectable for the sector and evidence the core engine is profitable.</td></tr>
+        <tr><td>Tax Expense</td><td>Rs 2,868,845</td><td>1.5%</td><td>Normal tax drag at this profit level.</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>Rs 11,405,070</strong></td><td><strong>5.9%</strong></td><td>Bottom line is good enough to support reinvestment, but cash discipline matters more than reported profit here.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-current assets</td><td>Property, plant and equipment</td><td>Rs 84,478,960</td><td>Meaningful fixed-asset base; consistent with showroom and technical-service operations.</td></tr>
+        <tr><td>Non-current assets</td><td>Intangible assets</td><td>Rs 6,086,306</td><td>Not large enough to distort the picture.</td></tr>
+        <tr><td>Non-current assets</td><td>Other non-current assets</td><td>Rs 10,588,388</td><td>Additional long-term asset line disclosed as “Others”.</td></tr>
+        <tr><td><strong>Non-current assets</strong></td><td><strong>Total</strong></td><td><strong>Rs 101,153,654</strong></td><td>Solid asset base, but this is not where the pressure is.</td></tr>
+        <tr class="heat-critical"><td>Current assets</td><td>Inventories</td><td>Rs 103,237,605</td><td>Huge stock position. This is the main working-capital story.</td></tr>
+        <tr><td>Current assets</td><td>Trade and other receivables</td><td>Rs 23,430,718</td><td>Receivables are meaningful but not outrageous.</td></tr>
+        <tr><td>Current assets</td><td>Cash and cash equivalents</td><td>Rs 6,533,966</td><td>Cash is relatively thin compared with stock and payables.</td></tr>
+        <tr class="heat-warn"><td><strong>Current assets</strong></td><td><strong>Total</strong></td><td><strong>Rs 133,202,289</strong></td><td>Current assets look healthy in total, but composition is stock-heavy.</td></tr>
+        <tr><td><strong>Total assets</strong></td><td><strong>All assets</strong></td><td><strong>Rs 234,355,943</strong></td><td>Asset base large enough to justify a more formal operating system.</td></tr>
+        <tr><td>Equity</td><td>Share capital</td><td>Rs 25,200,000</td><td>Permanent capital base.</td></tr>
+        <tr><td>Equity</td><td>Retained earnings</td><td>Rs 88,148,960</td><td>Business has accumulated profits over time.</td></tr>
+        <tr><td>Equity</td><td>Other reserves</td><td>Rs 16,516,648</td><td>Additional reserve buffer.</td></tr>
+        <tr class="heat-ok"><td><strong>Equity</strong></td><td><strong>Total equity</strong></td><td><strong>Rs 129,865,608</strong></td><td>Strong enough balance-sheet cushion to avoid a distress narrative.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Long-term borrowings</td><td>Rs 30,078,911</td><td>Moderate leverage rather than aggressive balance-sheet gearing.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Deferred tax</td><td>Rs 6,189,000</td><td>Standard non-cash tax item.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Long-term provisions</td><td>Rs 2,748,018</td><td>Minor provision line.</td></tr>
+        <tr><td><strong>Non-current liabilities</strong></td><td><strong>Total</strong></td><td><strong>Rs 39,015,929</strong></td><td>Long-term obligations are manageable.</td></tr>
+        <tr class="heat-warn"><td>Current liabilities</td><td>Trade and other payables</td><td>Rs 47,605,821</td><td>Supplier credit appears to be doing meaningful heavy lifting.</td></tr>
+        <tr><td>Current liabilities</td><td>Current tax payable</td><td>Rs 1,904,113</td><td>Routine tax liability.</td></tr>
+        <tr><td>Current liabilities</td><td>Other current liabilities</td><td>Rs 15,964,472</td><td>Additional short-term obligations disclosed as “Others”.</td></tr>
+        <tr class="heat-warn"><td><strong>Current liabilities</strong></td><td><strong>Total</strong></td><td><strong>Rs 65,474,406</strong></td><td>Liquidity is adequate, but not luxurious.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The public extract reviewed shows no registered charges in the charge register section. That is encouraging in the sense that there is no visible bank security over assets in the extract, but it should not be treated as absolute proof of zero security arrangements without a deeper legal search. The more useful practical point is simpler: leverage does not look like the immediate enemy; stock efficiency does.</p>
+</div>
+</div>
+
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks below are indicative Mauritius SME advisory ranges for trading / light-distribution businesses, not official statutory thresholds. Green = healthy, Amber = watch, Red = critical concern.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">2.03×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.50× – 2.50×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">On paper, short-term assets cover short-term liabilities. In reality, most of those assets are inventory, so this is not a comfort blanket. It says “not broken,” not “cash-rich.”</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.46×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.80× – 1.20×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Strip out stock and the liquidity picture becomes much tighter. This is the classic sign of a business that looks comfortable until you ask how fast the shelves really convert into cash.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Margins</h4>
+      <div class="ratio-row"><span class="ratio-label">Gross profit margin</span><span class="ratio-val ok">36.2%</span></div>
+      <div class="ratio-row"><span class="ratio-label">EBIT margin</span><span class="ratio-val ok">9.4%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Net profit margin</span><span class="ratio-val ok">5.9%</span></div>
+      <span class="ratio-interpret">This is not a margin-collapse story. The gross margin is healthy enough, EBIT is solid for a specialist retail-distribution model, and the net result confirms the company is making money before working-capital friction starts annoying everyone.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Returns</h4>
+      <div class="ratio-row"><span class="ratio-label">Return on assets</span><span class="ratio-val warn">4.9%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Return on equity</span><span class="ratio-val ok">8.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">ROA 5%+ · ROE 8%–15%</span></div>
+      <span class="ratio-interpret">ROE is decent, but ROA is only fair. That gap is the giveaway: the company is profitable, yet the asset base is working harder than it should have to. Again, inventory is the likely culprit.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Capital Structure</h4>
+      <div class="ratio-row"><span class="ratio-label">Debt-to-equity</span><span class="ratio-val ok">0.23×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&lt; 0.60×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Leverage is conservative. That is good news because it means operating fixes can unlock value without the drama of balance-sheet surgery.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debt Service Capacity</h4>
+      <div class="ratio-row"><span class="ratio-label">Interest coverage</span><span class="ratio-val warn">4.57×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">4.0×+</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Borderline Safe</span></span></div>
+      <span class="ratio-interpret">Interest is covered, but not with acres of room. Better stock turns and tighter working capital would improve this number faster than heroic sales speeches.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset &amp; Inventory Efficiency</h4>
+      <div class="ratio-row"><span class="ratio-label">Asset turnover</span><span class="ratio-val ok">0.83×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inventory turnover</span><span class="ratio-val bad">1.20×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inventory days</span><span class="ratio-val bad">305 days</span></div>
+      <span class="ratio-interpret">Asset turnover is acceptable, but inventory turnover is the weak link. Holding roughly ten months of cost-of-sales equivalent in stock is a lot. That ties up cash, weakens flexibility and quietly punishes profitability.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Working-Capital Cycle</h4>
+      <div class="ratio-row"><span class="ratio-label">Debtor days / DSO</span><span class="ratio-val warn">44 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Creditor days / DPO</span><span class="ratio-val bad">141 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">DSO 30–45 · DPO 45–75</span></div>
+      <span class="ratio-interpret">Receivables are tolerable. Payables are very extended. That can be strategic, but more often it means the business is leaning on suppliers to offset slow inventory monetisation. That is not fatal, but it is not elegant either.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    Inventory turnover at 1.20× and quick ratio at 0.46× are the numbers that should drive the whole conversation. Together they say the company is profitable but cash-constrained by stock. If management can reduce inventory by even 10% without hurting sales, it could release roughly Rs 10,323,760 of cash — which is more useful than another vague growth initiative with a sexy PowerPoint and no operating discipline behind it.
+  </div>
+</div>
+</div>
+
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Three overlapping segments dominate the picture: marine engines and boats, specialist fishing / boating gear, and recreational water-sports retail. Positioning is specialist, service-led and island-wide rather than price-led commodity retail.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Marine Engines &amp; Boats</h4>
+        <div class="ec-sub">Dealer-driven specialist segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Espace Marin role</span><span class="mv">Mercury dealer / Quicksilver boats</span></div>
+        <div class="ec-metric"><span class="mk">Likely competitors</span><span class="mv">Emcar Marine · Seco Marine</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv ok">Product + service bundle</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Inventory depth requirement</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Fishing &amp; Boating Accessories</h4>
+        <div class="ec-sub">Niche but fragmented</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Espace Marin role</span><span class="mv">Established specialist retailer</span></div>
+        <div class="ec-metric"><span class="mk">Likely competitors</span><span class="mv">F&amp;M Marine · CatchMe · Fishing Guru</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv ok">Brand trust + showroom network</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Online-first challengers</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Water Sports &amp; Lifestyle Leisure</h4>
+        <div class="ec-sub">Broader discretionary spend</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Espace Marin role</span><span class="mv">Specialist premium selection</span></div>
+        <div class="ec-metric"><span class="mk">Likely competitors</span><span class="mv">Decathlon · beach sports retailers</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv ok">Expert advice</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv danger">Price transparency online</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text">First, the company has genuine time-in-market credibility. In this niche, longevity matters because buyers often want advice, spare parts and someone to call after the sale. Second, the four-showroom footprint is hard for a smaller competitor to replicate cheaply. Third, product breadth plus after-sales service creates a bundle that pure online sellers and opportunistic importers struggle to match consistently.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li>Marine leisure and fishing remain attractive lifestyle categories in Mauritius, especially in coastal and expatriate-heavy zones.</li>
+    <li>Imported equipment businesses live or die by stock depth and currency discipline; both are opportunity and trap at the same time.</li>
+    <li>Online competitors are making price comparison easier, which weakens lazy retail margins but rewards trusted specialists.</li>
+    <li>After-sales capability is becoming more valuable as customers become less tolerant of “sell it and disappear” retailers.</li>
+    <li>Premium discretionary categories can swing with tourism, consumer confidence and exchange-rate pressure.</li>
+    <li>Retailers with multiple locations need sharper branch economics because poor inventory placement quietly murders return on capital.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Competitive Gap to Watch</div>
+    Espace Marin has a live website and social presence, which is good. The real question is not visibility but conversion discipline: how well are digital enquiries, showroom traffic, stock availability and after-sales follow-up tied together into one measurable commercial system? Public evidence does not answer that. That silence usually means the system is weaker than management assumes.
+  </div>
+</div>
+</div>
+
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The business is not tiny anymore. Four showrooms, technical after-sales capability and a team publicly described at 11–50 employees is enough complexity to justify EOS, but it is still small enough that implementation can move quickly if the owners want it.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">Public data does not give strong evidence either way. The structure looks owner-led and continuity-heavy, which can mean decisive leadership or resistant leadership. Until management shows appetite for transparency, role clarity and measurable accountability, openness remains an assumption, not a fact.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">The company has expanded by site and portfolio over time and now shows classic symptoms EOS can address: multi-site coordination, likely stock-placement friction, dependence on experienced long-tenure people, and a balance sheet that hints execution is becoming more important than ambition.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">There are visible signs of real structure: longevity, multiple locations, branded dealerships and an after-sales proposition. That said, the inventory profile suggests process discipline is not yet as sharp as it should be. So the company appears structured, just not optimised.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Public-facing team pages suggest loyalty and tenure, which is usually a good sign. The risk is that “close-knit” can become a polite synonym for undocumented roles, workarounds and historical habits. Culture likely has strength, but EOS would test whether that strength is disciplined or just familiar.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">A family-influenced structure often delivers quick top-level calls but fuzzy accountability beneath that layer. Without a visible accountability chart, the safest assumption is partial clarity at the top and likely ambiguity in the middle.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Commercial positioning is clear enough: marine, fishing, water sports, service and island reach. What is not publicly visible is the strategic next chapter — scale deeper, improve return on stock, widen categories, professionalise management, or prepare succession. EOS would force that conversation.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">There is no public evidence of formal management cadence, scorecards or operating rhythms. That does not mean they do not exist, but in this type of business the default is usually reactive store management rather than disciplined weekly leadership meetings.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.0</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate — Qualified Positive</h4>
+      <p>Espace Marin looks like a good EOS candidate if the owners genuinely want execution discipline, not just a motivational workshop and a nice lunch. The gating factor is leadership openness. If the leadership team is ready to make inventory, branch accountability and decision rights visible, EOS can create fast traction. If not, EOS will simply expose what they are trying not to standardise.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Espace Marin</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>The business needs weekly visibility on sales by branch, gross margin by category, stock ageing, stock turns, supplier backorders, and cash conversion. Without that, inventory stays “someone’s concern” instead of becoming a managed number.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>Multi-site retail with service capability nearly always suffers when branch, stock, purchasing and after-sales accountability are blurred. An accountability chart would force real ownership instead of assumed ownership.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks</h4>
+      <p>The first quarter should not chase ten shiny initiatives. One or two serious Rocks around inventory reduction, branch profitability and reorder logic would move the needle faster than broad transformation language.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>Owner-led businesses often revisit the same operational frustrations forever because nobody drops below the symptom and solves root causes. IDS would surface the ugly repeat offenders fast.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>A disciplined weekly leadership meeting would give the company a regular operating rhythm. In a four-site business, that alone can stop problems from bouncing between branches, warehouse and ownership without closure.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision / Traction Organizer</h4>
+      <p>If succession, expansion, stock discipline and brand positioning are all in play, management needs one shared strategic truth. The V/TO is where the company stops pretending everyone already agrees.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations follow: four financial / operational and four EOS-specific. Sequence matters. First stabilise cash and visibility, then install the management system that keeps the gains from leaking out again.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Run a brutal SKU and stock-ageing clean-up</h4>
+      <p>Assign the commercial head, purchasing lead and finance lead to classify all inventory into A / B / C movement bands, identify dead stock older than agreed thresholds, and produce a clearance / bundling / markdown plan. Success means reducing inventory by at least 8–12% within one to two quarters without harming service levels.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Build branch contribution reporting, not just company totals</h4>
+      <p>Each showroom should have monthly contribution visibility: sales, gross margin, controllable costs, stock on hand, stock turns and slow movers. Success means management can answer, without hand-waving, which locations create value and which locations merely look busy.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Reset purchasing and reorder rules around sell-through, not intuition</h4>
+      <p>Map category-level reorder points, lead times and target cover days. The owner or senior buyer should stop approving replenishment on habit alone. Success means repeat ordering is tied to agreed thresholds and exceptions are visible rather than emotional.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Use supplier terms strategically, not as a hidden financing model</h4>
+      <p>Finance should review the creditor profile supplier by supplier, identify where extended terms are intentional versus where late payment risk is creeping in, and protect top supplier relationships before they become quietly resentful. Success means creditor stretch becomes deliberate policy, not accidental behaviour.</p>
+      <span class="urg urg-medium">Within 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Start with a Focus Day around execution pain, not abstract strategy</h4>
+      <p>Bring the true leadership group into one room and force clarity on the biggest current pain points: stock drag, branch accountability, decision rights and meeting rhythm. Success means the leadership team leaves with a shared problem statement and a willingness to be measured weekly.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Draft an Accountability Chart hypothesis early</h4>
+      <p>Even before final adoption, sketch the likely seats: Visionary / owner, Integrator / GM, Finance, Commercial / retail, Purchasing / stock, After-sales / technical, and branch leadership. Success means role confusion becomes visible enough to debate honestly.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Choose the first Rock around inventory release</h4>
+      <p>The first 90-day Rock should be operational and measurable: reduce inventory by a defined amount, cut dead-stock percentage, or improve stock turns in one pilot category. Success means EOS proves itself through cash and discipline, not slogans.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Use the V/TO to answer the uncomfortable strategic question</h4>
+      <p>The real strategic question is not “How do we grow?” but “What kind of company are we trying to become: founder-led specialist retailer, professionalised multi-branch operator, or a platform for broader leisure and marine distribution?” Success means leadership can state the answer clearly and align resources behind it.</p>
+      <span class="urg urg-medium">Within 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Espace Marin looks like a real business, not a fragile vanity project. It has longevity, niche credibility and acceptable profitability. The opportunity is to turn that into cleaner cash generation and more scalable management discipline. The obstacle is predictable: if too much still lives in owner instinct, the company will keep performing decently while leaving money and clarity on the table.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Within 2 weeks: validate leadership team composition and agree the top three execution pains.</li>
+        <li><span class="sig-num">02</span>Within 30 days: build stock-ageing, branch contribution and working-capital baseline dashboards.</li>
+        <li><span class="sig-num">03</span>Within 45 days: run Focus Day and draft the Accountability Chart hypothesis.</li>
+        <li><span class="sig-num">04</span>Within 90 days: launch one inventory / stock-turn Rock and install a weekly Level 10 cadence.</li>
+        <li><span class="sig-num">05</span>Within 120–150 days: complete the V/TO and decide the company’s operating model for the next three years.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="report-footer">
+  <div>ESPACE MARIN LTD — Comprehensive Company Analysis &amp; EOS Assessment · 25 March 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (25 March 2026) · espacemarin.com · LinkedIn · Facebook · public web research</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
