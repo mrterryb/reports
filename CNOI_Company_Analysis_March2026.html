@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CNOI — Comprehensive Company Analysis — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+
+</style>
+</head>
+<body>
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Marine Leisure / Boat Charter</span>
+    <span class="badge badge-type">Private Company · Domestic Subsidiary</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">26 March 2026</span>
+  </div>
+  <h1>CNOI:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">CNOI Investissements Ltd · company intelligence · financial ratios · EOS implementation assessment · Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">MUR 26,473,460</div>
+      <div class="stat-delta">Year ended 30 June 2025</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Gross Margin</div>
+      <div class="stat-value emerald">34.4%</div>
+      <div class="stat-delta">Still respectable at gross level</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.4 / 10</div>
+      <div class="stat-delta">Good candidate if leadership is serious</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Negative Equity</div>
+      <div class="stat-delta">Business is balance-sheet weak</div>
+    </div>
+  </div>
+</header>
+<div class="prepared-for">
+  <span>CNOI — Company Analysis &amp; EOS Assessment · 26 March 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+<div id="exec" class="tab-content active"><div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">CNOI Investissements Ltd is a small marine-leisure subsidiary inside the wider CNOI / IBL ecosystem, but its own filed numbers point to a thinly profitable trading operation sitting on a badly stretched balance sheet.</p>
+  <p class="body-text">The legal entity reviewed here is <strong>CNOI Investissements Ltd</strong>, incorporated on 23 May 2016 as a Mauritian domestic private company. Its stated activity is the <strong>renting of pleasure boats with crew or fishing cruises</strong>, with its principal place of business in Freeport Zone 11, Mer Rouge, Port Louis. The company is fully owned by Chantier Naval de l'Océan Indien Limited.</p>
+  <p class="body-text">That ownership link matters. CNOI Investissements is not a stand-alone entrepreneurial business in the wild; it sits within a larger industrial marine group controlled through CNOI and ultimately connected to IBL. That gives it strategic shelter, operational adjacency, and likely access to group infrastructure. It also means decision-making may be slower, more centralised, and more political than in a founder-led SME.</p>
+  <p class="body-text">Financially, the picture is mixed. Gross margin is decent at <strong>34.4%</strong>, so the core service model is not obviously broken. But the company ends FY2025 with only <strong>3.8% net margin</strong>, a current ratio of just <strong>0.18x</strong>, and <strong>negative equity of MUR 9,167,075</strong>. That is ugly. The business appears to be surviving off creditor funding and group support rather than on balance-sheet strength.</p>
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — weak balance sheet, not necessarily weak gross economics</div>
+    The most important signal is not revenue, and not even profit. It is the combination of <strong>negative equity</strong>, <strong>very low liquidity</strong>, and <strong>extreme creditor days</strong>. In plain English: this entity may still be able to trade, but it is not carrying its own weight financially. If you were approaching this company from an EOS angle, the conversation should be less about generic growth and more about whether leadership has real clarity on purpose, accountability, and the economic logic of keeping this vehicle structured as it is.
+  </div>
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card"><h4>Commercial Strengths</h4><p><strong>Healthy gross margin</strong> for a service-heavy activity, strategic adjacency to the CNOI marine platform, Port Louis / Freeport location, and clear group ownership that may provide credibility and operational support.</p></div>
+    <div class="profile-card"><h4>Financial Vulnerabilities</h4><p><strong>Negative equity</strong>, very poor liquidity, and trade &amp; other payables of MUR 54,235,907 dwarfing cash of just MUR 646,906. This is not a comfortable capital structure.</p></div>
+    <div class="profile-card"><h4>EOS Readiness Signal</h4><p><strong>The company is simple enough to organise</strong>, but the real question is whether leadership treats it as an actively managed business unit or just a legal vehicle parked inside the group.</p></div>
+  </div>
+</div></div>
+<div id="overview" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A small, wholly owned marine-leisure subsidiary sitting inside a much larger industrial shipbuilding and repair ecosystem.</p>
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text"><strong>Legal name:</strong> CNOI Investissements Ltd. <strong>File no.:</strong> C138746. <strong>BRN:</strong> C16138746. <strong>Date incorporated:</strong> 23 May 2016. <strong>Status:</strong> Live. <strong>Registered office:</strong> 4th Floor, IBL House, Caudan Waterfront, Port Louis. <strong>Stated capital:</strong> MUR 37,750 represented by 1,000 ordinary shares.</p>
+  <p class="body-text">The company has a narrow declared activity: renting of pleasure boats with crew or fishing cruises. That makes it commercially different from the parent CNOI operating yard, which is a shipbuilding and repair business.</p>
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card"><div class="ec-header"><h4>CNOI Investissements Ltd</h4><div class="ec-sub">Reviewed entity</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Role</span><span class="mv">Operating subsidiary</span></div>
+      <div class="ec-metric"><span class="mk">Activity</span><span class="mv">Boat rental / cruises</span></div>
+      <div class="ec-metric"><span class="mk">File no.</span><span class="mv">C138746</span></div>
+    </div></div>
+    <div class="entity-card"><div class="ec-header"><h4>Chantier Naval de l'Océan Indien Ltd</h4><div class="ec-sub">Immediate shareholder</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Holding</span><span class="mv">100%</span></div>
+      <div class="ec-metric"><span class="mk">Core activity</span><span class="mv">Shipbuilding / repairs</span></div>
+      <div class="ec-metric"><span class="mk">Founded</span><span class="mv">1997 company record</span></div>
+    </div></div>
+    <div class="entity-card"><div class="ec-header"><h4>IBL ecosystem</h4><div class="ec-sub">Ultimate group context</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Group link</span><span class="mv">Industrial cluster</span></div>
+      <div class="ec-metric"><span class="mk">Strategic effect</span><span class="mv">Support + governance layers</span></div>
+      <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Autonomy may be limited</span></div>
+    </div></div>
+  </div>
+  <div class="alert alert-info"><div class="alert-title">Important comparability note</div>The uploaded FY2025 CBRIS extract is for <strong>CNOI Investissements Ltd</strong>. The uploaded FY2024 CBRIS extract is for <strong>Chantier Naval de l'Océan Indien Ltd</strong>, the parent company, not the same legal entity. So any 2024-versus-2025 “evolution” can only be discussed as group context, not as a clean like-for-like year-on-year comparison for this subsidiary.</div>
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card"><h4>Jhamna Preetee — Director</h4><p>Appointed 14 Jan 2019. IBL-linked service address at IBL House. Also appears across wider group governance.</p></div>
+    <div class="profile-card"><h4>Patrice Georges Maxime Robert — Director</h4><p>Appointed 14 Jan 2019. Shared IBL-linked address. Indicates the entity is managed from group level rather than as an owner-operator venture.</p></div>
+    <div class="profile-card"><h4>Perrier Paul Nicolas — Director</h4><p>Appointed 14 Feb 2020. Address directly linked to Chantier Naval de l'Océan Indien, which reinforces the operating link with the parent shipyard.</p></div>
+    <div class="profile-card"><h4>Piriou Franck Michel — Director</h4><p>Appointed on incorporation date, 23 May 2016. The Piriou link is strategically relevant given the shipyard heritage and technical marine profile of the group.</p></div>
+    <div class="profile-card"><h4>Purseramen Gopalakrishna Naidu — Director</h4><p>Appointed 1 Jul 2020. Again IBL-linked. Another sign this is a group-governed vehicle.</p></div>
+    <div class="profile-card"><h4>IBL Management Ltd — Secretary</h4><p>Appointed 15 Jul 2019. Centralised corporate secretarial support; neat, but also more evidence that this entity is controlled administratively from the centre.</p></div>
+  </div>
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Public disclosures are sparse. The statutory description suggests charter-style marine leisure services rather than heavy technical marine services. That likely means private boat hire, crewed outings, and fishing-cruise activity. On paper, that sounds simple. In reality, such businesses can be operationally messy: asset utilisation, maintenance discipline, booking rhythm, pricing consistency, fuel and crew economics, and seasonality all matter.</p>
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">The footprint appears Mauritius-centric, anchored in Port Louis / Mer Rouge. There is no clear public evidence of export-market activity for this entity itself. The parent group, however, operates within a broader regional and international marine ecosystem.</p>
+  <div class="alert alert-warning"><div class="alert-title">Digital visibility gap</div>CNOI Investissements itself has very little distinct public-facing digital presence. That is not fatal for a group subsidiary, but it does make external commercial positioning harder to assess.</div>
+</div></div>
+<div id="financial" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source data comes primarily from the FY2025 CBRIS filing for CNOI Investissements Ltd, in Mauritius rupees, approved on 24 March 2026. A separate FY2024 filing supplied by the user belongs to the parent company, not the same legal entity.</p>
+  <div class="alert alert-info"><div class="alert-title">Data Scope and Limitations</div>Private-company disclosure is limited. We have a usable FY2025 profit and loss statement and balance sheet for CNOI Investissements Ltd. Registry metadata confirms a FY2024 filing exists for this same company, but the actual FY2024 financial extract for the subsidiary was not supplied. Therefore, strict same-entity year-on-year analysis is not possible from the materials provided.</div>
+  <h3 class="subsection-title">P&amp;L Summary (FY2025, MUR)</h3>
+  <div class="table-wrap"><table><thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead><tbody>
+    <tr><td>Turnover (Revenue)</td><td>MUR 26,473,460</td><td>100.0%</td><td>Modest scale. This is a small operating entity, not a major standalone business.</td></tr>
+    <tr><td>Cost of Sales</td><td>MUR 17,355,769</td><td>65.6%</td><td>Direct cost load is meaningful but not outrageous for asset-backed marine services.</td></tr>
+    <tr class="heat-ok"><td>Gross Profit</td><td>MUR 9,117,691</td><td>34.4%</td><td>Actually decent. The core service economics are not terrible at gross level.</td></tr>
+    <tr><td>Other Income</td><td>MUR 0</td><td>0.0%</td><td>No material cushion from ancillary income.</td></tr>
+    <tr class="heat-critical"><td>Distribution Costs</td><td>MUR 1</td><td>0.0%</td><td>Effectively nil; not a driver.</td></tr>
+    <tr class="heat-warn"><td>Administration Costs</td><td>MUR 8,100,562</td><td>30.6%</td><td>This is the killer line. Over 30% of revenue consumed by admin is brutal for such a small entity.</td></tr>
+    <tr><td>Other Expenses</td><td>MUR 0</td><td>0.0%</td><td>No reported other-expense burden.</td></tr>
+    <tr><td>Finance Costs</td><td>MUR 0</td><td>0.0%</td><td>No finance costs booked, which helps PBT but does not solve balance-sheet weakness.</td></tr>
+    <tr class="heat-warn"><td>Profit Before Tax</td><td>MUR 1,017,129</td><td>3.8%</td><td>Positive, but thin. There is almost no margin for operational slippage.</td></tr>
+    <tr><td>Tax Expense</td><td>MUR 0</td><td>0.0%</td><td>No tax expense reported.</td></tr>
+    <tr class="heat-warn"><td><strong>Net Profit After Tax</strong></td><td><strong>MUR 1,017,129</strong></td><td><strong>3.8%</strong></td><td>Profit exists, but it is weak relative to the capital tied up and the liability profile.</td></tr>
+  </tbody></table></div>
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2025, MUR)</h3>
+  <div class="table-wrap"><table><thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead><tbody>
+    <tr><td>Non-current assets</td><td>Property, plant and equipment</td><td>MUR 53,432,952</td><td>Main asset base. This business is tied to physical marine assets.</td></tr>
+    <tr><td>Non-current assets</td><td>Intangible assets</td><td>MUR 105,708</td><td>Immaterial.</td></tr>
+    <tr><td>Non-current assets</td><td><strong>Total non-current assets</strong></td><td><strong>MUR 53,538,660</strong></td><td>Heavy fixed-asset base for a small-revenue entity.</td></tr>
+    <tr><td>Current assets</td><td>Cash and cash equivalents</td><td>MUR 646,906</td><td>Tiny cash position. This is skinny.</td></tr>
+    <tr><td>Current assets</td><td>Trade and other receivables</td><td>MUR 9,217,416</td><td>Receivables are large relative to annual revenue.</td></tr>
+    <tr><td>Current assets</td><td>Inventories</td><td>MUR 0</td><td>None reported.</td></tr>
+    <tr class="heat-warn"><td>Current assets</td><td><strong>Total current assets</strong></td><td><strong>MUR 9,864,322</strong></td><td>Far too low compared with current liabilities.</td></tr>
+    <tr><td>Equity</td><td>Share capital</td><td>MUR 37,750</td><td>Token equity base.</td></tr>
+    <tr class="heat-critical"><td>Equity</td><td>Retained earnings</td><td>-MUR 40,078,415</td><td>Historic losses have smashed the equity cushion.</td></tr>
+    <tr class="heat-critical"><td>Equity</td><td><strong>Total equity</strong></td><td><strong>-MUR 9,167,075</strong></td><td>Negative equity. No need to sugarcoat it.</td></tr>
+    <tr><td>Current liabilities</td><td>Trade and other payables</td><td>MUR 54,235,907</td><td>Extremely high. This is the dominant funding source.</td></tr>
+    <tr class="heat-critical"><td>Liabilities</td><td><strong>Total liabilities</strong></td><td><strong>MUR 54,235,907</strong></td><td>Almost all of it current; that is a pressure point.</td></tr>
+    <tr><td>Assets</td><td><strong>Total assets</strong></td><td><strong>MUR 63,402,982</strong></td><td>Asset base is substantial relative to turnover, which hurts efficiency.</td></tr>
+  </tbody></table></div>
+  <h3 class="subsection-title">Evolution / Comparison Note</h3>
+  <p class="body-text">Here is the blunt truth: the supplied FY2024 document is for the parent <strong>Chantier Naval de l'Océan Indien Ltd</strong>, not for CNOI Investissements Ltd. So a clean evolution analysis from FY2024 to FY2025 for this exact entity cannot be done honestly from the documents provided. Registry metadata shows CNOI Investissements did file FY2024 accounts, but those numbers are not present in the uploaded pack.</p>
+  <p class="body-text">What we can say is this: the parent CNOI business was reported by IBL in early 2026 as having delivered <strong>stable turnover and improved profitability margins</strong> in the repairs segment, with repairs operating at full capacity. If that broader platform is healthy while this subsidiary remains balance-sheet weak, that suggests CNOI Investissements may be strategically useful but financially underpowered as a standalone vehicle.</p>
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">No charges are listed on the FY2025 CBRIS extract for CNOI Investissements Ltd. That is a positive sign on the surface. But don’t get seduced by it. The absence of formal charges does not make the entity financially strong when its working-capital position is this weak and equity is negative.</p>
+</div></div>
+<div id="ratios" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks used are directional Mauritius SME/service-business ranges rather than strict listed-company comparables. Green = healthy, Amber = watch, Red = critical concern.</p>
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card"><h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.18x</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.20x – 2.00x</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">This is awful. The entity has only about 18 cents of current assets for every rupee of short-term obligation. That is not a temporary wobble; it is structural working-capital stress.</span>
+    </div>
+    <div class="ratio-card"><h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.18x</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.80x – 1.50x</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Same story, because there is no inventory to adjust out. The business is exposed if payables tighten or receivables collection slips.</span>
+    </div>
+  </div>
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card"><h4>Profitability</h4>
+      <div class="ratio-row"><span class="ratio-label">Gross profit margin</span><span class="ratio-val ok">34.4%</span></div>
+      <div class="ratio-row"><span class="ratio-label">EBIT margin</span><span class="ratio-val warn">3.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Net profit margin</span><span class="ratio-val warn">3.8%</span></div>
+      <span class="ratio-interpret">Gross margin says the service proposition may have merit. EBIT and net margin say overhead and structural drag are eating the business alive.</span>
+    </div>
+    <div class="ratio-card"><h4>Returns</h4>
+      <div class="ratio-row"><span class="ratio-label">Return on assets</span><span class="ratio-val bad">1.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Return on equity</span><span class="ratio-val bad">N/M</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">ROA &gt; 5% preferred</span></div>
+      <span class="ratio-interpret">ROA is weak for an asset-backed operation. ROE is not meaningful because equity is negative. Once equity goes through the floor, the usual return logic breaks.</span>
+    </div>
+  </div>
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card"><h4>Borrowing Structure</h4>
+      <div class="ratio-row"><span class="ratio-label">Debt-to-equity</span><span class="ratio-val warn">N/M</span></div>
+      <div class="ratio-row"><span class="ratio-label">Long / short borrowings</span><span class="ratio-val ok">Nil reported</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Misleading comfort</span></span></div>
+      <span class="ratio-interpret">No borrowings looks nice until you notice the business is effectively financed by payables and sits on negative equity. That is not conservative finance. That is hidden strain.</span>
+    </div>
+    <div class="ratio-card"><h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">N/A</span></div>
+      <div class="ratio-row"><span class="ratio-label">Finance costs</span><span class="ratio-val">MUR 0</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-blue">No interest burden</span></span></div>
+      <span class="ratio-interpret">No finance cost is helpful, but it doesn’t rescue a weak balance sheet. The bigger concern is creditor dependency, not interest expense.</span>
+    </div>
+  </div>
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card"><h4>Asset Efficiency</h4>
+      <div class="ratio-row"><span class="ratio-label">Asset turnover</span><span class="ratio-val bad">0.42x</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inventory turnover</span><span class="ratio-val">N/A</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Heavy asset drag</span></span></div>
+      <span class="ratio-interpret">Revenue is low relative to total assets. For an asset-heavy marine operation, that usually means under-utilisation, poor capital structure, or both.</span>
+    </div>
+    <div class="ratio-card"><h4>Working Capital Efficiency</h4>
+      <div class="ratio-row"><span class="ratio-label">Debtor days / DSO</span><span class="ratio-val bad">127 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Creditor days / DPO</span><span class="ratio-val bad">1141 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Cash cycle distorted</span></span></div>
+      <span class="ratio-interpret">A DSO of roughly four months is already slow. A DPO of over three years is insane and almost certainly reflects group balances, deferred settlement, or accounting classification issues. Either way, it screams distortion.</span>
+    </div>
+  </div>
+  <div class="alert alert-critical"><div class="alert-title">The 2 numbers that matter most</div><strong>0.18x current ratio</strong> and <strong>~1,140 creditor days</strong>. Those two numbers tell you the business is being carried by short-term obligations. Fixing that is more urgent than chasing extra sales, because growth poured into a broken cash structure just makes the mess bigger.</div>
+</div></div>
+<div id="market" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">One niche activity, a crowded Mauritius marine-leisure market, and a parent-group advantage that may matter more than brand power.</p>
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card"><div class="ec-header"><h4>Private charters &amp; leisure outings</h4><div class="ec-sub">Likely core segment</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Local catamaran / speedboat operators</span></div>
+      <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Group marine credibility</span></div>
+      <div class="ec-metric"><span class="mk">Risk</span><span class="mv danger">Commoditised market</span></div>
+    </div></div>
+    <div class="entity-card"><div class="ec-header"><h4>Fishing cruises</h4><div class="ec-sub">Declared activity</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Demand driver</span><span class="mv">Tourism + local leisure</span></div>
+      <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Asset access / marine know-how</span></div>
+      <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Seasonality / utilisation</span></div>
+    </div></div>
+    <div class="entity-card"><div class="ec-header"><h4>Group-linked marine services</h4><div class="ec-sub">Strategic adjacency</div></div><div class="ec-body">
+      <div class="ec-metric"><span class="mk">Parent context</span><span class="mv">CNOI repairs / shipyard</span></div>
+      <div class="ec-metric"><span class="mk">Potential edge</span><span class="mv">Maintenance capability</span></div>
+      <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Role confusion</span></div>
+    </div></div>
+  </div>
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text">The defensible advantages are not flashy. They are likely: access to marine assets and technical maintenance support through the wider CNOI platform; group governance and credibility through the IBL ecosystem; and a Port Louis / Mer Rouge operating location that sits inside real maritime infrastructure rather than a purely tourism-facing setup. None of that guarantees strong economics, but it is harder to copy than a pretty brochure and a Facebook page.</p>
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li>Mauritius remains a tourism-driven island economy, which supports leisure marine demand but also makes activity vulnerable to shocks and seasonality.</li>
+    <li>Private charter and excursion markets are crowded, so differentiation often collapses into service quality, network access, and reliability.</li>
+    <li>Asset utilisation is everything in marine leisure. Idle boats destroy returns quietly and relentlessly.</li>
+    <li>Customers increasingly expect strong digital discovery and booking convenience; this entity’s public presence appears thin.</li>
+    <li>Group adjacency to a shipyard and repair platform can reduce downtime and maintenance friction if managed well.</li>
+    <li>If the company is primarily a strategic vehicle rather than a true growth business, commercial discipline may lag because nobody really “owns” the outcome.</li>
+  </ul>
+  <div class="alert alert-warning"><div class="alert-title">Positioning gap</div>The company’s declared business is clear, but its external market identity is weak. That usually means one of two things: either most business comes via relationships and group channels, or the entity has never been forced to behave like a properly managed commercial brand.</div>
+</div></div>
+<div id="eos" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective where leadership wants traction, clarity, accountability, and operating rhythm. This company is small enough for EOS discipline, but the real gating factor is whether anyone truly wants to manage it as a business rather than merely preserve it as a legal and strategic vehicle.</p>
+  <div class="eos-dimension"><div class="eos-dim-header"><span class="eos-dim-title">01 — Organisational Size and Complexity</span><span class="eos-score high">7 / 10</span></div><div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div><p class="eos-rationale">This looks simple enough operationally to benefit from EOS. Narrow activity, small scale, and obvious economic pain points. No need for a 90-person bureaucracy to run boat charters.</p></div>
+  <div class="eos-dimension"><div class="eos-dim-header"><span class="eos-dim-title">02 — Leadership Openness</span><span class="eos-score mid">5 / 10</span></div><div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div><p class="eos-rationale">Public data shows disciplined corporate governance, but that is not the same as openness to accountability and transparency at the operating level. Group-owned entities can be oddly resistant because politics replace clarity.</p></div>
+  <div class="eos-dimension"><div class="eos-dim-header"><span class="eos-dim-title">03 — Growth Stage and Pain Points</span><span class="eos-score high">8 / 10</span></div><div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div><p class="eos-rationale">Classic pain signals are visible: weak liquidity, questionable accountability over working capital, thin net margin, and likely ambiguity about what success for this entity even means.</p></div>
+  <div class="eos-dimension"><div class="eos-dim-header"><span class="eos-dim-title">04 — Current Systems and Processes</span><span class="eos-score mid">6 / 10</span></div><div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div><p class="eos-rationale">The business sits in a formal corporate environment, so some systems likely exist. But the numbers suggest those systems are not forcing commercial and cash discipline tightly enough.</p></div>
+  <div class="eos-dimension"><div class="eos-dim-header"><span class="eos-dim-title">05 — Company Culture</span><span class="eos-score mid">6 / 10</span></div><div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div><p class="eos-rationale">Too little public evidence for a strong call. The group context suggests professional structure, but culture at subsidiary level may be passive if the entity lacks a clear owner-operator mindset.</p></div>
+  <div class="eos-dimension"><div class="eos-dim-header"><span class="eos-dim-title">06 — Decision-Making Patterns</span><span class="eos-score mid">5 / 10</span></div><div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div><p class="eos-rationale">The board composition points to group-governed decision-making. That can be helpful for control and terrible for speed. EOS would help only if there is a named accountable leader with authority.</p></div>
+  <div class="eos-dimension"><div class="eos-dim-header"><span class="eos-dim-title">07 — Vision Clarity</span><span class="eos-score mid">6 / 10</span></div><div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div><p class="eos-rationale">The business description is clear, but the strategic intention is not. Is this meant to be a profit engine, a support vehicle, an asset-holding structure, or a niche brand? If leadership cannot answer that fast, vision is muddy.</p></div>
+  <div class="eos-dimension"><div class="eos-dim-header"><span class="eos-dim-title">08 — Meeting Culture</span><span class="eos-score low">4 / 10</span></div><div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div><p class="eos-rationale">No public evidence of an operating rhythm. The financial distortions suggest issues are either not surfaced weekly or not truly owned when surfaced.</p></div>
+  <div class="eos-overall"><div class="eos-overall-score"><div class="big-num">6.4</div><div class="big-denom">/ 10</div><div class="big-label">EOS Suitability</div></div><div class="eos-overall-text"><h4>Overall Rating: Moderate — qualified positive</h4><p>This is a workable EOS candidate, but not because it is a sexy growth story. It is a candidate because the business appears small, economically distorted, and in need of sharper accountability. The gating factor is simple: if the group wants clarity, EOS helps. If the group wants polite ambiguity, EOS will bounce right off.</p></div></div>
+  <h3 class="subsection-title">Highest-Priority EOS Tools for CNOI</h3>
+  <div class="profile-grid">
+    <div class="profile-card"><h4>Accountability Chart</h4><p>The company needs one clean answer to “who actually owns this business?” Not five directors. One accountable operator.</p></div>
+    <div class="profile-card"><h4>Scorecard</h4><p>Weekly measures should include utilisation, bookings, gross margin per trip, receivables days, payables aging, cash, and maintenance downtime.</p></div>
+    <div class="profile-card"><h4>Issues List &amp; IDS</h4><p>The distortions in liquidity and payables scream for disciplined issue-solving instead of quiet tolerance.</p></div>
+    <div class="profile-card"><h4>V/TO</h4><p>Leadership needs to decide what this entity is for. Profit vehicle? strategic leisure brand? group adjunct? That question cannot stay fuzzy.</p></div>
+    <div class="profile-card"><h4>Rocks</h4><p>The first quarter should focus on cash discipline and role clarity, not generic “grow sales” nonsense.</p></div>
+    <div class="profile-card"><h4>Level 10 Meeting</h4><p>If this entity has no real weekly operating rhythm, nothing else sticks. The rhythm comes first.</p></div>
+  </div>
+</div></div>
+<div id="recs" class="tab-content"><div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations: four financial / operational and four EOS-specific. Sequence matters. First stabilise truth and ownership, then install rhythm, then push improvement.</p>
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card"><div class="ac-num">Recommendation 01</div><h4>Reconcile payables immediately</h4><p>The CFO / finance lead should produce a line-by-line ageing of the MUR 54,235,907 trade and other payables within two weeks, separating genuine suppliers, intercompany balances, accrued expenses, and any stale items. Success means management can explain exactly what that liability stack is, not wave hands at it.</p><span class="urg urg-now">Immediate Priority — Before EOS</span></div>
+    <div class="action-card"><div class="ac-num">Recommendation 02</div><h4>Define the economic role of the entity</h4><p>The board and operating leadership should decide whether CNOI Investissements is meant to be a profit centre, strategic leisure adjunct, asset-holding vehicle, or commercial brand. Success means one explicit purpose statement and one named owner for financial outcomes.</p><span class="urg urg-now">Immediate Priority — Before EOS</span></div>
+    <div class="action-card"><div class="ac-num">Recommendation 03</div><h4>Attack receivable days</h4><p>Receivables at MUR 9,217,416 imply roughly 127 DSO days. Put a weekly collections cadence in place with named account ownership, disputed-balance log, and collection target. Success = DSO pushed below 75 days within one quarter.</p><span class="urg urg-week">Within 30–60 Days</span></div>
+    <div class="action-card"><div class="ac-num">Recommendation 04</div><h4>Measure asset utilisation properly</h4><p>For a marine-leisure business, asset utilisation is oxygen. Track boat availability, booking rate, trip count, gross profit per trip, downtime, and cancellation reasons. Success means management can tell whether the assets are underused or just poorly monetised.</p><span class="urg urg-week">Within 30–60 Days</span></div>
+  </div>
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card"><div class="ac-num">Recommendation 05</div><h4>Run a Focus Day around one brutal question</h4><p>Use a Focus Day to answer: “What is this entity actually for, and who owns it?” Without that, any EOS work will become theatre.</p><span class="urg urg-now">Immediate Priority — Before EOS</span></div>
+    <div class="action-card"><div class="ac-num">Recommendation 06</div><h4>Build a real Accountability Chart</h4><p>Draft the chart around one accountable leader, finance ownership, operations / fleet ownership, sales / bookings ownership, and maintenance interface with parent CNOI. Success = no blurred lines, no committee ownership.</p><span class="urg urg-week">Within 30–60 Days</span></div>
+    <div class="action-card"><div class="ac-num">Recommendation 07</div><h4>Set the first Rock on working-capital truth</h4><p>Quarter-one Rock: “Clean up balance-sheet truth and reduce DSO / clarify DPO.” That is a proper Rock because it is measurable and high-impact. “Improve performance” is fluff; don’t do fluff.</p><span class="urg urg-medium">During First 90 Days</span></div>
+    <div class="action-card"><div class="ac-num">Recommendation 08</div><h4>Install a weekly Level 10 with six hard numbers</h4><p>Start with bookings, trips delivered, utilisation %, gross margin per trip, cash, and overdue receivables. If these are not reviewed weekly, management is flying blind.</p><span class="urg urg-medium">During First 90 Days</span></div>
+  </div>
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box"><h4>The Bottom Line</h4><p>CNOI Investissements looks less like a strong standalone business and more like a strategically parked subsidiary with decent gross economics but poor financial structure. The opportunity is not “grow fast.” The opportunity is to force clarity: why it exists, who owns it, and whether the numbers justify its current model.</p></div>
+    <div class="closing-box steel-box"><h4>The Recommended Sequence</h4><ol class="signal-list">
+      <li><span class="sig-num">01</span>Within 2 weeks: reconcile payables and receivables properly.</li>
+      <li><span class="sig-num">02</span>Within 30 days: decide the entity’s strategic role and accountable leader.</li>
+      <li><span class="sig-num">03</span>Within 45 days: draft Accountability Chart and weekly scorecard.</li>
+      <li><span class="sig-num">04</span>Within 60 days: launch first Rock on working-capital cleanup and utilisation tracking.</li>
+      <li><span class="sig-num">05</span>Within 90 days: run Level 10 rhythm consistently and test whether the business merits a fuller EOS rollout.</li>
+    </ol></div>
+  </div>
+</div></div>
+<footer class="report-footer">
+  <div>CNOI — Comprehensive Company Analysis &amp; EOS Assessment · 26 March 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: user-supplied CBRIS filings for CNOI Investissements Ltd FY2025 and parent Chantier Naval de l'Océan Indien Ltd FY2024; IBL public reporting (March 2026)</div>
+</footer>
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
