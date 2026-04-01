@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CNOI — EOS Prospect Analysis (Clean Tabs)</title>
+<style>
+  :root{
+    --bg:#f7fafc;--ink:#0f172a;--muted:#475569;--brand:#2563eb;--card:#ffffff;
+    --accent:#22c55e;--line:#e2e8f0;
+  }
+  *{box-sizing:border-box}
+  body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:var(--bg);color:var(--ink)}
+  .container{max-width:1100px;margin:32px auto;padding:0 16px}
+  .title{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+  .badge{font-size:12px;background:var(--accent);color:#fff;padding:4px 8px;border-radius:999px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
+  .exec{padding:18px 20px}
+  .exec h2{margin:0 0 8px 0;color:var(--brand)}
+  .small{color:var(--muted);font-size:14px}
+  /* Tabs */
+  .tabs{margin-top:18px}
+  .tabs input{display:none}
+  .tabs label{
+    display:inline-block;padding:10px 14px;margin:6px 6px 0 0;
+    background:#e5edff;color:#0b3ea0;border:1px solid #cbd5e1;border-bottom:none;
+    border-top-left-radius:8px;border-top-right-radius:8px;cursor:pointer;font-weight:600;
+  }
+  .tabs input:checked + label{background:var(--card);border-bottom:1px solid var(--card)}
+  .tab{display:none;padding:18px 20px;border:1px solid #cbd5e1;border-radius:0 12px 12px 12px;background:var(--card)}
+  /* show one tab at a time */
+  #t1:checked ~ .content #c1,
+  #t2:checked ~ .content #c2,
+  #t3:checked ~ .content #c3,
+  #t4:checked ~ .content #c4,
+  #t5:checked ~ .content #c5,
+  #t6:checked ~ .content #c6,
+  #t7:checked ~ .content #c7,
+  #t8:checked ~ .content #c8,
+  #t9:checked ~ .content #c9,
+  #t10:checked ~ .content #c10{display:block}
+  h3{margin-top:0;color:#0b3ea0}
+  ul{line-height:1.6}
+  table{width:100%;border-collapse:collapse}
+  th,td{border:1px solid #e2e8f0;padding:8px;text-align:left}
+  th{background:#f1f5f9}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .callout{border-left:4px solid var(--brand);background:#eef2ff;padding:12px;border-radius:6px}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">
+      <h1 style="margin:0">CNOI — EOS Prospect Analysis</h1>
+      <span class="badge">Interactive</span>
+    </div>
+    <div class="card exec">
+      <h2>Executive Summary</h2>
+      <p><strong>Chantier Naval de l’Océan Indien (CNOI)</strong> is a Mauritian shipyard (est. 1997) delivering ship repair and mid‑size newbuilds. Latest filed revenue: <strong>€29.46m (FY2024)</strong>; profit after tax: <strong>€4.34m</strong>; gross margin: <strong>32%</strong>. Low leverage, majority‑owned by <strong>IBL Ltd</strong>. EOS suitability: high.</p>
+      <p class="small">Data source: CBRIS summary filed 17 Feb 2025 (YE 30 Jun 2024) and company site.</p>
+    </div>
+
+    <div class="tabs">
+      <!-- Radios + Labels -->
+      <input id="t1" type="radio" name="tab" checked><label for="t1">1. Company Overview</label>
+      <input id="t2" type="radio" name="tab"><label for="t2">2. Financial Analysis</label>
+      <input id="t3" type="radio" name="tab"><label for="t3">3. Leadership</label>
+      <input id="t4" type="radio" name="tab"><label for="t4">4. Ideal Client Fit</label>
+      <input id="t5" type="radio" name="tab"><label for="t5">5. EOS Readiness</label>
+      <input id="t6" type="radio" name="tab"><label for="t6">6. Insights &amp; Pain Points</label>
+      <input id="t7" type="radio" name="tab"><label for="t7">7. Meeting Prep</label>
+      <input id="t8" type="radio" name="tab"><label for="t8">8. EOS One‑Pager</label>
+      <input id="t9" type="radio" name="tab"><label for="t9">9. Draft V/TO</label>
+      <input id="t10" type="radio" name="tab"><label for="t10">10. Draft Scorecard</label>
+
+      <!-- Tab content wrapper to ensure sibling selector works -->
+      <div class="content">
+        
+<div id="c1" class="tab">
+  <h3>Company Overview</h3>
+  <p><strong>Chantier Naval de l’Océan Indien (CNOI)</strong> is a Mauritian shipyard founded in <strong>1997</strong>, operating from the industrial zone of <strong>Mer Rouge, Port Louis</strong>. CNOI focuses on <strong>ship repair, refit, and mid‑size newbuilds</strong> (workboats, fishing vessels, patrol/craft). The company is majority‑owned by <strong>IBL Ltd</strong> with additional holdings by <em>Banyan Holdings</em> and <em>Naval Investment Co.</em></p>
+  <div class="grid-2">
+    <div>
+      <h4>Capabilities & Facilities</h4>
+      <ul>
+        <li>Dry docking, hoist/slipway, outfitting quay, steel/aluminium fabrication, mechanical/electrical workshops</li>
+        <li>Project management and planning for concurrent repair and construction programs</li>
+        <li>Quality, HSE and class-compliance workflows embedded across projects</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Business Model</h4>
+      <ul>
+        <li><strong>Repairs & refits</strong>: recurring demand from regional fleets (Indian Ocean, East Africa)</li>
+        <li><strong>Newbuilds</strong>: project-based revenue with milestone billing</li>
+        <li><strong>Aftercare</strong>: inspections, warranty items, spares and upgrades</li>
+      </ul>
+    </div>
+  </div>
+  <p><strong>Registry:</strong> CHANTIER NAVAL DE L'OCEAN INDIEN LIMITED (C06017475). <strong>Auditor:</strong> Deloitte. <strong>Company Secretary:</strong> IBL Management Ltd.</p>
+</div>
+
+
+        
+<div id="c2" class="tab">
+  <h3>Financial Analysis — FY2024 (EUR)</h3>
+  <div class="grid-2">
+    <div>
+      <h4>Income Statement Highlights</h4>
+      <ul>
+        <li><strong>Revenue:</strong> €29,457,527</li>
+        <li><strong>Gross Profit:</strong> €9,414,053 <span class="small">(Gross Margin 32.0%)</span></li>
+        <li><strong>Profit After Tax:</strong> €4,337,198 <span class="small">(Net Margin 14.7%)</span></li>
+      </ul>
+      <h4>Balance Sheet Snapshot</h4>
+      <ul>
+        <li><strong>Total Assets:</strong> €87,241,377</li>
+        <li><strong>Equity:</strong> €62,770,090 <span class="small">(Equity Ratio 71.9%)</span></li>
+        <li><strong>Total Liabilities:</strong> €24,471,287 <span class="small">(Liabilities/Equity 0.39x)</span></li>
+        <li><strong>Long‑term Borrowings:</strong> ≈ €810,000 <span class="small">(Debt/Equity 1.29%)</span></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Operating Ratios</h4>
+      <ul>
+        <li><strong>ROE:</strong> 6.9% <span class="small">(PAT / Equity)</span></li>
+        <li><strong>ROA:</strong> 5.0% <span class="small">(PAT / Assets)</span></li>
+        <li><strong>Asset Turnover:</strong> 0.34x <span class="small">(Revenue / Assets)</span></li>
+        <li><strong>Leverage:</strong> 0.39x liabilities-to-equity; bank debt negligible</li>
+      </ul>
+      <div class="callout">
+        Low leverage and healthy margins indicate strong capacity to fund an EOS programme
+        without stressing liquidity or covenants.
+      </div>
+    </div>
+  </div>
+  <p class="small">Note: FY2024 numbers from CBRIS filing; prior-year trendlines not included here. Add when additional years are confirmed.</p>
+</div>
+
+
+        
+<div id="c3" class="tab">
+  <h3>Leadership &amp; Decision Makers</h3>
+  <div class="grid-2">
+    <div>
+      <h4>Executive Management</h4>
+      <ul>
+        <li><strong>Managing Director:</strong> Franck Piriou</li>
+        <li><strong>Deputy General Director:</strong> Nicolas (Paul Nicolas) Perrier</li>
+      </ul>
+      <h4>Board / Group Representation</h4>
+      <ul>
+        <li><strong>IBL Representatives:</strong> Preetee Jhamna‑Ramdin, Patrice G.M. Robert, G.K. Naidu Purseramen</li>
+        <li><strong>Company Secretary:</strong> IBL Management Ltd</li>
+        <li><strong>Auditor:</strong> Deloitte</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Functional Influencers (Typical)</h4>
+      <ul>
+        <li>Operations/Shipyard Manager (dry dock, hoist, workshops)</li>
+        <li>Project Director (newbuild programs)</li>
+        <li>Repair Manager (short‑cycle jobs)</li>
+        <li>Planning &amp; Procurement leads</li>
+        <li>HSE &amp; Quality managers</li>
+        <li>Finance controller</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Decision path likely: MD + Deputy MD with IBL oversight; functional heads shape execution.</p>
+</div>
+
+
+        
+<div id="c4" class="tab">
+  <h3>Ideal Client Fit Assessment</h3>
+  <ul>
+    <li><strong>Scale:</strong> Turnover well above $5m and workforce >50 — <strong>meets/exceeds</strong></li>
+    <li><strong>Tenure:</strong> 28+ years — <strong>meets</strong></li>
+    <li><strong>Geography:</strong> Mauritius HQ with regional footprint — <strong>meets</strong></li>
+    <li><strong>Ownership Mindset:</strong> IBL stewardship + performance focus — <strong>meets</strong></li>
+    <li><strong>Change Capacity:</strong> Low leverage and structured governance — <strong>meets</strong></li>
+  </ul>
+  <div class="callout">Verdict: High‑potential EOS client; capacity and maturity align with programme demands.</div>
+</div>
+
+
+        
+<div id="c5" class="tab">
+  <h3>EOS Readiness</h3>
+  <div class="grid-2">
+    <div>
+      <h4>Strengths</h4>
+      <ul>
+        <li>Clear ownership and governance; external audit</li>
+        <li>Experienced technical leadership and workforce depth</li>
+        <li>Financial headroom to invest in change</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Risks to Manage</h4>
+      <ul>
+        <li>Group–subsidiary alignment can slow decisions</li>
+        <li>Scheduling friction between newbuilds and urgent repairs</li>
+        <li>Change fatigue among long‑tenured teams if rollout is not paced</li>
+      </ul>
+    </div>
+  </div>
+  <p><strong>Recommendation:</strong> Start with Focus Day + 90‑day rollout, prioritising Scorecard, Rocks, and top‑5 processes.</p>
+</div>
+
+
+        
+<div id="c6" class="tab">
+  <h3>Strategic Insights &amp; Pain Points</h3>
+  <ul>
+    <li><strong>Capacity planning:</strong> ensure a master schedule that balances dock time, hoist usage and critical path items.</li>
+    <li><strong>Right People/Right Seats:</strong> clarify span of control for Operations vs Projects vs Repairs to reduce handoff friction.</li>
+    <li><strong>Process discipline:</strong> lock in quality/HSE practices across all jobs; reduce rework and inspection delays.</li>
+    <li><strong>Commercial mix:</strong> diversify client segments and geographies to stabilise order book seasonality.</li>
+    <li><strong>IBL interface:</strong> define governance rhythm so approvals don’t bottleneck execution.</li>
+  </ul>
+</div>
+
+
+        <div id="c7" class="tab">
+          <h3>Meeting Preparation</h3>
+          <ul>
+            <li>5‑year vision for capacity, markets, project mix</li>
+            <li>Quarterly priority setting and follow‑up</li>
+            <li>Top 10 weekly KPIs across ops/quality/safety/finance</li>
+          </ul>
+        </div>
+
+        <div id="c8" class="tab">
+          <h3>EOS One‑Page Overview (CNOI Version)</h3>
+          <p><strong>What EOS Is:</strong> A practical system to help CNOI’s leadership team sharpen alignment, execution discipline, and teamwork.</p>
+          <div class="callout">EOS strengthens: <strong>Vision</strong>, <strong>Traction</strong>, <strong>Healthy</strong>.</div>
+          <div class="grid-2">
+            <div>
+              <h4>Why EOS for CNOI</h4>
+              <ul>
+                <li>Align IBL owners, MD/Deputy MD, and functional leads</li>
+                <li>Balance newbuilds vs urgent repairs without firefighting</li>
+                <li>Predictable delivery, quality, and safety</li>
+              </ul>
+            </div>
+            <div>
+              <h4>What You’ll Get</h4>
+              <ul>
+                <li>One clear Vision agreed by all</li>
+                <li>Quarterly Rocks + weekly L10 cadence</li>
+                <li>Scorecard with 5–15 predictive numbers</li>
+              </ul>
+            </div>
+          </div>
+          <h4>Immediate Wins</h4>
+          <ul>
+            <li>Unified production plan for the quarter</li>
+            <li>Top 5 processes documented and followed</li>
+            <li>Weekly leadership scorecard and L10 meeting</li>
+          </ul>
+        </div>
+
+        
+<div id="c9" class="tab">
+  <h3>Draft V/TO for CNOI (Customised)</h3>
+
+  <h4>Core Values (Draft)</h4>
+  <ol>
+    <li>Safety is non-negotiable</li>
+    <li>Own the outcome</li>
+    <li>Craftsmanship with class</li>
+    <li>One team, no silos</li>
+    <li>Speak up, solve fast</li>
+    <li>Better every job</li>
+  </ol>
+
+  <h4>Core Focus</h4>
+  <p><strong>Purpose:</strong> Keep the Indian Ocean fleet working safely and reliably.</p>
+  <p><strong>Niche:</strong> Integrated mid-size (30–70 m) repair, refit &amp; newbuild at a one‑stop Mauritian yard with class‑quality workmanship and predictable delivery.</p>
+
+  <h4>10-Year Target</h4>
+  <ul>
+    <li>#1 shipbuilding &amp; repair hub in the Indian Ocean for 30–70 m vessels</li>
+    <li>Benchmark quality &amp; delivery performance</li>
+    <li>Self‑funded reinvestment through strong profitability</li>
+  </ul>
+
+  <h4>Marketing Strategy</h4>
+  <div class="grid-2">
+    <div>
+      <p><strong>Target Market:</strong></p>
+      <ul>
+        <li>Tuna purse seiners, longliners, trawlers</li>
+        <li>Regional coastguards and navies (Mauritius, Seychelles, Madagascar, Comoros, East Africa)</li>
+        <li>Commercial workboats (tugs, barges, pilot boats)</li>
+        <li>Specialised expedition vessels (Selar-type niche builds)</li>
+      </ul>
+      <p><strong>Proven Process:</strong></p>
+      <ol>
+        <li>Diagnostic &amp; planning</li>
+        <li>Dry docking &amp; inspection</li>
+        <li>Repairs, fabrication, outfitting</li>
+        <li>Quality checks &amp; approvals</li>
+        <li>Delivery &amp; post‑delivery support</li>
+      </ol>
+    </div>
+    <div>
+      <p><strong>Three Uniques:</strong></p>
+      <ol>
+        <li>Integrated <strong>repair + refit + newbuild</strong> on one site</li>
+        <li>Strategic Mauritian location between major Indian Ocean routes</li>
+        <li>International pedigree (Piriou) + strong local engineering depth</li>
+      </ol>
+      <p><strong>Guarantee (draft):</strong> Reliable dates underpinned by EOS cadence and a predictive weekly scorecard.</p>
+    </div>
+  </div>
+
+  <h4>3-Year Picture (2027)</h4>
+  <ul>
+    <li>Revenue €40M+; Net margin 15%+</li>
+    <li>6–8 months order book; utilisation 85–90%</li>
+    <li>Top 10 core processes documented and followed</li>
+    <li>Leadership team fully aligned; weekly L10 meetings</li>
+    <li>Predictable on-time delivery</li>
+  </ul>
+
+  <h4>1-Year Plan (2025)</h4>
+  <ul>
+    <li>Revenue €32M; on-time repairs ≥95%; rework −10%</li>
+    <li>Unified shipyard planning cadence</li>
+    <li>Document core processes: Production, Planning, Procurement, HSE, Quality</li>
+    <li>Weekly EOS scorecard live</li>
+  </ul>
+
+  <h4>Quarterly Rocks (first 90 days)</h4>
+  <ul>
+    <li>Integrated production schedule for 2025</li>
+    <li>Document top 5 critical processes; roll out to supervisors</li>
+    <li>Launch weekly scorecard across functions</li>
+    <li>Align accountability chart with IBL</li>
+    <li>First EOS Health Check</li>
+  </ul>
+</div>
+
+
+        <div id="c10" class="tab">
+          <h3>Draft EOS Scorecard (CNOI Shipyard)</h3>
+          <p><em>Predictive, operational and financial metrics reviewed every Monday.</em></p>
+          <table>
+            <thead><tr><th>Metric</th><th>Target</th><th>Owner</th></tr></thead>
+            <tbody>
+              <tr><td>Dry Dock Utilisation %</td><td>85%+</td><td>Operations Manager</td></tr>
+              <tr><td>Hoist / Slipway Utilisation</td><td>80%+</td><td>Operations Manager</td></tr>
+              <tr><td>Active Repair Jobs</td><td>12–16</td><td>Planning</td></tr>
+              <tr><td>On‑Time Delivery — Newbuilds</td><td>≥ 90%</td><td>Project Director</td></tr>
+              <tr><td>On‑Time Delivery — Repairs</td><td>≥ 95%</td><td>Repair Manager</td></tr>
+              <tr><td>Rework Incidents</td><td>&lt; 3 / week</td><td>Quality</td></tr>
+              <tr><td>Lost‑Time Injuries (LTI)</td><td>0</td><td>HSE</td></tr>
+              <tr><td>Procurement Lead Time</td><td>&lt; 7 days</td><td>Procurement</td></tr>
+              <tr><td>Stockouts of Critical Items</td><td>0</td><td>Stores</td></tr>
+              <tr><td>Weekly Revenue Billed</td><td>€600k+</td><td>Finance</td></tr>
+              <tr><td>Order Book Coverage</td><td>≥ 6 months</td><td>Commercial</td></tr>
+              <tr><td>Workforce Availability (skilled trades)</td><td>≥ 90%</td><td>HR / Production</td></tr>
+            </tbody>
+          </table>
+          <h4>Add‑On Options (after 60–90 days)</h4>
+          <ul>
+            <li>Class survey turnaround</li>
+            <li>Preventive maintenance completion</li>
+            <li>Job‑costing variance</li>
+            <li>Welding/NDT pass rates</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
