@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archemics_Company_Analysis_March2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Chemicals · FMCG Manufacturing</span>
+    <span class="badge badge-type">Private Company · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">25 March 2026</span>
+  </div>
+  <h1>Archemics:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">ARCHEMICS LTD · Company intelligence · Financial ratios · EOS implementation assessment · Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 713,905,928</div>
+      <div class="stat-delta">Year ended 31 Dec 2024 · MUR</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Gross Margin</div>
+      <div class="stat-value emerald">44.8%</div>
+      <div class="stat-delta">Healthy manufacturing margin</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.5 / 10</div>
+      <div class="stat-delta">Moderate-High fit · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Working Capital Stretch</div>
+      <div class="stat-delta">DSO 82 days vs DPO 143 days</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>ARCHEMICS LTD — Company Analysis &amp; EOS Assessment · 25 March 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 1983 Mauritian chemicals and FMCG manufacturer with real commercial heft, but the financial profile says one thing clearly: profit is decent, cash discipline is doing the heavy lifting.</p>
+
+  <p class="body-text">Archemics Ltd is a long-established Mauritian manufacturer and distributor of detergents, personal care products, adhesives, textile auxiliaries and industrial cleaning solutions. The company operates from Terre Rouge and trades across both B2C and B2B channels, with activity spanning home care, beauty care, pool care, DIY, car care, professional hygiene and industrial applications.</p>
+  <p class="body-text">Ownership is highly concentrated. The CBRIS extract shows Harel Mallac &amp; Co. Ltd holding 100% of the 40,000 ordinary shares, which makes Archemics a fully controlled subsidiary rather than a founder-led standalone business. That matters. It likely gives Archemics brand backing, governance structure and procurement leverage, but it may also mean slower decision rights where group approval is needed.</p>
+  <p class="body-text">FY2024 turnover reached MUR 713,905,928 with a healthy gross margin of 44.8%, but net margin landed at just 4.9%. Liquidity is serviceable rather than comfortable, with a current ratio of 1.19× and quick ratio of 1.14×. The sharper issue is working capital shape: receivables sit at roughly 82 days while payables stretch to about 143 days. Translation: the business is financing itself partly through supplier timing, which is effective until it is not.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Strong Commercial Engine, Tight Cash Conversion</div>
+    Archemics looks like a credible, scaled operating business with solid brand assets, decent margin structure and a diversified offer. The real conversation is not “can they sell?” It is “how much operational friction, cross-functional complexity and working-capital drag sits behind those sales?” That makes it a legitimate EOS prospect, especially if leadership feels the pain of coordination, speed and accountability across business lines.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Scale and portfolio breadth</strong> stand out. Archemics combines local manufacturing with distribution of recognised international brands, serves both B2C and institutional markets, and operates with a real multi-channel footprint rather than a one-trick product line.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Working-capital dependence</strong> is the main concern. Receivables are slow, payables are heavily stretched, and current liabilities materially exceed the level you would want to see if the business hits a disruption in collections or supplier terms.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Complexity is visible from the outside.</strong> Multiple product families, mixed B2B/B2C routes to market, group ownership, brand partnerships, and a recent procurement leadership hire all point to a business that likely benefits from tighter clarity, rhythm and accountability.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A mature Mauritian chemicals platform with group backing, franchise relationships and a much wider portfolio than the name alone suggests.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Archemics Ltd was incorporated on 16 May 1983 as File No. C3964. It is a live private domestic company with registered office at 18 Edith Cavell Street, Port Louis, Mauritius. The business registration number is C07003964. The company was formerly known as Henkel Chemicals (Mtius) Limited before its rebranding to Archemics.</p>
+  <p class="body-text">CBRIS shows stated capital of MUR 400,000 divided into 40,000 ordinary shares with par value MUR 10. Annual returns for 2023, 2024 and 2025 were filed, which is a good basic compliance signal. HM Secretaries Ltd acts as company secretary. Nexia Baker &amp; Arenson is listed as auditor from July 2023, replacing the earlier long-standing BDO &amp; Co. record.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header"><h4>Archemics Ltd</h4><div class="ec-sub">Operating Company</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">File No.</span><span class="mv">C3964</span></div>
+        <div class="ec-metric"><span class="mk">BRN</span><span class="mv">C07003964</span></div>
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">Live</span></div>
+        <div class="ec-metric"><span class="mk">Registered office</span><span class="mv">Port Louis</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>Harel Mallac &amp; Co. Ltd</h4><div class="ec-sub">100% Shareholder</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shareholding</span><span class="mv">40,000 ordinary shares</span></div>
+        <div class="ec-metric"><span class="mk">Control</span><span class="mv">Full ownership</span></div>
+        <div class="ec-metric"><span class="mk">Implication</span><span class="mv warn">Group-governed</span></div>
+        <div class="ec-metric"><span class="mk">Strategic effect</span><span class="mv">Capital and brand backing</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>Strategic Principals</h4><div class="ec-sub">Brand / Franchise Relationships</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Henkel</span><span class="mv">Historic principal</span></div>
+        <div class="ec-metric"><span class="mk">Rochex</span><span class="mv">Exclusive franchise</span></div>
+        <div class="ec-metric"><span class="mk">Operating model</span><span class="mv">Local manufacture + distribution</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Principal dependence</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Ownership Note</div>
+    Archemics is not a loose SME run from gut feel. It sits inside the Harel Mallac orbit. That normally improves access to governance, finance and procurement muscle, but it can also blur autonomy. In EOS terms, that means the Accountability Chart and decision-right clarity would matter a lot more than in a purely founder-led business.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Alain Yanis Fayd'Herbe de Maudave — Director</h4>
+      <p>Appointed 4 August 2023. Service address recorded at 18 Edith Cavell Street, Port Louis. Appears part of the current refreshed board structure.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Antoine Louis Harel — Director</h4>
+      <p>Appointed 23 September 2016. Service address recorded at HM Building, 18 Edith Cavell Street, Port Louis. Strong signal of direct group-level oversight.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Charles Paul Luc Harel — Director</h4>
+      <p>Appointed 12 August 2013. Another indicator that Archemics sits close to the Harel Mallac centre of gravity rather than at arm’s length.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Marie Auguste Guy Harel — Director</h4>
+      <p>Appointed 18 March 2002. Long tenure points to continuity and stability at board level, though not necessarily operating agility.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Belinda Vacher — Director</h4>
+      <p>Appointed 1 July 2023 with service address at 18 Edith Cavell Street, Port Louis. Suggests another recent board refresh move.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Operational Leadership — Public Signals</h4>
+      <p>Public sources show Laurent Roussel was appointed to head Archemics in 2021, and a March 2026 public job posting seeks a Head of Procurement. That combination suggests a fairly structured management layer, but the current GM name is not clearly displayed on the company website.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">The portfolio is broad and commercially useful. Public materials show activity across household detergents, industrial and institutional hygiene, cosmetics and beauty care, industrial and consumer adhesives, textile auxiliaries, pool care, car care and DIY. Well-known brands associated with Archemics include Le Chat, Super Croix, Xtra, Mir, Fa, Diadermine, Schwarzkopf, Pattex, Loctite and Tangit. The professional segment also includes technical support, dosing systems, audits and training, which means this is not just a product reseller; it has a solutions angle.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">CBRIS business activity points to an operating base off Motorway M2, Terre Rouge, Mauritius, with retail traces in Quatre Bornes for older DeClic activity. Public-facing material positions Archemics as serving Mauritius and the wider Indian Ocean region. The company’s website includes e-commerce functionality and explicitly markets to both domestic consumers and institutional buyers.</p>
+
+  <div class="alert alert-ok">
+    <div class="alert-title">Digital Presence Check</div>
+    Unlike many Mauritian manufacturers that still treat digital as decorative wallpaper, Archemics has a live website, social media activity and an online shop. That does not prove digital excellence, but it does show basic commercial seriousness.
+  </div>
+</div>
+</div>
+
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source data is the CBRIS financial summary for the year ended 31 December 2024, approved on 17 March 2025, presented in Mauritius Rupees. This is summary-level disclosure, not full audited note disclosure.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    The Registrar extract provides summary profit and loss and balance sheet data for FY2024, plus filing dates for FY2022 and FY2023. It does not provide the full audited notes, prior-year comparatives inside the same statement, cash-flow detail, segment disclosure, depreciation split, ageing schedules, or breakdown of the “other” current-liability bucket. So the analysis is useful, but not magic. It is still a torch, not an MRI.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>MUR 713,905,928</td><td>100.0%</td><td>Serious scale for a Mauritian private chemicals platform.</td></tr>
+        <tr><td>Cost of Sales</td><td>MUR 393,835,277</td><td>55.2%</td><td>Cost base leaves room for a healthy gross margin.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>MUR 320,070,651</td><td>44.8%</td><td>Strong gross margin for a manufacturer/distributor hybrid.</td></tr>
+        <tr><td>Other Income</td><td>MUR 16,198,322</td><td>2.3%</td><td>Useful support line, but not large enough to distort the story.</td></tr>
+        <tr><td>Distribution Costs</td><td>MUR 1</td><td>0.0%</td><td>Effectively nil in the summary; likely classification sits elsewhere.</td></tr>
+        <tr><td>Administration Costs</td><td>MUR 0</td><td>0.0%</td><td>Shown as zero in the summary extract; almost certainly presentation compression rather than no admin spend.</td></tr>
+        <tr><td>Other Expenses</td><td>MUR 0</td><td>0.0%</td><td>Also reported as zero in summary format.</td></tr>
+        <tr class="heat-warn"><td>Finance Costs</td><td>MUR 5,453,383</td><td>0.8%</td><td>Affordable, but worth watching if rates or facilities tighten.</td></tr>
+        <tr><td>Profit Before Tax</td><td>MUR 39,638,414</td><td>5.6%</td><td>Respectable operating result, but not extravagant.</td></tr>
+        <tr><td>Tax Expense</td><td>MUR 4,785,111</td><td>0.7%</td><td>Normal tax drag.</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>MUR 34,853,303</strong></td><td><strong>4.9%</strong></td><td>Profitable, but the margin is thin enough that execution slippage can hurt quickly.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 December 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-current assets</td><td>Property, plant and equipment</td><td>MUR 183,471,508</td><td>Material industrial asset base; this is not a light virtual business.</td></tr>
+        <tr><td>Non-current assets</td><td>Intangible assets</td><td>MUR 20,715,847</td><td>Suggests brand, software or other rights value, though notes are unavailable.</td></tr>
+        <tr class="heat-ok"><td>Non-current assets</td><td>Total non-current assets</td><td>MUR 204,187,355</td><td>Meaningful long-term operating platform.</td></tr>
+        <tr><td>Current assets</td><td>Cash and cash equivalents</td><td>MUR 129,913,360</td><td>Healthy absolute cash position.</td></tr>
+        <tr class="heat-warn"><td>Current assets</td><td>Trade and other receivables</td><td>MUR 159,664,710</td><td>Large receivables book; this is where cash discipline should start, not end.</td></tr>
+        <tr><td>Current assets</td><td>Inventories</td><td>MUR 14,149,924</td><td>Inventory is modest relative to revenue, which is encouraging.</td></tr>
+        <tr><td>Current assets</td><td>Other current assets</td><td>MUR 12,458,334</td><td>Small residual category.</td></tr>
+        <tr class="heat-ok"><td>Current assets</td><td>Total current assets</td><td>MUR 316,186,328</td><td>Current asset base is solid in absolute terms.</td></tr>
+        <tr class="heat-ok"><td>Total assets</td><td>Total assets</td><td>MUR 520,373,683</td><td>Large enough balance sheet to justify structured management discipline.</td></tr>
+        <tr><td>Equity</td><td>Share capital</td><td>MUR 400,000</td><td>Tiny legal capital line; not unusual in older private-company structures.</td></tr>
+        <tr><td>Equity</td><td>Retained earnings</td><td>MUR 122,437,534</td><td>Main internally generated capital base.</td></tr>
+        <tr><td>Equity</td><td>Other reserves</td><td>MUR 53,913,364</td><td>Additional reserve cushion.</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Total equity</td><td>MUR 176,750,898</td><td>Reasonable equity buffer.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Long-term borrowings</td><td>MUR 11,617,858</td><td>Bank leverage is low relative to equity.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Deferred tax</td><td>MUR 23,179,577</td><td>Typical accounting liability.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Long-term provisions</td><td>MUR 44,172,207</td><td>Worth understanding in due diligence; summary gives no note detail.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Total non-current liabilities</td><td>MUR 78,969,642</td><td>Not aggressive on funded debt.</td></tr>
+        <tr class="heat-warn"><td>Current liabilities</td><td>Trade and other payables</td><td>MUR 153,831,150</td><td>Large supplier/creditor reliance.</td></tr>
+        <tr><td>Current liabilities</td><td>Current tax payable</td><td>MUR 7,291,611</td><td>Ordinary tax timing item.</td></tr>
+        <tr class="heat-critical"><td>Current liabilities</td><td>Other current liabilities</td><td>MUR 103,530,382</td><td>Big opaque bucket; management should be able to explain this cleanly.</td></tr>
+        <tr class="heat-critical"><td>Current liabilities</td><td>Total current liabilities</td><td>MUR 264,653,143</td><td>Current-liability load is the main balance-sheet pressure point.</td></tr>
+        <tr><td>Total liabilities</td><td>Total liabilities</td><td>MUR 343,622,785</td><td>Total liabilities are about 1.94× equity, mostly current rather than long-term funded debt.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The charges register shows a long history of secured facilities, mostly floating charges over undertaking, goodwill, movable and immovable property. Recorded charge amounts total approximately MUR 191,950,000 across filings from 1999 through 2023. The largest recent disclosed charge is MUR 53.0 million dated 4 May 2023, with other notable 2021 charges of MUR 20.0 million, MUR 7.0 million and MUR 20.0 million.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Charge Pattern Interpretation</div>
+    The low long-term borrowing balance in the summary accounts does not mean the company operates debt-free. The charge history says Archemics keeps banking lines and secured flexibility available. Sensible, yes. But it also means treasury discipline matters. Businesses that live on facilities and supplier patience can look calm right up until the day they don’t.
+  </div>
+</div>
+</div>
+
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks below are indicative ranges for Mauritius manufacturing/services SMEs and mid-market operators, used as directional health markers rather than gospel. Green = healthy, Amber = watch, Red = critical concern.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.19×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.5×–2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">At 1.19×, Archemics is above the danger zone but below the kind of liquidity cushion you would want in a business with this many moving parts. It can pay its short-term obligations on paper, but not with much room for stupidity.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.14×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.0×–1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">The quick ratio remains above 1.0× even after stripping inventory out. That is better than the current ratio suggests and tells you the business is not relying heavily on slow-moving stock to defend near-term liquidity.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Margins</h4>
+      <div class="ratio-row"><span class="ratio-label">Gross profit margin</span><span class="ratio-val ok">44.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">EBIT margin</span><span class="ratio-val warn">6.3%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Net profit margin</span><span class="ratio-val warn">4.9%</span></div>
+      <span class="ratio-interpret">Gross margin is strong, which means the commercial model works. The problem is what happens below the gross-profit line. By the time financing and overhead friction finish chewing, the business lands at a merely okay net margin, not a heroic one.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Returns</h4>
+      <div class="ratio-row"><span class="ratio-label">Return on assets</span><span class="ratio-val ok">6.7%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Return on equity</span><span class="ratio-val ok">19.7%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">ROA and ROE both say the company is not dead weight. It is generating respectable returns on the asset base and a strong enough return on equity to show value creation, assuming the quality of earnings is supported by collections.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt and Solvency</h4>
+      <div class="ratio-row"><span class="ratio-label">Debt-to-equity ratio</span><span class="ratio-val ok">0.07×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Interest coverage</span><span class="ratio-val ok">8.27×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Traditional funded debt is not the core problem here. Long-term borrowings are low relative to equity, and EBIT covers finance costs more than eight times. That gives the business breathing room with banks.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Balance-Sheet Quality</h4>
+      <div class="ratio-row"><span class="ratio-label">Total liabilities / equity</span><span class="ratio-val warn">1.94×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Current liabilities / total liabilities</span><span class="ratio-val warn">77.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">The hidden story is liability composition. The company is not highly bank-levered, but it is heavily loaded with short-term liabilities. So the risk is less insolvency drama and more working-capital tension.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Operating Efficiency</h4>
+      <div class="ratio-row"><span class="ratio-label">Asset turnover</span><span class="ratio-val ok">1.37×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inventory turnover</span><span class="ratio-val ok">27.83×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Assets are working. Inventory turnover is high and asset turnover is comfortably above 1.0×. This does not look like a warehouse museum full of dead stock and expensive machinery taking naps.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Cash-Conversion Discipline</h4>
+      <div class="ratio-row"><span class="ratio-label">Debtor days / DSO</span><span class="ratio-val warn">82 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Creditor days / DPO</span><span class="ratio-val warn">143 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">This is the big one. Receivables at roughly 82 days are slow, and payables at roughly 143 days are very stretched. That combination says the business is protecting liquidity by leaning hard on suppliers while waiting too long for customer cash.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    The numbers to obsess over are <strong>DSO at about 82 days</strong> and <strong>DPO at about 143 days</strong>. Together they scream working-capital strain. The business is profitable, yes, but slow collections force management to use supplier credit as an informal financing engine. Fixing receivables discipline and cleaning up the “other current liabilities” bucket will probably create more real cash than chasing another nice-looking sales campaign.
+  </div>
+</div>
+</div>
+
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Three broad commercial lanes matter here: consumer FMCG, institutional/professional hygiene, and specialty industrial products. Archemics wins by mixing local manufacturing, recognised brands and technical support.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header"><h4>Consumer Home &amp; Personal Care</h4><div class="ec-sub">B2C / Retail</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Core offer</span><span class="mv">Detergents, cleaners, beauty care</span></div>
+        <div class="ec-metric"><span class="mk">Positioning</span><span class="mv">Branded, broad portfolio</span></div>
+        <div class="ec-metric"><span class="mk">Key rivals</span><span class="mv">Cernol, local cleaners, importers</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Price pressure in retail</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>Professional Hygiene</h4><div class="ec-sub">Hotels, Food, Institutional</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Core offer</span><span class="mv">Cleaning systems, dosing, audits, training</span></div>
+        <div class="ec-metric"><span class="mk">Positioning</span><span class="mv">Solution-oriented</span></div>
+        <div class="ec-metric"><span class="mk">Key rivals</span><span class="mv">Cernol / Ecolab-linked players</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv ok">Technical service wrapper</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header"><h4>Industrial / Specialty Chemicals</h4><div class="ec-sub">Adhesives, Auxiliaries, B2B</div></div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Core offer</span><span class="mv">Henkel-linked adhesives, textile auxiliaries</span></div>
+        <div class="ec-metric"><span class="mk">Key rivals</span><span class="mv">Prochem, specialty importers</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv ok">Brand principal relationships</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Principal dependence</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text">Three advantages look genuinely defensible. First, Archemics combines local manufacturing and imported principal brands, which is stronger than being just an importer or just a toll manufacturer. Second, it appears to wrap products with technical support, training and audits in the professional segment, which creates stickier institutional relationships. Third, Harel Mallac ownership adds credibility, channels and resilience that smaller local chemical players cannot easily fake with a nice brochure and a prayer.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li>Institutional hygiene remains structurally important after the pandemic, especially in hospitality, food and industrial settings.</li>
+    <li>“Made in Moris” positioning can support local manufacturing brands where supply reliability and national sourcing matter.</li>
+    <li>Imported-brand dependence remains a double-edged sword: strong brand pull, but vulnerability to principal strategy and foreign supply disruptions.</li>
+    <li>Local chemical and cleaning markets are noisy and price-sensitive, which punishes businesses that do not differentiate beyond cheapest bottle wins.</li>
+    <li>Sustainability expectations are rising, and Archemics is at least visibly trying to play in that lane rather than pretending the world is still 2006.</li>
+    <li>Procurement, stock planning and credit control become more critical as product breadth and channel complexity increase.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Competitive Reality Check</div>
+    Archemics probably does not lose on credibility. It risks losing on complexity tax. In businesses like this, competitors do not always beat you with a better product. Sometimes they beat you because they are simpler, faster and more focused.
+  </div>
+</div>
+</div>
+
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">01 — Organisational Size and Complexity</span><span class="eos-score high">8 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">Public sources indicate roughly 201–500 employees, which is slightly above the classic EOS sweet spot but still very workable. More importantly, the business is operationally messy enough in a productive way: multiple product families, mixed B2B and B2C channels, technical service layers and group governance.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">02 — Leadership Openness</span><span class="eos-score mid">6 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">There are signs of quality systems, sustainability language, board refresh and professional recruitment. That usually correlates with some openness to structure. But group ownership can also mean openness is conditional: “yes, but only if it fits the mothership.”</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">03 — Growth Stage and Pain Points</span><span class="eos-score high">8 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">The classic EOS pain signals are easy to imagine here: cross-functional drag, competing priorities, working-capital friction, likely siloed functions, and complexity from serving different customer groups under one roof. The March 2026 procurement hire is another tell.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">04 — Current Systems and Processes</span><span class="eos-score mid">6 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">ISO and formal quality references suggest some system discipline exists. Good. But the balance-sheet shape still says process performance is not fully harmonised, especially around collections, liabilities visibility and probably cross-functional execution.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">05 — Company Culture</span><span class="eos-score mid">6 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Public communications stress people, sustainability and quality. That usually points to an intention toward a disciplined culture. But public messaging is lipstick; it is not proof. Without internal evidence, this deserves a cautious middle score.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">06 — Decision-Making Patterns</span><span class="eos-score mid">6 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Full ownership by Harel Mallac likely brings clarity at the very top, but not necessarily at operating-seat level. EOS would add most value if leaders feel that things fall between functions, approvals travel too slowly, or accountability gets blurred by group structure.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">07 — Vision Clarity</span><span class="eos-score high">7 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Externally, the company can articulate what it is, what it sells and where it plays. That is already better than half the market. The question is whether that clarity is translated internally into a shared operating vision, not just marketing copy.</p>
+  </div>
+  <div class="eos-dimension">
+    <div class="eos-dim-header"><span class="eos-dim-title">08 — Meeting Culture</span><span class="eos-score mid">5 / 10</span></div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No public evidence proves a disciplined operating rhythm. In companies with this many moving parts, the default is reactive fire-fighting disguised as busy professionalism. A proper Level 10 cadence would likely expose and improve that fast.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.5</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>Archemics looks like a credible EOS candidate because the company appears large enough, complex enough and commercially serious enough to benefit from tighter accountability, execution rhythm and cross-functional clarity. The gating factor is not whether EOS could help. It almost certainly could. The gating factor is whether group ownership allows the operating team enough decision space to actually use it properly.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Archemics</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>Because the numbers already hint at working-capital friction, Archemics needs weekly leading indicators around collections, overdue debtors, supplier aging, fill rate, stock cover, service levels and margin by channel. Monthly nostalgia is useless here.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The public profile screams functional overlap risk: manufacturing, procurement, sales, professional hygiene, retail and group oversight. EOS would force a brutally clear answer to who truly owns what.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>Businesses like this accumulate operational friction everywhere. Without a disciplined issues discipline, the same problems keep changing shirts and walking back into the room.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>If Archemics is suffering from reactive coordination, a proper weekly meeting rhythm would create alignment fast. Not a chat. Not a reporting séance. A real problem-solving cadence.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks</h4>
+      <p>The first 90 days should likely target one or two major execution bottlenecks, not a wish list. Credit-control improvement and current-liability clarity are obvious candidates.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision/Traction Organizer</h4>
+      <p>Because Archemics sits inside a larger group, the V/TO becomes useful for translating group ambition into a clean operating roadmap for the Archemics leadership team itself.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations follow: four financial/operational first, then four EOS-specific. Sequence matters. Cash and clarity before theatre.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Attack receivables ageing like it is a profit initiative</h4>
+      <p>CFO/Finance Lead should produce a full debtor ageing by major customer and channel within 14 days, set weekly collection targets, and assign named owners to the top 20 overdue balances. Success = cut DSO from roughly 82 days to below 65 days within two quarters.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Explode the “other current liabilities” bucket</h4>
+      <p>Finance should break down the MUR 103,530,382 line into real categories and identify which items are structural versus timing-based. Success = a clean map of liabilities by nature, age and owner within 30 days, with no mystery line left hiding in the shadows.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Protect supplier confidence before it becomes a negotiation problem</h4>
+      <p>Procurement and Finance should review top suppliers by spend and payment terms, identify any stretch risk, and define a controlled payable strategy rather than accidental drift. Success = maintain supply continuity while reducing the most stressed creditor positions over 60–90 days.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Split margin by channel, not just in total</h4>
+      <p>Commercial leadership should calculate gross margin by consumer retail, professional hygiene and specialty industrial lines. Success = a ranked view of where margin is earned, leaked or subsidised, allowing pricing and product-mix decisions with teeth instead of vibes.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Run a Focus Day with the true operating leadership team</h4>
+      <p>Start with a one-day working session involving the actual leaders who run the business day to day, not just directors. Success = shared diagnosis of the biggest constraints, agreement on the leadership team, and commitment to a 90-day operating cadence.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build an Accountability Chart hypothesis before org-change debates begin</h4>
+      <p>Draft the major seats first: commercial, operations/manufacturing, procurement/supply chain, finance, professional solutions, and possibly product/category leadership. Success = clear seat ownership and reduced cross-functional confusion before anyone starts defending turf.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Make the first Rock brutally practical: cash conversion</h4>
+      <p>The first quarter Rock should target working-capital improvement, not a fluffy transformation slogan. Success = measurable reduction in overdue receivables, visibility on liability buckets and a live weekly scorecard reviewed by the leadership team.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Use the V/TO to answer one strategic question: what must Archemics own locally?</h4>
+      <p>Because the company combines local manufacturing and principal brands, the V/TO should force a decision on where Archemics wants to differentiate: formulation, service model, speed, local brands, channel strength or industrial expertise. Success = a sharper strategic identity that guides execution.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Archemics looks like a real business with real muscle, not a fragile vanity operation. The opportunity is obvious: a diversified chemical and FMCG platform with good gross economics and group backing. The obstacle is equally obvious: complexity tax, working-capital strain and the risk that accountability gets blurred inside a group-owned structure.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Within 2 weeks: build debtor ageing, liability breakdown and supplier-risk map.</li>
+        <li><span class="sig-num">02</span>Within 30 days: confirm the real operating leadership team and decision rights.</li>
+        <li><span class="sig-num">03</span>Within 45 days: run an EOS Focus Day around execution friction and cash conversion.</li>
+        <li><span class="sig-num">04</span>Within 60–90 days: install weekly Scorecard, Issues List and Level 10 Meeting.</li>
+        <li><span class="sig-num">05</span>Within the first quarter: complete Accountability Chart and launch first cash-focused Rock.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="report-footer">
+  <div>ARCHEMICS LTD — Comprehensive Company Analysis &amp; EOS Assessment · 25 March 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (4 Nov 2025) · archemics.mu · harelmallac.com · LinkedIn · Business Magazine</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
