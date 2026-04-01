@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LFL — Comprehensive Company Analysis — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; background: var(--steel-ultra); }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Animal Feed Manufacturing</span>
+    <span class="badge badge-type">Public Company · DEM Listed · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">28 March 2026</span>
+  </div>
+  <h1>LFL:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Livestock Feed Limited · Company intelligence · Financial ratios · EOS implementation assessment · Mauritius & regional footprint</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">Rs 3.97bn</div>
+      <div class="stat-delta">Standalone company filing · year ended 30 June 2025</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit After Tax</div>
+      <div class="stat-value emerald">Rs 226.1m</div>
+      <div class="stat-delta">5.7% net margin on filed standalone accounts</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.4 / 10</div>
+      <div class="stat-delta">Good candidate, but not a quick-fix one · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Margin Compression</div>
+      <div class="stat-delta">EBIT margin only 1.7% on a capital-intensive operation</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>LFL — Company Analysis &amp; EOS Assessment · 28 March 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">LFL is a long-established, strategically connected animal-feed manufacturer with real market weight, decent balance-sheet resilience, and a very obvious operational challenge: it makes money, but not with much room for stupidity.</p>
+
+  <p class="body-text">Livestock Feed Limited was incorporated on 24 September 1974 and is live on the Mauritian register as file C2401 / BRN C07002401. The business operates from Pailles and other Mauritian sites, with registered addresses and business activities pointing to animal-feed manufacturing and related logistics in Mauritius and Rodrigues. Public market disclosures describe LFL as active in animal feed for poultry, aquaculture, ruminants, pigs, horses and pets, with operations touching Mauritius and Madagascar.</p>
+  <p class="body-text">This is not some lonely mid-market outfit floating in the ocean by itself. LFL sits inside the Eclosia / MADCO ecosystem. CBRIS shareholder data shows Management and Development Company Limited as the largest named ordinary shareholder, while public corporate disclosures identify MADCO as LFL’s holding company and Société Beauvoir Holdings as the ultimate control layer. That matters because the company benefits from governance depth, capital access and group capability — but it also means change may need alignment, not cowboy heroics.</p>
+  <p class="body-text">Financially, the standalone FY2025 filing is profitable and reasonably liquid: revenue of Rs 3.97bn, PAT of Rs 226.1m, current ratio of 2.34×, and very low borrowings versus equity. The catch is margin structure. Gross margin is only 14.9%, and EBIT margin is a thin 1.7%. In a business exposed to raw-material volatility, import dependence and heavy operating complexity, that is the kind of number that smiles politely until one bad quarter punches it in the teeth.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Strong Position, Thin Cushion</div>
+    LFL looks more like a serious operating platform than a distressed turnaround case. The real opportunity is not “save the company”; it is “tighten accountability and execution before external volatility eats the margin.” That changes the conversation completely. You do not approach LFL with rescue language. You approach it with performance-system language: decision clarity, metric discipline, cross-functional cadence, and sharper issue-solving around margin, stock, procurement and receivables.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Clear market relevance and category leadership signal.</strong> Public company, longstanding heritage, regional footprint, diversified feed offering, technical partnerships, and embedded presence in the Mauritian livestock value chain all point to a business with real commercial gravity rather than a commodity nobody remembers.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Operating margin is the soft underbelly.</strong> The business is profitable, but the spread between gross profit and operating profit is narrow for the risk profile. Any hit from raw materials, freight, pricing lag, plant inefficiency or working-capital drag can erode returns quickly.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>The structure is already big enough for EOS to matter.</strong> Board depth, multi-site activity, regional layers, functional managers and visible leadership transitions all suggest complexity that benefits from an Accountability Chart, scorecards, Level 10 rhythm and cleaner IDS discipline.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A legacy feed manufacturer with public-market discipline, strong group backing, and enough operational layers to need a real management system rather than heroic improvisation.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">LIVESTOCK FEED LIMITED is registered as a live public domestic company in Mauritius, incorporated on 24 September 1974 under file number C2401 and BRN C07002401. The registered office is C/O Eclosia Group Headquarters, Gentilly, Moka. Stated capital on CBRIS shows 94,500,000 ordinary shares and 353,659 preference shares, both at par value Rs 10, for stated capital of Rs 945.0m ordinary and Rs 3.54m preference.</p>
+  <p class="body-text">Corporate housekeeping looks disciplined enough: annual returns were filed for the last three years, last annual registration fee is marked paid for 2026, and the latest filed financial summary is for the year ended 30 June 2025 approved on 24 September 2025. Auditor is BDO &amp; Co and company secretary is Eclosia Secretarial Services Ltd.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>LFL Listed Vehicle</h4>
+        <div class="ec-sub">DEM-Quoted Operating Company</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Type</span><span class="mv">Public Domestic</span></div>
+        <div class="ec-metric"><span class="mk">ISIN</span><span class="mv">MU0082I00001</span></div>
+        <div class="ec-metric"><span class="mk">Core role</span><span class="mv">Animal feed manufacturing</span></div>
+        <div class="ec-metric"><span class="mk">Key named holders</span><span class="mv">MADCO, Avipro, LMLC</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>MADCO / Eclosia Layer</h4>
+        <div class="ec-sub">Holding and Group Control</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Holding company</span><span class="mv">Management &amp; Development Co Ltd</span></div>
+        <div class="ec-metric"><span class="mk">Group context</span><span class="mv">Eclosia ecosystem</span></div>
+        <div class="ec-metric"><span class="mk">Largest named ordinary stake</span><span class="mv">12,468,072 shares</span></div>
+        <div class="ec-metric"><span class="mk">Strategic implication</span><span class="mv">Group-backed governance</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Ultimate Control</h4>
+        <div class="ec-sub">Control Chain Above MADCO</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Ultimate control</span><span class="mv">Société Beauvoir Holdings</span></div>
+        <div class="ec-metric"><span class="mk">Other strategic names</span><span class="mv">Avipro, LMLC, Swan, NPF</span></div>
+        <div class="ec-metric"><span class="mk">Free float signal</span><span class="mv">Broad shareholder base</span></div>
+        <div class="ec-metric"><span class="mk">Read-through</span><span class="mv">Not founder-dependent only</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Ownership Note</div>
+    The ownership pattern tells you LFL is economically important inside a broader food-and-agri cluster. That usually means better resilience and stronger governance than a stand-alone SME, but it also means change initiatives must work politically across group lines, not just operationally inside one plant.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Gerard Boullé — Chairperson</h4>
+      <p>Non-executive board chair on the public LFL team page. CBRIS shows him as director from 31 October 2020. This usually signals continuity and group-level governance rather than day-to-day operating ownership.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Romain Harel — Managing Director, LFL Group</h4>
+      <p>Public LFL team pages show him as Managing Director of LFL Group. Eclosia announced in August 2025 that he took over leadership after Rocky Forget stepped down. CBRIS also records him as director from 10 December 2025.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Christophe Noël — Country Manager, Mauritius</h4>
+      <p>Public Mauritius team page places him as Country Manager for Mauritius, supported by functional managers across operations, finance, quality, HR, marketing, maintenance and sustainability. That is exactly the kind of structure where seat clarity matters.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Cédric de Spéville / Eric Espitalier-Noël / Gilbert Espitalier-Noël</h4>
+      <p>These names appear both on CBRIS and the public board page, reinforcing strong ties to the wider Eclosia / MADCO governance system and long-range strategic oversight.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Myriam Blin / Christel Maucet / Jacqueline Sauzier / Richard Arlove</h4>
+      <p>The board composition blends group insiders and outside institutional credibility. CBRIS shows staggered appointments in 2020, 2023, 2024 and 2025, which suggests ongoing board refresh rather than total stagnation.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Visible Management Bench</h4>
+      <p>Kailash Issur, Kevin Goury, Louisa McGregor, Haashim Yerally, Ashvina Ramyead and other named managers give LFL a genuine second line. Good sign. Also a warning: if accountabilities are fuzzy, the confusion spreads faster because there are more people to confuse.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Public LFL and SEM descriptions show a broad portfolio spanning poultry, aquaculture, ruminant, pig, horse and pet feed, offered in bagged and bulk formats. The Mauritius site also lists product families for broilers, layers, pigs, ruminants, horses, rabbits, fish and dogs, alongside veterinary service, technical support and breeder support. This is more than “make pellets and pray.” It is a category platform with product breadth, support services and field touchpoints.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">CBRIS business locations point to Les Guibies / Pailles, Riche Terre and Grande Montagne Rodrigues. Public LFL pages indicate regional presence in Madagascar, Seychelles and Rwanda, while SEM states the business is engaged in animal feeds for Mauritius and Madagascar. That gives LFL a useful mix of domestic operating roots and regional optionality.</p>
+
+  <div class="alert alert-ok">
+    <div class="alert-title">Digital Presence Signal</div>
+    LFL has a functioning brand website, dedicated Mauritius and corporate pages, investor pages, LinkedIn presence, contact details, public team pages and accessible public-market disclosures. That is better transparency than most local mid-market businesses manage.
+  </div>
+</div>
+</div>
+
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Primary financial source is the latest CBRIS financial summary filed for the standalone company for the year ended 30 June 2025, in Mauritius rupees expressed in thousands. Public-market pages and company publications were used for context, not to override the filed CBRIS numbers.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    This is a private-company style summary filing, not a full set of management accounts. The CBRIS extract provides a one-year P&amp;L and summarised balance sheet with no prior-year comparatives in the extract itself. That means trend analysis is limited and there is no clean public bridge for depreciation, cash-flow detail, segment profitability or standalone note disclosures inside the uploaded filing.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2025, MUR'000)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR'000</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>3,965,953</td><td>100.0%</td><td>Large standalone revenue base; this is a meaningful manufacturing business, not a tiny operator.</td></tr>
+        <tr><td>Cost of Sales</td><td>3,375,872</td><td>85.1%</td><td>Feed manufacturing is raw-material heavy; COGS consumes most of revenue.</td></tr>
+        <tr class="heat-warn"><td>Gross Profit</td><td>590,081</td><td>14.9%</td><td>Respectable in absolute rupees, but thin in percentage terms for a volatile import-linked category.</td></tr>
+        <tr><td>Other Income</td><td>31,470</td><td>0.8%</td><td>Helpful support line, but not big enough to mask operating weakness.</td></tr>
+        <tr><td>Distribution Costs</td><td>1,000</td><td>0.0%</td><td>Negligible in the filed summary; likely classification choices push costs elsewhere.</td></tr>
+        <tr><td>Administration Costs</td><td>0</td><td>0.0%</td><td>Nil in the summary extract; again, classification and summarisation likely matter here.</td></tr>
+        <tr class="heat-critical"><td>Other Expenses</td><td>314,619</td><td>7.9%</td><td>This line is the big operating drag. It eats more than half of gross profit. That deserves drilling, not hand-waving.</td></tr>
+        <tr><td>Finance Costs</td><td>1,163</td><td>0.0%</td><td>Debt burden is light; financing is not the operating problem.</td></tr>
+        <tr class="heat-warn"><td>Profit Before Tax</td><td>68,133</td><td>1.7%</td><td>Still positive, but fragile relative to revenue scale.</td></tr>
+        <tr><td>Tax Expense</td><td>11,535</td><td>0.3%</td><td>Normal tax leakage on a profitable year.</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>226,101</strong></td><td><strong>5.7%</strong></td><td>Good enough to say the company works; not good enough to say execution is already optimised.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2025, MUR'000)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR'000</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-current assets</td><td>Property, plant and equipment</td><td>1,013,458</td><td>Heavy fixed-asset base is consistent with feed manufacturing and logistics infrastructure.</td></tr>
+        <tr><td>Non-current assets</td><td>Intangible assets</td><td>14,945</td><td>Not material versus the operating asset base.</td></tr>
+        <tr><td>Non-current assets</td><td>Other investments</td><td>436,118</td><td>Meaningful long-term asset line; useful, but not inherently liquid.</td></tr>
+        <tr class="heat-ok"><td>Non-current assets</td><td><strong>Total non-current assets</strong></td><td><strong>1,464,522</strong></td><td>Substantial operating platform with investment depth.</td></tr>
+
+        <tr><td>Current assets</td><td>Inventories</td><td>544,575</td><td>Large stock position, unsurprising for imported-input production.</td></tr>
+        <tr><td>Current assets</td><td>Trade and other receivables</td><td>608,210</td><td>Receivables are material; DSO matters here.</td></tr>
+        <tr><td>Current assets</td><td>Cash and cash equivalents</td><td>32,763</td><td>Cash is relatively modest versus the working-capital cycle.</td></tr>
+        <tr><td>Current assets</td><td>Others</td><td>5,133</td><td>Minor current-asset line.</td></tr>
+        <tr class="heat-ok"><td>Current assets</td><td><strong>Total current assets</strong></td><td><strong>1,190,681</strong></td><td>Enough to cover short-term liabilities comfortably on paper.</td></tr>
+
+        <tr><td>Equity</td><td>Share capital</td><td>928,058</td><td>Large permanent capital base.</td></tr>
+        <tr><td>Equity</td><td>Retained earnings</td><td>888,977</td><td>Solid accumulated earnings cushion.</td></tr>
+        <tr><td>Equity</td><td>Other reserves</td><td>172,047</td><td>Additional balance-sheet strength.</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total equity</strong></td><td><strong>1,989,082</strong></td><td>Equity finances most of the asset base. Good. Boring in the best possible way.</td></tr>
+
+        <tr><td>Non-current liabilities</td><td>Long-term borrowings</td><td>102,077</td><td>Borrowings are low relative to equity.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Deferred tax</td><td>158,050</td><td>Routine non-cash tax balance.</td></tr>
+        <tr><td>Non-current liabilities</td><td>Long-term provisions</td><td>39,563</td><td>Manageable.</td></tr>
+        <tr><td>Non-current liabilities</td><td><strong>Total non-current liabilities</strong></td><td><strong>299,690</strong></td><td>Long-term leverage is not the obvious concern.</td></tr>
+
+        <tr><td>Current liabilities</td><td>Trade and other payables</td><td>211,800</td><td>Supplier funding is part of the normal working-capital engine.</td></tr>
+        <tr><td>Current liabilities</td><td>Current tax payable</td><td>4,485</td><td>Not material.</td></tr>
+        <tr class="heat-warn"><td>Current liabilities</td><td>Others</td><td>291,786</td><td>Large miscellaneous current-liability bucket deserves note-level explanation.</td></tr>
+        <tr><td>Current liabilities</td><td><strong>Total current liabilities</strong></td><td><strong>508,071</strong></td><td>Covered 2.34x by current assets.</td></tr>
+
+        <tr class="heat-ok"><td>Total</td><td><strong>Total assets / equity and liabilities</strong></td><td><strong>2,655,203</strong></td><td>Standalone asset base of Rs 2.66bn with modest overall leverage.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The charge register shows a long history of floating charges across the company’s assets, with older charges dating from 2004, 2005, 2006, 2009 and 2011, and a very large newer floating charge of Rs 802.0m dated 23 November 2021 and filed on 28 March 2022 over the company’s assets, undertaking, goodwill, movable and immovable properties. This does not scream distress by itself; it screams institutional financing discipline and asset-backed banking relationships. Still, the size of the 2021 security package is large enough that treasury, covenant awareness and cash-generation discipline matter.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Charge Pattern Interpretation</div>
+    LFL is not over-borrowed on the face of the FY2025 balance sheet, but the register proves lenders wanted wide security over the asset base. That is common in Mauritius, yes — but it also means management should care more about earnings quality, stock turns, receivables and covenant headroom than about vanity growth.
+  </div>
+</div>
+</div>
+
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Green = healthy, Amber = watch, Red = critical concern. Public Mauritius-wide SME ratio bands are not published in a neat standard table, so the benchmark bands used here are practical commercial ranges for Mauritian manufacturing / distribution businesses, informed by Mauritius Trade Easy ratio guidance and read against current Mauritian credit conditions.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">2.34×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.2×–2.0× healthy</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">AMBER</span></span></div>
+      <span class="ratio-interpret">This is comfortably solvent, but a touch above the classic efficiency sweet spot. In plain English: LFL is not gasping for cash, but some working capital is likely parked in stock and receivables rather than dancing productively.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.27×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.8×–1.5× healthy</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">Even after stripping out inventory, liquid current assets still exceed short-term liabilities. That is a good sign for resilience. It also tells you the problem is not immediate liquidity panic; the problem is margin discipline.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">14.9%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">15%–25% healthy for feed / agro-processing</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">AMBER</span></span></div>
+      <span class="ratio-interpret">At 14.9%, gross margin sits just below a practical healthy band for feed / agro-processing. Not catastrophic, but it leaves limited room for procurement misses, currency shocks or weak pricing discipline.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">1.7%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5%–10% healthy</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">RED</span></span></div>
+      <span class="ratio-interpret">This is the ugly one. An operating margin of 1.7% says the business makes money but barely keeps enough after operating costs. Growth without operational tightening could actually make life harder, not easier.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">5.7%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">3%–8% healthy</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">Net margin is healthier than EBIT margin because finance costs are tiny and there may be classification effects in the summarised filing. Still, I would not let that lull anyone into complacency. The operating engine is doing the sweating.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>ROA / ROE</h4>
+      <div class="ratio-row"><span class="ratio-label">ROA</span><span class="ratio-val ok">8.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">ROE</span><span class="ratio-val ok">11.4%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">Returns on assets and equity are decent. That tells us the business is not fundamentally broken. It also means the next level of performance likely comes from management-system quality rather than financial restructuring theatrics.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.05×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val"><1.0× healthy</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">Very low leverage. Nice. LFL is not trapped by a debt overhang on the standalone numbers. That gives management room to focus on operating performance instead of breathing into a paper bag.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">59.6×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">>4.0× healthy</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">Finance costs are almost irrelevant relative to operating profit. That is a gift. It means the company has the luxury of fixing process, discipline and execution before capital structure becomes an emergency.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.49×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.0×–2.0× healthy</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">The asset base generates decent revenue throughput. So the plant and working assets are not lying around dead. The issue is conversion from throughput to operating profit.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">6.20×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">4.0×–8.0× healthy</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">Inventory turns are broadly healthy for a feed producer with imported inputs and service obligations to farmers. Not sexy, but sensible.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debtor Days / DSO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">56 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30–60 days healthy</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">Collection speed is acceptable. It is not lightning-fast, but it is not stupid either. That suggests working-capital discipline exists, even if it could still tighten.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days / DPO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">23 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30–75 days healthy</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">RED</span></span></div>
+      <span class="ratio-interpret">On the filed summary, trade payables equate to only about 23 days of cost of sales. That means LFL is funding suppliers relatively quickly while customers take roughly 56 days to pay. That spread is survivable, but it puts pressure on cash conversion.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    EBIT margin of 1.7% and DPO of 23 days are the killers to watch. The first says operating leakage is too high; the second says supplier credit is not stretching very far. Fix those two, and you improve profit and cash at the same time. Ignore them, and any growth story is just a prettier way to work harder for less.
+  </div>
+</div>
+</div>
+
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Three visible segments, one core dynamic: LFL competes on reliability, technical credibility and scale in a market where feed is operationally mission-critical and price pressure never takes a holiday.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Industrial Livestock Producers</h4>
+        <div class="ec-sub">Core Mauritian Feed Demand</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Need</span><span class="mv">Reliable quality and supply</span></div>
+        <div class="ec-metric"><span class="mk">LFL angle</span><span class="mv">Scale + technical support</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Local feed makers / imports</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv">Margin pressure from input costs</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Small Farmers &amp; Entrepreneurs</h4>
+        <div class="ec-sub">Field-Level Commercial Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Need</span><span class="mv">Advice + accessibility</span></div>
+        <div class="ec-metric"><span class="mk">LFL angle</span><span class="mv">Shops, support, product range</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Dealers, agro-retailers</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv">Price sensitivity and credit</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Regional Feed / Aquaculture Growth</h4>
+        <div class="ec-sub">Madagascar / Rwanda / Indian Ocean</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Need</span><span class="mv">Scalable know-how</span></div>
+        <div class="ec-metric"><span class="mk">LFL angle</span><span class="mv">Regional footprint + partners</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Regional specialists</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv">Execution complexity rises fast</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text">First, <strong>embedded ecosystem position</strong>: LFL is not isolated; it sits within a broader Eclosia / MADCO food-and-agri platform. Second, <strong>technical credibility</strong>: public materials emphasise technical exchanges with Mixscience and ADM plus breeder support and University of Mauritius-linked diploma courses. Third, <strong>operating footprint</strong>: multi-site presence, dedicated shops and regional activity make replication harder than simply buying a grinder and calling it strategy.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li>Mauritian manufacturing remains economically important, but cost competitiveness and import dependence keep pressure on operators.</li>
+    <li>Animal-feed players are exposed to foreign-exchange and imported-commodity volatility; that rewards disciplined procurement and pricing.</li>
+    <li>Regional expansion can create upside, but it also increases coordination complexity and dilutes leadership attention if the operating system is weak.</li>
+    <li>Corporate credit conditions in Mauritius remain generally resilient, yet Bank of Mauritius reporting shows sector-specific vulnerabilities have begun surfacing, including some deterioration in manufacturing credit quality.</li>
+    <li>Digital transparency and investor access are becoming basic expectations for public-interest companies; LFL is ahead of the average local mid-market firm here.</li>
+    <li>Sustainability, energy efficiency and waste discipline are no longer PR garnish. In manufacturing, they increasingly affect cost, reputation and financing conversations.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Competitive Reality Check</div>
+    LFL’s differentiation is not flashy. It is operational trust. That sounds boring until you remember farmers do not care about marketing poetry when feed quality slips or deliveries miss. Reliability is the moat. Lose that, and price becomes the whole argument.
+  </div>
+</div>
+</div>
+
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">LFL is definitely complex enough to benefit from EOS. The only reason this is not a higher score is that the business may sit above the pure EOS sweet spot at group level. Multi-site, regional and public-company features add weight. Still, the Mauritius operating layer looks very EOS-able.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Public governance, named leadership team, active board refresh, recent succession moves and decent disclosure all point to a company that is not allergic to structure. That does not guarantee appetite for EOS, but it does suggest leadership already lives in a world of formal accountability.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">The symptoms are classic: growth and regional scale, leadership transition, thin operating margins, broad management bench, and cross-functional complexity. This smells like a business that can benefit from sharper execution rhythm rather than another round of motivational wallpaper.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">LFL clearly already has systems. This is not chaos in a shed. But the financials suggest process quality is not yet converting scale into strong operating margin. That usually means the next leap is less about inventing process and more about aligning, measuring and enforcing it.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Public materials emphasise learning, development, technical support and internal careers. The tone suggests a serious culture, not a circus in a cheap tie. Still, culture in a mature industrial business can become polite bureaucracy unless the operating cadence keeps it honest.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">There is visible hierarchy, but also visible complexity: board, group MD, country manager, functional heads and group ownership layers. That creates real risk of overlap unless seats and issues are brutally clear. EOS can help here, especially through Accountability Chart discipline.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Public positioning is coherent: leadership in feed, quality, technical partnerships, breeder support and regional reach. The likely gap is not lack of direction; it is whether that direction is translated into a brutally clear handful of priorities and measurable quarterly traction.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No public evidence proves a strong operating meeting cadence. Public companies meet, obviously, but board governance is not the same thing as a clean weekly leadership operating rhythm. I would assume some meeting overload and some issue-recycling until proven otherwise.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.4</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Good Fit With Real Complexity</h4>
+      <p>LFL looks like a company where EOS can create real value, especially at the operating-company level. The gating factor is not whether the business is sophisticated enough; it is whether leadership wants one unifying operating language across functional silos, and whether the group context will support that discipline rather than smother it in committee varnish.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for LFL</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>LFL needs a weekly operating scorecard that goes beyond accounting lag. Price recovery, raw-material variance, stock turns, plant efficiency, wastage, OTIF delivery, overdue receivables and contribution by segment should all be watched like hawks.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>Publicly visible roles already show group, country and functional layers. EOS would force clarity on who truly owns procurement, operations, commercial performance, working capital, technical support and regional coordination.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>Thin EBIT margin is almost always a symptom bundle, not one problem. IDS gives leadership a disciplined way to separate noise from root causes and stop discussing the same issue in prettier words every month.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks</h4>
+      <p>LFL would benefit from quarterly cross-functional Rocks around margin recovery, supplier terms, stock optimisation, pricing architecture and management reporting simplification. One quarter, one handful of must-win outcomes. Not a Christmas tree of initiatives.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>Given the number of managers in Mauritius alone, a true weekly Level 10 cadence would likely pay for itself fast. The value is not the meeting itself; it is the removal of drift, recycling and cross-functional ambiguity.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision / Traction Organiser</h4>
+      <p>LFL already has strategic language. The V/TO would force sharper choices: target segments, economic model, 3-year priorities, and what trade-offs leadership is actually willing to make instead of politely postponing them.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations: four financial / operational, four EOS-specific. Sequence principle is simple: stabilise margin and cash discipline first, then install the operating rhythm that keeps improvements from sliding back into corporate soup.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Interrogate the “Other Expenses” Line Like It Owes You Money</h4>
+      <p>CFO / finance lead and country leadership should break the Rs 314.6m “Other Expenses” bucket into controllable drivers within 30 days: plant inefficiency, distribution, maintenance, people, rework, wastage, utilities, FX and one-offs. Success means a board-ready bridge that explains exactly why EBIT margin is only 1.7% and what 100–150 basis points of recovery would require.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Reset Supplier-Term Strategy</h4>
+      <p>Procurement and finance should renegotiate or redesign supplier terms to push effective DPO closer to a 30–45 day floor where commercially viable. Success means reducing working-capital strain without damaging supply reliability. Right now, paying suppliers in roughly 23 days while collecting in 56 days is generous to suppliers and unnecessary to cash flow.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Build a Margin-by-Product / Segment View</h4>
+      <p>Commercial, operations and finance should produce a product-family and customer-segment profitability map for poultry, aquaculture, ruminants, pig, pet and other lines. Success means leadership can answer, without bluffing, where gross margin is earned, leaked or subsidised across the portfolio.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Tighten Working-Capital Governance Weekly</h4>
+      <p>Install weekly dashboards on stock coverage, slow-moving inventory, overdue receivables, supplier ageing and cash conversion. Success means a single-page operating finance dashboard reviewed every week by the Mauritius leadership team, not an after-the-fact finance post-mortem.</p>
+      <span class="urg urg-medium">Within 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Run a Focus Day With the Mauritius Leadership Team</h4>
+      <p>Bring the country manager and core functional heads into one room and align on the real pain points: margin, accountability, stock, cross-functional handoffs and meeting quality. Success means the team agrees on top issues, operating truths and whether it wants one common management system.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Draft an Accountability Chart Hypothesis</h4>
+      <p>Map the Mauritius operating company first: country head, operations / engineering, production, procurement, finance, HR, commercial / market development, quality, R&amp;D and sustainability. Success means every major function has a single accountable owner and the team can see overlaps or missing seats in black and white.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Make the First Rock About Margin Recovery</h4>
+      <p>Do not start with generic culture fluff. Start with a 90-day Rock called something like “Lift EBIT margin through cost-driver transparency and working-capital correction.” Success means 3–5 measurable milestones owned by named leaders, with weekly traction tracking.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Use the V/TO to Force One Strategic Answer</h4>
+      <p>The strategic question is simple and sharp: where does LFL want to win hardest over the next three years — scale, product mix, regional expansion, service model or margin quality? Success means leadership makes trade-offs explicit instead of trying to be everything to everybody with a PowerPoint grin.</p>
+      <span class="urg urg-medium">Within 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>LFL is a serious business with real assets, real market relevance and real governance. The opportunity is not a dramatic rescue; it is disciplined performance improvement. What stands in the way is the usual enemy in companies of this size: complexity tolerated for too long because the business is still profitable enough to avoid a crisis.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Within 30 days, decompose the “Other Expenses” bucket and identify the true EBIT drag.</li>
+        <li><span class="sig-num">02</span>Within 45 days, build a working-capital and supplier-terms action plan.</li>
+        <li><span class="sig-num">03</span>Within 60 days, hold a Focus Day and draft the Mauritius Accountability Chart.</li>
+        <li><span class="sig-num">04</span>In the next 90 days, launch one margin-recovery Rock with weekly scorecard review.</li>
+        <li><span class="sig-num">05</span>Then install Level 10 rhythm and V/TO discipline so improvements survive leadership fatigue.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="report-footer">
+  <div>LFL — Comprehensive Company Analysis &amp; EOS Assessment · 28 March 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (28 March 2026) · Stock Exchange of Mauritius · Eclosia / LFL public websites · Mauritius Trade Easy · Bank of Mauritius</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
