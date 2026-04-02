@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPP Piping Systems — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Plastic Pipe Manufacturing &amp; Distribution</span>
+    <span class="badge badge-type">Private Company · Domestic · Desbro Group</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">2 April 2026</span>
+  </div>
+  <h1>PPP Piping Systems:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">PPP Piping Systems Ltd (C3569) · Company intelligence · Group structure · EOS implementation assessment · Plaine Lauzun, Port Louis, Mauritius · CBRIS filed under Plastic Pipes &amp; Products Ltd (C1841) — see Tab 02</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024 (C1841)</div>
+      <div class="stat-value steel">MUR 9.9M</div>
+      <div class="stat-delta">Turnover per CBRIS filed financials · FYE 15 Sep 2024</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Loss FY2024</div>
+      <div class="stat-value red">–MUR 8.8M</div>
+      <div class="stat-delta">Loss before &amp; after tax — admin costs MUR 13.8M exceed revenue</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.1 / 10</div>
+      <div class="stat-delta">Moderate-High — Group dependency is the gating factor</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Entity Alert</div>
+      <div class="stat-value amber">C1841 ≠ C3569</div>
+      <div class="stat-delta">CBRIS covers Plastic Pipes &amp; Products Ltd — see Tab 02 for full clarification</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>PPP Piping Systems Ltd — Company Analysis &amp; EOS Assessment · 2 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">PPP Piping Systems Ltd is Mauritius's longest-established and most technically capable plastic pipe manufacturer — a 45-year-old ISO 9001 pioneer embedded in the diversified Desbro Group — whose true EOS candidacy depends on whether operational decisions are made inside PPP or at group level.</p>
+
+  <p class="body-text">PPP Piping Systems Ltd (registered C3569, incorporated 5 October 1981) is a Mauritius-domiciled private limited company headquartered at Plaine Lauzun Industrial Zone, Port Louis. The company manufactures PVC-U, CPVC, MDPE, HDPE, and polypropylene pipes and fittings for the local construction, infrastructure, and utility sectors, and is among the oldest industrial manufacturers in Mauritius. It was among the first Mauritian companies to be certified to ISO 9001 and has participated actively in national standardisation work for plastic pipes and products. The company's product range spans water supply, drainage, sewerage, cable management, telecom ducting, and rotational moulding products.</p>
+
+  <p class="body-text">PPP Piping Systems Ltd forms the manufacturing core of the PPP Group, which is itself an operating division of the wider Desbro Group of Companies. The Desbro Group traces its origins to bicycle trading in Nairobi, Kenya in the early 1900s and expanded into Mauritius with a steel rolling mill and pipe manufacturing. Today the group spans steel products, plastic pipes, chemicals, fertilizers, and agricultural inputs across the Indian Ocean region. Within the PPP sub-group, three principal entities operate: PPP Piping Systems Ltd (manufacturing), STR Marketing Ltée / Société des Tubes et Raccords Marketing Ltée (distribution and specialist wholesale), and Pipe Technology Center — PTC (training, established 2008). The group's registered operational address for its piping cluster is La Tour Koenig Industrial Zone, Pointe Aux Sables, with the Desbro Group head office at Old Moka Road, Bell Village, Port Louis (PO Box 98). Desbro Trading Limited (DTL), the chemicals and raw-materials arm, operates from Satnam Road, La Tour Koenig.</p>
+
+  <p class="body-text">From a commercial standpoint PPP Piping Systems occupies the dominant position in the Mauritian plastic pipe manufacturing market — a position built over four decades and reinforced by ISO certification, a captive distribution arm (STR), a training ecosystem (PTC), and deep relationships with the Central Water Authority and major contractors. The CBRIS extract received (2 April 2026) covers <strong>Plastic Pipes &amp; Products Ltd (C1841)</strong> — a related but legally distinct entity from PPP Piping Systems Ltd (C3569). C1841 is a property-holding vehicle for the group's industrial assets (Investment Properties: MUR 209.9M), and its filed FY2024 financials show a net loss of MUR 8.8M on revenue of MUR 9.9M — consistent with a holding entity, not an active manufacturer. The operating financials of C3569 remain unreviewed; a separate CBRIS extract for C3569 is the next research action. The EOS suitability score of 6.1/10 reflects a company with evident growth-stage complexity and probable execution pain, but where the key unknown is the degree of autonomy PPP's management has relative to the group holding structure. The entity separation between C1841 (assets) and C3569 (operations) is itself a significant structural signal that warrants probing in the first EOS qualification conversation.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Group Dependency and Autonomy Gap</div>
+    PPP Piping Systems sits inside a multi-generation, multi-country family group (Desbro) that spans steel, chemicals, and agro. This is a double-edged dynamic: the group provides raw material sourcing, distribution infrastructure (STR), and capital — but it also creates ambiguity about where strategic decisions actually live. An EOS engagement at PPP level only works if the leadership team at PPP has genuine accountability for their P&amp;L, their people, and their direction. The first qualification conversation must probe this explicitly: does PPP have its own management team, its own financials, and its own three-year vision — or is it managed as a production unit inside the Desbro operating structure? If the former, PPP is a strong EOS candidate. If the latter, the EOS conversation belongs at group level or not at all.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Market dominance: PPP is the longest-established plastic pipe manufacturer in Mauritius with over 44 years of operation.</strong> ISO 9001 pioneer — first or among the first in the sector in Mauritius. Vertically integrated: manufacturing (PPP) + distribution (STR) + training (PTC) creates a defensible ecosystem. Standards-driven EBIT contribution estimated at 9.2% of sales revenue. Deep relationships with CWA and infrastructure contractors. Regional Indian Ocean export reach through STR.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities (C1841 — CBRIS Confirmed)</h4>
+      <p><strong>CBRIS filed for Plastic Pipes &amp; Products Ltd (C1841) — a related but distinct entity from C3569.</strong> C1841 is a property-holding vehicle: FY2024 revenue MUR 9.9M, net loss MUR 8.8M, admin costs of MUR 13.8M exceed revenue, finance costs MUR 6.6M, nil cash on balance sheet, current ratio 0.12× — financially stressed. Investment properties of MUR 209.9M dominate the balance sheet and are leveraged with MUR 102.3M in borrowings. <strong>The active manufacturing entity (C3569) has no filed financials reviewed yet.</strong> A C3569 CBRIS extract is needed to assess operating performance. The entity clarification is itself a significant structural signal about how the Sennik family has separated asset holding from operations within the PPP group.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>A 44-year-old manufacturer inside a multi-division group with a separate sales arm and training division is a textbook case of structural complexity that EOS was designed to resolve.</strong> Three separate entities (PPP / STR / PTC) serving a shared market with likely informal coordination creates the classic EOS symptoms: unclear accountability between divisions, reactive rather than rhythm-driven meetings, vision that lives in the founder's head. The ISO 9001 certification signals that process discipline exists — which means the culture can follow structured systems. The key risk: decision authority may sit above PPP's management layer, making an EOS engagement ineffective without group buy-in.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">PPP Piping Systems Ltd is the manufacturing anchor of a three-entity piping group within Mauritius's oldest diversified industrial conglomerate — combining 44 years of production heritage with ISO-certified quality standards and a fully integrated distribution and training ecosystem.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">PPP Piping Systems Ltd was incorporated on <strong>5 October 1981</strong> under company number <strong>C3569</strong>. The company is registered as a private company limited by shares and its status is <strong>Live / In Business</strong> as of the date of this report. Registered address: <strong>Plaine Lauzun Industrial Zone, Port Louis, Mauritius</strong>. Group correspondence address: Old Moka Road, Bell Village, PO Box 98, Port Louis. The company has been operating for 44 years, making it one of the longest-continuously-operating manufacturers in the Mauritian industrial sector. A CBRIS extract has been requested and will provide the full BRN, stated capital, secretary, auditor, and annual return history — these fields will be completed on receipt.</p>
+  <p class="body-text">The CBRIS extract received covers <strong>Plastic Pipes &amp; Products Ltd (File No. C1841)</strong>, incorporated <strong>2 September 1970</strong> — the original entity under the PPP/Desbro umbrella. This is legally distinct from PPP Piping Systems Ltd (C3569, incorporated 5 October 1981). Both entities share operational infrastructure (the registered address of C1841 is c/o STR Marketing Ltée at La Tour Koenig) and the same Sennik family directors, and both trade under the "PPP" brand. The most probable interpretation is that C1841 (the 1970 entity) is either a holding vehicle or the original manufacturing company, and C3569 (the 1981 entity) is a later operating subsidiary or a rebranded successor. The ISO case study and most commercial references cite "PPP Piping Systems Ltd" — the C3569 identity — as the active manufacturing entity. A CBRIS extract for C3569 should be obtained to resolve this definitively. The African Advice directory lists the company's historic phone numbers as 212 6342, 208 3685, and 212 5075 (fax: 211 7866) with a PO Box 98, Port Louis address — consistent with the Desbro Group head office. The Desbro Group head office phone numbers are (230) 212-6825, (230) 212-2489, and (230) 212-1978 (email: desbro@intnet.mu).</p>
+
+  <h3 class="subsection-title">Group and Ownership Structure</h3>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Entity Clarification — CBRIS PDF is for C1841, Not C3569</div>
+    The CBRIS extract received is for <strong>Plastic Pipes &amp; Products Ltd (File No. C1841)</strong>, incorporated <strong>2 September 1970</strong> — a distinct legal entity from PPP Piping Systems Ltd (C3569, incorporated 5 October 1981). The two entities share the same Desbro/PPP group ecosystem: C1841's registered address is c/o STR Marketing Ltée at La Tour Koenig Industrial Zone, and its sole shareholder is <strong>P.P.P Holdings Ltd</strong>. It is probable that C1841 is the original/legacy holding or manufacturing vehicle and C3569 is the later operating entity, or vice versa — but they are registered as separate companies. The financial data in Tabs 03 and 04 below belongs to <strong>Plastic Pipes &amp; Products Ltd (C1841)</strong>. A separate CBRIS extract for C3569 (PPP Piping Systems Ltd) should be obtained to confirm whether standalone financials exist for that entity. All financial analysis in this report should be read with this caveat in mind.
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Group Architecture — Three Layers</div>
+    Plastic Pipes &amp; Products Ltd (C1841) sits within a three-tier structure: (1) the <strong>Desbro Group</strong> — the ultimate parent, a multi-generation family conglomerate with roots in East Africa, now spanning steel, pipes, chemicals, agro, and trading across the Indian Ocean region; (2) the <strong>PPP Group</strong> — the piping-focused sub-group within Desbro, encompassing manufacturing, distribution, and training; (3) the individual operating entities. <strong>P.P.P Holdings Ltd</strong> is the 100% shareholder of C1841, holding all 86,710 ordinary shares (par value MUR 100, stated capital MUR 8,671,000). The registered office as of 23 June 2025 is c/o STR Marketing Ltée, Lot 23, Plot F/1, F/2, F3, La Tour Koenig Industrial Zone, Pointe Aux Sables, Mauritius.
+  </div>
+
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>PPP Piping Systems Ltd</h4>
+        <div class="ec-sub">Manufacturing entity · C3569</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Pipe manufacturer</span></div>
+        <div class="ec-metric"><span class="mk">Incorporated</span><span class="mv">5 Oct 1981</span></div>
+        <div class="ec-metric"><span class="mk">Location</span><span class="mv">Plaine Lauzun, P.L.</span></div>
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">Live</span></div>
+        <div class="ec-metric"><span class="mk">ISO 9001</span><span class="mv ok">Certified</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>STR Marketing Ltée</h4>
+        <div class="ec-sub">Distribution &amp; wholesale arm · Est. 1992/93</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Full name</span><span class="mv">Soc. des Tubes et Raccords Mktg Ltée</span></div>
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Specialist wholesale/retail</span></div>
+        <div class="ec-metric"><span class="mk">Location</span><span class="mv">La Tour Koenig IZ</span></div>
+        <div class="ec-metric"><span class="mk">Website</span><span class="mv">str.mu</span></div>
+        <div class="ec-metric"><span class="mk">Email</span><span class="mv">hr@str.mu</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Pipe Technology Center (PTC)</h4>
+        <div class="ec-sub">Training division · Launched 2008</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Industry training</span></div>
+        <div class="ec-metric"><span class="mk">Focus</span><span class="mv">Plastic pipe installation</span></div>
+        <div class="ec-metric"><span class="mk">Location</span><span class="mv">Bell Village, P.L.</span></div>
+        <div class="ec-metric"><span class="mk">Website</span><span class="mv">ptc.mu</span></div>
+        <div class="ec-metric"><span class="mk">Strategy</span><span class="mv">Ecosystem stickiness</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors — Confirmed from CBRIS (C1841)</h3>
+  <p class="body-text">The CBRIS extract for Plastic Pipes &amp; Products Ltd (C1841), issued 2 April 2026, confirms the following registered office bearers. The company has been under continuous Sennik family control since at least 1973, consistent with the Desbro Group's multi-generational family ownership model. RSM (Mauritius) serves as auditor, appointed August 2024. The company secretary is <strong>Ultimate Secretarial Services Ltd</strong>, 26 Avenue Surcouf, Quatre Bornes (appointed 1 November 2023).</p>
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Director</h4>
+      <p><strong>Sennik Subash Chandra</strong><br>Appointed: 14 June 1973<br>Founding-era director — over 52 years of continuous directorship. Represents the patriarch generation of the Sennik family control over the PPP/Desbro piping entities.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Director</h4>
+      <p><strong>Sennik Abhijeet</strong><br>Appointed: 3 March 1999<br>Second-generation family director — likely a son or close relative of Subash Chandra. Appointment in 1999 marks the transition to next-generation involvement in governance.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Alternate Director</h4>
+      <p><strong>Sennik Anisha</strong><br>Appointed: 6 September 2023<br>Third-generation or lateral family appointment. Recent (2023) appointment as alternate director signals active family succession planning and broadening of governance participation.</p>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Ownership — Confirmed from CBRIS</div>
+    <strong>100% shareholder: P.P.P Holdings Ltd</strong> — holds all 86,710 ordinary shares (MUR 100 par value; stated capital MUR 8,671,000; nil unpaid). P.P.P Holdings Ltd is the family holding vehicle for the Sennik family's piping interests within the broader Desbro Group. The company has no other shareholders on record. No charges are registered against C1841 as of the date of the extract. Last annual registration fee paid: 2026.
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">PPP Piping Systems manufactures the full range of plastic pipe products required by the Mauritian construction, utility, and infrastructure sectors. Core products manufactured locally include: <strong>PVC-U pipes</strong> (standard and pressure), <strong>CPVC pipes</strong> (hot water applications), <strong>MDPE and HDPE pipes</strong> (water mains, industrial), <strong>polypropylene (PP) pipes</strong> (electrical conduits), <strong>plastic fittings</strong>, <strong>telecom ducts</strong> (single and multiduct), <strong>PE inspection chambers</strong>, <strong>PE manholes</strong>, <strong>PE septic tanks</strong>, <strong>PE grease separators</strong>, <strong>PE water tanks</strong>, and <strong>PE gully traps</strong>. STR also distributes imported products including ductile iron pipes and manhole covers, CCGRP and FWGRP pipes, CI valves, flow meters, and electrofusion accessories. The group also offers <strong>electrofusion machine hire and sales</strong> and <strong>technical aftersales support</strong> through STR. PTC provides training courses on installation best practice — a market development tool that deepens the ecosystem.</p>
+  <p class="body-text">PPP is noted as the <strong>first company in Mauritius to manufacture large diameter HDPE pipes up to 400mm</strong> — a significant technical and competitive milestone. All products are manufactured according to International or European standards. ISO standards contribute to the company's EBIT at approximately <strong>9.2% of annual average sales revenue</strong>, one of the highest documented standard-linked EBIT contributions in any ISO case study for an emerging market manufacturer.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">PPP Piping Systems operates primarily from the <strong>Plaine Lauzun Industrial Zone</strong> in Port Louis. STR Marketing Ltée operates from the <strong>La Tour Koenig Industrial Zone</strong>, Pointe Aux Sables. The Desbro Group head office is at <strong>Bell Village, Port Louis</strong>. Desbro Trading Ltd (the chemicals arm) also operates from La Tour Koenig (Satnam Road, Lot 23F/5, +230 260 6666). The ACNI Solutions Facebook post confirms a Desbro Group / PPP Piping System CCTV installation at La Tour Koenig, indicating an active facility there. Export markets include the wider <strong>Indian Ocean region</strong>, with STR explicitly positioned as a regional piping solutions provider. STR's LinkedIn and Facebook profiles confirm active regional marketing.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence — Gap Identified</div>
+    PPP Piping Systems Ltd has no dedicated website or active digital presence. The pppgroup.mu domain is not resolving. All digital presence for the group flows through str.mu and ptc.mu — both of which have SSL certificate issues (expired certificates as of the date of this report). This is a meaningful signal: a market-dominant manufacturer with no digital footprint and broken SSL on its customer-facing sites. Either there is no urgency to invest in digital (suggesting a comfortable market position) or there is neglect at the operational level. For an EOS conversation, this is a concrete "rocks" candidate from day one.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Financial data sourced from CBRIS extract issued 2 April 2026 for <strong>Plastic Pipes &amp; Products Ltd (C1841)</strong>, financial year ended 15 September 2024, approved 26 March 2025. All figures in Mauritius Rupees (MUR), unit: 1 (actual amounts). Note: this is the C1841 entity — see Tab 02 for the entity clarification vis-à-vis C3569.</p>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">Critical Finding — Administration Costs Exceed Revenue by MUR 3.9M</div>
+    For FY2024, Plastic Pipes &amp; Products Ltd (C1841) reported turnover of MUR 9,913,043 but administration costs alone of MUR 13,799,493 — resulting in a pre-tax and post-tax loss of <strong>MUR 8,822,011</strong>. Finance costs of MUR 6,590,363 compound the picture. Cost of sales is reported as nil (MUR 0), suggesting either a service/holding-company function rather than active manufacturing, or that all operational costs are classified as administration. Gross profit equals turnover (MUR 9,913,043) because COGS = 0. This financial profile is not consistent with an active manufacturing operation — it is more consistent with a property-holding or management entity, or one that has materially wound down production. This must be verified: if PPP's active manufacturing is in C3569, then C1841 may be the asset-holding vehicle with property leased to or managed on behalf of the group.
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Entity Context</div>
+    These financials belong to <strong>Plastic Pipes &amp; Products Ltd (C1841)</strong>, not PPP Piping Systems Ltd (C3569). C1841 holds significant investment properties (MUR 209.9M on the balance sheet) and "Other" non-current assets of MUR 35.9M, suggesting it functions primarily as a property/investment holding entity rather than an active manufacturer. The ISO case study and most operational references relate to C3569. A CBRIS extract for C3569 is recommended to obtain the active manufacturing entity's P&amp;L.
+  </div>
+
+  <h3 class="subsection-title">Profit &amp; Loss Statement — FY ended 15 September 2024</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR (Actual)</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr class="heat-ok"><td>Turnover (Revenue)</td><td>9,913,043</td><td>100.0%</td><td>Modest revenue base — consistent with a holding/property entity rather than active manufacturing</td></tr>
+        <tr><td>Cost of Sales</td><td>0</td><td>0.0%</td><td>No cost of goods sold — strongly indicates no manufacturing activity in this entity</td></tr>
+        <tr class="heat-ok"><td><strong>Gross Profit</strong></td><td><strong>9,913,043</strong></td><td><strong>100.0%</strong></td><td>Gross margin = 100% because COGS = 0; likely rental income, management fees, or property income</td></tr>
+        <tr><td>Add: Other Income</td><td>1,654,802</td><td>16.7%</td><td>Secondary income stream — nature unspecified (dividends, fee income, or rental uplift)</td></tr>
+        <tr><td>Less: Distribution Costs</td><td>0</td><td>0.0%</td><td>Nil — consistent with no distribution/manufacturing function</td></tr>
+        <tr class="heat-warn"><td>Less: Administration Costs</td><td>13,799,493</td><td>139.2%</td><td>Administration costs exceed revenue by MUR 3.9M — the primary driver of the net loss; likely includes management salaries, property costs, and group service charges</td></tr>
+        <tr><td>Less: Other Expenses</td><td>0</td><td>0.0%</td><td>—</td></tr>
+        <tr class="heat-warn"><td>Less: Finance Costs</td><td>6,590,363</td><td>66.5%</td><td>Significant — MUR 6.6M in finance costs on MUR 9.9M revenue. Relates to MUR 82.6M long-term and MUR 19.8M short-term borrowings on the balance sheet</td></tr>
+        <tr class="heat-critical"><td><strong>Profit / (Loss) Before Tax</strong></td><td><strong>(8,822,011)</strong></td><td><strong>–89.0%</strong></td><td>Loss before tax of MUR 8.82M — revenues cover only 47% of total costs (admin + finance)</td></tr>
+        <tr><td>Tax Expense</td><td>0</td><td>0.0%</td><td>Nil — no tax on a loss-making entity; note zero deferred tax on balance sheet as well</td></tr>
+        <tr class="heat-critical"><td><strong>Net Loss for the Period</strong></td><td><strong>(8,822,011)</strong></td><td><strong>–89.0%</strong></td><td>Net loss equals pre-tax loss — no tax shield. Total comprehensive income not separately stated.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary — As at 15 September 2024</h3>
+
+  <div class="profile-grid two-col">
+    <div class="profile-card">
+      <h4>Assets</h4>
+      <p>
+        <strong>Non-Current Assets: MUR 246,947,700</strong><br>
+        — Property, Plant &amp; Equipment: MUR 1,181,926<br>
+        — Investment Properties: <strong>MUR 209,897,679</strong> (dominant asset — 83.4% of total assets)<br>
+        — Intangible Assets: MUR 0<br>
+        — Other Investments: MUR 0<br>
+        — Investment in Subsidiaries: MUR 0<br>
+        — Biological Assets: MUR 0<br>
+        — Other Non-Current Assets: MUR 35,868,095<br><br>
+        <strong>Current Assets: MUR 4,770,115</strong><br>
+        — Inventories: MUR 0<br>
+        — Trade &amp; Other Receivables: MUR 4,200,115<br>
+        — Cash &amp; Cash Equivalents: MUR 0<br>
+        — Other Current Assets: MUR 570,000<br><br>
+        <strong>TOTAL ASSETS: MUR 251,717,815</strong>
+      </p>
+    </div>
+    <div class="profile-card">
+      <h4>Equity &amp; Liabilities</h4>
+      <p>
+        <strong>Equity: MUR 87,434,033</strong><br>
+        — Share Capital: MUR 8,671,000<br>
+        — Other Reserves: MUR 0<br>
+        — Retained Earnings: MUR 14,763,033<br>
+        — Others (revaluation / other equity): MUR 64,000,000<br><br>
+        <strong>Non-Current Liabilities: MUR 123,389,642</strong><br>
+        — Long-Term Borrowings: MUR 82,560,683<br>
+        — Deferred Tax: MUR 0<br>
+        — Long-Term Provisions: MUR 0<br>
+        — Other Non-Current Liabilities: MUR 40,828,959<br><br>
+        <strong>Current Liabilities: MUR 40,894,140</strong><br>
+        — Trade &amp; Other Payables: MUR 18,769,245<br>
+        — Short-Term Borrowings: MUR 19,761,625<br>
+        — Current Tax Payable: MUR 0<br>
+        — Short-Term Provisions: MUR 0<br>
+        — Other Current Liabilities: MUR 2,363,270<br><br>
+        <strong>TOTAL LIABILITIES: MUR 164,283,782</strong><br>
+        <strong>TOTAL EQUITY &amp; LIABILITIES: MUR 251,717,815</strong>
+      </p>
+    </div>
+  </div>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Balance Sheet Interpretation — Property-Holding Profile</div>
+    The balance sheet of C1841 is dominated by <strong>Investment Properties of MUR 209.9M</strong> (83.4% of total assets), against total equity of only MUR 87.4M — implying the properties are heavily leveraged (MUR 82.6M long-term borrowings + MUR 19.8M short-term borrowings = MUR 102.3M total borrowings). The nil cash balance and nil inventories further confirm this is not an operating manufacturing entity. The MUR 64M "Others" equity line likely represents a property revaluation reserve. The "Other" non-current assets of MUR 35.9M may represent inter-company loans or advances within the PPP/Desbro group. This entity appears to be the <strong>property and asset holding vehicle</strong> for the group's La Tour Koenig and other industrial properties — with the operating manufacturing business conducted through C3569.
+  </div>
+
+  <h3 class="subsection-title">Charge Register — FY2024</h3>
+  <p class="body-text">The CBRIS extract for C1841 shows <strong>no charges registered</strong> as at 2 April 2026. This is notable given the MUR 102.3M in total borrowings on the balance sheet — the absence of registered charges may indicate either (a) borrowings are unsecured (possible for intra-group lending), (b) charges were discharged and not updated on the CBRIS register, or (c) the borrowings are held in the name of a related entity. No removal or winding-up details are recorded. No objections on file. Last annual registration fee paid: 2026 — the company is current with its filings.</p>
+
+  <h3 class="subsection-title">Annual Return and Filing History</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Financial Year Ended</th><th>Currency</th><th>Date Approved</th><th>Annual Return Date</th><th>Date Filed</th></tr></thead>
+      <tbody>
+        <tr class="heat-ok"><td>15 September 2024</td><td>Mauritius Rupee</td><td>26 March 2025</td><td>12 April 2024</td><td>26 June 2024</td></tr>
+        <tr><td>15 September 2023</td><td>Mauritius Rupee</td><td>15 March 2024</td><td>15 March 2023</td><td>12 June 2023</td></tr>
+        <tr><td>15 September 2022</td><td>Mauritius Rupee</td><td>15 March 2023</td><td>25 May 2021</td><td>25 May 2021</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="body-text">The company uses a <strong>15 September financial year end</strong> — an unusual non-calendar year end, suggesting a historical operational rhythm tied to Mauritius's construction or agricultural cycles. Filings are broadly current with no material delays noted. The most recent financial statements (FYE 15 Sep 2024) were approved 26 March 2025 and cover the period analysed above.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Ratios calculated from CBRIS filed financials for <strong>Plastic Pipes &amp; Products Ltd (C1841)</strong>, FY ended 15 September 2024. All figures in MUR. Green = healthy vs. benchmarks; Amber = watch; Red = critical concern. Note: C1841 appears to be a property/holding entity — ratios should be interpreted in that context, not as an active manufacturer.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Interpretation Caveat — Holding Entity, Not Manufacturing Entity</div>
+    The ratios below reflect the financial structure of a <strong>property-holding vehicle</strong> (Investment Properties = MUR 209.9M; COGS = nil; no inventory; no cash). Comparing these against manufacturing benchmarks is instructive only to identify the holding entity's stress signals. The manufacturing ratios of the active operating entity (C3569 — PPP Piping Systems Ltd) remain unknown until a separate CBRIS extract for C3569 is obtained.
+  </div>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculation</span><span class="ratio-val">4,770,115 ÷ 40,894,140</span></div>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.117×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (holding/investment co)</span><span class="ratio-val">0.5× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical — Very Low</span></span></div>
+      <span class="ratio-interpret">Current assets cover only 11.7% of current liabilities. This is severely below any benchmark. The company has nil cash on the balance sheet. Short-term borrowings of MUR 19.8M and trade payables of MUR 18.8M are not covered by current assets of MUR 4.8M. For a property-holding entity this may be manageable if long-term asset sales or refinancing are available, but it signals acute short-term liquidity pressure.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio (Acid Test)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculation</span><span class="ratio-val">(4,770,115 – 0) ÷ 40,894,140</span></div>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.117×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (holding co)</span><span class="ratio-val">0.5× – 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical — Identical to Current Ratio</span></span></div>
+      <span class="ratio-interpret">Quick ratio equals current ratio because inventory = 0. The liquidity position is entirely dependent on trade receivables (MUR 4.2M) and other current assets (MUR 0.57M). No cash buffer exists whatsoever. This entity is reliant on intra-group cash support or asset monetisation to service short-term obligations.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculation</span><span class="ratio-val">9,913,043 ÷ 9,913,043</span></div>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">100.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius mfg)</span><span class="ratio-val">18% – 35%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Misleading — COGS = 0</span></span></div>
+      <span class="ratio-interpret">100% gross margin because cost of sales = nil. This is not a meaningful manufacturing GP margin — it reflects that C1841 generates income (likely rental or management fees) with no direct cost of goods. The benchmark comparison is not applicable. The real margin question is operating and net margin, not gross margin.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculation</span><span class="ratio-val">–8,822,011 ÷ 9,913,043</span></div>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">–89.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius mfg)</span><span class="ratio-val">3% – 10%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical — Deep Loss</span></span></div>
+      <span class="ratio-interpret">The company loses MUR 0.89 for every MUR 1.00 of revenue. Administration costs of MUR 13.8M alone exceed revenue. Finance costs of MUR 6.6M add further pressure. The entity is structurally loss-making at its current revenue/cost structure. Note: if revenues reflect only partial-year income or are understated due to intra-group netting, the ratio will look different — but as filed it is severely negative.</span>
+    </div>
+  </div>
+
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Operating Cost Ratio (Admin as % of Revenue)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculation</span><span class="ratio-val">13,799,493 ÷ 9,913,043</span></div>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">139.2%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">15% – 30% of revenue</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical — Admin Costs Exceed Revenue</span></span></div>
+      <span class="ratio-interpret">Administration costs are 139% of total revenue. This is definitively not a functioning commercial entity — either the administration costs include significant intra-group charges/support services that are not matched by corresponding income, or the company has accumulated overhead that is not supported by its income base.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Finance Cost Coverage (Interest Cover)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculation</span><span class="ratio-val">EBIT (–8,822,011 + 6,590,363) ÷ 6,590,363</span></div>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">–0.34×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">&gt; 3.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical — Cannot Cover Interest</span></span></div>
+      <span class="ratio-interpret">EBIT = –MUR 2,231,648 (loss before finance costs). The company cannot cover its interest charges from operations — it is burning cash to service debt. Coverage is deeply negative. For a property-holding entity, this means borrowings are being serviced from asset sales, group support, or refinancing rather than operating cash flow.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage / Solvency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio (Total Debt / Equity)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculation</span><span class="ratio-val">102,322,308 ÷ 87,434,033</span></div>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">1.17×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (property/investment co)</span><span class="ratio-val">0.5× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Elevated — At Upper Bound</span></span></div>
+      <span class="ratio-interpret">Total borrowings (LT: MUR 82.6M + ST: MUR 19.8M = MUR 102.3M) against equity of MUR 87.4M gives a D/E of 1.17×. This is at the upper bound of an acceptable range for a property-holding entity. The equity base includes MUR 64M of "Others" (likely property revaluation reserve) — stripping this out, tangible equity falls to ~MUR 23.4M, implying an adjusted D/E of ~4.4× — severely leveraged.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Total Liabilities to Total Assets (Leverage Ratio)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculation</span><span class="ratio-val">164,283,782 ÷ 251,717,815</span></div>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">65.3%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (property co)</span><span class="ratio-val">40% – 65%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch — At Upper Bound</span></span></div>
+      <span class="ratio-interpret">65.3% of assets are financed by liabilities. Total equity is MUR 87.4M against total assets of MUR 251.7M. This is manageable only as long as the MUR 209.9M investment property retains its book value — any property devaluation would erode equity rapidly given the thin equity cushion relative to liabilities.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debtor Days (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculation</span><span class="ratio-val">4,200,115 ÷ 9,913,043 × 365</span></div>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">154.7 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (service/property co)</span><span class="ratio-val">30 – 90 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical — Very Long Collection Cycle</span></span></div>
+      <span class="ratio-interpret">Trade receivables represent over 5 months of revenue — an extremely long collection cycle. For a property/management entity collecting rents or fees from related group companies, this likely reflects slow or irregular intra-group settlement rather than external debtor management. However, the nil cash balance combined with a 154-day DSO confirms the company is cash-starved.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculation</span><span class="ratio-val">–8,822,011 ÷ 87,434,033</span></div>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">–10.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy co)</span><span class="ratio-val">10% – 20%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Negative — Destroying Equity Value</span></span></div>
+      <span class="ratio-interpret">The company is destroying MUR 0.10 of equity value for every MUR 1.00 of equity deployed. ROE of –10.1% means retained earnings are declining and the equity base is being eroded by operating losses. The current retained earnings of MUR 14.8M will be fully consumed within approximately 1.7 years at this loss rate if no corrective action is taken.</span>
+    </div>
+  </div>
+
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculation</span><span class="ratio-val">–8,822,011 ÷ 251,717,815</span></div>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">–3.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy co)</span><span class="ratio-val">5% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Negative — Assets Not Generating Returns</span></span></div>
+      <span class="ratio-interpret">The MUR 251.7M asset base is generating a negative return. The investment property portfolio of MUR 209.9M is either not generating sufficient rental/income or the income is classified elsewhere (e.g., in the operating entity). For EOS purposes, this signals that the asset base needs to be working harder — either through active property monetisation or through restructuring the intra-group income allocation.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Equity Ratio (Equity / Total Assets)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculation</span><span class="ratio-val">87,434,033 ÷ 251,717,815</span></div>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">34.7%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (property co)</span><span class="ratio-val">35% – 60%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Borderline — Just Below Minimum</span></span></div>
+      <span class="ratio-interpret">34.7% equity ratio is just below the minimum threshold for a property company. The MUR 64M revaluation reserve in equity is the key support — without it, the equity ratio falls to ~9.3%, which would indicate technical over-leveraging against the assets. The integrity of the investment property valuation (MUR 209.9M) is therefore the single most important number in the balance sheet.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">Ratio Summary — Overall Financial Health of C1841: Stressed</div>
+    Across all eight calculated ratios, C1841 (Plastic Pipes &amp; Products Ltd) presents as a <strong>financially stressed property-holding entity</strong>: nil liquidity (current ratio 0.12×), deeply loss-making operations (net margin –89%), negative interest coverage, and equity that is heavily dependent on unrealised property revaluation reserves. The entity is not cash-generative and is eroding its retained earnings at approximately MUR 8.8M per year. This profile is consistent with a legacy holding vehicle that owns the group's industrial property but whose income base has not kept pace with its cost structure and debt service obligations. <strong>For EOS qualification purposes, these ratios belong to the holding entity, not the trading entity. The C3569 CBRIS extract is essential to assess the actual operating business.</strong>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">PPP Piping Systems competes across four distinct market segments in the Mauritian piping ecosystem — and in each of them holds a structurally advantaged position built over 44 years, though newer entrants are beginning to test that advantage at the price-sensitive end of the market.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Infrastructure &amp; Utility</h4>
+        <div class="ec-sub">CWA, wastewater, roads</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key client</span><span class="mv">Central Water Authority</span></div>
+        <div class="ec-metric"><span class="mk">Products</span><span class="mv">HDPE, MDPE, DI pipes</span></div>
+        <div class="ec-metric"><span class="mk">PPP advantage</span><span class="mv ok">Technical spec depth</span></div>
+        <div class="ec-metric"><span class="mk">Competitor</span><span class="mv">Imported product</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Long payment cycles</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Construction &amp; Real Estate</h4>
+        <div class="ec-sub">Contractors, developers</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Products</span><span class="mv">PVC-U, CPVC, fittings</span></div>
+        <div class="ec-metric"><span class="mk">PPP advantage</span><span class="mv ok">Local availability</span></div>
+        <div class="ec-metric"><span class="mk">Competitor</span><span class="mv">HPL Pipes (2007)</span></div>
+        <div class="ec-metric"><span class="mk">Competitor</span><span class="mv">Polyfab (UAE imports)</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Price competition</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Telecom &amp; Energy</h4>
+        <div class="ec-sub">Ducting, cable management</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Products</span><span class="mv">Telecom ducts, multiduct</span></div>
+        <div class="ec-metric"><span class="mk">PPP advantage</span><span class="mv ok">First-mover position</span></div>
+        <div class="ec-metric"><span class="mk">Clients</span><span class="mv">Telcos, CEB</span></div>
+        <div class="ec-metric"><span class="mk">Market trend</span><span class="mv ok">Fibre rollout driving demand</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv">Low — niche depth</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Vertical integration of manufacturing, distribution, and training.</strong> No competitor in Mauritius replicates the PPP Group's three-entity model. PPP manufactures, STR distributes with technical support, and PTC trains installers. This creates a switching-cost ecosystem: contractors trained by PTC on PPP products, using STR's rental electrofusion equipment, are unlikely to switch to a competitor. This is a genuine and hard-to-replicate moat.</p>
+  <p class="body-text"><strong>2. ISO 9001 pioneer status and standards participation.</strong> PPP was among the first Mauritian manufacturers to achieve ISO 9001 certification and actively participates in national standardisation work. This means PPP effectively helps write the rules that products must comply with — a structural advantage that creates technical barriers to entry and supports a premium pricing position.</p>
+  <p class="body-text"><strong>3. 44 years of relationships with utility buyers and government procurement.</strong> PPP's relationship with the Central Water Authority and infrastructure contractors represents decades of trust, specification approvals, and institutional knowledge. These relationships are not transferable and cannot be replicated by a new entrant within a normal business planning horizon.</p>
+
+  <h3 class="subsection-title">Key Competitors</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Competitor</th><th>Founded</th><th>Size Signal</th><th>Positioning</th><th>Threat Level</th></tr></thead>
+      <tbody>
+        <tr><td>HPL Pipes (Hardwares Point Ltd)</td><td>2007</td><td>~18 staff, expanding to ~30</td><td>Price-competitive local manufacturer; lead-free PVC; exports to Seychelles, Madagascar</td><td><span class="b b-amber">Medium — Growing</span></td></tr>
+        <tr><td>PIM Limited (PIM.mu)</td><td>Listed on SEM</td><td>Publicly listed — larger</td><td>Broad plastic products; not primarily pipes — partial overlap</td><td><span class="b b-blue">Low — Different segment</span></td></tr>
+        <tr><td>Polyfab (UAE)</td><td>—</td><td>International</td><td>Imports PVC and PE pipes; represented in Mauritius through distributors</td><td><span class="b b-amber">Medium — Price-led</span></td></tr>
+        <tr><td>Imported product (various)</td><td>—</td><td>—</td><td>Generic imports via hardware chains; no technical support; lower price</td><td><span class="b b-green">Low — Technical buyers prefer local</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Infrastructure investment tailwind:</strong> Mauritius's ongoing investment in water infrastructure, wastewater treatment, and road network upgrades directly drives demand for HDPE, MDPE, and DI pipes — PPP's core product lines.</li>
+    <li><strong>Fibre broadband rollout:</strong> National fibre infrastructure expansion drives sustained demand for telecom ducting and multiduct — a segment where PPP has first-mover advantage and no credible local competitor.</li>
+    <li><strong>Real estate and construction activity:</strong> Mauritius's construction sector (driven by tourism infrastructure, IRS/PDS schemes, and affordable housing) sustains demand for PVC-U and CPVC pipes across residential and commercial projects.</li>
+    <li><strong>Polymer price volatility (headwind):</strong> PVC resin and PE granule prices are denominated in USD and tied to global petrochemical markets. MUR depreciation against USD (the long-term trend) compresses gross margins on imported raw materials — a structural headwind for any Mauritius manufacturer.</li>
+    <li><strong>Increasing local competition (headwind):</strong> HPL Pipes (est. 2007) and the potential for further entrants signals that PPP's manufacturing moat is no longer impenetrable. While PPP's technical and relationship advantages remain, the price-competitive end of the market is increasingly contested.</li>
+    <li><strong>Environmental and sustainability regulation:</strong> Global and regional shifts toward lead-free pipe formulations and recyclable materials may require product reformulation investment — PPP's ISO and standards expertise positions it well to lead this transition rather than react to it.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Gap — Material Commercial Risk</div>
+    PPP Piping Systems has no website. The pppgroup.mu domain is inactive. STR's website (str.mu) and PTC's website (ptc.mu) both have expired SSL certificates as of 2 April 2026. For a market-dominant manufacturer with regional ambitions, this is a commercially meaningful gap: specifiers, architects, and international contractors researching Mauritian suppliers cannot find PPP online. In a construction market where project specifications are increasingly managed digitally, invisibility is a risk. This is a concrete, actionable recommendation for the EOS conversation.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data, group structure analysis, and sector context. Financial dimensions will be refined on receipt of the CBRIS extract.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">PPP Piping Systems is a manufacturer operating across three distinct entities (PPP / STR / PTC) with separate functional departments including production, quality (laboratory), warehouse, sales, and training. The group serves multiple market segments (infrastructure, construction, telecom) and manages both local manufacturing and import distribution. This is well within the EOS sweet spot of 10–250 people with multi-function complexity. The specific headcount is not publicly confirmed, but the organisation structure and operational scope strongly suggest a total group headcount of 50–200 — the EOS optimal range. Scored 7 because the multi-entity group structure adds coordination complexity that EOS handles well, but the holding group layer (Desbro) may be outside the engagement scope.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No public information is available about PPP's specific management team or their leadership philosophy. The positive signals are: ISO 9001 certification (which requires management commitment to documented systems and continuous improvement), active investment in a training division (PTC) launched in 2008 (a strategic rather than tactical move), and the group's long operating history suggesting institutional stability. The negative signals are: the Desbro Group's family conglomerate structure historically suggests patriarchal decision-making, no public thought leadership or LinkedIn presence from PPP leadership, and the absence of any digital investment (suggesting either conservatism or inertia). Scored 5 — neither clearly open nor clearly closed. The first conversation will be decisive.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">A 44-year-old manufacturer with three operational entities, multiple product lines, and both manufacturing and import-distribution operations will have accumulated classic EOS-addressable pain: coordination failures between PPP manufacturing and STR distribution (who owns the customer relationship?), informal accountability structures that have worked for decades but are now creating friction as the market evolves, reactive planning driven by customer orders rather than a deliberate annual rhythm, and tension between the group's legacy ways of working and the demands of a more competitive market environment. The entry of HPL Pipes in 2007 and the growing availability of imported product are external pressures that make the "grow or be disrupted" urgency real. Scored 7 — the pain is evident from structure and context even without explicit confirmation from the leadership team.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">ISO 9001 certification is a meaningful positive: it means documented quality processes, management review meetings, corrective action procedures, and a culture of measurement exist within the manufacturing operation. This is more than most EOS candidates have — and it means EOS is not installing discipline from zero, but building on an existing process foundation. The negative signals are structural: three entities with presumably separate ERP or accounting systems (or worse, shared but poorly integrated ones), no visible digital infrastructure, and an import-distribution arm (STR) that likely operates on different rhythms and systems from the manufacturing plant. Scored 6 — process DNA exists but is fragmented across the group entities.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">ISO 9001 certification requires a quality culture — people who follow documented procedures, escalate non-conformances, and participate in management reviews. The training division (PTC) signals a culture that values knowledge transfer and professional development, which is an EOS-compatible orientation. The group's 50-year history and multi-generational family ownership suggest high staff tenure and deep institutional knowledge — valuable for EOS implementation — but also potential resistance to new frameworks if introduced without leadership conviction. The job postings on myjob.mu (Quality Controller, Draughtsman, Store/Lorry Helpers) suggest a mixed blue-collar / technical workforce — typical for a manufacturer and fully within EOS's experience. Scored 6 — good cultural raw material, but the family/patriarchal dynamic is an unknown variable.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The fundamental unknown for PPP. Three entities (PPP / STR / PTC) sharing a market and presumably coordinating informally is a structural decision-making ambiguity: when a major customer order comes in, who decides on price, delivery terms, and technical specification? When a capital investment is needed at the plant, does PPP management decide or does Desbro Group? When STR onboards a new product line, does that require PPP sign-off? In the absence of an explicit Accountability Chart (EOS's GWC tool), the answers to these questions are likely informal and leader-dependent — which is exactly the problem EOS solves. Scored 5 — decision ambiguity is assumed to be present and significant, but cannot be confirmed without the leadership interview.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No publicly articulated vision, strategic direction, or three-year goal exists for PPP Piping Systems or the PPP Group. The Desbro Group website states a vision of becoming "a market leader, knowledge-based Company and customer centric supplier across the Indian Ocean region" — but this belongs to DTL (the chemicals arm), not PPP. PTC and STR have operational positioning statements but no documented strategic direction. A 44-year-old family group whose individual operating entities have no articulated forward vision is a textbook V/TO candidate. Scored 4 — vision likely exists in the founder's or group managing director's head but has never been written down, shared, or translated into a three-year picture. This is both the most significant EOS pain point and the greatest opportunity for Thierry.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">ISO 9001 mandates management review meetings at planned intervals — so some structured meeting rhythm exists. However, ISO management reviews are typically backward-looking (non-conformances, quality objectives, audit results) rather than forward-looking (Issues, Rocks, scorecard). Between three entities and a group holding company, the number of informal coordination touchpoints (phone calls, WhatsApp, ad hoc meetings) is likely very high and the number of formal, agenda-driven, accountability-building meetings is likely very low. The absence of any documented Level 10 or equivalent meeting structure is assumed. Scored 5 — some meeting discipline exists via ISO but it does not translate to EOS-style execution rhythm.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.1</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive with One Critical Precondition</h4>
+      <p>PPP Piping Systems is a genuinely attractive EOS candidate: right size, right complexity, right pain, right culture raw material, and right market pressures to make the timing urgent. The ISO 9001 foundation means the organisation already understands discipline and systems — EOS is not an alien concept, it is a complement. The one critical precondition is autonomy: if PPP's leadership team has genuine P&amp;L ownership and strategic decision rights within the Desbro Group, EOS will work. If they do not — if major decisions flow up to a group committee or a patriarch who is not in the room — EOS engagement at the PPP level alone will stall at the V/TO. The first qualification conversation must answer this question before any engagement is designed.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for PPP Piping Systems</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>V/TO — Vision/Traction Organiser</h4>
+      <p>PPP has no documented vision, no stated three-year picture, and no articulated core values. The V/TO is the single most powerful tool for this company: it forces the leadership team to answer where PPP is going independently of the Desbro Group narrative. A V/TO session will immediately surface whether PPP management has genuine strategic autonomy or whether it is effectively a managed production unit.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Accountability Chart (GWC)</h4>
+      <p>Three entities, multiple functions, and informal coordination across PPP / STR / PTC means role clarity is the most acute operational pain. The Accountability Chart will force the group to answer: who owns the customer? Who owns manufacturing output? Who owns revenue? The inter-entity tension between PPP's production mandate and STR's sales mandate is the first conflict the Accountability Chart will surface.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard and Measurables</h4>
+      <p>ISO 9001 gives PPP quality metrics (defect rates, customer complaints, on-time delivery) — but almost certainly not commercial metrics (revenue per product line, margin by segment, DSO by customer, STR conversion rates). Building a Scorecard that bridges manufacturing KPIs with commercial outcomes is the most immediately actionable tool and will resonate with ISO-familiar managers.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks — 90-Day Priorities</h4>
+      <p>The most concrete near-term win: PPP has at least three obvious Rock candidates from this research alone — (1) fix the SSL certificates and rebuild the digital presence, (2) design and implement an inter-entity SLA between PPP manufacturing and STR distribution, (3) define and document the PPP Group three-year picture separate from the Desbro Group narrative. Rocks will demonstrate EOS value within the first quarter.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List and IDS</h4>
+      <p>A 44-year-old family-group manufacturer has a long list of unresolved issues that have been tolerated because they were never surfaced in a structured way. The Issues List gives the leadership team a safe container to name what is not working: inter-entity pricing disputes, unclear customer ownership, raw material procurement decisions, capital allocation priorities. IDS (Identify-Discuss-Solve) gives them the discipline to actually resolve them rather than defer them indefinitely.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>The ISO management review provides a precedent for structured periodic meetings — PPP's team already knows what a formal meeting agenda looks like. The Level 10 Meeting upgrades this from a backward-looking compliance review to a forward-looking, accountability-building weekly rhythm. For a group managing three entities across multiple locations, a disciplined weekly meeting rhythm is the single most powerful change available.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations — four financial/operational (to be refined once CBRIS is received) and four EOS-specific — sequenced in order of urgency and dependency. The financial recommendations are provisional and will be updated once the CBRIS financials are reviewed.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Obtain and Review CBRIS Extract — Complete Financial Picture</h4>
+      <p>The CBRIS extract from MNS is the single most important near-term action. It will confirm: registered directors (the people Thierry needs to approach), BRN, stated capital, filed financials (P&amp;L and balance sheet), and the charge register. Without this, the financial tabs of this report remain incomplete and the sales preparation is limited. Thierry should search onlinesearch.mns.mu for "PPP Piping Systems" (C3569, incorporated 5 October 1981, Plaine Lauzun) and drop the PDF in Team Inbox immediately.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS Conversation</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Probe Group Autonomy Before Any Engagement Design</h4>
+      <p>The first qualification conversation with PPP must answer one question before all others: does the PPP management team have autonomous P&amp;L ownership and strategic decision rights, or does material decision authority sit with the Desbro Group holding structure? Thierry should ask directly: "Who approves your three-year plan? Who signs off on capital investment above X? Who decides on headcount changes?" The answers will determine whether the EOS engagement scope is PPP alone or the wider Desbro Group.</p>
+      <span class="urg urg-now">Immediate Priority — First Meeting Agenda</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Address the Digital Presence Failure — Position as a Quick Win</h4>
+      <p>The pppgroup.mu domain is dead. STR and PTC both have expired SSL certificates. For a market-dominant manufacturer seeking to grow regionally, this is a commercial liability. In the EOS conversation, Thierry should use this as a concrete example of what happens when there is no Accountability Chart: nobody owns "the company's digital presence" so nobody fixed the SSL. Frame it as a Rocks candidate: a 90-day project to rebuild digital infrastructure, assign clear ownership, and create a defensible online presence for PPP and STR. Success is measurable, visible, and immediately valuable.</p>
+      <span class="urg urg-week">Within 30 Days — First Rock Candidate</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Map the Inter-Entity Commercial Flow Between PPP and STR</h4>
+      <p>PPP manufactures; STR sells. But who owns the customer relationship? Who sets the transfer pricing between the two entities? Who is accountable for revenue growth — the PPP GM or the STR MD? This inter-entity ambiguity is the most operationally damaging structural issue in the group. Before EOS, Thierry should understand this flow clearly and use it as the opening illustration of why an Accountability Chart matters. In the EOS engagement, designing the inter-entity structure will be the most complex and valuable deliverable of the first 90 days.</p>
+      <span class="urg urg-week">Within 60 Days — Pre-EOS Discovery</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Start with a Focus Day — Test Leadership Readiness in One Session</h4>
+      <p>Given the uncertainty about group autonomy and leadership openness, a Focus Day is the right entry point. It limits risk for both parties: PPP's leadership team experiences EOS without committing to a full engagement, and Thierry can assess in real time whether the team has the clarity, cohesion, and ownership to go further. The Focus Day should include all three entities' senior leaders (PPP, STR, PTC) in the same room — the inter-entity tension will surface organically and validate the EOS opportunity. Success criterion: the leadership team leaves with a shared understanding of the two-day format and a clear request to proceed.</p>
+      <span class="urg urg-week">Within 90 Days — After CBRIS and First Conversation</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the Accountability Chart Hypothesis Before the First Meeting</h4>
+      <p>Based on the three-entity structure (PPP / STR / PTC) and known functional departments (production, quality, warehouse, sales, training), Thierry should arrive at the first EOS conversation with a draft Accountability Chart hypothesis. Proposed seats: Integrator/GM, VP Sales (STR), VP Manufacturing (PPP), VP Training (PTC), Finance, HR/People. This hypothesis will immediately demonstrate EOS's diagnostic power and generate productive tension in the room. It is also the fastest way to surface whether a true Integrator exists at PPP level or whether that function currently sits with the Desbro Group patriarch.</p>
+      <span class="urg urg-week">Prepare Before First Meeting</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>First Rock: PPP Group Three-Year Picture — Independent of Desbro Narrative</h4>
+      <p>The most powerful first Rock is the V/TO completion — specifically the three-year picture. The Desbro Group has a stated vision ("market leader across the Indian Ocean region") but PPP has none. Thierry should challenge the PPP leadership team to articulate: what does PPP look like in three years? What is the revenue target? How many employees? Which new markets or products? Are we expanding regionally through STR or consolidating in Mauritius? The answers will either confirm genuine strategic autonomy (positive EOS signal) or reveal that the group sets the direction (scope conversation needed with Desbro).</p>
+      <span class="urg urg-medium">Within 90 Days of Engagement Start</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>V/TO Strategic Question — Regional Expansion vs. Market Defence</h4>
+      <p>STR is explicitly positioned as a regional provider for the Indian Ocean. PPP manufactures up to 400mm HDPE — the largest in Mauritius. The ISO case study was global in reach. Yet the digital presence is zero and competitor HPL is growing. PPP faces a genuine strategic fork: double down on Mauritius market dominance and margin improvement, or invest in regional export capacity through STR as the distribution vehicle. The V/TO process cannot sidestep this question — and whichever direction the leadership chooses, it will generate a full set of Rocks, issues, and measurables for the first annual plan. This is the central strategic question Thierry should hold for the Two-Day session.</p>
+      <span class="urg urg-medium">Two-Day Session Agenda — Strategic Question</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>PPP Piping Systems is Mauritius's dominant plastic pipe manufacturer — 44 years old, ISO-certified, vertically integrated, and structurally complex in exactly the ways EOS was designed to address. The opportunity is genuine and the timing is right: competitive pressure is increasing, the market is evolving, and the three-entity group coordination problem is a visible and painful constraint on growth. The single gating factor is group autonomy: if PPP's management team has real strategic authority, this is a high-quality EOS engagement. If authority sits with Desbro, the conversation must move up. The CBRIS extract will confirm the directors; the first conversation will confirm the autonomy. Both are needed before engagement design begins.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Obtain CBRIS extract — confirm directors, BRN, financials, charge register (This week)</li>
+        <li><span class="sig-num">02</span>First qualification call with PPP leadership — probe group autonomy, confirm decision rights, identify the Integrator candidate (Within 2 weeks)</li>
+        <li><span class="sig-num">03</span>Prepare Accountability Chart hypothesis and V/TO opening questions — brief Thierry on the inter-entity dynamic before the meeting (Before first meeting)</li>
+        <li><span class="sig-num">04</span>Focus Day with all three entity leaders in one room — validate EOS fit, surface inter-entity tension, build trust (Within 60 days)</li>
+        <li><span class="sig-num">05</span>Two-Day session to complete V/TO and Accountability Chart — set first Rocks including digital rebuild, inter-entity SLA, and regional strategy decision (Within 90 days of Focus Day)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>PPP Piping Systems Ltd — Comprehensive Company Analysis &amp; EOS Assessment · 2 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: Web research (str.mu, ptc.mu, desbrogroup.com, dtl.mu, africanadvice.com, mauritiusfirm.com, myjob.mu, iso.org, hplpipes.mu) · CBRIS / Registrar of Companies, Mauritius (pending extract) · 2 April 2026</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
