@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kosto Group — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Steel Manufacturing &amp; Distribution</span>
+    <span class="badge badge-type">Multi-Entity Group · Domestic &amp; GBC · Mauritius</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">2 April 2026</span>
+  </div>
+  <h1>Kosto Group:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Kosto Ltd · Kosto Holdings Limited · Kosto Steel and Mesh Ltd · Company intelligence · Financial ratios · EOS implementation assessment · Plaine Lauzun, Port Louis, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025 (Kosto Ltd)</div>
+      <div class="stat-value steel">MUR 661M</div>
+      <div class="stat-delta">Year ended 30 June 2025 · Mauritius Rupee</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit After Tax</div>
+      <div class="stat-value emerald">MUR 18.8M</div>
+      <div class="stat-delta">2.85% net margin · FY2025</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.8 / 10</div>
+      <div class="stat-delta">Moderate-High — Qualified Positive · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Thin Margins</div>
+      <div class="stat-delta">6.6% gross margin on MUR 661M revenue — cost discipline essential</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Kosto Group — Company Analysis &amp; EOS Assessment · 2 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A nearly 20-year-old steel manufacturing and distribution group that dominates the Mauritian rebar market — yet its razor-thin 6.6% gross margin on MUR 661M in revenue signals that operational discipline, cost control, and strategic clarity are the group's most urgent needs.</p>
+
+  <p class="body-text">The Kosto Group is a three-entity Mauritian steel enterprise centred on Kosto Ltd (C65411), the operating company originally incorporated in September 2006 under the name Misco (Mauritius) Ltd and subsequently rebranded to Kosto in 2008 after refurbishing a rolling mill at Plaine Lauzun Industrial Estate. Kosto Ltd is Mauritius's primary manufacturer and dominant supplier of reinforcing steel (rebar), welded mesh, cut-and-bend solutions, and related construction materials. It operates a live steel mill on its Plaine Lauzun premises, carries ISO 9001, ISO 14001, and OHSAS 18001 certifications, and is the only rebar distributor on the island with a permanent resident civil and industrial engineering team providing technical support. The group's website is www.kosto.mu; main phone is +230 208 4043.</p>
+
+  <p class="body-text">The group's ownership chain runs through two holding vehicles. Kosto Holdings Limited (C113455), a Global Business Company incorporated in November 2012 and managed by Stonehage Fleming (Mauritius) Limited, holds 100% of Kosto Steel and Mesh Ltd (C229960), a brand-new domestic company incorporated on 6 January 2026 which appears to be a spin-out or reorganisation vehicle for the group's steel and mesh manufacturing activities. Kosto Ltd is 100% owned by DIL Group Limited — a company not found in public Mauritius registers, suggesting it is the Desbro (Seychelles) holding entity referenced across all public sources. Kosto Ltd is confirmed to be part of an international Desbro-aligned structure with equivalent steel operations across Southern African countries. The directors common to all three entities are Jacobus Adriaan Naude (operational lead, based at Plaine Lauzun), Johannes Naude, and Gary Walton (MD, Kosto Holdings). Mark Mario Di Nicola and Mark Graham Patrick round out the Holdings board at Stonehage Fleming.</p>
+
+  <p class="body-text">Financially, Kosto Ltd is a substantial business: MUR 661M in revenue for FY2025, MUR 18.8M net profit after tax, and MUR 518M in total assets. However, the gross profit margin of 6.6% is strikingly thin for a manufacturer-distributor — cost of sales consumes 93.4% of every revenue rupee. The administration cost line of MUR 51.4M (7.8% of revenue) by itself exceeds gross profit, meaning the business is entirely dependent on MUR 39.2M in other income (likely intra-group management fees or revaluation gains) to produce a positive bottom line. Kosto Steel and Mesh Ltd has not yet filed any financials, consistent with its January 2026 incorporation. Kosto Holdings Limited filed no operating financials — it is a pure holding entity.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Restructuring Signal and Entry Timing</div>
+    The incorporation of Kosto Steel and Mesh Ltd on 6 January 2026 — barely three months ago — is the most strategically significant datum in this file. The new entity carries identical business activities to Kosto Ltd (steel wholesale, galvanizing, forging, rebar retail, import/export) and is wholly owned by Kosto Holdings Limited, not by DIL Group / Desbro. This strongly suggests the group is mid-restructuring: either separating the manufacturing arm from the legacy distribution entity, or preparing for a partial ownership transition. A business in active structural reorganisation is a business where leadership is thinking about the future — which makes it an unusually receptive EOS prospect. The conversation should open on transformation, not tools.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Market dominance in Mauritian rebar</strong> — confirmed as the #1 cut-and-bend solution provider and the only supplier with a resident engineering team. Live steel mill on-site creates vertical integration. ISO triple-certified. Nearly two decades of operational history under the Kosto brand.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Gross margin of 6.6% on MUR 661M revenue</strong> — any input cost shock or FX move on imported steel wipes out profit entirely. Admin costs (MUR 51.4M) exceed gross profit. The bottom line is propped by MUR 39.2M in other income. High inventory (MUR 118M) and receivables (MUR 75.5M) create working capital pressure.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Active structural reorganisation (new entity Jan 2026)</strong> combined with a multi-director board structure across three entities suggests exactly the kind of ownership-management tension and complexity EOS is designed to untangle. The group operates multiple roles — manufacturer, distributor, engineering firm — which without an Accountability Chart creates inevitable functional ambiguity.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A three-entity group built around a steel mill at Plaine Lauzun — the dominant rebar force in Mauritius, currently in active corporate restructuring.</p>
+
+  <h3 class="subsection-title">Entity 1 — Kosto Ltd (the Operating Company)</h3>
+  <p class="body-text">File No. C65411 · Business Registration No. C06065411 · Incorporated 13 September 2006 as Misco (Mauritius) Ltd · Renamed to Kosto Ltd in 2008. Category: Domestic Private Company Limited by Shares. Stated capital: MUR 100,000,000 (100 million rupees) across two share tranches — 10,000 ordinary shares at MUR 10,000 and 99,990,000 ordinary shares at MUR 99,990,000. Registered office (effective 29 March 2024): c/o Stonehage Fleming Secretarial Limited, Rue des Fascines, 1st Floor, Les Fascines Building Block B, Vivéa Business Park, Moka. Principal place of business: Plaine Lauzun Industrial Estate, Port Louis. Auditor: BDO &amp; Co (appointed 29 December 2020). Secretary: Stonehage Fleming Secretarial Limited (appointed 4 May 2018). Annual registration fee last paid: 2026. Financial year end: 30 June. Last annual return filed: 5 December 2025.</p>
+
+  <h3 class="subsection-title">Entity 2 — Kosto Holdings Limited (the International Holding Vehicle)</h3>
+  <p class="body-text">File No. C113455 · Incorporated 27 November 2012. Category: Global Business Company (GBC) · Private · Limited by Shares. Registered office: c/o Stonehage Fleming (Mauritius) Limited, Rue des Fascines, 1st Floor, Les Fascines Building Block B, Vivéa Business Park, Moka (effective 29 March 2024). Management company and secretary: Stonehage Fleming (Mauritius) Limited. No stated capital or financial filings are on the public CBRIS record — standard for a GBC holding vehicle. As the 100% shareholder of Kosto Steel and Mesh Ltd, this is the Mauritius-domiciled apex holding entity for the manufacturing restructure.</p>
+
+  <h3 class="subsection-title">Entity 3 — Kosto Steel and Mesh Ltd (the New Manufacturing Entity)</h3>
+  <p class="body-text">File No. C229960 · Business Registration No. C26229960 · Incorporated 6 January 2026 — only 87 days before the date of this report. Category: Domestic Private Company Limited by Shares. Stated capital: MUR 100 (100 ordinary shares at MUR 1 each — nominal only, confirming this is a freshly formed entity awaiting substantive capitalisation). Registered office: Rue des Fascines, 1st Floor, Les Fascines Building Block B, Vivea Business Park, Moka. Principal place of business: Plaine Lauzun, Port Louis. No financials filed yet. Secretary: Stonehage Fleming Secretarial Limited. Annual registration fee: not yet paid (first year).</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>DIL Group Limited</h4>
+        <div class="ec-sub">Ultimate Parent · Desbro / Seychelles Structure</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Nature</span><span class="mv">Not on Mauritius CBRIS</span></div>
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">100% Owner of Kosto Ltd</span></div>
+        <div class="ec-metric"><span class="mk">Note</span><span class="mv">Linked to Desbro (Seychelles)</span></div>
+        <div class="ec-metric"><span class="mk">Geography</span><span class="mv">Pan-Southern Africa</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Kosto Holdings Limited</h4>
+        <div class="ec-sub">C113455 · GBC · Incorporated Nov 2012</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Owns</span><span class="mv">100% Kosto Steel &amp; Mesh</span></div>
+        <div class="ec-metric"><span class="mk">Managed by</span><span class="mv">Stonehage Fleming</span></div>
+        <div class="ec-metric"><span class="mk">Directors</span><span class="mv">4 (incl. Walton, Di Nicola)</span></div>
+        <div class="ec-metric"><span class="mk">Website</span><span class="mv">kostoholdings.com</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Kosto Ltd</h4>
+        <div class="ec-sub">C65411 · Domestic · Operating Co.</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Owned by</span><span class="mv">DIL Group Limited</span></div>
+        <div class="ec-metric"><span class="mk">Revenue</span><span class="mv ok">MUR 661M (FY2025)</span></div>
+        <div class="ec-metric"><span class="mk">Assets</span><span class="mv">MUR 518M</span></div>
+        <div class="ec-metric"><span class="mk">Website</span><span class="mv">kosto.mu</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Note — Dual Ownership Structure and the January 2026 Restructure</div>
+    Kosto Ltd sits under DIL Group Limited / Desbro (Seychelles) — the legacy Southern African ownership chain from the Murray &amp; Roberts / Desbro lineage. Kosto Holdings Limited sits as a separate GBC with its own directors (including Gary Walton as MD) and now owns the new Kosto Steel and Mesh Ltd. The two ownership lines appear to be diverging — suggesting either a management buyout is being structured, a joint venture is being formed, or the group is separating manufacturing (under Kosto Holdings) from the legacy distribution business (under Desbro/DIL). This structural bifurcation is a key conversation topic.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Jacobus Adriaan Naude — Group Operations Director</h4>
+      <p>Appointed to Kosto Ltd: 16 October 2014. Appointed to Kosto Holdings: 4 February 2020. Appointed to Kosto Steel and Mesh: 5 January 2026. <strong>The only director present across all three entities</strong> — almost certainly the operational CEO or COO on the ground at Plaine Lauzun. Service address on record: Plaine Lauzun Industrial Estate. South African name; consistent with the Desbro/Murray &amp; Roberts executive network.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Johannes Naude — Director</h4>
+      <p>Appointed to Kosto Ltd: 12 December 2019. Appointed to Kosto Steel and Mesh: 5 January 2026. Service address: Kosto Ltd Industrial Estate / Vivéa Business Park. Likely related to Jacobus Adriaan Naude — possibly a family succession appointment. Present at both operational entity level and in the new manufacturing entity.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Gary Walton — MD, Kosto Holdings</h4>
+      <p>Appointed to Kosto Ltd: 20 August 2007 (founding-era appointment). Appointed to Kosto Holdings: 4 December 2014. Appointed to Kosto Steel and Mesh: 5 January 2026. LinkedIn confirms title: Managing Director, Kosto Holding Limited. <strong>Email: gary.walton@kostoholdings.com.</strong> Barkly Wharf, Le Caudan Waterfront, Port Louis service address. The strategic lead of the group.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Mark Mario Di Nicola — Director, Kosto Holdings</h4>
+      <p>Appointed to Kosto Holdings: 4 December 2014. Service address: 5th Floor, Barkly Wharf, Le Caudan Waterfront, Port Louis. Holdings-level director only. Likely a Stonehage Fleming or investor-side representative given the Barkly Wharf (financial hub) address.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Mark Graham Patrick — Director, Kosto Holdings</h4>
+      <p>Appointed to Kosto Holdings: 14 August 2024 — the most recently appointed director. Service address: 1st Floor, Les Fascines Block B, Vivéa Business Park — same as Stonehage Fleming. Almost certainly a Stonehage Fleming nominee director, replacing an earlier incumbent.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Stonehage Fleming (Mauritius) Limited — Management Co. &amp; Secretary</h4>
+      <p>Management company and secretary for both Kosto Holdings Limited and Kosto Ltd (secretary only). Stonehage Fleming is a global multi-family office and fiduciary services firm — their involvement confirms that the offshore holding structure is professionally managed and likely serves a high-net-worth or institutional ownership group at the apex.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Kosto Ltd operates across five capability clusters. (1) Steel Manufacturing: operates a fully refurbished steel rolling mill at Plaine Lauzun — produces rebar (R &amp; Y grades in 6mm through 40mm diameters) to BS 4449 standard. (2) Cut and Bend: the group's primary value-added service — automated cutting and bending facility, BBS (Bar Bending Schedule) creation, full engineering team support for project management from design to final account. This is the #1 cut-and-bend operation in Mauritius. (3) Distribution: wholesale and retail of reinforcing steel bars, welded mesh sheets, pine wood, shuttering boards, binding wire, concrete and wire nails, galvanized pipes, black and pre-galvanized steel profiles, and channel sections. (4) Galvanizing &amp; Coating: non-metallic coating of metals and galvanizing — a capability now explicitly listed for Kosto Steel and Mesh Ltd (foundry, smelting plant, galvanizing of metal). (5) Plastic Products: manufacture of plastic products (10+ persons), listed in Kosto Ltd's business activities — likely packaging or related ancillary production.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">The group's operational footprint is concentrated at Plaine Lauzun Industrial Estate, Port Louis — a major industrial zone directly adjacent to the port, giving strategic import logistics advantage for raw steel coil and billet. The corporate registered address for all entities is Vivéa Business Park, Moka (via Stonehage Fleming). The wider Kosto Holdings / Desbro group has operations described as "equivalent in all Southern African countries," suggesting sister entities in countries such as South Africa, Mozambique, Zimbabwe, and potentially others — though these are not part of this Mauritius-specific analysis. The group imports raw materials and exports where relevant (import/export listed as a licensed activity for both Kosto Ltd and Kosto Steel and Mesh Ltd).</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Note</div>
+    Kosto Ltd maintains an active website (kosto.mu) with product information and a contact page. Kosto Holdings has a separate site (kostoholdings.com) focused on the international group. Kosto Steel and Mesh Ltd has no web presence yet — consistent with its January 2026 incorporation. The group is active on LinkedIn (Kosto Ltd), Instagram (@kosto_ltd), and Facebook. The email domain @kosto.mu is confirmed. Key contact email referenced in public sources: visser@kosto.mu (likely a sales/commercial contact).
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">All financial data sourced from CBRIS / Registrar of Companies, Mauritius, dated 2 April 2026. Kosto Ltd financial year ends 30 June. Currency: Mauritius Rupee (MUR). Unit: 1 (figures as stated — no rounding applied in source). Prior-year comparatives are not published on CBRIS.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Only Kosto Ltd (C65411) has filed financial statements with CBRIS — the most recent covering FY ended 30 June 2025, approved 5 December 2025. Kosto Holdings Limited (GBC) files no public financials — standard for a Global Business Company in Mauritius. Kosto Steel and Mesh Ltd (incorporated January 2026) has not yet reached its first filing deadline. No prior-year comparative P&amp;L or balance sheet is available on the public record, which prevents YoY trend analysis. The "Other Income" of MUR 39.2M is unexplained in the CBRIS summary — it is a critical line requiring interrogation.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary — Kosto Ltd (FY ended 30 June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>661,098,808</td><td>100.0%</td><td>MUR 661M — substantial top line for a Mauritius manufacturer; roughly USD 14M at current rates</td></tr>
+        <tr><td>Cost of Sales</td><td>617,694,583</td><td>93.4%</td><td>Extremely high — reflects commodity nature of steel: raw material (imported billet/coil) dominates COGS</td></tr>
+        <tr class="heat-warn"><td>Gross Profit</td><td>43,404,225</td><td>6.6%</td><td>Thin but not unusual for a steel distributor/processor; however, leaves almost no buffer for cost overruns</td></tr>
+        <tr><td>Add: Other Income</td><td>39,177,014</td><td>5.9%</td><td><strong>Critical line</strong> — nearly as large as gross profit itself; likely intra-group management fees, FX gains, or asset revaluation. Nature must be clarified.</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>Nil — delivery costs may be absorbed into COGS or charged separately to customers</td></tr>
+        <tr class="heat-critical"><td>Administration Costs</td><td>51,422,424</td><td>7.8%</td><td>Exceeds gross profit by MUR 8M — this is the structural problem: the core trading business cannot cover its own overheads without Other Income</td></tr>
+        <tr><td>Other Expenses</td><td>3,106,446</td><td>0.5%</td><td>Modest</td></tr>
+        <tr><td>Finance Costs</td><td>6,749,694</td><td>1.0%</td><td>Moderate debt service on MUR 36.5M long-term borrowings</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>21,302,675</td><td>3.2%</td><td>Acceptable pre-tax; entirely dependent on Other Income contribution</td></tr>
+        <tr><td>Tax Expense</td><td>2,490,448</td><td>0.4%</td><td>Effective tax rate ~11.7% — low, possibly reflecting investment allowances or GBC structure benefits</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>18,812,227</strong></td><td><strong>2.85%</strong></td><td>Positive and compliant; but structurally fragile — a 7% drop in Other Income eliminates all profit</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary — Kosto Ltd (30 June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>120,380,817</td><td>Substantial — reflects the steel mill, cutting and bending machinery, land and buildings at Plaine Lauzun</td></tr>
+        <tr><td></td><td>Intangible Assets</td><td>11,669,130</td><td>Likely software, licences, or brand-related intangibles</td></tr>
+        <tr><td></td><td>Investment in Subsidiaries</td><td>25,530,512</td><td>Confirms Kosto Ltd holds equity stakes in one or more subsidiaries — consistent with the Kosto group having downstream entities</td></tr>
+        <tr><td></td><td>Others (Non-Current)</td><td>152,035,505</td><td>Large "other" non-current assets — possibly intercompany loans, long-term receivables, or deferred items; warrants interrogation</td></tr>
+        <tr><td></td><td><strong>Total Non-Current Assets</strong></td><td><strong>309,615,964</strong></td><td>59.8% of total assets</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Inventories</td><td>118,314,941</td><td>High — MUR 118M in stock; at 93% COGS ratio this represents roughly 70 days of cost of sales inventory on hand. Risk of obsolescence or price decline on imported steel.</td></tr>
+        <tr><td></td><td>Trade and Other Receivables</td><td>75,547,332</td><td>Implies ~42 days DSO at revenue rate — reasonable but worth monitoring in a construction market where project delays extend collection cycles</td></tr>
+        <tr><td></td><td>Cash and Cash Equivalents</td><td>13,822,438</td><td>Thin — only MUR 13.8M cash against MUR 110.7M current liabilities. Tight liquidity.</td></tr>
+        <tr><td></td><td>Others (Current)</td><td>820,000</td><td>Minimal</td></tr>
+        <tr><td></td><td><strong>Total Current Assets</strong></td><td><strong>208,504,711</strong></td><td>40.2% of total assets</td></tr>
+        <tr class="heat-ok"><td></td><td><strong>TOTAL ASSETS</strong></td><td><strong>518,120,675</strong></td><td>Solid asset base for a domestic manufacturer</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital</td><td>100,000,000</td><td>MUR 100M stated capital</td></tr>
+        <tr><td></td><td>Other Reserves</td><td>174,589,113</td><td>Significant reserves — likely revaluation reserves on PP&amp;E (steel mill)</td></tr>
+        <tr><td></td><td>Retained Earnings</td><td>67,668,702</td><td>Positive retained earnings — company has been consistently profitable over its history</td></tr>
+        <tr class="heat-ok"><td></td><td><strong>Total Equity</strong></td><td><strong>342,257,815</strong></td><td>66.1% equity ratio — conservatively financed; strong balance sheet foundation</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Borrowings</td><td>36,509,793</td><td>Manageable; supports capex on the steel mill</td></tr>
+        <tr><td></td><td>Deferred Tax</td><td>16,058,996</td><td>Consistent with significant PP&amp;E and accelerated depreciation</td></tr>
+        <tr><td></td><td>Long-Term Provisions</td><td>860,779</td><td>Minimal</td></tr>
+        <tr><td></td><td>Others (Non-Current)</td><td>11,754,401</td><td>Moderate</td></tr>
+        <tr><td></td><td><strong>Total Non-Current Liabilities</strong></td><td><strong>65,183,969</strong></td><td></td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Trade and Other Payables</td><td>74,664,869</td><td>Large payables — implies roughly 44 days DPO; the group stretches its own suppliers moderately</td></tr>
+        <tr><td></td><td>Current Tax Payable</td><td>1,693,528</td><td>Normal</td></tr>
+        <tr><td></td><td>Others (Current)</td><td>34,320,494</td><td>Significant other current liabilities — could include accrued expenses, customer deposits, or short-term intercompany payables</td></tr>
+        <tr class="heat-warn"><td></td><td><strong>Total Current Liabilities</strong></td><td><strong>110,678,891</strong></td><td>Current ratio only 1.88x — acceptable but tight given low cash balance</td></tr>
+        <tr><td></td><td><strong>TOTAL LIABILITIES</strong></td><td><strong>175,862,860</strong></td><td>33.9% of total assets</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The CBRIS charge register for Kosto Ltd shows no registered charges — the table is blank. This is a positive signal: there are no debentures, floating charges, or mortgage instruments registered against the company's assets as at 2 April 2026. The long-term borrowings of MUR 36.5M may be secured by charges registered elsewhere (e.g., with the bank directly under Land Registration Act provisions) or may be unsecured facilities. Kosto Holdings Limited and Kosto Steel and Mesh Ltd also show no registered charges.</p>
+
+  <div class="alert alert-ok">
+    <div class="alert-title">No Registered Charges on Any Entity</div>
+    All three CBRIS records show empty charge registers. While borrowings of MUR 36.5M exist at Kosto Ltd level, there are no registered debentures or fixed/floating charges against group assets — this is a clean encumbrance position and reduces restructuring or transaction risk.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">All ratios calculated from Kosto Ltd CBRIS financials (FY ended 30 June 2025). Benchmarks reference Mauritius manufacturing/distribution sector norms and comparable steel distributors. Colour key: Green = healthy, Amber = watch, Red = critical concern. No prior-year data available for trend comparison.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.88×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.5× – 2.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Adequate</span></span></div>
+      <span class="ratio-interpret">Current assets of MUR 208.5M cover current liabilities of MUR 110.7M by 1.88 times — technically adequate. However, MUR 118M of current assets are inventory (illiquid steel stock). Strip that out and the quick ratio deteriorates sharply. The 1.88× headline masks a cash-light operation.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio (Acid Test)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.81×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">(Current Assets − Inventories) / Current Liabilities = (208,504,711 − 118,314,941) / 110,678,891 = 0.81×. Below the 1.0× threshold — Kosto cannot cover its short-term obligations with liquid assets alone. It is dependent on inventory liquidation to meet current dues. In a steel price downturn this becomes a serious risk.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">6.57%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (steel distributor)</span><span class="ratio-val">8% – 18%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">43,404,225 / 661,098,808 = 6.57%. This is below the typical range for a steel distributor with value-added processing. Cut-and-bend and engineering services should command 12–18% GM. The fact that Kosto is at 6.57% suggests either: (a) its pricing model hasn't captured the full premium of its value-add, (b) raw material procurement is not optimised, or (c) the product mix skews heavily toward lower-margin bulk distribution.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">2.85%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">3% – 8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Marginal</span></span></div>
+      <span class="ratio-interpret">18,812,227 / 661,098,808 = 2.85%. Below the lower end of a healthy manufacturing range, and critically dependent on MUR 39.2M in Other Income. Absent Other Income, the net result would be a loss of approximately MUR 20.4M. The business is not yet self-sustaining on its core trading margin alone.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">3.63%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5% – 12%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Below Target</span></span></div>
+      <span class="ratio-interpret">18,812,227 / 518,120,675 = 3.63%. The MUR 518M asset base is not generating adequate returns. Significant capital is tied up in PPE (MUR 120M), non-current others (MUR 152M), and inventory (MUR 118M). Better asset utilisation — particularly the steel mill capacity and inventory turns — would materially lift ROA.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">5.50%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">10% – 20%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Below Target</span></span></div>
+      <span class="ratio-interpret">18,812,227 / 342,257,815 = 5.50%. The equity base of MUR 342M (including MUR 174M of reserves) is not generating competitive returns. This is the figure that matters to the ultimate owners (DIL Group / Desbro). Owners are currently earning barely above a bank deposit rate on their equity — a powerful motivation for operational improvement.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.51×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.3× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Conservative</span></span></div>
+      <span class="ratio-interpret">Total Liabilities / Total Equity = 175,862,860 / 342,257,815 = 0.51×. The balance sheet is conservatively leveraged. Long-term borrowings are only MUR 36.5M against equity of MUR 342M. The group has significant unused debt capacity — headroom for capex investment in the new Kosto Steel and Mesh entity without financial stress.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">3.16×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (comfortable)</span><span class="ratio-val">&gt; 3×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Adequate</span></span></div>
+      <span class="ratio-interpret">EBIT (PBT + Finance Costs) / Finance Costs = (21,302,675 + 6,749,694) / 6,749,694 = 3.16×. Just above the 3× comfort threshold. If Other Income were stripped from EBIT, coverage would fall to approximately 0.5× — deeply inadequate. Debt service is therefore contingent on Other Income continuing at current levels.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Days Sales Outstanding (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">41.7 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius B2B)</span><span class="ratio-val">30 – 45 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">(Trade Receivables / Revenue) × 365 = (75,547,332 / 661,098,808) × 365 = 41.7 days. Within benchmark but at the upper end. Construction clients typically have 45–90 day payment cycles tied to project drawdowns. Monitoring collection velocity — especially if Kosto Steel and Mesh absorbs more project-tied work — will be critical.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Days Payable Outstanding (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">44.1 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">(Trade Payables / COGS) × 365 = (74,664,869 / 617,694,583) × 365 = 44.1 days. Paying suppliers in 44 days while collecting from customers in 42 days — a near-zero net working capital cycle on the trading side. This is well-managed. Supplier relationships appear stable and creditworthy.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Days</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">69.9 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (steel)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">High</span></span></div>
+      <span class="ratio-interpret">(Inventories / COGS) × 365 = (118,314,941 / 617,694,583) × 365 = 69.9 days. Above the typical benchmark for steel distribution. Carrying 70 days of inventory in a commodity business exposes the company to steel price volatility. MUR 118M of stock is the single largest cash commitment in the business — optimising this alone could release MUR 20–35M in working capital.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.28×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.2× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Low End</span></span></div>
+      <span class="ratio-interpret">Revenue / Total Assets = 661,098,808 / 518,120,675 = 1.28×. At the low end of the acceptable range. The MUR 152M "other non-current assets" drag on asset efficiency — if these are intercompany loans or idle assets, restructuring them could meaningfully improve asset turns.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. Gross Margin at 6.57%:</strong> On MUR 661M of revenue, every 1 percentage point improvement in gross margin generates MUR 6.6M of additional gross profit — equivalent to 35% of total net profit. Moving from 6.57% to 9% (the lower end of a well-managed steel processor) would add approximately MUR 15.8M to the bottom line, nearly doubling net profit. This is achievable through pricing discipline on cut-and-bend (where value-add is highest), better procurement terms on raw steel, and product mix management. <strong>2. Inventory Days at 69.9 days:</strong> Reducing stock days from 70 to 50 would release approximately MUR 34M in working capital — more than twice the current cash balance. In a business running a quick ratio below 1.0×, this is not a nice-to-have; it is a liquidity imperative.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Kosto operates across three market segments — steel manufacturing, construction materials distribution, and cut-and-bend engineering services — with a confirmed dominant position in rebar and cut-and-bend on the island.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Rebar Manufacturing &amp; Distribution</h4>
+        <div class="ec-sub">Core Segment · Highest Revenue</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv ok">#1 in Mauritius</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Imports (China, India, Turkey)</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Local mill + stock availability</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Global steel price volatility</span></div>
+        <p style="font-size:12px;color:#4e6a85;padding-top:8px;line-height:1.55">Kosto's steel mill and warehousing at Plaine Lauzun provide speed-to-site and technical consistency advantages over pure importers. The Mauritius government's construction pipeline (social housing, roads, infrastructure) anchors demand. Key competitors are importers — Steel Plus Ltd and direct Chinese-origin shipments to large contractors.</p>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Cut &amp; Bend / Engineering Services</h4>
+        <div class="ec-sub">Value-Add Segment · Highest Margin</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv ok">Only provider w/ eng. team</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Manual bending contractors</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">ISO-certified + BBS capability</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Underpenetrated — margins thin</span></div>
+        <p style="font-size:12px;color:#4e6a85;padding-top:8px;line-height:1.55">Kosto claims to be the only rebar distributor with a permanent resident civil and industrial engineering team — a genuine differentiator that should command premium margins. The 6.57% gross margin suggests this premium is not yet being fully captured in pricing. This is the highest-upside segment for EOS-style margin improvement work.</p>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Construction Materials Distribution</h4>
+        <div class="ec-sub">Ancillary Segment · Volume Play</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Products</span><span class="mv">Mesh, wood, pipes, nails, profiles</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Happy World, Toolbox, Hardware stores</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">One-stop construction supply</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv">Low switching cost for buyers</span></div>
+        <p style="font-size:12px;color:#4e6a85;padding-top:8px;line-height:1.55">The broader distribution portfolio (shuttering boards, pine wood, binding wire, galvanised pipes) allows Kosto to serve as a one-stop supplier for construction sites — reducing procurement friction for contractors. However, these commodity products carry lower margins and face more intense competition from hardware distributors and importers.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. The Steel Mill:</strong> Owning and operating a rolling mill at Plaine Lauzun is a near-irreplaceable competitive moat in Mauritius. The capital required to replicate this asset (MUR 120M+ in PP&amp;E alone) and the operating expertise required to run it safely and to ISO standards create a durable entry barrier. No other domestically-owned rebar manufacturer is confirmed active on the island.</p>
+  <p class="body-text"><strong>2. Port-Adjacent Location:</strong> Plaine Lauzun Industrial Estate sits directly adjacent to Port Louis, Mauritius's only commercial port. For a business that imports raw steel coil or billet and distributes finished steel to island-wide construction sites, this location minimises inbound logistics cost and maximises outbound speed. This is a structural — not just operational — advantage.</p>
+  <p class="body-text"><strong>3. ISO Triple Certification &amp; Engineering Capability:</strong> ISO 9001 (Quality), ISO 14001 (Environment), and OHSAS 18001 (Safety) certifications, combined with the only permanent resident engineering team in the rebar segment, make Kosto the credible specification-grade supplier for large government infrastructure projects, hotel and resort construction, and international developers who require traceable, certified materials. This is increasingly non-negotiable for large project tenders.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Mauritius construction pipeline remains active:</strong> Government social housing programmes, Smart City developments, and tourism infrastructure all drive sustained rebar demand. Kosto is structurally positioned to capture this as the domestic producer.</li>
+    <li><strong>Global steel price volatility is a double-edged force:</strong> When imported steel prices rise, Kosto's domestic production becomes more competitive on price. When global prices fall, imported alternatives undercut Kosto's mill-cost economics. The 70-day inventory holding makes the company especially exposed to sudden price drops.</li>
+    <li><strong>ESG and certification requirements are rising:</strong> Large developers and international contractors increasingly require certified supply chains. Kosto's ISO credentials and engineering documentation capability position it well ahead of non-certified competitors for this growing segment.</li>
+    <li><strong>Galvanizing demand is growing:</strong> The registration of galvanizing as a core activity for Kosto Steel and Mesh Ltd (January 2026) signals the group sees an opportunity in galvanized steel products — driven by coastal construction, utility infrastructure, and the resort sector where corrosion resistance is critical.</li>
+    <li><strong>Workforce costs are rising in Mauritius:</strong> Minimum wage increases and skilled labour competition from the hotel and financial services sectors put upward pressure on the MUR 51.4M administration cost line. This structural cost headwind reinforces the urgency of productivity improvement.</li>
+    <li><strong>Restructuring risk during transition:</strong> The incorporation of Kosto Steel and Mesh Ltd creates short-term organisational complexity — two legal entities with overlapping activities, shared directors, and likely shared operational teams. Without clarity on roles and accountability, this transition period carries execution risk.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Critical Observation — Kosto's Margin Problem is a Pricing and Mix Problem, Not a Volume Problem</div>
+    Kosto Ltd is generating MUR 661M in revenue — a substantial market share on an island with a construction materials market estimated in the low billions of MUR annually. The problem is not that the company is too small or lacks customers. The problem is that at 6.57% gross margin, the value-added services (cut-and-bend, engineering, BBS creation) are being priced at or near commodity rates. The company has built an engineering capability worth a 15–20% premium; the financials suggest it is charging a 6–8% premium. Repositioning the pricing strategy on value-add services is the single highest-return operational intervention available.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">MUR 661M in revenue and MUR 518M in total assets places Kosto Ltd in the upper band of Mauritius SMEs — and likely employs 50–150 people at the Plaine Lauzun site (consistent with "employing 10 persons or more" classification and the three-shift nature of a steel mill operation). A three-entity group structure (Holdings, Ltd, Steel &amp; Mesh) with 5 directors across entities, a professional management company (Stonehage Fleming), an external auditor (BDO), and a multi-country ownership chain is precisely the complexity profile EOS is built to untangle. Strongly EOS-appropriate on size and structural complexity.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The January 2026 incorporation of Kosto Steel and Mesh Ltd — three months before this report — is the clearest available signal of leadership actively rethinking how the business is structured. Leaders who restructure are leaders who are open to change. Gary Walton (MD, Kosto Holdings, LinkedIn-confirmed) is an accessible, named executive with a public professional profile — reachable and likely accustomed to working with external advisors (Stonehage Fleming, BDO). The multi-director, multi-entity structure does however introduce the risk of decision-by-committee dynamics that can slow EOS adoption. Score is mid because openness is signalled but not confirmed through direct dialogue.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">Every financial signal in this analysis points to a business that is generating significant revenue but failing to convert it into adequate profit — the classic "scaling without systems" pain point EOS addresses. A 6.57% gross margin on MUR 661M, administration costs exceeding gross profit, 70-day inventory days, and a quick ratio below 1.0× are not problems of strategy — they are problems of operational discipline, accountability, and prioritisation. The fact that the group is simultaneously managing a corporate restructure (new entity, new activities) while running a live steel mill compounds the complexity. This is exactly the profile of a business where the owners and MD are working in the business and need a system to help them work on it.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">ISO 9001 certification confirms Kosto has documented quality management processes — a meaningful foundation. However, ISO compliance and EOS are different animals: ISO documents what you do; EOS clarifies why, who owns it, and what the priorities are. The MUR 11.7M in intangible assets likely includes ERP or production management software. The MUR 152M "other non-current assets" line and the MUR 39.2M "other income" line — both unexplained in public disclosures — suggest financial reporting complexity that good management information systems should be resolving. Mid score: systems exist but likely siloed and not driving the accountability and decision-making rhythm EOS enables.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The presence of a permanent resident engineering team alongside production workers and commercial staff implies a multi-disciplinary culture — engineers, machinists, sales, logistics. This diversity is both an EOS opportunity (the Accountability Chart will clarify which seat each role belongs in) and a challenge (professional engineers and blue-collar production workers require different management rhythms). The South African / international ownership context (Desbro lineage) may bring a transactional, metrics-driven culture that is receptive to Scorecard and Rocks. No adverse employment or cultural indicators found in public data. Culture rated moderate-positive.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Five directors across three entities with an international parent (DIL Group / Desbro) creates a decision-making chain that is almost certainly multi-layered and slower than optimal for a fast-moving steel market. Pricing decisions (particularly on cut-and-bend contracts), procurement timing (buying steel when global prices dip), and the current restructure all require fast, clear decisions. The fact that Gary Walton holds the MD title at Holdings but Jacobus Naude is the operational director at both Kosto Ltd and Kosto Steel and Mesh Ltd suggests a possible split between strategic and operational authority. EOS's V/TO, Accountability Chart, and Level 10 Meeting cadence would directly address this decision latency problem.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The January 2026 creation of Kosto Steel and Mesh Ltd is either a sign of a very clear vision (we know exactly what we want to do with the manufacturing arm — separate it, capitalise it, grow it) or a sign of strategy being driven by legal/tax structure rather than a coherent 10-year direction. Without a V/TO it is impossible to know which. The existence of the kostoholdings.com website with a broader international positioning narrative ("over 20 years of experience, international construction materials firm, projects worldwide") suggests the holding-level leadership has an international vision — but whether this is shared, communicated, and owned at the Mauritius operational level is unknown. Rated moderate: vision exists at ownership level, clarity at operating level is uncertain.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No data is available on meeting culture from public records — this is expected. However, a multi-entity group with directors attending both Holdings and operating company boards, combined with an external management company (Stonehage Fleming), strongly suggests that governance meetings (AGMs, board meetings) dominate the formal meeting calendar rather than operational rhythm meetings. For a steel mill running complex production schedules, cut-and-bend order books, and procurement cycles, the absence of a structured weekly leadership meeting cadence (Level 10) is a predictable gap. Rated low as a prior probability — this is the first EOS tool that typically delivers rapid visible value to manufacturing operations.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.8</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>The Kosto Group is an excellent EOS candidate on the fundamentals that matter most: it is complex enough to need a system, profitable enough to afford one, and in active transition in a way that makes leadership receptive to structure. The key gating factor is the dual ownership structure — Kosto Ltd sits under DIL Group / Desbro (an international parent) while Kosto Steel and Mesh Ltd sits under Kosto Holdings (a local GBC). EOS works best when the ultimate decision-makers are in the room. The entry conversation must quickly identify who the real decision authority is — Walton (Holdings MD), Jacobus Naude (operational director), or the Desbro ownership group — and whether EOS would be implemented at Kosto Ltd only, or across the new group structure. If the answer is Kosto Ltd + Kosto Steel and Mesh as a combined operating entity, the suitability score rises to 8.0+.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for the Kosto Group</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p><strong>Most urgent tool for this group.</strong> Five directors across three entities, two family-linked Naude directors, one Holdings MD, and an external management company all touch the business. Until every function — production, procurement, sales, engineering, finance, safety — has a single named owner sitting in a defined seat, no improvement initiative will stick. The January 2026 restructure makes this even more urgent: who is accountable for Kosto Steel and Mesh Ltd's ramp-up?</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>A business generating MUR 661M in revenue with a 6.57% gross margin needs 5–10 weekly leading indicators on the management dashboard — not quarterly CBRIS financials. Gross margin by product line, cut-and-bend order book, inventory days, DSO, and steel mill uptime are the numbers that, tracked weekly, would transform operational decision-making. <strong>The current data shows management flying on lagging indicators alone.</strong></p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>The group is simultaneously managing a corporate restructure (new entity), a margin problem, an inventory excess, and a pricing opportunity in cut-and-bend. Without Rocks, all of these compete for leadership attention and none gets resolved. The first quarter's Rocks should be: (1) price increase on cut-and-bend, (2) inventory reduction plan, (3) Accountability Chart for the new entity. Three things. Ninety days. One owner per Rock.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO (Vision/Traction Organiser)</h4>
+      <p>The creation of Kosto Steel and Mesh Ltd signals a strategic inflection point. Is the 10-year goal to be the manufacturing hub for the Desbro network's entire Southern African steel needs? To become an independent Mauritius-based steel company? To develop into the Indian Ocean region's galvanizing centre? <strong>The January 2026 restructure is a strategy conversation waiting for a V/TO to give it a frame.</strong></p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>A steel mill with cut-and-bend operations, procurement, sales, and engineering running simultaneously needs a weekly 90-minute leadership rhythm. The current governance structure (board meetings, annual general meetings) is the wrong cadence for running an operational business. Introducing L10 at the Kosto Ltd / Kosto Steel and Mesh operational level — chaired by Jacobus Naude as the on-the-ground leader — would likely be the fastest visible ROI of any EOS tool.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>The "Other Income" of MUR 39.2M — a line that is larger than gross profit and completely unexplained — is exactly the kind of chronic issue that sits on a management team's unspoken list for years without resolution. The gross margin problem, the dual ownership ambiguity, the pricing of cut-and-bend services — these are Issues. <strong>A business that has not solved its gross margin problem despite nearly 20 years of operation likely lacks a formal mechanism for identifying, discussing, and solving systemic issues.</strong> IDS is the fix.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total: four financial/operational (sequenced before EOS) and four EOS-specific. The financial recommendations are pre-conditions that demonstrate analytical credibility before EOS is introduced. Sequenced from immediate to 90-day horizon.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Implement Tiered Pricing on Cut-and-Bend to Capture the Engineering Premium</h4>
+      <p>Kosto's gross margin of 6.57% is inconsistent with the level of engineering service the company provides. Cut-and-bend with BBS creation and engineering sign-off should carry a 15–20% margin — not a 6% distribution margin. Owner: Jacobus Naude (operational) + sales lead. Target: minimum 1.5pp gross margin improvement within 12 months = MUR +9.9M gross profit per annum. Success metric: track gross margin by product line weekly on the Scorecard.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Reduce Inventory Days from 70 to 50 to Release MUR 34M in Working Capital</h4>
+      <p>Carrying 70 days of steel inventory is the primary driver of the sub-1.0× quick ratio. Target: 50 days by reducing standing stock levels through demand-led ordering, improved forecasting, and tighter reorder parameters. At current COGS run-rate, each 10-day reduction in inventory days releases approximately MUR 16.9M in cash. A 20-day reduction = MUR 33.8M freed. Owner: procurement manager / Jacobus Naude. No new capital required — this is a process discipline change.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Clarify and Restructure the "Other Income" of MUR 39.2M</h4>
+      <p>The MUR 39.2M in Other Income is larger than gross profit and is the primary driver of profitability. This line must be understood in full before any strategic or EOS conversation: is it recurring (intra-group management fees, long-term contracts)? Is it non-recurring (asset revaluation, one-time gains)? Is it structurally at risk as the Kosto group restructures into separate entities? If it is intra-group and may shift to Kosto Steel and Mesh Ltd, Kosto Ltd's standalone P&amp;L becomes loss-making. Owner: Gary Walton / CFO / BDO &amp; Co. Deadline: before any EOS engagement.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Develop a Capitalisation and Business Plan for Kosto Steel and Mesh Ltd</h4>
+      <p>The new entity (C229960) was incorporated with nominal capital of MUR 100 and has been operating (or preparing to operate) for 87 days with no financials, no disclosed capital structure, and no public business plan. Before Kosto Steel and Mesh takes on operational activity — galvanizing plant, forging, steel wholesale — it requires a defined capital injection (likely from Kosto Holdings), a board-approved business plan, and clarity on its relationship with Kosto Ltd (is it a competitor, a subsidiary supplier, or a replacement?). Owner: Gary Walton + Stonehage Fleming. Deadline: Q2 2026.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Focus Day: Engage Gary Walton and Jacobus Naude as the Leadership Team</h4>
+      <p>The entry point is Gary Walton (MD, Kosto Holdings — gary.walton@kostoholdings.com) with Jacobus Naude as the operational co-lead. The opening conversation should centre on the January 2026 restructure — what is the vision for Kosto Steel and Mesh, and how does the group intend to manage the transition? This naturally opens the V/TO and Accountability Chart conversation. Propose a Focus Day as a structured way to answer the question: "Do we all want the same things for the next 10 years — and do we have the right people in the right seats to get there?"</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the Accountability Chart Across Both Operating Entities</h4>
+      <p>The first EOS deliverable after the Focus Day should be a combined Accountability Chart covering both Kosto Ltd and Kosto Steel and Mesh Ltd as a single operating team. Key seats to define: Operations/Production (steel mill + cut-and-bend), Procurement &amp; Supply Chain, Sales &amp; Commercial, Engineering &amp; Technical, Finance, and Safety &amp; Compliance. Jacobus Naude almost certainly belongs in the Integrator seat. The question of whether Walton is the Visionary — and whether the Desbro / DIL parent has a seat on the chart — must be resolved early. Deliverable: Draft Accountability Chart within 30 days of Focus Day.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Set 3 Rocks for Q3 2026: Margin, Inventory, and Entity Clarity</h4>
+      <p>The first quarter's company Rocks should be precisely three: (1) Implement tiered pricing on cut-and-bend — owner: Commercial Director / Jacobus Naude; measurable: gross margin tracked weekly by product line. (2) Reduce inventory from 70 to 60 days by 30 September 2026 — owner: Procurement; measurable: inventory days reported on Scorecard. (3) Complete Kosto Steel and Mesh Ltd business plan and present to board — owner: Gary Walton; measurable: board-approved document by 30 June 2026. Three Rocks. One owner each. Ninety days.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>V/TO Strategic Question: Is Kosto the Manufacturing Hub for the Indian Ocean Region?</h4>
+      <p>The one strategic question the V/TO should force an answer to: does Kosto Holdings intend Mauritius to be the manufacturing and processing hub for the broader Indian Ocean / Southern African Kosto network — or is it a standalone Mauritius operation? The galvanizing capability being built into Kosto Steel and Mesh Ltd, the port-adjacent location, and the Southern Africa international structure all point toward a potential regional hub strategy. If that is the 10-year vision, the 3-year picture and annual Rocks look very different from those of a domestically-focused company. This is the question that turns a sales conversation into a partnership conversation.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Kosto Group is a structurally dominant, asset-rich, technically sophisticated steel operation that has not yet learned how to convert its market position into commensurate profit. It generates MUR 661M in revenue from a near-monopoly position in Mauritian rebar but earns a 6.57% gross margin that leaves it financially fragile. The January 2026 restructure signals a leadership team that knows change is needed and is taking action — but doing so without the systems, priorities, and accountability framework to execute cleanly. This is an EOS story: the business is good, the market is good, the people are capable — what is missing is the operating system. The real opportunity is not the immediate consulting engagement; it is becoming the system that helps Kosto Holdings execute its international restructure with discipline.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Initial outreach to Gary Walton at gary.walton@kostoholdings.com — open on the January 2026 restructure and the V/TO question. Week 1–2.</li>
+        <li><span class="sig-num">02</span>Financial conversation opener: present the gross margin and inventory analysis — demonstrate that LMA has done its homework and understands the specific financial tension. Week 2–3.</li>
+        <li><span class="sig-num">03</span>Propose Focus Day: Walton, Jacobus Naude, and the operational leadership team. Goal: align on 10-year vision and map the current Accountability Chart. Week 3–6.</li>
+        <li><span class="sig-num">04</span>Post-Focus Day: deliver draft Accountability Chart, V/TO draft, and first-quarter Rocks. Begin Level 10 Meeting cadence. Month 2.</li>
+        <li><span class="sig-num">05</span>Full EOS implementation across Kosto Ltd + Kosto Steel and Mesh as a single operating team — with a clear escalation protocol to the Kosto Holdings / DIL Group ownership layer for strategic decisions above the operating team's authority. Month 3 onwards.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Kosto Group — Comprehensive Company Analysis &amp; EOS Assessment · 2 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (02/04/2026) · kosto.mu · kostoholdings.com · LinkedIn (Gary Walton, Kosto Ltd) · ZoomInfo · Lusha · Web research (April 2026)</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
