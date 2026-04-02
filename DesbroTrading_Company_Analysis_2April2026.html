@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desbro Trading Ltd — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 120px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Industrial Chemicals · Agro · Plastics Distribution</span>
+    <span class="badge badge-type">Private Company · Domestic · Sennik Family</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">2 April 2026</span>
+  </div>
+  <h1>Desbro Trading Ltd (DTL):<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Desbro Trading Limited · File No. C1638 · BRN C06001638 · Company intelligence · Financial ratios · EOS assessment · La Tour Koenig, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 375M</div>
+      <div class="stat-delta">Year ended 15 Sep 2024 · Source: CBRIS</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit After Tax</div>
+      <div class="stat-value amber">MUR 4.2M</div>
+      <div class="stat-delta">1.12% net margin · Thin but positive</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.4 / 10</div>
+      <div class="stat-delta">Moderate-High · Family access is gating factor</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Flag</div>
+      <div class="stat-value red">DSO 81 Days</div>
+      <div class="stat-delta">Debtors at MUR 83.8M · Cash cycle at risk</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>Desbro Trading Ltd (DTL) — Company Analysis &amp; EOS Assessment · 2 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- TAB 01 — EXECUTIVE SUMMARY -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">Desbro Trading Ltd is a 58-year-old Sennik family-owned chemical and agro distribution business generating MUR 375M in revenue with a wafer-thin 1.1% net margin, zero bank debt, and a debtor book of MUR 83.8M that is the single greatest threat to its financial health — and the clearest EOS pain point to enter on.</p>
+
+  <p class="body-text">Desbro Trading Limited (DTL), incorporated on 31 January 1968 as "Desbro (Trading) Limited" (File No. C1638, BRN C06001638), is a Mauritius-registered importer, stockist, and distributor of industrial chemicals, plastic raw materials, fertilizers, solvents, agrochemicals, and animal feeds. Its operational premises are at Satnam Road, Lot 23F/5, Industrial Zone, La Tour Koenig, Mauritius. The company serves over 800 clients across the Indian Ocean region and distributes more than 200 products. It achieved ISO 9001 certification in January 2024. Annual registration fees are current to 2026 and the company is fully compliant with no charges, objections, or winding-up proceedings registered.</p>
+
+  <p class="body-text">A critical ownership correction is required against pre-CBRIS intelligence: Desbro Trading Limited is owned and controlled by the <strong>Sennik family</strong>, not the Agarwal family. Shareholders on record are Sennik Abhijeet (30%), Joya Bhandari (30%), Sennik Kapil (30%), and DRS Holdings Limited (10%). The board of directors comprises Sennik Abhijeet (director since 2006), Sennik Kapil (since 2018), Garsee Gopeechand (since 2014), and Desmarais Gaston Francois (since 2022). Anisha Sennik — who holds the role of Procurement Manager in the operational management team — is an Alternate Director, confirming direct family involvement at every level. Palash Agarwal's title of "Executive Director" on ZoomInfo does not appear in the CBRIS register and may reflect a commercial or operational role title rather than a formal directorship. The Sennik family is the governing family of record.</p>
+
+  <p class="body-text">Financially, FY2024 (year ended 15 September 2024) shows revenue of MUR 375.5M, gross profit of MUR 56.6M (15.1% margin), and net profit after tax of MUR 4.2M (1.12% margin). The company carries zero long-term bank debt — a remarkable structural strength. However, debtor days of 81 days on a MUR 83.8M receivables book, combined with MUR 89.2M in trade payables (DPO 102 days), reveals a working capital model that is functionally financed by suppliers — a fragile arrangement. Finance costs of MUR 5.96M with no borrowings on the balance sheet suggest significant letter-of-credit or related-party charges. EOS suitability is rated 6.4/10: the business profile fits the EOS sweet spot well, but the right entry point is Sennik Abhijeet or Sennik Kapil — the family directors — not the professional GM.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — 81-Day Debtors in a 102-Day Supplier-Financed Model</div>
+    DTL's working capital structure is a tightly stretched supplier-financing model: it pays its overseas suppliers in 102 days while collecting from its 800+ Mauritius clients in 81 days — a 21-day gap that is manageable only because of the MUR 18.3M cash position and zero bank borrowings. Any deterioration in debtor collection — a single large client going slow, a bad debt write-off, or a FX-driven inventory revaluation — would trigger a cash crisis in a business with no bank credit lines as backstop. The MUR 5.96M finance cost with zero formal debt is the telltale: the company is using LC facilities and/or related-party loans (booked under "Others" in non-current liabilities at MUR 37.6M) as its primary financing mechanism. This is the most important financial risk in the business and the most compelling EOS entry conversation: "Who owns the number that says how many days your clients owe you money — and what happens to that number each week?"
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>MUR 375M revenue base with 800+ client relationships</strong> built over 58 years. Zero long-term bank debt — a clean, unencumbered balance sheet. ISO 9001 certified January 2024. 200+ product SKUs across chemicals, plastics, agro, and animal feed. MUR 154.6M retained earnings — the family has reinvested profits rather than extracting them. Part of the Desbro Group with intra-group demand from STR and MRC.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>DSO of 81 days on MUR 83.8M receivables — the single biggest cash risk.</strong> Net margin of 1.12% leaves almost no buffer for bad debts or revenue softness. Finance costs of MUR 5.96M with zero formal borrowings signals hidden LC/related-party charges. Admin costs of MUR 49.6M consume 88% of gross profit. DPO of 102 days means supplier patience is the de facto credit facility.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>ISO 9001 certification in January 2024 is the clearest leadership systems signal.</strong> The management team structure (GM, Chief Accountant of 28 years, Procurement Manager who is also an Alternate Director, Marketing Manager) is textbook EOS-ready. Admin costs at 13.2% of revenue with zero distribution costs suggests a team doing everything under one overhead umbrella — the Accountability Chart will immediately surface role overlap and missing ownership.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- TAB 02 — COMPANY OVERVIEW -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">DTL is a Sennik family-controlled distribution business with 58 years of operating history, zero bank debt, a deeply embedded management team, and a governance structure that places family members in both the boardroom and the operational leadership team simultaneously.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Desbro Trading Limited was incorporated on <strong>31 January 1968</strong> — 58 years ago — originally under the name "Desbro (Trading) Limited". File No.: <strong>C1638</strong>. Business Registration No.: <strong>C06001638</strong>. Status: Live. Category: Domestic Private Company. Registered office: Bell Village Plaine Lauzun, Mauritius (effective 22/11/2007). Operational address: Satnam Road, Lot No. 23F/5, Industrial Zone, La Tour Koenig, Mauritius. Phone: +230 260 6666. Email: dtl.mru@dtl.mu.</p>
+  <p class="body-text">Stated capital: <strong>MUR 240,000</strong> (2,400 ordinary shares at MUR 100 par value, fully paid). Auditor: <strong>Nexia (Mauritius) Limited</strong>, 5th Floor, C&amp;R Court, 49 Labourdonnais Street, Port Louis (appointed 31 July 2015). Secretary: <strong>ST James Secretaries Limited</strong>, 49 Labourdonnais Street, 5th Floor, C&amp;R Court, Port Louis (appointed 1 July 2015). Annual return: filed to 27/01/2025 (AR date 15/12/2024 — compliant). Financial statements: filed for FY2022, FY2023, FY2024 — fully compliant. No charges registered. No winding-up proceedings. Annual registration fee paid 2026.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Sennik Abhijeet</h4>
+        <div class="ec-sub">30% — Director since 2006</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">720 ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Shareholding</span><span class="mv">30%</span></div>
+        <div class="ec-metric"><span class="mk">Board role</span><span class="mv">Director (since 04/09/2006)</span></div>
+        <div class="ec-metric"><span class="mk">Also director of</span><span class="mv">Plastic Pipes &amp; Products Ltd</span></div>
+        <div class="ec-metric"><span class="mk">Service address</span><span class="mv">Bell Village, Port Louis</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Sennik Kapil</h4>
+        <div class="ec-sub">30% — Director since 2018</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">720 ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Shareholding</span><span class="mv">30%</span></div>
+        <div class="ec-metric"><span class="mk">Board role</span><span class="mv">Director (since 31/08/2018)</span></div>
+        <div class="ec-metric"><span class="mk">Also director of</span><span class="mv">Plastic Pipes &amp; Products Ltd</span></div>
+        <div class="ec-metric"><span class="mk">Service address</span><span class="mv">Bell Village, Plaine Lauzun</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Joya Bhandari</h4>
+        <div class="ec-sub">30% — Non-director shareholder</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">720 ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Shareholding</span><span class="mv">30%</span></div>
+        <div class="ec-metric"><span class="mk">Board role</span><span class="mv">Not listed as director</span></div>
+        <div class="ec-metric"><span class="mk">Relationship</span><span class="mv warn">Likely family (Bhandari)</span></div>
+        <div class="ec-metric"><span class="mk">Note</span><span class="mv">Silent / beneficial owner</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">DRS Holdings Limited — 10% Minority</div>
+    DRS Holdings Limited holds 240 ordinary shares (10%) in Desbro Trading Limited. This entity is likely a Sennik family holding vehicle. The name "DRS" may be an acronym of family initials. The identity and beneficial owner of DRS Holdings should be confirmed via a separate CBRIS search on that entity. No director of DTL is identified as the DRS Holdings principal in the available CBRIS data.
+  </div>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Intelligence Correction — Palash Agarwal Not in CBRIS</div>
+    Pre-CBRIS intelligence identified Palash Agarwal as "Executive Director" at DTL (ZoomInfo). The CBRIS extract contains no record of Palash Agarwal as a director, alternate director, or secretary of Desbro Trading Limited. The controlling family is the Sennik family. Agarwal's role — if current — is likely a commercial or operational title (e.g. sales director, country manager, or a title used externally) rather than a formal directorship under the Companies Act. Thierry should clarify Agarwal's actual relationship to the business in the first discovery conversation.
+  </div>
+
+  <h3 class="subsection-title">Group Structure</h3>
+  <p class="body-text">Desbro Trading Limited operates within the Desbro Group — a multi-entity conglomerate with roots in East African bicycle trading in the early 1900s, which established manufacturing operations in Mauritius from 1972. The Mauritius operations are clustered under a shared address at La Tour Koenig Industrial Zone. The CBRIS extract for Plastic Pipes &amp; Products Ltd (File No. C1841, incorporated 2 September 1970) confirms that entity is 100% owned by P.P.P Holdings Ltd and has the Sennik family as its directors (Sennik Abhijeet and Sennik Subash Chandra). This confirms the group ownership cascade: the Sennik family → P.P.P Holdings Ltd → Plastic Pipes &amp; Products Ltd (a manufacturing entity) and directly → Desbro Trading Limited (via personal shareholding). STR Marketing Ltée and MRC Wire Products Ltd are additional group entities operating at La Tour Koenig, serving the steel, wire, and piping market segments.</p>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Sennik Abhijeet — Director (30% Owner)</h4>
+      <p><strong>Primary family principal.</strong> Director since 04/09/2006. Address: Bell Village, Port Louis. Also director of Plastic Pipes &amp; Products Ltd (the group manufacturing entity). As the longest-serving director and equal largest shareholder, Sennik Abhijeet is the most likely Visionary/EOS champion if EOS is to be adopted at DTL. He is the right primary target for the Focus Day conversation.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Sennik Kapil — Director (30% Owner)</h4>
+      <p><strong>Second-generation family principal.</strong> Director since 31/08/2018. Address: Bell Village, Plaine Lauzun. Also director of Plastic Pipes &amp; Products Ltd. Joined the board relatively recently (2018), suggesting a generation transition may be underway or planned. Co-equal shareholder with Abhijeet. Likely involved in strategic direction alongside his co-director.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Sennik Anisha — Alternate Director &amp; Procurement Manager</h4>
+      <p><strong>Family member in dual operational/governance role.</strong> Alternate Director since 31/08/2018. Also the Procurement Manager in the day-to-day management team (per dtl.mu), with tenure since 2010. Holds a postgraduate in Textile Design (NIFT/FIT New York) and B.Com (Hons) from University of New Delhi. Her dual role as Alternate Director and operational Procurement Manager is the clearest signal of how tightly the Sennik family is embedded in both governance and operations.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Sennik Leena — Alternate Director</h4>
+      <p>Alternate Director since 31/08/2018. Not listed in the public-facing management team on dtl.mu. Likely a family member serving a governance role. Appointed simultaneously with Sennik Kapil and Sennik Anisha in August 2018 — suggesting a coordinated family governance restructuring at that time.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Garsee Gopeechand — Independent Director</h4>
+      <p>Director since 02/09/2014. Address: Bell Village, Port Louis. Likely an independent or non-family director providing governance oversight or advisory function. The Gopeechand surname is not shared with the Sennik family, suggesting this is an external board appointment — a positive corporate governance signal.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Desmarais Gaston Francois — Director</h4>
+      <p>Director since 20/12/2022 — the most recently appointed director. Address: Bell Village, Plaine Lauzun. The French surname suggests either a Franco-Mauritian board addition or a new strategic advisor. Appointed in December 2022 — notable timing that may signal a strategic shift, new partnership, or governance strengthening exercise at that point.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Professional Management Team (Operational)</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Naresh Nama — General Manager</h4>
+      <p><strong>With DTL since 2013.</strong> Chemistry degree, Mumbai University. 30+ years in chemicals and agrochemicals, including India, Kenya, and running his own business for 5 years. Manages all strategic projects and day-to-day operations. The professional integrator between the Sennik family directors and the operational team. Email domain @dtl.mu.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Veena Veloopillay — Chief Accountant</h4>
+      <p><strong>With DTL since 1997 — 28 years.</strong> ACCA Fellow. Manages all daily and long-term financial operations. Holds the full institutional financial memory of the company. The MUR 375M revenue and all filed accounts flow through her function. Key contact for any financial diligence conversation.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Ryan Curier — Marketing Manager</h4>
+      <p>Background in retail, B2B distribution, agricultural solutions, cleaning equipment, and industrial products. Describes himself as focused on "pragmatic execution and collaborative teamwork." Likely the commercial growth driver alongside the GM.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text"><strong>Chemicals &amp; Plastics Division:</strong> Industrial chemicals (water treatment: aluminium sulfate, calcium hypochlorite, ferric chloride, sodium hypochlorite; cleaning: caustic soda, LABSA, surfactants; processing: hydrochloric acid, hydrogen peroxide, glacial acetic acid, perchloroethylene; minerals: calcium carbonate, dolomite, talc, quartz, hydrated lime, pumice stone); Textile auxiliaries; Food grade chemicals; Feed additives; Solvents; Plastic raw materials (HDPE blow/film/injection, LLDPE, LDPE roto/film, PE-100 black/natural, PVC compound, PVC resin). Key strategic partners: Haifa, CHT, Chlorchem, Velvit. 441+ import shipments from 59 suppliers across India, Vietnam, and Turkey.</p>
+  <p class="body-text"><strong>Agro Division:</strong> Fertilizers (NPK formulations, potassium sulphate, fertigation solutions via Haifa partnership); Agrochemicals; Animal feeds (soya bean meal and husk); Greenhouses and accessories including drip irrigation systems. Links DTL to Mauritius sugar, horticulture, and aquaculture sectors.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Primary market: Mauritius. 800+ domestic B2B clients across chemical processing, plastics manufacturing, textiles, agriculture, water treatment, and food production. Group footprint extends to Réunion, Madagascar, Seychelles, South Africa, Tanzania, Kenya, Uganda, UAE, and India (600+ group employees across 8 countries). DTL entity trade data shows 441 import shipments and 1 export shipment (November 2023 to Vietnam) — confirming DTL is a Mauritius distribution entity within a regional group, not itself a regional distributor.</p>
+</div>
+</div>
+
+
+<!-- TAB 03 — FINANCIAL PERFORMANCE -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS statutory accounts (Registrar of Companies, Mauritius), FY ended 15 September 2024, Mauritius Rupee, Unit: 1 (exact figures). Audited by Nexia (Mauritius) Limited. No prior-year comparative is provided in the CBRIS summary format.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    The CBRIS summary provides a single-year P&amp;L and balance sheet as filed at the Registrar of Companies. No prior-year comparative figures are available in this format. Several line items show zero (Distribution Costs, Other Expenses) which may reflect reclassification into Administration Costs rather than genuine absence of those costs. Finance Costs of MUR 5.96M with zero formal borrowings on the balance sheet requires investigation — these likely represent letters of credit charges, bank guarantee fees, or related-party interest. The MUR 37.6M "Others" in non-current liabilities is a significant unexplained balance that may represent a related-party loan.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY ended 15 September 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>375,457,562</td><td>100.0%</td><td>MUR 375.5M — substantial for a Mauritius chemical distributor; approx. USD 8.3M at current rates</td></tr>
+        <tr><td>Cost of Sales</td><td>318,829,746</td><td>84.9%</td><td>Very high COGS ratio — consistent with commodity chemical distribution with thin per-unit margins</td></tr>
+        <tr class="heat-warn"><td>Gross Profit</td><td>56,627,816</td><td>15.1%</td><td>Below the 20–35% range for specialty distributors; reflects significant commodity chemical weighting in the product mix</td></tr>
+        <tr><td>Add: Other Income</td><td>4,666,541</td><td>1.2%</td><td>May include rebates from suppliers, rental income, or intra-group service fees — material at this margin level</td></tr>
+        <tr><td>Less: Distribution Costs</td><td>0</td><td>0.0%</td><td>Zero — likely reclassified into Administration Costs; La Tour Koenig warehouse costs are material</td></tr>
+        <tr class="heat-critical"><td>Less: Administration Costs</td><td>49,576,244</td><td>13.2%</td><td>Absorbs 87.6% of gross profit — the dominant cost driver; covers full management team, facility, admin, and likely some distribution costs</td></tr>
+        <tr><td>Less: Other Expenses</td><td>0</td><td>0.0%</td><td>Zero — likely bundled into Admin Costs in this filing format</td></tr>
+        <tr class="heat-warn"><td>Less: Finance Costs</td><td>5,963,462</td><td>1.6%</td><td>MUR 5.96M with zero formal borrowings — signals LC charges, bank guarantee fees, or related-party interest. Requires clarification</td></tr>
+        <tr><td>Profit Before Tax</td><td>5,754,651</td><td>1.53%</td><td>Thin but positive — the business is profitable at a basic level</td></tr>
+        <tr><td>Tax Expense</td><td>1,560,754</td><td>0.42%</td><td>Effective tax rate: 27.1% — above the standard 15% corporate rate, suggesting non-deductible expenses or prior-year adjustments</td></tr>
+        <tr class="heat-warn"><td><strong>Net Profit After Tax</strong></td><td><strong>4,193,897</strong></td><td><strong>1.12%</strong></td><td>MUR 4.2M PAT on MUR 375M revenue — profitable but extremely thin. One bad debt write-off of a major client could eliminate annual profit</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (15 September 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>107,177,659</td><td>MUR 107.2M — significant; likely the La Tour Koenig warehouse/facility owned outright, contributing to debt-free structure</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>169,724</td><td>Minimal — likely software or licences</td></tr>
+        <tr><td>Non-Current Assets</td><td>Others (Non-Current)</td><td>18,784,774</td><td>MUR 18.8M — likely deposits, prepayments, or related-party receivables. Clarification needed</td></tr>
+        <tr><td>Non-Current Assets</td><td><strong>Total NCA</strong></td><td><strong>126,132,157</strong></td><td>41.4% of total assets — asset-heavy for a distributor; driven by owned property</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Inventories</td><td>74,876,423</td><td>MUR 74.9M — 85.7 days of inventory; large stockist position across 200+ chemical SKUs. Slow-moving lines a risk</td></tr>
+        <tr class="heat-critical"><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>83,764,652</td><td>MUR 83.8M — the largest current asset at 81.4 debtor days. Critical cash flow risk with 800+ client relationships</td></tr>
+        <tr class="heat-ok"><td>Current Assets</td><td>Cash &amp; Cash Equivalents</td><td>18,346,954</td><td>MUR 18.3M — reasonable cash position; provides short-term buffer but not adequate to cover a major debtor default</td></tr>
+        <tr><td>Current Assets</td><td>Others</td><td>1,848,555</td><td>Prepayments or VAT receivable</td></tr>
+        <tr><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>178,836,584</strong></td><td>58.6% of total assets — current assets dominate the balance sheet</td></tr>
+        <tr><td></td><td><strong>TOTAL ASSETS</strong></td><td><strong>304,968,741</strong></td><td>MUR 305M total asset base</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital</td><td>240,000</td><td>MUR 240,000 stated capital — nominal; typical for a family business founded in 1968</td></tr>
+        <tr><td>Equity</td><td>Other Reserves</td><td>8,300,000</td><td>MUR 8.3M reserves</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Retained Earnings</td><td>154,643,025</td><td>MUR 154.6M — very strong retained earnings; 58 years of profit reinvested into the business rather than distributed. A remarkable sign of family discipline</td></tr>
+        <tr><td>Equity</td><td>Others</td><td>136,050</td><td>Minor balance</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>163,319,075</strong></td><td>53.5% equity ratio — majority equity financed. Exceptionally strong capital structure for a trading business</td></tr>
+        <tr class="heat-ok"><td>Non-Current Liabilities</td><td>Long-Term Borrowings</td><td>0</td><td>ZERO long-term bank debt — extraordinary for a MUR 375M distributor. The Sennik family has built this entirely on retained earnings and supplier credit</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Deferred Tax</td><td>457,342</td><td>Minor deferred tax liability</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Provisions</td><td>5,187,989</td><td>Likely staff gratuity/end-of-service provisions under Mauritius law</td></tr>
+        <tr class="heat-warn"><td>Non-Current Liabilities</td><td>Others (Non-Current)</td><td>37,554,428</td><td>MUR 37.6M unexplained — likely a related-party loan from the group or shareholders. This is the probable source of "Finance Costs" with zero formal bank debt</td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>89,192,013</td><td>MUR 89.2M — 102 days DPO. DTL is stretching its overseas suppliers significantly. This is the de facto credit line</td></tr>
+        <tr><td>Current Liabilities</td><td>Short-Term Borrowings</td><td>0</td><td>Zero short-term bank borrowings</td></tr>
+        <tr><td>Current Liabilities</td><td>Others</td><td>9,257,894</td><td>Accruals, VAT payable, other current payables</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>98,449,907</strong></td><td>Dominated by trade payables — supplier-financed working capital model</td></tr>
+        <tr><td></td><td><strong>TOTAL EQUITY AND LIABILITIES</strong></td><td><strong>304,968,741</strong></td><td>Balances — confirmed correct</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The CBRIS charge register for Desbro Trading Limited (C1638) shows <strong>no charges registered</strong> — no floating charges, fixed charges, debentures, or mortgages of any nature. This confirms that the company's zero long-term borrowings position is genuine: no assets have been pledged to any bank or creditor. This is an exceptional balance sheet position for a MUR 375M importer/distributor and reflects 58 years of disciplined family reinvestment rather than bank leverage. The corollary risk is that the MUR 37.6M "Others" in non-current liabilities — which is the probable source of the MUR 5.96M in annual finance costs — is an unregistered related-party liability rather than a formal bank facility.</p>
+
+  <div class="alert alert-ok">
+    <div class="alert-title">No Charges Registered — Strongest Balance Sheet Signal</div>
+    A MUR 375M chemical distribution business with zero bank debt and no registered charges is highly unusual in Mauritius. The Sennik family has built this balance sheet through retained earnings alone. This gives DTL genuine strategic flexibility — it could raise significant bank facilities for growth if needed, against both its clean balance sheet and its MUR 107M in owned property. This is a strength to acknowledge in the discovery conversation.
+  </div>
+</div>
+</div>
+
+
+<!-- TAB 04 — FINANCIAL RATIOS -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">All ratios calculated from CBRIS FY2024 statutory accounts (year ended 15 September 2024). Benchmarks based on Mauritius distribution and trading SME norms. Green = healthy; Amber = watch; Red = critical concern.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated (178.8M / 98.4M)</span><span class="ratio-val ok">1.82×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius distributor)</span><span class="ratio-val">1.5× – 2.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Current assets comfortably cover current liabilities at 1.82×. However, this ratio is flattered by the large receivables and inventory balances — quality of current assets matters as much as the ratio itself. If debtor collection deteriorates, this ratio would worsen rapidly.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated ((178.8M – 74.9M) / 98.4M)</span><span class="ratio-val ok">1.06×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.8× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Adequate</span></span></div>
+      <span class="ratio-interpret">Stripping out MUR 74.9M of chemical inventory, the quick ratio is 1.06× — marginally adequate. The business is not illiquid, but it is tighter than the current ratio suggests. The MUR 18.3M cash position is the real safety buffer.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated (56.6M / 375.5M)</span><span class="ratio-val warn">15.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (specialty distributor)</span><span class="ratio-val">20% – 35%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">15.1% is below the specialty chemical distributor benchmark. This indicates DTL's product mix is weighted toward commodity chemicals (where margins are thin) rather than specialty/performance chemicals (where Haifa and CHT partnerships could command 25–35%). Product mix optimisation toward higher-margin specialty lines is the most direct path to margin improvement.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">EBIT = PBT + Finance Costs (11.7M / 375.5M)</span><span class="ratio-val warn">3.12%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5% – 12%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">EBIT margin of 3.12% is below the benchmark range for Mauritius distribution SMEs. The gap between GP margin (15.1%) and EBIT margin (3.1%) is almost entirely explained by MUR 49.6M in administration costs — a 12% overhead burden that absorbs the majority of gross profit.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated (4.2M / 375.5M)</span><span class="ratio-val bad">1.12%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">3% – 8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">A 1.12% net margin on MUR 375M revenue means only MUR 4.2M survives to equity. A single bad debt of MUR 5M (one mid-sized client) would eliminate the entire year's profit. This is the most important number to surface in the EOS conversation — it quantifies exactly why debtor management and product pricing discipline matter.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated (4.2M / 305M)</span><span class="ratio-val bad">1.37%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Generating only 1.37% return on MUR 305M of assets is well below benchmark. The MUR 107M PPE (owned property) is largely idle as a return generator — it produces occupancy but not income. If the warehouse were generating rental income, ROA would improve significantly. The asset base is underutilised relative to the revenue it supports.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated (4.2M / 163.3M)</span><span class="ratio-val bad">2.57%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">10% – 25%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">ROE of 2.57% is well below the opportunity cost of capital for a Mauritius business. The Sennik family's MUR 163M of equity is generating a return below a standard savings deposit rate. This is not a crisis — the family has 58 years of accumulated equity that is not at risk — but it signals that the business needs to either grow revenue margins or reduce the asset base to generate competitive returns on owner wealth.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Formal bank debt / Total Equity</span><span class="ratio-val ok">0.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius SME)</span><span class="ratio-val">&lt; 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Exceptional</span></span></div>
+      <span class="ratio-interpret">Zero formal bank debt is extraordinary. However, including the MUR 37.6M "Others" non-current liability (likely related-party), the effective leverage is 0.23× — still very low. The Sennik family has built a MUR 375M business without any bank leverage. This is a major strategic asset: unlimited headroom to raise debt for growth if needed.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">EBIT / Finance Costs (11.7M / 6.0M)</span><span class="ratio-val warn">1.97×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt; 3×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Coverage of 1.97× is below the 3× benchmark despite zero formal borrowings — the MUR 5.96M finance cost is consuming almost half of EBIT. Identifying and reducing these charges (LC restructuring, eliminating related-party interest, or negotiating supplier payment terms) is an immediate cash opportunity worth MUR 2–4M annually in recovered profit.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debtor Days (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">83.8M / 375.5M × 365</span><span class="ratio-val bad">81.4 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius B2B)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">81 days is 21–51 days above the Mauritius B2B benchmark. With MUR 83.8M outstanding, every 10-day improvement in DSO releases MUR 10.3M in cash. A move from 81 to 60 days would unlock MUR 21.6M — enough to eliminate the entire non-current related-party liability. This is the single most valuable operational fix available to DTL and the most compelling EOS Scorecard metric to introduce.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">89.2M / 318.8M × 365</span><span class="ratio-val warn">102.2 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (overseas suppliers)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">102 days DPO means DTL is stretching Indian/Vietnamese suppliers well beyond normal LC terms. This is the de facto working capital facility — supplier patience replaces bank debt. The risk: if key suppliers tighten terms (e.g. require payment within 60 days), DTL would need to find MUR 42M in additional financing immediately. Supplier concentration risk is hidden here.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">COGS / Inventory (318.8M / 74.9M)</span><span class="ratio-val warn">4.26×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (chemical stockist)</span><span class="ratio-val">4× – 8×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">At the lower end of benchmark — 4.26× means inventory turns approximately every 86 days. For a 200+ SKU chemical stockist, this is expected but signals potential dead-stock risk in slower-moving specialty lines. A Scorecard tracking inventory turnover by product category would immediately identify which SKUs to rationalise or reduce stocking quantities.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Revenue / Total Assets (375.5M / 305M)</span><span class="ratio-val warn">1.23×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.5× – 3×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Asset turnover of 1.23× is below benchmark — the MUR 107M owned property is the drag. A pure distributor should turn assets at 1.5–3× with minimal fixed assets. DTL's property ownership (a strength for the balance sheet) reduces asset efficiency. No immediate action required, but the property is underutilised as a return-generating asset.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The Two Numbers That Matter Most</div>
+    <strong>1. Debtor Days: 81 days (MUR 83.8M outstanding).</strong> Every 10 days of improvement = MUR 10.3M in cash released. Moving from 81 to 60 days would unlock MUR 21.6M — approximately 5× the annual net profit. This single metric is the most powerful lever in the entire business. If there is no weekly Scorecard tracking this number by account manager, cash is being silently destroyed. <br><br>
+    <strong>2. Net Profit Margin: 1.12% on MUR 375M revenue.</strong> One bad debt of MUR 5M eliminates the entire year's profit. One product category re-priced from 15% to 20% gross margin on MUR 50M of revenue adds MUR 2.5M to profit — a 60% increase. The margin fragility is the argument for systematic pricing discipline, product mix management, and an Issues List where pricing decisions are made consciously rather than reactively.
+  </div>
+</div>
+</div>
+
+
+<!-- TAB 05 — MARKET & COMPETITIVE POSITION -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">DTL operates across three interlinked distribution segments — industrial chemicals, agro/fertilizer, and plastic raw materials — in Mauritius's small, import-dependent economy where 58 years of incumbency and family relationships are the primary competitive moats.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Industrial Chemicals &amp; Plastics</h4>
+        <div class="ec-sub">Primary revenue segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Clients</span><span class="mv">Manufacturing, textiles, water treatment, FMCGs</span></div>
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Harel Mallac (Archemics/Ingenia)</span></div>
+        <div class="ec-metric"><span class="mk">DTL advantage</span><span class="mv ok">58-yr brand, ISO 2024, 800+ relationships</span></div>
+        <div class="ec-metric"><span class="mk">Key risk</span><span class="mv warn">Commodity pricing pressure, FX exposure</span></div>
+        <div class="ec-metric"><span class="mk">Margin profile</span><span class="mv warn">Low (commodity chemical weighting)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Agro / Fertilizer Distribution</h4>
+        <div class="ec-sub">Strategic diversification segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Clients</span><span class="mv">Sugar estates, horticulture, aquaculture</span></div>
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">MCFI (~USD 25M revenue, listed)</span></div>
+        <div class="ec-metric"><span class="mk">DTL advantage</span><span class="mv ok">Haifa fertigation partnership, greenhouse solutions</span></div>
+        <div class="ec-metric"><span class="mk">Key risk</span><span class="mv warn">Sugar sector structural decline in Mauritius</span></div>
+        <div class="ec-metric"><span class="mk">Margin profile</span><span class="mv ok">Higher (specialty agro products)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Plastic Raw Materials</h4>
+        <div class="ec-sub">Group-linked &amp; external</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Clients</span><span class="mv">Plastic processors, packaging, STR/MRC (intra-group)</span></div>
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Global polymer traders, direct importers</span></div>
+        <div class="ec-metric"><span class="mk">DTL advantage</span><span class="mv ok">Captive intra-group demand from STR manufacturing</span></div>
+        <div class="ec-metric"><span class="mk">Key risk</span><span class="mv warn">Large buyers may bypass distributor, go direct</span></div>
+        <div class="ec-metric"><span class="mk">Margin profile</span><span class="mv warn">Thin (PE/PVC commodity grades)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. 58-year incumbent brand with 800+ client relationships.</strong> In a market the size of Mauritius, trust accumulated over nearly six decades is genuinely hard to displace. Industrial buyers in chemicals typically stay with known, reliable suppliers — qualification of a new supplier involves testing, regulatory compliance verification, and relationship risk. New entrants face a multi-year trust-building curve.</p>
+  <p class="body-text"><strong>2. Zero bank debt provides strategic flexibility no competitor with leverage can match.</strong> DTL can self-fund growth, absorb a difficult trading year, or raise debt capital for acquisitions without existing covenants constraining it. In a rising interest rate environment, competitors with leverage are squeezed; DTL is not.</p>
+  <p class="body-text"><strong>3. Group vertical integration creates captive and referral demand.</strong> STR Marketing Ltée (manufacturing pipes from PVC/PE inputs) is a captive buyer of DTL's plastic raw materials. MRC Wire Products links DTL into the broader group construction materials ecosystem. This intra-group demand provides a baseline that no independent distributor can replicate.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>ISO 9001 certification (Jan 2024)</strong> — opens government and parastatal procurement requiring certified suppliers; a direct new revenue channel DTL did not have access to before.</li>
+    <li><strong>Water treatment infrastructure investment in Mauritius</strong> — ongoing government spending on water and wastewater infrastructure directly drives demand for DTL's water treatment chemical range (aluminium sulfate, ferric chloride, chlorine products, polyaluminium chloride).</li>
+    <li><strong>Agro diversification tailwind</strong> — Mauritius horticulture and controlled-environment agriculture growing to reduce food import dependency; directly benefits DTL's greenhouse, drip irrigation, and agrochemical lines.</li>
+    <li><strong>Mauritius manufacturing expansion</strong> — the government's 2020–2025 industrial policy targets light manufacturing growth, increasing demand for industrial chemicals and plastic raw materials across the primary DTL client base.</li>
+    <li><strong>Headwind: Sugar industry structural decline.</strong> Mauritius cane sugar output has declined significantly over two decades. DTL's fertilizer business is exposed to this structural trend; active diversification into horticulture and aquaculture is essential to protect agro revenue.</li>
+    <li><strong>Headwind: Supplier concentration and FX risk.</strong> Primary sourcing from India, Vietnam, and Turkey means any rupee depreciation or disruption to India/Vietnam chemical exports directly compresses DTL's cost of goods. The 102-day DPO makes this worse — DTL is holding forex risk for 102 days on each shipment.</li>
+    <li><strong>Competitor benchmark — MCFI:</strong> The Mauritius Chemical &amp; Fertilizer Industry Ltd (MUSE:MCFI) had trailing 12-month revenue of approximately USD 25M (c. MUR 1.2B) as of 2025 — making it approximately 3× DTL's size in the fertilizer segment specifically. MCFI operates a blending plant (manufacturing capability), giving it cost advantages in NPK formulations. DTL's Haifa partnership in fertigation and specialty agro is the differentiator to lean into.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Vision vs. Reality — The Indian Ocean Regional Ambition Gap</div>
+    DTL's stated vision is to be "a market leader in the Indian Ocean region." Trade data confirms 1 export shipment in the last 5 years (against 441 imports). The entity is almost entirely Mauritius-facing. The regional story is a group story (Desbro Group, 8 countries), not a DTL entity story. This gap between vision and operating reality is exactly what EOS's V/TO is designed to surface and resolve — and it is the most productive opening question in the discovery conversation: "What does 'Indian Ocean region leader' actually mean for DTL specifically in the next 3 years?"
+  </div>
+</div>
+</div>
+
+
+<!-- TAB 06 — EOS ASSESSMENT -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from CBRIS, financial analysis, and public company data. Updated fully post-CBRIS.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">The CBRIS-confirmed management team (Sennik Abhijeet and Kapil as family directors + GM Naresh Nama + Chief Accountant Veena Veloopillay (28 years) + Procurement Manager/Alternate Director Anisha Sennik + Marketing Manager Ryan Curier) is a textbook EOS leadership team of 5–7 people. Managing MUR 375M in revenue across 800+ clients with 200+ SKUs, two business divisions, and a complex group ownership structure with multiple sister companies is firmly within the EOS sweet spot. The family governance layer (two principal directors, two alternate directors) adds complexity that EOS tools — particularly the Accountability Chart — are specifically designed to organise. Score: 8.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">ISO 9001 achieved in January 2024 is the strongest available signal of leadership willingness to invest in formal systems. The appointment of a Franco-Mauritian director (Desmarais Gaston Francois) in December 2022 suggests the Sennik family has recently introduced external governance perspectives — a positive EOS indicator. The 28-year tenure of the Chief Accountant and 12-year tenure of the GM indicate a leadership culture that rewards loyalty and stability. The risk factor for EOS adoption: the financial data reveals a business operating at 1.12% net margin with an 81-day debtor problem — if the family is not aware of how serious these numbers are, the first conversation about a Scorecard may be confronting. Score: 6.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">The financial data has crystallised the EOS pain points with precision: (1) MUR 83.8M in debtors at 81 days — a debtor management problem that is destroying cash and whose ownership is likely unclear; (2) MUR 49.6M admin costs consuming 87.6% of gross profit — an overhead structure that needs role clarity and accountability to manage; (3) 1.12% net margin leaving zero room for error — a pricing discipline and product mix problem with no systematic resolution mechanism visible; (4) MUR 74.9M in inventory at 4.26× turnover — potential dead stock with no formal SKU rationalisation process. All four are EOS-addressable. Score: 8 — this is a business in acute need of the EOS operating system, not just organisational coaching.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">ISO 9001 (January 2024) confirms documented quality management processes. Nexia-audited financials filed annually and on time confirms strong financial process discipline. 28-year Chief Accountant tenure confirms deep institutional process memory at the financial level. However, the 81-day DSO with MUR 83.8M at risk suggests the debtors management process has no systematic accountability mechanism — this is a classic EOS Issues List failure. The MUR 5.96M finance cost with no bank debt signals a financial structure not being actively optimised. Score: 6 — strong operational process foundation; strategic-level process discipline is missing.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Staff tenure data is exceptional: Chief Accountant 28 years, Procurement Manager (and Alternate Director) Anisha Sennik 15 years, GM Naresh Nama 12 years. In Mauritius's competitive employment market, this level of retention signals a stable, fair, and values-driven culture. The MUR 154.6M in retained earnings — money kept in the business rather than distributed — signals a long-term, reinvestment-oriented ownership mentality. Published core values include Empowerment (directly EOS-compatible) and Fairness. The family governance structure adds loyalty and stability but also potential for conflict avoidance that EOS's IDS process is designed to overcome. Score: 7.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The CBRIS confirms a governance structure that places the Sennik family in both the boardroom (Abhijeet and Kapil as directors) and the operational team (Anisha as Alternate Director and Procurement Manager). This dual role creates the classic family-business decision-making tension: the family principal (Visionary) and the professional manager (Integrator) are blurred. Naresh Nama as GM has operational autonomy but almost certainly defers to Sennik Abhijeet or Kapil on pricing, investment, and major commercial decisions. The appointment of Desmarais Gaston Francois in December 2022 may signal an intent to professionalise governance — but until the Accountability Chart clearly shows who owns which decisions, ambiguity persists. Score: 5.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">DTL has a published Vision (Indian Ocean region leader in chemicals, agrochemicals, and allied products) and Mission. However, the financial data tells a different story: 1.12% net margin, 81-day debtors, and 1 export shipment in 5 years. The vision has not been translated into operational targets that the leadership team executes against. The gap between the aspiration and the day-to-day financial reality — compressing margins, supplier-financed working capital, no export revenue — is precisely the V/TO gap EOS resolves. Score: 5.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">ISO 9001 requires management reviews, providing a compliance-driven meeting structure. However, the 81-day debtors figure — if it is not tracked on a weekly Scorecard — suggests the leadership team is not regularly reviewing the single most important operational number in the business. The typical pattern in a 58-year-old Mauritius family distribution business is reactive and relationship-driven management rather than a structured weekly Level 10 cadence. The dual role of Anisha Sennik (Alternate Director + Procurement Manager) creates a structural incentive to keep procurement decisions informal rather than bringing them systematically to a leadership team issues list. Score: 5.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.3</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Financially Urgent Positive</h4>
+      <p>The CBRIS data upgrades the urgency of an EOS conversation at DTL significantly. This is not just a business that would benefit from EOS in a general organisational sense — it is a business with a 1.12% net margin, MUR 83.8M in slow debtors, and MUR 5.96M in unexplained finance costs, operating without a weekly Scorecard or a formal Issues resolution rhythm. The financial pain is real and quantifiable. The EOS entry conversation is not abstract ("would you like to improve your business?") — it is specific and compelling ("your debtors book is worth more than your entire annual profit; does anyone own that number every week?"). The gating factor remains access to Sennik Abhijeet or Sennik Kapil as decision-making principals — the GM alone cannot authorise EOS adoption.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Desbro Trading Ltd</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Scorecard with Measurables</h4>
+      <p><strong>The single most urgent EOS tool for DTL.</strong> The business is operating at 1.12% net margin with MUR 83.8M in debtors and no evidence of a weekly number tracking either. Five to seven measurables — DSO, DPO, inventory turnover by division, gross margin by product category, revenue vs. target — tracked weekly would immediately surface the cash cycle problem and create accountability for fixing it. The Chief Accountant (28 years) has all the data; the Scorecard surfaces the right 7 numbers at the right frequency.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The overlap between Anisha Sennik's roles as Alternate Director and Procurement Manager, and between Sennik Abhijeet/Kapil as directors and operational principals, creates an unclear accountability structure. The Accountability Chart will immediately clarify: who is the Visionary? Who is the Integrator? Does Naresh Nama have genuine integrator authority, or does he defer to the family on decisions that should be his? Getting the chart right is prerequisite to any Rocks or Scorecard work.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List and IDS</h4>
+      <p>The 81-day DSO, the MUR 5.96M in unexplained finance costs, the 102-day DPO supplier stretch, and the 1.12% margin all suggest systemic issues that are either not being raised formally or are being deferred in a relationship-driven family culture. The Issues List creates the mechanism to surface them. IDS (Identify, Discuss, Solve) gives the team a structured process to resolve them rather than living with them. The first Issues session at DTL will likely be one of the most productive in the relationship.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>The first set of Rocks for DTL almost certainly writes itself from the financial data: (1) Reduce DSO from 81 to 65 days — owner: Naresh Nama, deadline 15 June 2026; (2) Identify and reduce MUR 5.96M finance cost by 30% — owner: Veena Veloopillay, deadline 15 June 2026; (3) Rationalise bottom 20% of SKUs by inventory value — owner: Anisha Sennik, deadline 15 June 2026. These three Rocks alone, if executed, could add MUR 3–5M to annual profit.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision / Traction Organiser (V/TO)</h4>
+      <p>The gap between DTL's stated Indian Ocean vision and its 1-export-in-5-years reality needs resolution at the family director level. The V/TO forces a decision: is DTL building toward genuine regional distribution (requires investment, systems, and a 10-year plan), or is it deepening its Mauritius market leadership (requires margin improvement, client service excellence, and product mix optimisation)? Both are valid. But the family needs to choose — and the V/TO is the tool that forces that clarity.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting Rhythm</h4>
+      <p>A business with MUR 83.8M in debtors and 1.12% net margin cannot afford to review its critical numbers monthly. A weekly Level 10 Meeting with the leadership team — GM, Chief Accountant, Procurement Manager, Marketing Manager — tracking the Scorecard, reviewing Rocks, and working through the Issues List would be the single most visible structural change EOS brings to DTL. The ISO management review process is the bridge: "You already have a management review rhythm for ISO — the Level 10 is the operating system version of that, running weekly."</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- TAB 07 — RECOMMENDATIONS -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations — four financial/operational and four EOS-specific. Sequencing principle: the financial data provides a specific, quantified pain point (MUR 83.8M debtors, 1.12% margin) that makes the EOS conversation immediately concrete rather than theoretical. Lead with the numbers.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Target DSO Reduction from 81 to 60 Days — MUR 21.6M Cash Release</h4>
+      <p>The most valuable financial lever in the business. Moving from 81 to 60 days DSO would release MUR 21.6M in cash — 5× the current annual net profit. In the discovery conversation, open with: "Your debtor book is MUR 83.8M. Does anyone in your business own the number that says how many days your clients owe you money — and does that number go to your directors every week?" If the answer is no, the Scorecard is the immediate EOS entry point. A dedicated debtor management protocol with weekly reporting by account manager, escalation triggers at 60 and 90 days, and a credit limit review process would be the specific operational output.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Investigate and Reduce MUR 5.96M Finance Costs — Zero Debt, High Cost</h4>
+      <p>DTL has zero formal bank borrowings but is paying MUR 5.96M in annual finance costs — equivalent to 1.6% of revenue and 104% of net profit. These are almost certainly letter-of-credit charges (for import financing), bank guarantee fees, or interest on the MUR 37.6M "Others" non-current liability (likely a related-party loan). Veena Veloopillay (Chief Accountant) will know the exact composition. Restructuring LC facilities, negotiating extended supplier credit (reducing LC usage), or formalising the related-party loan at a lower rate could realistically reduce this cost by MUR 2–3M annually. Ask in discovery: "What does your MUR 6M annual finance cost actually consist of? Have you reviewed those banking arrangements recently?"</p>
+      <span class="urg urg-week">Within 30 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Shift Product Mix Toward Specialty Chemicals — GP Margin from 15% to 20%</h4>
+      <p>A 5-percentage-point improvement in gross margin on MUR 375M revenue adds MUR 18.75M to gross profit — more than 4× the current annual net profit. The pathway: grow the Haifa (fertigation/specialty agro), CHT (textile chemicals), and food-grade/feed additive product lines where margins are 25–35%, while managing commodity chemical volumes more selectively. This is a Rocks-level strategic initiative: "Increase specialty product revenue as % of total from [X]% to [X+5]% by September 2026 — owner: Ryan Curier (Marketing Manager), approved by Naresh Nama."</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>SKU Rationalisation — Inventory Turnover from 4.3× to 6× Target</h4>
+      <p>MUR 74.9M of inventory at 4.26× turnover means 85 days of stock across 200+ SKUs. A systematic review — identify the 20% of SKUs by count that represent the slowest 5% of turnover — would likely free MUR 10–15M in working capital and reduce the insurance, warehousing, and obsolescence risk. This is Anisha Sennik's Rock: as Procurement Manager and Alternate Director, she is the right person to own this analysis, approve decisions, and report to the board. The ISO quality system likely already has the data; it just needs an EOS accountability structure to act on it.</p>
+      <span class="urg urg-medium">Within 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Target Sennik Abhijeet as Primary Entry Point — Not the GM</h4>
+      <p>CBRIS confirms Sennik Abhijeet is the longest-serving director (since 2006) and equal largest shareholder (30%). He is the Visionary principal who must authorise EOS adoption. The outreach message for Thierry: connect via LinkedIn or the dtl.mu contact, reference the ISO 9001 achievement ("I saw that DTL achieved ISO certification in 2024 — congratulations on that milestone. I work with distribution businesses in Mauritius that are at a similar inflection point..."), then ask for 20 minutes to discuss how similar companies are using systems to improve margin and cash cycle management. Do not pitch EOS by name — pitch the outcome: margin, cash flow, clarity.</p>
+      <span class="urg urg-now">Entry Point — Critical</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Lead with the Debtor Number, Not the EOS Brand</h4>
+      <p>The discovery conversation opener with Sennik Abhijeet or Kapil: "Your business is doing MUR 375 million in revenue. If I told you there was MUR 21 million sitting in your debtor book that your business could convert to cash in the next 6 months — without selling a single additional unit — would you want to know how?" This is the number from the financial analysis (DSO improvement from 81 to 60 days = MUR 21.6M). It is specific, verifiable, and immediately relevant. It positions Thierry as a financially literate advisor before any EOS conversation has begun.</p>
+      <span class="urg urg-week">Discovery Call Frame</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Propose Focus Day Scoped to DTL Entity — Not the Group</h4>
+      <p>DTL's group context (Desbro Group, PPP Holdings, Plastic Pipes &amp; Products, STR, MRC) is a risk to EOS scope creep. The Focus Day must be proposed explicitly for the DTL legal entity and its leadership team: Sennik Abhijeet or Kapil (Visionary), Naresh Nama (Integrator/GM), Veena Veloopillay (Finance), Anisha Sennik (Procurement/Ops), Ryan Curier (Commercial). Five to six people is the ideal EOS leadership team size. The V/TO session will naturally surface the group interface questions — and those can be managed as Issues, not as scope expansions.</p>
+      <span class="urg urg-week">Proposal Stage</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>First Rock Hypothesis: DSO to 65 Days by 15 June 2026</h4>
+      <p>The first Rock for the DTL leadership team practically writes itself from the CBRIS data. In the Focus Day: "Debtors are at 81 days and MUR 83.8M. Our Rock for this quarter: reduce DSO to 65 days by 15 June 2026. Owner: Naresh Nama. Measurement: weekly debtor aging report to the leadership team every Monday. Success criteria: MUR 16.6M reduction in outstanding debtors by 15 June." This Rock is specific, measurable, time-bound, and owned — the four EOS Rock criteria. It also demonstrates to the leadership team in the first 90 days that EOS produces tangible financial results, not just better meetings.</p>
+      <span class="urg urg-medium">Focus Day Output</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Desbro Trading Ltd is a 58-year-old, MUR 375M chemical distribution business with zero bank debt, a loyal and deeply tenured management team, ISO 9001 certification, and MUR 154.6M in retained earnings — and it is generating only 1.12% net margin on that revenue base, with MUR 83.8M sitting in debtors at 81 days. The financial pain is real, specific, and quantifiable. The Sennik family — as both directors and shareholders — are the people who need to hear these numbers and connect them to what EOS can fix. The opportunity is not to sell a system; it is to help a capable family business unlock MUR 20M+ in cash flow improvements and margin gains that are already sitting inside the business, waiting for the accountability structures to release them.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Identify Sennik Abhijeet's LinkedIn / direct contact and prepare a financially-anchored outreach referencing the ISO milestone (Week 1)</li>
+        <li><span class="sig-num">02</span>Initial conversation with Sennik Abhijeet or Kapil — open with the MUR 21.6M debtor improvement number; establish credibility before naming EOS (Week 2–3)</li>
+        <li><span class="sig-num">03</span>Discovery call with Sennik family principal + Naresh Nama — work through Scorecard pain, debtor days question, finance cost question, product margin mix (Week 3–4)</li>
+        <li><span class="sig-num">04</span>Propose Focus Day for DTL entity leadership team of 5–6 people; target June 2026 date (Week 4–5)</li>
+        <li><span class="sig-num">05</span>Focus Day → V/TO, Accountability Chart, first Rocks including DSO Rock; confirm quarterly Rocks cadence and Level 10 Meeting start date (June 2026)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<footer class="report-footer">
+  <div>Desbro Trading Ltd (DTL) — Comprehensive Company Analysis &amp; EOS Assessment · 2 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (02/04/2026) · dtl.mu · desbrogroup.com · ZoomInfo · NBD Trade Data · Volza · African Advice · Yumpu (DTL 2015 presentation) · Harel Mallac website · African Financials (MCFI)</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
