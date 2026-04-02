@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MRC Wire Products Ltd — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Steel &amp; Wire Manufacturing</span>
+    <span class="badge badge-type">Private Company · Desbro Group</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">2 April 2026</span>
+  </div>
+  <h1>MRC Wire Products Ltd:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">MRC WIRE PRODUCTS LTD · Company intelligence · Financial ratios · EOS implementation assessment · La Tour Koenig, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 1.07 Bn</div>
+      <div class="stat-delta">FY ended 15 Sep 2024 · CBRIS confirmed · Net profit MUR 33.6 M</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Employees (Est.)</div>
+      <div class="stat-value emerald">100–200</div>
+      <div class="stat-delta">SignalHire / operational inference · 45% long-tenure workforce</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.1 / 10</div>
+      <div class="stat-delta">Moderate-High · Family group complexity is gating factor</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Key Risk Flag</div>
+      <div class="stat-value red">DSO 154 Days</div>
+      <div class="stat-delta">Severely stretched receivables — financing customers' working capital</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>MRC Wire Products Ltd — Company Analysis &amp; EOS Assessment · 2 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 50-year-old Mauritian wire and steel manufacturer with a dominant domestic position, ISO certification, and deep group backing — but where the real decision-making authority almost certainly sits at the Desbro Holdings level, not within MRC Wire itself.</p>
+
+  <p class="body-text">MRC Wire Products Ltd is a private limited liability company incorporated in Mauritius in 1975, operating from a 7,800 m² industrial facility in La Tour Koenig, Port Louis. The company manufactures reinforcing steel, prefabricated welded mesh, cut and bend steel, binding wire, cable trays, gabions, chain-link fencing, and armatures (column bases, strip footings, beams). It holds both ISO 9001 certification and the Mauritius Standards Bureau (MSB) Quality Mark, and serves the full spectrum of the Mauritian construction sector — from major infrastructure contractors to residential developers.</p>
+
+  <p class="body-text">MRC Wire Products is a wholly-owned operating subsidiary of the Desbro Group of Companies, a family-controlled conglomerate with origins in bicycle trading in Nairobi in the early 1900s. The group expanded into East Africa manufacturing and later into Mauritius with a steel rolling mill. The owning family is the Sennik family: <strong>Ben Sennik</strong> is confirmed Chairman of Desbro Holdings Limited, and <strong>Suman Sennik</strong> has been identified as managing the group. <strong>Anisha Sennik</strong> (Post-Graduate, NIFT Delhi) is Procurement Manager at Desbro Trading Limited, the chemicals and industrial trading arm. The key contact identified by Larry — <strong>SENNIK Subash (Subash Chandra Sennik)</strong> — appears in Mauritius Golf Federation records and is a family member, most likely a director or senior executive within the Desbro Group's Mauritius manufacturing operations. His precise title and mobile could not be confirmed from public sources; the CBRIS extract will clarify his formal role. Notably, Brenntag AG acquired the East African and UAE chemical distribution arm of Desbro Group (Desbro Kenya, Tanzania, Uganda, UAE) for approximately €30.2 million in 2019 — this sale likely concentrated the remaining Desbro family assets in Mauritius, making MRC Wire Products a more central holding than it was previously.</p>
+
+  <p class="body-text">From a financial perspective, MRC Wire Products is a private company and does not publish accounts. The CBRIS PDF (pending in Team Inbox) will provide the filed financial statements. Operationally, the company has 100–200 employees, with 45% having over 11 years of tenure — an unusually stable workforce that signals either strong culture and loyalty or a flat, low-turnover environment that may also be resistant to change. The company has 29 recorded export shipments and 271 import shipments, with steel sourced from India, Turkey, and Indonesia — a typical wire manufacturing import profile. The company also runs a sister entity, Kosto Ltd (also Desbro-owned), which competes directly in cut and bend rebar — an internal market structure that requires explanation in the approach conversation.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — The Desbro Context Changes Everything</div>
+    MRC Wire Products cannot be approached purely as a standalone operating company. The Sennik family controls multiple manufacturing entities under Desbro Holdings, and strategic decisions — including whether to invest in systems and people development — are almost certainly made at the group level, not by the MRC Wire general manager. Subash Chandra Sennik, as a family principal, is the right entry point precisely because he can authorise a group-wide conversation. The pitch to him should be framed around group-level EOS implementation across the Mauritius manufacturing portfolio (MRC Wire + Kosto, at minimum), not a single-entity engagement. This framing also addresses the internal-competition dynamic between MRC Wire and Kosto, which an EOS Accountability Chart would surface and resolve.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>50-year operational track record</strong> with ISO 9001 and MSB Quality Mark. Full-spectrum product range from raw wire to finished armatures — one of very few Mauritius manufacturers offering complete cut, bend, and mesh capability. Group-backed balance sheet with Desbro Holdings as ultimate owner. Established import supply chains from India, Turkey, and Indonesia. Strong workforce stability (45% over 11-year tenure).</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>No publicly available financial data — full picture contingent on CBRIS extract.</strong> Steel manufacturing in Mauritius is heavily import-dependent (raw wire rod from India/Turkey/Indonesia), creating FX and commodity price exposure. Small domestic market limits revenue ceiling. The 2019 Brenntag sale of Desbro's African/UAE chemical division may have shifted group capital allocation priorities.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Family-owned group operating multiple Mauritius entities with no visible management system.</strong> Two entities (MRC Wire and Kosto) appear to be competing in the same rebar/mesh market with different sales teams — a classic accountability and role clarity problem EOS solves directly. The GM email address (gm@mrcmesh.mu) exists as a distinct role, suggesting an operational layer below the Sennik family. 45% long-tenure workforce = entrenched habits and likely resistance to change — a known EOS implementation challenge that needs honest framing.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A half-century-old wire and steel manufacturer, quietly dominant in the Mauritian construction supply chain, operating as a closely-held family subsidiary with minimal public disclosure.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">MRC Wire Products Ltd was incorporated in Mauritius on <strong>16 October 1975</strong> — making it one of the older manufacturing companies on the island. It operates as a private limited liability company (DOMESTIC category). <strong>File No.: C2552 · Business Registration No.: C06002552 · Status: Live.</strong> The company's registered office address is Bell Village, Port Louis, effective 22 November 2007, while its physical operational site is at <strong>Industrial Zone, La Tour Koenig, Pointe aux Sables, Port Louis 11109, Mauritius</strong>. Stated capital is <strong>MUR 2,000,000</strong> (20,000 ordinary shares at par value MUR 100 each, fully paid). Company secretary is <strong>St James Secretaries Limited</strong> (49 Labourdonnais Street, 5th Floor, C&amp;R Court, Port Louis, appointed 1 July 2015). Auditor is <strong>Nexia (Mauritius) Limited</strong> (same address, appointed 31 July 2015). Annual registration fee paid to 2026. The company holds two legacy industrial certificates: Industrial Development Tax Relief (effective 27 October 1995) and Pioneer Status Enterprise Certificate (effective 28 November 1995) — both historic designations reflecting the era of Mauritius industrialisation policy.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>DRS Holdings Limited</h4>
+        <div class="ec-sub">Majority Shareholder — 76.5% (15,300 shares)</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">15,300 of 20,000</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary Shares</span></div>
+        <div class="ec-metric"><span class="mk">Structure</span><span class="mv ok">Family holding vehicle</span></div>
+        <div class="ec-metric"><span class="mk">Note</span><span class="mv warn">Desbro Group entity — principal shareholder</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Desbro Trading Limited</h4>
+        <div class="ec-sub">Second Shareholder — 16% (3,200 shares)</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">3,200 of 20,000</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary Shares</span></div>
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Chemicals &amp; industrial trading arm of Desbro Group</span></div>
+        <div class="ec-metric"><span class="mk">Note</span><span class="mv warn">Anisha Sennik is Procurement Mgr here</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Ving Hang Che Siao Chuk Chun Mrs</h4>
+        <div class="ec-sub">Third Shareholder — 7.5% (1,500 shares)</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">1,500 of 20,000</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary Shares</span></div>
+        <div class="ec-metric"><span class="mk">Note</span><span class="mv">Individual minority shareholder — likely founding family member or long-standing associate</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="entity-grid" style="margin-top:14px;">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>MRC Wire Products Ltd</h4>
+        <div class="ec-sub">Subject Company — Manufacturing</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Incorporated</span><span class="mv">16 Oct 1975</span></div>
+        <div class="ec-metric"><span class="mk">File No.</span><span class="mv">C2552 · BRN C06002552</span></div>
+        <div class="ec-metric"><span class="mk">Site</span><span class="mv">La Tour Koenig, 7,800 m²</span></div>
+        <div class="ec-metric"><span class="mk">Headcount</span><span class="mv">100–200 employees</span></div>
+        <div class="ec-metric"><span class="mk">Certifications</span><span class="mv ok">ISO 9001 · MSB Quality Mark</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Kosto Ltd</h4>
+        <div class="ec-sub">Sister Entity — Cut &amp; Bend / Rebar</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Parent</span><span class="mv">Desbro (Seychelles)</span></div>
+        <div class="ec-metric"><span class="mk">Location</span><span class="mv">Plaine Lauzun, Port Louis</span></div>
+        <div class="ec-metric"><span class="mk">Products</span><span class="mv">Rebar, mesh, cut &amp; bend</span></div>
+        <div class="ec-metric"><span class="mk">Certs</span><span class="mv ok">ISO 9001/14001 · OHSAS 18001</span></div>
+        <div class="ec-metric"><span class="mk">Overlap</span><span class="mv warn">Direct MRC Wire competitor</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Group Note — Internal Duplication</div>
+    Both MRC Wire Products and Kosto Ltd manufacture and sell welded mesh, rebar, and cut and bend solutions in Mauritius under the same ultimate group ownership. This is a classic holding-company structural issue: two entities competing for the same contracts, each with their own sales team, overhead, and logistics. This internal fragmentation is directly addressable by EOS — specifically, a Group Accountability Chart and clear lane definition between the two businesses. Raising this with Subash Sennik as a known tension point will signal that the conversation is strategic rather than transactional.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Key Personnel</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Sennik Subash Chandra D Lakhmidass — Founding Director &amp; Managing Director</h4>
+      <p><strong>CBRIS confirmed:</strong> Original director since <strong>16 October 1975</strong> (company founding date). Appointed Managing Director <strong>11 September 1980</strong>. This is the key Sennik family principal in Mauritius manufacturing. Appears in Mauritius Golf Federation records (2015, 2017). The "D Lakhmidass" patronymic confirms the family naming structure. As founding director and MD for 45+ years, he is the ultimate decision-maker for any group-level engagement.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Hora Nikhil Rajkumar — Director</h4>
+      <p><strong>CBRIS confirmed:</strong> Appointed <strong>1 June 2022</strong>. Service address: Bell Village, Plaine Lauzun, Mauritius. Likely a non-family executive director, possibly brought in to manage a specific function (Finance, Operations, or Commercial). The 2022 appointment date suggests this may have been a post-COVID management reinforcement.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Pareima Sheila — Director</h4>
+      <p><strong>CBRIS confirmed:</strong> Appointed <strong>18 August 2025</strong>. Service address: Old Moka Road, Bell Village, Port Louis. Very recent appointment — one of three directors appointed on the same date (18 Aug 2025), suggesting a board reconstitution or expansion event. Role and background not yet publicly confirmed.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Ronoowah Rishi Kapoor — Director</h4>
+      <p><strong>CBRIS confirmed:</strong> Appointed <strong>18 August 2025</strong>. Service address: Old Moka Road, Bell Village, Port Louis. Part of the August 2025 board expansion alongside Pareima Sheila and Christopher Wright. The same-address appointments suggest these may be executive directors from within the group's management team.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Wright Christopher John — Director</h4>
+      <p><strong>CBRIS confirmed:</strong> Appointed <strong>18 August 2025</strong>. Service address: Old Moka Road, Bell Village, Port Louis. The English surname in an otherwise Mauritian/Indian board is notable — likely a professional director, finance executive, or group governance appointee. The August 2025 date makes this very recent; may reflect a group governance upgrade.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Manish Ram — Technical &amp; Sales Manager</h4>
+      <p><strong>Confirmed on MRC Wire website.</strong> Mobile: +230 5509 5207. Email: sm@mrcmesh.mu. Handles technical queries and sales. Civil engineering background implied by the role description ("highly experienced civil engineers who collaborate with contractors"). Primary sales contact for construction project accounts.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Hemant Tripathi — Head of Finance</h4>
+      <p><strong>Confirmed via SignalHire.</strong> Leads finance and accounting function. Tenure and reporting line not confirmed. Key person for any financial due diligence conversation and for understanding internal reporting disciplines.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Nagma Gujadhur — HR Officer</h4>
+      <p><strong>Confirmed via SignalHire.</strong> Manages human resources function. Workforce of 100–200 with 45% over 11-year tenure suggests an experienced and potentially entrenched team. HR function likely handles recruitment, compliance, and payroll — but people development and performance management practices are unknown.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Selven Vurdapen — Maintenance Manager</h4>
+      <p><strong>Confirmed via SignalHire.</strong> Responsible for maintaining the Swiss/German/Austrian manufacturing equipment (automatic mesh plants, bending lines, shear and bend lines). Equipment maintenance is operationally critical — any downtime on automated mesh production directly impacts capacity and revenue.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">MRC Wire Products manufactures and supplies a comprehensive range of steel and wire construction products from its La Tour Koenig facility. The product range is built around three core segments:</p>
+  <ul class="styled-list">
+    <li><strong>Reinforcement Steel:</strong> Prefabricated welded mesh (standard and tailor-made), binding wire, cut and bend steel to specification</li>
+    <li><strong>Armatures (Pre-fabricated assemblies):</strong> Column bases, columns, beams, slab reinforcement, strip footings, plinth/block reinforcement — manufactured to civil engineering drawings</li>
+    <li><strong>Fencing and Ancillaries:</strong> Chain-link fencing (plastic and galvanized), panel fencing, cable trays, galvanized mesh rolls, mattresses, gabions</li>
+  </ul>
+  <p class="body-text">The company also provides technical services: its sales team includes civil engineers who work directly with contractors on bar bending schedules (BBS), project planning, and QS reporting. This consultative sales model differentiates MRC Wire from pure commodity suppliers. The ISO 9001 and MSB Quality Mark certifications underpin eligibility for government and large infrastructure contracts.</p>
+  <p class="body-text">Equipment is sourced from Switzerland, Germany, and Austria — high-precision machinery supporting tight mesh tolerances. This capital investment (in a 7,800 m² plant) represents a significant infrastructure moat versus smaller or import-only competitors.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">MRC Wire Products operates exclusively from its La Tour Koenig industrial site in Port Louis, Mauritius. The domestic Mauritian construction market is the primary and essentially sole revenue base. Trade data shows <strong>29 export shipments to 2 buyers</strong> (likely regional Indian Ocean islands — Reunion, Rodrigues, Seychelles, Maldives — though exact destinations not confirmed) and <strong>271 import shipments from 14 suppliers</strong> across India, Turkey, and Indonesia. The import-heavy trade profile confirms the company is a wire rod processor and fabricator rather than a vertically integrated steelmaker — raw rod is imported and value-added through manufacturing. No overseas offices, agents, or distribution partners were identified in public sources.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Figures drawn directly from the CBRIS extract (Mauritius Registrar of Companies), financial year ended 15 September 2024, filed 31 January 2025. Currency: Mauritius Rupee (MUR). All amounts are in actual MUR (unit = 1).</p>
+
+  <div class="alert alert-ok">
+    <div class="alert-title">CBRIS Data Confirmed — FY2024 Financials Complete</div>
+    CBRIS extract for MRC Wire Products Ltd (File No. C2552) received 2 April 2026. Financial year ended 15 September 2024, approved 31 January 2025. P&amp;L and balance sheet fully populated below. MRC Steel Rolling Mills Ltd (the "MRC SR" entity) was also extracted and is addressed in the Related Entities section.
+  </div>
+
+  <h3 class="subsection-title">Profit &amp; Loss — FY ended 15 September 2024</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>1,069,366,414</td><td>100.0%</td><td>MUR 1.07 billion — significant manufacturer for Mauritius SME scale</td></tr>
+        <tr><td>Less: Cost of Sales</td><td>941,839,971</td><td>88.1%</td><td>Import-heavy COGS (wire rod from India/Turkey/Indonesia) — extremely high ratio</td></tr>
+        <tr class="heat-warn"><td><strong>Gross Profit</strong></td><td><strong>127,526,443</strong></td><td><strong>11.9%</strong></td><td><span class="b b-red">Below benchmark (18–30%)</span> — thin manufacturing margin; commodity input cost compression is severe</td></tr>
+        <tr><td>Add: Other Income</td><td>2,938,589</td><td>0.3%</td><td>Minor ancillary income</td></tr>
+        <tr><td>Less: Distribution Costs</td><td>0</td><td>0.0%</td><td>No separately reported distribution costs — likely embedded in COGS</td></tr>
+        <tr><td>Less: Administration Costs</td><td>62,701,096</td><td>5.9%</td><td>100–200 employee payroll is dominant fixed cost — represents 49% of gross profit</td></tr>
+        <tr><td>Less: Other Expenses</td><td>0</td><td>0.0%</td><td>—</td></tr>
+        <tr><td>Less: Finance Costs</td><td>24,742,742</td><td>2.3%</td><td><span class="b b-amber">Significant finance costs despite zero bank borrowings</span> — likely intercompany financing charges or lease obligations</td></tr>
+        <tr><td><strong>Profit Before Tax</strong></td><td><strong>43,021,194</strong></td><td><strong>4.0%</strong></td><td>Adequate but slim operating profitability</td></tr>
+        <tr><td>Tax Expense</td><td>9,415,042</td><td>0.9%</td><td>Effective tax rate: 21.9% — slightly above Mauritius standard 15% rate; may include deferred tax movement</td></tr>
+        <tr class="heat-warn"><td><strong>Net Profit After Tax</strong></td><td><strong>33,606,152</strong></td><td><strong>3.1%</strong></td><td><span class="b b-red">Below benchmark (4–10%)</span> — margin compression from COGS and finance costs</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Gross Margin Alert — 11.9% is a Critical Finding</div>
+    The gross profit margin of 11.9% is significantly below the 18–30% benchmark for Mauritius wire and steel manufacturing. Cost of Sales at 88.1% of revenue signals severe compression — either (a) global steel/wire rod price inflation has not been passed through to customers, (b) internal pricing competition with sister company Kosto is driving MRC Wire to discount, or (c) some cost items normally below the gross profit line are being absorbed into COGS. This is the single most important financial finding in this report and should anchor the EOS conversation: margin recovery of even 3–4 percentage points represents MUR 32–43 million of additional gross profit annually.
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet — FY ended 15 September 2024</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="3"><strong>Non-Current Assets</strong></td><td>Property, Plant &amp; Equipment</td><td>191,353,046</td><td>Substantial fixed asset base — 7,800 m² La Tour Koenig site + European manufacturing equipment</td></tr>
+        <tr><td>Other Non-Current Assets</td><td>3,581,853</td><td>Likely deposits, prepayments, or other long-term assets</td></tr>
+        <tr class="heat-ok"><td><strong>Total Non-Current Assets</strong></td><td><strong>194,934,899</strong></td><td>21.2% of total assets — moderate fixed asset intensity</td></tr>
+        <tr><td rowspan="4"><strong>Current Assets</strong></td><td>Inventories</td><td>189,265,714</td><td>73 days of COGS — significant raw material buffer stock consistent with imported wire rod lead times</td></tr>
+        <tr class="heat-critical"><td>Trade &amp; Other Receivables</td><td>452,155,391</td><td><span class="b b-red">154-day DSO</span> — severe cash tied up in debtor book; the largest single asset on the balance sheet</td></tr>
+        <tr><td>Cash &amp; Cash Equivalents</td><td>84,098,147</td><td>Adequate operational cash — approx. 29 days of revenue</td></tr>
+        <tr class="heat-ok"><td><strong>Total Current Assets</strong></td><td><strong>725,519,252</strong></td><td>78.8% of total assets — current-asset-heavy business driven by receivables</td></tr>
+        <tr><td colspan="2"><strong>TOTAL ASSETS</strong></td><td><strong>920,454,151</strong></td><td>Approx. MUR 920 million balance sheet — solid for a Mauritius private manufacturer</td></tr>
+        <tr><td rowspan="3"><strong>Equity</strong></td><td>Share Capital</td><td>2,000,000</td><td>20,000 shares × MUR 100 par value — nominal stated capital</td></tr>
+        <tr><td>Retained Earnings</td><td>338,534,822</td><td>Strong retained earnings — 50 years of profit retention by the Sennik family</td></tr>
+        <tr class="heat-ok"><td><strong>Total Equity</strong></td><td><strong>340,534,822</strong></td><td>37% equity ratio — reasonably capitalised</td></tr>
+        <tr><td rowspan="4"><strong>Non-Current Liabilities</strong></td><td>Long-Term Borrowings</td><td>0</td><td><span class="b b-green">Debt-free</span> — no long-term bank borrowings</td></tr>
+        <tr><td>Deferred Tax</td><td>5,892,709</td><td>Timing differences on depreciation</td></tr>
+        <tr><td>Long-Term Provisions</td><td>18,228,249</td><td>Likely employee benefit provisions (gratuity, pension)</td></tr>
+        <tr><td>Total Non-Current Liabilities</td><td>26,472,869</td><td>Very low — no bank debt</td></tr>
+        <tr class="heat-critical"><td rowspan="4"><strong>Current Liabilities</strong></td><td>Trade &amp; Other Payables</td><td>548,664,421</td><td><span class="b b-red">213-day DPO</span> — the company is extending supplier payment dramatically beyond normal terms; key funding mechanism for working capital</td></tr>
+        <tr><td>Current Tax Payable</td><td>3,424,546</td><td>Tax due within current year</td></tr>
+        <tr><td>Others</td><td>1,357,493</td><td>Other short-term obligations</td></tr>
+        <tr><td><strong>Total Current Liabilities</strong></td><td><strong>553,446,460</strong></td><td>Dominated entirely by trade payables — company is funded by its supplier base</td></tr>
+        <tr><td colspan="2"><strong>TOTAL LIABILITIES</strong></td><td><strong>579,919,329</strong></td><td>63% of balance sheet — high but structurally driven by payables, not debt</td></tr>
+        <tr><td colspan="2"><strong>TOTAL EQUITY &amp; LIABILITIES</strong></td><td><strong>920,454,151</strong></td><td>Balances confirmed ✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Working Capital Structure — The Payables-Receivables Trap</div>
+    MRC Wire Products is carrying MUR 452 million in trade receivables (154 days DSO) while funding this with MUR 549 million in stretched trade payables (213 days DPO). The company is effectively using its suppliers as a free line of credit to finance its customers. This is a fragile equilibrium: if any major supplier tightens terms, the liquidity position deteriorates sharply. Cash of MUR 84 million provides a thin buffer. This working capital structure is a direct consequence of the construction sector's payment culture in Mauritius — but it is also a problem that EOS tools (Scorecards with DSO targets, Rocks on collections, defined payment processes) can materially improve.
+  </div>
+
+  <h3 class="subsection-title">Charge Register (CBRIS Confirmed)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Volume</th><th>Property</th><th>Nature</th><th>Amount (MUR)</th><th>Date Charged</th><th>Date Filed</th></tr></thead>
+      <tbody>
+        <tr><td>IFC201/63</td><td>Movable &amp; Immovable</td><td>Floating</td><td>1,200,000</td><td>30 Jun 1982</td><td>17 Aug 1987</td></tr>
+        <tr><td>IFC129/4</td><td>Movable &amp; Immovable</td><td>Fixed &amp; Floating</td><td>900,000</td><td>08 Jul 1980</td><td>17 Aug 1987</td></tr>
+        <tr><td>IFC129/5</td><td>Movable &amp; Immovable</td><td>Fixed &amp; Floating</td><td>400,000</td><td>08 Jul 1980</td><td>17 Aug 1987</td></tr>
+        <tr class="heat-warn"><td>CH4317/51</td><td>Goodwill, Movable &amp; Immovable</td><td>Fixed &amp; Floating</td><td>60,000,000</td><td>09 Jul 2007</td><td>20 Aug 2007</td></tr>
+        <tr class="heat-warn"><td>CH4686/15</td><td>Movable/Immovable</td><td>Fixed &amp; Floating</td><td>28,000,000</td><td>07 Aug 2008</td><td>05 Sep 2008</td></tr>
+        <tr><td>CH3781/19</td><td>Movable &amp; Immovable</td><td>Floating</td><td>13,000,000</td><td>05 Oct 2005</td><td>15 Nov 2005</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="body-text"><strong>Charge Register Analysis:</strong> Six charges are registered, all historic (none post-2008). Total registered charge quantum is MUR 103.5 million. The largest charges — CH4317/51 (MUR 60M, 2007) and CH4686/15 (MUR 28M, 2008) — date from the mid-2000s expansion era and include goodwill as charged property, suggesting these were bank facilities secured against the business itself. The absence of charges post-2008, combined with zero long-term borrowings on the current balance sheet, strongly suggests these facilities have been repaid and the charges may not have been formally discharged from the registry — a common occurrence in Mauritius. <strong>The company appears effectively debt-free at bank level as of FY2024.</strong> The Desbro Group's 2019 Brenntag transaction proceeds (approx. €30.2M) likely supported this balance sheet clean-up.</p>
+
+  <h3 class="subsection-title">Annual Return and Filing History</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Annual Return Date</th><th>Annual Meeting Date</th><th>Date Filed</th><th>Financial Year Ended</th><th>Date Approved</th></tr></thead>
+      <tbody>
+        <tr><td>15 Mar 2024</td><td>15 Mar 2024</td><td>28 Jul 2025</td><td>15 Sep 2024</td><td>31 Jan 2025</td></tr>
+        <tr><td>15 Mar 2023</td><td>15 Mar 2023</td><td>13 Sep 2023</td><td>15 Sep 2023</td><td>10 May 2024</td></tr>
+        <tr><td>15 Jun 2022</td><td>15 Jun 2022</td><td>27 Oct 2022</td><td>15 Sep 2022</td><td>21 Feb 2023</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="body-text">Filing discipline is adequate — annual returns and financials are being filed, though with some delays (the 2024 annual return was filed July 2025, seven months after the meeting date). The financial year runs to 15 September, meaning the most recent filed accounts cover the period to September 2024 — these are the figures used throughout this report.</p>
+
+  <h3 class="subsection-title">MRC Steel Rolling Mills Ltd — Related Entity Note</h3>
+  <div class="alert alert-info">
+    <div class="alert-title">MRC SR — A Separate, Shell-Level Entity (Not a Subsidiary of MRC Wire)</div>
+    The second CBRIS file ("MRC SR cbris.pdf") covers <strong>MRC Steel Rolling Mills Ltd</strong> — File No. C176486, BRN C20176486, incorporated <strong>16 November 2020</strong>. This is a legally separate and distinct company from MRC Wire Products Ltd. Key facts: (1) It is 100% owned by <strong>Sennik Subash Chandra D Lakhmidass</strong> personally (100 ordinary shares); (2) its sole director is also Subash Chandra Sennik; (3) its registered address is PO Box 98, Old Moka Road, Bell Village — the same Desbro Group address as MRC Wire; (4) its stated business is "manufacture of basic iron and steel (employing 10 persons or more)"; (5) its most recent filed financials (FY ended 30 September 2023) show <strong>zero turnover, a net loss of MUR 500 (five hundred rupees), and total assets of negative MUR 5,800</strong>. This is unmistakably a shell or dormant holding vehicle — it has never traded. It was incorporated during COVID (November 2020) and appears to be a vehicle held in reserve, possibly for a planned steel rolling operation that has not yet been activated. It should be noted as a related entity and potential future project vehicle for the Sennik family, but it does not affect the MRC Wire financial analysis.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">All ratios calculated from CBRIS-confirmed FY2024 data (year ended 15 September 2024). Benchmarks drawn from Mauritius manufacturing and construction supply SME sector data. Colour key: <span class="b b-green">Green</span> = healthy, <span class="b b-amber">Amber</span> = watch, <span class="b b-red">Red</span> = critical concern.</p>
+
+  <div class="alert alert-ok">
+    <div class="alert-title">CBRIS Data Confirmed — All Ratios Calculated</div>
+    Financial ratios are now fully calculated from the CBRIS extract filed 31 January 2025 (FY ended 15 September 2024). Key headline: the company is debt-free and asset-turnover efficient, but is severely impaired by margin compression (GPM 11.9%) and a debtor book that is 154 days outstanding. The working capital structure is the dominant operational risk.
+  </div>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.31×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius Mfg SME)</span><span class="ratio-val">1.2× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Within Benchmark</span></span></div>
+      <span class="ratio-interpret">Current assets (MUR 725.5M) cover current liabilities (MUR 553.4M) 1.31 times — technically adequate. However, this ratio is almost entirely sustained by the large receivables book. If the 154-day debtor position is not genuinely collectable at face value, the current ratio deteriorates sharply. The liquidity appears sound on paper but is fragile in practice.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio (Acid Test)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.97×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius Mfg SME)</span><span class="ratio-val">0.8× – 1.2×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Within Benchmark</span></span></div>
+      <span class="ratio-interpret">Quick assets (receivables MUR 452M + cash MUR 84M = MUR 536M) vs. current liabilities MUR 553M = 0.97×. Just below 1.0 — the company cannot technically meet all current obligations from liquid assets alone without collecting receivables. The MUR 84M cash buffer is the only true liquid cushion. Quick ratio quality is dependent on receivables collectability.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">11.9%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius Wire/Steel Mfg)</span><span class="ratio-val">18% – 30%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Below Benchmark — Critical</span></span></div>
+      <span class="ratio-interpret">GPM of 11.9% is 6+ percentage points below the low end of the sector benchmark. Cost of Sales at 88.1% of revenue suggests the company is operating close to a commodity trading margin rather than a manufacturing margin. Each 1% improvement in GPM would generate an additional MUR 10.7 million in gross profit. Root cause analysis needed: steel input cost inflation, pricing concessions to Kosto competition, or COGS classification anomalies.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">3.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius Mfg SME)</span><span class="ratio-val">4% – 10%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Below Benchmark</span></span></div>
+      <span class="ratio-interpret">Net profit of MUR 33.6M on revenue of MUR 1.07B = 3.1% net margin. After the compressed gross margin, admin costs (MUR 62.7M) and finance costs (MUR 24.7M) further erode earnings. The finance costs are notable — the company carries no bank debt, so these charges likely reflect intercompany financing, lease obligations under IFRS 16, or factoring costs. This deserves interrogation.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">3.65%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5% – 12%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Below Benchmark</span></span></div>
+      <span class="ratio-interpret">Net profit (MUR 33.6M) ÷ Total Assets (MUR 920.5M) = 3.65%. The company is generating only MUR 3.65 of profit per MUR 100 of assets deployed. For context, the asset base includes MUR 452M of receivables — if these were collected and redeployed productively, ROA would improve materially. The asset base is efficient in generating revenue (asset turnover 1.16×) but the thin margins mean profit return on assets is weak.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">9.87%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">10% – 20%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Just Below Benchmark</span></span></div>
+      <span class="ratio-interpret">Net profit (MUR 33.6M) ÷ Total Equity (MUR 340.5M) = 9.87% — just below the 10% benchmark lower bound. For the Sennik family as beneficial owners, this means their capital in MRC Wire is generating a return marginally below what would be considered acceptable. The ROE narrative is: "Your business is very close to a good return on your capital, but margin compression is holding it back. Fix the gross margin by 3 points and ROE approaches 13%."</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value (bank debt only)</span><span class="ratio-val ok">0.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius Mfg)</span><span class="ratio-val">0.5× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Debt-Free</span></span></div>
+      <span class="ratio-interpret">Zero long-term borrowings and zero short-term bank borrowings confirmed from CBRIS balance sheet. The company carries no formal bank debt — a remarkable position for a MUR 1 billion revenue manufacturer. The six registered charges in the charge register appear to be legacy instruments that have not been formally discharged. The company is funded entirely by equity (retained earnings MUR 338.5M) and trade payables (MUR 548.7M). This is financially conservative but creates a structural dependency on supplier credit.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage (EBIT / Finance Costs)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">2.74×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt; 3.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Below Benchmark</span></span></div>
+      <span class="ratio-interpret">EBIT (PBT MUR 43.0M + Finance Costs MUR 24.7M = MUR 67.8M) ÷ Finance Costs (MUR 24.7M) = 2.74×. Below the 3.0× benchmark despite no bank debt — which means these MUR 24.7M in finance costs are not bank interest. They are likely intercompany charges (the Desbro group charging MRC Wire for group services or financing), or IFRS 16 lease interest. Either way, MUR 24.7M in finance costs consuming 57% of net profit before tax is a material drag that warrants investigation.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debtor Days / DSO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">154 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius B2B)</span><span class="ratio-val">30 – 75 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical — 2× Benchmark</span></span></div>
+      <span class="ratio-interpret">Trade &amp; Other Receivables (MUR 452.2M) ÷ Revenue (MUR 1,069.4M) × 365 = <strong>154 days</strong>. This is the most alarming ratio in the set. The company is waiting over five months to collect its revenue. For context, the entire annual payroll and admin costs (MUR 62.7M) could be funded for over two years from the excess receivables beyond a 60-day DSO target. Reducing DSO from 154 to 90 days would release approximately MUR 186 million of cash. This is an EOS Scorecard metric with a direct MUR impact that can be quantified precisely for the Sennik family.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days / DPO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">213 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Extreme — 3.5× Benchmark</span></span></div>
+      <span class="ratio-interpret">Trade &amp; Other Payables (MUR 548.7M) ÷ COGS (MUR 941.8M) × 365 = <strong>213 days</strong>. The company is paying its suppliers over seven months after receiving goods. This is extraordinary and reveals that MRC Wire is structurally dependent on ultra-extended supplier credit to fund its working capital cycle. This is only sustainable if suppliers accept it willingly — which likely means either the Desbro group's scale provides negotiating power, or suppliers are accepting these terms under duress. Any tightening of supplier terms would create a liquidity crisis unless the DSO is also reduced simultaneously.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">4.98× (73 days)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Wire Mfg)</span><span class="ratio-val">4× – 8× per year</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Within Benchmark</span></span></div>
+      <span class="ratio-interpret">COGS (MUR 941.8M) ÷ Inventories (MUR 189.3M) = 4.98× turns per year = <strong>73 days of stock cover</strong>. This is within the acceptable range for a manufacturer importing wire rod from India, Turkey, and Indonesia (where shipping lead times of 30–45 days plus buffer stock justifies 60–90 days of cover). Inventory management appears reasonably efficient — not the primary concern in this financial profile.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.16×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Capital-Intensive Mfg)</span><span class="ratio-val">0.6× – 1.2×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Above Benchmark</span></span></div>
+      <span class="ratio-interpret">Revenue (MUR 1,069.4M) ÷ Total Assets (MUR 920.5M) = <strong>1.16×</strong> — at the top of benchmark range and slightly above it. The company is extracting strong revenue from its asset base; the manufacturing plant is not underutilised. The problem is not asset productivity — it is margin (GPM) and working capital (DSO/DPO). The asset base is working hard; the issue is how much of that revenue translates into profit and cash.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">Financial Ratio Summary — Three Actionable Priorities for the EOS Conversation</div>
+    The CBRIS data reveals a company with a productive asset base and strong revenue, hamstrung by three compounding problems: <strong>(1) Gross Margin Compression</strong> at 11.9% — every percentage point recovered is MUR 10.7M of additional profit; <strong>(2) Debtor Days at 154</strong> — reducing to 90 days releases MUR 186M of trapped cash; <strong>(3) Finance Costs at MUR 24.7M with zero bank debt</strong> — the source of these costs (likely intercompany) needs investigation as they consume 57% of pre-tax profit. All three are directly addressable through EOS tools: Scorecards (DSO target weekly), Rocks (GPM recovery program), and Issues List (finance cost interrogation). The Sennik family's near-10% ROE is salvageable — and a precise MUR improvement case can be built around each of these three levers.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">MRC Wire Products operates in three overlapping segments of the Mauritius construction supply chain — prefabricated mesh, cut-and-bend rebar, and fencing/ancillaries — and holds an entrenched position built on five decades of operation, ISO certification, and group backing. The central competitive dynamic is unusual: its primary competitor in rebar and cut-and-bend is a sister company.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Prefabricated Welded Mesh</h4>
+        <div class="ec-sub">Core Manufacturing Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">MRC Position</span><span class="mv ok">Market Leader</span></div>
+        <div class="ec-metric"><span class="mk">Key Advantage</span><span class="mv">Swiss/German/Austrian equipment; ISO + MSB certified</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Kosto Ltd (Desbro), minor imports</span></div>
+        <div class="ec-metric"><span class="mk">Client Base</span><span class="mv">Major contractors, developers, govt</span></div>
+        <div class="ec-metric"><span class="mk">Threat Level</span><span class="mv ok">Low — High barrier to entry</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Cut &amp; Bend Rebar</h4>
+        <div class="ec-sub">Value-Add Processing Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">MRC Position</span><span class="mv warn">Contested — vs. Kosto</span></div>
+        <div class="ec-metric"><span class="mk">Key Advantage</span><span class="mv">Civil engineer sales team; BBS capability</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Kosto Ltd (ISO 9001/14001, OHSAS 18001); STR (steel trading)</span></div>
+        <div class="ec-metric"><span class="mk">Issue</span><span class="mv warn">Internal cannibalisation with Kosto</span></div>
+        <div class="ec-metric"><span class="mk">Threat Level</span><span class="mv warn">Medium — sister co. undermines pricing</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Fencing &amp; Ancillaries</h4>
+        <div class="ec-sub">Secondary / Margin-Supportive Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">MRC Position</span><span class="mv">Established supplier</span></div>
+        <div class="ec-metric"><span class="mk">Products</span><span class="mv">Chain-link, panel, cable trays, gabions</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Hardware distributors, imports</span></div>
+        <div class="ec-metric"><span class="mk">Differentiation</span><span class="mv">Galvanized quality + MSB mark</span></div>
+        <div class="ec-metric"><span class="mk">Threat Level</span><span class="mv ok">Low — niche domestic supplier</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Capital-intensive plant with European precision equipment.</strong> The automatic mesh plants, bending lines, and shear and bend lines sourced from Switzerland, Germany, and Austria represent a significant upfront capital investment that no new entrant or small competitor can replicate quickly. This equipment supports consistent product quality within tight tolerances — a requirement for structural reinforcement used in high-specification construction. The 7,800 m² facility in La Tour Koenig is purpose-built for the scale of production required. This creates a durable manufacturing moat in the Mauritius market.</p>
+  <p class="body-text"><strong>2. Dual certification (ISO 9001 + MSB Quality Mark) as a gate for major contracts.</strong> Government infrastructure contracts, large hospitality developments, and IRS/PDS projects in Mauritius routinely require certified suppliers. MRC Wire's dual certification (matched by Kosto but not by most smaller players) locks them into the highest-value tier of the Mauritian construction supply chain. Losing either certification would be an existential commercial event — their maintenance is therefore both a quality commitment and a sales prerequisite.</p>
+  <p class="body-text"><strong>3. Technical sales capability (civil engineer-led).</strong> The sales team structure — with Manish Ram as Technical and Sales Manager supported by civil-engineer-qualified sales executives — means MRC Wire sells solutions, not just products. BBS creation, project support, and QS reporting assistance creates stickiness with contractors that commodity competitors cannot match. This is a services-led model wrapped around a manufacturing core.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Tailwind — Mauritius construction pipeline remains active.</strong> Government infrastructure investment (roads, public buildings, Metro Express extensions, social housing) and private sector development (IRS/PDS luxury residential, hotel expansion) sustain structural demand for reinforcing steel and mesh. MRC Wire is directly embedded in this pipeline.</li>
+    <li><strong>Tailwind — Smart City and urbanisation projects.</strong> Projects like Beau Plan Smart City and Côte d'Or regeneration drive demand for both reinforcing steel and fencing products — MRC Wire is a certified supplier eligible for these contracts.</li>
+    <li><strong>Headwind — Steel commodity price volatility.</strong> Wire rod prices from India, Turkey, and Indonesia fluctuate significantly with global steel markets (driven by China production, energy costs, and shipping rates). MRC Wire cannot fully pass through input cost increases in a competitive market — margin compression during steel price spikes is a structural risk.</li>
+    <li><strong>Headwind — Internal competition from Kosto (Desbro sister company).</strong> Having two Desbro-owned companies competing for the same cut-and-bend rebar contracts in a market as small as Mauritius is structurally inefficient. This is likely a legacy of the group's historical evolution rather than deliberate strategy, but it depresses pricing discipline and creates customer confusion.</li>
+    <li><strong>Risk — Foreign exchange exposure.</strong> All raw material imports are priced in USD or EUR. A weakening MUR (which has depreciated significantly against both currencies in recent years) inflates COGS and compresses margins unless the company has FX hedging in place — which is rare for Mauritius manufacturing SMEs of this scale.</li>
+    <li><strong>Opportunity — Regional Indian Ocean export growth.</strong> The 29 recorded export shipments suggest an embryonic but real export capability. Reunion, Rodrigues, Seychelles, and Maldives are logical targets for prefabricated mesh where local manufacturing capacity is absent. Formalising an export strategy is a clear EOS-addressable Rock with a measurable revenue target.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Gap — LinkedIn</div>
+    MRC Wire Products does not appear to have an active LinkedIn company page. In the Mauritius B2B context, this is a minor issue for established relationships but a meaningful gap for inbound lead generation, talent acquisition, and professional credibility signalling to international clients or project developers who conduct due diligence online. A professional LinkedIn presence is a low-cost, high-visibility improvement that could be recommended in the EOS implementation plan.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and operational intelligence. Financial data from CBRIS (pending) may adjust scores.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">With 100–200 employees and a multi-product manufacturing operation, MRC Wire sits squarely in the EOS sweet spot of 10–250 people. The complexity is amplified by the group context: the company operates within a multi-entity Desbro Holdings structure that includes at least Kosto Ltd and Desbro Trading Limited in Mauritius, plus the historical African and UAE operations. This creates layers of organisational complexity — group strategy vs. entity strategy, inter-company product overlap, shared family governance — that EOS is specifically designed to untangle. The headcount alone justifies the score; the group complexity pushes it higher.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The Sennik family has been running Desbro entities for over 50 years across multiple continents and multiple industries. This longevity signals a capable and resilient leadership culture — but also potential calcification. Families that have run successful businesses for half a century are often the hardest to convince that an external operating system adds value; they have built their identity around doing it their own way. On the positive side: the Brenntag transaction (2019) demonstrates that the family is commercially pragmatic and willing to make bold strategic decisions when the value case is clear. If Subash Chandra Sennik is a next-generation family member, he is more likely to be open to modern management systems than a first-generation founder. Score is mid until the approach conversation reveals more.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Several classic EOS-addressable pain points are visible from external data alone. The internal competition between MRC Wire and Kosto (both Desbro-owned, both selling rebar and mesh) is a textbook role-clarity and accountability problem. The existence of a General Manager layer (gm@mrcmesh.mu) with the family above suggests a classic founder/operator tension where strategic decisions are not clearly delegated. The 45% long-tenure workforce may mask performance issues (people in wrong seats who have been there too long to challenge). The embryonic but underdeveloped export capability (29 shipments, 2 buyers) suggests growth vision exists but execution discipline is absent. These are precisely the symptoms EOS diagnoses and treats.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">ISO 9001 and MSB certification require documented quality management processes — so MRC Wire does have process discipline in the production and quality dimension. This is a meaningful positive signal: the company is not allergic to systems. However, ISO certification covers quality systems, not the broader operational and people management infrastructure that EOS addresses. No ERP system or management reporting framework has been identified from public sources. The financial function (Hemant Tripathi — Head of Finance) likely produces management accounts, but whether these drive real decision-making or simply satisfy compliance requirements is unknown. The HR function is present (Nagma Gujadhur) but people development, performance management, and career path structures are likely informal in a 50-year-old family business of this type.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The 45% of staff with over 11 years of service is a double-edged signal. On one hand, it speaks to an employment environment where people want to stay — a positive culture indicator. On the other, long tenure in manufacturing SMEs often means a stable but complacent culture where performance expectations are low, underperformers are tolerated, and new ideas are resisted. The 4-star-equivalent staff tenure distribution also suggests the company has managed not to lose large numbers of people — which EOS would test with the "right people, right seats" exercise. ISO-driven process discipline adds a baseline of accountability. The family ownership style typically creates a loyal, committed core but can create an inner circle / outer circle dynamic that EOS' Accountability Chart explicitly surfaces and challenges.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">In a family-controlled group with a dedicated General Manager layer, decision-making authority is almost certainly ambiguous. The family (Sennik) retains strategic control while the GM handles operational decisions — but the precise line between strategic and operational is likely undefined and contested in practice. This is the exact dynamic EOS resolves through the Accountability Chart and the Integrator/Visionary model. The existence of two Desbro entities (MRC Wire and Kosto) competing in the same market segment is itself evidence that decisions about market structure and competitive positioning are not being made clearly or consistently at the group level. The GM email (gm@mrcmesh.mu) confirms there is an operational leader, but their authority to act independently is not demonstrable from external data.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:40%"></div></div>
+    <p class="eos-rationale">No V/TO, strategic plan, or direction statement is visible from public sources. The company website (mrcmesh.mu) describes what MRC Wire does but offers no articulation of where it is going. There is no stated growth target, no export strategy framework, no product roadmap. For a 50-year-old business in a small island market, it is entirely plausible that "vision" is simply: continue doing what we do. This is not inherently a failure — stability is valid — but it makes EOS's V/TO work particularly valuable. If the Sennik family has a vision for the Mauritius manufacturing portfolio (consolidating MRC Wire and Kosto, growing into regional export markets, modernising the plant), EOS is the framework that translates that vision into a quarterly execution engine.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of structured meeting rhythms is visible from external data. In a Mauritius family manufacturing business of 50 years' standing, it is highly probable that decision-making happens informally and reactively — phone calls between family members, ad hoc conversations with the GM, and whatever periodic management accounts trigger a response. The ISO quality system requires review meetings for quality performance, but these are compliance-driven rather than strategy-driven. The Level 10 Meeting cadence is one of the highest-value EOS tools for MRC Wire precisely because the current meeting culture is almost certainly the opposite of structured: reactive, infrequent, and driven by crisis rather than rhythm.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.1</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive with a Key Gate</h4>
+      <p>MRC Wire Products is a legitimate EOS candidate: the right size, visible pain points, ISO process discipline as a foundation, and a family ownership structure that both creates the problems EOS solves and provides the concentrated decision-making authority needed to commit to the process. The gate is leadership openness — specifically, whether Subash Chandra Sennik (or whoever in the Sennik family is the operational champion) has the appetite to install a management operating system in a business that has operated the same way for five decades. The strongest entry point is framing EOS not as a fix for a broken business, but as the framework to unlock the next phase of a successful one — particularly around export growth, inter-entity clarity (MRC Wire vs. Kosto), and succession preparation.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for MRC Wire Products</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The most urgent tool. MRC Wire has at minimum three authority layers: Sennik family, General Manager, functional heads (Finance, HR, Maintenance, Sales). Layered on top is the Kosto Ltd overlap. An Accountability Chart forces clarity on who owns what, where the family's role ends and the GM's begins, and how the two Desbro entities relate. This single document resolves more internal friction than any other EOS tool available to this company.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>With no visible reporting cadence and a probable DSO problem (construction clients paying in 75–90 days), a weekly Scorecard with 5–10 leading indicators — revenue vs. target, DSO, GM%, production volume, export shipments — would give the GM and family a real-time pulse on the business. This also addresses the "what gets measured gets managed" deficit that is characteristic of long-established family businesses operating on historical relationships rather than data.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO (Vision / Traction Organiser)</h4>
+      <p>The family needs to articulate: what does MRC Wire look like in 10 years? Export leader in the Indian Ocean? Consolidated with Kosto into a single steel services entity? Sold? Passed to the next generation of Senniks? The V/TO forces this conversation — and without it, the Rocks and quarterly planning have no anchoring direction. For a 50-year-old business with no articulated forward strategy, this is both the most uncomfortable and the most valuable exercise.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (Quarterly Priorities)</h4>
+      <p>MRC Wire has at least three clear Rocks waiting to be named: (1) Formalise and grow the Indian Ocean export programme — set a revenue target, assign an owner, define the 3 key markets; (2) Resolve the MRC Wire / Kosto market overlap — define a clear lane for each entity; (3) Implement a collections Scorecard metric and DSO reduction target. Each of these is a 90-day executable objective with a clear owner and measurable outcome.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS (Identify, Discuss, Solve)</h4>
+      <p>The MRC Wire / Kosto internal competition is the defining unresolved issue in this business. It has almost certainly been "discussed" in informal family conversations but never resolved — because there is no structured Issues List and no IDS discipline to force a decision. EOS' IDS process applied to this specific issue would produce a resolution (defined lanes, shared sales function, or formal separation) that family conversations alone have failed to deliver for potentially years.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>A weekly 90-minute L10 with the GM and functional heads — reviewing the Scorecard, updating Rocks, and working the Issues List — would create the management rhythm that almost certainly does not exist today. For a business operating in a reactive mode across a 100–200 person manufacturing operation, the introduction of a consistent weekly management cadence is the single highest-leverage structural change possible. This is where EOS is felt first and most viscerally by the team.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total: four financial/operational (addressable before EOS begins) and four EOS-specific. Sequencing principle: build financial clarity first, then install the management operating system on a foundation of real data.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Complete CBRIS Financial Analysis Before the First Conversation</h4>
+      <p>The CBRIS extract for MRC Wire Products Ltd must be reviewed before Thierry meets with Subash Sennik. Filed accounts will reveal revenue scale, margin profile, debt load, and DSO — the four numbers that determine whether the EOS conversation is about accelerating a healthy business or fixing a strained one. The framing of the pitch changes materially depending on whether net margin is 8% or 2%. Hemant Tripathi (Head of Finance) can validate or expand on the filed figures in the first conversation if relationships permit.</p>
+      <span class="urg urg-now">Immediate — Before Outreach</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Address the Kosto / MRC Wire Market Overlap as a Strategic Opening</h4>
+      <p>In the first conversation with Subash Sennik, raise the Kosto / MRC Wire internal competition explicitly — not as a criticism, but as an observed structural tension: "I noticed you have two Desbro companies serving the same contractor clients with overlapping product ranges. In my experience working with manufacturing groups, this is one of the most common hidden profit leaks — you're essentially competing with yourselves on margin." This positions Thierry as strategically perceptive and frames EOS as the solution to a problem the family almost certainly already knows exists but has not resolved.</p>
+      <span class="urg urg-now">Opening Conversation Frame</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Propose a Working Capital Diagnostic as a Quick-Win Before EOS</h4>
+      <p>Based on industry profile, MRC Wire almost certainly has a DSO problem (construction clients paying in 75–90 days) against import supplier terms of 30–60 days. A simple working capital gap analysis — receivables minus payables — quantified in MUR terms, demonstrates the cash impact of operational inefficiency. Presenting this calculation in a first or second meeting ("you are likely funding MUR X million of your clients' working capital at any given time") is a high-impact commercial hook that makes the EOS Scorecard conversation immediately concrete and self-evidently valuable.</p>
+      <span class="urg urg-week">Within 30 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Map the Sennik Family Decision Authority Before Proposing Anything</h4>
+      <p>Before any formal EOS proposal, Thierry needs to understand who in the Sennik family holds operational authority over MRC Wire specifically. Is it Subash Chandra Sennik? The General Manager (whose name should be confirmed from the CBRIS extract)? Ben Sennik directly? The Brenntag transaction was a major strategic move — someone made that call. That person, or their successor, is the decision-maker for an EOS engagement. Entering the proposal phase without knowing this leads to a compelling pitch to someone who cannot say yes.</p>
+      <span class="urg urg-week">Within 30 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Propose a Focus Day Scoped to the Mauritius Manufacturing Portfolio</h4>
+      <p>Position the Focus Day not as a single-company engagement but as a Desbro Mauritius manufacturing leadership session: MRC Wire + Kosto, jointly. This reframes the commercial conversation from "EOS for a wire company" to "EOS for a manufacturing group" — a more strategic and more expensive engagement, and one where the Sennik family's group-level decision-making authority is the natural driver. The Focus Day output (Accountability Chart draft + V/TO draft) would cover both entities and clarify the lane ownership question in a single structured session.</p>
+      <span class="urg urg-week">Propose in Second Meeting</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Hypothesise the Accountability Chart Before You Walk In</h4>
+      <p>Based on current intelligence: Visionary = Ben Sennik (or Subash Sennik as next-gen); Integrator = General Manager (MRC Wire); functional seats = Finance (Hemant Tripathi), Sales/Technical (Manish Ram), HR (Nagma Gujadhur), Maintenance (Selven Vurdapen), Operations. Draft this hypothesis and bring it to the first EOS conversation — "This is what I believe your current structure looks like from the outside. Is this how it actually runs?" This is one of the most powerful EOS entry techniques available for a company with this profile.</p>
+      <span class="urg urg-week">Prepare Before First Meeting</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>First Rock: Export Revenue Target for Indian Ocean Markets</h4>
+      <p>The most concrete near-term growth Rock for MRC Wire is formalising the Indian Ocean export programme. 29 shipments to 2 buyers already exist — the infrastructure is proven. The Rock is: by end of Q3 2026, identify 3 additional export markets (Reunion, Seychelles, Rodrigues, Maldives), assign a named sales owner, and set a quarterly export revenue target in MUR. This is a Rock that the General Manager can own, the Scorecard can track weekly, and the family can see as a measurable return on EOS investment within 90 days.</p>
+      <span class="urg urg-medium">Propose as First Rock in Focus Day</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>V/TO Strategic Question: What Happens Next with Kosto?</h4>
+      <p>The most important V/TO question for the Sennik family is one they have almost certainly avoided: what is the long-term structure of the Mauritius manufacturing portfolio? Option A: merge MRC Wire and Kosto into a single entity with clear lanes. Option B: give each a defined market (MRC Wire = mesh and armatures; Kosto = rebar and structural); Option C: sell one. The V/TO process in a Focus Day creates the structured space to have this conversation under facilitated conditions — and positions Thierry as the person who helped the family make a decision they had been avoiding. This is the highest-value outcome of an EOS engagement with this group.</p>
+      <span class="urg urg-medium">V/TO Session — Focus Day</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>MRC Wire Products Ltd is a financially opaque but operationally substantial Mauritius manufacturer with a 50-year track record, certifications, and group backing that distinguish it from most local SMEs. The real opportunity is not a single-entity EOS engagement — it is a Desbro Mauritius manufacturing group conversation with the Sennik family, using MRC Wire as the entry point. The visible pain points (internal Kosto competition, absent management cadence, undefined vision, underexploited export opportunity) are all EOS-addressable and all high-stakes enough that a credible, data-grounded approach will land. The CBRIS financial extract is the missing piece that will sharpen the financial hook before the first conversation.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Obtain CBRIS extract from Team Inbox and complete Tabs 03 &amp; 04 with full financial analysis — within 24 hours of PDF receipt</li>
+        <li><span class="sig-num">02</span>Confirm Subash Chandra Sennik's role, mobile, and email via CBRIS director register or direct LinkedIn outreach — before outreach</li>
+        <li><span class="sig-num">03</span>First conversation with Subash Sennik: raise the Kosto/MRC Wire overlap, present the working capital diagnostic hypothesis, ask the authority-mapping question — Week 1–2</li>
+        <li><span class="sig-num">04</span>Propose a Desbro Mauritius Manufacturing Focus Day (MRC Wire + Kosto leadership) — after a positive first meeting</li>
+        <li><span class="sig-num">05</span>Deliver Focus Day: Accountability Chart (both entities), V/TO strategic question (Kosto lane resolution), first Rock (export programme) — within 60 days of engagement confirmation</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>MRC Wire Products Ltd — Comprehensive Company Analysis &amp; EOS Assessment · 2 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (pending) · mrcmesh.mu · desbrogroup.com · dtl.mu · signalhire.com · africanadvice.com · yelo.mu · fuelsandlubes.com (Brenntag/Desbro) · mgf.mu · kosto.mu · volza.com · rocketreach.co</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
