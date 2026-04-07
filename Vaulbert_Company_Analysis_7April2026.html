@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vaulbert (HVC Ltd) — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">FMCG Distribution &amp; Manufacturing</span>
+    <span class="badge badge-type">Private Company · Domestic · Mauritius</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">7 April 2026</span>
+  </div>
+  <h1>Vaulbert (HVC Ltd):<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">H. Vaulbert de Chantilly Ltd (HVC Ltd) · Company intelligence · Financial ratios · EOS implementation assessment · Triolet, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2022</div>
+      <div class="stat-value steel">MUR 208.6M</div>
+      <div class="stat-delta">FY ended 31 Dec 2022 · Latest filed</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit After Tax</div>
+      <div class="stat-value emerald">MUR 16.9M</div>
+      <div class="stat-delta">8.1% net margin · FY2022</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.8 / 10</div>
+      <div class="stat-delta">Moderate-High · Owner-led growth platform · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">High Leverage</div>
+      <div class="stat-delta">Short-term borrowings MUR 88.5M · 49% of total assets</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Vaulbert (HVC Ltd) — Company Analysis &amp; EOS Assessment · 7 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION — 7 tabs, always this order
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 70-year-old Mauritian FMCG distribution house, recently rebranded and under its third-generation owner-director, delivering strong top-line revenue but carrying structurally heavy short-term debt that limits strategic freedom.</p>
+
+  <p class="body-text">H. Vaulbert de Chantilly Ltd — trading as HVC Ltd and rebranded as <strong>Vaulbert</strong> in 2024 — is a privately held Mauritian FMCG distribution and light manufacturing company incorporated on 4 December 2006 (File No. C067249), with commercial roots tracing back to JVC Ltd, founded by Jean Vaulbert de Chantilly in 1952. Operating from Bonair Industrial Zone in Triolet, Pamplemousses, the company distributes Mauritian and international branded goods — spanning food, beverages, alcohol, tobacco, cosmetics, and household products — to both modern retail and the 4- and 5-star hotel (HoReCa) segments across Mauritius. It also operates a manufacturing and bottling facility invested in from 2017, producing soft drinks, distilled potable alcoholic beverages, and its own RTD brand Baie (launched December 2025).</p>
+
+  <p class="body-text">The company is 100% owned by <strong>Vauchan Investment Ltd</strong>, a holding vehicle that consolidates the Vaulbert family's stake. Henri Dugald Vaulbert de Chantilly is the sole registered director and has led the company since assuming ownership in 2008. There are no registered charges on the company's assets, and annual registration fees are paid up to 2026 — a positive compliance signal. The company secretary is CAS Services Ltd (UHY House, Vivea Business Park, Moka), appointed in August 2024.</p>
+
+  <p class="body-text">Financially, FY2022 (the latest filed accounts) shows turnover of MUR 208.6M, gross profit of MUR 51.7M (24.8% margin), and net profit after tax of MUR 16.9M (8.1% margin) — solid performance for a distribution business. However, the balance sheet reveals a concerning dependency on short-term borrowings of MUR 88.5M, representing 63.8% of total equity, and a current ratio of just 1.15x. The company's debt structure raises working capital risk, particularly given inventory-heavy operations. EOS suitability is rated <strong>6.8 / 10</strong> — a genuine opportunity, with an owner-founder who has driven transformation but is likely running the business without a structured execution system.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Owner-Led Transition at Inflection Point</div>
+    Vaulbert is at a textbook EOS entry point: a founder-led, third-generation family business that has grown through personal drive and market intuition, is actively expanding its brand portfolio and launching its own manufactured products, and is now at a scale (MUR 200M+ revenue) where informal management creates structural risk. The 2024 rebrand from HVC to Vaulbert signals a deliberate identity shift — Henri is building something, not maintaining something. The critical leverage point for Thierry is the combination of growth ambition, brand complexity (8+ international brands plus own-label), and a balance sheet under pressure from short-term debt. Henri needs to delegate, systematise, and build accountability structures. That is exactly what EOS provides.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>70-year brand heritage and exclusive distribution relationships</strong> across food, beverages, alcohol and cosmetics. Own manufacturing capability (bottling plant since 2017). Dual-channel reach: modern retail and premium HoReCa (4- and 5-star hotels). Strong gross margin of 24.8% for a distributor. Active new brand launches (Peroni, Prime, Baie RTD — Dec 2025). International supplier relationships spanning 10+ countries.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Short-term borrowings of MUR 88.5M represent 49% of total assets</strong> — the single most dangerous structural feature. Current ratio of 1.15x provides thin liquidity cover. Administration costs of MUR 61.3M (29.4% of revenue) are high for a distributor and suggest bloated overhead or underutilised fixed-cost base. Accounts filed only up to FY2022 — a 3-year reporting lag signals governance immaturity.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Classic founder bottleneck: one director, one shareholder, no disclosed management team structure.</strong> The business has grown to MUR 200M+ revenue on personal leadership — but the 2024 rebrand, manufacturing diversification, and new product launches suggest Henri is stretching the organisation. Multiple business activities (9 licensed activities in CBRIS) with a single director signals accountability gaps across functions. EOS Accountability Chart and Rocks are the immediate tools.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A third-generation Mauritian family distribution business, rebranded in 2024 and actively expanding into own-label manufacturing — operating at the intersection of import, distribution, and light FMCG production.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">H. Vaulbert de Chantilly Ltd (also registered as HVC Ltd) was incorporated on <strong>4 December 2006</strong> under File No. <strong>C067249</strong>, Business Registration No. <strong>C06067249</strong>. It is classified as a Domestic Private company, currently Live, with no winding-up or removal proceedings on record. Registered office address: <strong>Bonair Road, Bonair Industrial Zone, Triolet, Mauritius</strong> (effective 15 June 2018). The company secretary is <strong>CAS Services Ltd</strong>, 71 Impasse Saipan, UHY House, Vivea Business Park, Moka, appointed 8 August 2024. Annual registration fees are paid up to 2026. The most recent annual return was filed 21 March 2022 (for the year ended 30 June 2021), and the last financial statements were approved 29 June 2023 for FY ended 31 December 2022 — a filing lag that is common among Mauritian private companies but still notable. There are <strong>no charges registered</strong> against the company's assets.</p>
+  <p class="body-text">The commercial origins of the Vaulbert family in Mauritius date to 1952 with JVC Ltd, founded by Jean Vaulbert de Chantilly. JVC was one of Mauritius's early pioneer commercial trading houses. In 2006/2007, the entity was restructured as HVC Ltd (H. Vaulbert de Chantilly Ltd), coinciding with Henri Vaulbert's ascension. In 2008, Henri assumed full ownership and began actively diversifying the business, adding new brand categories and investing in a manufacturing and bottling plant in 2017. In 2024, the company was commercially rebranded as <strong>Vaulbert</strong>, signalling a deliberate generational and strategic repositioning.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Vauchan Investment Ltd</h4>
+        <div class="ec-sub">Sole Shareholder · Holding Vehicle</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">5,000,000</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Currency</span><span class="mv">MUR</span></div>
+        <div class="ec-metric"><span class="mk">Ownership</span><span class="mv ok">100%</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>H. Vaulbert de Chantilly Ltd</h4>
+        <div class="ec-sub">Operating Entity · HVC Ltd / Vaulbert</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">File No.</span><span class="mv">C067249</span></div>
+        <div class="ec-metric"><span class="mk">Stated capital</span><span class="mv">MUR 5,000,000</span></div>
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">Live</span></div>
+        <div class="ec-metric"><span class="mk">Incorporated</span><span class="mv">04 Dec 2006</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Henri Vaulbert de Chantilly</h4>
+        <div class="ec-sub">Beneficial Owner · Managing Director</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Sole Director</span></div>
+        <div class="ec-metric"><span class="mk">Appointed</span><span class="mv">04 Dec 2006</span></div>
+        <div class="ec-metric"><span class="mk">Generation</span><span class="mv">3rd family</span></div>
+        <div class="ec-metric"><span class="mk">Control</span><span class="mv warn">Full</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Note — Holding Structure</div>
+    Vauchan Investment Ltd acts as a family holding vehicle, fully controlling HVC Ltd. This structure is typical of Mauritian family businesses at this scale and provides asset protection while concentrating decision-making in Henri. There is no evidence of any external investors, minority shareholders, or institutional participation. This concentration of ownership is both a strength (fast decisions) and an EOS risk factor (no external accountability mechanism).
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Henri Dugald Vaulbert de Chantilly — Managing Director</h4>
+      <p>Sole registered director since incorporation (4 December 2006). Third-generation family leader who assumed ownership in 2008 and drove the company's transformation from a traditional trading house into a modern FMCG distributor and light manufacturer. Quoted in Mauritian business media (Business Magazine, Dec 2025) on premium beverage strategy: <em>"We offer Mauritian consumers a wider choice of premium beverages that blend local creativity and international trends."</em> LinkedIn: <a href="https://mu.linkedin.com/in/henri-vaulbert-de-chantilly-b0439910" target="_blank">linkedin.com/in/henri-vaulbert-de-chantilly-b0439910</a></p>
+    </div>
+    <div class="profile-card">
+      <h4>Nicolas Commins — Production Manager</h4>
+      <p>Oversees the manufacturing and bottling operations at the Bonair Industrial Zone facility. Key operational figure given Vaulbert's investment in own-label production (Cyclone Rum, Baie RTD). Likely a critical hire made during the 2017 manufacturing expansion phase.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Anaelle Delaitre — Marketing Executive</h4>
+      <p>Responsible for brand marketing and market visibility. Given the portfolio of 8+ international brands plus own-label products, this role is central to Vaulbert's commercial model. The brand launch cadence (Peroni, Prime, Baie in Dec 2025) suggests an active marketing function — but likely under-resourced relative to the portfolio size.</p>
+    </div>
+  </div>
+  <div class="profile-grid two-col" style="margin-top:13px;">
+    <div class="profile-card">
+      <h4>Jessinee Rajaratnam — Accountant</h4>
+      <p>The presence of a named in-house accountant (vs. relying entirely on the secretary/auditor) is a positive signal. However, the 3-year financial reporting lag and the short-term debt structure suggest financial management may be reactive rather than forward-looking.</p>
+    </div>
+    <div class="profile-card">
+      <h4>CAS Services Ltd — Company Secretary</h4>
+      <p>Appointed 8 August 2024. UHY-affiliated firm at Vivea Business Park, Moka. Handles statutory compliance and annual returns. The recent appointment (2024) may signal a professionalisation of governance coinciding with the Vaulbert rebrand.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Vaulbert operates across nine registered business activities under the VAULBERT DISTRIBUTION trading name, covering the full FMCG value chain from import through to retail. The portfolio spans:</p>
+  <ul class="styled-list">
+    <li><strong>International brand distribution</strong> — Glenryck (canned fish, since 1970), Alpro (plant-based), Loacker (confectionery), Musgrave Spirits, Nando's sauces, Perrier (sparkling water), Spier Wine Farm, Fitch &amp; Leedes (mixers), Peroni Nastro Azzurro (beer, launched Dec 2025), Prime (energy drink, relaunched Dec 2025)</li>
+    <li><strong>Own-label manufacturing</strong> — Cyclone Rum (distilled potable alcoholic beverages), Baie RTD (ready-to-drink alcoholic cocktail, launched Dec 2025 in pina colada and grapefruit), soft drinks and non-alcoholic beverages from own bottling plant</li>
+    <li><strong>Import and export</strong> — direct sourcing from 10+ countries internationally</li>
+    <li><strong>Bonded warehouse</strong> — licensed storage for dutiable goods (alcohol, tobacco)</li>
+    <li><strong>Wholesale distribution</strong> — non-specialised general merchandise, sea foods, household, cosmetics</li>
+    <li><strong>Dealer in liquor, alcoholic products and tobacco</strong> — wholesale licensed</li>
+    <li><strong>General retail</strong> — foodstuff (non-liquor) and non-foodstuff</li>
+  </ul>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Vaulbert operates exclusively from its Bonair Industrial Zone facility in Triolet (north-west Mauritius, Pamplemousses district). All nine business activities are registered at this single address, which houses both the warehouse/distribution centre and the manufacturing and bottling plant. The company distributes island-wide across Mauritius, covering both the modern retail trade (supermarkets, convenience stores) and the HoReCa channel (4- and 5-star hotels). There is no evidence of operations in Rodrigues or overseas export markets, though import sourcing spans 10+ countries. The company's stated focus remains the Mauritian domestic market.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Note</div>
+    The company maintains two web presences: the legacy hvc.mu (now a 301 redirect to vaulbert.com) and the new vaulbert.com brand site. The rebrand is recent (2024) and the digital transition appears orderly. Social media presence confirmed via Facebook (HVC Ltd — Lifestyle page). No e-commerce or direct-to-consumer digital channel identified — consistent with a B2B distribution model.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS / Registrar of Companies, Mauritius — financial statements filed 29 June 2023 for FY ended 31 December 2022. All figures in Mauritius Rupees (MUR). No prior-year comparatives available in filed summary.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    The CBRIS financial summary (FY2022, approved 29 June 2023) is the only set of accounts available for analysis. Prior-year comparatives (FY2021, FY2020, FY2019) are referenced in the filing log but their detailed figures are not accessible via CBRIS summary. This prevents trend analysis. The filing lag — FY2022 accounts approved mid-2023, now April 2026 — means the most recent trading data is approximately 3–4 years old. Vaulbert's actual FY2024 or FY2025 performance is unknown. Revenue is likely higher given the brand expansion and manufacturing investments made post-2022. All ratios and analysis below are based solely on FY2022 data.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2022, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>208,578,252</td><td>100.0%</td><td>MUR 208.6M — solid scale for a Mauritius FMCG distributor; implies meaningful market share across licensed segments</td></tr>
+        <tr><td>Cost of Sales</td><td>156,829,568</td><td>75.2%</td><td>Typical for wholesale/distribution; includes cost of imported goods and own-manufactured product input costs</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>51,748,684</td><td>24.8%</td><td>Strong gross margin for a distributor — reflects premium brand mix (Perrier, Musgrave, Spier) and own-label contribution</td></tr>
+        <tr><td>Other Income</td><td>33,398,851</td><td>16.0%</td><td>Unusually high — likely rental income, agency fees, rebates from brand principals, or bonded warehouse revenues. Material and warrants scrutiny</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>Nil as reported — distribution costs may be embedded in COGS or allocated to administration; notable absence</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>61,266,978</td><td>29.4%</td><td>High overhead relative to revenue; suggests substantial fixed staff costs, facilities, and vehicle/logistics overhead. Key efficiency target</td></tr>
+        <tr><td>Other Expenses</td><td>41,309</td><td>0.02%</td><td>Negligible</td></tr>
+        <tr><td>Finance Costs</td><td>3,728,487</td><td>1.8%</td><td>Interest on MUR 88.5M short-term borrowings — relatively low rate (~4.2% effective), suggesting favourable banking terms</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>20,110,761</td><td>9.6%</td><td>Strong pre-tax profitability driven partly by substantial Other Income; underlying operating profit from core distribution is lower</td></tr>
+        <tr><td>Tax Expense</td><td>3,183,070</td><td>1.5%</td><td>Effective tax rate of approximately 15.8% — consistent with Mauritius corporate tax regime</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>16,927,691</strong></td><td><strong>8.1%</strong></td><td>Healthy net margin for a distributor; retained earnings position of MUR 26.1M confirms consistent historical profitability</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Note — Other Income of MUR 33.4M</div>
+    Other Income representing 16% of revenue is atypical for a pure distributor and materially inflates reported profitability. Without access to the full audited notes, the source cannot be confirmed — but likely candidates include: brand principal marketing support and listing fees, bonded warehouse rental income, property income, or inter-company charges. If this income is non-recurring or structural, it changes the quality-of-earnings story significantly. This should be explored directly with Henri in the first meeting.
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 December 2022, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>1,486,646</td><td>Very low PPE for a company with a manufacturing and bottling plant — suggests significant assets may be fully depreciated, leased, or held elsewhere</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>637,392</td><td>Likely brand/licence costs or software; immaterial</td></tr>
+        <tr><td>Non-Current Assets</td><td>Others (non-current)</td><td>13,816,757</td><td>Largest non-current item — possibly long-term deposits, inter-company loans to Vauchan, or other investments</td></tr>
+        <tr><td>Non-Current Assets</td><td><strong>Total Non-Current</strong></td><td><strong>15,940,795</strong></td><td>Only 9.1% of total assets — business is operationally asset-light with capital tied up in working capital</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Inventories</td><td>77,487,831</td><td>44.2% of total assets — very high inventory relative to revenue (37.2% of turnover). Signals slow-moving stock or large bonded warehouse holding. DSI ~90 days — too high</td></tr>
+        <tr><td>Current Assets</td><td>Trade and Other Receivables</td><td>59,250,771</td><td>DSO approximately 104 days — high for a distributor. Extended credit terms likely to hotel/HoReCa clients or modern trade. Collection efficiency is a cash flow risk</td></tr>
+        <tr><td>Current Assets</td><td>Cash and Cash Equivalents</td><td>8,576,049</td><td>Only MUR 8.6M cash on hand — thin buffer relative to MUR 88.5M short-term borrowings and MUR 47M payables</td></tr>
+        <tr><td>Current Assets</td><td>Others (current)</td><td>14,261,779</td><td>Prepayments, VAT receivables, or other short-term items</td></tr>
+        <tr><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>159,576,430</strong></td><td>90.9% of total assets — business is entirely working-capital driven</td></tr>
+        <tr><td>Total</td><td><strong>Total Assets</strong></td><td><strong>175,517,225</strong></td><td></td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital</td><td>5,000,000</td><td>Stated capital as per CBRIS</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Retained Earnings</td><td>26,098,121</td><td>Accumulated retained profits — confirms sustained historical profitability</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>31,098,121</strong></td><td>17.7% of total assets — thin equity base relative to asset base</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Provisions</td><td>1,810,157</td><td>Likely end-of-service gratuity provisions</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Others (non-current)</td><td>3,930,288</td><td>Deferred income or other long-term obligations</td></tr>
+        <tr><td>Non-Current Liabilities</td><td><strong>Total Non-Current Liabilities</strong></td><td><strong>5,740,445</strong></td><td>No long-term bank debt — all financing is short-term</td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td>Short-Term Borrowings</td><td>88,505,320</td><td>The dominant risk: MUR 88.5M in revolving credit / overdraft facilities. Represents 50.4% of total equity+liabilities and 2.8x equity. Refinancing risk is significant</td></tr>
+        <tr><td>Current Liabilities</td><td>Trade and Other Payables</td><td>46,982,370</td><td>DPO approximately 109 days — very extended supplier payment terms, consistent with the short-term borrowing model. Suppliers effectively financing the business</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax Payable</td><td>3,190,969</td><td>FY2022 tax payable — normal</td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>138,678,659</strong></td><td>79% of total liabilities — entirely short-term funded. Critical structural vulnerability</td></tr>
+        <tr><td>Total</td><td><strong>Total Liabilities</strong></td><td><strong>144,419,104</strong></td><td>82.3% of total assets funded by debt</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The CBRIS charge register shows <strong>no registered charges</strong> against H. Vaulbert de Chantilly Ltd as at 7 April 2026. This is a positive governance signal — despite MUR 88.5M in short-term borrowings, no fixed or floating charges over company assets appear to have been formally registered. In Mauritius, bank overdrafts and revolving credit facilities are sometimes secured by personal guarantee of the director rather than a registered charge over company assets, which would explain this position. Alternatively, the security may be held by way of a pledge on inventories or receivables that does not require CBRIS registration. This warrants clarification in due diligence.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">All ratios derived from FY2022 CBRIS filings. Benchmarks sourced from Mauritius FMCG distribution sector norms and international distributor comparables. Colour key: Green = healthy, Amber = monitor, Red = critical concern requiring action.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.15×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy distributor)</span><span class="ratio-val">1.5× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">WATCH</span></span></div>
+      <span class="ratio-interpret">Current assets of MUR 159.6M cover current liabilities of MUR 138.7M by only 1.15×. While technically solvent, there is very little buffer. A significant collection shortfall or a bank pulling its revolving facility would create immediate liquidity stress. The current ratio is depressed by the MUR 88.5M short-term borrowings sitting in current liabilities.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio (Acid Test)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.59×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.0× – 1.2×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">CRITICAL</span></span></div>
+      <span class="ratio-interpret">Excluding inventory (MUR 77.5M), liquid assets cover only 59% of current liabilities. This is the single most important liquidity alarm: if inventory cannot be converted to cash quickly (DSI ~90 days suggests it cannot), the business is dependent on its bank facilities remaining open. Any banking relationship disruption would be severe.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">24.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (FMCG distributor)</span><span class="ratio-val">18% – 28%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">Strong gross margin for a distributor — reflects a premium brand portfolio (Perrier, Musgrave Spirits, Spier Wine) and own-label manufacturing contribution, which typically carries higher margins than pure agency distribution. This is a genuine competitive advantage.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">8.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (FMCG distributor)</span><span class="ratio-val">3% – 8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">STRONG</span></span></div>
+      <span class="ratio-interpret">Net margin of 8.1% is at the top of the benchmark range — but is inflated by MUR 33.4M of Other Income (16% of revenue). Stripping that out, core operating profit would be approximately MUR 23.5M pre-interest-tax, yielding a core net margin closer to 9.3M / 208.6M = 4.5%. Still acceptable but less impressive than the headline figure.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">54.4%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">15% – 25%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">VERY HIGH</span></span></div>
+      <span class="ratio-interpret">ROE of 54.4% looks exceptional — but this is a function of the very thin equity base (MUR 31.1M) relative to profits. High ROE driven by leverage is not the same as strong operational performance. It means the business is extremely geared: Henri is generating returns by running on borrowed capital, not by accumulating equity.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">9.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5% – 12%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">ACCEPTABLE</span></span></div>
+      <span class="ratio-interpret">ROA of 9.6% (using profit before tax of MUR 20.1M / total assets MUR 175.5M) is within the healthy range for this sector. Assets are predominantly working capital (inventory + receivables), and the business is generating adequate returns from those deployed assets.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">4.64×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">&lt; 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">CRITICAL</span></span></div>
+      <span class="ratio-interpret">Total liabilities of MUR 144.4M against equity of MUR 31.1M gives a D/E of 4.64×. This is the most structurally dangerous number in the report. The business is running on a 5:1 debt-to-equity ratio — entirely through short-term facilities. Any adverse event (bank covenant breach, rate hike, principal demand for repayment) would be existential.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">6.4×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (safe)</span><span class="ratio-val">&gt; 3.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">ADEQUATE</span></span></div>
+      <span class="ratio-interpret">EBIT of MUR 23.8M (profit before tax + finance costs) covers finance costs of MUR 3.7M by 6.4×. This means the company can service its debt comfortably from operations — the risk is not interest coverage but refinancing risk (the debt falling due or facilities being pulled). The effective interest rate of ~4.2% suggests established banking relationships with competitive terms.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Days Sales Outstanding (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">104 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (distributor)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">CRITICAL</span></span></div>
+      <span class="ratio-interpret">Receivables of MUR 59.3M on revenue of MUR 208.6M implies an average collection period of 104 days. This is dangerously extended for a distributor. If Vaulbert were to bring DSO from 104 to 60 days, it would release approximately MUR 25.8M in cash — enough to eliminate 29% of the short-term borrowings. This is the single highest-value operational intervention available.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Days Inventory Outstanding (DSI)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">~90 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (distributor)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">CRITICAL</span></span></div>
+      <span class="ratio-interpret">Inventory of MUR 77.5M against COGS of MUR 156.8M implies stock on hand covers approximately 90 days of sales. This is excessive for an FMCG distributor and likely reflects: (1) large minimum order quantities from international suppliers, (2) bonded warehouse stock of alcohol/tobacco, and (3) potentially slow-moving SKUs in the portfolio. Reducing DSI from 90 to 55 days would release approximately MUR 15M in working capital.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Days Payable Outstanding (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">~109 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Context</span><span class="ratio-val">Stretched</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">WATCH</span></span></div>
+      <span class="ratio-interpret">DPO of ~109 days (trade payables MUR 47M / COGS MUR 156.8M × 365) indicates Vaulbert is paying suppliers very slowly. This is a deliberate working capital strategy — using supplier credit to partially offset the DSO problem. However, with international brand principals as suppliers, extended payment terms may damage relationship quality and risk exclusive distribution agreements.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.19×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (distributor)</span><span class="ratio-val">1.5× – 2.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">BELOW PAR</span></span></div>
+      <span class="ratio-interpret">Revenue of MUR 208.6M on total assets of MUR 175.5M gives asset turnover of 1.19× — below the 1.5× minimum for an efficient distributor. The business is carrying too much asset (primarily inventory and receivables) relative to its revenue. Improving working capital velocity is the operational priority.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. DSO of 104 days:</strong> If Henri's team brought receivables collection from 104 to 60 days, Vaulbert would release approximately <strong>MUR 25.8M in trapped cash</strong> — eliminating 29% of its short-term bank borrowings overnight and removing the single largest existential financial risk. At the current borrowing cost, that also saves approximately MUR 1.1M per year in finance charges.<br><br>
+    <strong>2. Short-term borrowings of MUR 88.5M:</strong> With no long-term debt and all financing through short-term revolving facilities, Vaulbert has zero financial runway if its banking relationship deteriorates. Converting even MUR 40M of this into a 3-year term loan would reduce refinancing risk dramatically. This is a conversation Henri needs to have with his bank — and it starts with producing clean, timely financial statements (the FY2022 lag is not helping).
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Vaulbert competes across three overlapping segments — premium international brand distribution, own-label FMCG manufacturing, and bonded/wholesale trade — in a concentrated Mauritian market where distribution rights and channel relationships are the primary competitive moat.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Premium Brand Distribution</h4>
+        <div class="ec-sub">Core Segment · Highest Margin</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key brands</span><span class="mv">Perrier, Musgrave, Spier, Loacker, Alpro, Peroni, Nando's</span></div>
+        <div class="ec-metric"><span class="mk">Channels</span><span class="mv">Modern trade + HoReCa (4-5 star)</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">IBL, Rogers FMCG, Cascadelle, IFS Mauritius</span></div>
+        <div class="ec-metric"><span class="mk">Vaulbert edge</span><span class="mv ok">Agility, exclusivity, segmented teams</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Own-Label Manufacturing</h4>
+        <div class="ec-sub">Growth Segment · Higher Margin Potential</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Products</span><span class="mv">Cyclone Rum, Baie RTD, soft drinks</span></div>
+        <div class="ec-metric"><span class="mk">Facility</span><span class="mv">Bottling plant, Triolet (since 2017)</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Grays, Phoenix Beverages, Medine</span></div>
+        <div class="ec-metric"><span class="mk">Vaulbert edge</span><span class="mv ok">Speed to market, local production</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Wholesale &amp; Bonded Trade</h4>
+        <div class="ec-sub">Legacy Segment · Volume Driver</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Activities</span><span class="mv">Alcohol wholesale, tobacco, general merchandise</span></div>
+        <div class="ec-metric"><span class="mk">Licence</span><span class="mv">Bonded warehouse approved</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Multiple licensed wholesalers</span></div>
+        <div class="ec-metric"><span class="mk">Vaulbert edge</span><span class="mv warn">Licence &amp; established relationships</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Exclusive brand distribution rights.</strong> Vaulbert holds exclusive or preferred distributor status for multiple international brands (Perrier, Musgrave Spirits, Spier, Loacker, Alpro, Glenryck). In a small island market with a population of approximately 1.3M, exclusivity is the highest-value form of competitive protection. These relationships, built over decades, are not easily replicable by a new entrant.</p>
+  <p class="body-text"><strong>2. Dual-channel expertise.</strong> The ability to serve both modern retail (supermarket chains, convenience stores) and premium HoReCa (4- and 5-star hotels) simultaneously requires different sales approaches, cold chain logistics, and credit management — capabilities Vaulbert has developed over 70+ years of commercial presence. This dual-channel positioning protects against channel concentration risk and gives brand principals broader reach than single-channel distributors.</p>
+  <p class="body-text"><strong>3. Integrated manufacturing capability.</strong> The 2017 investment in a bottling and manufacturing plant gives Vaulbert the ability to produce own-label products (Cyclone Rum, Baie RTD, soft drinks) with margins significantly above pure distribution. This vertical integration, combined with bonded warehouse licensing, creates a capability stack that smaller distributors cannot replicate without capital investment.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Premium and wellness beverages are growing in Mauritius</strong> — Vaulbert's Dec 2025 launch of Peroni, Prime (energy drink), and Baie RTD directly targets this trend. Consumer premiumisation in a high-GDP-per-capita island economy favours Vaulbert's portfolio positioning.</li>
+    <li><strong>Tourism recovery driving HoReCa demand</strong> — Mauritius tourism arrivals rebounded strongly post-COVID. 4- and 5-star hotel F&amp;B spending is a structural growth driver for premium alcohol and beverage distributors like Vaulbert.</li>
+    <li><strong>RTD (Ready-to-Drink) alcoholic beverages is the fastest-growing global spirits subcategory</strong> — Vaulbert's own-label Baie RTD positions it at the front of this wave in the local market.</li>
+    <li><strong>Plant-based food distribution growing</strong> — Alpro (Danone) in the portfolio captures the health-conscious consumer trend gaining traction in Mauritius's expatriate and wellness-oriented consumer segments.</li>
+    <li><strong>Consolidation risk in Mauritian distribution</strong> — Larger conglomerates (IBL, Rogers) continue to acquire distribution assets. Vaulbert's independence is an asset for brand principals who want a dedicated, focused partner — but it also makes the company a potential acquisition target if Henri considers an exit or strategic partnership.</li>
+    <li><strong>Inflation and input cost pressure</strong> — Import-dependent distributors face margin compression from MUR/USD exchange rate volatility and global logistics costs. Vaulbert's 24.8% gross margin provides some buffer, but own-label raw material costs are a new exposure introduced by the manufacturing operations.</li>
+  </ul>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">With MUR 208M+ revenue, nine registered business activities (distribution, import/export, manufacturing, bonded warehouse, retail, wholesale alcohol/tobacco), and an identified management team of at least 4 named individuals (Henri, Nicolas Commins, Anaelle Delaitre, Jessinee Rajaratnam), Vaulbert is well inside the EOS sweet spot of 10–250 people. The manufacturing + distribution combination creates multi-functional complexity that informal management cannot hold together at scale. The 2024 rebrand signals a deliberate growth ambition — complexity is increasing, not stable.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Henri is a third-generation entrepreneur who voluntarily took over and transformed a legacy business — this signals entrepreneurial mindset and openness to change. The 2024 rebrand from HVC to Vaulbert shows willingness to break with heritage when needed. However, as the sole director with 100% family ownership through a holding company, there are no external accountability mechanisms — board, investors, or partners — to drive governance discipline. Henri may be highly confident in his own judgement and potentially resistant to systems that challenge his operational control. The leadership openness score sits at mid — positive signals offset by the concentrated control structure.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">This is the highest-scoring dimension. Vaulbert is at a classic growth inflection: revenue above MUR 200M, manufacturing added to a distribution base, new brand launches accelerating (three in December 2025 alone), a full rebrand executed, and a new company secretary appointed — all within the last two years. These are textbook symptoms of a business that has outgrown its informal management model. The financial pain is real: MUR 88.5M short-term debt, 104-day DSO, and thin liquidity are direct consequences of growth without systems. This is exactly where EOS creates the most value.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Financial reporting is filed approximately 18 months after fiscal year end (FY2022 approved June 2023, filed mid-2023). Distribution costs are reported as nil — suggesting cost allocation systems are not granular enough to separately track logistics from administration. DSO of 104 days suggests accounts receivable management is informal or under-monitored. The bonded warehouse, manufacturing, and distribution operations running from a single site suggests process discipline exists at the operational level — but financial and management reporting systems appear immature relative to the business's scale.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Vaulbert's published values — ownership, excellence, partnership, trust — are well-articulated and consistent with a family business that has survived generational transitions. The company describes its team as "a majority of women" with an average age under 40, signalling a relatively young, progressive workforce. Henri's quoted ambition to "raise innovation and quality standards" suggests a culture that aspires to more than maintenance. The 70-year heritage provides cultural continuity that EOS can build on — there are deep roots, not a blank slate. This is a facilitator-friendly cultural environment.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">With one director and 100% family ownership, all material decisions flow through Henri. The brand launches, rebrand, manufacturing investment, and new company secretary appointment all reflect solo executive decision-making. This creates speed in good times but is a bottleneck risk as the business complexity grows. The EOS Accountability Chart and Rocks process directly addresses this — creating clarity about who owns what decision and establishing a decision-making rhythm that does not require Henri's involvement in every operational call. The mid score reflects high centralisation but also the positive signal that Henri is clearly decisive and action-oriented.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Henri's strategic vision is demonstrably clear at the product and market level: build a premium FMCG distribution platform with own-label manufacturing capability, targeting the growing premium consumer and HoReCa segments in Mauritius. The rebrand to Vaulbert, the Baie RTD launch, and the Peroni acquisition all point in the same direction. However, vision clarity at the business-system level — what the company needs to look like in 3 years in terms of team structure, financial targets, and operational capability — is less evident. The V/TO (Vision/Traction Organiser) exercise would surface and sharpen this.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">No direct evidence of formal meeting rhythms is available from public sources. However, the management team structure (Production Manager, Accountant, Marketing Executive) suggests functional silos rather than cross-functional alignment meetings. The fact that financial reporting is delayed by 18 months implies monthly or quarterly management reporting is not a structured discipline. Informal family-business communication patterns are likely the norm — Henri probably touches base with key people informally rather than through a structured L10 meeting cadence. This is a significant EOS opportunity: installing the Level 10 Meeting immediately creates accountability and rhythm.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.8</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>Vaulbert is a genuine EOS candidate. The combination of a growth-stage owner-led business, real financial pain from operational inefficiency, an articulated brand vision, and a young team creates the conditions for EOS to deliver measurable impact. The key gating factor is Henri himself: he is the decision-maker, the visionary, and the bottleneck — all at once. The entry conversation needs to be framed around what EOS unlocks for Henri personally (time, leverage, exit optionality) rather than what it asks him to give up (control). If Henri engages with that frame, this is a fast-moving client. The score would rise to 8+ if Henri demonstrates openness to building a leadership team around him.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Vaulbert</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>Vaulbert has functional people in Production, Finance, and Marketing — but no visible structure for who owns what. An Accountability Chart would immediately surface the gaps (likely a Head of Sales / Commercial Director role that does not exist) and give Henri a blueprint for his next two hires. <strong>This is the first tool to use in the Focus Day.</strong></p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>DSO of 104 days, DPO of 109 days, DSI of 90 days — these are not being tracked weekly or monthly, or they would have been corrected. Installing a weekly Scorecard with 5–10 leading indicators (DSO, cash balance, new brand listings, delivery fulfilment rate) would create the visibility Henri needs to manage the business proactively rather than reactively.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks</h4>
+      <p>With three new product launches in Q4 2025 alone, Vaulbert is running multiple strategic initiatives simultaneously with no evidence of a prioritisation framework. <strong>Quarterly Rocks would force Henri to choose the 3–5 most important things</strong> and ensure the management team is aligned behind them — instead of running at capacity on everything and completing nothing at full quality.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List and IDS</h4>
+      <p>The 104-day DSO, the short-term debt structure, and the 18-month reporting lag are all symptoms of issues that are known but not being systematically resolved. The Issues List and Identify-Discuss-Solve (IDS) process gives Henri a forum to surface and eliminate these problems permanently rather than managing around them year after year.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO (Vision/Traction Organiser)</h4>
+      <p>Henri has a product vision (premium FMCG + own-label) but likely does not have a documented 3-Year Picture or 10-Year Target. The V/TO exercise — particularly the 3-Year Picture and 1-Year Plan — would force clarity on what "success" looks like for Vaulbert by 2029 and translate that into the annual targets needed to get there.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>Replacing informal bilateral check-ins with a structured weekly L10 creates the management rhythm Vaulbert lacks. For a business with manufacturing, distribution, and brand marketing running simultaneously, a 90-minute weekly L10 with the leadership team is the single highest-leverage time investment Henri can make. <strong>Start here in the first 90 days of EOS.</strong></p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations: four financial and operational (to address the structural vulnerabilities that limit growth) and four EOS-specific (to build the execution system). Sequenced — fix the burning financial issues first, then install EOS on a cleaner operational base.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Launch a 90-Day DSO Reduction Programme</h4>
+      <p>Jessinee Rajaratnam (Accountant) to produce a receivables ageing report within 30 days, identifying the top 20 debtors by outstanding balance and days overdue. Henri to personally contact the top 5 hotel and retail accounts with balances over 90 days. Target: reduce DSO from 104 to 75 days within 90 days. At MUR 208.6M revenue, each 10-day reduction in DSO releases approximately MUR 5.7M in cash — the fastest balance sheet improvement available without any external financing.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Refinance Short-Term Borrowings into a Term Facility</h4>
+      <p>Henri to initiate a conversation with his primary bank within 60 days to convert a minimum of MUR 40M of the MUR 88.5M revolving/overdraft facilities into a 3-year term loan. This eliminates the single greatest existential risk — the bank withdrawing facilities at short notice. The argument to the bank: strong profitability (MUR 16.9M net profit), no registered charges, 70-year heritage, and a clear growth trajectory. The interest rate may be marginally higher, but the structural protection is worth the premium.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Conduct a Portfolio SKU Rationalisation to Reduce Inventory</h4>
+      <p>Nicolas Commins (Production Manager) and the sales team to audit the full product portfolio against a simple contribution matrix: sales velocity × gross margin. Identify the bottom 20% of SKUs by contribution and either discontinue, negotiate supplier minimum order reductions, or accept stock write-downs. Target: reduce average inventory value from MUR 77.5M to MUR 55M within 6 months, releasing MUR 22.5M in working capital. This is a Scorecard metric from day one of EOS.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Accelerate Financial Reporting to Quarterly Management Accounts</h4>
+      <p>Instruct Jessinee Rajaratnam to produce monthly management accounts within 15 working days of month end, starting immediately. Engage CAS Services Ltd (company secretary / UHY-affiliated) to ensure FY2023, FY2024, and FY2025 statutory accounts are filed and approved before end of 2026. A 3-year filing lag signals governance immaturity to any future banking, brand principal, or acquisition counterparty. Clean, current financials are a precondition for the term loan refinancing (Rec 02) and for EOS Scorecard credibility.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Schedule and Run a Focus Day with Henri</h4>
+      <p>The Focus Day is the natural entry point for Vaulbert. Henri is clearly action-oriented and strategically minded — he will respond well to the energy and clarity the Focus Day delivers. Frame it specifically around: "You've built MUR 200M revenue on your own drive. EOS gives you the system to scale it to MUR 400M without working twice as hard." Key Focus Day output for Vaulbert: Accountability Chart (surfacing the missing Commercial Director seat), draft V/TO, and Henri's buy-in to the weekly L10 rhythm.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the Accountability Chart — Identify the Missing Commercial Director</h4>
+      <p>Vaulbert's team has Production (Nicolas), Finance (Jessinee), and Marketing (Anaelle) — but no dedicated Head of Sales / Commercial. At MUR 200M revenue with 8+ international brands and two proprietary labels, the sales function should be the single largest department. The Accountability Chart will reveal this gap immediately. Henri's first Rock after Focus Day should be: identify and hire or promote into the Commercial Director seat within the next 90 days.</p>
+      <span class="urg urg-week">Within 90 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Install the Scorecard — DSO, Cash, and New Listings as Week-One Metrics</h4>
+      <p>From the first L10 meeting, Vaulbert's Scorecard should include: (1) DSO in days — target 75 by Q3 2026; (2) cash balance weekly — target floor MUR 15M; (3) inventory days — target 60 by Q4 2026; (4) new brand listings by channel (retail / HoReCa) per month; (5) fill rate (orders delivered on time and in full). These five metrics, reviewed weekly, would have caught the working capital deterioration that now sits at crisis level — and will prevent it recurring.</p>
+      <span class="urg urg-medium">Within 90 Days / During EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Define the 3-Year Picture — Vaulbert at MUR 350M and Beyond</h4>
+      <p>Henri has the product vision but likely does not have a documented 3-Year Picture. In the V/TO session, Thierry should push Henri to define: (1) revenue target in 3 years (MUR 300–400M is achievable given the brand pipeline and manufacturing capability); (2) the mix between distribution revenue and own-label manufacturing; (3) geographic ambition — does Vaulbert expand to Madagascar or La Reunion?; (4) the ownership and exit strategy question — does Henri want to build and sell to a conglomerate, or build a generational institution? The answers to these questions determine the EOS priorities for the next three years.</p>
+      <span class="urg urg-medium">During Focus Day / First 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Vaulbert is a real business with real momentum — MUR 208M revenue, 8+ premium international brands, own manufacturing capability, and a clear strategic direction under a third-generation entrepreneur who is actively investing and building. The financial vulnerabilities (MUR 88.5M short-term debt, 104-day DSO, 90-day inventory) are serious but correctable — they are symptoms of growth without systems, not fundamental business failure. Henri is in the right place at the right time with the right platform. What he is missing is the execution discipline to scale without burning out or breaking the balance sheet. That is EOS. The opportunity for Thierry is real and the case for engagement is strong.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Initial meeting with Henri — frame the conversation around growth ambition and what it takes to scale from MUR 200M to MUR 400M (Week 1–2)</li>
+        <li><span class="sig-num">02</span>Launch DSO reduction and banking conversation in parallel — show Henri that operational discipline has immediate financial ROI (Week 2–4)</li>
+        <li><span class="sig-num">03</span>Run the Focus Day — Accountability Chart, V/TO draft, and L10 commitment (Week 4–8)</li>
+        <li><span class="sig-num">04</span>Install first Scorecard and run first L10 meetings with Henri's leadership team (Month 2–3)</li>
+        <li><span class="sig-num">05</span>Quarterly planning session — set first set of Company Rocks and lock in the 1-Year Plan (Month 3)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Vaulbert (H. Vaulbert de Chantilly Ltd / HVC Ltd) — Comprehensive Company Analysis &amp; EOS Assessment · 7 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (07/04/2026) · vaulbert.com · hvc.mu · business-magazine.mu · Dun &amp; Bradstreet · LinkedIn · OpenCorporates · hv-holdings.mu</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
