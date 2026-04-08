@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuni Outdoor Furniture — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Premium Furniture &amp; Lifestyle Retail</span>
+    <span class="badge badge-type">Private Company · Domestic · Owner-Managed</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">8 April 2026</span>
+  </div>
+  <h1>Yuni Outdoor Furniture:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Outdoor Furniture Ltd (trading as Yuni) · Company intelligence · Financial ratios · EOS implementation assessment · Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">MUR 103.8M</div>
+      <div class="stat-delta">Year ended 31 Aug 2025 · Mauritius Rupee</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Gross Profit Margin</div>
+      <div class="stat-value emerald">36.6%</div>
+      <div class="stat-delta">Strong for a furniture retailer/importer</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">7.2 / 10</div>
+      <div class="stat-delta">High suitability — generational transition underway · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Admin Bleed</div>
+      <div class="stat-delta">Admin costs consume 89% of gross profit, collapsing net margin to 1%</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Yuni Outdoor Furniture (Outdoor Furniture Ltd) — Company Analysis &amp; EOS Assessment · 8 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION — 7 tabs
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 30-year-old, founder-built Mauritian furniture institution now in first-generation succession — profitable on paper, but haemorrhaging at the bottom line through administrative cost structures that no longer fit a MUR 100M+ business.</p>
+
+  <p class="body-text">Yuni (legal name: Outdoor Furniture Ltd, File No. C15937) was incorporated on 1 February 1996 and trades under the brand name "Yuni — Furniture &amp; Lifestyle." Founded by Pascal Bauwens, the company began in 2004 as a Balinese furniture shop in Pointe aux Canonniers and has since grown into one of Mauritius's most recognised premium furniture and lifestyle brands. With two retail showrooms — the flagship 1,000 m² showroom at Pinpoint Business Park (Calebasses) and a second location at MDC Building, St Joseph Road (Terre Rouge) — and manufacturing partnerships in Indonesia, Yuni occupies the upper end of the local furniture market for both residential and hospitality clients.</p>
+
+  <p class="body-text">The company is 100% family-owned. Founder Pascal Bauwens has stepped back from daily operations; his two sons — <strong>Kevin Bauwens (Managing Director)</strong> and <strong>Bryce Bauwens (Director)</strong> — now lead the business alongside Sharon Virassamy, who holds a 33.9% shareholder stake and serves as a third director. There is no institutional or private equity involvement. The share structure (7,000 ordinary shares at MUR 100 par) reflects a closely held, deeply personal business with no external accountability mechanism. This is both a risk and an opportunity for an EOS engagement.</p>
+
+  <p class="body-text">For the financial year ended 31 August 2025, Yuni posted revenue of MUR 103.8 million — a milestone crossing the MUR 100M mark — with a healthy gross profit margin of 36.6% (MUR 38.0M). However, administration costs of MUR 33.9 million consumed 89% of that gross profit, leaving net profit of just MUR 1.0 million (1.0% net margin). This is the defining financial tension: the revenue engine is performing well; the cost structure is not keeping pace. The balance sheet shows no long-term debt, solid retained earnings of MUR 27.2M, but dangerously low cash (MUR 1.5M) and a heavy inventory position (MUR 45.3M), indicating a cash-constrained, inventory-rich business where working capital discipline is the priority.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — The Admin Cost Crisis Hiding Inside a Strong Brand</div>
+    Yuni presents the surface profile of a premium brand success story: MUR 103M in revenue, a 36.6% gross margin, prestigious exclusive distributor agreements (Manutti, Cane-line, Maiori, Jati &amp; Kebon), two showrooms, and a well-recognised lifestyle brand. But below the gross profit line, the numbers tell a different story. Administration costs of MUR 33.97M — representing 32.7% of turnover — are structurally suppressing net profitability to just 1.0%. The company has crossed the MUR 100M revenue threshold without building the management systems, cost discipline, or financial visibility needed to operate at that scale. This is a textbook EOS symptoms profile: a founder-era cost structure inherited by next-generation leaders who have the ambition but not yet the execution infrastructure. The entry conversation should not lead with EOS — it should lead with the profitability gap. EOS is the answer to why it exists.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Exclusive Mauritius distributor for four premium European brands</strong> (Manutti, Cane-line, Maiori, Jati &amp; Kebon). Established brand with 20+ years of trading history. Dual-channel revenue (retail + hospitality/B2B project). Own manufacturing capability in Indonesia and Mauritius. A 1,000 m² flagship showroom that functions as a competitive moat in the premium segment.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Administration costs at 32.7% of revenue compress net margin to 1.0%</strong> — a single bad quarter could turn negative. Cash of MUR 1.5M against current liabilities of MUR 55.4M represents a structurally fragile liquidity position. Inventory at MUR 45.3M (49% of total assets) creates significant capital lock-up and impairment risk. Finance costs of MUR 2.5M despite no declared long-term borrowings suggest undisclosed lease or hire-purchase obligations.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Classic generational transition profile</strong>: second-generation leaders (Kevin and Bryce) running a founder-era business without formal management infrastructure. Three directors/shareholders with no declared governance framework suggests potential for misalignment. A business at MUR 100M+ revenue with 1% net margin is in measurable pain — the leadership will feel it even if they cannot yet name it. High openness to structured thinking anticipated.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A 30-year-old Mauritian domestic private company — family-founded, family-controlled, trading as a premium lifestyle furniture brand across two showrooms and an Indonesian manufacturing operation.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Outdoor Furniture Ltd was incorporated on <strong>1 February 1996</strong> under File No. C15937, Business Registration No. C07015937. It is registered as a domestic private company under Mauritius company law. The registered office is located at Cnr Motorway M2–M3, Pinpoint Business Park, Calebasses, Mauritius (effective 14 November 2022, reflecting a move to the current Calebasses flagship location). Annual registration fees are current to 2026. Annual returns have been filed on time for the last three years (2023, 2024, 2025), and financial statements for FY2023, FY2024, and FY2025 have all been filed within the statutory period. The company has no objections, no winding-up proceedings, and a clean CBRIS record.</p>
+  <p class="body-text">The share capital is MUR 700,000 (7,000 ordinary shares at MUR 100 par value, fully paid). Secretary is Mungroosing Anjanee Devi (appointed 31 March 2005). Auditor is Sangeeleemootoo Jean Claude, Vinson Lane, Moka (appointed 15 April 2023 — a recent change worth noting). The company's business is registered under two principal activity codes: retail sale of other goods in specialised stores (n.e.c.) and manufacture of furniture (wooden/metal/plastic, employing fewer than 10 persons). Trading occurs across two registered principal places of business: MDC Building, St Joseph Road, Terre Rouge and Pinpoint Business Park, Calebasses.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Kevin Bauwens</h4>
+        <div class="ec-sub">Shareholder · Director · MD</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">2,310 (33.0%)</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary — MUR</span></div>
+        <div class="ec-metric"><span class="mk">Director since</span><span class="mv">15 May 2002</span></div>
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv ok">Managing Director</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Bryce Bauwens</h4>
+        <div class="ec-sub">Shareholder · Director</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">2,310 (33.0%)</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary — MUR</span></div>
+        <div class="ec-metric"><span class="mk">Director since</span><span class="mv">18 Jul 2000</span></div>
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Director</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Sharon Virassamy</h4>
+        <div class="ec-sub">Shareholder · Director</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">2,380 (34.0%)</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary — MUR</span></div>
+        <div class="ec-metric"><span class="mk">Director since</span><span class="mv">12 Jul 2006</span></div>
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Director</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Ownership Note — Tripartite Parity Structure</div>
+    The three shareholders each hold approximately one-third of the equity (33%/33%/34%), with Sharon Virassamy holding the marginal plurality (2,380 shares vs 2,310 for each Bauwens). The Bauwens brothers together control 66% and can pass any ordinary resolution without Virassamy's vote, but the structure requires alignment on significant decisions. There is no shareholder agreement on file at CBRIS. This three-way near-parity ownership with no declared governance framework is a significant EOS relevance factor — V/TO alignment and decision-making clarity will likely resonate immediately.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Kevin Bauwens — Managing Director</h4>
+      <p>Director since 15 May 2002. Second-generation leader and Managing Director of Yuni. Leads day-to-day operations and business development. LinkedIn: <strong>linkedin.com/in/kevin-bauwens-40220430</strong>. Contact: kevin@yuni.mu (inferred pattern). Office: +230 245 8100.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Bryce Bauwens — Director</h4>
+      <p>Director since 18 July 2000. Second-generation co-director alongside Kevin. Involved in brand and commercial strategy. LinkedIn: <strong>linkedin.com/in/bryce-bauwens-6733a929</strong>. Company general: shop@yuni.mu / +230 245 8100.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Sharon Virassamy — Director</h4>
+      <p>Director since 12 July 2006. Largest single shareholder (34%). Named "Rony" in company lore — described as trusted long-term business partner of founder Pascal Bauwens. Key figure in the company's strategic continuity. Functional role in operations not publicly disclosed.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Yuni operates across four product/service clusters: (1) <strong>Premium Outdoor Furniture</strong> — the founding category, encompassing Balinese-style teak and rattan outdoor sets, poolside loungers, dining collections, and daybeds, serving both residential and hotel clients across Mauritius and the Indian Ocean region; (2) <strong>Indoor Furniture &amp; Accessories</strong> — a broad lifestyle range covering sofas, dining tables, bedroom furniture, decorative accessories, and textiles, sold through the Calebasses showroom; (3) <strong>Exclusive Brand Representation</strong> — Yuni is the sole authorised distributor in Mauritius for <strong>Manutti</strong> (Belgium, high-end outdoor), <strong>Cane-line</strong> (Denmark, design outdoor/indoor), <strong>Maiori</strong> (France, luxury outdoor lighting and furniture), and <strong>Jati &amp; Kebon</strong> (premium teak collections); and (4) <strong>B2B / Hospitality Project Supply</strong> — bespoke furniture packages for hotel and resort developments, including design advisory, technical specification, production scheduling, quality control in Indonesia, and logistics to site. The company has manufacturing workshops both in Indonesia (Bali) and in Mauritius (employing fewer than 10 persons under CBRIS classification).</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Primary retail presence is through two showrooms in Mauritius: the flagship location at Pinpoint Business Park (Cnr M2–M3 Motorway, Calebasses, Pamplemousses) — a purpose-built 1,000 m² showroom — and the original Terre Rouge location (MDC Building, St Joseph Road). B2B and hospitality supply extends across the Indian Ocean region, with documented sales reach into Seychelles and the Maldives. Manufacturing and sourcing is anchored in Bali, Indonesia, via a dedicated sourcing office and production partnerships that have been in place since at least 2008. The company's website (yuni.mu) serves as a product catalogue and brand presence; e-commerce capability is limited — the site does not appear to offer full online transactional purchasing.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS financial summary filed 16 February 2026 for FY ended 31 August 2025. Currency: Mauritius Rupee (MUR). No prior-year comparatives available from CBRIS — one year of P&amp;L and balance sheet data only.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    All financial data is sourced from the statutory summary filed at the CBRIS Registrar of Companies by the company's auditor (Sangeeleemootoo Jean Claude). The CBRIS summary provides single-year figures only — no comparative prior-year P&amp;L or balance sheet is publicly available. The financial year end is 31 August (non-calendar year). Figures are stated at unit of 1 MUR (not thousands). Administration costs are reported as a single aggregate line — the breakdown between personnel, rent, marketing, and overheads is not publicly disclosed. Finance costs of MUR 2.49M appear despite no declared long-term borrowings, suggesting lease liabilities or hire-purchase financing not captured under the "Long Term Borrowings" line.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY 31 August 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>103,805,227</td><td>100.0%</td><td>Milestone crossing — first year above MUR 100M. Reflects strong brand positioning and probable hospitality project wins.</td></tr>
+        <tr><td>Cost of Sales</td><td>65,767,321</td><td>63.4%</td><td>Includes imported goods cost (Indonesia, European brands), Mauritius manufacturing costs, and freight. Broadly in line with import-heavy furniture retail.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>38,037,906</td><td>36.6%</td><td>Strong margin for a furniture importer/retailer. Exclusive brand arrangements and premium positioning protect margin integrity.</td></tr>
+        <tr><td>Other Income</td><td>1,682,507</td><td>1.6%</td><td>Likely rental income, insurance recoveries, or FX gains. Modest but positive.</td></tr>
+        <tr><td>Distribution Costs</td><td>1,939,926</td><td>1.9%</td><td>Reasonable for a two-location operation. Delivery and logistics to hotel project sites.</td></tr>
+        <tr class="heat-critical"><td>Administration Costs</td><td>33,977,536</td><td>32.7%</td><td>Critical concern. This single line consumes 89.3% of gross profit. Likely includes a heavy payroll, showroom occupancy, depreciation, and management overhead. No granular breakdown available.</td></tr>
+        <tr><td>Other Expenses / (Income)</td><td>(67,231)</td><td>(0.1%)</td><td>Small net credit — minor miscellaneous recovery.</td></tr>
+        <tr class="heat-warn"><td>Finance Costs</td><td>2,496,135</td><td>2.4%</td><td>Significant despite zero declared long-term borrowings. Likely IFRS 16 lease liabilities (showroom leases) or hire-purchase on vehicles/equipment. Requires clarification.</td></tr>
+        <tr><td>Profit Before Tax</td><td>1,374,047</td><td>1.3%</td><td>Razor-thin. A 2% revenue shortfall or cost overrun eliminates this entirely.</td></tr>
+        <tr><td>Tax Expense</td><td>338,183</td><td>0.3%</td><td>Effective tax rate of 24.6% on PBT — consistent with Mauritius corporate tax at 15% plus possible deferred tax movements.</td></tr>
+        <tr class="heat-warn"><td><strong>Net Profit After Tax</strong></td><td><strong>1,035,864</strong></td><td><strong>1.0%</strong></td><td>A MUR 103M business generating MUR 1M net profit. The revenue story is impressive; the cost management story is not.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 August 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>2,285,346</td><td>Relatively modest — consistent with a leasehold (not freehold) showroom operation.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>19,931,780</td><td>Large intangible position. Likely brand value, exclusive distribution licences, or goodwill on acquisition. Requires interrogation — if not amortised correctly, this overstates net assets.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Non-Current Assets</td><td>10,325,885</td><td>Unspecified. Could include long-term deposits, prepayments, or right-of-use assets (IFRS 16 leases).</td></tr>
+        <tr><td>Non-Current Assets</td><td><strong>Total NCA</strong></td><td><strong>32,543,011</strong></td><td>34.7% of total assets.</td></tr>
+        <tr class="heat-critical"><td>Current Assets</td><td>Inventories</td><td>45,275,198</td><td>Critical. Represents 48.2% of total assets and 73.8% of current assets. High for a furniture retailer — suggests slow-moving stock, large pre-order positions for hotel projects, or capital tied up in display floor stock.</td></tr>
+        <tr><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>14,566,046</td><td>MUR 14.6M outstanding. B2B hotel project receivables are likely the driver. DSO of approximately 51 days — moderate but worth monitoring.</td></tr>
+        <tr class="heat-critical"><td>Current Assets</td><td>Cash &amp; Equivalents</td><td>1,526,466</td><td>Dangerously low. Only 2.5% of current assets are cash. Against MUR 55.4M current liabilities, this cash position offers virtually no buffer.</td></tr>
+        <tr><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>61,367,710</strong></td><td>65.3% of total assets.</td></tr>
+        <tr><td><strong>Total Assets</strong></td><td></td><td><strong>93,910,721</strong></td><td></td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital</td><td>700,000</td><td>MUR 100 par × 7,000 shares.</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Retained Earnings</td><td>27,178,139</td><td>Healthy accumulated reserves — the business has been profitable over its life, even if recent years are thin.</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>27,878,139</strong></td><td>Equity ratio of 29.7% — moderate but positive. No external debt dilution.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long Term Provisions</td><td>886,741</td><td>Likely employee severance/end-of-contract provisions.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Other NCL</td><td>9,786,914</td><td>Unspecified — possibly IFRS 16 long-term lease liabilities or deferred tax movements.</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>36,275,528</td><td>MUR 36.3M owed to suppliers. DPO of approximately 201 days — extremely high. The company appears to be financing itself through supplier credit, which is unsustainable and relationship-damaging long-term.</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax Payable</td><td>1,624,630</td><td>Tax liability consistent with MUR 338K expense — partially deferred.</td></tr>
+        <tr><td>Current Liabilities</td><td>Other Current Liabilities</td><td>17,458,769</td><td>Significant unspecified current liabilities. Could include customer deposits for B2B project orders, accrued expenses, or lease payments due.</td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>55,358,927</strong></td><td>Current ratio of 1.11× — critically tight. The business is technically solvent but has almost no liquidity headroom.</td></tr>
+        <tr><td><strong>Total Liabilities</strong></td><td></td><td><strong>66,032,582</strong></td><td>Debt/equity ratio of 2.37× — leveraged through trade credit rather than bank debt.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">Two floating charges are registered over Yuni's movable and immovable assets: <strong>CH4221/NO42</strong> (filed 26 June 2007, MUR 1,721,260, charged 12 April 2007) and <strong>CH5308/66</strong> (filed 26 August 2010, MUR 2,500,000, charged 2 August 2010). Both are floating charges in nature — they were likely granted to secure banking facilities (overdrafts or trade finance lines) in the company's growth years. Total registered charge value: MUR 4,221,260. Neither charge has been formally discharged or released at CBRIS, but the absence of any declared short-term or long-term bank borrowings on the current balance sheet suggests these facilities may be dormant or fully repaid.</p>
+  <div class="alert alert-warning">
+    <div class="alert-title">Charge Register — Undischarged Floating Charges</div>
+    The two charges date from 2007 and 2010 and have not been formally released at CBRIS. While the balance sheet shows no bank borrowings, the charges technically remain live against the company's assets. Any prospective lender or investor conducting due diligence would encounter these. The company should formally discharge these charges if the underlying facilities have been repaid — this is a housekeeping matter that also serves as an indicator of administrative attention to detail.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">All ratios calculated from CBRIS FY2025 data (year ended 31 August 2025). Benchmarks referenced against Mauritius retail/import sector norms and general SME standards. Colour key: Green = healthy, Amber = watch, Red = critical concern.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">1.11×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.5× – 2.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Current assets of MUR 61.4M barely cover current liabilities of MUR 55.4M. The margin is only MUR 6.0M — equivalent to just 21 days of revenue. Any disruption to supplier payment terms, a large customer default, or a delayed shipment from Bali could push the business into a technical liquidity crisis. This is the most urgent financial metric.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio (Acid Test)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.29×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">0.8× – 1.2×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Severe</span></span></div>
+      <span class="ratio-interpret">Stripping out inventory (MUR 45.3M), liquid assets total only MUR 16.1M against MUR 55.4M current liabilities. A quick ratio of 0.29× means the business cannot meet its immediate obligations from liquid assets alone — it is entirely dependent on selling inventory to pay suppliers. This is a structural vulnerability, not a short-term blip.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">36.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (furniture retail)</span><span class="ratio-val">30% – 45%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Strong</span></span></div>
+      <span class="ratio-interpret">The gross margin of 36.6% is solid for a furniture importer/retailer and reflects the benefit of exclusive brand arrangements, premium pricing, and in-house manufacturing cost control. This is the one financial line that is genuinely healthy and should be defended fiercely in negotiations with suppliers and in pricing discipline.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">1.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy SME)</span><span class="ratio-val">5% – 10%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">A 1.0% net margin on MUR 103.8M revenue means the business earned MUR 1.04M profit after tax — equivalent to roughly MUR 87,000 per month. A 35% gross margin business converting only 1% to net profit has an operational cost problem that management systems and accountability structures can directly address. This is the central EOS entry point.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">3.7%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">15% – 20%+</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Poor</span></span></div>
+      <span class="ratio-interpret">Net profit of MUR 1.04M on equity of MUR 27.9M generates only 3.7% ROE. The three owners are earning less on their equity stake than they would placing funds in a Mauritius bank fixed deposit. This will resonate in a discovery conversation — the business is working hard for very little owner return.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">1.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">5% – 8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Poor</span></span></div>
+      <span class="ratio-interpret">MUR 93.9M of assets generating MUR 1.04M profit is a deeply inefficient asset base. The primary drag is the oversized inventory position (MUR 45.3M), which is generating low turns and tying up capital that should be deployed more productively.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value (total liab.)</span><span class="ratio-val warn">2.37×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Bank debt only</span><span class="ratio-val ok">0.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">No bank debt is a genuine positive — the company is not financially leveraged in the traditional sense. However, total liabilities of MUR 66.0M against equity of MUR 27.9M (2.37× gearing using total liabilities) reflects heavy trade creditor financing. This is leverage by another name, with the added risk that suppliers can tighten terms at any point.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">29.7%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy SME)</span><span class="ratio-val">40% – 60%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Equity funds 29.7% of total assets — below the healthy threshold but not alarming given zero bank debt. The company has accumulated MUR 27.2M in retained earnings over its history, which provides a buffer. Improving net profitability and reducing the trade payable position would improve this ratio over 2–3 years.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Days Payable Outstanding (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">201 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Trade payables of MUR 36.3M against COGS of MUR 65.8M implies an average payment cycle of 201 days — more than six months. This signals that the company is systematically stretching supplier payment to fund its working capital. For a business relying on exclusive overseas brand relationships (Manutti, Cane-line, Maiori), this practice carries significant relationship and supply-continuity risk.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Days Sales Outstanding (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">51 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">30 – 45 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Trade receivables of MUR 14.6M against revenue of MUR 103.8M yields approximately 51 days DSO. Moderate but above ideal for a retail/lifestyle brand — B2B hotel project terms likely skew this upward. Faster collection would directly improve the cash position.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Days (DIH)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">251 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (furniture retail)</span><span class="ratio-val">60 – 120 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Inventory of MUR 45.3M turning over against COGS of MUR 65.8M implies 251 days of stock on hand — nearly eight months. This is extremely high even for a furniture business with long lead times from Bali. It suggests a combination of slow-moving display stock, speculative purchasing, and possible obsolete or unsaleable inventory that has not been written down. Unlocking even 30% of this capital through improved inventory management would generate ~MUR 13M in cash.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.11×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy retail)</span><span class="ratio-val">1.5× – 2.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Revenue of MUR 103.8M on total assets of MUR 93.9M yields 1.11× asset turns — below healthy retail benchmarks. The primary drag is the oversized inventory. Improving inventory efficiency would directly improve both this ratio and ROA without any revenue increase required.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. Administration Costs (MUR 33.97M / 32.7% of revenue):</strong> This single line is eating 89% of gross profit. If administration costs were brought to a more typical 20–22% of revenue — still generous for a two-location lifestyle retailer — net profit would increase from MUR 1.0M to approximately MUR 12–14M. That is a 12–14× improvement in profitability from cost discipline alone, without adding a single rupee of revenue. This is where the business wins or loses.<br><br>
+    <strong>2. Inventory Days (251 days / MUR 45.3M):</strong> Reducing inventory to a more reasonable 150 days would free approximately MUR 18.5M in cash. This alone would transform the liquidity position and eliminate the dangerous DPO of 201 days — allowing the company to negotiate better supplier terms, protect its exclusive brand relationships, and rebuild a genuine cash buffer.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Yuni competes across three distinct market segments — premium residential retail, hospitality/B2B project supply, and exclusive brand distribution — and holds a defensible market position built over 20 years of brand equity and exclusive supplier relationships.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Premium Residential Retail</h4>
+        <div class="ec-sub">Core Segment · Retail Showroom</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Positioning</span><span class="mv">Premium / Aspirational</span></div>
+        <div class="ec-metric"><span class="mk">Key clients</span><span class="mv">Affluent Mauritian households, expats, Indian Ocean diaspora</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv ok">Brand recognition, exclusive product range, 1,000m² showroom experience</span></div>
+        <div class="ec-metric"><span class="mk">Competition</span><span class="mv">Maisons du Monde (online), La Maison, Select Home</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Hospitality &amp; B2B Projects</h4>
+        <div class="ec-sub">High-Value · Lumpy Revenue</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Positioning</span><span class="mv">Full-service FF&amp;E partner</span></div>
+        <div class="ec-metric"><span class="mk">Key clients</span><span class="mv">Hotels, resorts, villas (Mauritius, Seychelles, Maldives)</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv ok">End-to-end service: design, sourcing, production, QC, logistics</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Revenue lumpiness; large project delays impact cash flow</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Exclusive Brand Distribution</h4>
+        <div class="ec-sub">Structural Moat · Premium Brands</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Brands</span><span class="mv">Manutti · Cane-line · Maiori · Jati &amp; Kebon</span></div>
+        <div class="ec-metric"><span class="mk">Origin</span><span class="mv">Belgium · Denmark · France · Netherlands</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv ok">Exclusivity creates barrier to entry; premium margin protection</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Dependency on brand relationship continuity; DPO of 201 days threatens these</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Exclusive Distribution Rights:</strong> The sole Mauritius distribution agreements for Manutti, Cane-line, Maiori, and Jati &amp; Kebon represent genuine barriers to competitive entry. A competitor cannot simply import and sell these products — they must displace Yuni in the brand's view, which requires demonstrated market capability. These relationships, built over 10–20 years, are the single most strategically valuable asset in the business and must be protected above all else, including the payment terms behaviour noted in the DPO analysis.</p>
+  <p class="body-text"><strong>2. Integrated Indonesian Manufacturing Capability:</strong> Yuni's Bali sourcing office and production partnerships give it cost and customisation advantages over pure importers. The ability to specify custom furniture, manage production quality, and control lead times from the source provides a genuine B2B differentiation that no pure-play local retailer can replicate quickly. This is particularly relevant for hospitality project work where bespoke specification is the norm.</p>
+  <p class="body-text"><strong>3. Brand Equity and Physical Showroom Footprint:</strong> The 1,000 m² Calebasses showroom at Pinpoint Business Park (a premium commercial address on the M2–M3 motorway) functions as a marketing asset as much as a retail space. In the premium furniture segment, the physical experience of sitting in the product, feeling the quality, and receiving professional design advice cannot be replicated online. This creates switching friction for loyal customers and a discovery pipeline for new ones.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Mauritius real estate and resort development pipeline remains active</strong> — ongoing hotel refurbishments and new resort developments (particularly in the north and west of the island) continue to generate FF&amp;E project demand for premium suppliers like Yuni.</li>
+    <li><strong>Indian Ocean luxury hospitality growth</strong> — Seychelles, Maldives, and Réunion are experiencing sustained growth in upscale resort development, expanding Yuni's addressable B2B market beyond Mauritius.</li>
+    <li><strong>Premium outdoor living trend accelerated post-COVID</strong> — residential demand for high-quality outdoor furniture has grown structurally as households invest in outdoor living spaces. Yuni's core outdoor product range is well-positioned to capture this.</li>
+    <li><strong>Headwind: Indonesian Rupiah and EUR/MUR FX volatility</strong> — imported product costs from Bali and European brands are denominated in USD/EUR, creating FX exposure that compresses margins when the Mauritius Rupee weakens. No hedging strategy is evident from public data.</li>
+    <li><strong>Headwind: Rising showroom and logistics costs in Mauritius</strong> — commercial lease rates at premium locations (Calebasses) have increased materially since 2022. This likely contributes to the elevated administration cost base.</li>
+    <li><strong>Risk: Online furniture retail disruption</strong> — while premium furniture has so far resisted full online commoditisation, the growth of global e-commerce platforms reaching Mauritius (Wayfair, made.com alumni, international luxury platforms) creates a medium-term channel threat, particularly for the residential retail segment.</li>
+  </ul>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">MUR 103.8M revenue with two physical showrooms, a Bali sourcing and manufacturing operation, B2B hospitality project work across multiple islands, and three distinct business segments (retail, project, distribution) represents substantial operational complexity for an owner-managed company. The company registers under two separate business activity codes and has multiple registered places of business — all indicators of a business that has outgrown informal coordination. Size and complexity score is high; EOS is designed for exactly this profile.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Kevin and Bryce Bauwens represent second-generation leadership — they did not found the company, which typically means they are more open to external frameworks than first-generation founders who built the business through intuition. Both are in their early-to-mid career stage (directors since 2000–2002, so approximately 40–50 years old). The fact that the business has reached MUR 100M with a 1% net margin suggests they are likely feeling the strain of running an increasingly complex business without formal management infrastructure. This pain receptivity is the key openness indicator. No public statements suggest resistance to change or entrenched fixed views on management philosophy.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">Classic "hitting the ceiling" profile. Revenue has grown to MUR 100M+ but net profitability has flatlined at 1%. The business is more complex than it has ever been — multiple locations, international manufacturing, B2B and B2C revenue streams, three owner-directors — without the management systems to support that complexity. The DPO of 201 days and cash position of MUR 1.5M suggest cash pressure that leadership will be experiencing viscerally. These are precisely the conditions EOS was designed to address: growth that has outpaced the informal structures that got the business here.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No evidence of formal documented systems from public sources. The business has been operating across two locations, an Indonesian supply chain, and a B2B project pipeline without any visible process documentation or published operational playbooks. Annual returns and financial statements are filed on time (a positive compliance discipline indicator), and the auditor change in 2023 suggests a willingness to upgrade financial governance. However, the inventory management crisis (251 DIH) and supplier payment patterns (201 DPO) are consistent with informal, reactive procurement and cash management rather than system-driven processes. Score reflects a probable mix of some financial controls but limited operational process documentation.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Business Magazine coverage describes Yuni as a company with strong identity, heritage, and aesthetic values — precisely the kind of "we know who we are" cultural foundation that EOS can build on. The brand story (Balinese authenticity, Mauritian lifestyle elevation, trusted family business) suggests a culture with genuine values that have never been formally articulated. Family-led businesses with strong brand identity tend to respond very well to the V/TO exercise and core values definition. The three-way ownership between two brothers and a long-term trusted partner (20 years together) also suggests a cohesive leadership culture if managed carefully.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Three shareholders with near-parity ownership (33%/33%/34%) and no declared shareholder agreement creates a decision-making environment that can be paralysed by the need for consensus. With no formal Accountability Chart, decisions about purchasing, hiring, pricing, and capital allocation are likely made informally — either by the MD alone (Kevin) or by committee discussion. The absence of a formal governance structure is a moderate risk factor for EOS adoption (alignment meetings will be essential) but also represents the clearest immediate value EOS can deliver: decisional clarity through the Accountability Chart and L10 cadence.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The brand vision ("premium Balinese-inspired lifestyle furniture for Mauritius and the Indian Ocean") is clear at the product and marketing level. But at the business strategy level — where is Yuni in five years? Are they expanding to a third showroom? Building an e-commerce capability? Growing the Indonesian manufacturing side? Pursuing further exclusive brand agreements? None of this is publicly articulated. Business Magazine articles discuss history and products, not strategic direction. This is a mid-score: the company knows what it is but has not clearly defined where it is going or what trade-offs it is prepared to make.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No evidence of formal meeting cadence or structured management reviews from public sources. In a three-director, family-run business of this type, "meetings" tend to happen informally — in the showroom, during family interactions, on WhatsApp. The operational complexity (two locations, Indonesia sourcing, B2B projects, retail) demands a structured weekly review discipline that almost certainly does not yet exist in formal form. This is an average score: not a culture of dysfunctional meetings, but also not one of structured, productive management cadence.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">7.2</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: High Suitability — Qualified Positive with Urgency</h4>
+      <p>Yuni is a strong EOS candidate: a complex, multi-location, owner-managed business in genuine operational pain, led by second-generation owners who have the motivation but not yet the management infrastructure to take the business to its next level. The three-way ownership structure requires careful navigation — the V/TO and Accountability Chart sessions will need to surface and resolve alignment gaps before implementation can accelerate. The highest-urgency entry point is not EOS itself but the profitability crisis: a conversation that starts with "your gross margin is 36.6% and your net margin is 1.0% — here is why and here is what we would do about it" will generate more immediate leadership engagement than an EOS framework presentation.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Yuni</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>Three directors, two brothers, a trusted non-family partner — and no publicly declared role clarity. Who owns purchasing decisions? Who owns the Indonesian operation? Who owns B2B project relationships? The Accountability Chart will immediately surface role conflicts and accountability gaps that are currently suppressed by family relationship dynamics. This is the single highest-value EOS tool for Yuni.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>A business with 1% net margin, 251-day inventory, and 201-day DPO is not being managed by numbers — it is being managed by activity and instinct. A weekly scorecard with 10–15 leading indicators (daily sales, inventory value, payables aging, project pipeline, showroom footfall) would transform financial visibility and allow early intervention before problems become crises.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO — Vision Traction Organiser</h4>
+      <p>The business has heritage and brand clarity but no articulated strategic vision. Kevin and Bryce need to answer: is Yuni a MUR 150M business in five years? A 200M business? Are they staying in Mauritius or expanding regionally? Will they pursue e-commerce? Will they take on a fourth exclusive brand? The V/TO exercise will create the shared strategic clarity that currently does not exist in documented form.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks — Quarterly Priorities</h4>
+      <p>Specific to Yuni's situation: the first quarter's Rocks should be (1) reduce inventory below MUR 30M, (2) reduce DPO below 90 days, (3) map all administration costs to owner. These three Rocks alone, if achieved, would transform both the balance sheet and the P&amp;L. Rocks create the focused execution cadence that prevents leadership from working in the business instead of on it.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>The DPO of 201 days is a company-threatening issue that has persisted long enough to be structural. The administration cost bleed is another. In a family business, issues like these often go unnamed because raising them feels like criticism of a person rather than a system. The Issues List makes it safe to name and solve problems systematically — this is culturally critical for Yuni's three-director structure.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>Replacing ad-hoc showroom conversations and WhatsApp discussions with a structured weekly 90-minute L10 meeting will create the accountability rhythm Yuni currently lacks. With Kevin in operations, Bryce in commercial/brand, and Sharon in her functional role, the L10 will be the first time all three are reviewing the same scorecard numbers at the same time in a structured format — a transformative shift for a business of this complexity.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations: four financial/operational priorities to address the immediate profitability and liquidity crisis, and four EOS implementation recommendations to build the management infrastructure that prevents recurrence. Sequenced: stabilise first, then systematise.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Conduct a Full Administration Cost Audit and Set a 20% Cap</h4>
+      <p>Administration costs of MUR 33.97M (32.7% of revenue) are destroying profitability. Kevin Bauwens should commission a line-by-line breakdown of this cost block — personnel by function, occupancy, depreciation, management fees, marketing, and other overheads — within 30 days. The target: reduce admin costs to 20% of revenue (MUR 20.8M), freeing approximately MUR 13M of profit. Success looks like: net profit of MUR 12–14M on current revenue, representing a 12× improvement without a single additional rupee of sales.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Emergency Inventory Reduction Programme — Target MUR 30M in 12 Months</h4>
+      <p>Inventory at MUR 45.3M (251 days) is the largest single drag on both liquidity and asset efficiency. Kevin should immediately identify the slow-moving and aged stock categories (greater than 180 days) and implement a structured clearance programme — price reductions, B2B bundle offers to hotel developers, consignment arrangements with interior designers. Target: reduce inventory to MUR 30M within 12 months, releasing MUR 15M in cash. This directly funds the DPO reduction programme below.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Supplier Payment Normalisation — Protect Exclusive Brand Relationships</h4>
+      <p>A DPO of 201 days is an existential threat to the exclusive brand agreements that are Yuni's core competitive moat. Manutti, Cane-line, and Maiori are European premium brands with strict distributor standards — payment terms of 200+ days will trigger relationship reviews and potential termination of exclusivity. Kevin should immediately contact each brand partner, acknowledge the payment position, and propose a structured catch-up plan. Target: DPO below 90 days within 18 months, funded by inventory reduction cash. No new exclusive brand agreements should be negotiated until existing obligations are normalised.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Clarify and Discharge the Two Undischarged CBRIS Charges</h4>
+      <p>Charges CH4221/NO42 (2007) and CH5308/66 (2010) remain live against Yuni's assets at CBRIS despite no declared bank borrowings on the current balance sheet. If these facilities have been repaid, the secretary (Mungroosing Anjanee Devi) should file formal discharge notices with the Registrar of Companies within 60 days. This is both a legal housekeeping matter and a governance signal — any future lender, brand partner, or investor conducting due diligence will flag these charges. Cost: minimal. Risk of not doing it: unnecessary friction in future transactions.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Schedule a Focus Day — Lead with the Profitability Conversation, Not the Framework</h4>
+      <p>The entry conversation with Kevin Bauwens should open with the financial analysis: "You have a 36.6% gross margin and a 1% net margin — that gap is the problem we want to solve with you." This frames EOS as the answer to a specific, felt pain rather than a generic management methodology. The Focus Day invitation should be positioned as a working session on the profitability and scaling challenge, with EOS introduced as the structured approach. Kevin is the primary contact; Sharon Virassamy and Bryce Bauwens must both be in the room for the Focus Day to be effective.</p>
+      <span class="urg urg-week">Discovery — Within 30 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the Accountability Chart — Start with the Three Directors</h4>
+      <p>The first EOS session output should be a draft Accountability Chart that clearly defines the functional ownership between Kevin (Operations/MD), Bryce (Commercial/Brand), and Sharon Virassamy (Finance/Administration — probable, based on her long tenure and non-Bauwens role). The Accountability Chart will immediately surface whether there are accountability overlaps or gaps — particularly in the purchasing and inventory function, which is clearly not being owned effectively given the 251-day inventory position. The chart must also define the "Integrator" role clearly.</p>
+      <span class="urg urg-week">First EOS Session</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Define the First Quarter's Rocks Around the Three Financial Crises</h4>
+      <p>The first set of 90-day Rocks should be directly tied to the three financial priorities identified in this report: (1) Complete administration cost audit and identify MUR 8M in annual savings, (2) Implement inventory reduction programme and reduce stock from MUR 45.3M to MUR 38M within 90 days, (3) Contact all three exclusive brand partners and agree structured payment normalisation schedules. These Rocks are concrete, measurable, and directly connected to the business's survival and growth — they will demonstrate EOS value immediately.</p>
+      <span class="urg urg-medium">Within EOS Programme</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>V/TO — Answer the Five-Year Question Before the Next Business Cycle</h4>
+      <p>Yuni is at a strategic inflection point: the business has reached MUR 100M, the founder generation has handed over, and the second generation is leading without a shared written vision. The V/TO process should answer: Is the 10-year target MUR 200M? MUR 300M? Will the third location be in Mauritius or in a regional market? Is e-commerce a channel or a threat? Will manufacturing in Bali scale? These questions, left unanswered, will continue to generate the informal, misaligned decision-making that is contributing to the cost structure and cash management problems. The V/TO session should be held within the first 90 days of EOS engagement.</p>
+      <span class="urg urg-medium">Within EOS Programme</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Yuni is a genuinely excellent business masquerading as a mediocre one. The brand, the exclusive distribution rights, the manufacturing capability, the showroom, and the 30-year heritage are all real, defensible, and valuable. But the company is earning only MUR 1M net profit on MUR 103M revenue because it has grown past the management capacity of its founders without building replacement infrastructure. The leadership is willing and capable — they simply have not yet been given the tools to run a MUR 100M business like one. That is the opportunity. EOS, entered through the profitability conversation, is a high-probability engagement for a Qualified conversation outcome. The financial pain is real, the leadership is accessible, and the business has the gross margin to be genuinely excellent if the operational discipline catches up to the revenue.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>LinkedIn outreach to Kevin Bauwens — lead with the financial insight, not an EOS pitch (Week 1–2)</li>
+        <li><span class="sig-num">02</span>Discovery call / coffee meeting — present the profitability gap analysis, listen for pain confirmation (Week 2–4)</li>
+        <li><span class="sig-num">03</span>90-minute Focus Day with all three directors — Kevin, Bryce, and Sharon together (Week 4–6)</li>
+        <li><span class="sig-num">04</span>Accountability Chart + first V/TO session — establish role clarity and 5-year vision before tackling Rocks (Month 2–3)</li>
+        <li><span class="sig-num">05</span>Full EOS implementation — Scorecard, Rocks, L10 cadence, IDS discipline locked in within 90 days of engagement (Month 3–6)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     CONTACT INTELLIGENCE PANEL
+══════════════════════════════════════════ -->
+<div style="background: var(--iron-mid); border-top: 1px solid rgba(255,255,255,0.06); padding: 32px 64px;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); margin-bottom: 16px;">Contact Intelligence — Primary Target</div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06);">
+      <div style="background: rgba(255,255,255,0.02); padding: 16px 20px;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.28); margin-bottom: 6px;">Name &amp; Role</div>
+        <div style="font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 3px;">Kevin Bauwens</div>
+        <div style="font-size: 12px; color: rgba(255,255,255,0.45);">Managing Director · Director · Shareholder</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.02); padding: 16px 20px;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.28); margin-bottom: 6px;">Phone &amp; Email</div>
+        <div style="font-size: 13px; color: #60b8f0; font-family: 'IBM Plex Mono', monospace; margin-bottom: 4px;">+230 245 8100 (office)</div>
+        <div style="font-size: 12px; color: rgba(255,255,255,0.45);">shop@yuni.mu (general)</div>
+        <div style="font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 3px;">Direct email pattern: kevin@yuni.mu</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.02); padding: 16px 20px;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.28); margin-bottom: 6px;">LinkedIn</div>
+        <div style="font-size: 12px; color: #60b8f0; font-family: 'IBM Plex Mono', monospace; word-break: break-all;">linkedin.com/in/<br>kevin-bauwens-40220430</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.02); padding: 16px 20px;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.28); margin-bottom: 6px;">Secondary Contact</div>
+        <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 3px;">Bryce Bauwens</div>
+        <div style="font-size: 12px; color: rgba(255,255,255,0.45);">Director · LinkedIn:</div>
+        <div style="font-size: 11px; color: #60b8f0; font-family: 'IBM Plex Mono', monospace;">linkedin.com/in/bryce-bauwens-6733a929</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Yuni Outdoor Furniture (Outdoor Furniture Ltd · C15937) — Comprehensive Company Analysis &amp; EOS Assessment · 8 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (08/04/2026) · yuni.mu · business-magazine.mu · myjob.mu · yelo.mu · lagazette-mag.io · linkedin.com · pinpoint.mu</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
