@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meaders Feeds Ltd — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Agro-Industrial · Animal Feed Manufacturing</span>
+    <span class="badge badge-type">Private Company · Domestic · Listed Group Subsidiary</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">10 April 2026</span>
+  </div>
+  <h1>Meaders Feeds Ltd:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">MEADERS FEEDS LTD. · Company intelligence · Financial ratios · EOS implementation assessment · Riche Terre, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">MUR 2.18B</div>
+      <div class="stat-delta">Year ended 30 June 2025 · Mauritius Rupee</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit After Tax</div>
+      <div class="stat-value emerald">MUR 70.0M</div>
+      <div class="stat-delta">3.21% net margin · FY2025</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">5.5 / 10</div>
+      <div class="stat-delta">Moderate · Group governance is the gating factor</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">High Payables</div>
+      <div class="stat-delta">Trade payables MUR 431M — 81 days DPO · liquidity watch</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Meaders Feeds Ltd — Company Analysis &amp; EOS Assessment · 10 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION — 7 tabs, always this order
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">Meaders Feeds Ltd is a 33-year-old Mauritius animal feed manufacturer generating MUR 2.18 billion in revenue — robust at the top line, but tight margins and high payables reveal a business operating at volume under group constraint rather than at strategic autonomy.</p>
+
+  <p class="body-text">Incorporated on 8 December 1992 and headquartered at Riche Terre Road, Riche Terre, Mauritius, Meaders Feeds Ltd (CBRIS File No. C10746, BRN C06010746) is one of the leading animal feed manufacturers in the Indian Ocean region. The company produces feeds for poultry (broilers and laying hens), cattle, dairy cows, pigs, goats, rabbits, ducks, dogs, and primates, with an annual production capacity exceeding 85,000 metric tons. It operates from a modern, fully automated facility at Riche Terre and maintains retail distribution points across Mauritius (Triolet, Poste de Flacq, Mare d'Albert, Roche Bois) and Rodrigues Island (Grande Montagne, La Ferme), as well as exporting to the Seychelles, Comoros Islands, Mayotte, Reunion Island, and Madagascar.</p>
+
+  <p class="body-text">The ownership structure is the defining strategic context for any approach to this company. Innodis Ltd — a Stock Exchange of Mauritius listed food and grocery conglomerate — holds 50.99% of Meaders Feeds (2,214,858 shares). Inicia Ltee holds a further 32.67% (1,419,052 shares). Together these two group entities control 83.66% of the company. The founding Wiehe family retains a combined 7.78% stake through Wiehe Marie Jean Baptiste (337,849 shares) and Societe Les Montoc (337,849 shares). Montida Poultry Ltd holds the remaining 0.77%. This is, in effect, a subsidiary operating within a large listed food group, with governance, capital allocation, and strategic direction heavily influenced at group level.</p>
+
+  <p class="body-text">Financially, the FY2025 picture (year ended 30 June 2025, approved 29 September 2025) is one of strong revenue — MUR 2.18 billion, up substantially from the 2014–15 benchmark of MUR 1.2 billion for the group — but narrow margins. Gross margin sits at 11.45% and net margin at 3.21%. Total assets stand at MUR 1.684 billion, with equity of MUR 679.7 million and total liabilities of MUR 1.004 billion. The EOS suitability score is 5.5/10, reflecting genuine operational complexity and scale but tempered by the group governance structure that limits autonomous decision-making by the local management team.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Group Governance Is Both the Opportunity and the Obstacle</div>
+    Meaders Feeds has the scale, complexity, and operational profile that typically makes an excellent EOS candidate — over 10 directors on the board, multi-site operations, a diverse product portfolio, regional export markets, and a professional management team. However, with Innodis Ltd holding a majority stake as a listed public company, strategic decisions about systems, operating model, and implementation mandates are unlikely to originate from Meaders Feeds management alone. Any EOS conversation must be held at the Innodis group level, or with Iqbal Mohungoo (Managing Director, appointed July 2023) in a context where he has board mandate. The entry angle is the complexity of managing a multi-site, multi-species, multi-market operation that has outgrown informal coordination — and the Managing Director is the right first conversation.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>MUR 2.18B revenue base with regional export reach</strong> across Seychelles, Comoros, Mayotte, Reunion, and Madagascar. Fully automated production facility — one of the most modern in the Indian Ocean. Diversified animal species portfolio reduces single-segment revenue risk. Over 30 years of established market presence and brand recognition in Mauritius.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Trade and other payables of MUR 430.8M represent an 81-day DPO</strong> — indicating heavy reliance on supplier credit to fund operations. Net margin of 3.21% leaves minimal buffer for input cost shocks (grain, soy, imported ingredients). Finance costs of MUR 23.7M on zero formal long-term borrowings suggest intercompany or short-term facilities. Inventories of MUR 636.3M tie up significant working capital.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Nine directors plus a separate Chairman signals leadership complexity</strong> without clear single-point accountability — a classic EOS Accountability Chart problem. Multi-site, multi-species, multi-market operations without visible shared operating cadence. The 2023 appointment of a Managing Director (Mohungoo, CBRIS-confirmed director) suggests a deliberate professionalisation move — a positive signal for systems receptivity.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A 33-year-old agro-industrial anchor of the Innodis group, Meaders Feeds has grown from a domestic poultry feed producer into the Indian Ocean's most diversified animal nutrition manufacturer — but it operates as a strategically constrained subsidiary within a listed food conglomerate.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Meaders Feeds Ltd was incorporated on 8 December 1992 as a private domestic company (File No. C10746, BRN C06010746). Its registered office is at Riche Terre Road, Riche Terre, Mauritius (address effective 22 November 2007). The company holds an Agricultural Development Certificate (issued 9 June 1993) reflecting its agro-industrial classification, and a Non-Citizen Property Restriction Act certificate (10 December 2010). The company's annual returns are current — most recent filed 11 February 2026 for the 10 December 2025 meeting — and its 2026 registration fee is paid. Auditors are Ernst &amp; Young (Certified Accountants), appointed 12 December 2019, operating from Nexteracom Tower 1, Cybercity, Ebene. The company secretary is Executive Services Limited, Les Jamalacs Building, Port Louis (appointed 7 September 2005). Financial statements are filed annually with the Registrar, with the FY2025 statements approved 29 September 2025.</p>
+  <p class="body-text">The stated capital comprises 4,342,858 ordinary shares at a par value of MUR 10 per share, giving a nominal share capital of MUR 43,428,580. The filed stated capital figure is MUR 63,840,000, reflecting share premium. No shares are unpaid. There have been no winding-up or removal proceedings and no objections are recorded.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Innodis Ltd</h4>
+        <div class="ec-sub">Majority Shareholder — SEM Listed</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv ok">2,214,858</span></div>
+        <div class="ec-metric"><span class="mk">% ownership</span><span class="mv ok">50.99%</span></div>
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv">Listed — SEM</span></div>
+        <div class="ec-metric"><span class="mk">Group role</span><span class="mv">Parent / listed anchor</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Inicia Ltee</h4>
+        <div class="ec-sub">Second Major Shareholder</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv warn">1,419,052</span></div>
+        <div class="ec-metric"><span class="mk">% ownership</span><span class="mv warn">32.67%</span></div>
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv">Private entity</span></div>
+        <div class="ec-metric"><span class="mk">Group role</span><span class="mv">Strategic co-investor</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Founding Family / Other</h4>
+        <div class="ec-sub">Wiehe Group &amp; Minority</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Wiehe MJB</span><span class="mv">337,849 (7.78%)</span></div>
+        <div class="ec-metric"><span class="mk">Soc. Les Montoc</span><span class="mv">337,849 (7.78%)</span></div>
+        <div class="ec-metric"><span class="mk">Montida Poultry</span><span class="mv">33,250 (0.77%)</span></div>
+        <div class="ec-metric"><span class="mk">Combined</span><span class="mv">16.33%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Group Context</div>
+    Innodis Ltd's group activities encompass poultry farming, animal feed manufacturing, ice cream, yoghurt, frozen foods, and food/grocery distribution. Meaders Feeds sits at the upstream agro-industrial end of that value chain, supplying the group's own poultry farming operations as well as third-party customers. This vertical integration creates both a captive customer base and a potential conflict of interest in pricing and priority — dynamics that any EOS implementation would need to navigate carefully.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Clairette Ah-Hen Fy Thin — Chairman &amp; Director</h4>
+      <p>Appointed 1 January 2021. Service address: Riche Terre Road, Terre Rouge. Dual role as Chairman and Director signals strong operational involvement at board level. LinkedIn: contactable via FSC Mauritius records (c***@fscmauritius.org).</p>
+    </div>
+    <div class="profile-card">
+      <h4>Iqbal Mohungoo — Managing Director</h4>
+      <p><strong>Primary contact for EOS conversation.</strong> Appointed 1 July 2023. Service address: Riche Terre Road, Riche Terre. Confirmed as Managing Director on LinkedIn (linkedin.com/in/iqbal-mohungoo-984648128). Responsible for new project development locally and internationally, leads sales and marketing. Email pattern: i***@meadersfeeds.com. Phone: +230 249 38 60 (main line).</p>
+    </div>
+    <div class="profile-card">
+      <h4>David Albert Montocchio — Director</h4>
+      <p>Appointed 1 July 2018. Service address: Meaders Feeds Ltd, Riche Terre Branch Road. Name-matching to Montocchio family — likely connected to Societe Les Montoc founding shareholder. Long-tenured board presence.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vivekanand Ramtohul — Director</h4>
+      <p>Appointed 1 July 2018. Service address: Meaders Feeds Limited, Riche Terre Road. Co-appointment with Montocchio on the same date suggests coordinated board restructure in mid-2018.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Jean-Baptiste Emmanuel Wiehe — Director</h4>
+      <p>Appointed 31 December 2017. Service address: Riche Terre Branch Road. Founding family representative — Wiehe Marie Jean Baptiste is also a direct shareholder (337,849 shares). Family continuity on the board.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Other Directors (4)</h4>
+      <p>Jean Pierre Claudio Lim Kong (from 10 March 2017), Jocelyn Fanchette (from 8 September 2021), Jean Desire Gaetan Bestel (from 10 May 2022), plus Company Secretary Executive Services Ltd (from 7 September 2005). Board of 9 directors + Chairman indicates significant governance overhead.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Meaders Feeds manufactures compound animal feeds across the following species segments: poultry (starter, grower, and finisher feeds for broilers; layer feeds for laying hens), ruminants (cattle, dairy cow), pigs, goats, rabbits, ducks, dogs, and primates (reflecting institutional/research facility supply). Feeds are produced in mash, crumbles, pellets, and extruded forms and are available in bagged or bulk delivery formats. The Riche Terre facility is described as one of the most modern and fully automated in the Indian Ocean, with strict quality control across all production phases. Annual production capacity exceeds 85,000 metric tons.</p>
+  <p class="body-text">The company also operates retail food stores (General Retailer — Foodstuff) at multiple Mauritius locations, indicating a B2C distribution layer alongside its core B2B manufacturing business. Warehouse and storage operations at Riche Terre support both manufacturing logistics and distribution.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Domestic manufacturing and registered office: Riche Terre Road, Riche Terre (Port Louis district). Retail distribution points: 7eme Mile Royal Road Triolet (north), Abbatoir Road Roche Bois (Port Louis), Royal Road Poste de Flacq (east), Royal Road Mare d'Albert (south-east). Rodrigues Island: Grande Montagne and La Ferme — two separate retail locations indicating serious commitment to the outer island market. Export markets: Seychelles, Comoros Islands, Mayotte, Reunion Island, and Madagascar — a meaningful Indian Ocean footprint that differentiates Meaders Feeds from purely domestic competitors.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">All figures from the CBRIS-filed financial summary for the year ended 30 June 2025 (approved 29 September 2025), denominated in Mauritius Rupees (MUR). Prior-year comparatives are not disclosed in the public filing.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    The CBRIS public filing provides a single-year P&amp;L and balance sheet summary only. No prior-year comparatives, notes to accounts, cash flow statement, or segment breakdown are publicly available. Revenue growth rate cannot be calculated from the registry filing alone. The company's most recent audited financials are prepared by Ernst &amp; Young and approved by the board — the figures are reliable but context-limited. For the purposes of this analysis, FY2025 is benchmarked against the 2014–15 publicly referenced group turnover of MUR 1.2B, implying substantial revenue growth over the decade.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>2,179,737,791</td><td>100.0%</td><td>MUR 2.18B — significant scale for a Mauritius private manufacturer; approx. USD 47M at current rates</td></tr>
+        <tr><td>Cost of Sales</td><td>1,930,228,938</td><td>88.6%</td><td>Dominated by imported raw materials (grains, soy, premixes) — high exposure to commodity and FX risk</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>249,508,853</td><td>11.45%</td><td>Thin but acceptable for commodity feed manufacturing; reflects price-taker dynamics on inputs</td></tr>
+        <tr><td>Other Income</td><td>3,199,327</td><td>0.15%</td><td>Minimal ancillary income — not a material revenue diversifier</td></tr>
+        <tr><td>Distribution Costs</td><td>87,184,500</td><td>4.00%</td><td>Reflects multi-site retail network and Rodrigues/export freight costs — relatively high</td></tr>
+        <tr><td>Administration Costs</td><td>63,761,188</td><td>2.93%</td><td>Lean relative to revenue scale — suggests overhead discipline or shared-services benefit from group</td></tr>
+        <tr><td>Other Expenses</td><td>0</td><td>0.00%</td><td>Nil — all operating costs classified under distribution and admin</td></tr>
+        <tr class="heat-warn"><td>Finance Costs</td><td>23,722,881</td><td>1.09%</td><td>Significant given zero formal long-term borrowings on balance sheet — likely intercompany or revolving facility charges</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>78,039,611</td><td>3.58%</td><td>Healthy given the thin gross margin; reflects tight opex management</td></tr>
+        <tr><td>Tax Expense</td><td>8,074,724</td><td>0.37%</td><td>Effective tax rate of 10.3% — low relative to standard 15% CIT; possible agricultural/investment incentives</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>69,964,887</strong></td><td><strong>3.21%</strong></td><td>Solid absolute profit; thin margin leaves limited buffer against input cost volatility</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>657,508,016</td><td>Major asset base — reflects automated manufacturing facility, land, equipment; MUR 657M is significant capital investment</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>10,306,635</td><td>Likely brands, licenses, or software; modest relative to total asset base</td></tr>
+        <tr><td>Non-Current Assets</td><td>Investment in Subsidiaries</td><td>561,000</td><td>Minimal — Meaders Feeds itself has limited subsidiary structure</td></tr>
+        <tr><td>Non-Current Assets</td><td>Others</td><td>17,652,605</td><td>Other long-term assets — likely deposits or deferred items</td></tr>
+        <tr><td>Non-Current Assets</td><td><strong>Total Non-Current</strong></td><td><strong>686,028,256</strong></td><td>40.7% of total assets — capital-intensive as expected for a manufacturer</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Inventories</td><td>636,257,109</td><td>Very high — 37.8% of total assets. Likely reflects raw material stockpiling and finished goods. Watch for obsolescence risk on speciality feeds</td></tr>
+        <tr><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>287,833,429</td><td>Sizeable receivables base — 48 days DSO on MUR 2.18B revenue; requires active credit management</td></tr>
+        <tr><td>Current Assets</td><td>Cash &amp; Cash Equivalents</td><td>69,073,333</td><td>Modest cash position relative to scale — 11.5 days cash coverage</td></tr>
+        <tr><td>Current Assets</td><td>Others</td><td>5,278,020</td><td>Minor prepayments or short-term deposits</td></tr>
+        <tr><td>Current Assets</td><td><strong>Total Current</strong></td><td><strong>998,441,891</strong></td><td>59.3% of total assets — inventory-heavy working capital structure</td></tr>
+        <tr><td></td><td><strong>TOTAL ASSETS</strong></td><td><strong>1,684,470,147</strong></td><td>MUR 1.68B asset base — substantial manufacturing enterprise</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital</td><td>43,428,580</td><td>Nominal capital (4,342,858 shares × MUR 10)</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Other Reserves</td><td>85,161,837</td><td>Accumulated fair value or revaluation reserves</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Retained Earnings</td><td>551,065,420</td><td>Strong retained earnings — profitable history; equity-funded growth model</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>679,655,837</strong></td><td>40.3% equity ratio — reasonable for the sector; no formal long-term debt is notable</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Deferred Tax</td><td>58,923,313</td><td>Normal for capital-intensive business with accelerated depreciation</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long Term Provisions</td><td>23,629,875</td><td>Likely gratuity/end-of-service provisions for staff — regulated under Mauritius law</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long Term Borrowings</td><td>0</td><td>Zero formal long-term debt — unusual given the scale; may reflect intercompany funding or conservative capital management</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>430,761,051</td><td>Very high — drives the 81-day DPO calculation. May include intra-group payables to Innodis/Inicia for raw material supply</td></tr>
+        <tr><td>Current Liabilities</td><td>Others</td><td>478,196,464</td><td>Large "other" current liabilities bucket — likely intra-group balances, accruals, or deferred revenue</td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>910,437,381</strong></td><td>Current liabilities exceed current assets (MUR 998M) by a comfortable but tight margin — current ratio of 1.10x requires monitoring</td></tr>
+        <tr><td></td><td><strong>TOTAL LIABILITIES</strong></td><td><strong>1,004,814,310</strong></td><td>Debt/equity ratio of 1.48x — manageable but leaves little room for acquisition or major capex without new financing</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The CBRIS charge register records 31 charges spanning from December 1993 to July 2023. The majority are floating charges over moveable and immoveable property, with a small number of fixed charges over specific assets. Most historic charges (pre-2017) were renewed and re-registered in 2017 and 2019, suggesting a refinancing or banking relationship renegotiation in that period. The most significant recent charge is CH202307/000311 — a floating charge of MUR 150,000,000 registered 11 July 2023, which aligns with the period of the Managing Director appointment and may reflect a working capital facility or capital expenditure financing arranged at the same time as the leadership transition. A 2014 floating charge of MUR 41,000,000 and twin 2015 charges of MUR 66,000,000 each (one floating, one fixed) are also notable.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Charge Register Signal</div>
+    The proliferation of 31 charges — many of which are legacy instruments renewed rather than discharged — indicates a long-standing relationship with one or more banks where facilities have been repeatedly extended rather than restructured. The MUR 150M charge raised in July 2023 coincides with the MD appointment and may represent a deliberate increase in operational flexibility. No charges have been formally satisfied/discharged in the register, which is common in Mauritius practice but should be clarified in any due diligence conversation.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">All ratios calculated from FY2025 CBRIS-filed figures. Benchmarks reference food manufacturing / agro-industrial sector norms. Green = healthy, Amber = watch, Red = critical concern.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.10×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.5× – 2.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Current assets of MUR 998.4M cover current liabilities of MUR 910.4M by only 1.10×. This is below the manufacturing sector comfort zone of 1.5×. The ratio is propped up heavily by MUR 636.3M in inventories — if inventory liquidation is slow (as it can be for specialised animal feeds), the effective liquidity position is weaker than the ratio suggests. The company relies on supplier credit (payables) to fund its working capital cycle.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio (Acid Test)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.40×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Excluding inventories, liquid assets (receivables MUR 287.8M + cash MUR 69.1M = MUR 356.9M) cover only 39.2% of current liabilities (MUR 910.4M). This is severely below benchmark and reveals that the business is fundamentally reliant on inventory conversion and supplier credit to remain liquid. An interruption to either — a raw material supply shock or a supplier demanding shorter payment terms — would create an immediate cash crisis.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">11.45%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (feed mfg)</span><span class="ratio-val">10% – 18%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Adequate</span></span></div>
+      <span class="ratio-interpret">Gross margin of 11.45% is within the lower bound of acceptable for commodity feed manufacturing — a sector where margins are structurally thin due to commodity input costs. The margin reflects Meaders Feeds' position as a price-competitive manufacturer supplying both the Innodis group and open market. Improvement levers are formula optimisation, procurement contracts, and product mix toward higher-value speciality feeds.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">3.21%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (food mfg)</span><span class="ratio-val">3% – 8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Thin</span></span></div>
+      <span class="ratio-interpret">Net margin of 3.21% sits at the lower bound of sector norms. Distribution costs (4.0% of revenue) are relatively high — a consequence of the multi-site retail network and Rodrigues/export freight. Any input cost inflation of 1–2% without corresponding price increases would eliminate profit. Management must have strong measurables on margin by product line and by geography to manage this risk.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">4.16%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5% – 10%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Below Benchmark</span></span></div>
+      <span class="ratio-interpret">Net profit of MUR 70.0M on total assets of MUR 1.684B yields ROA of 4.16%. This is below the 5% threshold for asset-intensive manufacturers, suggesting the asset base is not generating returns commensurate with its scale. The MUR 657M PP&amp;E investment needs to be sweated harder or monetised more effectively through volume growth or premium product lines.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">10.29%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">10% – 20%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Adequate</span></span></div>
+      <span class="ratio-interpret">ROE of 10.29% (MUR 70.0M profit / MUR 679.7M equity) is at the lower acceptable boundary. The strong retained earnings base (MUR 551M) depresses the ROE percentage — the company has been reinvesting profits without distributing significant dividends, building balance sheet strength over decades.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Total liabilities / Equity</span><span class="ratio-val warn">1.48×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (mfg)</span><span class="ratio-val">0.5× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">At Upper Limit</span></span></div>
+      <span class="ratio-interpret">At 1.48× the company is at the upper boundary of acceptable leverage for the sector. Notably, formal long-term borrowings are zero — the leverage is driven entirely by trade payables (MUR 430.8M) and a large "other current liabilities" bucket (MUR 478.2M) that likely includes intra-group balances. This is a structurally different risk profile from bank debt but still constrains financial flexibility.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">EBIT / Finance Costs</span><span class="ratio-val ok">3.29×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">&gt; 3×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Adequate</span></span></div>
+      <span class="ratio-interpret">EBIT of approximately MUR 78.0M covers finance costs of MUR 23.7M at 3.29×. This is just above the minimum comfort threshold. A 10% revenue decline would compress this ratio dangerously close to 1×. The interest cost itself — MUR 23.7M against zero formal borrowings — is a flag: these are likely intercompany charges or revolving credit facility fees that need transparency.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Days Sales Outstanding (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Receivables / Revenue × 365</span><span class="ratio-val warn">48 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (food mfg)</span><span class="ratio-val">30 – 45 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Slightly Elevated</span></span></div>
+      <span class="ratio-interpret">DSO of 48 days is slightly above the sector benchmark. For a company supplying commercial farms and institutional customers, some credit extension is normal — but it ties up MUR 287.8M in receivables. Given the thin margin environment, every day of DSO improvement frees approximately MUR 5.97M in working capital. Reducing to 35 days would release approximately MUR 78M in cash.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Days Payable Outstanding (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Payables / COGS × 365</span><span class="ratio-val bad">81 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (food mfg)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">High Risk</span></span></div>
+      <span class="ratio-interpret">DPO of 81 days — calculated on COGS of MUR 1.93B — is materially above the sector norm. The company is effectively using supplier credit as a primary working capital tool. If a major raw material supplier (likely offshore grain/soy traders) tightens terms, the liquidity shock could be severe given the 0.40× quick ratio. This is the single most important financial risk for this business.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Days</h4>
+      <div class="ratio-row"><span class="ratio-label">Inventory / COGS × 365</span><span class="ratio-val bad">120 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (feed mfg)</span><span class="ratio-val">45 – 75 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Excessive</span></span></div>
+      <span class="ratio-interpret">Inventory days of approximately 120 days — MUR 636.3M against COGS of MUR 1.93B — is significantly above benchmark. This may reflect deliberate raw material stockpiling to hedge against import supply disruptions (a rational strategy for a Mauritius island-based manufacturer), but the carrying cost is substantial. If one-third of this inventory is strategic buffer stock, the operational inventory is still at the upper end of normal. This warrants a specific conversation with management about inventory policy.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Revenue / Total Assets</span><span class="ratio-val warn">1.29×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (food mfg)</span><span class="ratio-val">1.0× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-blue">In Range</span></span></div>
+      <span class="ratio-interpret">Asset turnover of 1.29× is within the acceptable range for a capital-intensive food manufacturer. Revenue of MUR 2.18B against a MUR 1.68B asset base reflects reasonable asset utilisation. The large inventory balance inflates current assets and suppresses this ratio — a genuine improvement in inventory management would boost asset turnover meaningfully.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. Quick Ratio: 0.40×</strong> — With MUR 910M in current liabilities and only MUR 357M in liquid assets (excluding inventory), Meaders Feeds has a structural liquidity vulnerability. If grain import terms tighten by 30 days, the company needs to find approximately MUR 158M in short-term funding immediately. This is the single number that should drive every working capital conversation with this management team.<br><br>
+    <strong>2. DPO: 81 days</strong> — The company stretches its suppliers for 81 days while collecting from customers in 48 days. The net working capital cycle is funded by MUR 636M of inventory sitting in the warehouse. This is not sustainable if either end of the chain moves — and in a volatile commodity import environment, it eventually will.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Meaders Feeds operates across three distinct market segments — domestic B2B (commercial farms), domestic B2C (retail feed stores), and regional export — with a dominant position in Mauritius animal feed manufacturing built over three decades of operational investment and group integration.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>B2B Commercial Feed Supply</h4>
+        <div class="ec-sub">Core Segment — Poultry, Dairy, Pig Farms</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key customers</span><span class="mv">Innodis group farms, commercial poultry operators, dairy farms</span></div>
+        <div class="ec-metric"><span class="mk">Positioning</span><span class="mv ok">Dominant</span></div>
+        <div class="ec-metric"><span class="mk">Competitive moat</span><span class="mv">Scale, automation, group captive demand</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Group dependency, thin margins</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Domestic Retail Feed Stores</h4>
+        <div class="ec-sub">B2C — Smallholder Farmers &amp; Hobbyists</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Locations</span><span class="mv">5 on Mauritius + 2 Rodrigues</span></div>
+        <div class="ec-metric"><span class="mk">Positioning</span><span class="mv ok">Island-wide coverage</span></div>
+        <div class="ec-metric"><span class="mk">Products</span><span class="mv">Bagged feeds, pet/specialty feeds</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Distribution cost drag (4% revenue)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Regional Export Markets</h4>
+        <div class="ec-sub">Seychelles, Comoros, Mayotte, Reunion, Madagascar</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Geographic reach</span><span class="mv ok">5 Indian Ocean markets</span></div>
+        <div class="ec-metric"><span class="mk">Positioning</span><span class="mv ok">Price competitive vs EU imports</span></div>
+        <div class="ec-metric"><span class="mk">Growth potential</span><span class="mv ok">High — food security drive</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Forex, freight, regulatory</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Vertical Integration within the Innodis Group.</strong> Meaders Feeds supplies feed to Innodis group poultry farming operations, creating a captive revenue base that partially insulates it from open market competition. This intra-group demand provides volume stability that standalone competitors cannot match. The flip side is that intra-group pricing may not reflect true market rates, compressing margins.</p>
+  <p class="body-text"><strong>2. Scale and Automation.</strong> With annual production exceeding 85,000 metric tons and a facility described as one of the most modern in the Indian Ocean, Meaders Feeds has a significant cost-per-tonne advantage over smaller competitors. Fully automated production with strict quality control at each phase creates a replication barrier that requires substantial capital investment to overcome. The MUR 657M PP&amp;E base represents this barrier in financial terms.</p>
+  <p class="body-text"><strong>3. Multi-Species, Multi-Format Product Breadth.</strong> No other Mauritius feed manufacturer publicly demonstrates the same range across poultry, ruminants, pigs, small animals, dogs, and primates, with delivery in mash, crumbles, pellets, and extruded forms in both bagged and bulk formats. This breadth makes Meaders Feeds the default single-supplier for any farm operator wanting to consolidate purchasing.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Indian Ocean food security imperative:</strong> Mauritius, Rodrigues, Seychelles, and Comoros are all prioritising local food production to reduce import dependency — a structural tailwind for domestic animal protein (poultry, dairy) and therefore for feed demand.</li>
+    <li><strong>Rising regional protein consumption:</strong> GDP growth in Madagascar and Comoros is driving protein demand in populations that have historically been unable to afford consistent animal protein — a long-term volume opportunity for regional export.</li>
+    <li><strong>Commodity input cost volatility:</strong> Global grain and soy markets remain structurally volatile post-2022. For a company with 88.6% COGS exposure to these inputs and a 0.40× quick ratio, this is the primary existential risk rather than a competitive dynamic.</li>
+    <li><strong>Speciality and functional feeds premium:</strong> Growing demand for probiotic-enhanced, antibiotic-free, and performance-optimised feeds in commercial farming creates margin improvement opportunities — but requires R&amp;D investment and technical sales capability that may need strengthening.</li>
+    <li><strong>Logistics and freight cost normalisation:</strong> Post-COVID freight rates have partially normalised, reducing the landed cost of imported raw materials. If this continues, COGS pressure eases and margins recover without requiring price increases.</li>
+    <li><strong>Competitive entry risk is low:</strong> The capital barrier to build an equivalent automated facility in Mauritius is prohibitive for new entrants. The realistic competitive threat is from European or South African feed manufacturers seeking to supply Mauritius commercial farms directly — a risk that the distribution and service relationship of a local producer mitigates.</li>
+  </ul>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">Meaders Feeds operates from a large automated manufacturing facility with multi-site retail distribution across Mauritius and Rodrigues, export operations to five Indian Ocean markets, and a multi-species product portfolio requiring different technical formulations. The CBRIS records warehouse and storage operations separately from manufacturing and retail — indicating multiple distinct operational functions. With MUR 2.18B in revenue and the complexity of managing commodity procurement, production scheduling, retail distribution, and export logistics simultaneously, the organisation is squarely in the size range where EOS delivers the most value. The 9-director board signals significant internal complexity. Score adjusted from 10 only because it is a subsidiary of a listed group, which adds a governance layer not covered by EOS tools.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The appointment of Iqbal Mohungoo as Managing Director in July 2023 is a strong positive signal — it represents a deliberate decision to install professional management leadership in what was previously a more board-driven entity. A newly appointed MD, often mandated to professionalise operations, is typically open to operating systems and frameworks. However, the 9-person board dominated by group shareholders (Innodis, Inicia) creates a governance structure where the MD's autonomy to adopt and mandate enterprise-wide operating frameworks may be constrained by board approval requirements. The entry conversation must establish whether Mohungoo has the mandate to implement EOS independently or whether board buy-in is required.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Revenue has grown from approximately MUR 1.2B (2014–15) to MUR 2.18B (FY2025) — a near-doubling over a decade that creates the classic EOS pain points: processes built for a smaller operation, accountability structures that haven't scaled, and management bandwidth stretched across an increasingly complex operation. The financial signals reinforce this — inventory at 120 days, quick ratio at 0.40×, and DPO at 81 days all suggest a business where operational discipline has not kept pace with growth. These are solvable with the right systems and meeting cadence. The multi-site expansion (Rodrigues, export markets) adds coordination complexity that EOS tools specifically address.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The company has formal audit processes (Ernst &amp; Young), a professional company secretary, and annual return compliance — indicating baseline governance discipline. The automated production facility implies process documentation at the operational level. However, the financial signals (high inventory, stretched payables, thin margins without visible corrective action) suggest that management reporting and accountability systems at the leadership level are weaker than the operational systems at the floor level. The gap between production excellence and financial management is a classic EOS Scorecard/Measurables problem. Score is mid because there is clearly a process foundation to build on, but the management-level systems appear underdeveloped.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Meaders Feeds has been in operation for 33 years with a stable core shareholder structure — this implies an established culture, likely with strong operational pride (reflected in the emphasis on production quality and automation). The founding family (Wiehe) remains on the board alongside professional management, which often creates a culture that respects operational heritage while being open to professionalisation. The appointment of a Managing Director from outside the board is a culture signal toward merit-based leadership. The risk is that a large, institutionalised subsidiary culture may be resistant to the vulnerability and transparency that EOS requires from leadership teams.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:40%"></div></div>
+    <p class="eos-rationale">This is the most significant EOS challenge for Meaders Feeds. With a 9-director board where two group shareholders hold 83.66% of the equity, major decisions — capital allocation, strategic direction, pricing policy with Innodis group customers — are almost certainly made at the Innodis group board level, not at the Meaders Feeds management level. The MD has operational authority but strategic authority is constrained. EOS requires a leadership team that owns its V/TO and has the authority to execute on Rocks. If the MD cannot independently set and pursue 90-day priorities without group approval, EOS implementation will stall. This is the critical conversation to have before any engagement.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Meaders Feeds' public positioning ("leading company in the agro-industrial sector," "most modern facility in the Indian Ocean," regional export expansion) suggests a reasonably clear market vision. However, as a subsidiary, the company's long-term vision is embedded within the Innodis group's strategic plan — Meaders Feeds management may not own a distinct V/TO that is independent of the group's strategic framework. The 10-year timeframe for revenue doubling (MUR 1.2B to MUR 2.18B) shows execution consistency, but it is unclear whether this resulted from a deliberate management-led vision or from group-level resource allocation decisions. Clarifying where Meaders Feeds management has genuine strategic agency is the foundation of any V/TO work.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The CBRIS annual return filings are current and consistently filed, indicating a disciplined board meeting culture. However, from publicly available data, it is not possible to determine the quality of the management team's internal meeting cadence — whether there are weekly leadership meetings, quarterly Rock reviews, or effective issue-resolution processes. The 9-person board is larger than the ideal EOS leadership team (5–8), suggesting that the management meeting structure may be conflated with the governance structure. Separating the operational leadership meeting cadence (Level 10s) from board governance would be a foundational EOS step.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">5.5</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate — Conditional Positive</h4>
+      <p>Meaders Feeds has the operational complexity, growth history, and financial pain points that make it an excellent EOS candidate on the operational dimensions. The company scores strongly on size, growth stage, and evident system gaps. The critical constraint is governance: as an 83.66% group-controlled subsidiary, the MD's mandate to implement and sustain EOS must be explicitly confirmed before any engagement proceeds. The right entry is a conversation with Iqbal Mohungoo about whether the Meaders Feeds management team has the authority to own a V/TO and execute independently — and if yes, this becomes a high-quality engagement.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Meaders Feeds</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>The financial data reveals a business managing MUR 2.18B without visible management-level measurables — inventory at 120 days, quick ratio at 0.40×, and DPO at 81 days are signals of a business that isn't tracking the right weekly numbers. A Scorecard with 5–15 leading indicators (production cost per tonne, DSO, DPO, inventory days, export volume by market) would transform management visibility.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>Nine directors plus a Chairman, multiple operational sites, export markets, and a manufacturing operation — this business has significant functional complexity. The Accountability Chart would clarify who owns manufacturing, who owns distribution, who owns export, and who owns commercial relationships with the Innodis group. Currently, with a large board, these lines are almost certainly blurred.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks — 90-Day Priorities</h4>
+      <p>The most urgent Rocks would address the liquidity vulnerabilities: (1) reduce inventory days from 120 to 75 through demand forecasting improvement, (2) renegotiate supplier payment terms to reduce DPO risk from 81 days, (3) reduce DSO from 48 to 35 days through credit policy tightening. Each of these has a measurable MUR cash impact and a named owner.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO — Vision/Traction Organizer</h4>
+      <p>The key V/TO question for Meaders Feeds is: what is the 10-year target that is purely within management's control, given the group ownership structure? Defining the BHAG (regional market leadership in Indian Ocean animal nutrition?) and the 3-year picture (revenue MUR 3B? First Comoros/Madagascar facility?) would give the management team an independent strategic identity rather than simply executing the Innodis group plan.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>A multi-site, multi-species, multi-market operation accumulates issues rapidly. The working capital structure (Quick Ratio 0.40×, inventory 120 days, DPO 81 days) suggests issues that have been known but not systematically resolved. The Issues List and Identify-Discuss-Solve discipline would give the management team a mechanism to surface and resolve the operational and financial tensions that are currently being absorbed rather than addressed.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>With a 9-person board conflated with operational governance, Meaders Feeds likely lacks a weekly leadership team meeting that is purely operational and accountability-focused. Introducing the Level 10 — for the MD and his direct reports (not the full board) — would separate governance from execution and create the weekly accountability cadence that the Scorecard data demands.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total — four financial/operational and four EOS-specific — sequenced from most urgent financial risk mitigation through to strategic EOS implementation. All recommendations are directed at the MD and operational leadership team, not the group board.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Implement a Weekly Working Capital Scorecard</h4>
+      <p>With a quick ratio of 0.40× and DPO at 81 days, Meaders Feeds is one supply-chain disruption away from a liquidity crisis. The MD should mandate a weekly working capital dashboard covering: (1) cash position vs prior week, (2) receivables ageing vs 35-day target, (3) payables ageing vs agreed terms, (4) inventory days vs 75-day target. Assign the CFO/Finance Director as the accountable owner with a weekly number to report in leadership team meetings. Expected cash improvement from DSO reduction alone: MUR 78M within 90 days.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Audit and Renegotiate Raw Material Supplier Payment Terms</h4>
+      <p>DPO of 81 days signals that Meaders Feeds is pushing payment terms to the limit of supplier tolerance. Before a supplier tightens terms unilaterally, proactively renegotiate with the top 5 raw material suppliers (by MUR value) to lock in terms of 60–90 days with early payment discounts as an option. Simultaneously, map which payables are intra-group (Innodis/Inicia) versus third-party — intra-group payables are a balance sheet presentation issue, not a liquidity risk. The renegotiation target: no supplier on terms shorter than 60 days without explicit board approval.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Implement Demand-Driven Inventory Management</h4>
+      <p>Inventory days of 120 days (MUR 636M tied up) is likely a combination of strategic buffer stock (rational for an island-based manufacturer) and operational inefficiency (over-production, slow-moving specialty feeds). Conduct a SKU-level inventory analysis: (1) classify each feed line as strategic buffer vs operational stock, (2) set explicit days-on-hand targets for each category, (3) implement weekly inventory review against targets. Target: reduce operational inventory to 75 days while maintaining strategic buffers. This would release approximately MUR 219M in working capital over 6 months — materially improving the quick ratio.</p>
+      <span class="urg urg-week">Priority — Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Clarify and Formalise Intra-Group Transfer Pricing</h4>
+      <p>With Innodis Ltd as a 51% shareholder and a captive customer for poultry feed, the transfer pricing mechanism between Meaders Feeds and Innodis group farms is critical to understanding Meaders Feeds' true profitability. The MUR 23.7M in finance costs against zero formal borrowings suggests intra-group charges that may not be at arm's length. The MD should commission a review of all intra-group commercial terms — supply pricing, payment terms, overhead allocations — to establish whether Meaders Feeds is being run at an optimal margin or subsidising group profitability. This is foundational to any growth or EOS strategy.</p>
+      <span class="urg urg-week">Priority — Within 30–60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Focus Day: Establish the MD's Mandate and Identify the Leadership Team</h4>
+      <p>Before any EOS tools are introduced, conduct a Focus Day with Iqbal Mohungoo (MD) to answer three questions: (1) Does Meaders Feeds management have the authority to set and execute a V/TO independently of the Innodis group board? (2) Who constitutes the actual leadership team (the MD's direct reports) versus the governance board? (3) What are the top 3 Issues that the leadership team has known about but not resolved? The answers to these three questions determine whether EOS proceeds at the Meaders Feeds entity level or requires a group-level conversation first.</p>
+      <span class="urg urg-now">Immediate Priority — EOS Entry Point</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the Accountability Chart — Separate Governance from Operations</h4>
+      <p>Draft a first-pass Accountability Chart with Iqbal Mohungoo showing the functional seats required to run Meaders Feeds: Manufacturing, Supply Chain/Procurement, Sales &amp; Distribution (domestic), Export Sales, Finance, and HR. For each seat, name the current person filling it. This exercise will likely reveal: (a) seats with no named owner, (b) the MD personally filling multiple seats (a classic EOS integrator problem), and (c) board members listed as functional owners without clear operational accountability. This is the foundation of the Level 10 meeting structure.</p>
+      <span class="urg urg-week">Priority — Within 30 Days of Focus Day</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Set Q1 Rocks Around the Three Financial Vulnerabilities</h4>
+      <p>The first Rock cycle should address the three most measurable financial risks: Rock 1 — Reduce DSO from 48 to 35 days (owner: Sales/Finance, measure: weekly receivables ageing report, target: MUR 78M cash released by end of quarter). Rock 2 — Reduce inventory days from 120 to 90 days (owner: Operations, measure: weekly inventory days calculation, target: MUR 146M cash released). Rock 3 — Complete intra-group transfer pricing review (owner: MD/Finance, measure: completed report to board). Three Rocks, three named owners, one quarter — this is EOS in action for Meaders Feeds.</p>
+      <span class="urg urg-medium">Within 90 Days — First Rock Cycle</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Draft the V/TO — What Does Meaders Feeds Own Independently of Innodis?</h4>
+      <p>The strategic question for the V/TO is: in 10 years, what does Meaders Feeds look like if it executes brilliantly on everything within its control? Hypothesis for the BHAG: "Be the undisputed leader in Indian Ocean animal nutrition, supplying 25% of the region's compound feed by 2036." The 3-year picture should specify: revenue target (MUR 3.5B?), export market share targets, new species segments (aquaculture?), and facility expansion milestones. The V/TO gives Mohungoo's leadership team a strategic identity that is genuinely theirs — not just executing the Innodis group plan. This is the conversation that will determine whether EOS creates lasting value or remains a tactical tools exercise.</p>
+      <span class="urg urg-medium">Within 90 Days — Alongside First Rock Cycle</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Meaders Feeds Ltd is a financially sound, operationally excellent business that has grown to MUR 2.18B in revenue over 33 years by investing in production capability and regional market reach. Its financial vulnerabilities — quick ratio 0.40×, inventory days 120, DPO 81 — are real but correctable; they reflect a business that has prioritised volume and market position over working capital discipline. The primary strategic question is not whether EOS would work here — it would — but whether the Managing Director has the mandate to implement it. Iqbal Mohungoo (MD since July 2023) is the right entry point. If he has genuine operational authority, this is a qualified EOS lead with strong financial pain points, clear measurable problems to solve, and a business large enough to justify the investment in a full EOS implementation.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Initial meeting with Iqbal Mohungoo (MD) — qualify mandate and identify the leadership team (Week 1–2)</li>
+        <li><span class="sig-num">02</span>Introduce weekly working capital Scorecard — demonstrate immediate measurable value (Week 2–4)</li>
+        <li><span class="sig-num">03</span>Focus Day with MD and direct reports — establish V/TO hypothesis, build first Accountability Chart (Month 2)</li>
+        <li><span class="sig-num">04</span>Set Q1 Rocks around DSO, inventory, and intra-group pricing — run first Level 10 meeting cadence (Month 2–5)</li>
+        <li><span class="sig-num">05</span>Full EOS implementation kick-off (2-day annual session) once mandate is confirmed at board level (Month 3–6)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     CONTACT INTELLIGENCE
+══════════════════════════════════════════ -->
+<div id="contact-intel" style="display:none"></div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Meaders Feeds Ltd — Comprehensive Company Analysis &amp; EOS Assessment · 10 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (10 April 2026) · meadersfeeds.com · LinkedIn · ZoomInfo · RocketReach · Dun &amp; Bradstreet</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
