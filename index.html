@@ -13,6 +13,7 @@
       --line: #dbe4f0;
       --blue: #1d5fd0;
       --blue-dark: #1547a0;
+      --blue-light: #e8f0fc;
       --shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
       --radius: 18px;
     }
@@ -131,66 +132,90 @@
       text-align: center;
     }
 
-    .report-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: 12px;
-    }
-
-    .report-list li { margin: 0; }
-
-    .report-list a {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      text-decoration: none;
-      color: var(--text);
-      padding: 16px 18px;
+    /* ── TABLE ── */
+    .table-wrap {
+      overflow-x: auto;
       border: 1px solid var(--line);
-      border-radius: 14px;
-      background: #fbfdff;
-      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+      border-radius: 12px;
     }
 
-    .report-list a:hover {
-      transform: translateY(-1px);
-      border-color: #bfd2f3;
-      box-shadow: 0 8px 18px rgba(29, 95, 208, 0.08);
-      background: #ffffff;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
     }
 
-    .report-main {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      min-width: 0;
+    thead {
+      background: linear-gradient(to bottom, #f8fbff, #f0f5fd);
     }
 
-    .report-name {
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 1.35;
-      color: var(--text);
-    }
-
-    .report-meta {
-      font-size: 14px;
+    th {
+      padding: 13px 18px;
+      text-align: left;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
       color: var(--muted);
+      border-bottom: 1px solid var(--line);
+      white-space: nowrap;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    th:hover {
+      color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    th.sort-active {
+      color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .sort-arrow {
+      display: inline-block;
+      margin-left: 5px;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    td {
+      padding: 13px 18px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: middle;
       line-height: 1.4;
     }
 
-    .arrow {
-      flex-shrink: 0;
-      font-size: 22px;
-      color: var(--blue);
-      transition: transform 0.16s ease;
+    tbody tr:last-child td {
+      border-bottom: none;
     }
 
-    .report-list a:hover .arrow {
-      transform: translateX(3px);
+    tbody tr {
+      transition: background 0.12s ease;
+    }
+
+    tbody tr:hover {
+      background: #f5f9ff;
+    }
+
+    td.report-cell a {
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+      transition: color 0.14s ease;
+    }
+
+    td.report-cell a:hover {
+      color: var(--blue-dark);
+      text-decoration: underline;
+    }
+
+    td.date-cell {
+      white-space: nowrap;
+      color: var(--muted);
+      font-size: 14px;
+      width: 160px;
     }
 
     .footer {
@@ -205,8 +230,8 @@
       .wrap { margin: 28px auto; }
       .header, .section, .footer { padding-left: 20px; padding-right: 20px; }
       h1 { font-size: 32px; }
-      .report-name { font-size: 16px; }
-      .report-meta { font-size: 13px; }
+      td, th { padding: 11px 14px; }
+      td.date-cell { width: auto; }
     }
   </style>
 </head>
@@ -223,388 +248,263 @@
         <h2 class="section-title">Available Reports</h2>
 
         <div class="search-wrap">
-          <span class="search-icon">⌕</span>
+          <span class="search-icon">&#9906;</span>
           <input type="text" id="search" placeholder="Search by company or date…" autocomplete="off" />
         </div>
 
         <p class="no-results" id="no-results">No reports match your search.</p>
 
-        <ul class="report-list" id="report-list">
-          <li>
-            <a href="PIM_Geopolitical_Risk_Assessment_April2026.html">
-              <div class="report-main">
-                <span class="report-name">PIM — Geopolitical Risk Assessment</span>
-                <span class="report-meta">April 2026 &middot; Geopolitical risk assessment for PIM, April 2026.</span>
-              </div>
-              <span class="arrow">&rarr;</span>
-            </a>
-          </li>
-          <li>
-            <a href="MeadersFeed_Company_Analysis_10April2026.html">
-              <div class="report-main">
-                <span class="report-name">Meaders Feed Company Analysis</span>
-                <span class="report-meta">10 April 2026 &middot; Animal feed manufacturer; MUR 2.18B revenue; Innodis-led group ownership; agro-industrial, Riche Terre.</span>
-              </div>
-              <span class="arrow">&rarr;</span>
-            </a>
-          </li>
-          
-          <li>
-            <a href="YuniOutdoorFurniture_Company_Analysis_8April2026.html">
-              <div class="report-main">
-                <span class="report-name">Yuni (Outdoor Furniture Ltd) Company Analysis</span>
-                <span class="report-meta">8 April 2026 &middot; Premium furniture retail and hospitality FF&amp;E; three-way owner-led; MUR 103M revenue; Pinpoint Business Park, Calebasses.</span>
-              </div>
-              <span class="arrow">&rarr;</span>
-            </a>
-          </li>
-          
-          <li>
-            <a href="Vaulbert_Company_Analysis_7April2026.html">
-              <div class="report-main">
-                <span class="report-name">Vaulbert Company Analysis</span>
-                <span class="report-meta">7 April 2026 &middot; FMCG distribution and light manufacturing (food, beverages, alcohol, cosmetics); owner-led; MUR 208M revenue; rebranded 2024.</span>
-              </div>
-              <span class="arrow">&rarr;</span>
-            </a>
-          </li>
-          <li>
-            <a href="Kosto_Company_Analysis_2April2026.html">
-              <div class="report-main">
-                <span class="report-name">Kosto Group Company Analysis</span>
-                <span class="report-meta">2 April 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-          <li>
-            <a href="MRCWireProducts_Company_Analysis_2April2026.html">
-              <div class="report-main">
-                <span class="report-name">MRC Wire Products Company Analysis</span>
-                <span class="report-meta">2 April 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-          <li>
-            <a href="DesbroTrading_Company_Analysis_2April2026.html">
-              <div class="report-main">
-                <span class="report-name">Desbro Trading Company Analysis</span>
-                <span class="report-meta">2 April 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-          <li>
-            <a href="PPP_Company_Analysis_2April2026.html">
-              <div class="report-main">
-                <span class="report-name">PPP (Plastic Pipes &amp; Products) Company Analysis</span>
-                <span class="report-meta">2 April 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-          <li>
-            <a href="Proximasoft_Company_Analysis_1April2026.html">
-              <div class="report-main">
-                <span class="report-name">Proximasoft Company Analysis</span>
-                <span class="report-meta">1 April 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-          <li>
-            <a href="Avipro_Company_Analysis_1April2026.html">
-              <div class="report-main">
-                <span class="report-name">Avipro Company Analysis</span>
-                <span class="report-meta">1 April 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-          <li>
-            <a href="Fralain_Company_Analysis_April2026.html">
-              <div class="report-main">
-                <span class="report-name">Fralain Company Analysis</span>
-                <span class="report-meta">April 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="LCM_Company_Analysis_April2026.html">
-              <div class="report-main">
-                <span class="report-name">LCM Company Analysis</span>
-                <span class="report-meta">April 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="DucrayLenoir_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Ducray Lenoir Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="Archemics_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Archemics Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="ArthurMorgane_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Arthur &amp; Morgane Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="CNOI_EOS_Prospect_Report_March2026.html">
-              <div class="report-main">
-                <span class="report-name">CNOI EOS Prospect Report</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="CNOI_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">CNOI Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="EntrepotDeLaPierre_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Entrepôt de la Pierre Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="EspaceMarin_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Espace Marin Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="LFL_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">LFL Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="PerformancePlastics_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Performance Plastics Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="PIM_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">PIM Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="Plastinax_Austral_Report.html">
-              <div class="report-main">
-                <span class="report-name">Plastinax Austral Report</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-
-          <li>
-            <a href="Emcar_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Emcar Company Analysis</span>
-                <span class="report-meta">31 March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="Transmetal_Strategic_Risk_Assessment_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Transmetal Strategic Risk Assessment</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="Transmetal_Executive_Summary_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Transmetal Executive Summary</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="Transmetal_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Transmetal Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="BCPMProperties_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">BCPM Properties Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="BCPM_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">BCPM Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="Metinox_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Metinox Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="DanPoly_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Dan Poly Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="SkillRoofing_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">Skill Roofing Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="Mauritius_Strategic_Risk_Assessment_March11_2026.html">
-              <div class="report-main">
-                <span class="report-name">Mauritius Strategic Risk Assessment</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="IHEML_Company_Analysis_March2026.html">
-              <div class="report-main">
-                <span class="report-name">IHEML Company Analysis</span>
-                <span class="report-meta">March 2026</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="BCPM_Group_Index.html">
-              <div class="report-main">
-                <span class="report-name">BCPM Group</span>
-                <span class="report-meta">Group reports hub</span>
-              </div>
-              <span class="arrow">→</span>
-            </a>
-          </li>
-
-        </ul>
+        <div class="table-wrap">
+          <table id="report-table">
+            <thead>
+              <tr>
+                <th id="th-name" class="sort-active" onclick="sortTable('name')">
+                  Report <span class="sort-arrow" id="arrow-name"></span>
+                </th>
+                <th id="th-date" onclick="sortTable('date')">
+                  Created on <span class="sort-arrow" id="arrow-date">↓</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="report-tbody">
+              <tr data-name="PIM — Geopolitical Risk Assessment" data-date="2026-04-10" data-date-display="10 April 2026">
+                <td class="report-cell"><a href="PIM_Geopolitical_Risk_Assessment_April2026.html">PIM — Geopolitical Risk Assessment</a></td>
+                <td class="date-cell">10 April 2026</td>
+              </tr>
+              <tr data-name="Meaders Feed Company Analysis" data-date="2026-04-10" data-date-display="10 April 2026">
+                <td class="report-cell"><a href="MeadersFeed_Company_Analysis_10April2026.html">Meaders Feed Company Analysis</a></td>
+                <td class="date-cell">10 April 2026</td>
+              </tr>
+              <tr data-name="Yuni (Outdoor Furniture Ltd) Company Analysis" data-date="2026-04-08" data-date-display="8 April 2026">
+                <td class="report-cell"><a href="YuniOutdoorFurniture_Company_Analysis_8April2026.html">Yuni (Outdoor Furniture Ltd) Company Analysis</a></td>
+                <td class="date-cell">8 April 2026</td>
+              </tr>
+              <tr data-name="Vaulbert Company Analysis" data-date="2026-04-07" data-date-display="7 April 2026">
+                <td class="report-cell"><a href="Vaulbert_Company_Analysis_7April2026.html">Vaulbert Company Analysis</a></td>
+                <td class="date-cell">7 April 2026</td>
+              </tr>
+              <tr data-name="Kosto Group Company Analysis" data-date="2026-04-02" data-date-display="2 April 2026">
+                <td class="report-cell"><a href="Kosto_Company_Analysis_2April2026.html">Kosto Group Company Analysis</a></td>
+                <td class="date-cell">2 April 2026</td>
+              </tr>
+              <tr data-name="MRC Wire Products Company Analysis" data-date="2026-04-02" data-date-display="2 April 2026">
+                <td class="report-cell"><a href="MRCWireProducts_Company_Analysis_2April2026.html">MRC Wire Products Company Analysis</a></td>
+                <td class="date-cell">2 April 2026</td>
+              </tr>
+              <tr data-name="Desbro Trading Company Analysis" data-date="2026-04-02" data-date-display="2 April 2026">
+                <td class="report-cell"><a href="DesbroTrading_Company_Analysis_2April2026.html">Desbro Trading Company Analysis</a></td>
+                <td class="date-cell">2 April 2026</td>
+              </tr>
+              <tr data-name="PPP (Plastic Pipes &amp; Products) Company Analysis" data-date="2026-04-02" data-date-display="2 April 2026">
+                <td class="report-cell"><a href="PPP_Company_Analysis_2April2026.html">PPP (Plastic Pipes &amp; Products) Company Analysis</a></td>
+                <td class="date-cell">2 April 2026</td>
+              </tr>
+              <tr data-name="Proximasoft Company Analysis" data-date="2026-04-01" data-date-display="1 April 2026">
+                <td class="report-cell"><a href="Proximasoft_Company_Analysis_1April2026.html">Proximasoft Company Analysis</a></td>
+                <td class="date-cell">1 April 2026</td>
+              </tr>
+              <tr data-name="Avipro Company Analysis" data-date="2026-04-01" data-date-display="1 April 2026">
+                <td class="report-cell"><a href="Avipro_Company_Analysis_1April2026.html">Avipro Company Analysis</a></td>
+                <td class="date-cell">1 April 2026</td>
+              </tr>
+              <tr data-name="Fralain Company Analysis" data-date="2026-04-01" data-date-display="April 2026">
+                <td class="report-cell"><a href="Fralain_Company_Analysis_April2026.html">Fralain Company Analysis</a></td>
+                <td class="date-cell">April 2026</td>
+              </tr>
+              <tr data-name="LCM Company Analysis" data-date="2026-04-01" data-date-display="April 2026">
+                <td class="report-cell"><a href="LCM_Company_Analysis_April2026.html">LCM Company Analysis</a></td>
+                <td class="date-cell">April 2026</td>
+              </tr>
+              <tr data-name="Emcar Company Analysis" data-date="2026-03-31" data-date-display="31 March 2026">
+                <td class="report-cell"><a href="Emcar_Company_Analysis_March2026.html">Emcar Company Analysis</a></td>
+                <td class="date-cell">31 March 2026</td>
+              </tr>
+              <tr data-name="Ducray Lenoir Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="DucrayLenoir_Company_Analysis_March2026.html">Ducray Lenoir Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="Archemics Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="Archemics_Company_Analysis_March2026.html">Archemics Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="Arthur &amp; Morgane Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="ArthurMorgane_Company_Analysis_March2026.html">Arthur &amp; Morgane Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="CNOI EOS Prospect Report" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="CNOI_EOS_Prospect_Report_March2026.html">CNOI EOS Prospect Report</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="CNOI Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="CNOI_Company_Analysis_March2026.html">CNOI Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="Entrepôt de la Pierre Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="EntrepotDeLaPierre_Company_Analysis_March2026.html">Entrepôt de la Pierre Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="Espace Marin Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="EspaceMarin_Company_Analysis_March2026.html">Espace Marin Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="LFL Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="LFL_Company_Analysis_March2026.html">LFL Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="Performance Plastics Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="PerformancePlastics_Company_Analysis_March2026.html">Performance Plastics Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="PIM Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="PIM_Company_Analysis_March2026.html">PIM Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="Plastinax Austral Report" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="Plastinax_Austral_Report.html">Plastinax Austral Report</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="Transmetal Strategic Risk Assessment" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="Transmetal_Strategic_Risk_Assessment_March2026.html">Transmetal Strategic Risk Assessment</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="Transmetal Executive Summary" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="Transmetal_Executive_Summary_March2026.html">Transmetal Executive Summary</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="Transmetal Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="Transmetal_Company_Analysis_March2026.html">Transmetal Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="BCPM Properties Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="BCPMProperties_Company_Analysis_March2026.html">BCPM Properties Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="BCPM Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="BCPM_Company_Analysis_March2026.html">BCPM Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="Metinox Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="Metinox_Company_Analysis_March2026.html">Metinox Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="Dan Poly Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="DanPoly_Company_Analysis_March2026.html">Dan Poly Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="Skill Roofing Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="SkillRoofing_Company_Analysis_March2026.html">Skill Roofing Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="Mauritius Strategic Risk Assessment" data-date="2026-03-11" data-date-display="March 2026">
+                <td class="report-cell"><a href="Mauritius_Strategic_Risk_Assessment_March11_2026.html">Mauritius Strategic Risk Assessment</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="IHEML Company Analysis" data-date="2026-03-01" data-date-display="March 2026">
+                <td class="report-cell"><a href="IHEML_Company_Analysis_March2026.html">IHEML Company Analysis</a></td>
+                <td class="date-cell">March 2026</td>
+              </tr>
+              <tr data-name="BCPM Group" data-date="2026-03-01" data-date-display="Group reports hub">
+                <td class="report-cell"><a href="BCPM_Group_Index.html">BCPM Group</a></td>
+                <td class="date-cell">Group reports hub</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="footer">
-        Hosted on GitHub Pages · Thierry Béchard Reports Library
+        Hosted on GitHub Pages &middot; Thierry Béchard Reports Library
       </div>
     </div>
   </div>
 
   <script>
-    const input = document.getElementById('search');
-    const list = document.getElementById('report-list');
-    const noResults = document.getElementById('no-results');
+    // ── SORT STATE ──
+    var sortCol = 'date';
+    var sortDir = 'desc'; // default: newest first
 
-    input.addEventListener('input', function () {
-      const query = this.value.toLowerCase().trim();
-      const items = list.querySelectorAll('li');
-      let visible = 0;
+    function sortTable(col) {
+      if (sortCol === col) {
+        sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+      } else {
+        sortCol = col;
+        sortDir = col === 'date' ? 'desc' : 'asc';
+      }
+      applySort();
+      updateHeaders();
+    }
 
-      items.forEach(function (item) {
-        const text = item.textContent.toLowerCase();
+    function applySort() {
+      var tbody = document.getElementById('report-tbody');
+      var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+
+      rows.sort(function(a, b) {
+        var aVal, bVal;
+        if (sortCol === 'name') {
+          aVal = a.getAttribute('data-name').toLowerCase();
+          bVal = b.getAttribute('data-name').toLowerCase();
+          if (aVal < bVal) return sortDir === 'asc' ? -1 : 1;
+          if (aVal > bVal) return sortDir === 'asc' ? 1 : -1;
+          return 0;
+        } else {
+          aVal = a.getAttribute('data-date');
+          bVal = b.getAttribute('data-date');
+          if (aVal < bVal) return sortDir === 'asc' ? -1 : 1;
+          if (aVal > bVal) return sortDir === 'asc' ? 1 : -1;
+          return 0;
+        }
+      });
+
+      rows.forEach(function(row) {
+        tbody.appendChild(row);
+      });
+    }
+
+    function updateHeaders() {
+      var thName = document.getElementById('th-name');
+      var thDate = document.getElementById('th-date');
+      var arrowName = document.getElementById('arrow-name');
+      var arrowDate = document.getElementById('arrow-date');
+
+      thName.classList.remove('sort-active');
+      thDate.classList.remove('sort-active');
+      arrowName.textContent = '';
+      arrowDate.textContent = '';
+
+      if (sortCol === 'name') {
+        thName.classList.add('sort-active');
+        arrowName.textContent = sortDir === 'asc' ? ' ↑' : ' ↓';
+      } else {
+        thDate.classList.add('sort-active');
+        arrowDate.textContent = sortDir === 'asc' ? ' ↑' : ' ↓';
+      }
+    }
+
+    // ── SEARCH ──
+    var searchInput = document.getElementById('search');
+    var noResults = document.getElementById('no-results');
+
+    searchInput.addEventListener('input', function() {
+      var query = this.value.toLowerCase().trim();
+      var rows = document.getElementById('report-tbody').querySelectorAll('tr');
+      var visible = 0;
+
+      rows.forEach(function(row) {
+        var text = row.textContent.toLowerCase();
         if (!query || text.includes(query)) {
-          item.style.display = '';
+          row.style.display = '';
           visible++;
         } else {
-          item.style.display = 'none';
+          row.style.display = 'none';
         }
       });
 
       noResults.style.display = visible === 0 ? 'block' : 'none';
     });
+
+    // ── INIT: apply default sort (date desc) ──
+    applySort();
+    updateHeaders();
   </script>
 </body>
 </html>
-
