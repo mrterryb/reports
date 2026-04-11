@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eclosia Group — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Diversified Conglomerate · Food · Logistics · Education · Hospitality</span>
+    <span class="badge badge-type">Private Group · Domestic &amp; Regional</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">10 April 2026</span>
+  </div>
+  <h1>Eclosia Group:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Eclosia Group (formerly Food &amp; Allied) · Company intelligence · Financial ratios · EOS implementation assessment · Moka, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Annual Turnover</div>
+      <div class="stat-value steel">MUR 20B+</div>
+      <div class="stat-delta">Group-wide · FY2024 · Top 5 in Mauritius</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Employees &amp; Businesses</div>
+      <div class="stat-value emerald">5,300+ / 25</div>
+      <div class="stat-delta">Staff across Mauritius, Madagascar, Africa</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">4.5 / 10</div>
+      <div class="stat-delta">Conditional — Group size limits EOS fit · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Strategic Flag</div>
+      <div class="stat-value red">EOS Scale Mismatch</div>
+      <div class="stat-delta">Group too large for EOS — subsidiary entry required</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Eclosia Group — Company Analysis &amp; EOS Assessment · 10 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION — 7 tabs
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">Eclosia Group is a 60-year-old Mauritius-based diversified conglomerate with MUR 20 billion+ in annual turnover — too large and too sophisticated for whole-group EOS, but with 25 operating subsidiaries that represent high-quality individual EOS entry points.</p>
+
+  <p class="body-text">Founded in 1966 as Avipro by Michel de Spéville to produce poultry and address Mauritius's food import dependency, the group (rebranded Eclosia in 2016 after 50 years as Food &amp; Allied) now operates 25+ companies across seven sectors: food production, retail/commerce, logistics, energy/packaging/recycling, hotels &amp; leisure, advisory/communications, and education. The group is headquartered at Gentilly, Moka, Mauritius, and is present in Mauritius, Madagascar, Seychelles, Kenya, South Africa, and Rwanda — a genuine regional platform in the Indian Ocean and East Africa.</p>
+
+  <p class="body-text">Eclosia is a privately held family-founded enterprise. The de Spéville family retains founding influence — Michel de Spéville remains Founder Chairman and Cédric de Spéville (his son) has served as Group CEO since January 2013. However, ER Group (formed July 2025 through the merger of ENL and Rogers, listed on the Stock Exchange of Mauritius as ERL) holds a 39% minority stake in Eclosia, introducing listed-company governance influence into what is otherwise a privately managed group. The remaining equity is presumed to rest with the de Spéville family and other private shareholders.</p>
+
+  <p class="body-text">Eclosia operates its own proprietary management system — "Eclosia Way" — introduced in 2017 and structured around four pillars: People, Planet, Process, Profit. The group also runs a large-scale ERP deployment on Microsoft Dynamics 365 Finance across 25 entities (recently migrated to cloud). These facts tell us Eclosia is process-aware and operationally sophisticated — which simultaneously makes it receptive to structured frameworks and creates a structural barrier to EOS at the group level. The real opportunity is subsidiary-level entry: individual companies of 50–250 people, led by their own Managing Directors, who may benefit from EOS independently of the parent.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Group EOS Is Not the Entry Point</div>
+    Eclosia at the group level (MUR 20B+ revenue, 5,300+ staff, 25 companies, proprietary management system, listed-company minority shareholder, Microsoft Dynamics ERP) sits above the EOS sweet spot in every dimension. The play here is not to pitch the CEO on EOS for the group — it is to identify 2–3 Eclosia subsidiary MDs who are running 50–250-person businesses with real growth pain, and position EOS as their operational system below the Eclosia Way umbrella. Avipro, Maurilait, FTL Logistics, Pick'n'Eat/KFC, and Charles Telfair Education are all credible individual targets.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>60-year brand equity in Mauritius food and consumer markets.</strong> Dominant in poultry (Avipro/Chantefrais), dairy (Maurilait/Yoplait/Candia franchise), flour milling (LMLC), and QSR franchise (KFC via Pick'n'Eat). Regional expansion into Madagascar and East Africa adds growth runway. Angel Fund and Charles Telfair Education signal long-term capability investment. Sustainability leadership (WeCycle, PPI Packaging, Reneworld) differentiates the group in a crowded market.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p>As a private group, Eclosia does not publish consolidated audited accounts publicly. <strong>No public P&amp;L or balance sheet data is available at the group level.</strong> ER Group (39% shareholder) does not separately disclose Eclosia's financials in its own reports. Individual subsidiary accounts (e.g. Maurilait, LFL, Oceanarium) may be filed but are not aggregated publicly. Currency exposure across Madagascar and East Africa operations introduces FX risk not visible from outside.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p>The group's own Eclosia Way report acknowledges coordination complexity across 25 entities and a 30-person internal referral network to manage rollout. <strong>Individual subsidiaries show classic EOS symptoms:</strong> fast-growing businesses (Odysseo opened 2021, Rwanda expansion 2022), franchise operations needing consistent process (KFC, Chantefrais), and a logistics arm (FTL) scaling across borders. Subsidiary MDs have genuine autonomy and real P&amp;L ownership — the right conditions for EOS traction.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A 60-year-old family-founded conglomerate that evolved from a single poultry farm into one of Mauritius's five largest diversified groups — operating 25 businesses across seven sectors with a regional footprint in 10+ countries.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Eclosia Group traces its origins to 1966, when Michel de Spéville founded Avipro to pioneer poultry production in Mauritius and reduce the island's dependency on imported protein. For 50 years the group operated under the name Food &amp; Allied before being rebranded "Eclosia Group" in 2016 at the founder's own request, reflecting the breadth the group had grown beyond food alone. The group is registered in Mauritius with Eclosia Corporate Services Ltd (file C091685) serving as the administrative and secretarial holding entity and Eclosia Investments Ltd (file C139433) serving as the investment vehicle. Additional registered entities include Eclosia Technology Services Ltd (C42243), Eclosia Secretarial Services Ltd (C114867), and Eclosia Childcare Ltd (C221312). The operational headquarters is at Gentilly Road, Moka, Mauritius (Tel: +230 404 9000 · Fax: +230 433 4145 · www.eclosia.com).</p>
+  <p class="body-text">Eclosia operates its group-wide management system — "Eclosia Way" — since 2017, structured around four pillars: People, Planet, Process, and Profit. It is governed by a network of 30 internal referrals across subsidiary companies, managed by the Group CHRO. The group recently completed migration of its 1.5 TB Microsoft Dynamics 365 Finance ERP from on-premises to cloud, resolving long-standing database performance issues (4–5 system freezes per month) that had constrained operations across its 25 entities.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>de Spéville Family</h4>
+        <div class="ec-sub">Founding Shareholders — Presumed Majority</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Founders &amp; Operators</span></div>
+        <div class="ec-metric"><span class="mk">Stake</span><span class="mv">~61% (estimated)</span></div>
+        <div class="ec-metric"><span class="mk">Key Person</span><span class="mv">Michel &amp; Cédric de Spéville</span></div>
+        <div class="ec-metric"><span class="mk">Nature</span><span class="mv ok">Active &amp; Operational</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>ER Group (ERL)</h4>
+        <div class="ec-sub">Strategic Minority Shareholder — 39%</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Formed</span><span class="mv">July 2025 (ENL + Rogers)</span></div>
+        <div class="ec-metric"><span class="mk">Stake</span><span class="mv warn">39% of Eclosia</span></div>
+        <div class="ec-metric"><span class="mk">Listed</span><span class="mv">SEM ticker: ERL</span></div>
+        <div class="ec-metric"><span class="mk">PAT S1-FY26</span><span class="mv">Rs 2.6 billion</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Eclosia Investments Ltd</h4>
+        <div class="ec-sub">Internal Holding Vehicle — File C139433</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">File No.</span><span class="mv">C139433</span></div>
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">LIVE (CBRIS verified)</span></div>
+        <div class="ec-metric"><span class="mk">Purpose</span><span class="mv">Investment holding</span></div>
+        <div class="ec-metric"><span class="mk">Parent</span><span class="mv">Eclosia Group structure</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Note — ER Group Shareholder</div>
+    The 39% stake held by ER Group (Stock Exchange listed, Rs 81.6B total assets, Rs 13B market cap) introduces institutional governance expectations into Eclosia's otherwise family-run culture. This is a double-edged dynamic: it professionalises reporting requirements, but the family retains operational control. Any EOS engagement at subsidiary level does not require ER Group approval — it sits below the governance threshold — which simplifies the sales process significantly.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Michel de Spéville — Founder &amp; Chairman</h4>
+      <p>Founded Avipro in 1966. Remains Chairman of the Board across Eclosia Group entities including Avipro. The group's founding vision — food self-sufficiency for Mauritius — still defines the culture. Patriarch of the family business; Cédric is his son. Not operationally active day-to-day but retains significant symbolic and strategic authority.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Cédric de Spéville — Group CEO</h4>
+      <p>CEO since January 2013. Masters in Economics (Sorbonne, 2001), MSc Accounting &amp; Finance (LSE, 2003), MBA (Columbia Business School, 2007). Joined Eclosia 2003. Past President, Mauritius Chamber of Commerce &amp; Industry (2011–2013) and Business Mauritius (2017–2019). <strong>Primary EOS conversation target at group level, though subsidiary MDs are the real entry point.</strong> LinkedIn: linkedin.com/in/cedricdespeville/</p>
+    </div>
+    <div class="profile-card">
+      <h4>Gérard Boullé — COO</h4>
+      <p>Chief Operating Officer. Oversees operational execution across Eclosia's business units. Shares COO designation with Cédric Lagesse, suggesting a divided operational mandate — possibly by sector cluster. Jean-Jacques Boullé (likely related) served as GM of Maurilait Production from 1984–2016, indicating a multi-generational family involvement in management.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Cédric Lagesse — COO</h4>
+      <p>Second Chief Operating Officer. Dual-COO structure suggests Eclosia divides its operational oversight, likely between the Nourish cluster (food/production) and the Serve/Nurture clusters (logistics, education, hospitality). Implies the group has grown complex enough to require split operational leadership — an EOS readiness signal at group level.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Cédric Poonisami — Group CFO</h4>
+      <p>Chief Financial Officer. Manages consolidated financial reporting across 25 entities. The recent Dynamics 365 cloud migration (managing a 1.5TB database with prior freeze events) was a major infrastructure project under his remit. No public financial statements are available, so all financial analysis in this report is based on disclosed group-level estimates and subsidiary-level filings.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Geerish Hookoomsing — CHRO</h4>
+      <p>Chief Human Resources Officer. Owns the Eclosia Way management system — the group's internal operating framework launched 2017. Manages 30 referral contacts across subsidiaries for Eclosia Way rollout. His ownership of the internal management system makes him both the most relevant person to understand when assessing EOS fit — and a potential gatekeeper to any EOS conversation.</p>
+    </div>
+  </div>
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Axel Lemarchand — CTO</h4>
+      <p>Chief Technology Officer. Led the group's migration from on-premises Dynamics 365 to cloud infrastructure. Managing 25-entity data consolidation across a 1.5TB environment signals a sophisticated IT function for a Mauritius SME group context.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Caroline Rault — Chief Sustainability Officer</h4>
+      <p>Leads Eclosia's sustainability strategy — a genuine differentiator in the market. WeCycle (cargo bike recycling), PPI Packaging (acquisition 2020), Reneworld (energy), and compostable packaging initiatives all fall under this mandate. Eclosia Way annual report is a public-facing sustainability and governance document.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Gita Angeli — Chief Communications Officer</h4>
+      <p>Manages group-wide communications including the Eclosia Way report, news, and social channels. Active LinkedIn and Facebook presence with regular talent stories and CSR content. The group's external narrative is professionally managed and positions Eclosia as a talent-first, values-led organisation.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text"><strong>Nourish (Production):</strong> Avipro (poultry — broilers, eggs, duck, guinea fowl; expanded to Madagascar ~25 years ago, Kenya recently); Maurilait (dairy — yogurt, ice cream, sterilised milk, Yoplait/Candia/Miko franchise, founded 1976); New Maurifoods (frozen foods, founded 1972); Livestock Feed Ltd / LFL (animal feed, founded 1977, has its own published Annual Report); Les Moulins de la Concorde / LMLC (flour milling, founded 1989).</p>
+  <p class="body-text"><strong>Nourish (Commerce):</strong> Pick'n'Eat (KFC franchise operator, first outlet opened Curepipe 1983); Panagora Marketing Co Ltd (FMCG distribution — reorganised Q1 2026 with new Deputy MD Arnaud Huck); Chantefrais (first 100% Mauritian franchise, launched 2000, 100+ resellers across Mauritius).</p>
+  <p class="body-text"><strong>Serve (Logistics &amp; Energy):</strong> Freight &amp; Transit Ltd / FTL Group (logistics, founded 1994 during import/export boom, now regional); PPI Packaging Ltd (acquired 2020); Reneworld (energy and recycling, founded 2011 by Irfanally Fatadin); WeCycle (cargo bike recycling, launched 2026 across Mauritius).</p>
+  <p class="body-text"><strong>Serve (Hotels &amp; Leisure):</strong> Ninety-Six Hotel Collection (multi-property hotel group — Le Suffren Hotel &amp; Marina inaugurated 2004, Hennessy Park Hotel acquired 2011, The Address Boutique Hotel from 2013); Odysseo (Indian Ocean's largest oceanarium, opened 2021, ~MUR 15M investment).</p>
+  <p class="body-text"><strong>Nurture (Advisory &amp; Education):</strong> CIRCUS! Advertising (founded 1995 by Thierry Montocchio — note: different person from Thierry Bechard); Charles Telfair Education (majority-owned private tertiary institution, one of Mauritius's largest); Angel Fund (entrepreneurship and SME support, established 2012); Fondation Chantecler (employee scholarships, founded 1982); Fondation Solidarité (CSR formalization, launched 2010).</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Primary base: Mauritius (headquarters in Moka; operations island-wide through Chantefrais, KFC/Pick'n'Eat, Odysseo, Ninety-Six Hotels, Panagora distribution). Regional: Madagascar (Avipro poultry ~25 years, ECS Madagascar with Country Manager Jérome Poutout); Kenya (Avipro East Africa Ltd, team established circa 2022); Rwanda (Rwanda Project led by Nicolas Lamusse, operational from ~2022); Seychelles, South Africa (described as regional presence). The group claims presence in more than 10 countries through chick export or direct operations.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Eclosia Group is a private holding company that does not publish consolidated audited financial statements. All group-level financials are based on management-disclosed estimates, ER Group investor disclosures, and subsidiary-level public filings. Currency: MUR (Mauritian Rupee) unless stated.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Eclosia Group is privately held and does not file consolidated group accounts publicly with the Mauritius Registrar. The MUR 20B+ turnover figure is self-disclosed in group marketing materials and confirmed by ER Group investor communications. No P&amp;L breakdown by segment, no EBITDA, no net profit margin, and no balance sheet are publicly available at the group level. Individual subsidiaries (LFL, Maurilait, Oceanarium/Odysseo) file separately. The Oceanarium (Mauritius) Ltd filing for the period ended 31 December 2025 is publicly available and provides the only verifiable subsidiary-level financial data point in this analysis. Prior-year group comparatives are unavailable. All ratios in Tab 04 are estimated using sector benchmarks and partial subsidiary data.
+  </div>
+
+  <h3 class="subsection-title">Group-Level Financial Snapshot</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Metric</th><th>Value / Estimate</th><th>Source / Basis</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr class="heat-ok"><td>Annual Group Turnover</td><td>MUR 20B+ (~USD 440M+)</td><td>Self-disclosed in group marketing</td><td>Confirmed by ER Group investor materials as a "key investment" of material scale. Ranks Eclosia Top 5 diversified groups in Mauritius.</td></tr>
+        <tr><td>Employees</td><td>5,300+</td><td>eclosia.com About page (2026)</td><td>Up from "4,000+" cited in earlier ER Group materials — consistent with growth trajectory especially post-Odysseo (2021) and Africa expansion.</td></tr>
+        <tr><td>Operating Entities</td><td>25 companies</td><td>Microsoft Dynamics 365 case study (Eclosia)</td><td>ERP migrated to cloud to manage 25 entities on a single 1.5TB database — confirms the group's operational scope.</td></tr>
+        <tr><td>Countries of Operation</td><td>10+</td><td>eclosia.com About page</td><td>Mauritius, Madagascar, Kenya, Rwanda, Seychelles, South Africa, with additional chick-export markets.</td></tr>
+        <tr class="heat-warn"><td>Group Net Profit</td><td>Not disclosed</td><td>Private company — no public filing</td><td>No consolidated profit data available. ER Group does not disaggregate Eclosia's contribution to its own results.</td></tr>
+        <tr class="heat-warn"><td>Group Balance Sheet</td><td>Not disclosed</td><td>Private company — no public filing</td><td>Asset base, debt load, and working capital position are unknown. ER Group's own total assets are Rs 81.6B (FY24 pro forma), but this includes all ER holdings, not Eclosia alone.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Subsidiary-Level Data — Oceanarium (Mauritius) Ltd / Odysseo</h3>
+  <p class="body-text">The Oceanarium (Mauritius) Ltd (operating as Odysseo) filed unaudited condensed financial statements for the period ended 31 December 2025, available via their website. This is the only current subsidiary-level financial data accessible publicly. Odysseo is a MUR 15M+ capital investment (the Indian Ocean's largest oceanarium), opened 2021, and is a strategic flagship for Eclosia's hospitality and education mission. Financial details from this filing are not yet analysed in full but confirm the group does file subsidiary accounts and that individual entities can be assessed on their own financial merits.</p>
+
+  <h3 class="subsection-title">Subsidiary Sector Estimates (based on market knowledge and sector benchmarks)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Business Unit</th><th>Sector</th><th>Est. Revenue Contribution</th><th>Strategic Weight</th></tr></thead>
+      <tbody>
+        <tr class="heat-ok"><td>Avipro Group</td><td>Poultry production &amp; export</td><td>High — likely MUR 4–6B range</td><td>Flagship. Mauritius market leader. East Africa expansion active.</td></tr>
+        <tr class="heat-ok"><td>Panagora / Pick'n'Eat / Chantefrais</td><td>QSR &amp; FMCG commerce</td><td>Significant — multiple revenue streams</td><td>KFC franchise + 100+ Chantefrais resellers. High-volume, brand-driven.</td></tr>
+        <tr><td>Maurilait Production</td><td>Dairy manufacturing</td><td>Medium-High — Yoplait/Candia franchise</td><td>International franchise rights add pricing power; yogurt market leader.</td></tr>
+        <tr><td>FTL Group</td><td>Logistics &amp; freight</td><td>Medium — regional growth trajectory</td><td>Founded 1994, now regional. Benefiting from East Africa expansion of group.</td></tr>
+        <tr><td>Les Moulins de la Concorde</td><td>Flour milling</td><td>Medium — staple commodity business</td><td>Essential supply chain for the island; low margin but strategic.</td></tr>
+        <tr><td>Ninety-Six Hotel Collection</td><td>Hospitality</td><td>Medium — 3 properties</td><td>Le Suffren, Hennessy Park, The Address. Boutique positioning.</td></tr>
+        <tr><td>Charles Telfair Education</td><td>Private tertiary education</td><td>Medium — tuition-based</td><td>Majority-owned. One of Mauritius's largest private campuses.</td></tr>
+        <tr class="heat-warn"><td>CIRCUS!, Angel Fund, Odysseo</td><td>Advisory, Investment, Leisure</td><td>Smaller — strategic/CSR focus</td><td>Important for culture and ecosystem but not primary revenue drivers.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register and Capital Structure</h3>
+  <p class="body-text">No charge register data is publicly available for Eclosia Group at the consolidated level. Individual subsidiary filings with the Registrar of Companies may show charges (mortgages, debentures, floating charges) on specific entity assets. Given the group's scale and long history, it is almost certain that some subsidiaries carry bank facilities secured against assets — this is standard for a manufacturing group with factories (Avipro, Maurilait, LFL, LMLC) and hotel properties. Without access to individual company filings via CBRIS, the debt profile cannot be assessed. The CBRIS download confirms multiple Eclosia entities are registered and LIVE — detailed charge data would require physical inspection of registry filings.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Financial Data Gap — Key Risk for Engagement</div>
+    The complete absence of public consolidated financials is a practical limitation for this analysis but not an obstacle to the EOS conversation. EOS does not require financial transparency as a precondition — it requires leadership pain and organisational readiness. The financial story at subsidiary level (where EOS would be implemented) is accessible via individual CBRIS filings and direct management conversation.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Note: No consolidated financial statements are publicly available for Eclosia Group. Ratios below are estimated using industry benchmarks for Mauritius diversified conglomerates and food manufacturers, cross-referenced against the group's disclosed metrics. Green = healthy / Amber = watch / Red = critical concern. All figures are indicative only.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Ratio Estimation Methodology</div>
+    All ratios are benchmarked against: (1) publicly listed Mauritius conglomerates (ENL, Rogers/ER Group), (2) comparable Indian Ocean food manufacturers, and (3) general SME-to-large-business benchmarks. They reflect what is likely for a group of Eclosia's scale and maturity, not verified actuals. Individual subsidiary ratios would differ significantly by business unit.
+  </div>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio (Estimated)</h4>
+      <div class="ratio-row"><span class="ratio-label">Estimated value</span><span class="ratio-val warn">1.2× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.5× – 2.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">For a food manufacturing and FMCG distribution group with high inventory turnover and franchise obligations, current ratios tend to run tighter than pure-service businesses. Mauritius conglomerates with hotel assets often carry significant short-term debt against long-term property. Likely adequate but not comfortable — typical for a group of this size and complexity.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio (Estimated)</h4>
+      <div class="ratio-row"><span class="ratio-label">Estimated value</span><span class="ratio-val warn">0.8× – 1.1×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Food manufacturing groups carry significant inventory (raw materials, packaging, finished goods across Avipro, Maurilait, LFL, LMLC). Stripping out inventory likely brings the quick ratio below 1.0×, which is normal for this sector but requires tight cash management. The Dynamics 365 ERP investment signals awareness of cash visibility needs.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Net Profit Margin (Estimated)</h4>
+      <div class="ratio-row"><span class="ratio-label">Estimated range</span><span class="ratio-val ok">5% – 10%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius conglom.)</span><span class="ratio-val">4% – 12%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Acceptable</span></span></div>
+      <span class="ratio-interpret">Diversified groups typically blend high-margin education/hospitality revenue with low-margin food manufacturing. Eclosia's mix (KFC franchise, hotel collection, Charles Telfair, Avipro at scale) likely delivers blended margins in the 5–10% range. Without actuals, this cannot be verified. The MUR 20B+ turnover at even 5% margin implies MUR 1B+ net profit — a healthy underlying business.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (Estimated)</h4>
+      <div class="ratio-row"><span class="ratio-label">Estimated range</span><span class="ratio-val ok">12% – 18%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">10% – 20%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">ER Group (39% Eclosia shareholder) is a profitable listed entity with its own 11%+ PAT margin on Rs 23B revenue. This suggests its investees — including Eclosia — are generating acceptable returns. The family's retention of majority control for 60 years and ongoing reinvestment (Odysseo, Rwanda, Kenya) signals confidence in equity returns.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity (Estimated)</h4>
+      <div class="ratio-row"><span class="ratio-label">Estimated range</span><span class="ratio-val warn">0.6× – 1.2×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (food/manuf.)</span><span class="ratio-val">0.4× – 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Capital-intensive businesses (factories for Avipro, Maurilait, LMLC; hotels; oceanarium) typically carry significant debt. The group's 60-year track record and strong banking relationships in Mauritius suggest leverage is managed responsibly, but Africa expansion (Kenya, Rwanda) adds new country risk and likely incremental borrowing.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage (Estimated)</h4>
+      <div class="ratio-row"><span class="ratio-label">Estimated range</span><span class="ratio-val ok">4× – 7×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (comfortable)</span><span class="ratio-val">3× and above</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Adequate</span></span></div>
+      <span class="ratio-interpret">A group of this scale with 60 years of operating history and a listed-company minority shareholder (ER Group) has strong banking relationships and would not carry unmanageable interest burdens. The consistent reinvestment behaviour (Odysseo 2021, Rwanda 2022, cloud ERP 2024) confirms ongoing access to capital.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Days Sales Outstanding — DSO (Estimated)</h4>
+      <div class="ratio-row"><span class="ratio-label">Estimated range</span><span class="ratio-val warn">35 – 55 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius)</span><span class="ratio-val">30 – 45 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">FMCG distribution (Panagora) and food wholesale typically show 30–45 day collection cycles in Mauritius. B2B segments (LFL animal feed, logistics/FTL, flour milling/LMLC supplying bakers) may carry longer cycles. DSO above 45 days would signal collection issues — a common EOS pain point that the Scorecard and Measurables tools directly address.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Days Payables Outstanding — DPO (Estimated)</h4>
+      <div class="ratio-row"><span class="ratio-label">Estimated range</span><span class="ratio-val ok">40 – 65 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Within range</span></span></div>
+      <span class="ratio-interpret">A large buying group like Eclosia (purchasing raw materials for Avipro, Maurilait, LFL, packaging for PPI, KFC inputs for Pick'n'Eat) has significant purchasing leverage over suppliers and likely negotiates extended payment terms. DPO in the 40–65 day range is consistent with the group's market position.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The Two Numbers That Matter Most</div>
+    <strong>1. Revenue opacity:</strong> MUR 20B+ in revenue with zero public financial transparency makes objective performance assessment impossible. The group could be generating MUR 500M net profit or running at thin margins — no external observer can tell. This opacity is a key dynamic in any EOS conversation — the CEO and subsidiary MDs know the numbers but don't share them, which is both normal for a private group and a symptom of the "flying blind" dynamic EOS addresses through Scorecards. <strong>2. Subsidiary-level variance:</strong> In a 25-company group spanning food manufacturing, KFC franchise, hotels, education, and recycling, financial performance across subsidiaries is almost certainly uneven. The weakest 5 companies are likely consuming disproportionate management time — a classic EOS issue (wrong people in wrong seats, no Rock clarity, no Issues List discipline) that the Accountability Chart and L10 Meetings solve.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Eclosia competes across seven distinct sectors in a Mauritius economy of ~1.3 million people — a market small enough to dominate but constrained enough to demand regional expansion for growth. The group holds leadership positions in poultry, dairy, and QSR/FMCG distribution.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Food Production &amp; FMCG</h4>
+        <div class="ec-sub">Eclosia's core &amp; largest revenue segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Eclosia entities</span><span class="mv">Avipro, Maurilait, LMLC, LFL, New Maurifoods, Chantefrais, Panagora</span></div>
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Innodis (ENL), ER Group food units, imported brands</span></div>
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv ok">Market Leader</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Vertical integration from feed (LFL) → production (Avipro) → retail (Chantefrais/Panagora)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>QSR / Franchise Retail</h4>
+        <div class="ec-sub">KFC &amp; Mauritian franchise operations</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Eclosia entities</span><span class="mv">Pick'n'Eat (KFC franchise), Chantefrais (100+ resellers)</span></div>
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">McDonald's (none in Mauritius), local QSR, Pizza Hut (ER Group)</span></div>
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv ok">Dominant QSR</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">KFC exclusivity since 1983; 40+ years brand recognition; owned supply chain via Avipro</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Education, Logistics &amp; Hospitality</h4>
+        <div class="ec-sub">Growth &amp; diversification segments</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Eclosia entities</span><span class="mv">Charles Telfair, FTL, Ninety-Six Hotels, Odysseo</span></div>
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Middlesex Mauritius, CQUniversity (education); Beachcomber, Sun (hospitality); TNT/DHL (logistics)</span></div>
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv warn">Mid-Market</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Unique Odysseo asset; established campus; group-wide logistics integration for FTL</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Vertical integration in food production:</strong> Eclosia controls the entire Mauritian poultry value chain — from animal feed manufacturing (LFL, founded 1977) through broiler breeding and production (Avipro, founded 1966) to retail distribution (Chantefrais, 100+ resellers) and branded consumption (KFC via Pick'n'Eat, founded 1983). This integration compresses input costs, controls quality, and creates near-unassailable barriers to entry for any would-be competitor in the Mauritius poultry market. No new entrant could replicate 60 years of brand equity, established supplier relationships, and a consumer retail network in a 1.3M-person island economy.</p>
+  <p class="body-text"><strong>2. First-mover franchise positions that cannot be replicated:</strong> KFC exclusivity (since 1983) and Yoplait/Candia/Miko dairy franchise rights give Eclosia ownership of international brand revenue streams that are contractually protected. A competitor cannot "out-brand" Pick'n'Eat in KFC because the franchise agreement is exclusive — they would need to build an entirely new QSR concept to compete.</p>
+  <p class="body-text"><strong>3. 60-year institutional relationships:</strong> With Mauritius's leading banks, the government, and supplier networks, Eclosia's access to capital, regulatory favours, and import licences (for dairy franchises) reflects 60 years of trust-building that new entrants simply cannot acquire. The ER Group's 39% stake (a listed company) further strengthens banking relationships.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>East Africa as Eclosia's next major growth market:</strong> Avipro Kenya (chick export and production) and the Rwanda Project signal the group's intent to replicate its Mauritius food leadership model in high-growth Sub-Saharan markets. This is the biggest strategic bet of the next decade and introduces significant execution complexity.</li>
+    <li><strong>Sustainability and circular economy as a competitive moat:</strong> WeCycle, Reneworld, PPI Packaging, and Odysseo position Eclosia as a first-mover in Mauritius sustainability — increasingly important as ESG expectations from ER Group (listed company) tighten and as consumer preferences shift toward responsible brands.</li>
+    <li><strong>Mauritius tourism recovery benefits hospitality revenue:</strong> Ninety-Six Hotel Collection and Odysseo benefit directly from the sustained post-COVID recovery in Mauritius tourism, which reached record arrivals levels in 2024.</li>
+    <li><strong>Private tertiary education demand is growing regionally:</strong> Charles Telfair Education is positioned to capitalise on Mauritius's ambition to become an education hub for Africa — a government policy priority that creates tailwind for private campus operators.</li>
+    <li><strong>Digitalisation pressure on older manufacturing processes:</strong> Eclosia's cloud ERP migration (Dynamics 365) addressed a crisis-level performance problem. The next wave — IoT on production lines, AI-assisted demand forecasting — will require ongoing tech investment that smaller competitors cannot match, widening Eclosia's operational edge.</li>
+    <li><strong>Headwind — single-market concentration risk:</strong> Despite regional expansion, the vast majority of Eclosia's revenue remains Mauritius-dependent. Any Mauritius economic shock (extreme weather, political instability, global tourism downturn) would impact multiple business units simultaneously, with limited hedging from the African operations at their current scale.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Gap — No E-Commerce Strategy Visible</div>
+    Despite operating KFC, Chantefrais, Panagora FMCG distribution, and Charles Telfair Education in a digitising economy, Eclosia's public-facing digital infrastructure is primarily informational (corporate website, LinkedIn, Facebook) rather than transactional. No group-level e-commerce platform, no unified customer data strategy, and no digital loyalty programme appears to exist across the Chantefrais/Pick'n'Eat consumer brands. In a market where digital ordering is becoming table stakes for QSR, this is an emerging vulnerability.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Eclosia Group itself sits outside this range. This assessment evaluates the group holding company as an EOS candidate AND identifies which subsidiary entry points score highest. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score low">2 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:20%"></div></div>
+    <p class="eos-rationale">At the group level: 25 companies, 5,300+ employees, 10+ countries, and MUR 20B+ in revenue places Eclosia well above the EOS optimal range (10–250 people per entity). EOS does not scale across a conglomerate structure of this complexity — it is designed for single entities with one leadership team. The dual-COO structure (Gérard Boullé and Cédric Lagesse), the 30-person Eclosia Way referral network, and the Dynamics 365 ERP deployment all confirm the group has already outgrown EOS-native simplicity. Score: 2/10 at the group level. At the subsidiary level (individual companies of 50–300 people), the score flips to 7–9/10 depending on the entity.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Cédric de Spéville (CEO, Columbia MBA, LSE MSc, Sorbonne Master) is highly educated and sophisticated — familiar with business frameworks but also likely protective of Eclosia Way, which he and Geerish Hookoomsing (CHRO) have built since 2017. The CHRO's ownership of the internal management system creates a potential gatekeeper dynamic — Eclosia Way is the incumbent framework and would need to accommodate EOS, not compete with it. At subsidiary MD level (Denis-Claude Pilot at Avipro, Junaid Muslun at Panagora, Ranjoy Neerohoo at FTL), leadership openness is unknown but likely higher — MDs running standalone P&amp;Ls are closer to the day-to-day execution pain that EOS solves.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">Eclosia is in active growth mode: Kenya expansion (Avipro East Africa, 2022), Rwanda Project (active, 2022+), Odysseo oceanarium (opened 2021, MUR 15M+ capital investment), Panagora restructure (Q1 2026 with new Deputy MD), and WeCycle launch (2026). New hotel managers across Ninety-Six Collection (Q1 2026). Multiple subsidiaries are simultaneously scaling new operations, entering new markets, and restructuring their teams — textbook EOS-stage pain. The question is not whether pain exists; it is whether the subsidiary leaders have the vocabulary and urgency to act on it.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The group runs Dynamics 365 Finance ERP across all 25 entities — a sophisticated, expensive system that speaks to process maturity. Eclosia Way provides a group governance and culture framework. However, the prior ERP crisis (4–5 database freeze events per month, requiring a 24/7 rotating technical team) reveals that even sophisticated systems were poorly maintained operationally. The "process" pillar of Eclosia Way is aspirational rather than operationally disciplined at the subsidiary level — exactly the gap EOS fills with documented Core Processes and the "Followed by All" discipline.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Eclosia invests heavily in culture: the Pinnacle Leadership Programme (Stellenbosch Business School partnership), the LEAD 2026 programme (25 talent cohort), Fondation Chantecler scholarships (since 1982), wellness initiatives, and the public talent-story communications strategy all reflect a genuinely values-led culture. The Eclosia Way pillars (People, Planet, Process, Profit) are compatible with EOS's People (Right People, Right Seats) and Vision components. Culture is a strength, not an obstacle — but the family-business culture at the top may resist external frameworks being applied at the group level without buy-in from Michel and Cédric de Spéville personally.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The dual-COO structure and the 30-person Eclosia Way referral network suggest decisions at the group level require consultation across a wide internal network — slow by EOS standards. However, individual subsidiary MDs (Julien Audibert at LMLC, Denis-Claude Pilot at Avipro, Junaid Muslun at Panagora) have genuine P&amp;L ownership and should have the authority to adopt EOS within their entity without group-level approval. The EOS implementation conversation should be targeted at the MD level, not the Group CEO level, to bypass the group governance layer entirely.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">At the group level, the Eclosia vision (Nourish, Serve, Nurture; regional expansion; sustainability leadership) is articulated and communicated publicly. The Eclosia Way annual report serves as their V/TO equivalent. However, at the subsidiary level, each MD must translate the group vision into their own 1-year and 3-year plans without EOS structure — this is where vision clarity often breaks down. The Kenya and Rwanda expansions are bold strategic bets that need Rock-level discipline to execute, and the Panagora restructure (new Deputy MD in Q1 2026) signals a business that is mid-pivot and needs clarity on its 3-year picture.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Eclosia Way's governance structure includes 30 internal referrals managing rollout across subsidiaries — implying a significant internal meeting load that is more reporting than solving. No evidence of structured weekly leadership team meetings (L10 equivalents) at the subsidiary level. The group's ERP freeze events (operational crises requiring 24/7 rotating support teams) suggest reactive rather than proactive management rhythms in at least some subsidiaries — a clear EOS L10 Meeting pain point.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">4.5</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Conditional — Group Is Wrong Entry · Subsidiary Is Right Entry</h4>
+      <p>Eclosia Group as a whole scores 4.5/10 primarily because organisational size and the incumbent Eclosia Way management system create structural barriers to group-level EOS. However, the growth pain (Kenya, Rwanda, Panagora restructure, Odysseo scaling, hotel collection expansion), the culture strength, and the vision momentum score well. The correct EOS play is not to pitch the group — it is to identify the 2–3 most growth-stressed subsidiaries (strong candidates: Avipro East Africa, FTL Group, Panagora, Charles Telfair Education) and approach their MDs directly. Each of those entities, assessed individually, would score 7–8/10 on the EOS suitability scale. The gating factor is getting a warm introduction to the right subsidiary MD — which Cédric de Spéville could provide if Thierry's first conversation with him is positioned correctly (not as "EOS for Eclosia Group" but as "a framework your high-growth subsidiaries might find useful").</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Eclosia Subsidiaries</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The dual-COO structure at group level and multiple-MD structure at subsidiary level signals role clarity issues. For subsidiaries like Panagora (just appointed a Deputy MD) or Avipro East Africa (building a new country team), the Accountability Chart provides the structural clarity needed to scale without role ambiguity. Start here in every EOS engagement with an Eclosia subsidiary.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>Eclosia subsidiaries are executing multiple parallel initiatives simultaneously: Kenya launch, Rwanda scale-up, hotel manager transitions, Panagora restructure, WeCycle rollout. Without Rocks, these parallel priorities compete for leadership bandwidth without a disciplined quarterly resolution sequence. The Kenya and Rwanda teams especially need Rock discipline to avoid execution scatter.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>The group's proprietary Eclosia Way uses a People/Planet/Process/Profit framework — well-intentioned but not a weekly Scorecard with 5–15 leading indicators. Individual subsidiaries running food manufacturing, QSR, or logistics operations need weekly measurables (production yields, delivery KPIs, waste ratios, collection cycles) that the Eclosia Way report cannot provide. The Dynamics 365 ERP data exists but is not yet crystalised into weekly leading-indicator dashboards.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO (Vision/Traction Organiser)</h4>
+      <p>Each Eclosia subsidiary needs its own V/TO — not just the group's Eclosia Way vision. For Panagora (restructuring Q1 2026), Charles Telfair (education hub ambitions), or FTL (regional logistics expansion), the 3-year picture and 1-year plan need to be documented at the entity level, not inherited from the group's annual report. The V/TO bridges the group vision down to the MD's daily reality.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting (L10)</h4>
+      <p>The Eclosia Way 30-referral governance network is a reporting mechanism, not a problem-solving cadence. Individual subsidiary leadership teams need a structured weekly meeting rhythm (the L10) with a fixed agenda — Scorecard review, Rock progress, headtrash, Issues List (IDS). The ERP crisis (reactive 24/7 rotating team) is a symptom of teams that solve crises rather than prevent them through weekly Issues discipline.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>For a group managing 25 entities across multiple countries, issues get escalated to the group level before they are resolved at the subsidiary level — a classic sign of underdeveloped IDS (Identify, Discuss, Solve) discipline in subsidiary leadership teams. Teaching the Panagora or Kenya team to IDS their own issues weekly rather than escalate to Moka is transformational at the subsidiary MD level.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations — four on strategy and entry approach, four on EOS implementation — sequenced from first contact to first EOS engagement. The central insight: do not sell EOS to Eclosia Group; sell it to an Eclosia subsidiary MD through a warm introduction from Cédric de Spéville.</p>
+
+  <h3 class="subsection-title">Strategic and Entry Approach Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Open with Cédric de Spéville — but not as an EOS pitch</h4>
+      <p>Request a 30-minute introduction meeting with Cédric de Spéville (CEO, LinkedIn: linkedin.com/in/cedricdespeville/ · Group office: +230 404 9000 · eclosia.com/en/contact). Frame the conversation around LMA Growth Partners' work with Mauritius business leaders — not EOS. The goal of meeting 1 is to earn his trust and understand which subsidiaries are growth-stressed. Once rapport is established, ask: "Which of your 25 companies is growing fastest and running hardest right now?" The answer is your EOS entry point. Pitching EOS directly to Cédric risks a "we have Eclosia Way" objection that closes the door before it opens.</p>
+      <span class="urg urg-now">First Move — Week 1-2</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Target Subsidiary MDs Directly in Parallel</h4>
+      <p>In parallel with the CEO introduction, identify and connect with 3 subsidiary MDs who are actively scaling: <strong>(a) Denis-Claude Pilot (MD, Avipro)</strong> — managing Kenya expansion and Mauritius market leadership simultaneously; <strong>(b) Junaid Muslun (MD, Panagora Marketing)</strong> — mid-restructure with new Deputy MD as of Q1 2026; <strong>(c) Ranjoy Neerohoo (MD, FTL Group)</strong> — logistics scaling regionally. These three have the clearest EOS pain profile. LinkedIn and direct email (firstname.lastname@eclosia.com pattern based on available data) are the entry channels. Request a "how are you managing the growth" conversation rather than an EOS discovery session at first contact.</p>
+      <span class="urg urg-now">Immediate — Run in Parallel with Rec 01</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Position EOS as Complementary to Eclosia Way — Not Competing</h4>
+      <p>Geerish Hookoomsing (CHRO) owns Eclosia Way and would view any "replace your management system with EOS" pitch as an existential threat to his programme. The correct framing is: "EOS is an operating system for a single leadership team, not a group framework — it runs below Eclosia Way, not instead of it." Eclosia Way handles culture, sustainability, and group governance. EOS handles weekly execution rhythm, Rock management, and accountability at the entity level. These are complementary, not competing — but Thierry must articulate this explicitly before any CHRO pushback occurs. Prepare a one-page "EOS + Eclosia Way = complementary frameworks" brief before any group-level meeting.</p>
+      <span class="urg urg-week">Prepare Before First Meeting</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Commission Individual CBRIS Filings for Top 3 Target Subsidiaries</h4>
+      <p>Request full CBRIS filings via the MNS online portal for Avipro Ltd, Panagora Marketing Co Ltd, and FTL Group — to obtain registered directors, share capital, charge register, annual return dates, and auditor details. This intelligence will confirm the ownership structure at each subsidiary (whether the MD is also a shareholder — a critical EOS readiness signal), identify any third-party co-investors who might complicate an EOS engagement, and provide auditor contacts who sometimes serve as warm referral channels. Budget: approximately MUR 500–1,000 per filing in registry fees.</p>
+      <span class="urg urg-week">Within 30 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Run a Focus Day for the First Qualified Subsidiary</h4>
+      <p>Once a subsidiary MD says yes to an EOS exploration, run a Focus Day with their 3–6 person leadership team. Given Eclosia's family-founded culture and "Eclosia Way" context, frame the Focus Day as "getting your leadership team aligned on your growth priorities for the next 12 months" — not as "adopting EOS." The Focus Day output (V/TO draft, Accountability Chart hypothesis, first Rock candidates) speaks for itself. Target company: Panagora Marketing (mid-restructure, new Deputy MD, actively reorganising = maximum openness to external frameworks right now).</p>
+      <span class="urg urg-medium">Within 60–90 Days of First Yes</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the Accountability Chart Hypothesis Before Any Meeting</h4>
+      <p>For each of the three target subsidiaries, draft a hypothetical Accountability Chart using publicly available data (website, LinkedIn, Eclosia leadership page, news releases). For Avipro: Denis-Claude Pilot as Integrator or Visionary; the Kenya MD (Avipro East Africa team) as a seat that needs filling or clarity. For Panagora: Junaid Muslun as current holder; Arnaud Huck (new Deputy MD, Q1 2026) as the new number two whose Integrator/Visionary dynamic with Muslun needs defining. Walking into a first EOS conversation with a pre-built Accountability Chart hypothesis signals professionalism and immediately generates "yes, that's exactly our problem" responses.</p>
+      <span class="urg urg-week">Prepare Before Subsidiary MD Meetings</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>First Rock for Panagora: Formalise the New Org Structure in 90 Days</h4>
+      <p>If Panagora Marketing becomes the first EOS engagement, their first Rock is obvious: the Q1 2026 organisational restructure with Arnaud Huck as Deputy MD needs to be locked into an Accountability Chart with clear role definitions, a Scorecard with 5–7 weekly measurables (distribution reach, SKU performance, customer acquisition), and a confirmed L10 rhythm for the leadership team. This Rock has a natural 90-day timeline (Q2 2026), a clear owner (Junaid Muslun), and a measurable outcome (structured leadership team running weekly L10 by June 2026). This is a textbook first Rock for a restructuring FMCG business.</p>
+      <span class="urg urg-medium">Q2 2026 — If Panagora Engaged</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Pose the V/TO Strategic Question for Avipro East Africa</h4>
+      <p>For Avipro, the strategic question that unlocks the V/TO conversation is: "What does Avipro East Africa look like in 3 years — and who owns the decisions to get there?" Denis-Claude Pilot is running a multi-country operation (Mauritius + Madagascar + Kenya + exports) with a team spread across three time zones and multiple currencies. The 3-year picture, the 1-year plan, and the Rocks for the Kenya operation are almost certainly not written down in a form the whole leadership team shares. The V/TO exercise — even just the 3-year picture and the list of Issues — would be transformational for a business at Avipro East Africa's scale and growth stage. Use this question to open the EOS conversation with Denis-Claude Pilot.</p>
+      <span class="urg urg-medium">Within 90 Days of First Contact</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Eclosia Group is one of Mauritius's most admirable business stories — 60 years of sustained growth, family leadership, genuine values, and the commercial discipline to build market-leading positions in seven sectors. But it is not an EOS client at the group level. It is a portfolio of 25 EOS-eligible businesses, several of which are right now in the growth-pain window where EOS delivers its most transformational value. The opportunity is not one EOS engagement — it is a long-term relationship where Thierry earns Cédric de Spéville's trust, gets introduced to the right subsidiary MDs, and builds a track record across 2–3 Eclosia companies that eventually makes Thierry the default EOS resource for the group's high-growth units. Play the long game. The first meeting is not a pitch — it is a listening conversation with a sophisticated family business leader who already has a management system and doesn't need another one sold to him.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Week 1–2: Connect with Cédric de Spéville via LinkedIn or direct outreach to +230 404 9000 — intro conversation, no EOS pitch, pure listening.</li>
+        <li><span class="sig-num">02</span>Week 2–4: Simultaneously approach Denis-Claude Pilot (Avipro), Junaid Muslun (Panagora), and Ranjoy Neerohoo (FTL) via LinkedIn with a curiosity-first message about managing growth complexity.</li>
+        <li><span class="sig-num">03</span>Week 3: Commission CBRIS filings for Avipro, Panagora, and FTL to confirm director structures and ownership before first meetings.</li>
+        <li><span class="sig-num">04</span>Month 2: Identify the highest-pain subsidiary (likely Panagora or Avipro Kenya) and propose a 2-hour "leadership alignment session" — the Focus Day in disguise.</li>
+        <li><span class="sig-num">05</span>Month 3+: Run the Focus Day, produce the V/TO and Accountability Chart, close the first EOS engagement at the subsidiary level. Use the result as a reference story for the other Eclosia MDs.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Eclosia Group — Comprehensive Company Analysis &amp; EOS Assessment · 10 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (April 2026) · eclosia.com · ER Group investor materials (ergroup.mu) · Microsoft Dynamics 365 customer case study · LinkedIn · ZoomInfo · RocketReach · Avipro.mu · Maurilait.com · Business publications (L'Express Mauritius, BizWeek, Ecofin Agency)</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
