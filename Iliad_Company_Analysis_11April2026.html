@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iliad Group — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Real Estate &amp; Property Services</span>
+    <span class="badge badge-type">Private Company Group · Domestic · Multi-Entity</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">11 April 2026</span>
+  </div>
+  <h1>Iliad Group:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">ILIAD GROUP LTD (C120602) &amp; Group Subsidiaries · Company intelligence · Financial ratios · EOS implementation assessment · Phoenix / Ebène, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Group Revenue (FY June 2023)</div>
+      <div class="stat-value steel">MUR 3.35M</div>
+      <div class="stat-delta">Iliad Management (operating entity) · FY June 2025</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Group Total Assets</div>
+      <div class="stat-value emerald">MUR 53.8M</div>
+      <div class="stat-delta">Iliad Group Ltd holding level · FY June 2023</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.4 / 10</div>
+      <div class="stat-delta">Moderate-High · Multi-entity complexity drives need · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Insolvent OpCo</div>
+      <div class="stat-delta">Iliad Management equity deeply negative (MUR −19.6M) vs MUR 3.35M revenue</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Iliad Group — Company Analysis &amp; EOS Assessment · 11 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">Iliad Group is a 12-year-old Mauritius property services conglomerate controlling six subsidiaries across real estate agency, syndic management, leisure, and investment — founder-led, quietly profitable at the holding level, yet operationally dependent on a management entity carrying deeply negative equity and MUR 32M in short-term borrowings.</p>
+
+  <p class="body-text">Founded in January 2014 by Sébastien Lamusse and his father Joseph Yves Robert Lamusse (with co-founder Jacques Christian Jérôme Pilot), Iliad Group Ltd (C120602) is the apex holding company of the Iliad property services ecosystem in Mauritius. The group operates predominantly through Iliad Management Ltd (trading as Citya Iliad Immobilier under a franchise licence from the French Citya Group), delivering real estate sales, rental management, syndic (co-ownership) administration, and property advisory services to residential and commercial clients across the island. The group's registered address is Office 07, Le Hub Industrial Zone Road, Valentina, Phoenix, though the active operating offices are now situated at Ebène Junction and The Strand (Beau Plan), with further branches in Pointe aux Canonniers and Belle Rivière.</p>
+
+  <p class="body-text">Ownership of Iliad Group Ltd is shared primarily between Sébastien Lamusse Thomas (593,895 shares, the largest individual block), Iliad Investment Ltd (910,009 + 200 shares — the Lamusse family vehicle), Jacques Christian Jérôme Pilot (331,377 shares across three tranches), and minority investors MIGI Alliance Ltd (111,893 shares), MDEUXT Holdings Ltd (163,536 shares), and Reef Retreat Limited (107,590 shares). The holding company in turn wholly owns Iliad Management Ltd, Iliad Grand Baie Ltd, and Iliad Properties Ltd, and holds a 50% joint venture in Iliad Leisure Ltd (the other 50% belonging to Currimjee Saeed Ali). At the holding level, two additional non-resident directors were appointed in November 2018: Jean Michel Pitot (c/o Attitude Resorts, Bain Boeuf) and Dominique Jean Rivière (Montpellier, France), suggesting strategic or investor linkage beyond the founding family.</p>
+
+  <p class="body-text">Financially, the picture is bifurcated. Iliad Group Ltd itself reports MUR 20.9M in other income (FY June 2023) — almost certainly intercompany dividends or management fees — and sits on MUR 53.8M of total assets with positive equity of MUR 36.8M, making the holding healthy on paper. The operating entity, Iliad Management Ltd, tells a different story: MUR 3.35M revenue (FY June 2025), MUR 919K net profit, but deeply negative equity of −MUR 19.6M driven by accumulated losses of −MUR 19.3M and offset only by MUR 32.4M in short-term borrowings. Two subsidiaries (Iliad Grand Baie Ltd and Iliad Properties Ltd) are actively in winding-up proceedings. The EOS score is 6.4/10 — a qualified positive, with strong structural signals.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Structural Complexity Masking Operational Risk</div>
+    The most important insight for Thierry's approach: Iliad is not a simple owner-managed business — it is a deliberately constructed multi-entity group where the founder retains majority control through a holding/investment vehicle structure, while the operational entity (Iliad Management) is technically insolvent on paper. Two subsidiaries are being wound up. This tells a story of a founder who is sophisticated about corporate architecture but may be running multiple balls without a coherent execution system tying them together. The entry angle is not financial distress (the group is actually viable) — it is growth complexity: a founder managing a franchise relationship, a 20+ person team across multiple locations, a JV, minority shareholders, and winding-down entities, all without an evident shared operating system. That is exactly the EOS sweet spot.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Citya franchise licence provides brand credibility and a proven European real estate operating framework.</strong> The group manages 3,000+ syndic units across 35+ developments — sticky, recurring revenue. Multi-location presence (Ebène, Beau Plan, Pointe aux Canonniers, Belle Rivière) provides island-wide coverage. Founder has hospitality/luxury tourism background, giving genuine client relationship skills in the high-net-worth segment.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Iliad Management carries MUR −19.6M negative equity against only MUR 3.35M annual revenue — a 5.8× insolvency ratio that makes the operating entity technically dependent on group support.</strong> MUR 32.4M in short-term borrowings at the operating level is the critical number. Two subsidiaries (Grand Baie, Properties) have active winding-up minutes and MRA objections. Revenue is thin relative to asset base and group complexity.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>The multi-entity structure with a founding duo, outside investors, a JV partner, a franchise franchisor, and 20+ employees is a textbook "complexity has outgrown informal systems" scenario.</strong> No evidence of a formal operating cadence, accountability structure, or written vision/values. Sébastien Lamusse's hospitality school background suggests he is a relationship-driven operator who may feel the absence of structure but hasn't yet named EOS as the solution.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">Iliad Group Ltd is a founder-led Mauritian property services holding company, anchored by a Citya franchise real estate agency with 3,000+ syndic units under management and a multi-subsidiary structure built over 12 years.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record — Iliad Group Ltd</h3>
+  <p class="body-text">Iliad Group Ltd was incorporated on 24 January 2014 (File No. C120602, BRN: C14120602) as a domestic private company. Registered office: Industrial Zone Road, Office 07, Le Hub Valentina, Phoenix, Mauritius (effective 30 June 2018). Stated capital: MUR 15,477,375 across 2,218,500 ordinary shares (two classes — 200 shares at MUR 2,000 and 2,218,300 shares at MUR 15,475,375). Company secretary: Box Office Ltd, 2nd Floor Palm Square, La Mivoie, Tamarin (appointed February 2026, replacing ECS Secretaries). Annual registration fee paid through 2026. The company filed financial statements for FY June 2021, 2022, and 2023. Nature of business registered: "Other financial service activities n.e.c. — own account investment activities."</p>
+  <p class="body-text">The apex holding entity pre-dates some subsidiaries: Iliad Investment Ltd (the family vehicle) was incorporated 2 September 2010, Iliad Management Ltd on 1 March 2011, making the informal business three years older than the group holding structure. The formalisation of the group under Iliad Group Ltd in 2014 likely coincided with the Citya franchise agreement and/or the entry of external investors.</p>
+
+  <h3 class="subsection-title">Group Structure and Ownership</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Iliad Investment Ltd</h4>
+        <div class="ec-sub">C097498 · Family Vehicle · Founded 2010</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shareholders</span><span class="mv">Lamusse family (J.Y.R. 19,000 + Sébastien 2,000 + Melissa Le Texier 4,000)</span></div>
+        <div class="ec-metric"><span class="mk">Directors</span><span class="mv">Françoise Lamusse, J.Y.R. Lamusse, Sébastien Lamusse, Melissa Le Texier</span></div>
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Holds 910,209 shares in Iliad Group Ltd · Investment vehicle</span></div>
+        <div class="ec-metric"><span class="mk">Total Assets (2024)</span><span class="mv ok">MUR 5.93M</span></div>
+        <div class="ec-metric"><span class="mk">Equity</span><span class="mv ok">MUR 4.24M · Positive</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Iliad Group Ltd</h4>
+        <div class="ec-sub">C120602 · Apex Holding · Founded 2014</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key Shareholders</span><span class="mv">Sébastien Lamusse (593,895), Iliad Investment (910,209), J. Pilot (331,377), MIGI Alliance (111,893), MDEUXT Holdings (163,536), Reef Retreat (107,590)</span></div>
+        <div class="ec-metric"><span class="mk">Total Assets (2023)</span><span class="mv ok">MUR 53.8M</span></div>
+        <div class="ec-metric"><span class="mk">Equity</span><span class="mv ok">MUR 36.8M · Positive</span></div>
+        <div class="ec-metric"><span class="mk">Net Profit (2023)</span><span class="mv ok">MUR 20.0M</span></div>
+        <div class="ec-metric"><span class="mk">Non-Res Directors</span><span class="mv">J-M Pitot (Attitude Resorts), D. Rivière (France)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Iliad Management Ltd</h4>
+        <div class="ec-sub">C101075 · Operating Entity · Founded 2011</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shareholder</span><span class="mv">Iliad Group Ltd (100%)</span></div>
+        <div class="ec-metric"><span class="mk">Trading As</span><span class="mv">Citya Iliad Immobilier (Citya franchise)</span></div>
+        <div class="ec-metric"><span class="mk">Revenue (FY Jun 2025)</span><span class="mv ok">MUR 3.35M</span></div>
+        <div class="ec-metric"><span class="mk">Equity</span><span class="mv danger">MUR −19.6M · Negative</span></div>
+        <div class="ec-metric"><span class="mk">Short-Term Debt</span><span class="mv danger">MUR 32.4M</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Note — Citya Franchise Relationship</div>
+    Iliad Management Ltd operates under the Citya brand (France's leading real estate franchise with 250+ agencies and 4,500+ staff). This affiliation provides brand credibility, systems, and training infrastructure — but also means the group is not wholly autonomous. Franchise obligations, reporting requirements, and brand standards add a layer of complexity that a growing owner-managed firm without strong internal systems will struggle to maintain consistently.
+  </div>
+
+  <div class="entity-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Iliad Leisure Ltd</h4>
+        <div class="ec-sub">C134365 · 50/50 JV · Founded 2015</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shareholders</span><span class="mv">Iliad Group Ltd 50% + Currimjee Saeed Ali 50%</span></div>
+        <div class="ec-metric"><span class="mk">Activity</span><span class="mv">Amusement &amp; recreation activities n.e.c.</span></div>
+        <div class="ec-metric"><span class="mk">Revenue (FY Jun 2025)</span><span class="mv warn">MUR 1.01M</span></div>
+        <div class="ec-metric"><span class="mk">Equity</span><span class="mv danger">MUR −540K · Negative</span></div>
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv warn">Active · Loss-making</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Iliad Properties Ltd</h4>
+        <div class="ec-sub">C129531 · Being Wound Up</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shareholder</span><span class="mv">Iliad Group Ltd (100%)</span></div>
+        <div class="ec-metric"><span class="mk">Activity</span><span class="mv">Property development (dormant)</span></div>
+        <div class="ec-metric"><span class="mk">Equity</span><span class="mv danger">MUR −5.04M · Negative</span></div>
+        <div class="ec-metric"><span class="mk">Winding Up</span><span class="mv danger">In Progress since 15/12/2025</span></div>
+        <div class="ec-metric"><span class="mk">MRA Objection</span><span class="mv danger">Two objections Apr 2025</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Iliad Grand Baie Ltd</h4>
+        <div class="ec-sub">C146032 · Being Wound Up</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shareholder</span><span class="mv">Iliad Group Ltd (100%)</span></div>
+        <div class="ec-metric"><span class="mk">Activity</span><span class="mv">Other manufacturing n.e.c. (dormant)</span></div>
+        <div class="ec-metric"><span class="mk">Equity</span><span class="mv danger">MUR −10,208 · Nominal negative</span></div>
+        <div class="ec-metric"><span class="mk">Winding Up</span><span class="mv danger">In Progress since 15/12/2025</span></div>
+        <div class="ec-metric"><span class="mk">Annual Return</span><span class="mv warn">Last filed 2022</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Sébastien Thomas Lamusse — CEO / Director</h4>
+      <p>Co-founder and operational leader of the group. Director of Iliad Group Ltd (since 24/01/2014), Iliad Management Ltd (since 01/03/2011), Iliad Properties Ltd (since 09/04/2015), and Iliad Leisure Ltd (since 16/11/2015). Background: BSc International Hospitality &amp; Tourism Management, Glion Hotel School (1999–2002). Prior roles: Le Telfair Golf &amp; Spa Resort, Intercontinental Aphrodite Hills. LinkedIn: <strong>linkedin.com/in/sebastienlamusse</strong>. Email domain: @iliad.mu. Contact: (230) 263 14 49 (group main line) / (230) 490 87 95 (Ebène).</p>
+    </div>
+    <div class="profile-card">
+      <h4>Joseph Yves Robert Lamusse — Director / Patriarch</h4>
+      <p>Co-founder and father of Sébastien. Director of Iliad Group Ltd (since 24/01/2014) and Iliad Management Ltd (since 01/03/2011). Also director and majority shareholder (19,000 shares) of Iliad Investment Ltd — the family holding vehicle. Service address: Office 221 Block B, The Junction Business Hub, Calebasses. Represents the founding family's anchor position in the group.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Jacques Christian Jérôme Pilot — Director / CFO</h4>
+      <p>Co-founder and Chief Financial &amp; Administrative Officer (per ZoomInfo). Director of Iliad Group Ltd (since 24/01/2014). Holds 331,377 shares in Iliad Group Ltd across three tranches. Qualified accountant; previously served as General Manager of Mauritius Turf Club (MTC/MTCSL, appointed 2022, later dismissed). Brings finance and corporate governance expertise. Email domain: @iliad.mu.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Jean Michel Pitot — Non-Executive Director</h4>
+      <p>Appointed 21/11/2018. Service address: c/o Attitude Resorts, Bain Boeuf, Mauritius. Connection to the Attitude Resorts hospitality group suggests either a strategic investor relationship or advisory role. The Attitude Resorts link is notable — may represent potential property management or syndic cross-referral.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Dominique Jean Rivière — Non-Executive Director</h4>
+      <p>Appointed 21/11/2018. Address: 1, Rue Levant, 34000 Montpellier, France. French resident director — likely connected to the Citya franchise relationship or a French investor in the group. Appointment dates align, suggesting both Pitot and Rivière joined as part of a 2018 capital or strategic transaction.</p>
+    </div>
+    <div class="profile-card">
+      <h4>J. Emeric Lamusse — Commercial Director</h4>
+      <p>Director of Commercial at Iliad agencies (per ZoomInfo). Previous role: Manager, Property Management Rentals (North &amp; East Region). Education: Baccalauréat (Lycée des Mascareignes), BTS (MCCI Business School). Earlier experience at Nestenn Immobilier Ile Maurice and in hospitality. Email domain: @iliad.mu. Likely a younger family member (third-generation), indicating the business is being set up for succession.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Through Iliad Management Ltd (trading as Citya Iliad Immobilier), the group offers a comprehensive real estate services stack: (1) <strong>Transaction services</strong> — property sales (residential villas, apartments, PDS/IRS schemes, commercial, agricultural land) and rental transactions, executing 10+ transactions per month; (2) <strong>Rental management</strong> — full property management for landlords including tenant screening, rent collection, maintenance coordination, financial reporting, and litigation; (3) <strong>Syndic / co-ownership administration</strong> — the highest-value recurring revenue stream: 3,000+ units across 35+ developments, with dedicated syndic managers, accountants, and assistants delivering budget management, AGM facilitation, contractor tendering, and compliance; (4) <strong>Investment advisory</strong> — guidance for foreign investors (notably South African market focus) on IRS/PDS/Smart City schemes; (5) <strong>Digital portal</strong> — MyIliad client self-service platform for property owners and co-owners.</p>
+  <p class="body-text">Iliad Leisure Ltd (50% owned, Currimjee JV) operates in amusement and recreation activities — the exact nature is not publicly disclosed but generated MUR 1.01M in revenue in FY June 2025 with an 85% gross margin before overheads pushed it to a MUR 290K loss.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">The group operates from four agency locations across Mauritius: <strong>Ebène Junction</strong> (principal office, Rue de l'Institut, Ebène — phone 490 87 95); <strong>The Strand</strong> (Lakeside District, Beau Plan, north of island — phone 290 61 81); <strong>Pointe aux Canonniers</strong> (north coast, Grand Baie area); and <strong>Belle Rivière</strong> (south-east). The registered operating address remains Le Hub, Phoenix — the original location before the network expanded. The multi-location model mirrors the Citya franchise playbook but requires coordinated management across dispersed teams without a unified execution system.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Gap — iliadproperties.mu Domain Suspended</div>
+    The domain iliadproperties.mu is not resolving (DNS failure as of April 2026). The main operational website iliad.mu (Citya franchise site) is live, as is the older iliadproperties.com domain. A dormant or failed subsidiary website for Iliad Properties Ltd is consistent with the winding-up proceedings underway for that entity, but it creates brand confusion — clients searching the Iliad Properties name may hit a dead site.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Data sourced from CBRIS / Mauritius Registrar of Companies financial summaries. All figures in Mauritius Rupees (MUR). Fiscal year ends 30 June. Most recent filed data: Iliad Group Ltd to FY June 2023; Iliad Management Ltd to FY June 2025; Iliad Leisure Ltd to FY June 2025; Iliad Investment Ltd to FY December 2024. Detailed line-by-line accounts not publicly available — summary P&amp;L and balance sheet only.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    CBRIS financial summaries provide top-level P&amp;L and balance sheet totals only. No segmental breakdown, no notes to accounts, no audit opinion, no cash flow statement. Prior-year comparatives visible only for the most recent period. The group's most commercially significant entity (Iliad Management) files to June 2025, providing the freshest data. Iliad Group Ltd (holding) is one year behind at June 2023. Figures below cover the primary entities; Iliad Syndic Ltd (C129681) data not extracted in this pass.
+  </div>
+
+  <h3 class="subsection-title">Iliad Group Ltd — P&amp;L Summary (FY June 2023, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Other Income</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>0</td><td>—</td><td>Holding company; no direct trading revenue</td></tr>
+        <tr><td>Other Income</td><td>20,902,500</td><td>100%</td><td>Almost certainly intercompany dividends, management fees, or investment income from subsidiaries</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>881,827</td><td>4.2%</td><td>Lean holding overhead — suggests minimal direct headcount at holding level</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>20,020,673</strong></td><td><strong>95.8%</strong></td><td>Essentially pass-through profit from subsidiaries — healthy at holding level</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Iliad Management Ltd — P&amp;L Summary (FY June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>3,350,670</td><td>100.0%</td><td>Real estate agency and syndic management fees — thin top line for 20+ staff operation</td></tr>
+        <tr><td>Cost of Sales</td><td>0</td><td>0%</td><td>Service business — no direct cost of sales recorded</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>3,350,670</td><td>100.0%</td><td>100% gross margin is typical of pure service/agency model</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>2,430,852</td><td>72.6%</td><td>Staff costs, premises, franchise fees — manageable but leaves thin operating margin</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>919,818</strong></td><td><strong>27.5%</strong></td><td>Profitable at operating level — net margin is decent for a services SME</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Iliad Leisure Ltd — P&amp;L Summary (FY June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>1,010,591</td><td>100.0%</td><td>Small leisure/recreation operation</td></tr>
+        <tr><td>Cost of Sales</td><td>148,189</td><td>14.7%</td><td>Low CoS — activity-based rather than product-based</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>862,402</td><td>85.3%</td><td>Very strong gross margin — premium activity or experience service</td></tr>
+        <tr class="heat-critical"><td>Administration Costs</td><td>1,152,435</td><td>114.0%</td><td>Overhead exceeds revenue — overheads not yet scaled by revenue growth</td></tr>
+        <tr class="heat-critical"><td><strong>Net Loss After Tax</strong></td><td><strong>(290,033)</strong></td><td><strong>−28.7%</strong></td><td>Loss-making — JV is a drag on group; requires capital injection or restructure</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Iliad Group Ltd — Balance Sheet (30 June 2023, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Investment in Subsidiaries</td><td>1,037,187</td><td>Book value of subsidiary investments — modest given the scale of subsidiary operations</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Investments</td><td>900,000</td><td>Likely minority stakes or financial instruments</td></tr>
+        <tr><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>11,339,991</td><td>Significant receivable — possibly intercompany balances or management fee receivables</td></tr>
+        <tr class="heat-ok"><td>Current Assets</td><td>Cash &amp; Cash Equivalents</td><td>40,303,589</td><td>Very strong cash position — MUR 40.3M; likely accumulated from dividend flows</td></tr>
+        <tr><td>Current Assets</td><td>Other Current Assets</td><td>240,000</td><td>Minor prepayments</td></tr>
+        <tr class="heat-ok"><td><strong>Total Assets</strong></td><td></td><td><strong>53,820,767</strong></td><td>Healthy holding balance sheet</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital</td><td>15,477,375</td><td>Stated capital of the holding</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Retained Earnings</td><td>1,523,697</td><td>Modest retained earnings — suggests dividends are regularly distributed</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Other Reserves</td><td>19,814,627</td><td>Material reserves — likely revaluation or capital contribution</td></tr>
+        <tr class="heat-ok"><td><strong>Total Equity</strong></td><td></td><td><strong>36,815,699</strong></td><td>Solid — 68.4% equity-to-assets ratio</td></tr>
+        <tr class="heat-warn"><td>Non-Current Liabilities</td><td>Long-Term Borrowings</td><td>1,240,207</td><td>Low LT debt at holding level</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>13,632,832</td><td>Likely intercompany payables to subsidiaries</td></tr>
+        <tr><td>Current Liabilities</td><td>Short-Term Borrowings</td><td>1,878,159</td><td>Manageable short-term debt</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Iliad Management Ltd — Balance Sheet (30 June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>PP&amp;E</td><td>96,339</td><td>Minimal fixed assets — office equipment and IT</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>43,353</td><td>Possibly franchise rights or software licences</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Investments</td><td>679,050</td><td>Small strategic investment</td></tr>
+        <tr><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>13,305,958</td><td>Very large relative to revenue — likely intercompany amounts owed by holding or other subsidiaries</td></tr>
+        <tr><td>Current Assets</td><td>Cash</td><td>1,807,729</td><td>Adequate operating cash</td></tr>
+        <tr><td><strong>Total Assets</strong></td><td></td><td><strong>15,983,329</strong></td><td></td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Retained Earnings (Accumulated Losses)</td><td>(19,276,059)</td><td>Critical: accumulated losses of MUR 19.3M — years of losses before current profitability</td></tr>
+        <tr class="heat-critical"><td><strong>Total Equity</strong></td><td></td><td><strong>(19,586,717)</strong></td><td>Technically insolvent — entirely dependent on group support</td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td>Short-Term Borrowings</td><td>32,366,690</td><td>Critical: MUR 32.4M ST borrowings — almost certainly intercompany loans from holding, not third-party bank debt</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>1,987,006</td><td>Trade payables — normal for a service business of this size</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Short-Term Provisions</td><td>475,781</td><td>Likely staff leave provisions</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">No charges are registered against Iliad Group Ltd (holding), Iliad Management Ltd, Iliad Leisure Ltd, Iliad Investment Ltd, or Iliad Grand Baie Ltd. Iliad Properties Ltd similarly shows no charges. The absence of bank charges is significant — it suggests the group has not secured external bank financing against its assets. The MUR 32.4M in short-term borrowings at Iliad Management level is almost certainly an intercompany loan from the holding, not a third-party facility. This is structurally positive (no bank covenants, no external creditor pressure) but also means the holding company is effectively capitalising a technically insolvent operating subsidiary.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Ratios computed from CBRIS summary data. Primary analysis on Iliad Management Ltd (operating entity, FY June 2025) and Iliad Group Ltd (holding, FY June 2023). Colour: Green = healthy, Amber = watch, Red = critical concern. Benchmarks from Mauritius private services sector norms.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios — Iliad Management Ltd</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.43×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.5× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Current assets of MUR 15.2M against current liabilities of MUR 35.3M — a ratio of 0.43× is technically illiquid. However, the current assets contain MUR 13.3M in intercompany receivables and the current liabilities contain MUR 32.4M in intercompany loans. Strip both out and the operating liquidity picture (MUR ~1.9M assets vs MUR ~2.5M trade payables) is tight but manageable for a service business with recurring fee income.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.43×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">No inventory to strip out (service business), so quick ratio equals current ratio. The same intercompany distortion applies. On a cash-only basis (MUR 1.8M cash / MUR 2.5M trade payables), the business is marginally liquid but has no buffer. Any unexpected cash outflow — a key client loss, a disputed commission, a franchise fee increase — could create a genuine cash crunch.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios — Iliad Management Ltd (FY June 2025)</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">100.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services)</span><span class="ratio-val">60% – 80%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Strong</span></span></div>
+      <span class="ratio-interpret">100% gross margin reflects pure agency/fee model with no cost of goods sold. The entire revenue contribution goes directly to covering overheads and generating profit. This is the hallmark of a well-structured property management business — quality of revenue is high.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">27.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mru services)</span><span class="ratio-val">10% – 20%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Above Benchmark</span></span></div>
+      <span class="ratio-interpret">A 27.5% net margin on MUR 3.35M revenue is genuinely good for a 20+ person services operation. It signals the business has reached a point of operational efficiency — admin costs are contained. The challenge is absolute size: MUR 919K net profit from a 20+ person team suggests the top line is still too thin relative to the team structure in place.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value (OpCo)</span><span class="ratio-val ok">5.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-blue">In Range</span></span></div>
+      <span class="ratio-interpret">MUR 919K profit on MUR 15.98M assets = 5.8% ROA. Unremarkable but positive — the asset base is almost entirely receivables and investments (mostly intercompany), so the operating asset intensity is very low. The business does not require significant capital to run.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Revenue per Employee (Estimate)</h4>
+      <div class="ratio-row"><span class="ratio-label">Assumed headcount</span><span class="ratio-val">~22 staff</span></div>
+      <div class="ratio-row"><span class="ratio-label">Revenue per head</span><span class="ratio-val warn">MUR 152K (~USD 3,300)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Low</span></span></div>
+      <span class="ratio-interpret">MUR 152K revenue per employee is low for a professional services firm. Comparable Mauritius real estate agencies generate MUR 300K–500K per head at scale. This suggests either significant upside from better sales productivity, or that the team is structured around syndic management (lower revenue per head, higher stickiness) rather than transactions.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios — Iliad Management Ltd</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">N/M (negative equity)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.5× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Not Meaningful</span></span></div>
+      <span class="ratio-interpret">With negative equity of MUR −19.6M, conventional D/E is not meaningful. Total liabilities of MUR 35.3M against negative equity means the entity is technically insolvent. The entire MUR 35.3M liability burden is owed to the group (intercompany) — this is a structural choice by the founders, not an external debt crisis. Reclassifying intercompany loans as equity would restore solvency instantly.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage (Estimated)</h4>
+      <div class="ratio-row"><span class="ratio-label">EBIT (approx)</span><span class="ratio-val ok">MUR 919K</span></div>
+      <div class="ratio-row"><span class="ratio-label">Finance Costs</span><span class="ratio-val ok">MUR 0</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">No External Debt</span></span></div>
+      <span class="ratio-interpret">Finance costs at the operating entity are zero — confirming no external debt service obligations. The MUR 32.4M intercompany loan from the holding appears to carry no (or nominal) interest at present, which is why it does not appear in the P&amp;L. This is both a strength (no cash drain) and a governance risk (informal intercompany arrangements without clear terms).</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios — Iliad Management Ltd</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Days Sales Outstanding (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Trade Receivables</span><span class="ratio-val">MUR 13.3M</span></div>
+      <div class="ratio-row"><span class="ratio-label">Daily Revenue</span><span class="ratio-val">MUR 9,180</span></div>
+      <div class="ratio-row"><span class="ratio-label">DSO (gross)</span><span class="ratio-val bad">1,449 days</span></div>
+      <span class="ratio-interpret">DSO is astronomically high — confirming that the MUR 13.3M receivable is not trade debtors but intercompany balances (amounts owed to Iliad Management by the holding or other group entities). On a pure trade basis, the DSO for actual client receivables (estimated MUR 50K–100K) would be 5–11 days — entirely normal for an agency collecting management fees monthly.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Revenue / Total Assets</span><span class="ratio-val warn">0.21×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services)</span><span class="ratio-val">1.0× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Low (Interco Distortion)</span></span></div>
+      <span class="ratio-interpret">Low asset turnover of 0.21× is entirely explained by the intercompany receivable inflating the asset base. Stripping out the MUR 13.3M interco balance, effective operating assets are ~MUR 2.7M, giving an asset turnover of ~1.24× — healthy for a professional services firm. The ratio is distorted, not broken.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. MUR 32.4M intercompany short-term borrowing at Iliad Management level</strong> — this is the structural time bomb. If ever the holding requires these funds, or if the relationship between founders frays, the operating entity cannot repay without a formal debt-to-equity conversion. The business needs a formal intercompany loan agreement with clear terms, or a capital reorganisation that converts this to equity and eliminates the technical insolvency. Fixing this costs nothing operationally but protects the company in the event of investor disputes or a sale. <strong>2. MUR 3.35M revenue for 22+ staff</strong> — at MUR 152K revenue per head, the team is underselling relative to its capacity. A 50% revenue increase (achievable if 3,000 syndic units generate better upsell rates and transaction volume grows) would deliver MUR 1.4M+ net profit and change the growth narrative entirely.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Iliad operates across three intersecting real estate service segments in Mauritius — syndic management (recurring, defensible), rental management (recurring, competitive), and property transactions (episodic, highly competitive) — with its strongest position in syndic, where scale and stickiness create a modest moat.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Syndic / Co-Ownership Management</h4>
+        <div class="ec-sub">Core Moat — Recurring Revenue</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Iliad Position</span><span class="mv ok">Market Leader (3,000+ units, 35+ developments)</span></div>
+        <div class="ec-metric"><span class="mk">Key Competitors</span><span class="mv">The Smart Syndic, Rogers Property Management, IBL Property</span></div>
+        <div class="ec-metric"><span class="mk">Switching Cost</span><span class="mv ok">High — co-owner AGM vote required to change syndic</span></div>
+        <div class="ec-metric"><span class="mk">Trend</span><span class="mv ok">Growing — Mauritius apartment and PDS scheme pipeline robust through 2027</span></div>
+        <div class="ec-metric"><span class="mk">Revenue Model</span><span class="mv">Monthly management fee per unit + service charges</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Property Management / Rentals</h4>
+        <div class="ec-sub">Recurring — Competitive</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Iliad Position</span><span class="mv warn">Mid-tier — differentiated by Citya brand and multi-location</span></div>
+        <div class="ec-metric"><span class="mk">Key Competitors</span><span class="mv">Pam Golding Mauritius, Seeff, Coldwell Banker, JLL Mauritius</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">French/European client pipeline via Citya network; MyIliad portal</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">International franchises with deeper pockets entering the market</span></div>
+        <div class="ec-metric"><span class="mk">Revenue Model</span><span class="mv">8–12% of rental income as management fee</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Property Transactions (Sales)</h4>
+        <div class="ec-sub">Episodic — Highly Competitive</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Iliad Position</span><span class="mv warn">Active but not dominant — 10+ transactions/month is respectable</span></div>
+        <div class="ec-metric"><span class="mk">Key Competitors</span><span class="mv">Pam Golding, JLL, BNP Paribas Real Estate Mauritius, boutique agencies</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">South African investor focus; Citya referral network; multi-location coverage</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Commission compression; digital platforms (Propertycloud, PropertyMap) disintermediating agents</span></div>
+        <div class="ec-metric"><span class="mk">Revenue Model</span><span class="mv">2–3% commission on transaction value</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Citya franchise affiliation:</strong> The Citya brand (250+ agencies, France) provides instant credibility with French and European buyers/investors — Mauritius's largest foreign buyer segment. It also provides operational playbooks, training, and a referral pipeline that independent agencies cannot replicate. However, the franchise fee is a fixed overhead cost regardless of revenue performance.</p>
+  <p class="body-text"><strong>2. Syndic scale:</strong> Managing 3,000+ co-ownership units across 35+ developments creates a data and relationship advantage that compounds over time. Once Iliad manages a development's syndic, they have first-mover access to every rental and resale transaction in that building. Competitors cannot easily displace a competent incumbent syndic without majority AGM votes from co-owners who have inertia on their side.</p>
+  <p class="body-text"><strong>3. Multi-location island coverage:</strong> Four office locations (Ebène, Beau Plan, Pointe aux Canonniers, Belle Rivière) mirror the geographic distribution of Mauritius's property development activity. Most competing boutique agencies operate from a single location. This multi-location model increases brand visibility and allows the team to serve clients without long travel times — a real differentiator on an island where business relationships are local and personal.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds / Headwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Tailwind:</strong> Mauritius PDS/IRS/Smart City scheme pipeline remains robust into 2027–2028, creating new apartment complexes that will all need syndic management — Iliad's strongest revenue segment grows automatically with new completions.</li>
+    <li><strong>Tailwind:</strong> South African and European high-net-worth investor appetite for Mauritius residential property remains strong, particularly post-COVID. Iliad's Citya affiliation and explicit South African investor focus positions it well.</li>
+    <li><strong>Headwind:</strong> Digital platforms (Propertycloud.mu, PropertyMap.mu) are creating peer-to-peer listing markets that reduce the transaction intermediary role of agents. Commission-only revenue is at risk of long-term compression.</li>
+    <li><strong>Headwind:</strong> International franchise agencies (JLL, Pam Golding, Coldwell Banker) are investing in Mauritius and bringing global brands and deeper capital — direct competitive pressure on Iliad's transaction and rental management segments.</li>
+    <li><strong>Tailwind:</strong> Growing co-owner demand for digital syndic portals and transparent financial reporting plays to Iliad's MyIliad platform investment and its Citya systems infrastructure.</li>
+    <li><strong>Risk:</strong> Mauritius Revenue Authority objections against Iliad Properties Ltd (two objections filed April 2025) suggest potential tax compliance issues in one subsidiary. Reputational spillover to the operating entity is a manageable but real risk if MRA proceedings escalate publicly.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Gap — iliadproperties.mu Domain Failure</div>
+    The iliadproperties.mu domain is not resolving as of April 2026. Given that Iliad Properties Ltd is in winding-up proceedings, this is likely a deliberate or neglected closure of that subsidiary's web presence. However, it creates brand confusion: clients searching for "Iliad Properties Mauritius" will hit a dead site before finding the active iliad.mu or iliadproperties.com. The group should either redirect the .mu domain to the main site or formally communicate the brand consolidation to the market.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">The group has 6 registered entities, 5 directors at the holding level (including 2 non-residents), a JV partner (Currimjee), a franchise franchisor (Citya France), 20+ staff across 4 locations, and 2 entities in active winding-up. This is precisely the organisational complexity that EOS was built for — multiple moving parts that have outgrown the founders' ability to manage by relationship and informal communication alone. The 20–50 person range across the group is EOS's ideal sweet spot.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Sébastien Lamusse has a hospitality school background (Glion) and prior experience in international luxury resorts — environments with structured operating systems, service standards, and clear accountability. This suggests he has been exposed to and may value operational discipline. However, the Citya franchise framework may already provide a degree of systematic structure, making him less immediately "hungry" for a new system. The co-founder dynamic (Lamusse + Pilot) and minority shareholders add governance complexity that could either accelerate EOS adoption (shared accountability) or complicate it (multiple decision-makers).</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">Classic growth-complexity inflection. The business has expanded from one entity to six, from one location to four, from a founding pair to a 20+ person team with an additional commercial director (Emeric Lamusse) and property managers. Yet revenue at the operating entity is only MUR 3.35M — the team and structure have grown faster than revenue, which typically signals execution drag, unclear accountability, and scattered priorities. Two entities being wound down simultaneously suggests the founders have been running too many initiatives. These are textbook EOS pain point signals.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The Citya franchise provides a partial operating framework — brand standards, training, the MyIliad portal, syndic management processes. This is a mitigating factor that prevents a score of 3 or 4. However, the Citya system is a franchisor-imposed overlay, not an internally owned operational system. There is no evidence of a proprietary scorecard, accountability chart, or shared meeting cadence across the group entities. The intercompany loan structure (MUR 32.4M with no apparent formal documentation) suggests financial governance processes are informal at best.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The "100% Mauritian team" branding and emphasis on local market expertise suggests a culture built around client relationships and local knowledge — authentic, but potentially resistant to process discipline if not framed carefully. The hospitality backgrounds of both Sébastien Lamusse and J. Emeric Lamusse suggest a service culture orientation (client-first, relationship-driven). EOS would need to be presented as enhancing client delivery, not adding bureaucracy. The family element (two Lamussees, the patriarch) creates a loyalty culture that EOS typically thrives within, as long as the Accountability Chart respects family dynamics.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">With five directors at holding level (including two non-residents) and a JV partner, the decision-making architecture is complex relative to the business's size. The appointment of non-executive directors from Attitude Resorts and France in 2018 suggests a degree of governance maturity — these are not purely operational founders. However, the gap between the holding's formal governance (five directors, company secretary) and the operating entity's informality (MUR 32.4M intercompany loan with no apparent documented terms) suggests decision-making is more centralised on the founders than the corporate structure implies.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No public articulation of a 10-year vision, core values, or strategic focus. The Citya website provides brand messaging ("leading name on the European real estate market") but this is the franchisor's vision, not Iliad's own. The proliferation of entities (including one leisure JV and two dormant companies being wound up) suggests a history of opportunistic expansion without a disciplined strategic filter. The V/TO exercise would be genuinely valuable here — helping the founders articulate what they are actually building (a syndic-dominant property services group? a full-service real estate platform? a franchise roll-out?) and what they are not.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of a structured meeting cadence — no quarterly business review documentation, no public mention of leadership team meetings, no scorecard or KPI reporting system. The Citya franchise likely imposes some reporting requirements, but these are outward-facing (to the franchisor) rather than an internal execution rhythm. Four locations without a demonstrably consistent weekly leadership meeting structure would be a classic EOS Level 10 Meeting problem — the team is likely meeting reactively rather than proactively, which is exactly where agenda sprawl, lack of issue resolution, and team disconnection accumulate.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.4</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>Iliad Group is a genuine EOS candidate. The structural complexity (multi-entity, multi-location, franchise relationship, family + external shareholders) has clearly outgrown the informal management approach that served the founders in the early years. The two entities being wound down simultaneously — likely experiments that weren't killed early enough — are a signal that the founders lack a disciplined triage process. The primary gating factor is the Citya franchise overlay: Sébastien Lamusse may initially perceive the Citya system as "already providing structure," and Thierry's conversation must bridge from the Citya framework to EOS as the complementary execution operating system underneath it. The second gating factor is the co-founder and multi-shareholder dynamic — the V/TO and Accountability Chart conversations will surface alignment (or lack thereof) between Lamusse and Pilot on the future of the group. That conversation is worth having.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Iliad Group</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>With five holding directors, a JV partner, a commercial director, property managers, and a Citya franchise manager all in the ecosystem, <strong>nobody knows who owns what</strong>. The Accountability Chart would immediately surface the seat-function overlap between Sébastien (CEO/owner), Joseph Robert (founder/patriarch), Jérôme Pilot (CFO/co-founder), Emeric Lamusse (commercial), and the operational team. This is likely the single most valuable first EOS tool for this group.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision/Traction Organiser (V/TO)</h4>
+      <p>The proliferation of entities (some now being wound down) signals a lack of strategic filter. The V/TO forces Sébastien and Jérôme to answer: what are Iliad's Core Values, Core Focus, and 10-Year Target? <strong>Is the group building a syndic-dominant business, a full-service franchise network, or a hospitality-adjacent property platform?</strong> Until this is explicit, every new opportunity will distract the team rather than compound the strategy.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard with Measurables</h4>
+      <p>MUR 3.35M revenue across 20+ staff suggests the team is not measured on output. A weekly Scorecard with 5–10 measurables (transactions closed, new syndic units onboarded, rental management mandates active, client NPS, aged debtors, revenue pipeline) would immediately surface which team members and locations are performing and which are not. <strong>Without measurables, the founders cannot distinguish effort from results.</strong></p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>Four locations, 20+ staff, a JV partner, and a franchise relationship create constant communication noise without a structured weekly rhythm. The Level 10 Meeting cadence — same time, same agenda, Issues List, IDS — <strong>would replace ad hoc WhatsApp coordination with a predictable execution loop.</strong> The multi-location structure makes this especially valuable: remote branch managers need a consistent touchpoint where their issues are actually resolved rather than deferred.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (Quarterly Priorities)</h4>
+      <p>The evidence of the group running too many simultaneous initiatives (Leisure JV, Properties subsidiary, Grand Baie entity, all now being wound down) points to a classic lack of quarterly focus. <strong>The Rocks discipline — 3–7 priorities per quarter, clearly owned, clearly defined</strong> — would have likely killed these experiments earlier and redirected energy to the syndic growth engine, which is the group's real competitive moat.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List and IDS (Identify, Discuss, Solve)</h4>
+      <p>The MUR 32.4M intercompany loan with no evident formal documentation, the two MRA objections on Iliad Properties, and the dual winding-up proceedings all represent <strong>issues that were allowed to accumulate rather than being identified and resolved quarterly.</strong> The Issues List and IDS process is the mechanism that surfaces and kills these problems before they become structural liabilities. Installing this habit in the leadership team is arguably the most protective financial intervention available.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total — four financial/operational, four EOS-specific. Sequenced to address the structural financial risks first (which also create the most compelling entry narrative for EOS), then build the execution system on a clean foundation.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Formalise the MUR 32.4M Intercompany Loan — Convert or Document</h4>
+      <p>The undocumented MUR 32.4M intercompany loan from Iliad Group Ltd to Iliad Management Ltd is the group's largest single financial risk. Action: either (a) convert to equity via a bonus issue or capital contribution, eliminating the technical insolvency of the operating entity and simplifying the balance sheet, or (b) execute a formal intercompany loan agreement with stated interest rate, repayment schedule, and security. Owner: Jérôme Pilot (CFO) with company secretary Box Office Ltd. Success: Iliad Management's equity turns positive and the loan is governed by a signed document.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Resolve the MRA Objections on Iliad Properties Before Winding-Up Completes</h4>
+      <p>Two Mauritius Revenue Authority objections were lodged against Iliad Properties Ltd in April 2025, while winding-up proceedings began in December 2025. An unsatisfied MRA objection can block the winding-up process and create personal director liability exposure for Sébastien Lamusse. Action: engage a tax specialist to quantify and settle the MRA claims before the winding-up is finalised. Owner: Sébastien Lamusse / Jérôme Pilot. Timeline: within 60 days. Cost of inaction: winding-up proceedings stall, MRA can enforce against directors personally.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Set a Revenue Target of MUR 5M+ for FY June 2026 — Driven by Syndic Growth</h4>
+      <p>Current revenue of MUR 3.35M for 22+ staff is below the efficiency threshold. The syndic portfolio (3,000+ units, 35+ developments) is the most scalable and defensible revenue line. Action: set a concrete target to onboard 5–10 new developments in FY 2026, increasing syndic units under management from 3,000 to 3,500+. Each new 100-unit development adds approximately MUR 50K–80K in annual recurring revenue. Owner: Emeric Lamusse (Commercial Director). Measurement: new syndic mandates signed per month (target: 2+).</p>
+      <span class="urg urg-week">30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Consolidate Digital Brand — Redirect iliadproperties.mu to iliad.mu</h4>
+      <p>The iliadproperties.mu domain is currently dead (DNS failure). The iliad.mu site (Citya franchise) and iliadproperties.com are both live but inconsistently branded. Action: redirect iliadproperties.mu to iliad.mu to avoid brand confusion as the Properties subsidiary is wound down. Simultaneously, update the iliadproperties.com site to reflect the current Citya Iliad brand and service offering rather than maintaining a separate identity. Owner: Sébastien Lamusse. Cost: zero (DNS redirect) to minimal (web update). Timeline: 30 days.</p>
+      <span class="urg urg-week">30–60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Run a Focus Day with the Iliad Leadership Team (Sébastien, Jérôme, Emeric)</h4>
+      <p>The three-person leadership nucleus (CEO, CFO/co-founder, Commercial Director) is the right starting point. A Focus Day gives them a shared language, surfaces the key leadership team frustrations, and demonstrates EOS's practical utility without requiring a full commitment. Frame it around the specific pain of managing a Citya franchise, four locations, and a JV simultaneously without a shared execution rhythm. This group will respond to tools, not theory. Timeline: within 90 days of first contact.</p>
+      <span class="urg urg-medium">Within 90 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the Accountability Chart — Clarify Who Owns What Across the Group</h4>
+      <p>The single most urgent EOS tool. Draw the Accountability Chart for the operating group: who is the Integrator, who is the Visionary, who owns Sales/Marketing, Operations (syndic), Finance, and Client Experience? The Lamusse family dynamic (father, son, nephew/cousin Emeric) combined with Pilot's CFO role means there are almost certainly seat overlaps and unclear ownership. Surface this on Day 1 of the Focus Day. The Accountability Chart conversation will reveal whether the leadership team is aligned on who runs what — or whether this is the source of the execution drag.</p>
+      <span class="urg urg-medium">Within 90 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Define the First Rock: Syndic Portfolio to 3,500 Units by 30 September 2026</h4>
+      <p>Use the syndic growth target (Rec 03) as the group's first shared Rock. This gives the EOS rollout an immediate, concrete, measurable outcome — not an abstract vision exercise but a number that the whole team owns. Emeric Lamusse as Commercial Director should own this Rock. Measure it weekly on the Scorecard (new mandates proposed, in negotiation, signed). The discipline of writing it down, assigning an owner, and measuring it weekly will demonstrate EOS's practical value within one quarter.</p>
+      <span class="urg urg-medium">Within 90 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>V/TO Strategic Question — Are You Building a Citya Franchise or an Iliad Group?</h4>
+      <p>This is the conversation Thierry should open with Sébastien Lamusse: "In 10 years, what is Iliad?" If the answer is "the leading syndic manager in Mauritius," EOS builds the execution system around that. If the answer is "a diversified property services group," EOS builds around that. If the answer is "a Citya master franchise that expands to other islands," EOS builds around that. But without answering it explicitly, the group will keep launching entities (like Leisure, like Properties) that distract from the core. The V/TO is not a planning exercise — it is the filter that stops bad decisions before they cost three years and MUR 5M.</p>
+      <span class="urg urg-medium">Within 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Iliad Group is a structurally sophisticated, founder-controlled property services group that has quietly built one of Mauritius's more defensible real estate franchises — 3,000+ syndic units under management is a real moat. The financial picture is paradoxical: the holding is healthy and cash-rich (MUR 40M cash), while the operating entity is technically insolvent (MUR −19.6M equity). This paradox is not a crisis — it is a governance gap that the founders understand but have not yet resolved. The real opportunity is execution: the business has the clients, the brand, the locations, and the team — what it lacks is the shared operating system to scale from MUR 3.35M to MUR 6–8M in revenue without the founders remaining in every decision. EOS is the answer. Thierry's conversation should open on structure, not on systems — because Sébastien Lamusse thinks in corporate architecture, not operational methodology.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>First contact with Sébastien Lamusse via LinkedIn (linkedin.com/in/sebastienlamusse) or direct call to (230) 490 87 95 (Ebène office) — reference the syndic growth opportunity and group complexity as conversation openers. Week 1.</li>
+        <li><span class="sig-num">02</span>Exploratory meeting — surface the pain points of managing franchise + JV + 4 locations + family + external shareholders without a shared operating system. Ask: "Who owns what decisions in your group?" Week 2–3.</li>
+        <li><span class="sig-num">03</span>Brief Jérôme Pilot on the financial governance recommendations (intercompany loan formalisation, MRA objections) — this builds credibility with the CFO co-founder and creates a financial urgency narrative that supports EOS. Week 3–4.</li>
+        <li><span class="sig-num">04</span>Focus Day with the three-person leadership team (Sébastien, Jérôme, Emeric) — introduce EOS tools starting with Accountability Chart and V/TO strategic question. Day 90.</li>
+        <li><span class="sig-num">05</span>Propose full EOS implementation with Quarterly Day and annual planning cycle. Position as the execution system that enables the group to hit MUR 6M+ revenue while the founders step out of daily decisions. Month 4 onward.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Iliad Group — Comprehensive Company Analysis &amp; EOS Assessment · 11 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (11 April 2026) · iliad.mu · ZoomInfo · LinkedIn · Mauritius Yellow Pages · LMA proprietary research</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
