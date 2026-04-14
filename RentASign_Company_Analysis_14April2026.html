@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rent A Sign Ltd — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">OOH / Outdoor Advertising · Media</span>
+    <span class="badge badge-type">Private Company · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">14 April 2026</span>
+  </div>
+  <h1>Rent A Sign Ltd:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">RENT A SIGN LTD · Company intelligence · Financial ratios · EOS implementation assessment · Moka, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue (FY Jun 2020)</div>
+      <div class="stat-value steel">MUR 34.4M</div>
+      <div class="stat-delta">Last filed financial year · MUR currency</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit After Tax</div>
+      <div class="stat-value emerald">MUR 9.85M</div>
+      <div class="stat-delta">28.7% net margin · FY Jun 2020</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">7.0 / 10</div>
+      <div class="stat-delta">Strong fit · founder-led, growth-stage tension · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Financial Disclosure Gap</div>
+      <div class="stat-value red">5+ Years</div>
+      <div class="stat-delta">Last filed FY2020 · No filings since 2021</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Rent A Sign Ltd — Company Analysis &amp; EOS Assessment · 14 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 23-year-old founder-owned OOH media business with genuinely strong profitability and a clear digital pivot underway — but dark on financials since 2020 and operating with no formal management infrastructure whatsoever.</p>
+
+  <p class="body-text">Rent A Sign Ltd (File No. C44964, BRN C09044964) was incorporated on 14 February 2003 and operates as Mauritius's leading Out-of-Home (OOH) advertising company. Founded and wholly owned by Serret Régis Thierry (known publicly as Thierry Serret), the company connects brands to audiences at key transit, retail, and lifestyle touchpoints across the island through a network of static and digital billboard assets. It operates principally from Suite 110, Moka Business Centre, Mount Ory Road, Moka, with a secondary operational base at Socota Phoenicia Ltd, Solferino, for its printing/graphics activities.</p>
+
+  <p class="body-text">Ownership is 100% consolidated in a single individual: Serret Régis Thierry holds all 250 ordinary shares (stated capital MUR 25,000). There are no subsidiary investments, no group entities disclosed on the CBRIS record, and no institutional shareholders. This is a classic closely-held Mauritian founder business — every strategic, financial, and operational decision runs through one person. The secretary is Chaperon Didier Armand, appointed February 2018. Annual registration fees are current to 2026.</p>
+
+  <p class="body-text">The last filed financial statements (FY ended 30 June 2020) show revenue of MUR 34.4 million, a gross margin of 87.3%, and a net profit of MUR 9.85 million (28.7% net margin) — exceptionally strong for a Mauritian SME. Total assets stood at MUR 53.6 million, dominated by MUR 31.1 million in PP&amp;E (billboard infrastructure) and MUR 19.1 million in receivables. Equity is deep at MUR 39.4 million. The critical financial flag is the 5+ year gap in public filings: no accounts have been submitted since December 2020 (covering FY2020). The business has grown significantly since then — the 10-year Victoria Urban Terminal partnership (2022) and ongoing digital expansion suggest materially higher revenue — but there is no public evidence of the current financial position. EOS suitability scores 7.0/10: the growth tension is clear, the leadership openness signals are positive, but single-owner concentration is both a strength and a structural risk.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Founder Bottleneck in a Scaling Media Business</div>
+    Rent A Sign has built a genuinely defensible OOH business with the strongest gross margin profile in its category (87%+), a 10-year institutional partnership at Victoria Urban Terminal, and a clear move toward premium digital formats. The company self-describes as collaborative and coaching-led — but the CBRIS record reveals absolute single-owner control, no co-directors, and a financial reporting gap that suggests the business has outgrown its administrative infrastructure. The entry angle for EOS is not operational — it is the classic founder-as-bottleneck story: Thierry Serret is simultaneously the sole shareholder, the sole director, the CEO, the rainmaker, and the strategy function. EOS's Accountability Chart and Rocks framework speak directly to this tension.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Market-leading OOH position in Mauritius with 23 years of operational history.</strong> Institutional-grade partnerships (Victoria Urban Terminal 10-year contract, 2022). Pioneer in digital/interactive billboard formats. Dual revenue streams: static billboard rental plus digital content scheduling. Strong brand and first-mover advantage in premium locations. Printing/graphics capability at Socota Phoenicia adds vertical integration.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Five-year gap in public financial filings is the most visible governance risk.</strong> Receivables-heavy balance sheet (MUR 19.1M, representing 85% of current assets in FY2020) suggests slow collection from advertising clients — a structural OOH industry challenge. Long-term borrowings of MUR 7.2M against strong equity are manageable but warrant monitoring. Cash position of only MUR 3.4M in FY2020 was lean relative to the receivables exposure.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Classic founder-led scaling business with all the hallmarks of EOS readiness.</strong> 10–19 employees at a growth inflection point. Publicly described culture emphasises coaching, transparency, and shared decision-making — all EOS-compatible language. The Victoria Urban Terminal partnership and active hiring (Account Executive, Accounts Officer) signal organic expansion. The absence of a co-director or senior leadership team is the single clearest structural pain point EOS addresses.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A tightly-run, founder-owned OOH media specialist that has quietly built the most credible outdoor advertising network in Mauritius across 23 years — now at a structural inflection point as digital formats and institutional contracts demand greater operational depth.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Rent A Sign Ltd was incorporated on 14 February 2003 under the Companies Act of Mauritius as a private domestic company. File Number: C44964. Business Registration Number: C09044964. Registered office: Mount Ory Road, Office 110, Moka Business Centre, Moka, Mauritius — effective from 3 August 2016 (indicating a prior registered address before that date). Share capital: 250 ordinary shares at a stated capital of MUR 25,000 (par value not assigned). The company's annual registration fee is paid and current to 2026. The last annual return was filed on 2 February 2021 (covering the year ended 31 December 2020). The last financial statements were filed on 31 December 2020 (FY ended 30 June 2020). No annual returns or financial statements have been filed since — a 5-year gap that is notable but not legally terminal at this stage.</p>
+
+  <p class="body-text">The company operates under three registered business activities: (1) Computer-produced graphics, animation and special effects — principal place of business at 110 Moka Business Centre; (2) Advertising activities n.e.c. (Firm) — principal place of business at 110 Moka Business Centre; and (3) Service activities related to printing, employing 10 persons or more — principal place of business at Socota Phoenicia Ltd, Sayed Hossen Rd, Solferino. The Socota Phoenicia address for printing is significant: it suggests Rent A Sign operates or has a production/printing arrangement at this third-party industrial facility in Solferino, giving the company a vertically integrated production capability without owning industrial real estate.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid" style="grid-template-columns: 1fr 1fr;">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Rent A Sign Ltd</h4>
+        <div class="ec-sub">Operating Entity · C44964</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shareholder</span><span class="mv">Serret Régis Thierry</span></div>
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv ok">250 / 250 (100%)</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary Shares</span></div>
+        <div class="ec-metric"><span class="mk">Stated capital</span><span class="mv">MUR 25,000</span></div>
+        <div class="ec-metric"><span class="mk">Subsidiaries</span><span class="mv">None disclosed</span></div>
+        <div class="ec-metric"><span class="mk">Group links</span><span class="mv">None on record</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Serret Régis Thierry</h4>
+        <div class="ec-sub">Founder · Sole Owner · CEO · Director</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Director (since 14/02/2003)</span></div>
+        <div class="ec-metric"><span class="mk">Public title</span><span class="mv">CEO</span></div>
+        <div class="ec-metric"><span class="mk">LinkedIn</span><span class="mv">~3,000 followers</span></div>
+        <div class="ec-metric"><span class="mk">Industry role</span><span class="mv">Outdoor Advertising Assn.</span></div>
+        <div class="ec-metric"><span class="mk">Other directorships</span><span class="mv">Not disclosed</span></div>
+        <div class="ec-metric"><span class="mk">Contact</span><span class="mv">t***@rentasign.mu</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Note — Pure Founder Concentration</div>
+    100% ownership by a single individual with no co-directors and no disclosed group structure is extremely common in Mauritius's private SME sector but creates acute succession and delegation risk at scale. Pierre-Yves Serret (Director and Principal Architect) appears on LinkedIn as a separate professional — possibly a family connection to Thierry Serret — but holds no disclosed role in Rent A Sign Ltd.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid two-col">
+    <div class="profile-card">
+      <h4>Serret Régis Thierry — Founder &amp; CEO / Sole Director</h4>
+      <p>Appointed director on the founding date, 14 February 2003. Holds 100% of shares. Public-facing role as CEO and company spokesperson. Active in industry: Secretary of the Outdoor Advertising Association of Mauritius. LinkedIn profile shows ~3,000+ followers and 500+ connections — above-average for a Mauritian SME owner. Known in media as a digital OOH advocate. Email domain: t***@rentasign.mu (ZoomInfo-confirmed prefix pattern). Company phone: +230 406 9640. No co-director has ever been appointed on the CBRIS record.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Chaperon Didier Armand — Company Secretary</h4>
+      <p>Appointed 14 February 2018. Service address: Mount Ory Road, Moka Business Centre, Moka, Mauritius. Role is compliance/secretarial — not executive. No shares held. The five-year gap in annual return filings since his tenure is notable; it is unclear whether this reflects a deliberate decision or administrative oversight on the secretary's part.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Rent A Sign operates across three integrated capability clusters. First, <strong>static OOH media</strong>: the core business of billboard ownership, site leasing, and advertising space rental across high-traffic locations in Mauritius — roadsides, commercial districts, and transit corridors. Second, <strong>digital and interactive OOH</strong>: the company has been actively transitioning its inventory toward digital billboard formats, which allow time-based content scheduling, audience measurement, and interactive engagement. The Victoria Urban Terminal partnership (signed 2022, 10-year term) is the most visible manifestation of this pivot — deploying digital advertising networks within Port Louis's major public transport hub. Third, <strong>print and graphics production</strong>: computer-produced graphics, animation, large-format printing, and related visual production services, operated with 10+ staff at the Socota Phoenicia facility in Solferino. This vertical integration reduces reliance on external print vendors and supports faster campaign turnaround for clients.</p>
+  <p class="body-text">The company brands its platform as "OOHLAA" (oohlaa.net — currently under maintenance), which appears to be a digital booking or campaign management interface, signalling an ambition to move beyond traditional agency-mediated sales toward self-serve or programmatic OOH — a global industry trend Rent A Sign appears to be pursuing locally.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Rent A Sign's primary commercial and administrative office is at Moka Business Centre, which positions it centrally on the island with good access to the main highway corridor. Operational presence extends to Solferino (production) and Port Louis (Victoria Urban Terminal digital network). The company describes itself as connecting brands "where they live, shop, work, travel and play" — suggesting island-wide billboard coverage rather than a concentration in a single area. No export or international operations have been disclosed or identified.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Gap</div>
+    Both the primary website (billboard-mauritius.com) and the OOHLAA platform (oohlaa.net) are currently in maintenance/coming-soon status as of April 2026. For a company whose competitive differentiation rests partly on digital sophistication, a prolonged website absence is a credibility and lead-generation risk. This gap should be a conversation opener with Thierry Serret.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS financial summary, FY ended 30 June 2020, Mauritius Rupee. This is the sole publicly filed financial period available. No comparative prior-year data is published by CBRIS. All figures as filed — unit is 1 MUR.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Rent A Sign Ltd last filed financial statements for the year ended 30 June 2020 (approved 31 December 2020). No filings have been made for FY2021, FY2022, FY2023, FY2024, or FY2025. This is a material disclosure gap — the company's actual current financial position is unknown. The FY2020 data predates the Victoria Urban Terminal partnership (2022) and likely understates the current revenue run-rate. All ratios, commentary, and analysis below are based exclusively on FY2020 figures, which should be treated as a directional baseline rather than a current picture. No comparative prior-year data is available from CBRIS.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY ended 30 June 2020, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>34,364,104</td><td>100.0%</td><td>Approximately MUR 34.4M — a meaningful-sized SME in Mauritian context. Revenue likely higher today given digital expansion.</td></tr>
+        <tr><td>Cost of Sales</td><td>4,356,585</td><td>12.7%</td><td>Extremely low CoS confirms asset-heavy, media-rights model. Once billboard sites are secured and structures erected, incremental revenue carries minimal direct cost.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>30,007,519</td><td>87.3%</td><td>Exceptional gross margin. Benchmark for OOH/media companies: 60–80%. Rent A Sign is above the top of that range, indicating strong asset utilisation and pricing power.</td></tr>
+        <tr><td>Other Income</td><td>78,230</td><td>0.2%</td><td>Immaterial. Likely interest or ancillary fees.</td></tr>
+        <tr><td>Distribution Costs</td><td>1,185,589</td><td>3.5%</td><td>Low. Consistent with a media company — minimal physical distribution.</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>16,263,435</td><td>47.3%</td><td>This is the dominant cost line. At 47% of revenue, overhead is high relative to peers. In a 10–19 person company this suggests significant fixed staff cost plus office, IT, and management overhead. Watch this as the company scales.</td></tr>
+        <tr><td>Other Expenses</td><td>86,782</td><td>0.3%</td><td>Negligible.</td></tr>
+        <tr><td>Finance Costs</td><td>634,894</td><td>1.8%</td><td>Modest interest expense consistent with the MUR 7.2M long-term borrowings.</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>11,915,049</td><td>34.7%</td><td>Strong pre-tax margin. The business is genuinely profitable.</td></tr>
+        <tr><td>Tax Expense</td><td>2,064,081</td><td>6.0%</td><td>Effective tax rate of approximately 17.3% — in line with Mauritius corporate tax rate of 15% with some adjustments.</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>9,850,968</strong></td><td><strong>28.7%</strong></td><td>Exceptional net margin for an SME. Confirms genuine commercial strength.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2020, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr class="heat-ok"><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>31,079,554</td><td>Dominates the asset base (58% of total assets). Represents the billboard structures, digital screens, and production equipment — the company's core economic moat. Zero intangible assets recorded.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible / Investments / Other</td><td>0</td><td>No recorded goodwill, IP, or investment in subsidiaries. Clean structure.</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Trade and Other Receivables</td><td>19,142,918</td><td>Very high at 85% of current assets and 56% of revenue. Suggests the company carries significant debtor balances — a persistent OOH industry challenge in Mauritius where agency and corporate clients pay slowly.</td></tr>
+        <tr><td>Current Assets</td><td>Cash and Cash Equivalents</td><td>3,372,414</td><td>Lean cash position. Only 9.8% of revenue in cash. Relative to the receivables balance this is tight.</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>0</td><td>Zero inventory — expected for a media/services model.</td></tr>
+        <tr><td>Total Assets</td><td></td><td><strong>53,594,886</strong></td><td></td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital + Retained Earnings</td><td>39,437,580</td><td>Very strong equity base. Retained earnings of MUR 39.4M against stated capital of MUR 25,000 reflects 23 years of accumulated profitability. Equity ratio = 73.6% of total assets.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Borrowings</td><td>7,215,504</td><td>Moderate long-term debt. Likely secured on PP&amp;E. Debt-to-equity of 18.3% is conservative.</td></tr>
+        <tr><td>Current Liabilities</td><td>Trade and Other Payables</td><td>6,013,491</td><td>Payables are manageable and well below the receivables balance. Company appears to pay suppliers faster than it collects from clients.</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Current Tax Payable</td><td>928,310</td><td>Tax payable sits on balance sheet. Normal timing difference but worth noting.</td></tr>
+        <tr><td>Total Liabilities</td><td></td><td>14,157,305</td><td>Total liabilities represent 26.4% of total assets — a sound leverage position.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The CBRIS charge register for Rent A Sign Ltd shows <strong>no registered charges</strong> as of the date of issue (14 April 2026). This is a positive signal: the long-term borrowings of MUR 7.2M are either unsecured, or secured under arrangements not registered at the Registrar of Companies (which can occur for certain facility types in Mauritius). The absence of charges means there are no publicly visible encumbrances on the company's significant PP&amp;E base (MUR 31.1M in billboard infrastructure) — a clean position that supports future financing flexibility.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">All ratios derived from the FY ended 30 June 2020 CBRIS filing. Benchmarks sourced from Mauritius SME and regional OOH/media sector norms. Colour key: Green = healthy, Amber = watch, Red = critical concern. Single-year data only — trend analysis is not possible given filing gap.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">3.24×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.5× – 2.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Elevated</span></span></div>
+      <span class="ratio-interpret">Current assets (MUR 22.5M) are 3.24× current liabilities (MUR 6.9M). While above benchmark, this "strong" ratio is almost entirely driven by the large receivables balance (MUR 19.1M). If receivables prove slow to collect, the liquidity position is significantly weaker than it appears. This is a paper-strong ratio.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio (Acid Test)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">3.24×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Receivables-driven</span></span></div>
+      <span class="ratio-interpret">Identical to current ratio since inventories are zero. The quick ratio flatters the cash position — the company's true liquid buffer is only MUR 3.4M in cash against MUR 6.9M in current liabilities. Cash-only coverage is 0.49× — below 1.0× and the real liquidity risk. If a major client delays payment significantly, cash flow stress is real.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">87.3%</span></div>
+      <div class="ratio-row"><span class="ratio-label">OOH/Media benchmark</span><span class="ratio-val">60% – 80%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Exceptional</span></span></div>
+      <span class="ratio-interpret">Best-in-class gross margin reflects the economics of a billboard network: once infrastructure is installed, incremental revenue costs almost nothing to deliver. This is the fundamental commercial moat of the business and supports all investment and EOS conversations.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">28.7%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Mauritius SME benchmark</span><span class="ratio-val">5% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Excellent</span></span></div>
+      <span class="ratio-interpret">At 28.7% net margin, Rent A Sign delivers nearly double the upper end of the Mauritius SME benchmark. This level of profitability confirms strong pricing power, efficient cost management, and a structurally advantaged business model. It also means there is genuine cash to fund EOS investment.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">25.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">15% – 25%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Strong</span></span></div>
+      <span class="ratio-interpret">Net profit of MUR 9.85M on equity of MUR 39.4M = 25.0% ROE. At the top of the benchmark range. The founder is generating excellent returns on the accumulated equity base. This is a business that has been compounding value successfully for two decades.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">18.4%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Above Benchmark</span></span></div>
+      <span class="ratio-interpret">Net profit of MUR 9.85M on total assets of MUR 53.6M = 18.4% ROA. Exceeds benchmark, indicating the billboard asset base is deployed productively. The PP&amp;E of MUR 31.1M generates strong returns — the company is not sitting on idle infrastructure.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.36×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (conservative)</span><span class="ratio-val">0× – 0.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Conservative</span></span></div>
+      <span class="ratio-interpret">Total liabilities of MUR 14.2M against equity of MUR 39.4M = 0.36× D/E. The company is conservatively geared and has significant borrowing capacity if it needs to fund digital infrastructure expansion. No registered charges means this capacity is essentially untapped at the official level.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">18.8×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (safe)</span><span class="ratio-val">&gt; 3×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Very Strong</span></span></div>
+      <span class="ratio-interpret">EBIT of MUR 11.9M against finance costs of MUR 634K = 18.8× coverage. Debt service is trivial relative to operating profit. The company could absorb significant additional financing without straining its ability to service interest.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Days Sales Outstanding (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">203 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Receivables of MUR 19.1M against daily revenue of ~MUR 94,148 = 203 days DSO. This is the single most alarming number in the entire financial profile. At 203 days, clients are taking nearly 7 months to pay their bills on average. This severely strains working capital and is the root cause of the lean cash position. In the OOH industry, long payment cycles from advertising agencies and large corporates are endemic — but 203 days is extreme even by that standard.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Days Payable Outstanding (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">502 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Context</span><span class="ratio-val">vs CoS basis</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Extended</span></span></div>
+      <span class="ratio-interpret">Payables of MUR 6.0M against daily CoS of ~MUR 11,936 = 502 days. This calculation against CoS alone is distorted since most costs are OpEx (administration) rather than direct supplies — so the DPO figure is not meaningful in isolation. The company is not over-leveraging suppliers in absolute terms: payables of MUR 6.0M are well covered by the equity base. The receivables issue remains the priority.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 1 Number That Matters Most</div>
+    <strong>203-day DSO — approximately MUR 19.1 million locked in unpaid invoices.</strong> If Rent A Sign could reduce its collection cycle from 203 days to 90 days, it would release approximately MUR 11.6 million in cash — more than 3× its current cash balance. At the company's net margin of 28.7%, this is not a revenue problem; it is a cash conversion problem. A structured accounts receivable process, client credit terms policy, and escalation framework are the single highest-ROI operational interventions available to this business — and all of them are within the EOS toolset (Scorecard, Accountability Chart, Rocks).
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Rent A Sign operates in Mauritius's small but growing Out-of-Home advertising market, competing across three segments — static billboard rental, digital OOH, and print/graphics production — in a market with three identifiable national players and significant global digital tailwinds.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Static OOH / Billboard Rental</h4>
+        <div class="ec-sub">Core Revenue Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Alliance Media, FlowerAd</span></div>
+        <div class="ec-metric"><span class="mk">Rent A Sign position</span><span class="mv">Market leader (self-claimed)</span></div>
+        <div class="ec-metric"><span class="mk">Alliance Media</span><span class="mv">Largest by revenue (MRA)</span></div>
+        <div class="ec-metric"><span class="mk">FlowerAd</span><span class="mv">225+ displays, est. 2008</span></div>
+        <div class="ec-metric"><span class="mk">Competitive dynamic</span><span class="mv warn">Site-location battle</span></div>
+        <p style="font-size:12px; color:var(--text-light); margin-top:8px; line-height:1.5;">Competition is primarily for premium high-traffic billboard sites. Once a site lease is secured, the incumbent is effectively protected. Rent A Sign's 23-year operating history means it holds mature site relationships that newer entrants cannot easily replicate.</p>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Digital OOH (DOOH)</h4>
+        <div class="ec-sub">Growth Segment · Strategic Priority</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Alliance Media, JCDecaux</span></div>
+        <div class="ec-metric"><span class="mk">Rent A Sign position</span><span class="mv">Pioneer / differentiated</span></div>
+        <div class="ec-metric"><span class="mk">JCDecaux</span><span class="mv">Waterfront digital billboard</span></div>
+        <div class="ec-metric"><span class="mk">Alliance Media</span><span class="mv">Largest digital network</span></div>
+        <div class="ec-metric"><span class="mk">Rent A Sign edge</span><span class="mv ok">VUT 10-year contract</span></div>
+        <p style="font-size:12px; color:var(--text-light); margin-top:8px; line-height:1.5;">The Victoria Urban Terminal 10-year contract (2022) gives Rent A Sign exclusive digital OOH rights in Port Louis's busiest transit hub. This is a structurally defensible position. The OOHLAA platform suggests programmatic ambitions. Alliance Media has more screens but Rent A Sign's VUT installation is in a premium captive audience environment.</p>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Print, Graphics &amp; Production</h4>
+        <div class="ec-sub">Supporting Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Location</span><span class="mv">Socota Phoenicia, Solferino</span></div>
+        <div class="ec-metric"><span class="mk">Staff</span><span class="mv">10+ at this site</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Agigraphix, Ink &amp; Sign, iTint</span></div>
+        <div class="ec-metric"><span class="mk">Strategic role</span><span class="mv">Vertical integration</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Digital shift reduces demand</span></div>
+        <p style="font-size:12px; color:var(--text-light); margin-top:8px; line-height:1.5;">The print/graphics unit supports Rent A Sign's own billboard production and likely serves third-party clients. As digital formats grow and static vinyl printing declines, this unit faces structural headwinds. It is a support capability today but may require strategic review over the next 3–5 years.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Incumbent site network built over 23 years.</strong> In OOH advertising, the primary competitive asset is not technology or talent — it is the physical location portfolio. Rent A Sign's billboard sites represent relationships, lease agreements, and planning permissions accumulated over two decades. This is a genuine barrier to entry that cannot be replicated quickly or cheaply by new entrants.</p>
+  <p class="body-text"><strong>2. The Victoria Urban Terminal contract.</strong> A 10-year exclusive partnership signed in 2022 with a major institutional landlord (Victoria Station Ltd) for digital OOH rights across Port Louis's primary transport interchange. This contract provides a guaranteed revenue floor, an institutional reference for future pitches, and a showcase installation for digital capability. Exclusive long-term contracts of this nature are rare and extremely defensible.</p>
+  <p class="body-text"><strong>3. Founder credibility and industry positioning.</strong> Thierry Serret's role as Secretary of the Outdoor Advertising Association of Mauritius gives Rent A Sign disproportionate voice in industry regulation, site-access advocacy, and standard-setting. This soft power is a real commercial advantage in a small-island market where relationships and reputation are the primary currency.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Global DOOH acceleration:</strong> The global digital OOH market reached USD 21.5 billion in 2024 and is forecast to grow at 10.3% CAGR to 2033. Rent A Sign's digital pivot is directionally aligned with the strongest growth vector in the global OOH industry.</li>
+    <li><strong>Programmatic OOH emergence:</strong> The OOHLAA platform signals an ambition to participate in programmatic/self-serve OOH buying — a trend that is transforming OOH economics globally by reducing reliance on agencies and enabling data-driven targeting.</li>
+    <li><strong>Mauritius tourism recovery and brand spend:</strong> Tourism-dependent advertising spend in Mauritius rebounded strongly post-COVID. OOH is a primary channel for hotel, airline, F&amp;B, and financial services brands — Rent A Sign's client base is likely benefiting from this structural tailwind.</li>
+    <li><strong>Metro Express advertising inventory:</strong> The Mauritius Metro Express rail network has created new OOH inventory in station and transit environments. Rent A Sign's experience at Victoria Urban Terminal positions it as a logical operator for transit-adjacent advertising contracts.</li>
+    <li><strong>Competitive pressure from JCDecaux and Alliance Media:</strong> International OOH operators (JCDecaux has a presence at the Waterfront) bring capital, technology, and programmatic infrastructure that may outpace locally-owned operators unless Rent A Sign continues to invest aggressively in digital assets.</li>
+    <li><strong>Digital shift reduces static print economics:</strong> The structural decline of vinyl/static format advertising over a 5–10 year horizon will compress margins in the print production unit and require continued capex investment in digital screen infrastructure to maintain overall revenue quality.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Gap — Strategic Risk</div>
+    Both billboard-mauritius.com and oohlaa.net are currently offline or in maintenance. For a company selling digital advertising sophistication to clients, an inactive online presence is a credibility contradiction. This gap may reflect a deliberate rebranding in progress — but if prolonged, it risks ceding digital discovery and inbound lead generation to Alliance Media and JCDecaux who maintain active web presences.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data, financial analysis, and web research. Rent A Sign Ltd scores 7.0/10 overall.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">10–19 employees confirmed (CareerHub.mu). Three distinct operational clusters (billboard media, digital OOH, print production) across two physical sites (Moka + Solferino). Active institutional partnerships requiring account management and delivery coordination. This is the sweet spot for EOS: complex enough to have coordination problems, small enough for the tools to land quickly. The company is at the exact size where informal management by founder instinct stops working reliably.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Thierry Serret is publicly active on LinkedIn (3,000+ followers), gives press interviews about digital strategy, and the company's own job postings describe a culture of "coaching and training," "transparency," and "shared decision-making" — language that indicates a leader who at least aspires to delegation and people development. His role as Secretary of the Outdoor Advertising Association signals intellectual engagement with the industry beyond just running his own business. These are positive EOS readiness indicators. The uncertainty (and why this is not a 9/10) is the complete absence of any co-director or senior leadership team structure — which may indicate openness not yet converted to structural delegation.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">All the hallmarks of a growth-stage scaling pain are visible from public data: a 203-day DSO indicating billing/collections process breakdown; a 5-year gap in compliance filings suggesting administrative overwhelm; two active job openings indicating organic headcount growth; a digital platform (OOHLAA) in development; a major new institutional contract (VUT 2022) requiring ongoing delivery; websites offline suggesting operational overload. The business has grown beyond what founder-managed informality can sustain. These are exactly the symptoms EOS is designed to cure.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The 203-day DSO is direct evidence that accounts receivable processes are weak or inconsistently followed. The 5-year filing gap suggests the finance and compliance function is not systematically managed. The OOHLAA platform (currently offline) indicates a tech initiative that has stalled. On the positive side, the company has survived and grown for 23 years, which means basic operational processes work — they are just informal and not documented. This is a classic EOS "accidental processes" situation. Score 5/10: functional but undocumented, inconsistent, and founder-dependent.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">The company's own hiring language is notably EOS-compatible: "open, kind, inclusive culture that values teamwork and collaboration," "smart, driven team members," "coaching and training to empower people," "collaborative, results-driven approach with transparency and shared decision-making." This is not boilerplate — it reads as a genuine cultural articulation from a founder who thinks about people and culture. A culture that already values accountability and transparency is far easier to run EOS in than one that needs a culture transformation first.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Single director, single shareholder, no evidence of a leadership team or co-founder — all strategic and operational decisions almost certainly route through Thierry Serret. The 10-year VUT partnership, the OOHLAA platform, the digital pivot — these are clearly founder-driven strategic calls. This is the core EOS tension: the founder is both the company's greatest asset and its greatest bottleneck. Score 6/10 acknowledges the aspiration for shared decision-making (per hiring language) but recognises the structural reality of concentrated authority.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Thierry Serret has a clear articulated vision for where Rent A Sign is going: digital formats, audience measurement, programmatic OOH, premium transit environments. The VUT deal, the OOHLAA platform, the digital billboard investment — these are not random decisions. They reflect a coherent strategic vision for transforming Rent A Sign from a static billboard company into a digital OOH media network. The question (and why this is not higher) is whether this vision has been converted into a written, shared V/TO that the 10–19 person team can execute against — or whether it lives entirely in the founder's head. The latter is overwhelmingly more likely.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No public evidence of structured meeting cadence. In a founder-led business of this size and age, meetings are almost certainly ad-hoc and founder-convened rather than following a structured weekly/quarterly rhythm. The filing gap and DSO issue both suggest issues that a weekly Level 10 Meeting discipline would catch and resolve. Score 5/10 is neutral — not evidence of dysfunction, but no evidence of structure either.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">7.0</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>Rent A Sign is a strong EOS candidate on all the dimensions that matter most: right size, clear growth pain, positive cultural orientation, and a founder who is intellectually engaged and publicly advocates for structure. The gating factor is Thierry Serret himself — his willingness to delegate, to build a leadership team, and to accept the discipline of EOS's cadence. The financial data (exceptional profitability, clean balance sheet) means there is absolutely no affordability objection. The entry angle is the 203-day DSO and the scaling pain story — not a turnaround pitch but a growth optimisation and founder-freedom conversation.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Rent A Sign</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>Rent A Sign's most urgent need. With a single director managing media sales, digital operations, institutional partnerships, print production, finance, and strategy simultaneously, the absence of a defined leadership structure is the root cause of most operational friction. The Accountability Chart forces the company to define the seats it needs — and who (today or in future) sits in them.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>The 203-day DSO would not persist in a business that tracked weekly receivables ageing as a Scorecard metric. A simple set of 5–10 weekly numbers — DSO, new contracts signed, digital inventory utilisation, cash balance, payroll cost ratio — would surface the collections crisis and force accountability without requiring a management consultant.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>Three projects are visibly stalled or running long: (1) OOHLAA platform launch, (2) website restoration, (3) financial filings catch-up. A Rocks framework would force each of these into a defined 90-day commitment with a named owner and measurable completion criteria — instead of remaining indefinitely "in progress."</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO (Vision/Traction Organiser)</h4>
+      <p>Thierry Serret has a clear personal vision for the digital OOH future. The V/TO converts that from a founder's private mental model into a written, shared document that the whole team can align to. In a company transitioning from static to digital infrastructure, having a written 3-year picture and 1-year plan is not optional — it is the difference between strategic growth and reactive firefighting.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>The billing/collections problem, the website gap, and the compliance filing backlog are all "issues" in EOS terms — persistent problems that require identification, discussion, and solution. IDS (Identify, Discuss, Solve) gives the leadership team a structured method to work through these systematically rather than leaving them to the founder to resolve alone.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>A regular weekly rhythm is the single most practical tool for a founder who currently has no formal management cadence. The Level 10 meeting discipline would create a structured forum for reviewing Scorecard metrics (including DSO), updating Rocks progress, and surfacing Issues — replacing ad-hoc founder firefighting with a predictable, efficient management rhythm.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations total — four financial/operational and four EOS-specific. Financial recommendations are sequenced before EOS because two of them (receivables and filings) are prerequisites for healthy EOS implementation. All recommendations are specific, named, and measurable.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Implement a Structured Accounts Receivable Process to Reduce DSO from 203 to Under 75 Days</h4>
+      <p>The 203-day DSO locks up approximately MUR 19.1 million in unpaid invoices. Rent A Sign should immediately: (1) appoint a named Accounts Officer as the single owner of collections (the open Accounts Officer role is directly relevant here); (2) segment all outstanding receivables into 0–30, 31–60, 61–90, and 90+ day buckets; (3) establish a weekly collections call with the top 10 debtors; (4) introduce formal 30-day payment terms in all new contracts; (5) implement a no-campaign-renewal rule for clients more than 60 days overdue. Target: reduce DSO to under 75 days within 12 months, releasing approximately MUR 11.6 million in cash.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>File Overdue Financial Statements (FY2021–FY2025) to Restore Compliance Standing</h4>
+      <p>Rent A Sign has not filed annual returns or financial statements since February 2021 (covering FY2020). This five-year gap creates legal exposure under the Companies Act of Mauritius and prevents accurate external assessment of the business's current financial health. Thierry Serret should engage an auditor immediately to prepare and file all outstanding statements. This is also a prerequisite for any future financing, partnership, or exit transaction — no serious counterparty will proceed without a current compliance record. Target: all outstanding filings submitted to CBRIS within 90 days.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Restore the Digital Presence — billboard-mauritius.com and oohlaa.net</h4>
+      <p>Both websites are currently in maintenance/offline status. For a company whose competitive differentiation is built on digital media sophistication, this is a credibility contradiction. Rent A Sign should assign a specific Rock to the website restoration — with a named owner (likely the Account Executive being recruited), a specific go-live date (within 60 days), and defined success criteria (functional site, contact form, portfolio of locations, VUT case study). The OOHLAA platform is a larger initiative and can follow on a separate 90-day Rock.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Define a Digital Capex Investment Plan for the Next 3 Years</h4>
+      <p>Rent A Sign is in the early stages of a transition from static to digital OOH. The VUT installation is a proof of concept. To stay ahead of Alliance Media and JCDecaux, the company needs a written 3-year digital investment roadmap: how many new digital screens per year, target locations, estimated capex per screen, expected revenue uplift per screen, and payback period. Given the clean balance sheet (D/E of 0.36×) and strong cash generation, the company has the balance sheet capacity to fund this investment — but it needs to be planned deliberately rather than reactively. The V/TO and Rocks framework is the ideal vehicle for this.</p>
+      <span class="urg urg-week">Within 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Begin with a Focus Day — Map the Current State Honestly</h4>
+      <p>Thierry Serret needs to experience EOS as a tool for his specific pain before he will commit to implementation. A Focus Day that surfaces the Accountability Chart gap (who is actually responsible for receivables? for compliance? for digital projects?), articulates the personal cost of being the single decision-maker across all functions, and connects the 203-day DSO directly to a structured ownership model will be more persuasive than any EOS pitch deck. The entry question: "What would you do with your time if the collections, compliance, and digital delivery functions each had a named owner who wasn't you?"</p>
+      <span class="urg urg-now">First Step</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the Accountability Chart — Define the Leadership Team Hypothesis</h4>
+      <p>Rent A Sign needs a minimum three-seat leadership team above the operational level: (1) a Visionary/Integrator dynamic where Thierry Serret occupies the Visionary seat and a strong Integrator is either promoted internally or hired; (2) a Sales/Client seat owning revenue and key account relationships; (3) an Operations seat owning delivery, production (Solferino), and the digital platform. The open Account Executive role may be a candidate for the Sales seat. The Integrator role is the most critical hire the company will make in the next 24 months.</p>
+      <span class="urg urg-week">Within 30–60 Days of Focus Day</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Set the First Company Rock — Receivables Reduction as Q1 Priority</h4>
+      <p>The DSO issue is the perfect first Rock because it is specific, measurable, high-stakes, and directly connected to a named seat (Accounts Officer). Rock: "Reduce DSO from 203 days to under 100 days by [90-day date], with weekly receivables ageing report reviewed in every Level 10 Meeting." This Rock demonstrates the EOS system in action immediately — it creates accountability, a measurable outcome, and a visible win in the first quarter, reinforcing the team's belief in the methodology.</p>
+      <span class="urg urg-week">Q1 Rock — Start of EOS Journey</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Complete the V/TO — Write Down the 10-Year Target and 3-Year Picture</h4>
+      <p>The strategic question for Thierry Serret's V/TO: "What does Rent A Sign look like in 10 years — and is it still a billboard company, or is it a digital media network?" The answer shapes everything: capex decisions, hiring, the OOHLAA platform's role, the print production unit's future. The V/TO exercise will surface whether the BHAG is to be the dominant OOH operator in Mauritius, to build a regional platform, to attract a strategic acquirer, or to create a lifestyle business with maximum passive income. Each answer leads to a completely different 3-year plan — and Thierry Serret has never been forced to write it down publicly.</p>
+      <span class="urg urg-medium">Within 90 Days of EOS Launch</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Rent A Sign is a genuinely excellent business — 23 years old, market-leading position, exceptional profitability (28.7% net margin), clean balance sheet, and a founder with strategic vision and cultural intentionality. The operational problems (203-day DSO, compliance gap, offline websites) are not signs of a struggling business — they are signs of a successful business that has outgrown its management infrastructure. This is the most fundable, most motivated, and most EOS-ready archetype: a profitable founder-led company where the ceiling is clearly the founder's own bandwidth. The conversation with Thierry Serret is not about survival — it is about what his company could become if he stopped being its only decision-maker.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Initial meeting with Thierry Serret — lead with the DSO insight and the founder-bottleneck framing (Week 1–2)</li>
+        <li><span class="sig-num">02</span>Focus Day — map current Accountability Chart, identify the three critical open seats (Month 1)</li>
+        <li><span class="sig-num">03</span>Set Q1 Rocks including DSO reduction; launch Level 10 Meeting cadence (Month 2)</li>
+        <li><span class="sig-num">04</span>Complete V/TO — 10-year target, 3-year picture, 1-year plan including digital capex roadmap (Month 3)</li>
+        <li><span class="sig-num">05</span>Full EOS implementation with leadership team in place; quarterly Accountability Chart review (Month 4 onward)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Rent A Sign Ltd — Comprehensive Company Analysis &amp; EOS Assessment · 14 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (14 April 2026) · CareerHub.mu · LinkedIn · ZoomInfo · ION News · Top FM · Défi Économie · searchinafrica.com · oohlaa.net · billboard-mauritius.com</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
