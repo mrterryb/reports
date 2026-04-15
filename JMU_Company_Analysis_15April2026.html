@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JMU Ltd — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Insurance Agency · Financial Services</span>
+    <span class="badge badge-type">Private Company · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">2 April 2026</span>
+  </div>
+  <h1>JMU Ltd:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">JMU Ltd (formerly Jean Marc M. D'Unienville Company Limited) · Company intelligence · Financial ratios · EOS implementation assessment · Phoenix, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">MUR 37.6M</div>
+      <div class="stat-delta">Year ended 30 June 2025 · 100% commission income</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit FY2025</div>
+      <div class="stat-value emerald">MUR 945K</div>
+      <div class="stat-delta">2.5% net margin · post-tax · thin but positive</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">7.0 / 10</div>
+      <div class="stat-delta">Moderate-High — Qualified Positive · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">High Leverage</div>
+      <div class="stat-delta">Non-current liabilities MUR 22.5M vs equity MUR 15.0M</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>JMU Ltd — Company Analysis &amp; EOS Assessment · 2 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 34-year-old, tightly-held insurance agency anchored entirely to the SWAN Group ecosystem — financially lean, operationally stable, and showing the hallmarks of a founder-led business that has never been forced to build systems.</p>
+
+  <p class="body-text">JMU Ltd (formerly Jean Marc M. D'Unienville Company Limited) was incorporated on 6 February 1992 and has operated as a dedicated insurance agency for over three decades. The company is headquartered at 1st Floor, Le Hub, Industrial Zone, Phoenix, Mauritius, and serves as one of the leading SWAN Group agencies in Mauritius. It holds FSC Licence No. A10700252 and is authorised to place business for Swan General Ltd, Swan Life Ltd, and Swan Wealth Management Ltd across general insurance, life assurance, retirement planning, and investment products. The company employs approximately 59 people, which places it firmly in the mid-size Mauritian SME bracket.</p>
+
+  <p class="body-text">Ownership is entirely concentrated in a single family. Jean Marc Marrier D'Unienville holds 4,999 of 5,000 ordinary shares (99.98%), with Philippe Marc Marrier D'Unienville holding the remaining 1 share (0.02%). Jean Marc has served as both Chairman and Director since the company's founding in 1992. This is a classic Mauritian family-owned professional services firm with no external investors, no board governance structure visible from public records, and all strategic authority vested in the founder. The company secretary is ECS Secretaries Ltd (Port Louis), a reputable corporate services firm.</p>
+
+  <p class="body-text">For the financial year ended 30 June 2025, JMU Ltd reported revenue of MUR 37.6M — the entirety of which is commission and fee income from SWAN product placements (cost of sales is zero, confirming a pure agency/service model). Gross profit equals turnover at MUR 37.6M. After administration costs of MUR 34.1M and finance costs of MUR 1.3M, net profit after tax stands at MUR 945K — a 2.5% net margin that is thin but positive. The balance sheet carries MUR 22.5M in non-current liabilities against total equity of only MUR 15.0M, creating meaningful leverage risk. EOS suitability is rated 7.0/10 — a genuine opportunity.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Founder Dependency + High Admin Cost Base</div>
+    JMU Ltd is a healthy, cash-generating insurance agency with 34 years of client relationships and a stable SWAN Group mandate — but it runs on founder authority and has allowed its administration cost base to consume 90.6% of gross revenue, leaving a net margin of just 2.5%. With MUR 37.6M in revenues and 59 staff, the business is generating approximately MUR 637K per employee — respectable for a Mauritius SME, but the profit leakage suggests no formal accountability framework exists for cost management or team performance. The entry angle for EOS is clear: this business needs a Scorecard, an Accountability Chart, and Rocks — before the founder's bandwidth becomes the bottleneck it almost certainly already is.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>34-year incumbent position as a top SWAN agency</strong> with a loyal, longstanding client base. ~59 staff with dedicated sales, client relationship, and claims functions. FSC-licensed with clean regulatory standing. One-stop-shop model covering all SWAN product lines. SWAN AUM platform of MUR 16B+ gives clients access to institutional-grade wealth management.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Administration costs absorb 90.6% of revenue</strong> — no visible cost-control discipline. Net margin of 2.5% leaves virtually no buffer against a revenue dip. Non-current liabilities of MUR 22.5M (likely long-term debt) exceed total equity of MUR 15.0M — debt-funded asset base. Finance costs of MUR 1.3M per year are a significant drag on a thin margin business.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Classic founder-runs-everything bottleneck:</strong> single Chairman/Director since 1992 with 99.98% ownership. A 59-person business with no visible management layer or governance structure beyond the founder. Admin cost bloat suggests unclear accountability for overhead. Head of Sales role exists but is there a real commercial engine beneath the founder's relationships?</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A founder-built, family-controlled SWAN insurance agency that has operated for 34 years from the same industrial zone in Phoenix — stable, relationship-driven, and entirely dependent on one man's authority.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">JMU Ltd was incorporated on <strong>6 February 1992</strong> under the original name <em>Jean Marc M. D'Unienville Company Limited</em>, reflecting its founder-centric origins. The company file number is <strong>C10041</strong>, Business Registration No. <strong>C07010041</strong>. The registered and operating office address is <strong>1st Floor, Le Hub, Industrial Zone, Phoenix, Mauritius</strong> (effective 19 July 2011 — indicating a move to the current premises approximately 15 years ago). Stated capital is MUR 50,000 across 5,000 ordinary shares. The company secretary is <strong>ECS Secretaries Ltd</strong>, 3rd Floor, Labama House, Sir William Newton Street, Port Louis.</p>
+  <p class="body-text">Annual returns are filed consistently: the last three on record cover periods ending 31 December 2024, 31 December 2021, and 31 December 2020. Financial statements have been approved for fiscal years ending 30 June 2025, 30 June 2024, and 30 June 2023 — confirming a June financial year end. The most recent annual registration fee is paid for 2026. There are <strong>no charges registered</strong> against the company in the CBRIS charge register, and <strong>no objections or winding-up proceedings</strong> are on record. The regulatory standing is clean.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Jean Marc Marrier D'Unienville</h4>
+        <div class="ec-sub">Majority Shareholder · Chairman · Director</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv ok">4,999 / 5,000</span></div>
+        <div class="ec-metric"><span class="mk">Ownership</span><span class="mv ok">99.98%</span></div>
+        <div class="ec-metric"><span class="mk">Director since</span><span class="mv">06 Feb 1992</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary · MUR</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Philippe Marc Marrier D'Unienville</h4>
+        <div class="ec-sub">Minority Shareholder · Family</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">1 / 5,000</span></div>
+        <div class="ec-metric"><span class="mk">Ownership</span><span class="mv">0.02%</span></div>
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Not listed as director</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary · MUR</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>SWAN Group (Principal)</h4>
+        <div class="ec-sub">Distribution Partner · Not a shareholder</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Relationship</span><span class="mv">Exclusive agency</span></div>
+        <div class="ec-metric"><span class="mk">Products placed</span><span class="mv">General · Life · Wealth</span></div>
+        <div class="ec-metric"><span class="mk">SWAN AUM</span><span class="mv">MUR 16B+</span></div>
+        <div class="ec-metric"><span class="mk">FSC Licence</span><span class="mv">A10700252</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Note — SWAN Dependency</div>
+    JMU Ltd derives 100% of its revenue from placing SWAN products. While this gives it access to a market-leading insurer with MUR 16B+ in AUM, it creates total revenue dependency on the SWAN relationship. Any change in agency terms, commission rates, or the SWAN distribution model would have an immediate and existential impact on JMU's revenue base. This concentration risk should be front-of-mind in any EOS conversation about V/TO and the 10-year target picture.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Jean Marc Marrier D'Unienville — Chairman &amp; Director</h4>
+      <p><strong>Appointed: 6 February 1992.</strong> Founder of the business and sole decision-maker. LinkedIn profile confirms 500+ connections and background spanning Anglo-Mauritius Assurance Society and Liberty Life Insurance prior to founding JMU. Holds 99.98% of shares. Contact: <strong>jmdunienville@jmu.mu</strong> · Tel: <strong>686 9000</strong>. LinkedIn: <a href="https://mu.linkedin.com/in/jean-marc-d-unienville-87484b85" target="_blank" style="color:var(--steel)">Profile</a>.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vanusha Lutchmeepersad — Head of Sales</h4>
+      <p><strong>Senior commercial lead.</strong> Heads the sales function and is the most visible non-founder executive in public records. Likely manages the agency's advisor/consultant team and pipeline. Email pattern: v***@jmu.mu (ZoomInfo). LinkedIn: <a href="https://www.linkedin.com/in/vanusha-lutchmeepersad-15452044/" target="_blank" style="color:var(--steel)">Profile</a>. Key contact for commercial conversations once relationship with Jean Marc is established.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Jean de Maroussem — Client Relationship Manager</h4>
+      <p><strong>Client-facing retention role.</strong> Manages ongoing client relationships across the portfolio. Email pattern: j***@jmu.mu (ZoomInfo). Presence of a dedicated CRM role in a 59-person agency suggests the business has begun segmenting sales vs. servicing — a positive EOS signal.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Stephan Paul — Claims Executive</h4>
+      <p><strong>Claims handling.</strong> Dedicated claims management function, consistent with a full-service agency model offering post-sale client support. Presence suggests operational depth beyond pure sales.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Kevin Mawooa — Insurance Supervisor</h4>
+      <p><strong>Supervisory / operational layer.</strong> Insurance Supervisor role suggests a middle-management tier exists within the business. Background includes experience in Mauritius insurance sector. LinkedIn: <a href="https://www.linkedin.com/in/kevin-mawooa-90270a65/" target="_blank" style="color:var(--steel)">Profile</a>.</p>
+    </div>
+    <div class="profile-card">
+      <h4>ECS Secretaries Ltd — Company Secretary</h4>
+      <p><strong>External corporate secretary.</strong> Based at 3rd Floor, Labama House, Sir William Newton Street, Port Louis. Appointed 4 December 1995. A professional corporate services firm, not a family member — indicating at least basic governance hygiene has been maintained. Handles annual returns and statutory filings.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">JMU Ltd operates as a one-stop-shop insurance and financial services agency, placing the full range of SWAN Group products. Services are organised across three principal lines:</p>
+  <ul class="styled-list">
+    <li><strong>General Insurance (via Swan General Ltd):</strong> Motor, home, commercial property, marine, travel, liability and other P&amp;C covers for individual and business clients.</li>
+    <li><strong>Life Assurance &amp; Retirement Planning (via Swan Life Ltd):</strong> Life policies, critical illness, income protection, pension plans, and retirement savings products.</li>
+    <li><strong>Wealth Management &amp; Investment (via Swan Wealth Management Ltd):</strong> Access to SWML's investment platform, including foreign fund investments, pension fund management, and private portfolio services. The SWAN platform manages MUR 16B+ in client assets.</li>
+  </ul>
+  <p class="body-text">The agency provides personalised counselling for insurance planning and acts as a trusted intermediary, managing client relationships from initial placement through claims handling. The model is deeply relationship-driven — which is both its core strength and its key vulnerability (founder dependency).</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">JMU Ltd operates from a single location: <strong>1st Floor, Le Hub, Industrial Zone, Phoenix, Mauritius</strong> (district of Plaines Wilhems). Phoenix is a central, commercially active industrial and retail hub in Mauritius, providing good access to both corporate and individual clients across the island. There is no evidence of branch offices or export activity — the business serves the domestic Mauritius market exclusively.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Note — Expired SSL Certificate</div>
+    The company website (www.jmu.mu) has an expired SSL certificate as of the date of this report, making it inaccessible via standard secure browser connections. For a financial services firm handling client data and investment products, an expired website certificate is a reputational and compliance concern. This is likely a maintenance oversight rather than a deliberate decision, but it signals limited attention to digital infrastructure — a common symptom in founder-led firms where the owner's attention is elsewhere.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS financial summary filed with the Registrar of Companies, Mauritius. Currency: Mauritius Rupee (MUR). Fiscal year ended 30 June 2025. Approved 29 September 2025. Prior-year comparatives not available from public summary data.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    JMU Ltd files summary financial statements with the Registrar — not full IFRS accounts. The data available from CBRIS covers the P&amp;L summary and balance sheet as at 30 June 2025. Prior-year comparatives (FY2024, FY2023) are not disclosed in the public filing summary, preventing trend analysis. No notes to accounts, cashflow statement, or audit opinion is available from the public registry. All figures are in Mauritius Rupees (MUR) and are stated as filed — no adjustments have been made.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY ended 30 June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>37,577,336</td><td>100.0%</td><td>100% commission &amp; fee income — pure agency model, zero product cost</td></tr>
+        <tr><td>Cost of Sales</td><td>0</td><td>0.0%</td><td>Confirms service-only model — no inventory, no product COGS</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>37,577,336</td><td>100.0%</td><td>Gross margin is 100% — all revenue flows through to cover operating costs</td></tr>
+        <tr><td>Other Income</td><td>1,008,733</td><td>2.7%</td><td>Likely interest income, rental income, or ancillary revenue streams</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>No separately disclosed distribution cost — likely embedded in admin</td></tr>
+        <tr class="heat-critical"><td>Administration Costs</td><td>34,058,409</td><td>90.6%</td><td>Critical: absorbs nearly all gross revenue. Staff costs, rent, professional fees dominate</td></tr>
+        <tr><td>Other Expenses</td><td>0</td><td>0.0%</td><td>None separately disclosed</td></tr>
+        <tr class="heat-warn"><td>Finance Costs</td><td>1,256,672</td><td>3.3%</td><td>Interest on long-term borrowings (MUR 16.4M) — a recurring drag on thin margins</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>3,270,988</td><td>8.7%</td><td>Pre-tax profit recovers to 8.7% once other income is added</td></tr>
+        <tr><td>Tax Expense</td><td>2,325,799</td><td>6.2%</td><td>High effective tax rate (~71% of PBT) — possible deferred tax or timing adjustments</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>945,189</strong></td><td><strong>2.5%</strong></td><td>Thin but positive — business is profitable, not loss-making</td></tr>
+        <tr class="heat-ok"><td>Total Comprehensive Income</td><td>945,189</td><td>2.5%</td><td>No other comprehensive income items — clean P&amp;L</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Tax Anomaly — Effective Rate of ~71%</div>
+    The tax expense of MUR 2,325,799 against profit before tax of MUR 3,270,988 implies an effective tax rate of approximately 71%. Standard Mauritius corporate income tax is 15%. This significant discrepancy suggests the presence of deferred tax liabilities crystallising in this period, or a non-recurring tax adjustment. This warrants further enquiry — it is the single figure most likely to distort the apparent profitability of the business. In a normalised tax year, net profit would be approximately MUR 2.78M (7.4% margin), which is materially more encouraging.
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>18,948,107</td><td>Significant fixed asset base for a service firm — likely office fit-out, vehicles, equipment</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Investments</td><td>715,944</td><td>Small investment holdings — possibly SWAN fund units or equity investments</td></tr>
+        <tr class="heat-ok"><td>Non-Current Assets</td><td><strong>Total Non-Current Assets</strong></td><td><strong>19,173,063 (note: per CBRIS)</strong></td><td>Note: CBRIS shows subtotal of 19,173,063 but line items sum to 19,664,051 — minor rounding/classification variance in filing</td></tr>
+        <tr><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>4,713,698</td><td>Commissions receivable from SWAN — typical 30-60 day settlement cycle</td></tr>
+        <tr><td>Current Assets</td><td>Cash &amp; Cash Equivalents</td><td>699,177</td><td>Very low cash balance — only 18 days of admin costs. Tight liquidity position</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>5,412,875</strong></td><td>Low relative to current liabilities — see ratio analysis</td></tr>
+        <tr class="heat-ok"><td>Total Assets</td><td></td><td><strong>44,249,989</strong></td><td>Healthy asset base for a 59-person SME</td></tr>
+        <tr><td>Equity</td><td>Share Capital</td><td>50,000</td><td>Minimal par value capital — typical for a Mauritius domestic company</td></tr>
+        <tr><td>Equity</td><td>Retained Earnings</td><td>9,896,233</td><td>Accumulated profits retained in the business over 34 years</td></tr>
+        <tr><td>Equity</td><td>Other Reserves</td><td>5,050,903</td><td>Revaluation or other reserves — possibly relates to PPE revaluation</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>14,997,136</strong></td><td>Equity base is modest relative to total assets — 33.9% equity ratio</td></tr>
+        <tr class="heat-warn"><td>Non-Current Liabilities</td><td>Long-Term Borrowings</td><td>16,350,548</td><td>Significant long-term debt — the primary leverage concern. Likely bank term loan(s)</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Deferred Tax</td><td>1,853,710</td><td>Deferred tax liability — consistent with the high effective tax rate in the P&amp;L</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Others</td><td>530,039</td><td>Minor other long-term obligations</td></tr>
+        <tr class="heat-warn"><td>Non-Current Liabilities</td><td><strong>Total Non-Current Liabilities</strong></td><td><strong>22,492,589 (note: per CBRIS)</strong></td><td>Note: CBRIS shows total of 22,492,589; line items sum to 18,734,297 — classification difference likely in "Others" bucket</td></tr>
+        <tr><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>3,760,753</td><td>Creditors — reasonable level for the business size</td></tr>
+        <tr><td>Current Liabilities</td><td>Short-Term Borrowings</td><td>615,762</td><td>Current portion of debt or overdraft facility</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax Payable</td><td>0</td><td>No current tax payable — tax is settled via deferred mechanism</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>6,760,264</strong></td><td>Exceeds current assets of MUR 5.4M — current ratio below 1.0</td></tr>
+        <tr class="heat-critical"><td>Total Liabilities</td><td></td><td><strong>29,252,853</strong></td><td>Liabilities are 1.95× equity — heavily leveraged balance sheet</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The CBRIS charge register for JMU Ltd shows <strong>no registered charges</strong> as of the date of this report (2 April 2026). This is notable given the MUR 16.4M in long-term borrowings on the balance sheet — either the debt is unsecured (unusual for that quantum), or charges exist at the bank level but were not registered with the Registrar of Companies (possible for certain types of facilities in Mauritius). The absence of formal charges is broadly positive from a due diligence perspective, but Thierry should ask Jean Marc directly about the nature and security of the long-term borrowings during any initial meeting.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">All ratios calculated from CBRIS FY2025 data. Benchmarks: Mauritius financial services / professional services SME norms. Green = healthy, Amber = watch, Red = critical concern. No prior-year data available for trending.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.80×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.5× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Current assets (MUR 5.4M) fall short of current liabilities (MUR 6.8M). The business cannot fully cover its short-term obligations from short-term assets. With only MUR 699K in cash, a sudden creditor squeeze or an unexpected claims dispute could create immediate cash pressure. The business likely relies on SWAN commission receivables turning quickly to fund payables — a fragile just-in-time liquidity model.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio (Acid Test)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.80×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">JMU holds no inventory, so the quick ratio equals the current ratio at 0.80×. This means even stripping out any inventory adjustment, the business is below the 1.0× minimum threshold. Cash position of MUR 699K represents only ~18 days of operating cost cover — dangerously thin for a firm with MUR 34M+ in annual admin costs. Liquidity management is the most urgent financial discipline this business needs.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">100.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services)</span><span class="ratio-val">60% – 100%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Excellent</span></span></div>
+      <span class="ratio-interpret">A 100% gross margin is expected and appropriate for a pure agency model — no cost of sales means every rupee of commission flows directly to fund overheads and profit. This is a structural feature of the business model, not an achievement. The critical metric is what happens below the gross profit line.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">2.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (insurance agencies)</span><span class="ratio-val">8% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">At 2.5%, the net margin is well below the 8-15% typical for a well-run insurance agency of this size. The gap between gross profit (100%) and net profit (2.5%) is a 97.5 percentage point compression — almost entirely due to the MUR 34M admin cost base. Normalising for the apparent tax anomaly (effective 71% rate vs 15% standard) would lift the margin to approximately 7.4%, which is more defensible but still below best-practice benchmarks.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">6.3%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">15% – 25%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Below Target</span></span></div>
+      <span class="ratio-interpret">ROE of 6.3% (MUR 945K net profit / MUR 15.0M equity) is well below a healthy benchmark. Even at the tax-normalised net profit of ~MUR 2.78M, ROE only reaches ~18.5% — within range but dependent on resolving the tax anomaly. The equity base is being underutilised relative to the leverage taken on.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">2.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5% – 10%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Weak</span></span></div>
+      <span class="ratio-interpret">ROA of 2.1% (net profit / total assets of MUR 44.2M) is poor. The MUR 19M PP&amp;E base is generating very little visible return at current profit levels. This raises a question about whether the fixed asset base is productive (e.g. owner-occupied property appreciating in value) or simply a legacy cost structure that has not been optimised.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">1.95×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services)</span><span class="ratio-val">0.5× – 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">High Risk</span></span></div>
+      <span class="ratio-interpret">Total liabilities of MUR 29.3M against equity of MUR 15.0M gives a D/E of 1.95×. For a professional services firm with no hard assets as security collateral (aside from PP&amp;E), this is a high leverage ratio. The long-term borrowings of MUR 16.4M are particularly concerning against a net profit of only MUR 945K — debt servicing is consuming a significant portion of operating income.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">33.9%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">40% – 60%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Below Target</span></span></div>
+      <span class="ratio-interpret">Equity funds only 33.9% of total assets, with the balance financed through debt. This is below the 40-60% range considered healthy for a services business. The implication is that a significant portion of what looks like the company's asset base is actually owned by the bank. Strengthening retained earnings (requiring higher net margins) is the path to improving this ratio over time.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Days Sales Outstanding (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">46 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (insurance agencies)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Acceptable</span></span></div>
+      <span class="ratio-interpret">Receivables of MUR 4.7M against revenue of MUR 37.6M gives a DSO of ~46 days. For a SWAN agency collecting commissions, this is within normal range. SWAN is a creditworthy counterparty so receivables quality is likely high, but accelerating collection to 30 days would release approximately MUR 1.3M in cash — materially improving the liquidity position.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Admin Cost Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">90.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (insurance agencies)</span><span class="ratio-val">60% – 75%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">This is the single most important ratio in the analysis. Administration costs absorbing 90.6% of revenue leaves no room for investment, dividend, debt reduction, or a revenue dip. A 10% improvement (reducing admin to 80% of revenue) would add MUR 3.76M to the bottom line — quadrupling net profit. This is achievable through EOS disciplines: Scorecard accountability for cost centres, clear departmental P&amp;L ownership, and regular Level 10 meetings surfacing overhead issues early.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The Two Numbers That Matter Most</div>
+    <strong>1. Admin Cost Ratio: 90.6%</strong> — reducing to 80% would add MUR 3.76M to bottom line (net profit would be 4× current level). No operational improvement matters more than this. <strong>2. Current Ratio: 0.80×</strong> — the business is technically illiquid on a static basis. If SWAN commissions slow by even 30 days, or a major client dispute arises, cash flow becomes critical immediately. These two numbers define the entire financial risk profile of JMU Ltd — and both are addressable through better management systems and accountability, which is precisely what EOS delivers.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">JMU Ltd competes in Mauritius's mature insurance intermediary market across three segments — general insurance, life/protection, and wealth management — with a differentiated position as one of SWAN's top-tier agencies and a 34-year incumbent in Phoenix.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>General Insurance</h4>
+        <div class="ec-sub">Motor · Home · Commercial · Marine · Travel</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Market</span><span class="mv">Mauritius P&amp;C market</span></div>
+        <div class="ec-metric"><span class="mk">JMU position</span><span class="mv">SWAN General agent</span></div>
+        <div class="ec-metric"><span class="mk">Key rivals</span><span class="mv">MUA, Phoenix Ins, Jubilee</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">34yr client loyalty</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Life Assurance &amp; Retirement</h4>
+        <div class="ec-sub">Life · Critical Illness · Pensions · Savings</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Market</span><span class="mv">Mauritius life market</span></div>
+        <div class="ec-metric"><span class="mk">JMU position</span><span class="mv">Swan Life Ltd agent</span></div>
+        <div class="ec-metric"><span class="mk">Key rivals</span><span class="mv">AXA, Anglo-Mauritius, MCB</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Trusted advisor model</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Wealth Management &amp; Investment</h4>
+        <div class="ec-sub">Fund investments · Portfolio management · Foreign funds</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Market</span><span class="mv">Mauritius HNW segment</span></div>
+        <div class="ec-metric"><span class="mk">JMU position</span><span class="mv">SWML introducer</span></div>
+        <div class="ec-metric"><span class="mk">Key rivals</span><span class="mv">MCB Wealth, SBM, Absa</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">MUR 16B+ AUM platform</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. 34-year SWAN relationship and agency status.</strong> JMU is not a new entrant — it is an established, FSC-licensed SWAN agent with decades of embedded client relationships. Switching an insurance agency in Mauritius is commercially disruptive for clients, creating natural retention. This relationship is the business's most durable asset.</p>
+  <p class="body-text"><strong>2. Founder personal trust network.</strong> Jean Marc D'Unienville's 30+ years in the Mauritius insurance market (including prior experience at Anglo-Mauritius Assurance Society and Liberty Life Insurance before founding JMU) means the business is partly a vehicle for deep personal professional relationships. These relationships are long-dated and hard to replicate. This is also the central succession risk.</p>
+  <p class="body-text"><strong>3. One-stop-shop positioning within SWAN.</strong> By covering general, life, and wealth under one roof, JMU can capture a greater share of client wallet than single-line intermediaries. This bundling capability is a genuine differentiator in a market where most smaller agents focus on one product category.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Growing middle class and mandatory insurance penetration:</strong> Mauritius's increasing wealth levels and regulatory push for broader insurance coverage (particularly motor and life) provide structural demand growth for established agents like JMU.</li>
+    <li><strong>Wealth management opportunity:</strong> Rising HNW segment in Mauritius and growing demand for foreign fund access creates an upselling pathway from basic insurance into SWAN Wealth Management products — a higher-margin activity that JMU is positioned for but may not be systematically exploiting.</li>
+    <li><strong>Digital disruption risk:</strong> Insurtechs and direct-to-consumer models are beginning to emerge in Mauritius. JMU's expired website SSL certificate and likely limited digital client acquisition capability make it vulnerable to a younger, more digitally-native competitor over a 5-10 year horizon.</li>
+    <li><strong>Regulatory tightening:</strong> FSC is progressively tightening compliance requirements for insurance intermediaries. JMU's clean regulatory record is an asset, but compliance costs will increase — adding pressure to an already thin margin.</li>
+    <li><strong>Agency consolidation trend:</strong> Larger insurance groups are increasingly acquiring or formalising relationships with top-performing independent agencies. JMU's size and SWAN relationship may make it an acquisition target — or may make formalisation of the relationship more structured (potentially affecting commission terms).</li>
+    <li><strong>Founder succession urgency:</strong> With Jean Marc as the sole significant shareholder and director since 1992, the business has no visible succession plan. As he ages, the commercial risk of a single-founder dependency grows. This is both a business risk and an EOS entry narrative.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Gap — No Functional Website</div>
+    The company website (www.jmu.mu) is inaccessible due to an expired SSL certificate. In 2026, a financial services firm with 59 staff and MUR 37.6M in revenue should have an active, secure digital presence. The absence of a functional website likely means all new client acquisition happens through referrals and the founder's personal network — creating a business development ceiling that EOS's traction tools can help address.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis. JMU Ltd presents across all eight dimensions as a classic EOS candidate.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">At approximately 59 employees, JMU sits firmly in the EOS sweet spot of 10–250 people. The business is large enough to have role complexity — Head of Sales, Client Relationship Manager, Insurance Supervisor, Claims Executive, Secretary/Receptionist are all visible from public records — but small enough that the founder still touches everything. The emergence of functional titles without a formal Accountability Chart is a classic EOS signal. The three-product-line structure (general, life, wealth) adds further organisational complexity that benefits from the EOS L10 and accountability frameworks.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Jean Marc D'Unienville is a 34-year founder-operator with deep industry experience and 500+ LinkedIn connections, suggesting he is engaged and networked — positive signals. However, 99.98% single-person ownership and an unbroken 34-year tenure as both Chairman and Director suggests a control orientation that may be resistant to ceding authority through an Accountability Chart. The critical question for the discovery meeting: does Jean Marc feel the business depends too much on him, and is he ready to change that? His background at institutional insurers (Anglo-Mauritius, Liberty) suggests he has seen professional management — which helps.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">The financial data reveals textbook EOS pain points: admin costs consuming 90.6% of revenue (no cost accountability), a 2.5% net margin (profit leakage without clear ownership), sub-1.0× current ratio (cash pressure from lack of financial disciplines), and an expired website (operational neglect in a key area). These are not bad-luck problems — they are symptoms of a business that has grown to 59 people without the management infrastructure to run it. The founder almost certainly feels stretched, frustrated that profit is thin despite strong revenues, and unclear on who owns what. This is the EOS diagnostic conversation.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">JMU has basic systems in place: ECS Secretaries handles company administration, SWAN's platform provides the product and claims infrastructure, and there is a defined team structure. However, the lack of a functional company website, the 90.6% admin cost ratio (indicating no systematic cost monitoring), and the absence of any visible performance management or reporting structure in public records suggests the business runs on experience and relationships rather than documented processes. Process documentation is likely poor — a key EOS foundational work area.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Public sources describe JMU as having "shared the same team of professionals for more than 12 years" — a significant retention signal in the Mauritius labour market where insurance talent is mobile. Long staff tenure suggests a cohesive culture, mutual loyalty, and a workplace where people want to stay. This is a strong EOS culture foundation. The risk is that long tenure in a founder-dependent culture can breed comfort and resistance to accountability — people know the rules of the game (keep Jean Marc happy) rather than the EOS rules (own your number, hit your Rock). Culture is an asset here, but it needs redirecting.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">With a single 99.98% shareholder who is also Chairman and Director, all significant decisions visibly flow through Jean Marc. The emergence of a Head of Sales (Vanusha Lutchmeepersad) and a Client Relationship Manager (Jean de Maroussem) suggests some delegation is occurring at a commercial level, but strategic and financial decisions are certainly centralised. The score is mid because some functional delegation exists — it is not a pure one-man show at the operational level — but the decision-making architecture is far from the EOS ideal of a Leadership Team that runs the business independently.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">There is no public articulation of JMU's strategic vision beyond being "one of the leading SWAN agencies." The business has operated in the same location, with the same product set, and broadly the same model for 34 years. This is not inherently negative — stability has value — but it raises the question of whether Jean Marc has a compelling 10-year picture for the business. What happens when he steps back? Who runs it? Is there a succession plan, a growth target, a diversification ambition? The V/TO exercise in EOS Focus Day will be revelatory — and likely the single most valuable thing JMU has never done.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of structured meeting cadence in public records. In a founder-led professional services firm of this vintage, "meetings" typically means the founder talking to individual team members rather than a structured weekly leadership team session with a clear agenda. The admin cost bloat and absence of systematic cost controls strongly suggest that issues are not being surfaced, discussed, and resolved in a disciplined weekly forum. The Level 10 Meeting alone would transform JMU's management effectiveness — and it is probably the tool Jean Marc has never experienced in this form.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">7.0</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>JMU Ltd is a genuine EOS candidate. The business has all the structural hallmarks of a founder-led company that has outgrown informal management: 59 people, MUR 37.6M revenue, clear functional roles emerging, but no accountability framework, no formal meeting structure, vision undefined, and profit leaking through an unchecked admin cost base. The gating factor is Jean Marc's personal readiness — a 34-year founder with 99.98% ownership who has never needed external management discipline may need careful discovery conversation before committing to the vulnerability that EOS demands. The EOS score would rise to 8.0+ if the discovery meeting confirms he is frustrated with the status quo and actively seeking a way to scale his team's accountability without losing the culture he has built.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for JMU Ltd</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>JMU has functional roles but no formal accountability map. <strong>Who runs Sales? Who runs Operations? Who owns the P&amp;L for each service line?</strong> The Accountability Chart will immediately surface that Jean Marc currently sits in 4-5 seats — and provide the visual case for why that is unsustainable at 59 people and MUR 37.6M revenue.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard</h4>
+      <p>With admin costs at 90.6% of revenue and no visible KPI framework, <strong>nobody is watching the numbers weekly.</strong> A Scorecard with 5-15 measurables (commission revenue by line, admin cost ratio, DSO, client retention rate, new policies written) would immediately surface the issues hiding in the P&amp;L — and create the weekly accountability discipline that would recover margin.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO (Vision/Traction Organiser)</h4>
+      <p>JMU has never articulated a formal 10-year target picture. <strong>Jean Marc has been running the same business model for 34 years — does he want to grow it, sell it, or transition it?</strong> The V/TO Focus Day conversation is the most important strategic exercise this business has never had, and it will either unlock a genuine growth ambition or surface a succession conversation that is equally valuable.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>The most immediate operational win for JMU. <strong>A structured weekly 90-minute leadership team meeting</strong> with a fixed agenda, Scorecard review, and Issues List will immediately surface the cost-overrun issues, the digital gap, and the team bottlenecks that are silently consuming margin. Jean Marc has never had a forum where his leadership team runs the meeting — not him.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks</h4>
+      <p>With no visible quarterly priority-setting framework, <strong>what does JMU actually focus on each quarter?</strong> Setting 3-7 company Rocks — one of which should be "reduce admin cost ratio to 80% of revenue within 2 quarters" — creates the execution rhythm that translates vision into measurable progress. This is particularly powerful in Q1 of EOS engagement.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>The expired website, the thin margin, the succession gap, the digital client acquisition ceiling — these are all issues that <strong>exist but are never formally surfaced, discussed, and resolved.</strong> The Issues List and Identify-Discuss-Solve (IDS) discipline will give Jean Marc's team permission to raise and resolve problems systematically, rather than waiting for the founder to notice them.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations: four financial/operational (addressing immediate vulnerabilities) and four EOS-specific (the implementation sequence). Financial recommendations should be raised in the discovery conversation as diagnostic observations — not as prescriptions. EOS recommendations frame the engagement pitch.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Implement Weekly Admin Cost Accountability</h4>
+      <p>Admin costs at 90.6% of revenue are the defining financial problem. Jean Marc (or the designated Finance seat owner) should produce a weekly cost report comparing actual admin spend to a monthly budget. Target: reduce admin cost ratio from 90.6% to 82% within 12 months. That 8.6 percentage point improvement on MUR 37.6M revenue = MUR 3.23M additional pre-tax profit — more than tripling current net profit. Identify the top 5 cost line items inside the MUR 34M admin block (staff costs, rent, professional fees, IT, marketing) and assign an owner to each.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Rebuild the Liquidity Buffer</h4>
+      <p>Current ratio of 0.80× and cash of only MUR 699K (~18 days of operating costs) is a genuine vulnerability. Two immediate actions: (1) Negotiate SWAN commission settlement cycle from 46 days to 30 days — this alone would release approximately MUR 1.3M in cash. (2) Establish a minimum cash reserve target of MUR 3M (approximately 30 days of admin cost cover) and treat it as a non-negotiable floor. These two actions require no new revenue — only collection discipline and a cash policy decision.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Investigate and Resolve the Tax Anomaly</h4>
+      <p>The effective tax rate of ~71% in FY2025 (MUR 2.33M tax on MUR 3.27M PBT) is almost certainly a deferred tax liability crystallisation rather than a recurring cash tax burden. Jean Marc's auditor/tax advisor should confirm: (a) what drove the FY2025 deferred tax charge, (b) whether it recurs, and (c) what the normalised annual tax position looks like. If the FY2025 tax charge was non-recurring, normalised net profit is ~MUR 2.78M (7.4% margin) — a materially different picture. This should be clarified before any external valuation or financing discussion.</p>
+      <span class="urg urg-week">Within 30 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Restore Digital Infrastructure</h4>
+      <p>The expired SSL certificate on www.jmu.mu is a client-facing credibility issue for a financial services firm. This should be resolved within days, not months — SSL renewal costs MUR 1,000–5,000 annually. Beyond the certificate, JMU should invest in a simple, modern website that allows clients to request quotes, download forms, and find contact information. Budget MUR 80,000–150,000 for a professional rebuild. In a market where FSC-regulated firms are held to client protection standards, an inaccessible website is a regulatory reputational risk.</p>
+      <span class="urg urg-week">Within 30 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Begin with a 90-Minute Discovery Meeting — Jean Marc Only</h4>
+      <p>The EOS entry point for JMU is a direct conversation with Jean Marc D'Unienville. The diagnostic framing: "You have MUR 37.6M in revenue, 59 people, and 34 years of client trust — but your admin costs are consuming 90.6% of that revenue and your net profit is MUR 945K. Is that the business you want to be running?" The three discovery questions: (1) Are you frustrated that the business depends too much on you personally? (2) Do you have a clear picture of where JMU is going in the next 10 years? (3) Does your team own their numbers — or do you still have to chase everyone? Contact: jmdunienville@jmu.mu · Tel: 686 9000.</p>
+      <span class="urg urg-now">First Contact — This Week</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Propose a Focus Day — V/TO and Accountability Chart</h4>
+      <p>If the discovery conversation confirms Jean Marc's openness, the EOS entry product is a Focus Day. The two deliverables that will immediately resonate: (1) The V/TO — articulating where JMU is going in 10 years and whether it is a growth, succession, or consolidation story. (2) The Accountability Chart — mapping who actually runs what in the business, surfacing the seats Jean Marc currently occupies alone, and beginning the conversation about who takes them. Frame the Focus Day as: "We will give you and your leadership team one day that clarifies your next 10 years and gives everyone a clear job — probably for the first time ever."</p>
+      <span class="urg urg-week">Within 60 Days of First Contact</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>First Rock: Admin Cost Ratio Target</h4>
+      <p>In the first quarter of EOS implementation, the company Rock with the highest financial impact should be: "Reduce admin cost ratio from 90.6% to 85% by [quarter end date]." This translates the abstract financial analysis into a concrete, owned, time-bound EOS Rock with a financial payoff of MUR 2.07M in additional pre-tax profit. The owner of this Rock should be whoever Jean Marc places in the Finance seat on the Accountability Chart — forcing the organisation design conversation at the same time as the financial discipline conversation.</p>
+      <span class="urg urg-medium">Q1 of EOS Engagement</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Scorecard: 7 Measurables for Week One</h4>
+      <p>JMU's first Scorecard should track the 7 numbers that matter most: (1) Weekly new policies written, (2) Commission revenue vs target, (3) Admin cost ratio (monthly), (4) Cash balance vs MUR 3M floor, (5) DSO vs 30-day target, (6) Client retention rate (monthly), (7) Number of referrals received. These seven numbers give the leadership team visibility of the business in 10 minutes every Monday — something Jean Marc has likely never had. The Scorecard will surface issues that IDS can then resolve in the same Level 10 meeting.</p>
+      <span class="urg urg-medium">Week One of EOS Engagement</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>JMU Ltd is a financially stable, commercially well-positioned Mauritius insurance agency with 34 years of client trust and a strong SWAN mandate — but it is being run as a founder-personal-network business, not as a scalable organisation. The MUR 37.6M revenue base is genuine and defensible; the MUR 945K net profit is not — it is the result of zero cost accountability across a 59-person team. The real opportunity here is not EOS as a growth tool but EOS as a profit recovery and succession planning tool. Jean Marc is building an agency that earns MUR 37.6M and keeps MUR 945K. EOS can help him keep MUR 3-4M instead — and build a business that does not depend entirely on him being present every day.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Contact Jean Marc this week — jmdunienville@jmu.mu / 686 9000. Reference the admin cost ratio and the succession question as diagnostic hooks. Request a 90-minute coffee meeting.</li>
+        <li><span class="sig-num">02</span>Conduct discovery meeting. Confirm: frustration with founder dependency, absence of formal accountability, no written vision. Qualify against EOS criteria and assess Jean Marc's openness to vulnerability.</li>
+        <li><span class="sig-num">03</span>Propose and schedule Focus Day within 30-45 days of discovery. Frame around V/TO and Accountability Chart. Invite Jean Marc plus his 2-3 most senior functional leaders (Vanusha Lutchmeepersad at minimum).</li>
+        <li><span class="sig-num">04</span>Deliver Focus Day. Produce V/TO draft, Accountability Chart v1, and initial Scorecard template. Set Q1 Rocks including admin cost ratio reduction target.</li>
+        <li><span class="sig-num">05</span>Commence quarterly EOS cycle. Level 10 Meetings weekly. Rocks reviewed quarterly. Annual planning session by month 12. Target: admin cost ratio to 82%, current ratio to 1.2×, and net profit to MUR 3M+ within 18 months of EOS start.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>JMU Ltd — Comprehensive Company Analysis &amp; EOS Assessment · 2 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (2 April 2026) · SWAN for Life agent directory · RocketReach · ZoomInfo · LinkedIn · Apollo.io · jmu.mu (accessed April 2026)</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
