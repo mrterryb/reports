@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peca Marusi Company Ltd — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Wholesale Trade &amp; Chemical Distribution</span>
+    <span class="badge badge-type">Private Company · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">15 April 2026</span>
+  </div>
+  <h1>Peca Marusi:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Peca Marusi Company Ltd (trading as SpecMart Co. Ltd) · Company intelligence · Financial ratios · EOS implementation assessment · Curepipe, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">MUR 6.1M</div>
+      <div class="stat-delta">Year ended 30 June 2025 · MUR</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Gross Margin</div>
+      <div class="stat-value amber">26.0%</div>
+      <div class="stat-delta">Thin — entirely absorbed by admin costs</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">5.5 / 10</div>
+      <div class="stat-delta">Moderate — Pain visible, stabilisation first</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Negative Equity</div>
+      <div class="stat-delta">Equity –MUR 999,690 · Liabilities exceed assets</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Peca Marusi Company Ltd — Company Analysis &amp; EOS Assessment · 15 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 19-year-old Indian Ocean chemical and spare parts distributor operating under two legal names — Peca Marusi Company Ltd and SpecMart Co. Ltd — run by a founding director who is also sole secretary, against a backdrop of negative equity, a net loss of MUR 1.1M, and annual returns unfiled for over a decade.</p>
+
+  <p class="body-text">Incorporated on 15 May 2007 and headquartered at Villa Chambly, Curepipe, Peca Marusi Company Ltd operates commercially as SpecMart Co. Ltd. The business distributes chemical specialties and industrial spare parts (notably bulldozer/earthmoving parts and general chemicals) across Mauritius and neighbouring Indian Ocean island markets. Its principal trading address is 53 Chemin du Benjoin, Le Morne Brabant — a separate operational site from the registered office. The company has been in operation for approximately 17–19 years and holds a live CBRIS status as of 15 April 2026.</p>
+
+  <p class="body-text">Ownership is concentrated 100% in one individual: Maria Dolores Garcia Ormaechea B de Laguna holds all 2,500 ordinary shares. The company has two directors — Bernard Clement (Managing Director, also sole secretary) and Garcia Ormaechea B de Laguna — both appointed at incorporation. The dual-name structure (Peca Marusi / SpecMart) is unusual and may reflect an intention to separate the legal holding entity from the trading brand. No group structure or subsidiary relationships are disclosed in the CBRIS record.</p>
+
+  <p class="body-text">FY2025 financials (year ended 30 June 2025) show revenue of MUR 6.11M — a small operation by any measure — with a gross margin of 26.0% that is entirely wiped out by disproportionately high administration costs of MUR 2.66M (43.5% of revenue), resulting in a net loss of MUR 1.14M. Accumulated losses have pushed equity to –MUR 999,690. The company is technically insolvent on a balance sheet basis. Long-term borrowings of MUR 5.46M represent the dominant funding source. EOS suitability is rated 5.5/10 — pain is real, but financial stabilisation must precede any structured growth programme.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Administration Cost Spiral Destroying Gross Profit</div>
+    The single most consequential finding is that administration costs of MUR 2.66M consume 167% of gross profit. This is not a revenue problem — a 26% gross margin on a distribution business is acceptable. The structural problem is that the fixed cost base has grown beyond what the revenue scale can support, and there is no evidence of cost control governance. A director who is simultaneously MD, secretary, and sole operational contact (Bernard Clement) is a textbook single-point-of-failure. This is the conversation to open: not growth, but survival economics — and EOS tools like the Scorecard, Accountability Chart, and Issues List are directly relevant to diagnosing why costs are running at this ratio.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>17+ years of established regional trading relationships</strong> across Mauritius and Indian Ocean islands. Specialist niche in chemical specialties and earthmoving/industrial parts — not easily commoditised. Dual-brand presence (Peca Marusi + SpecMart) provides some market recognition. Le Morne Brabant operational base near the southern coast gives logistics flexibility.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Negative equity of –MUR 999,690 and net loss of MUR 1.14M in FY2025.</strong> Administration costs at 43.5% of revenue are unsustainable. Long-term borrowings of MUR 5.46M create a structural interest burden (finance costs MUR 172,759). Annual returns unfiled since 2013 — over 10 years — signals governance neglect and potential regulatory exposure.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Classic owner-dependence bottleneck</strong> — one person (Bernard Clement) holds MD, secretary, and primary contact roles simultaneously. No visible management team. Admin costs that cannot be explained suggest processes are unmanaged and unmeasured. The company is old enough and painful enough for EOS to land — but needs cost discipline first to survive long enough to implement.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A tightly held, founder-managed distributor of chemicals and industrial parts operating across two legal identities from a southern Mauritius base, with strong longevity credentials but alarming governance gaps.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Peca Marusi Company Ltd was incorporated on 15 May 2007 under the Mauritius Companies Act 2001. File number: C071161. Business Registration Number: C07071161. Registered office: Villa Chambly, P.O. Box 189, Curepipe, Mauritius (effective 22 November 2007). Principal place of business: 53 Chemin du Benjoin, Le Morne Brabant, Mauritius. The company is categorised as a Private Domestic company, status Live. Stated capital: MUR 25,000 (2,500 ordinary shares at par). No charges are recorded against the company in the CBRIS extract. Financial statements have been filed for FY2023, FY2024, and FY2025 — a positive sign that reporting resumed in recent years — however annual returns have not been filed since 2013/2012/2011, representing over a decade of non-compliance with annual return obligations.</p>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">Governance Red Flag — Annual Returns Not Filed Since 2013</div>
+    The last three annual returns on record were filed on 10 February 2014, covering years ending 31 December 2011, 2012, and 2013. No annual return has been filed in the 12+ years since. While financial statements have been recently submitted (FY2023–2025), the annual return lapse is a serious compliance breach under the Companies Act 2001 and likely triggers penalty exposure. Thierry should probe this directly — it may indicate the company has been operating under director inertia with no external advisors applying discipline.
+  </div>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Garcia Ormaechea B de Laguna, Maria Dolores</h4>
+        <div class="ec-sub">Sole Shareholder · 100% Ownership</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">2,500</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Currency</span><span class="mv">MUR</span></div>
+        <div class="ec-metric"><span class="mk">Also director</span><span class="mv ok">Yes</span></div>
+        <div class="ec-metric"><span class="mk">Appointment</span><span class="mv">15/05/2007</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Peca Marusi Company Ltd</h4>
+        <div class="ec-sub">Legal Entity · CBRIS Registered</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">File No.</span><span class="mv">C071161</span></div>
+        <div class="ec-metric"><span class="mk">BRN</span><span class="mv">C07071161</span></div>
+        <div class="ec-metric"><span class="mk">Incorporated</span><span class="mv">15/05/2007</span></div>
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">LIVE</span></div>
+        <div class="ec-metric"><span class="mk">Stated capital</span><span class="mv">MUR 25,000</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>SpecMart Co. Ltd</h4>
+        <div class="ec-sub">Trading Brand · Indian Ocean Distribution</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Relationship</span><span class="mv">Trading name</span></div>
+        <div class="ec-metric"><span class="mk">Focus</span><span class="mv">Chemicals + Parts</span></div>
+        <div class="ec-metric"><span class="mk">Region</span><span class="mv">Mauritius + IO Islands</span></div>
+        <div class="ec-metric"><span class="mk">Est. trading</span><span class="mv">~17 years</span></div>
+        <div class="ec-metric"><span class="mk">Subsidiaries</span><span class="mv">None disclosed</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Note — Dual-Name Structure</div>
+    The Facebook page is titled "Peca Marusi Co.Ltd / SpecMart Co.Ltd" — both names appear as one entity in practice. SpecMart appears to be the market-facing brand while Peca Marusi is the legal registration. This is not unusual in Mauritius SMEs but the separation is worth exploring in conversation: is there an intention to split legal/trading entities, or is this simply legacy branding?
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Clement Daniel Bernard — Managing Director &amp; Secretary</h4>
+      <p>Appointed director and secretary at incorporation on <strong>15 May 2007</strong>. Service address: Villa Chambly, Curepipe. Confirmed as Managing Director via LinkedIn profile (mu.linkedin.com/in/bernard-clement-a947ba1aa). Primary external contact: <strong>+230 450 5252</strong>. Holds all operational, secretarial, and leadership responsibilities — a single point of failure for the business. No educational or prior career detail found publicly.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Garcia Ormaechea B de Laguna, Maria Dolores — Director &amp; Sole Shareholder</h4>
+      <p>Appointed director at incorporation on <strong>15 May 2007</strong>. Holds 100% of ordinary shares (2,500 shares). The Spanish surname suggests possible international/family connection in the founding structure. No public LinkedIn or contact details found. Role appears to be passive ownership rather than operational management — Bernard Clement functions as the operational lead.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vinod Ramasawmy — Freelance Salesman</h4>
+      <p>Identified via <strong>LinkedIn</strong> as a freelance salesman associated with SpecMart. Not a director or officer. Likely represents the sales function for the company on a commission or contracted basis. His existence as a named LinkedIn contact suggests the company has some external sales activity beyond direct director selling. LinkedIn: linkedin.com/in/vinod-ramasawmy-13b05570.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">The SpecMart trading brand distributes two primary product categories across Mauritius and the Indian Ocean island region. First, <strong>chemical specialties</strong> — industrial and specialty chemicals used in maintenance, cleaning, processing, and general industrial applications. Second, <strong>industrial spare parts</strong> — with particular emphasis on bulldozer/earthmoving equipment parts, suggesting construction and civil engineering clients as the primary buyers. The CBRIS nature of business listing is broader: "import and export" and "non-specialised wholesale trade (supplier/distributor of general merchandise, sea foods, etc.) — except liquor and manufactured tobacco." The seafood mention in the CBRIS listing is notable and may reflect an earlier or secondary business line not prominently marketed under the SpecMart brand today.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">The company operates from two addresses: the registered office at Villa Chambly, Curepipe (central plateau — logistics hub) and the principal place of business at 53 Chemin du Benjoin, Le Morne Brabant (southern coast). The Le Morne location is near port-side infrastructure and the Mahebourg/Black River area, which is practical for import/distribution operations. Export and distribution to neighbouring Indian Ocean islands (Reunion, Rodrigues, Seychelles, Comoros) is part of the established business model, giving the company a regional trading profile unusual for a business of this revenue size.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Gap</div>
+    No dedicated website has been identified for Peca Marusi Company Ltd or SpecMart Co. Ltd. The company's online presence is limited to a Facebook page and listings on international B2B directories (ec21.com, manufacturerss.com). This is a significant gap for a company positioning itself as a regional supplier — it limits inbound lead generation and professional credibility with institutional buyers.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS Financial Summary filed 29 December 2025 for year ended 30 June 2025. Currency: Mauritius Rupee (MUR). Unit: 1 (absolute figures, not thousands). Single-year data only — prior-year comparatives are not available from public filings.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Financial statements for FY2023, FY2024, and FY2025 have been filed with the CBRIS. However, the public registry extract provides only the most recent year (FY2025, ended 30 June 2025). No prior-year comparatives are available from this source. Revenue trajectory, margin trends, and debt movement cannot be assessed without obtaining prior year statements directly. The figures below are FY2025 only and should be treated as a single-year snapshot. No auditor is named in the CBRIS extract.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>6,112,736</td><td>100.0%</td><td>Small-scale distributor — MUR 6.1M is modest for a regional operation</td></tr>
+        <tr class="heat-warn"><td>Cost of Sales</td><td>4,523,425</td><td>74.0%</td><td>Cost of goods at 74% — typical for wholesale/distribution but leaves thin margin</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>1,589,311</td><td>26.0%</td><td>Acceptable gross margin for a specialty distributor; the problem is below this line</td></tr>
+        <tr><td>Other Income</td><td>105,781</td><td>1.7%</td><td>Small ancillary income — nature unknown, possibly rebates or FX gains</td></tr>
+        <tr class="heat-critical"><td>Administration Costs</td><td>2,661,703</td><td>43.5%</td><td><strong>Critical — admin costs 167% of gross profit; this is the core problem</strong></td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>Nil distribution costs reported — suggests costs are embedded in admin or cost of sales</td></tr>
+        <tr><td>Other Expenses</td><td>339</td><td>0.0%</td><td>Negligible</td></tr>
+        <tr class="heat-warn"><td>Finance Costs</td><td>172,759</td><td>2.8%</td><td>Interest on MUR 5.46M long-term borrowings; low rate (~3.2%) but adds to loss</td></tr>
+        <tr class="heat-critical"><td><strong>Net Loss Before Tax</strong></td><td><strong>(1,139,709)</strong></td><td><strong>(18.6%)</strong></td><td>Company losing ~19 cents per MUR 1 of revenue</td></tr>
+        <tr><td>Tax Expense (Recovery)</td><td>4,166</td><td>0.1%</td><td>Minimal — loss-making entity with no material tax liability</td></tr>
+        <tr class="heat-critical"><td><strong>Net Loss After Tax</strong></td><td><strong>(1,143,875)</strong></td><td><strong>(18.7%)</strong></td><td>Full-year loss deepens negative equity position</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>0</td><td>No fixed assets on balance sheet — asset-light model; no owned property, vehicles, or equipment recorded</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Inventories</td><td>1,725,667</td><td>Stock at MUR 1.73M — 28% of revenue; reasonable for a distributor</td></tr>
+        <tr><td>Current Assets</td><td>Trade and Other Receivables</td><td>10,248,225</td><td><strong>Massive receivables — MUR 10.25M vs MUR 6.1M revenue; debtors at 612 DSO equivalent — highly abnormal</strong></td></tr>
+        <tr><td>Current Assets</td><td>Cash and Cash Equivalents</td><td>50,740</td><td>Near-zero cash — company has essentially no liquidity buffer</td></tr>
+        <tr><td>Current Assets</td><td>Others</td><td>43,126</td><td>Prepayments or other minor items</td></tr>
+        <tr class="heat-critical"><td>Total Assets</td><td>—</td><td>12,067,758</td><td>85% of total assets are receivables — extremely concentrated and illiquid</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Share Capital</td><td>25,000</td><td>Nominal stated capital</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Retained Earnings</td><td>(1,024,690)</td><td>Accumulated losses — company has never built a retained profit base</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>(999,690)</strong></td><td><strong>Technically insolvent on balance sheet basis — liabilities exceed assets</strong></td></tr>
+        <tr class="heat-warn"><td>Non-Current Liabilities</td><td>Long Term Borrowings</td><td>5,460,700</td><td>Primary funding source — likely director loans or related-party funding given no bank charge on CBRIS</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long Term Provisions</td><td>15,909</td><td>Small — possibly gratuity provision</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Trade and Other Payables</td><td>5,472,429</td><td>MUR 5.47M payables — very large relative to revenue; DPO ~327 days suggests stretched supplier relationships</td></tr>
+        <tr><td>Current Liabilities</td><td>Short Term Borrowings</td><td>555,954</td><td>Additional short-term debt</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax Payable</td><td>10,286</td><td>Minimal</td></tr>
+        <tr><td>Current Liabilities</td><td>Others</td><td>1,552,170</td><td>Unspecified current liabilities — warrants investigation</td></tr>
+        <tr class="heat-critical"><td>Total Liabilities</td><td>—</td><td>13,067,448</td><td>Liabilities exceed total assets by MUR 999,690</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The CBRIS extract shows no charges registered against Peca Marusi Company Ltd. This is notable given the MUR 5.46M in long-term borrowings — the absence of a registered charge strongly suggests this debt is director/shareholder loans or related-party funding rather than bank debt. This is both a risk and an opportunity: on one hand, related-party debt is more flexible; on the other, it means the company has not been able to attract formal banking facilities, which reflects the weak balance sheet position.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks: Mauritius wholesale/distribution sector norms. Colour key — Green = healthy, Amber = watch, Red = critical concern. All figures from FY2025 CBRIS filing (year ended 30 June 2025, MUR).</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.59×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.5× – 2.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Misleading</span></span></div>
+      <span class="ratio-interpret">The ratio appears adequate at 1.59× but is almost entirely driven by MUR 10.25M in trade receivables. With cash of only MUR 50,740, the practical liquidity position is critical. Current assets of MUR 12.07M vs current liabilities of MUR 7.59M looks safe on paper — it is not.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio (Acid Test)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.36×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Receivables Risk</span></span></div>
+      <span class="ratio-interpret">Excluding inventory, the quick ratio of 1.36× still looks technically adequate, but again this is almost entirely receivables. If a material portion of the MUR 10.25M receivables is overdue or uncollectable, the company faces an immediate cash crisis.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">26.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (distribution)</span><span class="ratio-val">20% – 35%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Acceptable</span></span></div>
+      <span class="ratio-interpret">A 26% gross margin is within the acceptable range for a specialty distribution business. This is not where the problem lies — the gross profit engine is functional. The issue is entirely on the cost side below gross profit line.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">(18.7%)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">2% – 8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical Loss</span></span></div>
+      <span class="ratio-interpret">Losing 18.7 cents on every MUR 1 of revenue. The gap between gross margin (26%) and net margin (–18.7%) of 44.7 percentage points is entirely attributable to administration costs. This ratio alone defines the operational emergency.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">(9.5%)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Destroying Value</span></span></div>
+      <span class="ratio-interpret">Every MUR of assets is generating a loss rather than a return. At –9.5% ROA, the company is destroying economic value. The asset base (dominated by receivables) is not being converted to profit.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">N/M</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">10% – 25%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Not Meaningful</span></span></div>
+      <span class="ratio-interpret">Equity is negative (–MUR 999,690), making ROE not meaningful. The company is funded entirely by liabilities. The shareholder has zero book value in their investment.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">N/M (neg. equity)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&lt; 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Technically Insolvent</span></span></div>
+      <span class="ratio-interpret">With negative equity, the debt-to-equity ratio is not calculable in a meaningful way. Total liabilities of MUR 13.07M against total assets of MUR 12.07M means the company owes more than it owns. Survival depends on creditor forbearance and the flexibility of the MUR 5.46M long-term borrowings (likely related-party).</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debt-to-Assets Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">1.08×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&lt; 0.6×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Over-Leveraged</span></span></div>
+      <span class="ratio-interpret">Total debt/liabilities exceed total assets by 8%. Liabilities are 108% of assets. No margin of safety exists for creditors. Banking access would be near-impossible at these ratios without a significant equity injection or receivables liquidation.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Days Sales Outstanding (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">~612 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (distribution)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Extreme — Investigate</span></span></div>
+      <span class="ratio-interpret">Trade receivables of MUR 10.25M against annual revenue of MUR 6.11M implies debtors equivalent to 612 days of sales. This is not a collections problem — it is a structural anomaly. The receivables likely include related-party balances, aged uncollected debts, or amounts from the Indian Ocean island operations with long settlement cycles. This is the most urgent question to ask Bernard Clement.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Days Payables Outstanding (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">~327 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (distribution)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Suppliers Stretched</span></span></div>
+      <span class="ratio-interpret">Trade payables of MUR 5.47M against cost of sales of MUR 4.52M implies ~327 days of payables outstanding. The company is significantly behind with suppliers — likely surviving on supplier forbearance. This creates supply chain vulnerability: if key suppliers tighten terms, the trading model collapses.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">2.6×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">4× – 8×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Slow Movement</span></span></div>
+      <span class="ratio-interpret">Inventory turns 2.6 times per year — stock sits for an average of ~140 days. For specialty chemicals and industrial parts this is high but not catastrophic (some items are slow-moving by nature). Still, slow inventory ties up working capital the company cannot afford.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Admin Cost Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">43.5% of revenue</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (distribution)</span><span class="ratio-val">10% – 20%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Root Cause of Loss</span></span></div>
+      <span class="ratio-interpret">Administration costs at 43.5% of revenue vs a 26% gross margin means the company structurally cannot break even at current revenue. To achieve breakeven with the same cost base, revenue would need to reach approximately MUR 10.2M — 67% higher than FY2025 actuals. Alternatively, admin costs must be cut by at least MUR 1.07M to reach breakeven.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. DSO of ~612 days (MUR 10.25M receivables vs MUR 6.11M revenue).</strong> If even 20% of those receivables are uncollectable, that is MUR 2.05M of paper assets that must be written off — which would push equity to –MUR 3.05M and trigger a technical liquidity crisis. Collecting even 30% of the overdue balance would fund the entire operating loss for FY2026. The receivables book is both the biggest risk and the biggest untapped cash source in the business.<br><br>
+    <strong>2. Administration costs at MUR 2.66M (43.5% of revenue).</strong> Reducing this to 20% of current revenue (MUR 1.22M) would convert the MUR 1.14M loss into a MUR 275K profit. No growth strategy can compensate for a cost base this disproportionate. Bernard Clement needs to be asked what is inside that MUR 2.66M — salaries, rent, professional fees, owner drawings classified as admin? This is the first conversation.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">A two-segment distributor — chemical specialties and industrial spare parts — operating across a regional Indian Ocean footprint, with longevity and specialist knowledge as its primary competitive assets in a fragmented mid-market.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Chemical Specialties Distribution</h4>
+        <div class="ec-sub">Segment 1 · Primary brand focus</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Positioning</span><span class="mv">Regional distributor</span></div>
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Prochem, Acculab, Chemtech.mu</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">17yr relationships</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv">No website/digital</span></div>
+        <div class="ec-metric"><span class="mk">Growth driver</span><span class="mv">Construction boom</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Industrial Spare Parts (Earthmoving)</h4>
+        <div class="ec-sub">Segment 2 · Bulldozer / Heavy Equipment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Positioning</span><span class="mv">Niche importer</span></div>
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Emcar, NUCO Engineering</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Specialist sourcing</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv">Slow inventory turns</span></div>
+        <div class="ec-metric"><span class="mk">Growth driver</span><span class="mv">Infrastructure projects</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Indian Ocean Island Export</h4>
+        <div class="ec-sub">Segment 3 · Regional reach differentiator</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Markets</span><span class="mv">IO islands</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Established routes</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv">Long DSO cycles</span></div>
+        <div class="ec-metric"><span class="mk">Revenue share</span><span class="mv">Unknown</span></div>
+        <div class="ec-metric"><span class="mk">Potential</span><span class="mv">Underexploited</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Longevity and supplier relationships.</strong> Seventeen-plus years of consistent operation in specialty chemical and parts distribution in Mauritius and the Indian Ocean creates deep supplier and buyer relationships that are difficult for new entrants to replicate quickly. The company has survived multiple economic cycles including COVID-19, which is itself a credibility signal for long-term clients.</p>
+  <p class="body-text"><strong>2. Regional Indian Ocean export capability.</strong> The ability to distribute beyond Mauritius to Indian Ocean island nations is a meaningful differentiator. Most Mauritius-based distributors of this scale operate domestically only. SpecMart's established island routes — even if currently generating slow receivables — represent a competitive moat that could be monetised more systematically with better cash management and terms discipline.</p>
+  <p class="body-text"><strong>3. Dual-product specialisation.</strong> The combination of chemical specialties and earthmoving/industrial spare parts creates cross-selling opportunity with construction and infrastructure clients who need both — a bundled offering few competitors in the mid-market provide.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Mauritius infrastructure pipeline:</strong> The Mauritius government has maintained a capital investment programme in roads, coastal infrastructure, and housing — all of which drive demand for earthmoving equipment parts and maintenance chemicals.</li>
+    <li><strong>Indian Ocean blue economy growth:</strong> Mauritius's positioning as an Indian Ocean hub is creating sustained demand for specialist distribution logistics to smaller island markets — a space SpecMart is already occupying.</li>
+    <li><strong>Supply chain localisation post-COVID:</strong> Institutional buyers in Mauritius and the region have shown preference for established local distributors over direct import — reducing risk of supply disruption. SpecMart's longevity benefits from this shift.</li>
+    <li><strong>Digital gap headwind:</strong> Competitors with active websites and digital B2B presence are increasingly winning RFQs and procurement tender processes where SpecMart has no searchable presence — a growing disadvantage.</li>
+    <li><strong>Credit environment tightening:</strong> Rising interest rates and tighter supplier credit terms in the regional market threaten a company already running 327-day payables cycles. Supplier relationship risk is real if the macroeconomic environment tightens further.</li>
+    <li><strong>Specialist chemical regulation:</strong> Tightening environmental and chemical handling regulations in Mauritius (and export markets) may require compliance investment that a small operator with no visible compliance infrastructure may struggle to absorb.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">No Website — Critical Digital Presence Gap</div>
+    In 2026, a B2B distributor of specialty chemicals and industrial parts with no website is effectively invisible to new clients. The company has no owned digital channel. Its B2B directory listings are passive and outdated. In contrast, competitors like Chemtech.mu, Acculab, and Prochem all operate professional websites with product catalogues, contact forms, and credibility signals. This is an easy, low-cost win — a basic website would immediately differentiate the company for procurement contacts at construction firms, hotel groups, and manufacturing operations.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Revenue of MUR 6.1M and a small team (exact headcount unknown, but the presence of a freelance salesman and the admin cost base of MUR 2.66M suggests at least 3–6 FTEs equivalent) places the company at the lower end of EOS's sweet spot. EOS works well here but the organisation may be too small for a full EOS implementation — a more targeted Focus Day approach would be the appropriate entry point rather than a full EOSv rollout.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Bernard Clement has been the sole operational leader for 19 years and has maintained the business through what appear to be several difficult years. This longevity signals resilience. The fact that financials are being filed (FY2023–2025) despite years of losses suggests some level of accountability to external requirements. However, the 12-year annual return lapse and the lack of any formal management team visible from public data suggests the leadership style is likely highly intuitive and non-systematic — which is exactly the EOS target profile. The key unknown is whether Clement is open to external input or protective of his independence.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">Pain is very visible. The company is losing money (MUR 1.14M net loss), carrying negative equity, has stretched supplier relationships (327-day DPO), and near-zero cash (MUR 50,740). This is a business in operational distress — exactly the profile where an owner/founder is most open to outside help. The 19-year duration suggests Clement knows the business is not running as it should. He needs a framework, not just advice. The urgency score is high because without intervention, another year of losses risks trading insolvency.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score low">3 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:30%"></div></div>
+    <p class="eos-rationale">No visible systems infrastructure. No website, no documented processes that are publicly observable, a single person handling MD + secretary functions, annual returns unfiled for 12 years. The administration cost ratio of 43.5% with no obvious output to show for it suggests processes are expensive and unstructured simultaneously. The receivables situation (612-day DSO) indicates there is no systematic collections process. This company has likely never operated with a Scorecard, accountability structure, or documented core processes — which means EOS has a clean slate to work with, and significant immediate wins available.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Culture cannot be assessed from public data for a company of this size and digital invisibility. The 19-year operating history with the same director team suggests stability of character. The use of a freelance salesman rather than a salaried sales team may indicate a culture of cost-consciousness and flexibility. Scoring this at mid-range — sufficient to support EOS culture work but with significant unknowns.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">All decision-making appears to flow through Bernard Clement — MD, secretary, primary contact, and operational lead. The sole shareholder (Garcia Ormaechea B de Laguna) has a Spanish surname suggesting possible non-resident or non-operational status. If Clement is making all decisions alone, this is a classic EOS Accountability Chart problem: the integrator role exists but is unsupported, with no leadership team to distribute execution. Decisions are likely reactive, intuitive, and undocumented.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score low">3 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:30%"></div></div>
+    <p class="eos-rationale">No publicly articulated vision exists for SpecMart/Peca Marusi. No website means no mission statement, no stated values, no market positioning narrative. A company that has been operating for 19 years without a website or articulated strategy is almost certainly operating on founder instinct rather than documented vision. The V/TO (Vision/Traction Organiser) would be a revelation for this business — it likely does not have a written 3-Year Picture, 1-Year Plan, or Rocks.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">2 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:20%"></div></div>
+    <p class="eos-rationale">A company run by a single director with a freelance salesman almost certainly has no structured meeting rhythm. There is no evidence of any formal leadership team, which means there is nothing to have a Level 10 Meeting with. This is both a limitation (EOS meeting culture requires a team to implement) and an opportunity — introducing even a basic weekly check-in rhythm would be transformational for this business at its current stage.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">5.5</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate — Conditional Positive</h4>
+      <p>Peca Marusi / SpecMart is a genuine EOS candidate — the pain is real, the business is private, and the founder is likely feeling the isolation of sole decision-making after 19 years. The primary constraint is financial: with negative equity and a MUR 1.14M annual loss, the company needs immediate financial triage before it can invest in a growth operating system. The recommended sequencing is: (1) financial stabilisation conversation with Bernard Clement, (2) Focus Day to demonstrate EOS relevance, (3) full EOS implementation once admin costs are controlled and the receivables position is understood. The score would rise to 7+ if the cash position and admin cost ratio improve within 6 months.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Peca Marusi / SpecMart</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>Bernard Clement is the sole accountable person for every function — sales, operations, finance, and administration. <strong>The Accountability Chart will immediately surface that one person cannot own all seats.</strong> This conversation will be the most valuable 30 minutes Clement has had in years — it names the structural problem.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>The company has no visible KPI framework. <strong>DSO, DPO, gross margin, and admin cost ratio need to become weekly numbers.</strong> A 5-number Scorecard covering receivables collected, payables outstanding, revenue, gross profit, and admin spend would give Clement the visibility he almost certainly does not currently have.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>The administration cost anomaly (MUR 2.66M — what is inside it?), the 612-day DSO, and the annual return lapse are all Issues that need to be surfaced, discussed, and solved. <strong>IDS (Identify-Discuss-Solve) will be the most immediately impactful EOS tool</strong> for a company sitting on a pile of unresolved structural problems.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>With no visible planning horizon, the business is entirely reactive. <strong>Setting 3 Rocks for the next 90 days — receivables collection target, admin cost audit, and website launch — would represent more structured planning than this company has likely done in years.</strong> The discipline of committing to 3 priorities for 90 days is the entry point to traction.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO (Vision/Traction Organiser)</h4>
+      <p>No articulated vision, no 3-Year Picture, no 1-Year Plan. <strong>The V/TO exercise alone would be worth the cost of a Focus Day.</strong> Clarifying what SpecMart wants to be in 3 years — MUR 15M revenue? Regional chemical distribution leader? — and working backwards to what needs to be true would unlock Clement's strategic thinking in a way that 19 years of intuitive management has not.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Core Values &amp; People Analyser</h4>
+      <p>With a freelance salesman as the primary external team member, <strong>establishing Core Values and applying the People Analyser to any future hiring is foundational.</strong> As the company stabilises and needs to hire to grow, having defined values prevents costly cultural misfires — a critical tool for a founder who has never built a team.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations total — four financial/operational (immediate triage) and four EOS-specific (structural growth framework). Sequencing principle: financial stabilisation must precede EOS implementation. Do not lead with EOS in the first conversation.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Receivables Audit and Emergency Collections Programme</h4>
+      <p>MUR 10.25M in trade receivables against MUR 6.11M revenue (612-day DSO) is the most urgent issue in the business. Bernard Clement must commission an aged debtors analysis immediately — stratifying receivables by age (0–30, 31–90, 91–180, 180–365, 365+ days), client identity, and collectability assessment. Any balance over 180 days that has not been actively disputed and does not have a payment plan should be provisioned. Target: collect MUR 2M in receivables within 90 days, which would fund the entire FY2025 loss and restore positive cash position. Owner: Bernard Clement directly. Success metric: DSO below 120 days within 6 months.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Administration Cost Forensic Review — Name Every Line</h4>
+      <p>Administration costs of MUR 2.66M (43.5% of revenue) must be itemised line by line. The target is to understand whether this cost base includes owner drawings, related-party fees, depreciation, or genuinely controllable overhead. Specific question for Clement: what is the single largest item inside admin costs? If the answer is salaries/drawings, that is a structural profitability conversation. If it is rent, professional fees, or insurance, those are immediately renegotiable. Target: identify and eliminate or renegotiate at least MUR 800K of admin costs within 90 days to approach breakeven on a run-rate basis. This is not optional — without this, the company loses another MUR 1M+ in FY2026.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Annual Return Compliance — File or Face Consequences</h4>
+      <p>Annual returns have not been filed since 2013. This is a 12-year lapse under the Companies Act 2001, which carries penalties and, in extreme cases, can result in the Registrar striking the company from the register. Clement should engage a Mauritius company secretary immediately to assess penalty exposure and file outstanding returns (or negotiate a compliance pathway with the Registrar). Cost: MUR 50K–150K in professional fees. Risk of inaction: company status jeopardised. This is a governance emergency. Timeline: resolved within 60 days.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Launch a Basic Website — MUR 30K Problem, Not MUR 300K</h4>
+      <p>Peca Marusi / SpecMart has no website. In 2026, this is commercially indefensible for a regional B2B distributor. A professional 5-page website (Home, About, Chemical Specialties, Spare Parts, Contact) with product category descriptions and an RFQ form can be built for under MUR 30,000 and would immediately make the business discoverable to the construction, hospitality, and manufacturing sectors it serves. This is the highest-ROI marketing investment available. Timeline: within 60 days. Owner: Bernard Clement to commission; no new hire required at this stage.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Open With a Financial Triage Conversation, Not an EOS Pitch</h4>
+      <p>The entry angle for Thierry is the financial situation — not EOS. Start with: "I've looked at your filing and the numbers tell me there's something inside your admin costs that's drowning your gross profit. Can we spend 30 minutes going through it together?" This positions Thierry as a financially literate advisor who sees the real problem — not a sales person. Earn the trust conversation first. Once Clement sees that Thierry understands the business, the EOS conversation becomes natural. Target meeting: within 2 weeks of initial contact.</p>
+      <span class="urg urg-now">Entry Angle — First</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Focus Day — Not Full EOS Yet</h4>
+      <p>Given the company's size and current financial distress, propose a Focus Day (not a full EOS engagement) as the first structured intervention. The Focus Day will introduce the Accountability Chart, V/TO, and Issues List in one day, giving Clement a tangible framework without committing to a multi-month programme. Price point appropriate for a MUR 6M revenue company in distress. Success = Clement leaves with a draft Accountability Chart, 3 Rocks, and 5 Issues to solve. Schedule within 60 days of the initial financial triage conversation.</p>
+      <span class="urg urg-week">Within 60 Days Post-Meeting</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Build the Accountability Chart Hypothesis Before the Meeting</h4>
+      <p>Arrive at the first meeting with a draft Accountability Chart for SpecMart showing the seats that need to exist: MD/Integrator (Clement), Sales (currently freelance — needs ownership), Operations/Logistics, Finance/Admin. Showing Clement a visual of his own organisation — and the empty seats — will be more powerful than any presentation. The hypothesis: Clement is sitting in all seats simultaneously. The EOS solution is to either hire into those seats or explicitly reassign accountability. This visual alone justifies the conversation.</p>
+      <span class="urg urg-week">Prepare Before First Meeting</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>V/TO Strategic Question — What Does SpecMart Look Like in 3 Years?</h4>
+      <p>The most powerful V/TO question for this company: "If the admin costs are fixed, the receivables are collected, and you have a proper sales structure — what does SpecMart look like in 3 years?" Probe for: revenue target (MUR 10M? MUR 15M?), geographic ambition (deeper Indian Ocean presence?), product expansion (more chemical categories?), and exit/succession thinking (Clement is a founder, not a young man — what happens to the business?). The answer to this question defines whether full EOS implementation is appropriate or whether a lighter framework is sufficient.</p>
+      <span class="urg urg-medium">During Focus Day</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Peca Marusi / SpecMart is a legitimate, long-established regional distributor that is being slowly suffocated by an administration cost structure it cannot explain and a receivables book it has not collected. Bernard Clement is a 19-year founder-operator who almost certainly knows the business is in trouble but has no framework to fix it. The EOS opportunity is real — but the first conversation must be financial, not structural. Thierry's advantage is that he has read the numbers and Clement has not had a peer who has. That is the opening.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Initial outreach to Bernard Clement via phone (+230 450 5252) — lead with the financial observation, not EOS. Week 1.</li>
+        <li><span class="sig-num">02</span>First meeting: admin cost forensic review + receivables aged debtors conversation. Bring draft Accountability Chart. Week 2–3.</li>
+        <li><span class="sig-num">03</span>Annual return compliance: refer Clement to a company secretary; position as a protective advisory action. Week 3–4.</li>
+        <li><span class="sig-num">04</span>Propose Focus Day once trust is established and Clement sees Thierry as a financial ally. Weeks 4–8.</li>
+        <li><span class="sig-num">05</span>Full EOS implementation once admin costs are controlled (target: MUR 1.5M or below), receivables below 120 DSO, and Clement has articulated a 3-Year Picture. Months 3–6.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Peca Marusi Company Ltd (SpecMart Co. Ltd) — Comprehensive Company Analysis &amp; EOS Assessment · 15 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (15 April 2026, File C071161) · LinkedIn · Brabys.mu · EC21.com · Facebook Business Pages · Web search aggregation</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
