@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resiglas — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Fibreglass &amp; Polymer Manufacturing</span>
+    <span class="badge badge-type">Private Company · Domestic · Aptis Group Subsidiary</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">16 April 2026</span>
+  </div>
+  <h1>Resiglas:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Resiglas Company Limited (C1504) · Company intelligence · Financial ratios · EOS implementation assessment · Calebasses, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 253.4M</div>
+      <div class="stat-delta">Fiscal year ended 31 Dec 2024 · MUR</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit FY2024</div>
+      <div class="stat-value emerald">MUR 28.4M</div>
+      <div class="stat-delta">11.2% net margin · Strong profitability</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">7.2 / 10</div>
+      <div class="stat-delta">Moderate-High · Qualified Positive · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Structural Flag</div>
+      <div class="stat-value red">Group Dependency</div>
+      <div class="stat-delta">100% Aptis Holdings Ltd ownership — EOS mandate requires group buy-in</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Resiglas Company Limited — Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 68-year-old pioneering manufacturer that has quietly become Mauritius's dominant fibreglass brand, now recording MUR 253M in revenue under new professional leadership — but operating in a structure where EOS adoption requires unlocking group-level permission.</p>
+
+  <p class="body-text">Resiglas Company Limited (file C1504, BRN C07001504) was incorporated in December 1965 and traces its commercial roots to 1956, when founder Hervé Closel began importing fibreglass from Europe. By 1958 the company was building boats; by 1970 it was manufacturing water tanks; and by 1991 it had pioneered fibreglass swimming pools in the Indian Ocean. Today, Resiglas operates from its headquarters at Royal Road, Calebasses, and manufactures across five product universes — Storage, Nautical, Poolside, Professional, and Sustainable — holding ISO 9001:2015 certification and serving both household and B2B customers across Mauritius and the wider Indian Ocean region.</p>
+
+  <p class="body-text">The company has been 100% owned by Aptis Holdings Ltd since 2018, which in turn is the vehicle of the Mamet family (Jean-Pierre Mamet, Chairman and Founder of Aptis Group; Oscar Mamet, Group CEO). Aptis is a diversified Mauritian conglomerate with clusters in Distribution (TNS Tobacco, TNS Consumer, L'Artigiano), Commerce (Resiglas, RACSO), and Property (TNS Property, M'Bote). Resiglas is the flagship of the Commerce cluster. The group provides financial backing, corporate services (secretary: Navitas Corporate Services Ltd), and strategic direction — but also imposes a layer of governance that any EOS conversation must navigate before reaching Resiglas's own management team.</p>
+
+  <p class="body-text">Financially, Resiglas is in strong shape: FY2024 (year ended 31 December 2024) shows turnover of MUR 253.4M, gross profit of MUR 62.4M (24.6% gross margin), and net profit after tax of MUR 28.4M (11.2% net margin). The balance sheet is robust — MUR 284.5M in total assets, MUR 196.1M in equity, and no long-term borrowings. The company is effectively debt-free and self-funding. The four charges registered with CBRIS (dated 1998–2002, totalling MUR 24.5M) are legacy instruments from pre-Aptis ownership and appear to have no current operational significance. EOS suitability scores 7.2/10, driven by the company's ideal size (~150–167 staff), organic growth complexity, new leadership hungry for systems, and a product portfolio that has diversified faster than internal process capability. The primary constraint is group ownership — Fabien Harel (MD since April 2020) is the entry point, but Aptis Group's Jean-Pierre Mamet and Oscar Mamet hold ultimate decision authority.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — The Group Permission Problem</div>
+    Resiglas is operationally an ideal EOS candidate: right size, right complexity, right leadership profile (Fabien Harel is detail-oriented, people-first, systems-minded). The barrier is not the company — it is the parent. Aptis Holdings Ltd owns 100% of Resiglas, and all board seats are held by Aptis executives. Any EOS engagement that starts with Fabien Harel will eventually require a conversation with Jean-Pierre or Oscar Mamet at the group level. The strategic play is to treat Resiglas as the proof-of-concept opportunity that opens the door to a broader Aptis group relationship — the group has at least five operating subsidiaries, any of which could benefit from the system.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>68-year first-mover advantage in fibreglass manufacturing</strong> — the only company to have pioneered boats (1958), water tanks (1970), and pools (1991) in Mauritius. ISO 9001:2015 certified. Five distinct product universes with recurring domestic demand. Strong retail brand recognition and established dealer/distributor network (Sofo Soler, myhome.mu). Aptis group backing provides financial resilience and shared services.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Cost of sales at 75.4% of revenue compresses gross margin to 24.6%</strong> — rising raw material and transport costs (flagged by management) are the primary margin threat. Distribution costs of MUR 54.3M (21.4% of revenue) are notably high, suggesting either aggressive selling or structural cost issues. Four legacy charges from 1998–2002 remain uncleared on CBRIS, which is a minor reputational risk in due diligence contexts.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>New MD since 2020 driving restructure of teams, product lines, and IT systems simultaneously</strong> — a classic multi-front change initiative without a single operating system to hold it together. Management explicitly identifies "human resources as the most valuable asset" (Harel's stated priority), and the company has hired a Customer Excellence Officer, Marketing Manager, and Digital Sales Assistant in recent years — all roles that require clear accountability structures EOS would provide.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A Mauritian manufacturing institution — the Indian Ocean's fibreglass pioneer since 1956, now a professionally managed Aptis Group subsidiary pursuing growth across five product universes from its Calebasses campus.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Resiglas Company Limited was incorporated on 9 December 1965 under file number C1504 with Business Registration No. C07001504. The commercial history predates formal incorporation — founder Hervé Closel began importing and working with fibreglass from Europe in 1956, making the operational heritage 68 years old as of 2026. The registered office has been at Royal Road, Calebasses, Mauritius since at least 22 November 2007 (the effective date recorded with CBRIS). Stated share capital is MUR 6,000,000 across 600,000 ordinary shares, all held by Aptis Holdings Ltd. The company has filed annual returns on time for each of the last three recorded years (2023, 2024, and 2025) and financial statements for fiscal years ending 31 December 2022, 2023, and 2024 — the most recent approved 27 June 2025. The appointed auditor is Messrs BDO &amp; Co (appointment effective 24 October 2025), a Big-4 equivalent firm in Mauritius. Company secretary is Navitas Corporate Services Ltd, Navitas House, Floreal, effective 1 January 2024.</p>
+
+  <p class="body-text">Key milestones in the corporate record: 1958 — first fibreglass boats in Mauritian waters; 1970 — pioneer water tank manufacturer in Mauritius; 1991 — first fibreglass swimming pool in the Indian Ocean; 2015 — ISO 9001:2015 Quality Management System certification; 2018 — acquisition by Aptis Holdings Ltd; 2020 — major rebrand and diversification into five product universes, appointment of Fabien Harel as MD; 2023 — 65th anniversary of commercial operations.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Aptis Holdings Ltd</h4>
+        <div class="ec-sub">100% Shareholder · Parent Company</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Sole shareholder (600,000 ordinary shares)</span></div>
+        <div class="ec-metric"><span class="mk">Group founder</span><span class="mv">Jean-Pierre Mamet — Chairman</span></div>
+        <div class="ec-metric"><span class="mk">Group CEO</span><span class="mv">Oscar Mamet</span></div>
+        <div class="ec-metric"><span class="mk">Group CFO</span><span class="mv">Sabbi Appanna Dev Anand</span></div>
+        <div class="ec-metric"><span class="mk">Origin</span><span class="mv">Evolved from TNS Tobacco distribution</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Aptis Group — Structure</h4>
+        <div class="ec-sub">Diversified Mauritian Conglomerate</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Distribution</span><span class="mv">TNS Tobacco · TNS Consumer · L'Artigiano</span></div>
+        <div class="ec-metric"><span class="mk">Commerce</span><span class="mv">Resiglas · RACSO</span></div>
+        <div class="ec-metric"><span class="mk">Property</span><span class="mv">TNS Property · M'Bote</span></div>
+        <div class="ec-metric"><span class="mk">Associates</span><span class="mv">Rema · Harley Street · Fertility Centre · Navitas</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Resiglas — Position in Group</h4>
+        <div class="ec-sub">Commerce Cluster Flagship</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Acquired</span><span class="mv ok">2018</span></div>
+        <div class="ec-metric"><span class="mk">Cluster</span><span class="mv">Commerce (with RACSO)</span></div>
+        <div class="ec-metric"><span class="mk">Revenue weight</span><span class="mv">MUR 253M — likely largest Commerce entity</span></div>
+        <div class="ec-metric"><span class="mk">Auditor</span><span class="mv">BDO &amp; Co (from Oct 2025)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Group Note</div>
+    Aptis Group's explicit philosophy — "entrepreneurial spirit" and encouraging subsidiaries to "grow and become leaders in their fields" — is a natural alignment with EOS's Vision/Traction Organizer (V/TO) framework. Any EOS conversation with Resiglas is simultaneously a pitch to Aptis Group for a multi-subsidiary rollout. Frame accordingly.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Jean-Pierre Mamet — Chairman</h4>
+      <p>Founder and President of Aptis Group. Appointed Chairman of Resiglas on 14 May 2018 (CBRIS) and as Director on 28 May 2018. Service address: Royal Road, Calebasses. Ultimate decision authority for any EOS engagement. Background in tobacco distribution — built Aptis from TNS Tobacco into a diversified group.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Fabien Harel — Managing Director</h4>
+      <p>Appointed 1 April 2020. <strong>Primary entry point for EOS conversation.</strong> Civil engineering background (Université Paris Dauphine). Began at Resiglas in 2005 as Assistant Storekeeper; spent 12 years at UBP Group in sales and production management; then Medine Group (Property, Development Manager). Detail-oriented, people-first leadership style. Driving simultaneous restructure of teams, products, and IT. Phone and email through resiglas.mu.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Oscar Mamet — Director</h4>
+      <p>Group CEO of Aptis. Appointed Director of Resiglas 26 December 2018. Service address: Lot 29, Mont Piton II Residential Estate, Mont Piton. Second-generation Mamet family leadership. Key stakeholder for any group-level EOS conversation alongside his father Jean-Pierre.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Sylvain Pougnet — Operations Director</h4>
+      <p>CBRIS-listed director (appointed 15/12/2004 — pre-Aptis, tenured). Operations Director per company website. Longest-serving director on record — carries institutional knowledge of the manufacturing operation. Critical to any EOS Accountability Chart conversation as the process/production anchor.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Sabbi Appanna Dev Anand — Director</h4>
+      <p>Group CFO of Aptis. Appointed Director of Resiglas 14 May 2018. Service address: Lot 694, Morc Highland Rose (Gated), Highlands, Mauritius. Controls group-level financial reporting and any capital allocation decisions. Gatekeeper for financial approval of EOS investment.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Senior Management Team</h4>
+      <p><strong>Rishi Ramsahye</strong> — Sales Manager (civil engineer background, interviews in Aptis media). <strong>Navin Aujgobee &amp; Murvin Chinapah</strong> — Production Managers. <strong>Reyen Sinnassamy</strong> — Finance Manager. <strong>Sebastien Tyack</strong> — Nautical Manager. These six roles collectively represent the L2 leadership layer where EOS would seat the Leadership Team.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Resiglas operates across five distinct product universes, each with its own customer profile and margin structure. <strong>Storage</strong> is the volume backbone — fibreglass and polyethylene water tanks, septic tanks, grease traps, and water pumps serving residential and commercial construction. This was the category that established Resiglas's market dominance and remains the highest-volume segment. <strong>Poolside</strong> targets the aspirational residential and hotel market — fibreglass pools (the category Resiglas pioneered in 1991), bubble spas including a recently launched plug-and-play spa model, pool equipment, and after-sales maintenance services; this category carries the highest ticket values. <strong>Nautical</strong> serves fishing communities and recreational users — Legend boats, traditional pirogues, Resicraft vessels, kayaks, and the Tri to Fly product; a niche segment but strategically differentiated. <strong>Sustainable</strong> is the newest cluster, launched in 2022 — solar water heaters, rainwater tanks, HDPE garbage bins, dome lights, water purifiers, and bio products; aligned with Mauritius's green economy agenda and government incentive structures. <strong>Professional</strong> serves B2B industrial buyers — raw fibreglass materials, acrylic sheets, polyethylene and polystyrene solutions sold to manufacturers, contractors, and fabricators.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Resiglas operates from a single campus at Royal Road, Calebasses (Pamplemousses district, north Mauritius), which houses both manufacturing and the main showroom — recently renovated as part of Harel's restructure programme. A second contact address noted in Aptis communications is Aptis House, Inova, Riche Terre Business Park, Riche Terre — likely the group head office used for corporate correspondence. Products are distributed nationally through Resiglas's own sales force and through retail partners (Sofo Soler Moris Ltd and myhome.mu confirmed). The company has explicitly stated regional aspirations in its vision statement — "the Indian Ocean region" — though no confirmed export operations have been identified. Business hours (8:30–16:00 weekdays, 8:30–12:30 Saturday) suggest a single-site operation without shift manufacturing.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Note</div>
+    Resiglas maintains a reasonably modern website (resiglas.mu, rebuilt in 2020 rebrand) with active Facebook (ResiglasMaurice) and Instagram (@resiglas). However, the company has an older legacy URL (resiglascoltd.com) still appearing in search results — a potential brand confusion issue. The Yelo.mu listing is unverified and shows a 1-star rating from a single review mentioning employee compensation concerns. Online reputation management is an operational gap.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS Financial Summary filed by Resiglas Company Limited, fiscal year ended 31 December 2024, approved 27 June 2025. All figures in Mauritius Rupees (MUR). Note: the MUR 148M figure referenced in briefing intelligence may relate to an earlier fiscal year; FY2024 actuals show a materially higher MUR 253M turnover.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Data sourced exclusively from the CBRIS Financial Summary — a condensed statutory filing. Line items are as declared to the Registrar. The filing does not provide prior-year comparative figures in this extract, nor segment-level revenue breakdowns, nor detailed note disclosures. As a private domestic company, Resiglas is not required to publish full IFRS financial statements publicly. The MUR 148M figure in the original briefing is consistent with an estimated FY2022 or FY2023 revenue level; FY2024 at MUR 253M represents a significant uplift — either genuine organic growth or a reclassification of revenue items. BDO &amp; Co was appointed auditor on 24 October 2025, replacing the prior auditor for the FY2024 sign-off period.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>253,365,053</td><td>100.0%</td><td>Strong revenue scale for a Mauritian SME — well above the MUR 148M cited in prior intelligence, indicating meaningful growth</td></tr>
+        <tr class="heat-warn"><td>Cost of Sales</td><td>190,956,223</td><td>75.4%</td><td>High CoS ratio consistent with manufacturing operations — raw materials, labour, and energy-intensive production processes</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>62,408,830</td><td>24.6%</td><td>Healthy gross margin for a manufacturer; fibreglass and polymer manufacturing typically operates in the 20–35% GP range</td></tr>
+        <tr><td>Other Income</td><td>33,488,106</td><td>13.2%</td><td>Significant — likely includes after-sales service revenues, rental income on investment properties (MUR 0 noted in balance sheet, so likely inter-company or grant/subsidy income)</td></tr>
+        <tr class="heat-warn"><td>Distribution Costs</td><td>54,349,657</td><td>21.4%</td><td>Elevated — suggests either a large direct sales force, delivery fleet costs, or commission structures; warrants scrutiny</td></tr>
+        <tr><td>Administration Costs</td><td>11,120,543</td><td>4.4%</td><td>Lean admin cost base — positive signal for operational efficiency</td></tr>
+        <tr><td>Other Expenses</td><td>876,019</td><td>0.3%</td><td>Minimal — well controlled</td></tr>
+        <tr><td>Finance Costs</td><td>29,550,717</td><td>11.7%</td><td>Notably high for a company with zero short-term and zero long-term borrowings declared — this line likely represents lease liabilities (IFRS 16), factoring costs, or inter-company finance charges from Aptis group</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>29,550,717</td><td>11.7%</td><td>Strong pre-tax profitability</td></tr>
+        <tr><td>Tax Expense</td><td>1,197,599</td><td>0.5%</td><td>Very low effective tax rate (~4%) — possible deferred tax positions, tax credits, or relief schemes applicable</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>28,353,118</strong></td><td><strong>11.2%</strong></td><td>Excellent net margin for a Mauritian manufacturer — well above sector average of 6–8%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 December 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>130,245,194</td><td>Substantial fixed asset base — manufacturing campus, equipment, moulds. Reflects capital-intensive nature of production</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>960,359</td><td>Likely software / ERP systems or brand-related assets — small but present</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Investments / Others</td><td>7,419,941</td><td>Possibly minority stakes or long-term receivables from group entities</td></tr>
+        <tr class="heat-ok"><td>Non-Current Assets</td><td><strong>Total Non-Current Assets</strong></td><td><strong>138,625,494</strong></td><td>48.7% of total assets — balanced asset structure</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>65,009,632</td><td>High inventory level — 25.7% of revenue. Fibreglass raw materials, WIP, and finished goods. Seasonal pool demand may require buffer stock</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>27,246,294</td><td>Moderate debtors — implies DSO of approximately 39 days. Manageable but worth tracking</td></tr>
+        <tr><td>Current Assets</td><td>Cash &amp; Cash Equivalents</td><td>30,931,539</td><td>Good cash position — MUR 30.9M on hand provides operational flexibility</td></tr>
+        <tr><td>Current Assets</td><td>Other Current Assets</td><td>22,728,203</td><td>Prepayments, VAT recoverable, or other short-term items</td></tr>
+        <tr class="heat-ok"><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>145,915,668</strong></td><td>51.3% of total assets — healthy working capital composition</td></tr>
+        <tr class="heat-ok"><td>Total</td><td><strong>Total Assets</strong></td><td><strong>284,541,162</strong></td><td>Significant asset base for a Mauritian private manufacturer</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital</td><td>6,000,000</td><td>Stated capital — 600,000 ordinary shares at MUR 10 par</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Retained Earnings</td><td>143,678,549</td><td>Substantial accumulated profit — reflects decades of profitable operation and Aptis's reinvestment posture</td></tr>
+        <tr><td>Equity</td><td>Other Reserves</td><td>46,454,956</td><td>Likely revaluation reserves on property or other comprehensive income items</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>196,133,505</strong></td><td>68.9% equity ratio — fortress balance sheet. Company is largely self-funded</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Provisions</td><td>42,814,726</td><td>Significant long-term provisions — likely IFRS 16 lease liabilities, staff end-of-service obligations, or warranty provisions. Explains the high "Finance Costs" in P&amp;L</td></tr>
+        <tr class="heat-ok"><td>Non-Current Liabilities</td><td>Long-Term Borrowings</td><td>0</td><td>Zero long-term debt — company is debt-free in the traditional sense</td></tr>
+        <tr><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>25,792,495</td><td>Creditors — implies DPO of approximately 49 days. Resiglas pays suppliers slower than it collects from customers — positive working capital dynamic</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax Payable</td><td>19,800,436</td><td>Tax liability — consistent with a low effective current tax rate; deferred element likely</td></tr>
+        <tr><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>45,592,931</strong></td><td>Current ratio of 3.2× — exceptionally strong liquidity</td></tr>
+        <tr><td>Total</td><td><strong>Total Liabilities</strong></td><td><strong>88,407,657</strong></td><td>31.1% leverage ratio — conservative and healthy</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">CBRIS records four charges against Resiglas Company Limited, all registered in 2000–2002 and all predating the Aptis acquisition by 16+ years. Total notional value: MUR 24,500,000 across four instruments (MUR 6.5M floating on movable/immovable, MUR 9M floating on movable/immovable, MUR 5M fixed and floating, and MUR 4M floating on movable/immovable). No redemption or satisfaction notices appear on the CBRIS record, which means these charges technically remain outstanding on the public register. However, given their age, the zero long-term borrowings declared in the FY2024 balance sheet, and the company's 68.9% equity ratio, the most likely explanation is that these charges were not formally discharged with the Registrar when the underlying debt was repaid — a common administrative oversight in Mauritius. They do not appear to represent live financial obligations but could create friction in any future property transaction or third-party due diligence process. Aptis or BDO &amp; Co should be encouraged to formally discharge these instruments.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Charge Register Advisory</div>
+    Four CBRIS charges dated 1998–2002 totalling MUR 24.5M remain formally uncleared on the public register. The balance sheet shows zero long-term borrowings, confirming these are legacy. However, in any commercial due diligence context, undischarged charges create a negative signal. Recommend Resiglas management formally apply to have these removed from the register — a straightforward administrative action with BDO or Navitas support.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks sourced from Mauritius SME manufacturing sector norms and IFRS-standard manufacturing ratios. Colour key: Green = healthy / at or better than benchmark, Amber = watch zone / approaching concern, Red = critical concern requiring action. All computed from FY2024 CBRIS data.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">3.20×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (manufacturing)</span><span class="ratio-val">1.5× – 2.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Excellent</span></span></div>
+      <span class="ratio-interpret">Current assets of MUR 145.9M against current liabilities of MUR 45.6M. Resiglas has exceptional short-term liquidity — three times cover. This is above the typical manufacturing benchmark, suggesting conservatively managed working capital and a company that does not rely on short-term financing. Excess liquidity could be more actively deployed for growth investment or returned to the group.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio (Acid Test)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.77×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Strong</span></span></div>
+      <span class="ratio-interpret">(Current Assets − Inventory) ÷ Current Liabilities = (145.9M − 65.0M) ÷ 45.6M = 1.77×. Even excluding the MUR 65M inventory from liquid assets, Resiglas can comfortably cover its short-term obligations. No liquidity risk whatsoever — the company could sustain a significant sales downturn before facing cash pressure.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">24.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (fibreglass mfg)</span><span class="ratio-val">20% – 35%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Within Range</span></span></div>
+      <span class="ratio-interpret">Gross margin of 24.6% is healthy for a Mauritian fibreglass and polymer manufacturer, where raw material costs (GRP, polyethylene, polystyrene) are import-dependent and subject to global commodity price swings and FX exposure. The margin is not exceptional, however — there is room to improve through product mix shift toward higher-margin pool and sustainable products.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">11.2%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritian SME mfg)</span><span class="ratio-val">5% – 9%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Above Benchmark</span></span></div>
+      <span class="ratio-interpret">Net profit margin of 11.2% is meaningfully above sector norms. Part of this reflects a very low effective tax rate (4%), but even pre-tax, the 11.7% operating margin is strong. The "Other Income" of MUR 33.5M (13.2% of revenue) significantly boosted the bottom line — understanding the composition of this line is critical for normalised profitability assessment.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">14.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">12% – 18%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Net Profit ÷ Total Equity = 28.35M ÷ 196.1M = 14.5%. A solid return on the equity base — the Mamet family is earning a respectable return on their investment in Resiglas. This figure would decline if the large retained earnings were more aggressively reinvested.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">10.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (asset-heavy mfg)</span><span class="ratio-val">6% – 12%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Good</span></span></div>
+      <span class="ratio-interpret">Net Profit ÷ Total Assets = 28.35M ÷ 284.5M = 10.0%. Resiglas generates MUR 10 of profit for every MUR 100 of assets deployed — a creditable result for a capital-intensive manufacturer. This ratio suggests the asset base is being utilised effectively.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.45×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">Below 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Conservative</span></span></div>
+      <span class="ratio-interpret">Total Liabilities ÷ Equity = 88.4M ÷ 196.1M = 0.45×. The balance sheet is conservatively financed. With zero bank borrowings and liabilities dominated by provisions and payables, Resiglas has substantial unused borrowing capacity — meaningful headroom for growth financing if needed.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">68.9%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (target)</span><span class="ratio-val">40% – 60%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Fortress</span></span></div>
+      <span class="ratio-interpret">Equity at 68.9% of total assets is above the typical healthy range — confirming that Resiglas is over-capitalised relative to its asset base. This is characteristic of a family group that prioritises financial security over leverage-amplified returns. From an EOS perspective, this signals a company that is not under financial distress — it is choosing to invest in systems from a position of strength, not crisis.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Days Sales Outstanding (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">39 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Acceptable</span></span></div>
+      <span class="ratio-interpret">Trade Receivables ÷ (Revenue ÷ 365) = 27.2M ÷ 694k/day = ~39 days. Resiglas collects from customers in approximately 39 days — within the acceptable Mauritian commercial range. Given that a significant portion of sales are likely cash retail (showroom and yelo.mu), the blended DSO is reasonable. B2B professional sales likely drag the average upward.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Days Payable Outstanding (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">49 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Positive</span></span></div>
+      <span class="ratio-interpret">Trade Payables ÷ (CoS ÷ 365) = 25.8M ÷ 523k/day = ~49 days. Resiglas pays its suppliers in ~49 days while collecting from customers in ~39 days — a positive cash conversion cycle gap of +10 days in the company's favour. This is a well-managed working capital position.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Days</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">124 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (mfg)</span><span class="ratio-val">60 – 90 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Inventory ÷ (CoS ÷ 365) = 65.0M ÷ 523k/day = ~124 days. Inventory turns at 2.9× per year — well below the manufacturing benchmark of 4–6×. MUR 65M in stock represents a significant cash lock-up. For a company facing rising raw material costs, high inventory levels amplify the cost risk. This is the single most actionable operational metric for improving cash generation without touching revenue.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.89×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (mfg)</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Below Benchmark</span></span></div>
+      <span class="ratio-interpret">Revenue ÷ Total Assets = 253.4M ÷ 284.5M = 0.89×. Resiglas generates less than MUR 1 of revenue for every MUR 1 of assets — slightly below benchmark for a manufacturer. The large PP&amp;E base (MUR 130M) and high inventory (MUR 65M) are the primary contributors. Improving asset utilisation through better production scheduling and inventory management would lift this ratio.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. Inventory at 124 days (MUR 65M locked in stock).</strong> Reducing inventory days from 124 to the sector benchmark of 80 days would release approximately MUR 23M in cash — equivalent to 81% of Resiglas's annual net profit, freed without a single new sale. This is a manufacturing scheduling and procurement problem, not a commercial one, and it is exactly the kind of operational discipline that EOS's Rocks and Scorecard framework drives. <strong>2. Distribution Costs at MUR 54.3M (21.4% of revenue).</strong> This is an unusually high selling cost ratio for a manufacturer with a dominant brand. Understanding whether this is a structural sales force cost, delivery inefficiency, or discounting habit is critical — every percentage point reduction is MUR 2.5M of additional profit. These two levers together represent a MUR 25–35M improvement opportunity without any revenue growth.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Resiglas competes across three distinct market segments — residential infrastructure (water tanks), aspirational lifestyle (pools and spas), and niche professional/B2B — with a dominant pioneer position in each but facing increasing competition from importers, niche players, and regional alternatives.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Storage &amp; Infrastructure</h4>
+        <div class="ec-sub">Water Tanks · Septic Tanks · Pumps · Grease Traps</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Volume driver</span><span class="mv">Residential construction &amp; renovation</span></div>
+        <div class="ec-metric"><span class="mk">Resiglas position</span><span class="mv ok">Pioneer — 1970 market creator</span></div>
+        <div class="ec-metric"><span class="mk">Competitor threat</span><span class="mv warn">Imported PE tanks (cheaper, lighter)</span></div>
+        <div class="ec-metric"><span class="mk">Differentiation</span><span class="mv">Polychrome colour range, local service, ISO quality</span></div>
+        <div class="ec-metric"><span class="mk">Distribution</span><span class="mv">Showroom + dealer network (Sofo Soler etc.)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Poolside &amp; Lifestyle</h4>
+        <div class="ec-sub">Pools · Spas · Equipment · Maintenance Services</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Volume driver</span><span class="mv">Villa construction, hotel sector, aspiration</span></div>
+        <div class="ec-metric"><span class="mk">Resiglas position</span><span class="mv ok">Pioneer — 1991 IOI market creator</span></div>
+        <div class="ec-metric"><span class="mk">Competitor</span><span class="mv warn">Nabridas (identified market competitor)</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">After-sales service network, pool chemicals, warranty</span></div>
+        <div class="ec-metric"><span class="mk">Revenue quality</span><span class="mv ok">Highest ticket value per unit in portfolio</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Nautical &amp; Professional / B2B</h4>
+        <div class="ec-sub">Boats · Pirogues · Raw Fibreglass Materials · Industrial</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Volume driver</span><span class="mv">Fishing industry, tourism, industrial fabricators</span></div>
+        <div class="ec-metric"><span class="mk">Resiglas position</span><span class="mv ok">Pioneer — 1958 first boat manufacturer</span></div>
+        <div class="ec-metric"><span class="mk">Competitor threat</span><span class="mv">Imported fibreglass materials (cheaper)</span></div>
+        <div class="ec-metric"><span class="mk">Differentiation</span><span class="mv">Local knowledge, custom fabrication, tradition</span></div>
+        <div class="ec-metric"><span class="mk">Nautical manager</span><span class="mv">Sebastien Tyack</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>First-mover and pioneer brand equity across all three major segments.</strong> No other company in Mauritius can claim to have invented the market for water tanks (1970), swimming pools (1991), and fibreglass boats (1958) simultaneously. This heritage creates a trust advantage with consumers that takes competitors decades to replicate — and in a relationship-driven market like Mauritius, brand trust is a durable moat.</p>
+  <p class="body-text"><strong>ISO 9001:2015 certification with BDO-audited financials.</strong> Resiglas is one of the few Mauritian manufacturers with a certified quality management system — a genuine differentiator in B2B and hotel/hospitality sales where procurement teams require quality certification. The BDO appointment (from October 2025) further elevates financial credibility for institutional clients.</p>
+  <p class="body-text"><strong>Aptis Group financial backing and shared infrastructure.</strong> Access to group capital, shared corporate services (Navitas), group HR (Regine de Ravel), and group marketing (Karen Sarah) means Resiglas competes with a professional corporate infrastructure that independent competitors cannot match at equivalent scale. In a crisis or investment cycle, Aptis can deploy group resources to Resiglas rapidly.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Construction boom in Mauritius and IRS/RES developments</strong> — continued villa, hotel, and residential construction drives demand for water tanks, pools, and building materials. Resiglas is structurally aligned to Mauritius's property-led growth cycle.</li>
+    <li><strong>Green economy and renewable energy agenda</strong> — the Sustainable product universe (solar heaters, rainwater tanks, bio products) is directly aligned with Mauritius's government policy direction. Government incentives and green building codes are structural tailwinds for this fastest-growing Resiglas segment.</li>
+    <li><strong>Rising raw material and shipping costs</strong> — flagged explicitly by Resiglas management as a key challenge. Import-dependent polymer and fibreglass materials are subject to global commodity volatility and Indian Ocean shipping premiums. This compresses the CoS ratio and requires active procurement and inventory strategy.</li>
+    <li><strong>Increasing competition from direct importers</strong> — the removal of import barriers, combined with e-commerce price transparency, enables consumers to source cheaper imported water tanks and pool equipment directly. Resiglas must compete on service, quality, and warranty rather than price.</li>
+    <li><strong>Tourism sector resilience and hotel refurbishment cycles</strong> — Mauritius hotel sector is in active refurbishment and new-build mode. Pool replacement and spa installation in hotel properties represents a recurring B2B revenue opportunity, particularly for the Poolside universe.</li>
+    <li><strong>Digital and e-commerce penetration in Mauritius</strong> — consumer purchasing decisions for home improvement products are increasingly digital-first. Resiglas's 2020 website rebuild and Instagram presence are early steps, but the online commerce opportunity is significantly underdeveloped relative to the brand's scale.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Gap — Online Commerce Underdeveloped</div>
+    Despite a 2020 rebrand and a functional website, Resiglas does not appear to have a transactional e-commerce capability. Products are displayed but not purchasable online. In a market where myhome.mu and sofo-soler.mu are listing and distributing Resiglas products, the company is ceding the online customer relationship (and margin) to intermediaries. A direct e-commerce channel would be both a revenue opportunity and a data capture advantage.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">With approximately 150–167 employees across manufacturing, sales, after-sales, nautical, finance, and sustainable product lines — plus a six-person senior management team (Harel, Pougnet, Ramsahye, Aujgobee, Chinapah, Sinnassamy, Tyack) — Resiglas sits precisely in the EOS sweet spot. The company is large enough to have genuine coordination problems between departments but small enough that a single leadership team can be aligned. Five product universes each with their own operational logic create the classic cross-functional complexity that EOS is designed to resolve.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Fabien Harel's public statements demonstrate a leadership philosophy strongly aligned with EOS principles: "I like things to be clear and well-defined" (precision and process); "human resources as the company's most valuable asset" (people-first); hands-on field leadership; and a stated priority of "consolidating foundations before pursuing expansion" (discipline before growth). These are exactly the instincts that make a leader receptive to EOS. The constraint is the board — four of the five directors are Aptis group executives, and any EOS commitment requires their endorsement. Jean-Pierre Mamet's entrepreneurial philosophy ("grow and become leaders in your fields") is compatible but needs to be explicitly engaged.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">Resiglas is in a classic post-acquisition growth-and-integrate phase: rebranded in 2020, team restructured, new product categories launched (Sustainable 2022), IT systems being rebuilt, new management functions being created (Customer Excellence Officer, Marketing Manager, Digital Sales Assistant). Revenue has grown significantly (the MUR 148M cited in prior intelligence to MUR 253M in FY2024 — a ~71% uplift). This is the exact growth inflection point where companies outgrow informal management and need a structured operating system. Distribution costs at 21.4% of revenue and inventory days at 124 are measurable symptoms of a business that is scaling without the process infrastructure to support it.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">ISO 9001:2015 certification is a strong signal — it means Resiglas already has documented processes and audit capability, which gives it a head start over many EOS candidates. However, IT systems are described as being "restructured" by Harel (2020 interview), suggesting legacy systems that are not yet fit for the company's current scale. The intangible assets line of MUR 960K on the balance sheet likely represents software investments underway. The quality system and the business operating system are different things — EOS would complement the ISO framework rather than replace it.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Resiglas is described internally as "a big family" with "a warm welcome from staff and management" — consistent with a positive, people-oriented culture that Harel explicitly nurtures. The company maintained employee salaries during the 2020 COVID lockdown with Aptis group support, which is a strong indicator of cultural commitment to people. This kind of culture is highly receptive to EOS's people-centric tools (Right People Right Seats, People Analyser) and is less likely to experience the resistance to change that EOS sometimes encounters in more hierarchical organisations. A Yelo.mu review flagged a concern about employee compensation — worth understanding but unlikely to be systemic given the group's COVID response.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">This is the most uncertain dimension, and the primary source of EOS implementation risk. With Jean-Pierre Mamet as Chairman (ultimate authority), Oscar Mamet and Sabbi Appanna as board directors, and Fabien Harel as MD — decision-making may involve three layers of approval for any significant operational change. In EOS terms, the key question is whether Fabien Harel has genuine Level 3 authority (spending, hiring, operational decisions) or whether he is functionally a senior manager with CEO optics but board approval required for all material decisions. The answer to this question determines whether EOS can be implemented at the subsidiary level or requires a group-level conversation first.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Resiglas has a published mission ("empower families through innovative, eco-friendly and reliable solutions") and vision ("become the trusted leader in home and lifestyle solutions in Mauritius"), which is more than most EOS candidates have at entry. However, there is no evidence of a 3-year picture, 1-year plan, or Rocks-equivalent priority framework in the public domain. The "regional aspiration" (Indian Ocean) is mentioned but undefined. The V/TO would sharpen the company's 10-year target and give the leadership team a shared directional anchor — particularly important when Harel is simultaneously running restructure, product launches, and a sustainability pivot.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No public evidence of structured meeting rhythms (quarterly reviews, weekly L10s, annual planning). Harel's emphasis on "spending time with teams in the field" suggests an informal, relationship-based communication style rather than a structured cadence. Annual returns and financial statements are filed on time (positive discipline signal), but operational meeting culture is unknown. The creation of specialist roles (Customer Excellence Officer, Marketing Manager) without a visible coordination mechanism suggests decisions and issues may accumulate or get resolved bilaterally rather than in structured forums.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">7.2</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>Resiglas is an operationally compelling EOS candidate: right size, right growth stage, right leadership values, and measurable process pain points (inventory, distribution costs) that EOS tools directly address. The qualification is structural — 100% Aptis group ownership means Fabien Harel is not the sole decision-maker for a commitment of this nature. The entry strategy should be a focused conversation with Harel (who will be receptive) followed by a deliberate engagement with Jean-Pierre and Oscar Mamet that frames EOS as a group-wide capability, not a single-subsidiary experiment. The upside of cracking Aptis is access to 5+ subsidiaries — Resiglas is the door, not the destination.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Resiglas</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>Resiglas has measurable operational problems (inventory days 124, distribution costs 21.4%) that a weekly Scorecard would surface and hold accountable. With five product universes each having distinct performance drivers, a Scorecard gives Harel a single dashboard to manage complexity rather than five separate informal reporting lines.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The current org structure has evolved through restructure, new hires (Customer Excellence Officer, Marketing Manager), and five product managers. The Accountability Chart would clarify who owns each function — critical when Production Managers Aujgobee and Chinapah share a level, and when Ramsahye (Sales) and the new Customer Excellence Officer may have overlapping remits.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (Quarterly Priorities)</h4>
+      <p>Harel is simultaneously running IT restructure, Polychrome tank launch, new pool range, Sustainable universe development, and showroom renovation. Without a Rocks framework, all five initiatives compete for the same leadership attention and resources. Rocks would force the company to choose its top 3–5 priorities for the next 90 days and execute with discipline.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision/Traction Organizer (V/TO)</h4>
+      <p>The gap between Resiglas's published mission/vision and a concrete 3-year picture and 1-year plan is precisely where V/TO adds value. The "regional aspiration" needs to be converted into a specific number (revenue, market, geography) by a specific date — a conversation that Harel and the Mamet board have not yet had explicitly in public.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>A company managing five product universes, a 150+ person workforce, rising raw material costs, digital transformation, and after-sales service complexity generates issues faster than informal meetings can resolve them. The Issues List gives every issue a named owner and a 90-day resolution deadline — preventing the accumulation of unresolved problems that drain management energy.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>Harel's relationship-based, field-focused leadership style is a strength culturally but risks creating information asymmetry across his L2 team. A weekly Level 10 meeting with the six-person senior team (Pougnet, Ramsahye, Aujgobee/Chinapah, Sinnassamy, Tyack) would create a structured forum where Scorecard, Rocks, and Issues are reviewed weekly — giving Harel the pulse of the business without requiring him to be physically present in every function.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in two clusters: four financial/operational actions that improve Resiglas's performance independent of EOS, and four EOS-specific implementation steps sequenced to navigate the Aptis group governance structure. The financial actions create credibility and urgency for the EOS conversation.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Reduce Inventory Days from 124 to 80 — Release MUR 23M in Cash</h4>
+      <p>Reyen Sinnassamy (Finance Manager) and Navin Aujgobee / Murvin Chinapah (Production Managers) should jointly conduct a full inventory audit within 60 days, categorising stock as fast-moving, slow-moving, and obsolete. Implement a 90-day rolling production plan tied to sales forecasts from Rishi Ramsahye. Target: reduce inventory from MUR 65M to MUR 42M within 12 months. Success = inventory days at 80 or below, and MUR 23M in freed cash available for reinvestment or group dividend.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Audit and Reclassify Distribution Costs — Target 15% of Revenue</h4>
+      <p>Distribution costs at MUR 54.3M (21.4% of revenue) are the largest operating cost outside CoS and are disproportionate for a brand-dominant manufacturer. Harel should commission a distribution cost breakdown within 30 days: sales force headcount and commissions, delivery fleet costs, trade discounts and rebates, exhibition/event costs. Target: reduce to 15% of revenue (MUR 38M) within 18 months — a saving of MUR 16M. Every percentage point saved is MUR 2.5M of additional net profit.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Formally Discharge the Four Legacy CBRIS Charges</h4>
+      <p>Engage Navitas Corporate Services Ltd (current company secretary) or BDO &amp; Co to file formal satisfaction notices with the Registrar of Companies for the four charges dated 1998–2002 (total: MUR 24.5M). This is a straightforward administrative action — the underlying debt is clearly repaid as evidenced by zero long-term borrowings on the balance sheet. Target: completed within 60 days. Outcome: clean CBRIS record that presents no friction in future due diligence, bank relationships, or potential corporate transactions.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Launch a Direct E-Commerce Channel for Storage and Sustainable Products</h4>
+      <p>Resiglas currently cedes the online customer relationship and margin to intermediaries (sofo-soler.mu, myhome.mu). The Marketing Manager and Digital Sales Assistant should be tasked with a 90-day project to add a transactional e-commerce capability to resiglas.mu, starting with the Storage universe (water tanks — highest volume, standardised products) and Sustainable (solar heaters — growing demand, government-incentive aligned). Target: MUR 5M in direct online revenue within the first 12 months. Secondary benefit: customer data capture that currently goes to distributors.</p>
+      <span class="urg urg-week">Within 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Book a 90-Minute Discovery Session with Fabien Harel</h4>
+      <p>The entry point is Fabien Harel — MD since 2020, detail-oriented, people-first, systems-minded, and in the middle of a multi-front restructure that EOS is precisely designed to support. Contact via sales@resiglas.mu or +230 243 34 06 (ask for MD's office). Frame the initial conversation around two specific operational problems he is already aware of: (1) managing five product lines with one leadership team, and (2) the distribution cost and inventory challenges visible in the financials. Do not lead with EOS — lead with his problem. Use the Focus Day concept as the entry product: low commitment, high demonstration of value.</p>
+      <span class="urg urg-now">First Action — This Week</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Draft an Accountability Chart Hypothesis Before the Second Meeting</h4>
+      <p>Based on available data, the Resiglas L1 Accountability Chart should seat: Fabien Harel (Integrator/MD) at the top, with six direct reports — Sylvain Pougnet (Operations), Rishi Ramsahye (Sales), Reyen Sinnassamy (Finance), Sebastien Tyack (Nautical), and a to-be-confirmed Marketing/Sustainable lead. The Customer Excellence Officer sits under Ramsahye. Presenting a draft Accountability Chart in the second meeting demonstrates EOS insight into Resiglas's specific structure — a far more compelling proof of value than a generic system pitch.</p>
+      <span class="urg urg-week">Before Second Meeting</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Propose a Resiglas Focus Day — Frame as Pilot for Aptis Group</h4>
+      <p>Once Harel is engaged, navigate the group governance question proactively: propose the Focus Day for Resiglas as a pilot that Aptis group can evaluate before deciding on a broader rollout. Request that Jean-Pierre Mamet or Oscar Mamet attend as observers. This converts the governance constraint (group approval required) into a sales advantage — the Mamets are now stakeholders in the process, not gatekeepers blocking it. A successful Resiglas Focus Day is effectively a demonstration for RACSO, L'Artigiano, and other Aptis subsidiaries.</p>
+      <span class="urg urg-week">Within 30 Days of Harel Engagement</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Define Resiglas's First Rock: Inventory Reduction from 124 to 80 Days</h4>
+      <p>In the V/TO session, the natural first Rock for Resiglas is the inventory reduction initiative (Recommendation 01 above). This is specific, measurable, time-bound, owned by identifiable people (Sinnassamy + Production Managers), and directly cash-generative. It gives EOS an immediate tangible win within the first 90 days of implementation — a proof-of-concept that the system delivers results. Framing this Rock in the Discovery conversation ("EOS would have surfaced this problem in Week 1 and assigned it an owner by Week 2") is a powerful demonstration of the system's practical value.</p>
+      <span class="urg urg-medium">First Rock — EOS Kickoff</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Resiglas is a financially strong, operationally mature Mauritian manufacturer that is genuinely mid-transformation. Fabien Harel is the right leader at the right moment — receptive to systems, people-focused, and managing more complexity than informal processes can handle. The financials are healthy (MUR 253M revenue, 11.2% net margin, zero debt) but contain two structural inefficiencies (inventory and distribution costs) that represent a MUR 39M improvement opportunity. The primary EOS entry risk is not the company — it is the Aptis board. Play the Aptis angle as a multi-subsidiary opportunity from day one, not an afterthought.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Contact Fabien Harel this week — Discovery call framed around five-product-line complexity and distribution cost problem (Week 1)</li>
+        <li><span class="sig-num">02</span>Present draft Accountability Chart and Scorecard prototype at second meeting — demonstrate EOS specificity to Resiglas (Week 2–3)</li>
+        <li><span class="sig-num">03</span>Propose Resiglas Focus Day as Aptis group pilot — invite Jean-Pierre or Oscar Mamet as observers to convert gatekeepers into sponsors (Week 3–4)</li>
+        <li><span class="sig-num">04</span>Run Focus Day with full Resiglas L2 team — define V/TO, first Rocks (inventory reduction as Rock 01), and Level 10 meeting structure (Month 2)</li>
+        <li><span class="sig-num">05</span>Debrief with Aptis group post-Focus Day — pitch full EOS Journey engagement for Resiglas with a multi-subsidiary roadmap for RACSO and L'Artigiano (Month 3)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Resiglas Company Limited — Comprehensive Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (16 April 2026) · resiglas.mu · aptis.mu · LinkedIn · yelo.mu · ZoomInfo · RocketReach · Datanyze · Facebook/ResiglasMaurice</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
