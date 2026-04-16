@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'artigiano Ltd — Comprehensive Company Analysis — 16 April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Italian Gourmet Retail · Import · Food Processing</span>
+    <span class="badge badge-type">Private Company · Domestic · Aptis Group (50%)</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">16 April 2026</span>
+  </div>
+  <h1>L'Artigiano:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">L'artigiano Ltd · Company intelligence · Financial ratios · EOS implementation assessment · Triolet, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 170K</div>
+      <div class="stat-delta">Note: MUR '000 units — likely MUR 170M equivalent; see Tab 03</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit FY2024</div>
+      <div class="stat-value emerald">MUR 109K</div>
+      <div class="stat-delta">Profitable entity · 64.1% net margin (see scaling note)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.4 / 10</div>
+      <div class="stat-delta">Founder-led with Aptis partner · genuine growth complexity</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Key Opportunity Flag</div>
+      <div class="stat-value emerald">Franchise Launch</div>
+      <div class="stat-delta">First franchise Jan 2025 — scale-up phase underway</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>L'artigiano Ltd — Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+<!-- TAB 01 — EXECUTIVE SUMMARY -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 16-year-old Italian gourmet import and retail business, acquired and built from 4 employees to 24 by founder-MD Daniela Quaranta, now entering a franchise-driven expansion phase with Aptis Holdings as a 50% strategic shareholder — a genuine founder-led growth business with strong commercial character and real EOS potential.</p>
+
+  <p class="body-text">L'artigiano Ltd (formerly Bokia Ltd) was incorporated on 18 March 2009 and has operated from Royal Road, Triolet, Mauritius since its 2013 relocation and relaunch under Marchetto Silvano and Daniela Quaranta. The business curates and distributes premium Italian food products — artisanal cheeses, cured meats, fine wines, and gourmet pantry staples — sourced directly from hand-picked Italian producers. With approximately 1,300 product lines and 24 employees, it is one of the most established Italian specialty importers in Mauritius. Physical presence includes the Triolet warehouse/headquarters and a retail outlet at Mont Choisy Le Mall, opened in 2018.</p>
+
+  <p class="body-text">Ownership is shared 50/50 between M&amp;D Gestion and Investment Ltd (the vehicle of founders Marchetto Silvano and Daniela Quaranta, holding 100 shares) and APTIS Holdings Ltd (100 shares, invested October 2022). Jean-Pierre Mamet joined as Director on 1 November 2022, representing Aptis's strategic interest. This dual-ownership structure — a founder-led MD alongside a strategic group partner — is the defining governance dynamic. SIMO Corporate Services Ltd remains as company secretary (appointed 15 March 2013), with no change to secretarial arrangements post-Aptis investment.</p>
+
+  <p class="body-text">Financially, FY2024 (year ended 31 December 2024) shows the company in profit: revenue of MUR 170,406 (or MUR 170M depending on unit interpretation — see Tab 03), net profit of MUR 109,192 (or MUR 109M). Retained earnings of MUR 116,223 (or MUR 116M) represent robust accumulated profitability. The balance sheet is healthy: no long-term borrowings, positive equity of MUR 116,243 (or MUR 116M), and total assets of MUR 144,392 (or MUR 144M). The franchise launch in January 2025 signals the company's entry into a new growth phase. EOS suitability scores 6.4/10 — a strong candidate for EOS engagement, with Daniela Quaranta as the natural leadership conversation partner.</p>
+
+  <div class="alert alert-ok">
+    <div class="alert-title">Key Finding — Profitable, Growing, Franchise-Ready</div>
+    L'Artigiano is the most commercially healthy of the four Aptis-associated entities analysed. It is profitable, has strong retained earnings, no debt, a loyal customer base for premium Italian products, a proven expansion model (Mont Choisy Le Mall), and has now launched its first franchise (Tutto Bene Ltd, January 2025). The founder-MD Daniela Quaranta is clearly the driving force. The EOS opportunity is real: a 24-person business in active growth, with a visionary founder who has demonstrated willingness to bring in external partners (Aptis) to accelerate. The key conversation is with Quaranta, not Mamet.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Deeply curated Italian product expertise and 1,300 product lines</strong> create a competitive moat that scale players cannot replicate. Established brand (16 years), strong customer loyalty, multiple physical touchpoints, Aptis Group resources now available for expansion, and a proven franchising model creating capital-light growth optionality.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Financial reporting unit ambiguity</strong> (MUR thousands vs. actuals) creates analysis uncertainty. Small stated capital (MUR 20,000 — 200 shares) suggests the entity may hold only part of the business value, with significant assets potentially in related entities. The 50/50 ownership split between founder and Aptis could create governance friction if strategic priorities diverge.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Founder-led growth at inflection point</strong> — 24 employees, franchise launch, Aptis partnership — exhibits classic EOS readiness signals. Daniela Quaranta as founder-visionary likely holds all strategic knowledge personally. With franchising introducing operational replication demands, documented processes, accountability structures, and meeting rhythms become essential. The franchise launch is the ideal EOS trigger event.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- TAB 02 — COMPANY OVERVIEW -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A founder-led Italian gourmet import business with 16 years of Mauritius market presence, having grown from a 4-person operation to a 24-employee multi-location retailer and importer now entering a franchise expansion phase backed by Aptis Holdings.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">L'artigiano Ltd was incorporated on 18 March 2009 as Bokia Ltd. The company was acquired on 15 March 2013 by Marchetto Silvano and Daniela Quaranta, who rebranded it as L'Artigiano and reoriented the business around premium Italian food products. The company relocated to Royal Road, Triolet in 2013, and the registered office remains there as of 16 April 2026 (effective 12 April 2017). File No. C087052, BRN C09087052. Stated capital is MUR 20,000 (200 ordinary shares). Company holds a Non-Citizen Property Restriction Act certificate effective 21 October 2022 — coinciding with the Aptis investment. SIMO Corporate Services Ltd has been company secretary since 15 March 2013. Annual returns consistently filed, with the most recent dated 3 July 2025 for year ended 1 July 2025. No charges registered.</p>
+  <p class="body-text">Key milestones: 2013 — acquisition and relaunch at Triolet; 2017 — first dedicated retail store and expanded warehouse; 2018 — retail outlet at Mont Choisy Le Mall; October 2022 — Aptis Holdings joins as 50% shareholder; January 2025 — first franchise launched in partnership with Tutto Bene Ltd (Moka). The franchise model is capital-light and opens a path to national coverage without proportional capex.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>M&amp;D Gestion and Investment Ltd</h4>
+        <div class="ec-sub">50% Shareholder · Founders' Vehicle</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">100 (50%)</span></div>
+        <div class="ec-metric"><span class="mk">Beneficial owners</span><span class="mv">Marchetto Silvano + Daniela Quaranta</span></div>
+        <div class="ec-metric"><span class="mk">MD role</span><span class="mv">Daniela Quaranta</span></div>
+        <div class="ec-metric"><span class="mk">Control nature</span><span class="mv ok">Founder operational</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>APTIS Holdings Ltd</h4>
+        <div class="ec-sub">50% Shareholder · Strategic Investor</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">100 (50%)</span></div>
+        <div class="ec-metric"><span class="mk">Investment date</span><span class="mv">October 2022</span></div>
+        <div class="ec-metric"><span class="mk">Board rep</span><span class="mv">Jean-Pierre Mamet</span></div>
+        <div class="ec-metric"><span class="mk">Cluster</span><span class="mv warn">Distribution (or Associates)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Related Entities</h4>
+        <div class="ec-sub">Aptis Group Associates</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">La Boutique de L'Artigiano Ltd</span><span class="mv">C146865 · LIVE</span></div>
+        <div class="ec-metric"><span class="mk">Le Frais de L'Artigiano Ltée</span><span class="mv">C139706 · LIVE</span></div>
+        <div class="ec-metric"><span class="mk">Franchise partner</span><span class="mv">Tutto Bene Ltd (Moka)</span></div>
+        <div class="ec-metric"><span class="mk">Secretary</span><span class="mv">SIMO Corporate Services Ltd</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Daniela Quaranta · Director &amp; Managing Director</h4>
+      <p><strong>Founder and operational leader of L'Artigiano since 2013.</strong> Appointed Director 15 March 2013. Service address: Avenue Baracuda, Trou aux Biches, Mauritius. Built the company from 4 to 24 employees, grew product lines to 1,300, opened retail at Mont Choisy Le Mall, and recruited Aptis as strategic shareholder. Phone: +230 260 0008. Email: sales@lartigiano-mauritius.com.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Jean-Pierre Mamet · Director</h4>
+      <p><strong>Aptis Group CEO representing the 50% strategic shareholder position.</strong> Appointed 1 November 2022 — immediately following Aptis's October 2022 investment. Service address: St Antoine Belmont, Goodlands, Mauritius. His role at L'Artigiano is board-level strategic oversight, not operational management. Decision rights at L'Artigiano ultimately require consensus between Quaranta and Mamet under the 50/50 structure.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Operations Team</h4>
+      <p>Jean-Yves Allas (Operations Manager), Shivesh Seepal (Financial Accountant), Yasser Auleear (Import Specialist), Josian Marcel (Sales Consulting), Estelle Samboo (Sales Supervisor). A team of 24 employees in total across Triolet headquarters, Mont Choisy Le Mall retail, and import/food processing operations. Operational depth exists despite small stated capital.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">L'Artigiano curates and distributes premium Italian food and beverage products across approximately 1,300 product lines sourced directly from hand-picked Italian producers. Core categories include: <strong>Formaggi</strong> (artisanal Italian cheeses — parmigiano, pecorino, gorgonzola, fresh cheeses); <strong>Salumi</strong> (cured meats — prosciutto, salami, bresaola, mortadella); <strong>Fine wines</strong> (Italian regional wines across all categories); <strong>Pastries and desserts</strong> (artisan pastries, biscotti, panettone); <strong>Pantry staples</strong> (pasta, olive oil, vinegars, sauces, confectionery); <strong>Alcoholic beverages wholesale</strong> (MRA dealer licence held). The company also holds a food processing licence (employing 10+ persons) suggesting on-site preparation/portioning of imported products. Distribution channels: Triolet warehouse/retail, Mont Choisy Le Mall retail, wholesale to hotels and restaurants, and now the Moka franchise (Tutto Bene Ltd).</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Primary operations at Royal Road, Triolet (north Mauritius) — warehouse, retail, and food processing hub. Retail expansion to Mont Choisy Le Mall (2018) brings the brand into one of Mauritius's premium tourist and residential retail destinations. The first franchise at Moka (January 2025) extends reach into the central plateau — a high-density, middle-to-upper-income residential area. Website (lartigiano.mu), Instagram (@lartigiano_mauritius), and Facebook (L'Artigiano Ltd) maintain active digital presence targeting both local consumers and expatriate/tourist audiences. No export activity identified — operations are entirely Mauritius domestic.</p>
+</div>
+</div>
+
+<!-- TAB 03 — FINANCIAL PERFORMANCE -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS filed financial statements (Registrar of Companies, Mauritius). FY ended 31 December 2024. Currency: Mauritius Rupees (MUR). Critical note on unit interpretation below.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Important — Financial Unit Interpretation</div>
+    The CBRIS summary for L'Artigiano reports figures that appear in small absolute numbers: Turnover MUR 170,406; Net Profit MUR 109,192; Total Assets MUR 144,392. In the context of a 24-employee retail/import business with 1,300 product lines, two physical locations, and an active franchise launch, these figures almost certainly represent <strong>MUR thousands</strong> — i.e., actual revenue of approximately MUR 170 million, net profit of MUR 109 million, and total assets of MUR 144 million. However, since the CBRIS format does not explicitly state the unit, this analysis presents figures as filed and notes that ratios should be interpreted with this context. If figures are indeed in MUR thousands, the financial performance is exceptional. If they are literal MUR amounts (c.USD 3,800 revenue), the company's CBRIS filing is materially incomplete. We proceed on the MUR '000 interpretation as the only commercially logical reading.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2024, MUR '000 assumed)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR '000</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>170,406</td><td>100.0%</td><td>Strong revenue for a 24-employee specialty importer; implies approximately MUR 7.1M revenue per employee</td></tr>
+        <tr class="heat-warn"><td>Cost of Sales</td><td>108,451</td><td>63.6%</td><td>Import cost of goods — consistent with premium food distribution with supplier freight, import duties, and portioning</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>61,955</td><td>36.4%</td><td>36.4% gross margin is healthy for a specialty food importer/retailer — premium product positioning supports margin</td></tr>
+        <tr><td>Other Income</td><td>81,874</td><td>48.0%</td><td>Exceptionally high other income — suggests significant non-trading income (management fees, property income, group charges, or asset revaluations)</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>Distribution costs appear within COGS or administration</td></tr>
+        <tr class="heat-ok"><td>Administration Costs</td><td>27,129</td><td>15.9%</td><td>Well-controlled administration overhead at 15.9% of revenue — healthy for this business size</td></tr>
+        <tr><td>Finance Costs</td><td>396</td><td>0.2%</td><td>Minimal finance costs — consistent with no long-term bank debt</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>116,304</td><td>68.3%</td><td>Exceptional PBT margin — largely driven by the MUR 81.9M other income line</td></tr>
+        <tr><td>Tax Expense</td><td>7,112</td><td>4.2%</td><td>Tax paid — confirms profitable status, effective tax rate approximately 6.1%</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit for the Period</strong></td><td><strong>109,192</strong></td><td><strong>64.1%</strong></td><td>Strong net profit; retained in business (retained earnings MUR 116M)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 Dec 2024, MUR '000 assumed)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR '000</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>55,458</td><td>Triolet warehouse, retail fit-outs, food processing equipment, vehicles</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Investments</td><td>5,408</td><td>Likely investment in related entities (La Boutique de L'Artigiano, Le Frais)</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Non-Current</td><td>1,067</td><td>Minor other non-current assets</td></tr>
+        <tr><td>Non-Current Assets</td><td><strong>Total Non-Current Assets</strong></td><td><strong>61,933</strong></td><td></td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>16,887</td><td>Gourmet food inventory — perishable products require active stock management</td></tr>
+        <tr><td>Current Assets</td><td>Trade and Other Receivables</td><td>30,780</td><td>Receivables from retail/wholesale customers — includes hotel and restaurant trade accounts</td></tr>
+        <tr><td>Current Assets</td><td>Cash and Equivalents</td><td>34,792</td><td>Strong cash position — confirms profitable, cash-generative trading</td></tr>
+        <tr class="heat-ok"><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>82,459</strong></td><td>Healthy working capital with significant cash</td></tr>
+        <tr><td></td><td><strong>TOTAL ASSETS</strong></td><td><strong>144,392</strong></td><td></td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital</td><td>20</td><td>Very low stated capital (MUR 20,000) — value is in retained earnings</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Retained Earnings</td><td>116,223</td><td>Strong retained profits — the real accumulated value of the business</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>116,243</strong></td><td>Healthy equity base, entirely from accumulated profits</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Provisions</td><td>4,630</td><td>Employee-related provisions (gratuity)</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Deferred Tax</td><td>1,200</td><td>Deferred tax on timing differences</td></tr>
+        <tr><td>Current Liabilities</td><td>Short-Term Borrowings</td><td>1,005</td><td>Minor short-term facility</td></tr>
+        <tr><td>Current Liabilities</td><td>Trade and Other Payables</td><td>16,718</td><td>Supplier payables — manageable relative to revenue</td></tr>
+        <tr class="heat-ok"><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>22,319</strong></td><td>Current ratio of 3.7× — very strong liquidity</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">No charges are registered against L'artigiano Ltd as at 16 April 2026. The absence of secured lending is consistent with the balance sheet showing no long-term borrowings and a strong cash position (MUR 34.8M). The company has funded its growth entirely through retained profits and, since October 2022, through the Aptis strategic investment. This is a financially disciplined, self-funding business model.</p>
+</div>
+</div>
+
+<!-- TAB 04 — FINANCIAL RATIOS -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks derived from Mauritius specialty food retail/import SME norms. Green = healthy, Amber = watch, Red = critical concern. Based on FY2024 filed accounts. All figures interpreted as MUR thousands — see Tab 03 for unit discussion.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">3.70×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (specialty retail)</span><span class="ratio-val">1.2× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">Current assets (MUR 82.5M) cover current liabilities (MUR 22.3M) 3.7 times — significantly above the benchmark. The company holds substantial cash (MUR 34.8M) and has no immediate liquidity concerns. Strong working capital position provides a comfortable buffer for the franchise expansion investment phase.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">2.94×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.8× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">(Current assets MUR 82.5M - Inventory MUR 16.9M) / Current liabilities MUR 22.3M = 2.94×. Even excluding perishable food inventory, the company has sufficient liquid assets to cover all current obligations nearly 3 times over. This is an exceptionally strong quick ratio for a food retail business.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">36.4%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (specialty food import)</span><span class="ratio-val">25% – 40%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">36.4% gross margin is within the upper range for specialty food import/retail. Premium Italian products with direct-from-producer sourcing and differentiated positioning support pricing power above commodity food distributors. The 1,300-product portfolio and curated brand approach justify this margin level.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">64.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">3% – 10%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">EXCEPTIONAL</span></span></div>
+      <span class="ratio-interpret">A 64.1% net margin is far above any retail/food industry benchmark — this is almost entirely attributable to the MUR 81.9M "Other Income" line (48% of revenue). This income likely represents a non-recurring or structural item: asset revaluations, group management charges received, investment income, or property-related gains. Trading net margin (excluding other income) would be approximately 20% — still excellent. The other income composition requires clarification.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">93.9%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">12% – 25%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">EXCEPTIONAL</span></span></div>
+      <span class="ratio-interpret">Net profit MUR 109.2M / Total equity MUR 116.2M = 93.9% ROE. Extraordinary by any standard — driven by the combination of a large profit relative to the equity base and the low stated capital. The equity is almost entirely retained earnings, meaning the company generates nearly equivalent profit to its entire net worth annually.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">75.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">EXCEPTIONAL</span></span></div>
+      <span class="ratio-interpret">Net profit MUR 109.2M / Total assets MUR 144.4M = 75.6%. Again, driven by the large other income component. On a trading basis alone (adjusting for other income), ROA would be approximately 23% — still significantly above benchmark. The asset base is being deployed very productively.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.24×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&lt;1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">Total liabilities (MUR 28.1M) / Equity (MUR 116.2M) = 0.24×. L'Artigiano is essentially debt-free. This conservative balance sheet position provides significant capacity to take on debt financing for franchise network expansion, additional retail locations, or import infrastructure — without straining financial ratios.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">293.7×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt;3×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">EBIT of approximately MUR 116.3M (PBT + finance costs) / Finance costs MUR 396K = 293.7× coverage. Effectively unlimited capacity to service additional interest costs. This is a pristine coverage ratio confirming that L'Artigiano has full financial headroom to borrow for expansion if desired.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debtor Days (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">65.9 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (specialty food)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">WATCH</span></span></div>
+      <span class="ratio-interpret">Trade receivables MUR 30.8M / Revenue MUR 170.4M × 365 = 65.9 days. Slightly above the 60-day benchmark — suggests hotel and restaurant wholesale customers may be taking extended payment terms. For a food business with perishable product costs, tightening DSO to 45 days would meaningfully improve cash conversion. Not critical, but a management attention area.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">56.3 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 75 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">Trade payables MUR 16.7M / COGS MUR 108.5M × 365 = 56.3 days. Within benchmark range — the company is paying Italian suppliers within reasonable terms, which is essential for maintaining the premium supplier relationships that underpin product exclusivity and quality. No creditor stress evident.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">6.42×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (specialty food)</span><span class="ratio-val">4× – 10×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">COGS MUR 108.5M / Inventory MUR 16.9M = 6.42×. For a perishable specialty food business with 1,300 product lines, this is appropriate — stock turns approximately every 57 days. Not too high (suggesting stock-outs) nor too low (suggesting spoilage risk). The inventory management appears calibrated to the perishable nature of the product range.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.18×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (specialty retail)</span><span class="ratio-val">0.8× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">Revenue MUR 170.4M / Total assets MUR 144.4M = 1.18×. Within benchmark for a specialty food retailer with significant fixed assets (warehouse, retail fit-out). Assets are generating appropriate revenue — no efficiency concerns here. The asset base can likely absorb franchise-driven revenue growth without immediate capex bottlenecks.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-ok">
+    <div class="alert-title">The 1 Number That Matters Most</div>
+    <strong>Other Income: MUR 81.9M (48% of revenue).</strong> This single line item is the difference between an exceptional net margin (64.1%) and a merely strong one (~20%). Understanding what this income represents is the key financial due diligence question for anyone engaging with L'Artigiano. If it is recurring (management fees received from related entities, property rental income, investment income), it represents genuine ongoing cash generation. If it is non-recurring (asset disposal gain, revaluation), FY2025 results will look materially weaker. This distinction fundamentally changes the investment and engagement case.
+  </div>
+</div>
+</div>
+
+<!-- TAB 05 — MARKET & COMPETITIVE POSITION -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">L'Artigiano operates in the premium Italian food niche within the Mauritius specialty food import market — a small but growing segment driven by expatriate demand, tourism, and an increasingly sophisticated local consumer palate for imported European gourmet products.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Italian Gourmet Retail</h4>
+        <div class="ec-sub">Core Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv ok">Market leader (Italy)</span></div>
+        <div class="ec-metric"><span class="mk">Product lines</span><span class="mv">~1,300</span></div>
+        <div class="ec-metric"><span class="mk">Locations</span><span class="mv">Triolet + Mont Choisy</span></div>
+        <div class="ec-metric"><span class="mk">Moat</span><span class="mv ok">Strong — depth &amp; curation</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Hotel &amp; Restaurant Wholesale</h4>
+        <div class="ec-sub">B2B Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv warn">Established but contested</span></div>
+        <div class="ec-metric"><span class="mk">Customers</span><span class="mv">Luxury hotels, Italian restaurants</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Italian authenticity, exclusivity</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv">DSO pressure from hotels</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Franchise Network</h4>
+        <div class="ec-sub">Growth Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">Launched Jan 2025</span></div>
+        <div class="ec-metric"><span class="mk">First partner</span><span class="mv">Tutto Bene Ltd (Moka)</span></div>
+        <div class="ec-metric"><span class="mk">Model</span><span class="mv">Capital-light, royalty-based</span></div>
+        <div class="ec-metric"><span class="mk">Upside</span><span class="mv ok">National coverage potential</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>Depth and curation of the Italian product range:</strong> 1,300 SKUs of authentic Italian gourmet products, sourced directly from Italian producers, is an almost impossible-to-replicate position for a Mauritius newcomer. The relationships with Italian producers built over 16 years constitute a genuine competitive moat. No supermarket chain or general importer can match this specialisation.</p>
+  <p class="body-text"><strong>Brand authenticity and community:</strong> L'Artigiano has built a loyal following among the Mauritian Italian diaspora, expatriate community, and premium-seeking local consumers. The brand stands for Italian authenticity in a market where Italian cuisine is both popular and aspirational. This brand equity cannot be purchased — it is accumulated over years of consistent product quality and service.</p>
+  <p class="body-text"><strong>Aptis Group resources:</strong> Since October 2022, L'Artigiano has access to Aptis Group's logistics infrastructure, commercial expertise, capital, and management support — without surrendering operational control (Daniela Quaranta remains MD with 50% ownership). This is a strategically advantageous arrangement for a growing SME.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Premiumisation of food consumption in Mauritius</strong> — rising disposable incomes among upper-middle-class Mauritians is driving sustained demand for imported European gourmet products, directly benefiting L'Artigiano's positioning.</li>
+    <li><strong>Tourism growth</strong> — Mauritius's strong luxury tourism sector (European visitors, particularly Italian, French, and British) creates consistent demand for authentic Italian food products in hotel and restaurant channels.</li>
+    <li><strong>Italian cuisine popularity</strong> — Italian food consistently ranks among the most popular global cuisines; the Mauritius restaurant scene features numerous Italian restaurants providing B2B wholesale demand.</li>
+    <li><strong>Franchise model scalability</strong> — the January 2025 Moka franchise represents a capital-light growth model that allows L'Artigiano to expand geographic reach without proportional management bandwidth or capex investment.</li>
+    <li><strong>Perishable product supply chain risk</strong> — cold chain management, customs delays, and import duty changes create ongoing operational risk for a business dependent on fresh Italian dairy and meat products.</li>
+    <li><strong>Supermarket imported food competition</strong> — Winner's, Jumbo, and other chains have expanded their imported food sections; while these cannot match L'Artigiano's depth or authenticity, they compete for the casual gourmet shopper.</li>
+  </ul>
+</div>
+</div>
+
+<!-- TAB 06 — EOS ASSESSMENT -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">24 employees across 2 owned locations (Triolet, Mont Choisy Le Mall), plus a franchise partner in Moka, plus wholesale distribution to hotels and restaurants — this is squarely in the EOS sweet spot of 10–250 with genuine operational complexity. Multiple business lines (retail, wholesale, import, food processing, franchise) create coordination challenges that EOS systems directly address. With the franchise network potentially growing, complexity will increase materially over the next 2–3 years.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Daniela Quaranta's decision to bring Aptis Holdings in as a 50% strategic shareholder in October 2022 — giving up half the equity in exchange for resources and partnerships — is a strong signal of leadership openness to external expertise and collaboration. This is not a founder who clings to 100% control for control's sake. The franchise launch (January 2025) further demonstrates willingness to adapt the business model. Quaranta appears to be a growth-oriented, externally curious leader — exactly the profile for EOS receptivity.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">L'Artigiano is in active, managed growth: franchise launch, Aptis partnership, expanded product range to 1,300 SKUs. Classic EOS growth pain points are almost certainly present: Quaranta likely holds significant institutional knowledge personally (supplier relationships, product curation expertise, customer relationships); replicating this knowledge for franchise partners requires documented processes; coordinating 24 employees across multiple sites requires structured accountability. The franchise launch is the inflection point that makes EOS timing ideal — now, before the franchise network scales to 5–10 outlets.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">L'Artigiano has been operating for 16 years and has developed operational systems for Italian import, cold chain management, and retail. However, the franchise model demands a new level of process documentation — franchisees need replicable playbooks for product selection, ordering, display, pricing, and customer service. No evidence of documented EOS-style operating rhythms (weekly L10s, quarterly Rocks, formal Scorecard). The appointment of an Operations Manager (Jean-Yves Allas) and Financial Accountant (Shivesh Seepal) suggests functional role clarity, but inter-functional coordination systems are unknown.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">A business that has grown from 4 to 24 employees over 13 years under one founder-MD, with consistent profitability and zero staff turnover signal (inferred from company's stable public presence), projects a culture of quality, discipline, and customer service. The curated Italian product ethos — authenticity, craft, care — likely permeates the internal culture. This is a business where employees understand the brand mission. High scores on culture correlate with strong EOS adoption success.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">With Daniela Quaranta as both Director and MD, decision-making is likely highly centralised — which is appropriate for a 24-person business but will become a bottleneck as the franchise network grows. The 50/50 board structure with Jean-Pierre Mamet (Aptis) could slow major strategic decisions if alignment takes time. No evidence of delegated decision-making frameworks, documented authority levels, or formal leadership team structure below Quaranta. This is the area EOS would most immediately improve.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">The franchise launch and Aptis partnership suggest a clearly articulated growth vision: become the definitive Italian gourmet brand across Mauritius through a franchise network. The founding story, brand identity, and product curation philosophy are coherent and consistent. What is less clear — and where V/TO work would add value — is the precise 10-year target (how many franchise outlets? what revenue? export to Africa via Navitas channels?). The vision exists but needs the rigour that V/TO provides to become a fully operational roadmap.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of structured meeting cadences. A 24-person business with the founder as MD likely operates with informal communication norms — ad hoc conversations, reactive problem-solving, founder-centric decision relays. As the franchise network grows and remote locations require management without physical presence, this model will break. Weekly L10 Meetings at Triolet HQ and a quarterly planning rhythm are precisely what the next growth phase demands.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.4</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Strong Candidate — Franchise Inflection Creates Ideal Timing</h4>
+      <p>L'Artigiano is the strongest standalone EOS candidate among the four entities analysed. A profitable, founder-led business with 24 employees, demonstrated openness to external partnerships, a clear brand vision, and a franchise expansion model that creates immediate process-documentation and accountability demands — these are exactly the conditions EOS is designed for. The January 2025 franchise launch is the natural trigger event. Daniela Quaranta is the primary EOS conversation partner. The 90-Minute Meeting should open with: "You've just launched your first franchise — how do you ensure franchise #5 and #10 deliver the same L'Artigiano experience without you personally overseeing every detail?"</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for L'Artigiano</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>V/TO (Vision/Traction Organizer)</h4>
+      <p>Quaranta has a growth vision — but it needs to be written down and shared with the entire leadership team, including the Aptis board representative. How many franchise outlets by 2030? What revenue? Which markets? V/TO would make the implicit vision explicit, create alignment between founders and Aptis, and give every team member a North Star to execute against.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>As the company grows from 24 to 40+ employees across franchise and company-owned locations, role clarity becomes critical. Who owns the franchise relationship? Who owns product procurement from Italy? Who owns the hotel/restaurant wholesale channel? An Accountability Chart would clarify these ownership questions before the franchise network creates coordination chaos.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>The franchise launch is the company's most important current initiative. A first Rock should be: "Franchise #1 (Tutto Bene Ltd, Moka) achieving MUR [X] monthly revenue by end of Q3 2026." Rocks would focus the leadership team's energy on the 3–5 things that matter most each quarter, preventing dilution of attention across 1,300 SKUs and multiple channels.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Process Documentation (Franchise Playbook)</h4>
+      <p>Scaling a franchise network requires that L'Artigiano's operational model — product selection, ordering, display, customer service standards, cold chain protocols — be fully documented in a Franchise Operations Manual. The EOS emphasis on "documenting and optimising" processes directly addresses this need. Without documented processes, each new franchisee will operate inconsistently, diluting the brand.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting Cadence</h4>
+      <p>A weekly 90-minute L10 Meeting for L'Artigiano's leadership team (Quaranta, Operations Manager, Financial Accountant, Sales Supervisor) would create the rhythmic review that a multi-site, franchising business demands. The meeting would track the Scorecard, review Rock progress, and surface and resolve the Issues preventing franchise and wholesale growth.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard (Weekly Numbers)</h4>
+      <p>Key metrics for L'Artigiano's Scorecard: weekly revenue by channel (Triolet retail, Mont Choisy retail, wholesale, franchise), gross margin by SKU category, inventory days (perishable risk), DSO (hotel/restaurant receivables), franchise outlet sales vs. target, and new SKU additions from Italian producer relationships. Weekly visibility on these numbers is the foundation for disciplined growth management.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- TAB 07 — RECOMMENDATIONS -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations: four operational priorities focused on franchise scale-up and financial clarity, four EOS implementation recommendations sequenced to support the franchise growth phase.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Clarify and Disclose the "Other Income" Composition</h4>
+      <p>MUR 81.9M in Other Income (48% of revenue) is unexplained and dominates the P&amp;L. Before any strategic investment, lending, or EOS engagement, Daniela Quaranta should be able to explain: is this recurring (management fees, rental income, investment income) or non-recurring (asset revaluation, disposal gain)? This single question determines whether FY2024's exceptional profitability is sustainable or a one-time event. Success: clear written breakdown of other income components provided to board.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Develop a Franchise Network 3-Year Plan</h4>
+      <p>The January 2025 Moka franchise is Franchise #1. Before Franchise #2 is signed, define the full network plan: target locations (Port Louis, Flic en Flac, Grand Baie, Curepipe?), financial model for each franchisee (royalty rate, product margin split, minimum order commitments), and the support infrastructure required at L'Artigiano HQ to manage a 5-outlet network. Without this plan, franchise growth will be reactive rather than strategic. Success: board-approved 3-year franchise roadmap.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Tighten DSO on Hotel and Restaurant Accounts</h4>
+      <p>DSO of 65.9 days is slightly above benchmark for a food business. Implement a structured collections process for B2B wholesale accounts: 30-day payment terms with automated reminders at 15, 30, and 45 days; early payment discounts for accounts settling within 15 days; and a credit limit framework. Target: DSO below 45 days within 6 months. This would release approximately MUR 10M in working capital currently tied up in extended receivables.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Create a Franchise Operations Manual</h4>
+      <p>Document L'Artigiano's operational model comprehensively: product ordering protocols, display standards, cold chain management, customer service scripts, pricing guidelines, and brand identity standards. This manual becomes the foundation for onboarding Franchise #2 and every subsequent partner. Without it, each new franchise will require Quaranta's personal involvement — which is the bottleneck that caps network growth. Target: completed manual within 90 days of EOS engagement start.</p>
+      <span class="urg urg-week">Within 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>90-Minute EOS Meeting with Daniela Quaranta</h4>
+      <p>L'Artigiano is a standalone EOS engagement — not requiring the group-level entry that TNS Consumer demands. Open with: "You've just launched your first franchise. How do you ensure that the quality and authenticity of L'Artigiano is consistent across every outlet without you personally managing each one?" This framing connects EOS directly to Quaranta's immediate operational challenge. Success: Quaranta commits to a Focus Day for herself and her leadership team.</p>
+      <span class="urg urg-week">EOS Entry Point</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Leadership Team Structure — Define the L10 Meeting Group</h4>
+      <p>Identify L'Artigiano's leadership team for EOS purposes: Quaranta (Visionary/MD), Operations Manager (Jean-Yves Allas as Integrator candidate), Financial Accountant (Shivesh Seepal), Sales Supervisor (Estelle Samboo), and Import Specialist (Yasser Auleear). This 5-person team becomes the weekly L10 Meeting group. Confirm the Accountability Chart with these roles formally defined — this is the first EOS output that creates immediate clarity for the team.</p>
+      <span class="urg urg-medium">EOS Phase 1</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>First Rock: Franchise #1 Performance Target</h4>
+      <p>The first 90-day Rock for L'Artigiano's leadership team: "Tutto Bene Ltd (Moka) franchise achieving MUR [target] monthly revenue and meeting all brand standards by [date]." This Rock focuses the team's attention on the most commercially important initiative — proving the franchise model works before scaling it — and creates the accountability structure (who owns what?) that EOS demands. Rocks turn the franchise ambition from a vague intention into a measured, time-bound commitment.</p>
+      <span class="urg urg-medium">EOS Phase 1</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>V/TO — Define the 10-Year Picture and 3-Year Plan</h4>
+      <p>L'Artigiano's V/TO should answer: Where is this business in 10 years? (The definitive Italian gourmet brand across Mauritius with 10+ franchise outlets and regional expansion into African cities via Navitas connections?) What does MUR X revenue, Y employees, and Z franchise outlets look like in 3 years? What are the 5 Core Values that define L'Artigiano culture for both employees and franchisees? The V/TO is the document that makes the franchise model scalable because it gives every stakeholder — including future franchisees — a shared vision to align behind.</p>
+      <span class="urg urg-medium">EOS Phase 1</span>
+    </div>
+  </div>
+
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>L'Artigiano is a rare find: a genuinely profitable, founder-built specialty brand with 16 years of market credibility, strong retained earnings, no debt, and a growth plan (franchising) that is already underway. Daniela Quaranta has proven she can build a business — the question is whether she can systematise it for scale. That is precisely what EOS answers. This is the highest-quality EOS opportunity among the four Aptis entities, and the entry point is Quaranta directly — not through Jean-Pierre Mamet.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Clarify Other Income composition — resolve the P&amp;L ambiguity before engagement deepens (immediate)</li>
+        <li><span class="sig-num">02</span>90-Minute EOS Meeting with Daniela Quaranta — franchise-focused conversation (Month 1)</li>
+        <li><span class="sig-num">03</span>Focus Day with L'Artigiano leadership team — Accountability Chart, V/TO draft, first Rocks (Month 2)</li>
+        <li><span class="sig-num">04</span>Weekly L10 Meeting launched — Scorecard live, Rocks tracked (Month 3)</li>
+        <li><span class="sig-num">05</span>Franchise Operations Manual completed and Franchise #2 onboarded using EOS framework (Month 4–6)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="report-footer">
+  <div>L'artigiano Ltd — Comprehensive Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (16 April 2026) · lartigiano.mu · aptis.mu · ZoomInfo · LinkedIn · Business Magazine Mauritius</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
