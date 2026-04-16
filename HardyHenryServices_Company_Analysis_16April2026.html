@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardy Henry Services — Comprehensive Company Analysis — 16 April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Pest Control &amp; Hygiene Services</span>
+    <span class="badge badge-type">Private Company · Domestic · Family-Owned Group</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">16 April 2026</span>
+  </div>
+  <h1>Hardy Henry Services:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">HARDY HENRY SERVICES LTEE · Company intelligence · Financial ratios · EOS implementation assessment · Pailles, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">MUR 390.6M</div>
+      <div class="stat-delta">Year ended 30 June 2025 · approx. USD 8.7M</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit After Tax</div>
+      <div class="stat-value emerald">MUR 62.5M</div>
+      <div class="stat-delta">Net margin 16.0% · Healthy profitability</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.1 / 10</div>
+      <div class="stat-delta">Promising candidate · Key gating factor: governance clarity</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">DPO 266 Days</div>
+      <div class="stat-delta">Creditor days massively elevated — supplier dependency risk</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Hardy Henry Services — Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION — 7 tabs, always this order
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 50-year-old Mauritian family group company that has built a dominant market position in pest control and hygiene services, generating MUR 390.6M in revenue and MUR 62.5M net profit in FY2025 — yet masking a structural creditor tension that warrants close scrutiny before engagement.</p>
+
+  <p class="body-text">Hardy Henry Services Ltée (File C27588, BRN C07027588) was incorporated on 27 September 2001 as the main trading vehicle of the Hardy Henry Group, a family conglomerate established in 1976 by founders Jean Hardy and Hervé Henry. The company is headquartered at Old Pailles Road, Pailles, Mauritius, and operates across pest control, hygiene services, fumigation, integrated pest management, and specialist chemicals wholesale. It is the exclusive Rentokil Initial franchisee for the Indian Ocean region — a partnership dating to 1977 — giving it access to global technology platforms, branded product lines, and internationally recognised audit trails (HACCP, GMP, ISO 9000).</p>
+
+  <p class="body-text">The ownership structure is held by two investment vehicles: Petit Moulin Investment Ltd (49.0% — 122,500 shares) and Linité Investment Ltd (51.0% — 127,500 shares). Both are likely family holding companies for the Hardy and Henry founding families. The company's total stated capital stands at MUR 25 million across 250,000 ordinary shares at MUR 100 par. The corporate hierarchy of the wider Hardy Henry Group includes Hardy Henry Textiles Ltée, Ideco Ltd (flooring), Strike Ltd, and Tempur Mauritius — making this a diversified family business with multiple operating subsidiaries.</p>
+
+  <p class="body-text">Financially, the company is remarkably profitable for its sector: FY2025 revenue of MUR 390.6M, gross margin of 53.1%, EBIT margin of 19.8%, and net profit of MUR 62.5M (16.0% net margin). With MUR 116.6M in cash, near-zero long-term debt, and a strong asset base of MUR 372M, the balance sheet appears robust at first glance. However, the one critical anomaly is a creditor days figure of 266 days — roughly nine months of payables — which is abnormally high for a services business and signals either structural dependency on supplier credit, deferred chemical procurement costs, or inter-group payment netting. EOS suitability score of 6.1/10 reflects genuine operational complexity and growth, offset by limited visibility into internal accountability structures.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Creditor Over-Extension Masking Cash Flow Dependency</div>
+    Hardy Henry Services carries MUR 133.4M in trade and other payables against MUR 183.4M cost of sales — implying 266 days payable outstanding. For a pest control and hygiene services company whose COGS includes chemical products, pesticides, and hygiene equipment, this level of creditor exposure suggests the business is effectively using its supplier base as a revolving credit line. While the company holds MUR 116.6M cash, any supplier tightening or disruption to the Rentokil supply chain could trigger significant liquidity pressure. This is the central risk to assess before committing to an EOS engagement.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Exclusive Rentokil Initial franchise for the Indian Ocean since 1977</strong> — a 49-year relationship providing global technology, audited protocols, and brand trust. Over 10,000 clients across Mauritius, Rodrigues, Seychelles, and Réunion. Market leader with first-mover advantage and 50 years of brand equity. Certified IPM provider to HACCP, GMP, and ISO 9000 standards — deeply embedded in food processing, hospitality, and medical sectors.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Creditor days of 266 — the highest-risk metric in the entire financial profile.</strong> Negative Other Reserves of MUR 78.9M (likely accumulated capital distributions or inter-group financing) suppress stated equity to MUR 85M despite strong earnings. Current tax payable of MUR 49.9M is substantial and warrants monitoring. ROE of 73.5% appears extraordinary — a mathematical artefact of compressed equity, not genuine capital efficiency.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>A 50-year family business with 100+ staff and regional complexity is a classic EOS sweet spot.</strong> Multiple business lines (pest control, hygiene, fumigation, chemicals wholesale, training), multi-island geographic reach, and a franchise model requiring consistent service delivery all point to accountability and process gaps. The dual-founder legacy with now a third-generation Managing Director (Sébastien Hardy) suggests a generational handover moment — one of EOS's strongest engagement triggers.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A deeply-rooted Mauritian family enterprise with 50 years of market leadership, holding the exclusive Rentokil Initial franchise for the Indian Ocean, serving 10,000+ clients across four island territories.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Hardy Henry Services Ltée was incorporated on 27 September 2001 (File No. C27588, BRN C07027588, VAT 20220703) as a private domestic company, consolidating the trading activities of the Hardy Henry group that was originally founded in 1976. Registered office: Old Pailles Road, Pailles, Mauritius (effective 1 July 2008). Stated capital: MUR 25,000,000 across 250,000 ordinary shares at MUR 100 par value, fully paid. Annual returns are current — most recently filed 14 January 2026 for year ended 31 December 2025. Financial statements filed annually with year-end 30 June. Auditors: BDO &amp; Co., 10 Frère Félix de Valois Street, Port Louis (appointed 2 November 2004). Company secretary: Box Office Ltd, 2nd Floor Palm Square, La Mivoie, Tamarin.</p>
+  <p class="body-text">The company was founded when Jean Hardy and Hervé Henry identified the pest control opportunity created by Mauritius's hotel boom of the 1970s. Jean Hardy subsequently partnered with Rentokil International to source products and technical expertise, eventually becoming the Indian Ocean franchisee — the first professional pest control company in Mauritius. Fifteen years into the pest control operation, the group launched Hardy Henry Hygiene Services as a complementary workplace hygiene division. Over five decades the business expanded from a two-founder startup to a 100+ person organisation serving clients in four island territories.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Linité Investment Ltd</h4>
+        <div class="ec-sub">Majority Shareholder</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shareholding</span><span class="mv ok">51.0%</span></div>
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">127,500 ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Currency</span><span class="mv">Mauritius Rupee</span></div>
+        <div class="ec-metric"><span class="mk">Nature</span><span class="mv">Family investment vehicle — likely Henry family interest</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Petit Moulin Investment Ltd</h4>
+        <div class="ec-sub">Minority Shareholder</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shareholding</span><span class="mv">49.0%</span></div>
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">122,500 ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Currency</span><span class="mv">Mauritius Rupee</span></div>
+        <div class="ec-metric"><span class="mk">Nature</span><span class="mv">Family investment vehicle — likely Hardy family interest</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Hardy Henry Group</h4>
+        <div class="ec-sub">Parent Conglomerate</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Group entity</span><span class="mv">Hardy Henry &amp; Cie Ltée</span></div>
+        <div class="ec-metric"><span class="mk">Founded</span><span class="mv">1976</span></div>
+        <div class="ec-metric"><span class="mk">Other subsidiaries</span><span class="mv">HH Textiles, Ideco, Strike, Tempur</span></div>
+        <div class="ec-metric"><span class="mk">Website</span><span class="mv">hardyhenry.com</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Managing Director</h4>
+      <p><strong>Hardy Jean Philippe</strong><br>Director since 1 March 2010. Appointed Managing Director 26 May 2021. Long-tenured family director — represents the Hardy founding family branch.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Chairman</h4>
+      <p><strong>Hardy Philippe Charles de Bragard</strong><br>Appointed Chairman 9 June 2025. Also Director since 28 May 2025. Address: DMH Associates Ltd, Place du Moulin, Port Louis Waterfront. Identified publicly as MD &amp; Corporate Finance Adviser at DMH Associates.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Director (Founder Family)</h4>
+      <p><strong>Hardy Marie Léon Jean</strong><br>Director since incorporation 27 September 2001. Represents the founding Hardy family generation.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Director (Founder Family)</h4>
+      <p><strong>Henry Hervé</strong><br>Director since incorporation 27 September 2001. Co-founder alongside Jean Hardy. Represents the founding Henry family generation.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Director</h4>
+      <p><strong>Henry Jean François Jérôme</strong><br>Director appointed 26 May 2021. Service address at company headquarters, Pailles.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Director</h4>
+      <p><strong>Clarenc Marie Lise Delphine</strong><br>Director appointed 26 May 2021. Service address at company headquarters, Pailles.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Director</h4>
+      <p><strong>Gelle Marie Thérèse Sophie</strong><br>Director appointed 26 May 2021. Service address: Box Office Ltd, Palm Square, Tamarin — same address as company secretary.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Alternate Director</h4>
+      <p><strong>Hardy Jean Octave Guillaume</strong><br>Alternate Director appointed 26 May 2021. Pailles address. Hardy family representation.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Alternate Director</h4>
+      <p><strong>Heller Sarah Anna Maria</strong><br>Alternate Director appointed 26 May 2021. Pailles address. Possible external/professional appointment.</p>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Operational MD Note</div>
+    The CBRIS records Hardy Jean Philippe as Managing Director (registered). However, public-facing sources (website, LinkedIn, RocketReach) identify <strong>Sébastien Hardy</strong> as operational Managing Director. This suggests the registered MD may be the formal corporate officer while Sébastien Hardy holds the day-to-day operational leadership role — a common structure in Mauritian family businesses. Sébastien Hardy is the primary EOS conversation partner.
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text"><strong>Pest Control Services:</strong> The core service line covers residential and commercial pest management for 10 pest categories — ants, bed bugs, birds, cockroaches, flies, lizards, mosquitoes, rodents, termites, and wood-boring insects. Specialised solutions include Integrated Pest Management (IPM) programmes compliant with HACCP, GMP, and ISO 9000 for food processing, pharmaceutical, and medical sectors; Pest Prevention Programmes with scheduled inspections; fumigation services for cargo and structures; pre- and post-construction termite barrier treatments; and web-based reporting via the "MyRentokil" digital platform with trend analysis and audit documentation.</p>
+  <p class="body-text"><strong>Hygiene Services:</strong> A complementary second business line providing corporate washroom management, hand and surface sanitisation, scenting and odour control, disinfection (99.9% pathogen kill claim), ablution services, medical waste management, and menstrual waste management. Equipment is supplied under the Rentokil "Signature Range" and leased to clients on fixed-schedule maintenance contracts — creating recurring revenue with predictable service rhythms.</p>
+  <p class="body-text"><strong>Chemicals Wholesale &amp; Storage:</strong> The CBRIS business activities register includes wholesale of chemical products, pesticides, herbicides and fertilisers, and bulk storage of dangerous chemicals — a B2B supply function that supports both internal operations and likely third-party distribution. This segment also encompasses import/export activities.</p>
+  <p class="body-text"><strong>Training:</strong> The company operates a registered Training Institution (n.e.c.) from its Pailles headquarters, likely providing pest control and hygiene certification training to technicians and client staff — a value-add service that deepens client relationships and may generate fee income.</p>
+  <p class="body-text"><strong>Job Contracting:</strong> Registered as a Job Contractor (non-graded), indicating the company also supplies labour services, likely for specialist pest or hygiene operations that require on-site deployment of trained technicians.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Primary headquarters and operations at Old Pailles Road, Pailles West, Mauritius — the main island base. A dedicated Rodrigues office is maintained at Victoria Street, Camp du Roi, Rodrigues (+230 54370412). Export and service territories extend to Seychelles (in partnership with PESTEA, a Rentokil-backed local operator) and Réunion Island, giving the company a four-territory footprint across the southern Indian Ocean. The company operates Monday to Sunday, 09:00–17:00, with a toll-free number (800 1222) for Mauritius landlines. Bilingual (English and French) customer service reflects the multicultural island market.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS filing via Registrar of Companies, Mauritius (extracted 16 April 2026). Currency: Mauritius Rupee (MUR). Fiscal year end: 30 June. Most recent period: FY2025 (year ended 30 June 2025), approved by board 17 December 2025.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Hardy Henry Services Ltée is a private domestic company and is not required to publish full audited accounts publicly. The CBRIS filing contains the statutory financial summary — a condensed P&amp;L and balance sheet with aggregated line items. Detailed notes, segment-level breakdown, inter-company transactions, and year-on-year comparatives are not available from this source. Revenue is reported as a single turnover line (no product/service segment split). The large "Other Reserves" negative figure (MUR -78.9M) cannot be fully explained without the notes to accounts but likely represents accumulated capital distributions, revaluation adjustments, or inter-group funding movements.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>390,626,581</td><td>100.0%</td><td>Strong top line for a specialist services company; USD ~8.7M equivalent. Market leader position reflected in scale.</td></tr>
+        <tr><td>Cost of Sales</td><td>183,393,469</td><td>46.9%</td><td>Includes chemical products, Rentokil franchise supplies, and likely direct labour for pest technicians.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>207,233,112</td><td>53.1%</td><td>Exceptional for a services/distribution hybrid. Reflects pricing power from franchise exclusivity and market leadership.</td></tr>
+        <tr><td>Other Income</td><td>6,554,981</td><td>1.7%</td><td>Likely rental income, training fees, or chemical resale margin — diversified income streams.</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>Nil separately reported — likely absorbed into COGS or admin.</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>118,720,998</td><td>30.4%</td><td>Elevated admin burden relative to revenue — reflects 100+ person workforce, multi-island operations, and franchise fees. Key cost to manage as the business scales.</td></tr>
+        <tr class="heat-warn"><td>Other Expenses</td><td>17,659,786</td><td>4.5%</td><td>Unspecified — may include depreciation, provisions, or one-off items. Warrants further investigation.</td></tr>
+        <tr class="heat-ok"><td>Finance Costs (Net)</td><td>(33,991)</td><td>neg.</td><td>Negative figure = net finance income. The company earns more on its MUR 116.6M cash balance than it pays on its minimal debt — a rare and positive signal.</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>77,441,300</td><td>19.8%</td><td>Strong operating leverage. EBIT margin of ~19.8% is well above services sector average.</td></tr>
+        <tr><td>Tax Expense</td><td>14,976,129</td><td>3.8%</td><td>Effective tax rate of 19.3% — consistent with standard Mauritius corporate tax rate of 15-20%.</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>62,465,171</strong></td><td><strong>16.0%</strong></td><td>Exceptional net margin for a 50-year-old services company. Demonstrates pricing discipline and cost control.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>53,111,153</td><td>Physical asset base — Pailles headquarters, vehicles, treatment equipment.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Investments</td><td>82,569,656</td><td>Likely investments in Hardy Henry Group subsidiaries (inter-company stakes).</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>51,000</td><td>Minimal — franchise rights or software recorded at nominal value.</td></tr>
+        <tr class="heat-ok"><td>Non-Current Assets</td><td><strong>Total Non-Current</strong></td><td><strong>135,731,809</strong></td><td>36.5% of total assets.</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>33,795,971</td><td>Chemical products and hygiene supplies — ~67 days of COGS. Reasonable for import-dependent chemical distribution.</td></tr>
+        <tr><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>75,252,936</td><td>DSO of ~70 days. Reflects commercial B2B billing cycles — manageable but worth monitoring.</td></tr>
+        <tr class="heat-ok"><td>Current Assets</td><td>Cash &amp; Cash Equivalents</td><td>116,649,854</td><td>Strong cash position — MUR 116.6M. Provides substantial liquidity buffer and explains net finance income.</td></tr>
+        <tr><td>Current Assets</td><td>Other Current Assets</td><td>10,521,275</td><td>Prepayments or tax assets.</td></tr>
+        <tr class="heat-ok"><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>236,220,036</strong></td><td>63.5% of total assets — healthy liquidity structure.</td></tr>
+        <tr class="heat-ok"><td>&nbsp;</td><td><strong>Total Assets</strong></td><td><strong>371,951,845</strong></td><td>&nbsp;</td></tr>
+        <tr><td>Equity</td><td>Share Capital</td><td>25,000,000</td><td>250,000 ordinary shares at MUR 100 par.</td></tr>
+        <tr class="heat-warn"><td>Equity</td><td>Other Reserves</td><td>(78,857,543)</td><td>Negative reserve — likely inter-group financing, capital distributions, or revaluation. Requires notes to accounts to clarify.</td></tr>
+        <tr><td>Equity</td><td>Retained Earnings &amp; Others</td><td>138,873,528</td><td>Implied retained earnings (balancing figure to achieve stated equity total).</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>85,015,985</strong></td><td>Modest in absolute terms due to negative reserves, but supported by strong earnings generation.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Deferred Tax</td><td>148,895,777</td><td>Very large deferred tax balance — likely timing differences on depreciation or investment revaluations. Worth investigating.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Borrowings</td><td>0</td><td>Zero long-term debt — a remarkable position for a company of this size and age.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Other Non-Current</td><td>5,894,008</td><td>Likely long-term provisions or lease liabilities.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td><strong>Total Non-Current Liabilities</strong></td><td><strong>154,789,785</strong></td><td>Dominated by deferred tax — not operational leverage.</td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>133,409,209</td><td>Extremely elevated — DPO of 266 days. Primary financial risk in the entire balance sheet.</td></tr>
+        <tr><td>Current Liabilities</td><td>Short-Term Borrowings</td><td>2,696,803</td><td>Minimal short-term debt — bank overdraft or revolving facility.</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Current Tax Payable</td><td>49,897,606</td><td>Substantial tax liability — 80% of full-year tax expense sitting as current payable. May reflect installment payment timing.</td></tr>
+        <tr><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>186,003,618</strong></td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td><strong>Total Liabilities</strong></td><td><strong>340,793,403</strong></td><td>&nbsp;</td></tr>
+        <tr class="heat-ok"><td>&nbsp;</td><td><strong>Total Equity &amp; Liabilities</strong></td><td><strong>371,951,845</strong></td><td>Balance sheet balances. ✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">One charge is registered against Hardy Henry Services Ltée: Volume CH 2764/40 — a floating charge over movable and immovable properties, in the amount of MUR 7,000,000, charged on 10 January 2002 and filed 5 February 2002. This is a legacy charge from the early years of the company's incorporated existence, likely securing an initial credit facility. The amount (MUR 7M) is immaterial relative to the company's current asset base (MUR 371.9M). No new charges have been filed, consistent with the company's current zero long-term borrowings position. The floating charge has not been removed from the register, suggesting either the underlying facility is dormant but not formally discharged, or it remains as contingent security.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks derived from Mauritius services and distribution SME averages and Indian Ocean regional comparables. Colour key: Green = healthy / ahead of benchmark, Amber = watch / near threshold, Red = critical concern requiring active management.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.27×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services SME)</span><span class="ratio-val">1.5× – 2.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">WATCH</span></span></div>
+      <span class="ratio-interpret">Current assets (MUR 236.2M) cover current liabilities (MUR 186.0M) 1.27 times — below the healthy benchmark of 1.5×. The elevated trade payables (MUR 133.4M) are the key drag. Cash holdings of MUR 116.6M provide a backstop but the ratio is tighter than it appears for a company of this profitability. Any sustained supplier credit tightening would stress this metric rapidly.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.09×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services SME)</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">Stripping out MUR 33.8M inventory, liquid assets still cover current liabilities by 1.09× — marginally within the healthy threshold. The MUR 116.6M cash position is the critical anchor. Without it, the quick ratio would collapse to approximately 0.46×, revealing the true extent of the payables dependency.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">53.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (pest control/hygiene)</span><span class="ratio-val">35% – 55%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">STRONG</span></span></div>
+      <span class="ratio-interpret">Exceptional gross margin reflecting pricing power from Rentokil franchise exclusivity, recurring contract revenue, and a service mix weighted toward high-margin hygiene and IPM contracts. The 53.1% gross margin is near the top of the industry range and signals strong commercial discipline.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">19.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services SME Mauritius)</span><span class="ratio-val">8% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">EXCELLENT</span></span></div>
+      <span class="ratio-interpret">EBIT of MUR 77.4M on MUR 390.6M revenue — a 19.8% operating margin that is materially above the Mauritius services benchmark. This reflects 50 years of market leadership, franchise exclusivity, and a well-established cost base. The admin cost ratio (30.4%) is the main constraint — there is room to improve EBIT further with operational discipline.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">16.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services SME Mauritius)</span><span class="ratio-val">5% – 12%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">EXCELLENT</span></span></div>
+      <span class="ratio-interpret">Net margin of 16.0% is outstanding for a 50-year-old private company in a mature market. Retention of MUR 62.5M profit on MUR 390.6M revenue demonstrates strong bottom-line discipline. Net finance income (rather than cost) is an additional positive — the company's cash generates a small return.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">16.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services SME)</span><span class="ratio-val">8% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">STRONG</span></span></div>
+      <span class="ratio-interpret">Net profit of MUR 62.5M on total assets of MUR 371.9M = 16.8% ROA. Above benchmark — driven by asset-light service operations where the primary value driver is franchise relationships, trained technicians, and client contracts rather than heavy fixed assets.</span>
+    </div>
+  </div>
+
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">73.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services SME)</span><span class="ratio-val">15% – 30%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">DISTORTED</span></span></div>
+      <span class="ratio-interpret">ROE of 73.5% appears extraordinary — this is a mathematical distortion caused by negative Other Reserves (MUR -78.9M) compressing stated equity to MUR 85M. With normalised equity reflecting the full earnings base, ROE would fall to approximately 18–22%. Interpret with caution; the negative reserves require investigation through notes to accounts.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value (total borrowings)</span><span class="ratio-val ok">0.03×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services SME)</span><span class="ratio-val">0.3× – 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">EXCELLENT</span></span></div>
+      <span class="ratio-interpret">Short-term borrowings of MUR 2.7M against equity of MUR 85M = 0.03× — effectively debt-free. Zero long-term borrowings. This conservative balance sheet structure reflects either strong cash generation enabling self-funding of growth, or risk aversion around leverage. Either way, significant headroom exists for debt-financed expansion if needed.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.05×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services/distribution)</span><span class="ratio-val">0.8× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">Revenue of MUR 390.6M on total assets of MUR 371.9M = 1.05× asset turnover. Within the healthy range — slightly moderated by the MUR 116.6M cash holding (which is not generating proportionate revenue). Excluding cash, asset turnover rises to approximately 1.54×, indicating high productive efficiency.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">5.43×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (distribution)</span><span class="ratio-val">4× – 8×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">COGS of MUR 183.4M / inventory MUR 33.8M = 5.43× annual turnover (~67 days of stock on hand). For a chemical distribution and pest control business with import lead times from Rentokil suppliers, this is a healthy buffer inventory level without excessive overstocking. Well-managed.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debtor Days (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">70.3 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius commercial)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">WATCH</span></span></div>
+      <span class="ratio-interpret">Trade receivables of MUR 75.3M / revenue MUR 390.6M × 365 = 70.3 days DSO. Slightly above the 60-day benchmark for the Mauritius commercial market. Reflects billing cycles to hospitality, agro-industry, and public-sector clients. Not critical, but tightening to 45–55 days would release approximately MUR 19–36M in cash — meaningful working capital improvement.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">265.7 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (distribution)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">CRITICAL</span></span></div>
+      <span class="ratio-interpret">Trade payables of MUR 133.4M / COGS MUR 183.4M × 365 = 265.7 days — nearly nine months outstanding. This is 4–5× the industry norm and represents the single most significant financial anomaly in the entire analysis. Either the company has exceptional supplier terms (possible with Rentokil as a global franchisor), carries significant inter-group payables within the Hardy Henry Group, or is structurally dependent on extended supplier credit to fund operations. The MUR 133.4M payable overhang against annual COGS of MUR 183.4M is not sustainable if any counterparty demands normalised payment terms.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. DPO of 265.7 days (MUR 133.4M in trade payables):</strong> If Rentokil Initial or any major chemical supplier demanded payment within standard 60-day terms, Hardy Henry Services would need to find approximately MUR 103M in additional cash — nearly wiping out its entire MUR 116.6M cash balance. This single metric is the primary financial risk and should be the first question in any due diligence conversation with management.<br><br>
+    <strong>2. Deferred tax liability of MUR 148.9M:</strong> This non-current liability exceeds total equity (MUR 85M) and represents a significant future tax obligation. If timing differences reverse faster than expected — triggered by asset disposals, revaluations, or changes in tax treatment of investments — this could create an immediate cash demand that would overwhelm current liquidity.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Hardy Henry Services operates across three distinct market segments — commercial pest control, corporate hygiene, and chemical distribution — holding a dominant position in each through franchise exclusivity, 50-year brand equity, and deep institutional client relationships.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Commercial Pest Control</h4>
+        <div class="ec-sub">Core Segment · Mauritius + Islands</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Client base</span><span class="mv ok">10,000+</span></div>
+        <div class="ec-metric"><span class="mk">Key sectors</span><span class="mv">Hospitality, Agri, Food Mfg</span></div>
+        <div class="ec-metric"><span class="mk">Key advantage</span><span class="mv ok">Rentokil franchise exclusivity</span></div>
+        <div class="ec-metric"><span class="mk">Competition</span><span class="mv">Local operators, unregulated providers</span></div>
+        <div class="ec-metric"><span class="mk">Dynamics</span><span class="mv">Contract-based, recurring</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Corporate Hygiene Services</h4>
+        <div class="ec-sub">Growth Segment · B2B</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Service model</span><span class="mv ok">Equipment lease + service</span></div>
+        <div class="ec-metric"><span class="mk">Key sectors</span><span class="mv">Offices, Hospitality, Healthcare</span></div>
+        <div class="ec-metric"><span class="mk">Revenue model</span><span class="mv ok">Recurring monthly contracts</span></div>
+        <div class="ec-metric"><span class="mk">Competition</span><span class="mv">Ecolab, local specialists</span></div>
+        <div class="ec-metric"><span class="mk">Dynamics</span><span class="mv">COVID-accelerated demand</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Chemical Products Wholesale</h4>
+        <div class="ec-sub">Supporting Segment · B2B Distribution</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Products</span><span class="mv">Pesticides, herbicides, fertilisers</span></div>
+        <div class="ec-metric"><span class="mk">Activity</span><span class="mv">Import, bulk storage, distribution</span></div>
+        <div class="ec-metric"><span class="mk">Regulation</span><span class="mv warn">Dangerous chemicals — regulated</span></div>
+        <div class="ec-metric"><span class="mk">Competitive position</span><span class="mv ok">Rentokil product exclusivity</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Supplier concentration — Rentokil</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>Rentokil Initial Indian Ocean Franchise (since 1977):</strong> This is the company's single most defensible competitive advantage. The 49-year Rentokil franchise relationship provides exclusive access to global product formulations, the "MyRentokil" digital reporting platform, international audit trail certifications (HACCP, GMP, ISO 9000), and the Rentokil brand — which is a strong sell to multinational hotel chains, global food manufacturers, and pharmaceutical companies operating in Mauritius. Competing local operators cannot replicate this without either building equivalent relationships from scratch or acquiring the franchise. Entry barriers are structurally high.</p>
+  <p class="body-text"><strong>50-Year Client Relationships in the Hospitality and Agri Sectors:</strong> Hardy Henry Services has been operating since 1976 — longer than most of its clients have been in business. In a market where audit compliance and pest control provider continuity matters (hotel brands require consistent pest control audit records for international accreditation), longevity translates directly into client retention. Switching costs for a hotel or food processor are high — changing pest control providers disrupts audit trails and risks non-compliance with brand standards.</p>
+  <p class="body-text"><strong>Multi-Island Geographic Lock-In:</strong> With operations spanning Mauritius, Rodrigues, Seychelles (through PESTEA partnership), and Réunion, Hardy Henry can offer group-level pest control contracts to multi-property hospitality clients — a capability that no local island-only competitor can match. This geographic footprint is a meaningful differentiator for clients like hotel chains with properties across the Indian Ocean region.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Global pest control market growth:</strong> The pest control services market is projected to grow from USD 22.7B to USD 29.1B by 2026 (CAGR ~5%). Mauritius, as a tourism-dependent economy, tracks this trend closely — hotel openings and food processing investment drive direct demand.</li>
+    <li><strong>Post-COVID hygiene consciousness:</strong> The corporate hygiene segment benefited from a structural shift in workplace sanitation awareness post-2020. Demand for washroom management, hand hygiene, and disinfection services has not reverted to pre-COVID levels — this is now a baseline expectation for commercial clients.</li>
+    <li><strong>Regulatory pressure on chemical use:</strong> Increasing regulation of pesticide formulations globally (driven by environmental and health concerns) is actually a tailwind for Rentokil franchise holders — their chemists reformulate products to stay compliant, and smaller unregulated local operators cannot keep up, effectively consolidating market share toward certified providers.</li>
+    <li><strong>Integrated Pest Management (IPM) adoption:</strong> Growing demand from food processing and pharmaceutical clients for documented IPM programmes (required for HACCP certification) plays directly to Hardy Henry's certified capabilities and MyRentokil digital reporting platform.</li>
+    <li><strong>Climate-driven pest pressure:</strong> Changing climate patterns in the Indian Ocean region are increasing mosquito breeding seasons and termite activity in Mauritius — structural tailwind for pest control volumes.</li>
+    <li><strong>Rentokil supplier concentration risk:</strong> The single most significant industry headwind for Hardy Henry is counter-party risk on the Rentokil relationship. Any change in Rentokil's franchise strategy (e.g., direct market entry, franchise termination, or significant royalty increases) would materially disrupt the business model. Rentokil completed major acquisitions globally in 2022–2024 and may revisit its Indian Ocean strategy.</li>
+  </ul>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">LinkedIn lists 64–69 employees with "51–200" category; the company website references "more than a hundred staff." This places Hardy Henry Services squarely in the EOS sweet spot of 10–250 employees. The complexity is compounded by multi-island geography (Mauritius, Rodrigues, Seychelles, Réunion), multiple service lines (pest control, hygiene, fumigation, chemicals wholesale, training, job contracting), and a franchise operating model requiring consistent delivery of Rentokil standards across all touchpoints. This is not a simple single-service business — it carries exactly the kind of structural complexity that EOS is designed to tame.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">This is the key unknown. The business is in a generational transition — the original founders (Jean Hardy, Hervé Henry) incorporated the legal entity in 2001, and the board now includes a third generation through Sébastien Hardy (operational MD) and Philippe Hardy (new Chairman from May 2025, a corporate finance professional with DMH Associates). The addition of a professionally-qualified chairman in 2025 signals openness to governance maturity. However, with 9 board members including alternate directors — a hallmark of family governance by committee — the leadership team may not have a single clear "visionary" in the EOS sense. Willingness to install accountability and transparency depends heavily on Sébastien Hardy's disposition, which cannot be determined from public data alone. Scored conservatively.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">The financial profile reveals classic EOS-addressable pain points. Revenue of MUR 390.6M with a 16% net margin on a 100+ person operation suggests a business that has reached profitable maturity but may be hitting a ceiling — the admin cost ratio (30.4% of revenue) and a DPO of 266 days suggest operational processes that have not been systematised to match the scale of the business. The 2021 board restructuring (multiple new directors added on the same day) and the 2025 Chairman appointment both signal that the founders are acknowledging succession and governance complexity. This is precisely the moment when EOS conversations resonate — the business is successful enough to matter, and complex enough to be painful.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The existence of the Rentokil "MyRentokil" web-based reporting platform indicates that pest control operations have documented digital processes — this is a meaningful foundation. IPM programmes are structured with eight defined elements (identification, recommendations, treatment, guidance, scheduling, reporting, record-keeping, partnership). However, the franchise system provides process structure for operational delivery, not for the business management layer above it — accountability, hiring, vision, and meeting rhythms. A well-run franchise operation can mask significant internal management dysfunction. The elevated admin costs and complex board structure suggest governance and back-office processes have not kept pace with operational sophistication.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Strong positive signals: the company publicly states three core values (Service Excellence, Respect, Integrity) with a positioning statement ("L'Environnement Nous Fait Confiance"). Several employees have tenures exceeding 40 years — in a 100-person company, this is a remarkable retention indicator pointing to genuine loyalty and cultural stability. Active community engagement with Mauritian NGOs (direct staff participation, not just financial donations) signals values-led leadership. The bilingual (English/French) operation and multi-island geographic presence require cultural cohesion to function — and the company has sustained this over 50 years. EOS thrives in companies with genuine values and long-tenured teams — this is a strong positive signal.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The 9-person board structure (7 directors + 2 alternates) and family investment vehicle ownership (Linité 51%, Petit Moulin 49%) creates a governance structure where decision-making ownership may be diffuse. The near-equal split between the Hardy and Henry family branches (49%/51%) suggests decisions at shareholder level require consensus between two family lines — a classic source of organisational drag in multi-family businesses. The appointment of a new Chairman (Philippe Hardy, corporate finance background) in 2025 could either sharpen decision-making through professional governance or add a further layer of committee deliberation. Without direct access to board minutes or management team interviews, decision-making patterns must be rated conservatively.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The public-facing mission — "protecting people, homes and businesses" and "L'Environnement Nous Fait Confiance" — is values-oriented but not strategic. There is no publicly articulated 3–5 year growth plan, market expansion target, or competitive vision statement. The Seychelles PESTEA partnership and Rodrigues office indicate geographic ambition, but whether these represent a documented strategic direction or opportunistic extensions is unknown. For a 50-year-old business approaching a leadership transition, the absence of a documented V/TO (Vision/Traction Organizer) is both a risk and an opportunity — EOS's most immediate value-add would be installing a shared strategic compass.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No evidence of EOS-style structured meeting rhythms (Level 10 meetings, quarterly rocks, annual planning days). The Rentokil franchise likely imposes some operational review cadence, but this is franchise compliance rather than business leadership rhythm. The multi-island operation and nine-person board create coordination complexity that, without structured meeting disciplines, likely defaults to reactive fire-fighting and email-based management. The annual return and board approval cadence (financials approved December each year, annual return filed January) suggests baseline board rhythm — but there is no signal of a systematic operating cadence below board level.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.1</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Promising Candidate — Generational Transition Is the Trigger</h4>
+      <p>Hardy Henry Services presents a compelling EOS opportunity driven by its scale, complexity, multi-island footprint, and a leadership transition moment that creates natural openness to change. The company scores strongly on size/complexity (8/10) and culture (7/10) — the two hardest dimensions to manufacture. The key gating factor is leadership openness: with a new Chairman appointed just 10 months ago (May 2025) and Sébastien Hardy as operational MD, the question is whether both individuals are willing to install the accountability, transparency, and structured meeting rhythm that EOS requires. A direct conversation with Sébastien Hardy to explore governance frustrations and growth ambitions is the critical next step — the financial profile alone makes this a strong lead worth pursuing.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Hardy Henry Services</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>With 9 board members and a split between registered MD (Hardy Jean Philippe) and operational MD (Sébastien Hardy), role clarity is the foundational gap. <strong>The Accountability Chart would immediately clarify who owns the five key functions</strong> and prevent the "two captains" dynamic that multi-family businesses typically suffer from.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision/Traction Organizer (V/TO)</h4>
+      <p>No documented 3–10 year vision exists publicly. As the founding generation steps back, the next generation needs a <strong>shared strategic document that both family branches can align behind</strong> — without this, the near-equal shareholding split (49%/51%) becomes a source of strategic drift rather than productive tension.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>With six registered business activities (pest control, hygiene, chemicals wholesale, bulk storage, training, job contracting) across four territories, the leadership team is likely firefighting across too many fronts. <strong>Quarterly Rocks would force disciplined prioritisation</strong> and create measurable progress on the most important 3–5 initiatives each quarter.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard</h4>
+      <p>For a Rentokil franchise business, operational KPIs (service completion rates, re-treatment rates, client retention, audit scores) likely exist in the MyRentokil system — but a <strong>leadership Scorecard translating these into 5–15 weekly numbers with owners and targets</strong> would give management real-time visibility across all service lines and islands.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meetings</h4>
+      <p>A 100+ person multi-island operation without documented meeting rhythms defaults to reactive management. The <strong>L10 Meeting structure — particularly the IDS (Identify, Discuss, Solve) methodology — would provide a structured forum</strong> for the leadership team to resolve the recurring operational issues that family-owned service businesses accumulate over decades.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Core Values Exercise</h4>
+      <p>The company has articulated three values (Service Excellence, Respect, Integrity) — a strong foundation. However, <strong>EOS's formal Core Values discovery process would transform these from poster slogans into hiring criteria, performance standards, and cultural anchors</strong> that survive the generational leadership transition and protect the 50-year culture during a period of change.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total: four financial/operational priorities and four EOS implementation steps. Sequencing principle: resolve the payables anomaly first (it is both a due diligence requirement and a credibility builder), then initiate EOS implementation during the generational transition window.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Investigate and Understand the DPO Anomaly Before Engagement</h4>
+      <p>The 266-day creditor days figure is the most important unanswered question in this analysis. Before any EOS engagement, Thierry should directly ask Sébastien Hardy: "Can you walk me through your payables structure with Rentokil and your main chemical suppliers?" The answer will reveal whether this is structured franchise credit (acceptable), inter-group netting (explainable), or genuine supplier stress (a significant risk). Success looks like a clear narrative from management and a confirmed path to normalisation if needed.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Clarify the Nature of the Negative Other Reserves (MUR -78.9M)</h4>
+      <p>The negative Other Reserves balance suppresses stated equity and distorts ROE. Management should be asked to explain whether this represents: (a) accumulated capital distributions to shareholders, (b) inter-company funding extended to Hardy Henry Group subsidiaries, or (c) revaluation adjustments. This question also applies to the MUR 82.6M in "Other Investments" on the asset side — likely inter-group stakes. Understanding the full inter-company picture is essential for a realistic view of the balance sheet.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Accelerate Debtor Collections from 70 to 45 Days</h4>
+      <p>DSO of 70 days is above the 45–60 day benchmark. Implementing a structured collections process — automated reminders at 30, 45, and 60 days; a dedicated collections contact for top 20 clients; and early payment incentives for key accounts — could release MUR 25–35M in working capital. At 16% net margin, this working capital improvement is more valuable than equivalent revenue growth. The EOS Scorecard and weekly L10 meetings would be the natural home for tracking this metric once EOS is running.</p>
+      <span class="urg urg-week">Priority — Within 90 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Address the Deferred Tax Liability Exposure (MUR 148.9M)</h4>
+      <p>A deferred tax liability of MUR 148.9M — nearly twice the company's stated equity — requires professional tax advisory review to understand the reversal timeline and cash flow implications. If this is primarily driven by accelerated depreciation on PPE (MUR 53.1M), the exposure is manageable. If it includes deferred tax on investment revaluations or inter-group transactions, a specialist review (BDO &amp; Co., the existing auditor, is the natural starting point) should map the crystallisation dates and ensure the company's cash planning accounts for potential settlement.</p>
+      <span class="urg urg-week">Priority — Within 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Book a Discovery Meeting with Sébastien Hardy — Lead with the Transition Narrative</h4>
+      <p>The most powerful opening for an EOS conversation with Hardy Henry Services is not financial. It is: "You have a 50-year business, a new Chairman, a generational leadership transition, and operations across four islands. How are you making sure the next 10 years of growth don't get lost in complexity?" Sébastien Hardy is the operational decision-maker. Philippe Hardy (new Chairman, corporate finance background) may be a secondary advocate. The EOS pitch should centre on the V/TO and Accountability Chart as the tools that protect the family legacy through transition.</p>
+      <span class="urg urg-week">Priority — Within 30 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Propose a Focus Day to Align the Leadership Team on Vision and Structure</h4>
+      <p>With 9 board members and a newly configured leadership team (Philippe Hardy as Chairman since May 2025), a half-day Focus Day is the lowest-risk, highest-impact first EOS step. It creates a shared experience for the leadership team, reveals whether the Visionary/Integrator dynamic exists between Philippe and Sébastien Hardy, and generates the V/TO first draft that becomes the basis for ongoing EOS work. The Focus Day also naturally surfaces the Accountability Chart tensions that a 50-year multi-family business inevitably carries.</p>
+      <span class="urg urg-medium">Next Step — After Discovery</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Deploy the Scorecard as the First Operational Tool</h4>
+      <p>Given that the MyRentokil platform already generates operational data (service completion, re-treatment rates, audit scores), a leadership Scorecard can be built rapidly by translating existing operational metrics into 10–15 weekly numbers with owners and red/green targets. This gives the leadership team an immediate, tangible EOS deliverable that integrates with what they already do — reducing adoption friction. The financial metrics to add: DSO (target: 45 days), payables days (target: 90 days), and cash balance (floor: MUR 80M).</p>
+      <span class="urg urg-medium">EOS Quarter 1</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Set the First Strategic Rock: Payables Normalisation Programme</h4>
+      <p>The DPO of 266 days is not just a financial risk — it is a leadership issue. Setting "Payables Normalisation: understand, document, and reduce DPO to 120 days within 6 months" as a Quarterly Rock assigns clear ownership (likely CFO or Finance Director), creates accountability, and directly addresses the company's primary financial vulnerability. Completing this Rock also demonstrates to management that EOS delivers concrete business results, not just process framework — a critical credibility milestone in the first 90 days.</p>
+      <span class="urg urg-medium">EOS Quarter 1–2</span>
+    </div>
+  </div>
+
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Hardy Henry Services is a rare find: a genuinely profitable, market-leading, 50-year family business with strong culture, excellent margins, and a clear generational transition underway. The financial performance is outstanding — MUR 62.5M net profit on MUR 390.6M revenue at 16% margin. The one critical financial anomaly (266-day DPO) must be understood before full commitment, but it does not necessarily indicate distress — it may reflect deliberate franchise credit strategy. The EOS opportunity is real and timely: the new Chairman appointment in May 2025 has created a leadership restructure moment that is the most natural entry point for an EOS conversation in this company's 50-year history.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Call Sébastien Hardy within 2 weeks — ask the DPO question and open the transition conversation. Felix to file this report first.</li>
+        <li><span class="sig-num">02</span>Discovery Meeting — within 30 days. Bring the Accountability Chart blank and V/TO framework. Lead with the generational transition narrative.</li>
+        <li><span class="sig-num">03</span>Focus Day — within 60 days of discovery. Include Philippe Hardy (Chairman) and Sébastien Hardy (operational MD) as minimum attendees.</li>
+        <li><span class="sig-num">04</span>EOS Quarter 1 — deploy Scorecard, set 3 Rocks including Payables Normalisation, install L10 weekly meetings.</li>
+        <li><span class="sig-num">05</span>EOS Quarter 2-4 — full V/TO buildout, Core Values rollout to 100+ staff, multi-island Accountability Chart implementation.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Hardy Henry Services — Comprehensive Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (16 April 2026) · hardyhenryservices.com · LinkedIn · RocketReach · ZoomInfo · Facebook · Rentokil Initial franchise documentation</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
