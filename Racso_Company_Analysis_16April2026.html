@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Racso Company Limited — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Fuel &amp; Energy Distribution · Wholesale Trade · Logistics</span>
+    <span class="badge badge-type">Private Company · Domestic · Aptis Holdings Subsidiary</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">16 April 2026</span>
+  </div>
+  <h1>Racso Company Limited:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">RACSO COMPANY LIMITED (C102087) · Company intelligence · Financial ratios · EOS implementation assessment · Riche Terre, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 104.7M</div>
+      <div class="stat-delta">MUR 104,700,029 · FY ended 31 Dec 2024</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Gross Profit Margin</div>
+      <div class="stat-value emerald">32.2%</div>
+      <div class="stat-delta">MUR 33.7M gross profit · Strong for fuel/distribution</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.5 / 10</div>
+      <div class="stat-delta">Moderate-High — Subsidiary dynamics are the gating factor</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Negative Equity</div>
+      <div class="stat-delta">Retained earnings deficit of MUR 5.2M at group level</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Racso Company Limited — Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">Racso Company Limited is a 15-year-old Mauritian wholesale fuel, general merchandise, and road freight business that generates MUR 104.7M in revenue but sits on a retained earnings deficit — a group that is operationally growing while its books carry legacy losses that need addressing before any strategic engagement.</p>
+
+  <p class="body-text">Racso Company Limited (File No. C102087, BRN C11102087) was incorporated on 15 April 2011 and is headquartered at 2nd Floor, Aptis House, Inova Riche Terre Business Park, Riche Terre, Mauritius. The company operates across three registered business activities: wholesale of solid, liquid, and gaseous fuels and related products; freight transport by road (Taxi Lorry, Carrier A licence); and non-specialised wholesale trade including general merchandise and seafood distribution. This positions Racso as a diversified B2B supply and logistics business operating in the north of the island with access to port and industrial corridor infrastructure at Riche Terre.</p>
+
+  <p class="body-text">Ownership is overwhelmingly concentrated in Aptis Holdings Ltd, which holds 140,725 of 141,000 ordinary shares (99.8%), with the remaining 275 shares held by director Jean-Alain Mamet personally. Aptis Holdings Ltd (C162483) is itself a domestic private holding company incorporated on 21 February 2019, owned by CHT Holdings Co Ltd (77.8%), Jean-Pierre Oscar Mamet (11.1%), and Anne Regine de Ravel de l'Argentiere (11.1%). Aptis Holdings carries total assets of MUR 855.6M, investments in subsidiaries of MUR 489.5M, and retained earnings of MUR 620.4M — it is a financially substantial parent. Racso is one operating arm of this wider group. Racso in turn wholly owns two subsidiaries: Racso Distribution Co Ltd (C231420, incorporated February 2026 — brand new) and Racso Logistics Co Ltd (C196301, incorporated April 2023).</p>
+
+  <p class="body-text">At the Racso Company Limited level, FY2024 revenue came in at MUR 104.7M with a gross profit of MUR 33.7M (32.2% margin) — a genuinely strong gross margin for a fuel and distribution business. However, administration costs of MUR 29.8M consumed nearly all of that gross profit, leaving a net profit of only MUR 2.7M (2.6% net margin). The balance sheet shows retained earnings of negative MUR 5.2M, indicating the company has not yet recovered from prior-year losses. This tension between a commercially active, growing operation and a structurally thin bottom line is the defining financial narrative. The EOS suitability score is 6.5/10 — the group structure presents both an opportunity (a motivated, growth-oriented ownership group) and a complexity (decision-making may not sit cleanly with Racso's own leadership).</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Subsidiary of a MUR 855M Group With a Fresh Expansion Play Underway</div>
+    Racso Company Limited is not a standalone SME — it is the primary trading arm of the Aptis Holdings group, which carries MUR 855M in total assets and MUR 489M in subsidiary investments. The incorporation of Racso Distribution Co Ltd in February 2026 (just two months ago) and Racso Logistics Co Ltd in April 2023 signals a deliberate group strategy to separate and scale its fuel distribution and logistics functions into distinct legal entities. This is a group mid-transformation: creating structure, not just running a business. That transformation is precisely the moment EOS is most valuable — but Thierry must approach this at the Aptis Holdings level, not just Racso. The real conversation is with the Mamet family (Jean-Pierre, Jean-Alain, Oscar) and their co-director Anne Regine de Ravel de l'Argentiere, who are actively structuring the group for growth.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Strong 32.2% gross margin in a commodity sector</strong> — unusual for fuel/distribution and suggests either proprietary supply relationships or margin-accretive value-added services. Revenue of MUR 104.7M in the operating entity alone, backed by a MUR 855M parent with MUR 620M in retained earnings. Three distinct and growing business lines (fuel, general merchandise, road freight). New subsidiaries show deliberate strategic structuring. BDO as auditor signals governance ambition.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Negative retained earnings of MUR 5.2M at Racso Company level</strong> — the operating entity has not yet recovered from historical losses despite strong FY2024 revenue. Administration costs of MUR 29.8M represent 28.5% of revenue — extraordinarily high for a distribution business and the primary drain on profitability. Net margin of only 2.6% leaves no buffer for market shocks. Working capital dynamics require careful management given the asset-light balance sheet (MUR 37.5M total assets vs MUR 104.7M revenue).</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Active group restructuring into subsidiaries is the clearest EOS signal</strong> — the group is trying to create accountability and clarity through legal structure rather than management discipline. This is exactly what EOS solves. The three-entity structure (Racso Company, Racso Logistics, Racso Distribution) needs an Accountability Chart and Rocks framework to prevent organisational fragmentation. Admin costs bloat (MUR 29.8M) suggests unclear ownership of costs across the emerging group structure — a Scorecard and Issues List would surface this immediately.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">Racso Company Limited is the primary trading subsidiary of the Aptis Holdings group — a north Mauritius fuel, merchandise, and logistics operator that is actively being split into specialist entities as the group scales.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Racso Company Limited was incorporated on <strong>15 April 2011</strong> as a domestic private company. File Number: <strong>C102087</strong>. Business Registration Number: <strong>C11102087</strong>. The company is 15 years old and has maintained LIVE status continuously. Registered and principal office: <strong>2nd Floor, Aptis House (formerly Hermes House), Inova Riche Terre Business Park, Riche Terre, Mauritius</strong>. Stated capital: <strong>MUR 14,100,000</strong> across 141,000 ordinary shares. Annual returns are current and filed for 2023, 2024, and 2025. Financial statements filed for FY2022, FY2023, and FY2024. Annual registration fee paid for 2026. Auditor: <strong>Messrs BDO &amp; Co</strong> (appointed 24 October 2025 — recent appointment, possibly reflecting a governance upgrade). Secretary: <strong>Navitas Corporate Services Ltd</strong>, Floreal (appointed 1 January 2024). No charges registered. No objections or winding-up proceedings on record.</p>
+  <p class="body-text">The business address evolution — from "Hermes House" in 2011 to "Aptis House" (the same building, renamed) — reflects the rebranding of the group from its TNS-era identity to the current Aptis Holdings identity. This rename of Aptis House is a visible marker of the group's deliberate rebranding exercise.</p>
+
+  <h3 class="subsection-title">Ownership Structure and Group Architecture</h3>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Group Structure Note</div>
+    Racso Company Limited sits one level below Aptis Holdings Ltd in a three-tier group. Aptis Holdings is itself majority-owned by CHT Holdings Co Ltd. Racso Company is the principal trading entity and parent of two operating subsidiaries: Racso Logistics Co Ltd (2023) and Racso Distribution Co Ltd (2026). Understanding this architecture is critical — the real decision-maker for EOS engagement is at the Aptis Holdings board level, not just within Racso.
+  </div>
+
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>CHT Holdings Co Ltd</h4>
+        <div class="ec-sub">Ultimate Beneficial Owner — 77.8% of Aptis</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Ultimate Parent</span></div>
+        <div class="ec-metric"><span class="mk">Stake in Aptis</span><span class="mv ok">105,070 shares</span></div>
+        <div class="ec-metric"><span class="mk">Note</span><span class="mv">Identity of UBO behind CHT Holdings not in public records</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>APTIS Holdings Ltd</h4>
+        <div class="ec-sub">Immediate Parent · C162483 · Est. 2019</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Total Assets</span><span class="mv ok">MUR 855.6M</span></div>
+        <div class="ec-metric"><span class="mk">Retained Earnings</span><span class="mv ok">MUR 620.4M</span></div>
+        <div class="ec-metric"><span class="mk">Investment in Subs</span><span class="mv">MUR 489.5M</span></div>
+        <div class="ec-metric"><span class="mk">Owns Racso</span><span class="mv">99.8% (140,725 shares)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>RACSO COMPANY LIMITED</h4>
+        <div class="ec-sub">Primary Trading Entity · C102087 · Est. 2011</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Revenue FY2024</span><span class="mv ok">MUR 104.7M</span></div>
+        <div class="ec-metric"><span class="mk">Net Profit FY2024</span><span class="mv warn">MUR 2.7M</span></div>
+        <div class="ec-metric"><span class="mk">Retained Earnings</span><span class="mv danger">−MUR 5.2M</span></div>
+        <div class="ec-metric"><span class="mk">Owns</span><span class="mv">Racso Logistics 100%, Racso Distribution 100%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="entity-grid" style="grid-template-columns:1fr 1fr;">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Racso Logistics Co Ltd</h4>
+        <div class="ec-sub">Subsidiary · C196301 · Est. April 2023</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Revenue FY2024</span><span class="mv">MUR 54.9M</span></div>
+        <div class="ec-metric"><span class="mk">Gross Profit</span><span class="mv warn">6.4%</span></div>
+        <div class="ec-metric"><span class="mk">Net Profit</span><span class="mv warn">MUR 1.1M</span></div>
+        <div class="ec-metric"><span class="mk">Activities</span><span class="mv">Fuel wholesale, road freight, general wholesale</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Racso Distribution Co Ltd</h4>
+        <div class="ec-sub">Subsidiary · C231420 · Est. February 2026</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">Brand New — Feb 2026</span></div>
+        <div class="ec-metric"><span class="mk">Financials</span><span class="mv">Not yet filed</span></div>
+        <div class="ec-metric"><span class="mk">Capital</span><span class="mv">MUR 10,000 (100 shares)</span></div>
+        <div class="ec-metric"><span class="mk">Activities</span><span class="mv">Fuel wholesale, gas seller (wholesaler)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Jean-Alain Mamet — Director &amp; Shareholder</h4>
+      <p>Appointed: <strong>25 August 2016</strong>. Service address: Aptis House, Inova Riche Terre Business Park, Riche Terre. Holds 275 shares personally (0.2%). Also director of Racso Logistics and Racso Distribution. Key operational figure — likely the day-to-day leader of the Racso entity. Surname suggests family connection to the broader Mamet family ownership group. <strong>Most likely primary point of contact for Racso.</strong></p>
+    </div>
+    <div class="profile-card">
+      <h4>Jean-Pierre Mamet — Director</h4>
+      <p>Appointed: <strong>15 April 2011</strong> (founding director). Also a director of Aptis Holdings Ltd (appointed 21 February 2019). Holds 15,010 shares in Aptis Holdings (11.1%). Likely the family patriarch or senior strategist. Service address at Inova Riche Terre. His presence on both the parent and subsidiary boards indicates he bridges operational and strategic decisions. <strong>Key influencer for group-level EOS conversation.</strong></p>
+    </div>
+    <div class="profile-card">
+      <h4>Dev Anand Sabbi — Director</h4>
+      <p>Appointed: <strong>15 April 2011</strong> (founding director). Address: Lot 694 Morc Highland Rose (Gated), Highlands, Mauritius. Also a director of Aptis Holdings and Racso Logistics. Appears across the group consistently — likely a co-founder or long-standing strategic partner to the Mamet family. Role unclear (commercial, financial, or operational) but his presence at the group holding level gives him significant influence.</p>
+    </div>
+  </div>
+  <div class="profile-grid two-col" style="margin-top:12px;">
+    <div class="profile-card">
+      <h4>Jean-Pierre Oscar Mamet — Director (Racso Distribution)</h4>
+      <p>Director of Racso Distribution Co Ltd (February 2026) and <strong>shareholder of Aptis Holdings</strong> (15,010 shares, 11.1%). Address: Lot 29, Mont Piton II Residential Estate, Mont Piton. Likely the younger generation of the Mamet family being brought in to lead the new distribution entity. His appointment to both Aptis and the newest subsidiary suggests he is being positioned as a future group leader.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Anne Regine de Ravel de l'Argentiere — Director (Aptis only)</h4>
+      <p>Director and shareholder of Aptis Holdings Ltd (15,010 shares, 11.1%). Address: Unit 3A Les Allees D'Helvetia PH3, Moka. Not a director of any Racso entity — her involvement is at the holding company level only. Background unknown from public records. Could be a strategic investor, advisor, or family connection. Moka address places her in a different social-geographic tier from the Riche Terre operations.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Racso Company Limited operates across three distinct business lines registered with the Mauritius Registrar of Companies:</p>
+  <ul class="styled-list">
+    <li><strong>Wholesale Fuel Distribution:</strong> Wholesale of solid, liquid, and gaseous fuels and related products. This is likely the highest-revenue segment given the scale and the group's strategic decision to create a dedicated subsidiary (Racso Distribution) specifically for gas and fuel wholesaling in 2026.</li>
+    <li><strong>Road Freight Transport:</strong> Freight transport by road under Carrier A (Taxi Lorry) licence. This is the logistics arm, now being spun off into Racso Logistics Co Ltd. Racso Logistics generated MUR 54.9M in revenue in FY2024 as an independent entity, suggesting significant standalone scale.</li>
+    <li><strong>General Merchandise &amp; Seafood Wholesale:</strong> Non-specialised wholesale trade covering general merchandise and seafood distribution. This third vertical adds diversification and may serve hospitality, retail, or institutional buyers across Mauritius.</li>
+  </ul>
+  <p class="body-text">The group's combined revenue (Racso Company + Racso Logistics) exceeds MUR 159M in FY2024, making this a substantial trading group by Mauritian SME standards. The deliberate separation into specialist entities (distribution, logistics, parent trading company) indicates ambition to scale each vertical independently with dedicated management and cost structures.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">All Racso entities are headquartered at <strong>Inova Riche Terre Business Park (Aptis House), Riche Terre, Mauritius</strong> — a strategically advantageous location in the north of the island adjacent to Port Louis Free Port and the major industrial and logistics corridor. Riche Terre is a hub for fuel distribution, warehousing, and freight operations. There is no evidence of overseas presence. The Carrier A road freight licence covers domestic Mauritius operations. The fuel and general merchandise distribution footprint likely covers the full island given the company's scale.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Gap</div>
+    No website, LinkedIn company page, or verified online presence was identified for Racso Company Limited, Racso Logistics, Racso Distribution, or Aptis Holdings. This is a significant gap for a group with MUR 100M+ in operating revenue. It may indicate a purely B2B, relationship-driven business model with no retail-facing presence — but it also means no digital intelligence trail exists for competitive or contact research purposes.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">All figures sourced from CBRIS financial summary filings. Currency: Mauritius Rupee (MUR). Fiscal year end: 31 December. Analysis covers Racso Company Limited (primary entity) plus Racso Logistics Co Ltd (subsidiary). Racso Distribution Co Ltd has no filed financials (incorporated February 2026). Aptis Holdings provided as group context.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Financial data is extracted from the statutory summary statements filed with the Mauritius Registrar of Companies (CBRIS). These are condensed summary P&amp;L and balance sheets — not full audited accounts. Prior-year (FY2023) comparative figures are not available in the CBRIS summary format. Revenue breakdown by business segment (fuel vs freight vs merchandise) is not disclosed at this level. The figures are approved by the board and audited by BDO &amp; Co, providing reasonable confidence in their integrity.
+  </div>
+
+  <h3 class="subsection-title">Racso Company Limited — P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>104,700,029</td><td>100.0%</td><td>Strong scale for a north Mauritius B2B distributor</td></tr>
+        <tr><td>Cost of Sales</td><td>71,008,386</td><td>67.8%</td><td>Predominantly product cost (fuel, merchandise)</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>33,691,643</td><td>32.2%</td><td>Exceptionally strong for fuel/distribution — signals value-add or favourable supply terms</td></tr>
+        <tr><td>Other Income</td><td>500,000</td><td>0.5%</td><td>Minor — likely rental, commission, or intercompany fee income</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>Nil — freight costs likely absorbed in Cost of Sales or by Racso Logistics entity</td></tr>
+        <tr class="heat-critical"><td>Administration Costs</td><td>29,817,913</td><td>28.5%</td><td>Critical concern — admin absorbs 88.5% of gross profit; major profitability drain</td></tr>
+        <tr><td>Other Expenses</td><td>0</td><td>0.0%</td><td>Nil</td></tr>
+        <tr><td>Finance Costs</td><td>866,758</td><td>0.8%</td><td>Modest debt servicing — short-term borrowings only</td></tr>
+        <tr><td>Profit Before Tax</td><td>3,506,972</td><td>3.3%</td><td>Thin but positive — admin cost reduction is the primary lever</td></tr>
+        <tr><td>Tax Expense</td><td>794,676</td><td>0.8%</td><td>~22.7% effective tax rate on PBT</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>2,712,296</strong></td><td><strong>2.6%</strong></td><td>Positive but thin — only 2.6 cents of profit per rupee of revenue</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Racso Logistics Co Ltd — P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>54,886,301</td><td>100.0%</td><td>Substantial standalone scale for a 2-year-old logistics entity</td></tr>
+        <tr><td>Cost of Sales</td><td>51,369,772</td><td>93.6%</td><td>Very high COGS — consistent with thin-margin fuel/freight operations</td></tr>
+        <tr class="heat-warn"><td>Gross Profit</td><td>3,516,529</td><td>6.4%</td><td>Thin gross margin — logistics arm operates at commodity economics</td></tr>
+        <tr><td>Administration Costs</td><td>2,113,777</td><td>3.9%</td><td>Lean admin relative to parent — well-controlled at subsidiary level</td></tr>
+        <tr><td>Finance Costs</td><td>0</td><td>0.0%</td><td>Debt-free at subsidiary level</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>1,121,029</strong></td><td><strong>2.0%</strong></td><td>Profitable from Year 1 of full operations — operationally sound</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Racso Company Limited — Balance Sheet (31 Dec 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>3,758,362</td><td>Asset-light — minimal fixed assets for this revenue scale</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Investments</td><td>10,000</td><td>Nominal — likely investment in subsidiaries at cost</td></tr>
+        <tr><td>Non-Current Assets</td><td>Others (incl. subsidiary investments)</td><td>10,775,285</td><td>Likely intercompany loans or investment in Racso Logistics</td></tr>
+        <tr><td>Non-Current Assets</td><td><strong>Total Non-Current</strong></td><td><strong>14,543,647</strong></td><td></td></tr>
+        <tr><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>14,448,163</td><td>Significant — 51 days DSO at this revenue level; watch collections</td></tr>
+        <tr><td>Current Assets</td><td>Cash &amp; Cash Equivalents</td><td>7,679,549</td><td>Adequate operating cash buffer</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>806,403</td><td>Low inventory — consistent with fuel/distribution model (order-to-order)</td></tr>
+        <tr><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>22,934,115</strong></td><td></td></tr>
+        <tr><td></td><td><strong>TOTAL ASSETS</strong></td><td><strong>37,477,762</strong></td><td>Asset-light business generating 2.79x asset turnover</td></tr>
+        <tr><td>Equity</td><td>Share Capital</td><td>14,100,000</td><td>Fully paid</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Retained Earnings</td><td>−5,193,839</td><td>Deficit — accumulated losses not yet recovered; a legacy concern</td></tr>
+        <tr><td>Equity</td><td>Other Reserves</td><td>−89,680</td><td>Minor negative reserve</td></tr>
+        <tr><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>8,816,481</strong></td><td>Thin equity base relative to liability exposure</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Provisions</td><td>11,109,682</td><td>Likely employee end-of-service or lease provisions</td></tr>
+        <tr><td>Non-Current Liabilities</td><td><strong>Total Non-Current</strong></td><td><strong>11,109,682</strong></td><td></td></tr>
+        <tr><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>15,240,157</td><td>54 days DPO — broadly in line with receivables cycle</td></tr>
+        <tr><td>Current Liabilities</td><td>Short-Term Borrowings</td><td>271,788</td><td>Minimal short-term debt</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax Payable</td><td>528,936</td><td>Normal</td></tr>
+        <tr><td>Current Liabilities</td><td>Others</td><td>1,510,718</td><td>Accruals or intercompany payables</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td><strong>Total Current</strong></td><td><strong>17,551,599</strong></td><td>Current ratio of 1.31× — adequate but not comfortable</td></tr>
+        <tr><td></td><td><strong>TOTAL LIABILITIES</strong></td><td><strong>28,661,281</strong></td><td>Liabilities are 3.25× equity — leverage is notable</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Aptis Holdings Ltd — Group Context (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Metric</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr class="heat-ok"><td>Total Assets</td><td>855,558,486</td><td>Substantial group balance sheet — this is a well-capitalised parent</td></tr>
+        <tr class="heat-ok"><td>Investment in Subsidiaries</td><td>489,494,516</td><td>57% of total assets in subsidiaries — Racso and peers are core assets</td></tr>
+        <tr class="heat-ok"><td>Retained Earnings</td><td>620,380,433</td><td>Strong accumulated profits at group level</td></tr>
+        <tr><td>Long-Term Borrowings</td><td>69,800,418</td><td>Meaningful group debt — likely property or equipment financing</td></tr>
+        <tr><td>Other Income (Group P&amp;L)</td><td>125,359,582</td><td>Dividend/intercompany income from subsidiaries — group is harvesting profits</td></tr>
+        <tr class="heat-ok"><td>Group Net Profit</td><td>110,231,936</td><td>MUR 110M net profit at holding level — driven by subsidiary distributions</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">No charges are registered against Racso Company Limited. This is a positive signal — the company carries no secured lending against its assets, meaning all borrowings (the small MUR 271,788 short-term facility) are either unsecured or structured at the Aptis Holdings group level. Similarly, Racso Logistics and Racso Distribution carry no registered charges. This clean charge register is consistent with a group that has a well-capitalised parent backing its trading operations.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks referenced against Mauritius SME distribution sector norms and general financial analysis standards. Colour key: Green = healthy, Amber = watch closely, Red = critical concern requiring action.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.31×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.5× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Current assets of MUR 22.9M cover current liabilities of MUR 17.6M by 1.31×. This is below the sector comfort zone of 1.5×. The company can meet its obligations but has limited buffer. A sudden deterioration in receivables collection or a supplier demanding early payment could create a cash squeeze. The parent (Aptis Holdings) backstop provides implicit protection, but at the Racso entity level this warrants monitoring.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio (Acid Test)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.26×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Adequate</span></span></div>
+      <span class="ratio-interpret">Stripping out inventories (MUR 806K — negligible), the quick ratio is virtually identical to the current ratio at 1.26×. The business holds minimal inventory, confirming a lean, order-driven model. Immediate liquidity is primarily driven by trade receivables (MUR 14.4M) and cash (MUR 7.7M) — both are liquid but the receivables quality and ageing are unknown.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">32.2%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (fuel/dist)</span><span class="ratio-val">8% – 20%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Strong — Investigate</span></span></div>
+      <span class="ratio-interpret">A 32.2% gross margin is significantly above what one would expect for a pure fuel or commodity distribution business, where margins of 8–15% are typical. This suggests Racso either benefits from favourable long-term supply agreements, value-added processing or repackaging, or a higher-margin product mix within its general merchandise segment. This is a genuine competitive advantage worth probing in conversation — understanding how this margin is built and defended is key.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">2.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">3% – 8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Below Benchmark</span></span></div>
+      <span class="ratio-interpret">Despite a strong gross margin, the net margin collapses to 2.6% due to administration costs consuming MUR 29.8M. This is the central financial puzzle of Racso: excellent top-line commercial management offset by administrative cost that is almost certainly partly structural (group-level charges, intercompany fees, management salaries) rather than operational. Resolving this is the primary financial opportunity — potentially adding 5–8% net margin if admin costs are rationalised.</span>
+    </div>
+  </div>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">30.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">15% – 25%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">High — Equity Effect</span></span></div>
+      <span class="ratio-interpret">ROE of 30.8% (MUR 2.7M net profit / MUR 8.8M equity) appears strong but is a function of a thin equity base rather than genuine capital efficiency. The negative retained earnings reduce equity, artificially inflating this ratio. As the company rebuilds retained earnings, ROE will normalise. This is not a reliable signal of strong returns — it is a mathematical consequence of under-capitalisation at the entity level.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">7.2%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Adequate</span></span></div>
+      <span class="ratio-interpret">Net profit of MUR 2.7M on total assets of MUR 37.5M gives ROA of 7.2% — within the acceptable range for a distribution business. The asset-light model (MUR 3.8M PP&amp;E vs MUR 104.7M revenue) means the business generates high revenue per asset dollar, which is consistent with the trading and intermediary model.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Total Liabilities / Equity</span><span class="ratio-val bad">3.25×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&lt; 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Elevated</span></span></div>
+      <span class="ratio-interpret">Total liabilities of MUR 28.7M against equity of MUR 8.8M gives a leverage ratio of 3.25× — well above the comfortable threshold. This is primarily driven by the thin equity base (negative retained earnings) rather than excessive borrowing. The long-term provisions of MUR 11.1M (likely employee obligations) are the largest non-current liability. As retained earnings recover, this ratio will naturally improve. The Aptis Holdings parent's MUR 620M retained earnings provides implicit de-risking.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Equity / Total Assets</span><span class="ratio-val bad">23.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">35% – 60%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Below Target</span></span></div>
+      <span class="ratio-interpret">Only 23.5 cents of every MUR of assets is financed by equity — the rest by liabilities. For a trading business this is not immediately alarming (trading companies naturally use more payables-based financing), but combined with the negative retained earnings it suggests the entity-level financial structure needs strengthening. The parent could inject capital or convert intercompany loans to equity to improve this metric.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Days Sales Outstanding (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Trade Receivables / Revenue × 365</span><span class="ratio-val warn">50 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 45 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Slightly Extended</span></span></div>
+      <span class="ratio-interpret">MUR 14.4M in receivables against MUR 104.7M revenue implies approximately 50 days to collect. This is slightly above the 30–45 day benchmark for B2B distribution. For a fuel and wholesale business where customers may be large institutional buyers (hotels, factories, fuel retailers), 50 days is not unusual but represents MUR 4–5M of potentially freed cash if collections improve to 40 days. This is a concrete cash flow improvement opportunity worth presenting.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Days Payables Outstanding (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Trade Payables / COGS × 365</span><span class="ratio-val ok">78 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Favourable</span></span></div>
+      <span class="ratio-interpret">Paying suppliers in approximately 78 days while collecting from customers in 50 days creates a positive cash conversion cycle — Racso is funding its operations partly on supplier credit. This is commercially advantageous but could be strained if key suppliers tighten payment terms. The DPO of 78 days is above typical norms, suggesting strong supplier relationships or leverage — worth understanding the sustainability of these terms.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. Administration Costs (MUR 29.8M / 28.5% of revenue):</strong> This single line item is destroying what could be a high-quality business. If administration costs were reduced to 15% of revenue (a realistic target for a distribution business), net profit would increase from MUR 2.7M to approximately MUR 16.6M — a 6× improvement in profitability. The root cause (unclear cost allocation across the group structure, duplicated functions, untracked overhead) is exactly what EOS's Scorecard and Accountability Chart resolve. <strong>2. Negative Retained Earnings (−MUR 5.2M):</strong> The entity has not yet earned its way back to a positive equity position despite strong recent trading. This signals that the losses predating 2024 were significant and took years to build. Understanding whether those losses were operational or structural (related to the group reorganisation) is critical before committing to an EOS engagement.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Racso operates across three distinct market segments — fuel/energy distribution, B2B general and seafood wholesale, and domestic road freight — each with different competitive dynamics, margin profiles, and strategic importance to the group.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Fuel &amp; Energy Distribution</h4>
+        <div class="ec-sub">Primary Segment — Highest Strategic Value</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Market</span><span class="mv">Regulated, CWA / STC controlled pricing</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Vivo Energy, Total Energies, ENGEN, independents</span></div>
+        <div class="ec-metric"><span class="mk">Racso Position</span><span class="mv">Independent wholesaler / redistribution layer</span></div>
+        <div class="ec-metric"><span class="mk">Margin Driver</span><span class="mv warn">Volume + supply contract terms</span></div>
+        <div class="ec-metric"><span class="mk">Key Risk</span><span class="mv danger">Regulatory price changes; STC policy shifts</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>General Merchandise &amp; Seafood Wholesale</h4>
+        <div class="ec-sub">Diversification Segment — Higher Margin Profile</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Market</span><span class="mv">B2B — hospitality, retail, foodservice</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">IBL Trade, Leal, BOURBON, smaller importers</span></div>
+        <div class="ec-metric"><span class="mk">Racso Position</span><span class="mv">North-based distributor with logistics capability</span></div>
+        <div class="ec-metric"><span class="mk">Margin Driver</span><span class="mv ok">Product mix + buyer relationships</span></div>
+        <div class="ec-metric"><span class="mk">Key Risk</span><span class="mv">Competition from larger integrated wholesalers</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Domestic Road Freight (Logistics)</h4>
+        <div class="ec-sub">Operational Backbone — Spun into Racso Logistics</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Market</span><span class="mv">Domestic B2B freight — island-wide</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Cargo (Mauritius), individual operators, IBL Logistics</span></div>
+        <div class="ec-metric"><span class="mk">Revenue</span><span class="mv">MUR 54.9M standalone (Racso Logistics FY2024)</span></div>
+        <div class="ec-metric"><span class="mk">Margin Driver</span><span class="mv warn">Utilisation rate + fuel cost management</span></div>
+        <div class="ec-metric"><span class="mk">Key Risk</span><span class="mv">Fuel cost volatility; driver availability</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Integrated Supply Chain Ownership:</strong> The group's deliberate structure — a holding company (Aptis), a trading entity (Racso Company), a logistics arm (Racso Logistics), and a specialist distribution entity (Racso Distribution) — gives it a vertically integrated supply chain that competitors without their own logistics capabilities cannot replicate easily. This integration allows Racso to offer delivered pricing and logistics services as a bundle, which is a genuine differentiator in the Mauritius B2B market.</p>
+  <p class="body-text"><strong>2. Riche Terre Location:</strong> Operating from the Inova Riche Terre Business Park positions the group immediately adjacent to Port Louis Free Port and the main north-island commercial corridor. For fuel, seafood, and general merchandise distribution, this location provides first-mover access to imported goods at port and efficient distribution northward to Grand Baie and the tourism corridor — a structural advantage not easily replicated.</p>
+  <p class="body-text"><strong>3. Parent Group Capitalisation:</strong> The MUR 855M Aptis Holdings balance sheet provides a financial backstop that most independent Mauritius SMEs cannot match. This enables Racso to offer credit terms, bid on larger contracts, and absorb operational volatility without the existential risk faced by under-capitalised competitors.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Energy transition pressure:</strong> Mauritius has committed to 60% renewable energy by 2030. Fuel distribution businesses face a structural long-term headwind as LPG and liquid fuel volumes may decline. The 2026 creation of Racso Distribution (specifically for gas wholesale) may be a response — pivoting toward gas as a cleaner transition fuel.</li>
+    <li><strong>Tourism sector recovery and growth:</strong> Mauritius tourism arrivals are recovering strongly post-COVID. Hotel and hospitality operators represent a key buyer segment for general merchandise and seafood distribution, creating tailwinds for that segment.</li>
+    <li><strong>Logistics sector formalisation:</strong> The Mauritius government has signalled infrastructure investment in Port Louis and Riche Terre. For a logistics operator in Riche Terre, this is a direct tailwind.</li>
+    <li><strong>B2B consolidation:</strong> Smaller independent distributors in Mauritius are struggling post-COVID. Larger, better-capitalised operators like Racso are well-positioned to absorb market share or acquire distressed competitors.</li>
+    <li><strong>Cost of doing business pressure:</strong> Rising fuel costs, wage inflation, and utility costs are squeezing margins across all sectors. Racso's admin cost bloat (28.5% of revenue) leaves it particularly exposed to this trend if not addressed.</li>
+    <li><strong>Digital procurement adoption:</strong> Large institutional buyers (hotels, supermarkets) are increasingly using digital procurement platforms. Racso's complete absence of digital presence is a vulnerability if buyer procurement migrates online.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence — Material Competitive Gap</div>
+    No website, LinkedIn, or verified online presence exists for any Racso entity or Aptis Holdings. In 2026, a MUR 100M+ distribution group with zero digital footprint is increasingly anomalous. This creates risk in two directions: inability to attract or vet new buyers digitally, and vulnerability to being displaced by competitors who can be found and evaluated online. This is also a practical challenge for EOS — leadership teams with no digital presence tend to operate with minimal dashboards, informal reporting, and verbal decision-making cultures. These are precisely the cultural patterns EOS is designed to address.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis. Racso is assessed as the primary engagement target, with awareness that Aptis Holdings is the strategic decision-maker.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Racso Company Limited now controls two subsidiaries (Racso Logistics, Racso Distribution), operates three distinct business lines, and sits within a multi-tier corporate structure under Aptis Holdings. Combined revenue across the group exceeds MUR 159M. The group is large enough to have real organisational complexity — multiple entities, shared services, intercompany transactions — but likely still small enough (estimated 30–80 employees across the group) that EOS can be implemented without enterprise-level customisation. The recent addition of a new subsidiary in February 2026 indicates active growth, which increases organisational strain and EOS relevance.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The directorship structure shows a family-led business (Mamet family holds key operational and holding roles) with a long-standing partner (Dev Anand Sabbi) and one external investor (Anne Regine de Ravel de l'Argentiere at Aptis level). Family businesses can be either highly open to EOS (if the founder/patriarch is the champion) or resistant (if family dynamics override accountability structures). The appointment of BDO as auditor in late 2025 and Navitas Corporate Services as company secretary in 2024 suggests the group is investing in governance and is not averse to external professional input — a positive signal. The deliberate structural redesign of the group (creating subsidiaries, separating functions) also indicates strategic thinking rather than ad hoc management, which correlates with EOS readiness.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">This is the strongest EOS signal in the entire profile. The group is visibly at the inflection point where organic growth has forced a structural response: the Mamet family has created two new subsidiaries in three years (Racso Logistics in 2023, Racso Distribution in 2026) to manage complexity. This is a classic "we're creating new companies to solve management problems" pattern — which EOS is explicitly designed to address without the cost and complexity of legal fragmentation. The retained earnings deficit at Racso Company level, combined with strong gross margins, indicates that cost management and accountability are pain points the leadership has not yet solved operationally. The admin cost bloat (MUR 29.8M) is a specific, measurable pain point that EOS's Scorecard and Accountability Chart would directly address.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The complete absence of any digital presence (no website, no LinkedIn) for a MUR 100M+ distribution group in 2026 is a strong indicator of informal, relationship-driven operations with minimal systematised processes. Companies at this scale that have not invested in digital infrastructure typically also lack formal CRM systems, documented SOPs, and structured performance management. The admin cost bloat (28.5% of revenue with no explanation in the filing) suggests uncontrolled overhead — a symptom of immature process management. On the positive side, BDO as auditor and annual returns filed consistently indicate basic financial governance is in place.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The long tenure of founding directors (Jean-Pierre Mamet and Dev Anand Sabbi since 2011 — 15 years) alongside the deliberate introduction of younger family members (Jean-Alain in 2016, Oscar in 2026) suggests a culture that values loyalty, continuity, and family trust — typical of successful Mauritius family businesses. These cultures can be strong but can also create accountability gaps where family members are not held to the same performance standards as non-family employees. EOS's Core Values exercise and Accountability Chart would be particularly powerful here in creating clarity about who is accountable for what, separate from family hierarchy.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The multi-layer governance structure (CHT Holdings → Aptis Holdings → Racso Company → subsidiaries) with overlapping directorships creates a complex decision-making architecture. Jean-Pierre Mamet sits on both Aptis and Racso; Dev Anand Sabbi appears at all levels. This could mean fast decisions (concentrated power) or slow ones (consensus required across family members). The creation of Racso Distribution in February 2026 — just two months ago — suggests decisions can move quickly when the family leadership aligns. The key question for EOS is whether Jean-Alain Mamet (as apparent operational leader of Racso) has genuine decision-making authority or whether all significant decisions flow to the Aptis Holdings board.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">The evidence suggests a group with a relatively clear strategic direction: build a diversified B2B distribution and logistics group in Mauritius, centred on Riche Terre, with specialist entities for each vertical. The systematic creation of subsidiaries for logistics and distribution, combined with the parent's MUR 489M investment in subsidiaries, indicates purposeful capital allocation rather than opportunistic diversification. However, the absence of a public articulation of the vision (no website, no press, no LinkedIn) means it exists only inside the organisation — which is exactly the V/TO problem EOS solves. The vision may be clear to the Mamet family but untranslated into measurable execution plans for the team.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No direct evidence of meeting culture is available from public records. However, the indicators of informal management (no digital presence, admin cost bloat, absence of systematised processes) suggest meetings are likely reactive and unstructured rather than proactive and issues-focused. Family businesses of this type typically resolve issues through corridor conversations rather than formal forums, which allows issues to fester. The EOS Level 10 Meeting structure would be immediately impactful if the leadership team can be persuaded to adopt it — it directly addresses the "everyone is busy but nothing gets resolved" dynamic common in fast-growing family businesses.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.5</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive with Group-Level Engagement Required</h4>
+      <p>Racso Company Limited is a genuine EOS candidate: it is a growing, complex, family-led private business at the exact organisational inflection point where operational discipline becomes the constraining factor on further growth. The pain points are real and measurable (admin cost bloat, negative retained earnings, subsidiary fragmentation). The gating factor is that this is not a standalone company — it is one entity within the Aptis Holdings group, and any meaningful EOS implementation will require buy-in from the Aptis Holdings board (principally Jean-Pierre Mamet and Dev Anand Sabbi). The entry conversation should be pitched at the group level, not just at Racso. If the Aptis Holdings leadership champions EOS, the group has the financial strength, the organisational complexity, and the growth ambition to make it a high-value, long-term engagement.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for the Racso / Aptis Group</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The most urgent tool. With four directors across Racso Company, overlapping roles at Aptis, and two new subsidiaries, <strong>no one outside the family knows who owns what</strong>. The Accountability Chart will force a clear seat-by-seat definition of functional ownership — especially critical for Jean-Alain Mamet's role vs Jean-Pierre's vs Oscar's in the newly created Racso Distribution entity.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard</h4>
+      <p>Administration costs at 28.5% of revenue are unacceptable and likely invisible to the leadership in real-time terms. <strong>A weekly Scorecard with 5–10 leading indicators</strong> (receivables ageing, weekly cost run-rate, logistics utilisation, gross margin by segment) would surface this problem within the first quarter of EOS implementation and create the urgency for action.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO (Vision/Traction Organiser)</h4>
+      <p>The group has a clear strategic instinct (build a diversified B2B distribution group in Riche Terre) but <strong>no written, communicated vision</strong> that cascades below the Mamet family inner circle. The V/TO would codify this into a document the whole organisation can align around — critical as new subsidiaries bring in new people who have no cultural context.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>The February 2026 incorporation of Racso Distribution Co Ltd is a live Rock that needs to be owned by a named leader (Oscar Mamet?) with specific milestones. <strong>Without a Rock framework, new entities get created but remain hollow</strong> — registered with the Registrar but not operationally activated. EOS Rocks would ensure the Racso Distribution build-out has a defined 90-day execution plan.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List and IDS</h4>
+      <p>The admin cost problem (MUR 29.8M) is a systemic issue that has persisted through at least two financial years (given the accumulated deficit). <strong>This is the archetypal IDS problem</strong> — everyone knows something is wrong, no one has formally surfaced it, identified the root cause, or resolved it in a meeting. An Issues List with dedicated IDS time would have resolved this by now.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>A family-led business with overlapping director roles across four legal entities desperately needs a <strong>structured weekly cadence</strong> that prevents the blur between strategic (Aptis Holdings), operational (Racso Company), and subsidiary (Logistics, Distribution) decisions. The L10 Meeting rhythm creates distinct forums for each layer, preventing the "everyone in one room deciding everything" pattern that slows execution in group structures.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total: four financial and operational (addressing immediate performance gaps) and four EOS-specific (sequenced for maximum impact). Financial recommendations should be framed as diagnostic insights in the first conversation — not prescriptions — to establish credibility before the EOS pitch.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Administration Cost Diagnostic — Identify and Eliminate the Hidden MUR 15M Overhead</h4>
+      <p>Administration costs of MUR 29.8M (28.5% of revenue) are consuming 88.5% of gross profit. The industry benchmark for a distribution business is 10–15% of revenue — meaning MUR 14–20M in excess admin costs exists and is unaccounted for in the public filing. The root causes are likely: management fee charges from Aptis Holdings, duplicated overhead across the three Racso entities, and unallocated group-level costs. The leadership team should commission a cost-by-line-item analysis (this is an internal exercise BDO could support) with a target to reduce admin to 18% of revenue within 12 months. That single action would add approximately MUR 11M to net profit — a 4× increase.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Receivables Acceleration — Reduce DSO from 50 to 35 Days to Release MUR 4M Cash</h4>
+      <p>Trade receivables of MUR 14.4M against revenue of MUR 104.7M implies 50 days to collect. Reducing this to 35 days (still generous for B2B) would release approximately MUR 4.3M in working capital. This requires: (1) a named Collections Owner in the Accountability Chart; (2) weekly receivables ageing review in the Scorecard; (3) proactive credit terms negotiation with top 10 customers. For a business carrying a retained earnings deficit of MUR 5.2M, injecting MUR 4M in free cash without borrowing or equity injection is a material strategic win.</p>
+      <span class="urg urg-week">30-Day Action</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Intercompany Structure Rationalisation — Clarify Racso Logistics Cost Allocation</h4>
+      <p>Racso Logistics generated MUR 54.9M in revenue in its second year of operation (FY2024) but only a 6.4% gross margin, compared to Racso Company's 32.2%. This disparity suggests either Racso Logistics is carrying costs (fuel, drivers, vehicle depreciation) that generate margin at the parent entity level, or the transfer pricing between entities is sub-optimal. Before creating Racso Distribution, the board should ensure the intercompany cost and revenue flows between Racso Company and Racso Logistics are correctly structured — otherwise the Distribution entity will compound the same structural ambiguity.</p>
+      <span class="urg urg-week">60-Day Action</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Retained Earnings Recovery Plan — Target Positive Equity Within 18 Months</h4>
+      <p>Racso Company Limited carries a retained earnings deficit of MUR 5.2M. At the current net profit rate of MUR 2.7M/year, it will take nearly two years to return to positive retained earnings — assuming no dividends are paid up to Aptis Holdings. The faster path is the admin cost reduction (Rec 01): if implemented, MUR 11M in recovered profit would eliminate the deficit within one financial year. Alternatively, Aptis Holdings could capitalise the entity (inject equity) to present a cleaner balance sheet — relevant if Racso is being prepared for bank financing or a larger contract that requires balance sheet review.</p>
+      <span class="urg urg-medium">90-Day Planning Horizon</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Entry Point — Engage at Aptis Holdings Level, Not Just Racso</h4>
+      <p>The initial EOS conversation must be with the Aptis Holdings decision-makers — specifically Jean-Pierre Mamet (founding director and Aptis shareholder) and Dev Anand Sabbi (group-level co-director). Engaging only with Jean-Alain Mamet at the Racso level risks a situation where operational buy-in is secured but strategic sponsorship from the parent is absent, making implementation fragile. Frame the first meeting as a group strategy conversation: "You have built a MUR 855M group with three operating entities. The question EOS answers is: how do you manage, hold accountable, and grow all three simultaneously without creating chaos?" Request a meeting that includes both the Aptis Holdings directors and the Racso operating directors.</p>
+      <span class="urg urg-now">Entry Strategy — First Contact</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Focus Day — Design the Accountability Chart for the Full Group Architecture</h4>
+      <p>The first EOS deliverable for this group should be a group-level Accountability Chart that maps seats across all four entities: Aptis Holdings (governance), Racso Company (trading), Racso Logistics (operations), Racso Distribution (new build). The seat design must answer: who runs Racso Distribution day-to-day (Oscar Mamet?)? Who owns Finance across the group (Jean-Pierre? A CFO?)? Who owns Sales for each entity? This exercise will immediately surface role conflicts and accountability gaps — particularly around the overlapping directorships. The Focus Day deliverable is an agreed Accountability Chart, signed off by the Aptis Holdings board, that everyone in the organisation can see and understand.</p>
+      <span class="urg urg-week">EOS Phase 1 — Within 30 Days of Engagement</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>First Rocks — Racso Distribution Activation and Admin Cost Reduction</h4>
+      <p>The two highest-priority Rocks for the first 90-day cycle are: (1) Racso Distribution Co Ltd — fully operationalised with a named leader, a client pipeline, and first revenue by end of Q3 2026; (2) Administration Cost Reduction — a line-item analysis completed, excess costs identified, and a reduction plan approved by the board. These two Rocks are not coincidental — they are the tension at the heart of the group right now: growing via new entities while not yet controlling costs in existing ones. Making both visible as 90-day Rocks forces the leadership to address them in parallel rather than sequentially.</p>
+      <span class="urg urg-week">EOS Phase 1 — 90-Day Rocks</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>V/TO Strategic Question — What Does the Aptis Group Look Like at MUR 500M Combined Revenue?</h4>
+      <p>The V/TO exercise for this group should be anchored to a 3-year revenue target for the combined group. With MUR 159M in combined operating revenue today (Racso Company + Racso Logistics), a 3-year target of MUR 300–500M is ambitious but plausible given the Aptis Holdings financial firepower. The V/TO should define: which sectors get new entities (gas? cold chain? marine?), what the ideal client profile is for each entity, and what structural investments (people, systems, vehicles) are required. This long-term framing gives the Mamet family a reason to invest in EOS that goes beyond "organise the current mess" — it positions EOS as the engine for the next phase of intentional group-building.</p>
+      <span class="urg urg-medium">V/TO — Within 90 Days of EOS Start</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Racso Company Limited is not a single SME — it is the primary operating arm of a well-capitalised, growth-oriented family group that is actively mid-transformation. The Mamet family has the vision and the financial resources to build something significant; what they lack is the management operating system to execute across multiple entities simultaneously without creating structural confusion and cost bloat. That is precisely what EOS delivers. The risks are two: (1) decision-making authority is concentrated at the Aptis Holdings level, not at Racso — the wrong entry point will stall the engagement; (2) the admin cost problem is deep and systemic — EOS will surface it immediately, and the leadership's response to that discomfort will determine whether they become champions or resistors. Approach this with confidence in the diagnosis but sensitivity to the family dynamics. The business case for EOS is overwhelming — the conversation needs to earn the right to present it.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Identify and contact Jean-Alain Mamet (Racso operational lead) for an initial discovery conversation — within the next 2 weeks. Use the admin cost insight as the opener: "I've reviewed your CBRIS filings and there's a number that could be transformational."</li>
+        <li><span class="sig-num">02</span>Request an introduction to Jean-Pierre Mamet and Dev Anand Sabbi (Aptis Holdings directors) — frame it as a group strategy conversation, not an EOS sales pitch. Objective: get all three in a room within 30 days.</li>
+        <li><span class="sig-num">03</span>Present a 20-minute EOS overview at the Aptis Holdings director level, anchored to three specific pain points: admin cost bloat, subsidiary accountability gaps, and the V/TO gap. Target: secure a Focus Day commitment within 60 days.</li>
+        <li><span class="sig-num">04</span>Deliver the Focus Day with a full-group Accountability Chart and the two founding Rocks (Racso Distribution activation + admin cost reduction). Leave the team with a 90-day Scorecard template.</li>
+        <li><span class="sig-num">05</span>At the 90-day check-in, review Rock completion and Scorecard performance. If admin costs have moved, the ROI case is self-evident — close the full EOS engagement for the Aptis group. Target annual engagement value: 2–3 entities × standard EOS fees.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Racso Company Limited — Comprehensive Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (16 April 2026) · Aptis Holdings Ltd CBRIS (C162483) · Racso Logistics CBRIS (C196301) · Racso Distribution CBRIS (C231420) · Web research (April 2026)</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
