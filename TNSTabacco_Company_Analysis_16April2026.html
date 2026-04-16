@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TNS Tobacco — Comprehensive Company Analysis — 16 April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Tobacco Distribution · Wholesale</span>
+    <span class="badge badge-type">Private Company · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">16 April 2026</span>
+  </div>
+  <h1>TNS Tobacco:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">TNS TOBACCO COMPANY LIMITED · Company intelligence · Financial ratios · EOS implementation assessment · Riche Terre, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 1.89B</div>
+      <div class="stat-delta">Mauritius Rupee · Year ended 31 Dec 2024</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit After Tax</div>
+      <div class="stat-value amber">MUR 4.84M</div>
+      <div class="stat-delta">0.26% net margin · razor-thin for scale</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">5.9 / 10</div>
+      <div class="stat-delta">Moderate fit · Founder transition is the key lever</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Quick Ratio 0.71×</div>
+      <div class="stat-delta">Illiquid without inventory liquidation</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>TNS Tobacco — Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION — 7 tabs, always this order
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 16-year-old, founder-built distribution machine with MUR 1.89 billion in revenue and an iron grip on the Mauritian cigarette market — now navigating a regulatory headwind, a Competition Commission investigation, and a founder succession that is quietly redefining what this business is.</p>
+
+  <p class="body-text">TNS Tobacco Company Limited was incorporated on 6 January 2009 at Riche Terre, Mauritius, by Jean-Pierre Mamet — a 25-year British American Tobacco veteran — and his former BAT colleague Sabbi Appanna. The company acquired BAT's local assets upon the closure of BAT's Mauritius manufacturing facility in 2008 and immediately secured the exclusive import and distribution agreement for all BAT brands in Mauritius and Rodrigues. That single agreement has been the company's entire commercial foundation for 16 years: TNS Tobacco is the sole importer and wholesale distributor of BAT cigarette brands in Mauritius, serving a national network of sub-distributors across both main island and Rodrigues.</p>
+
+  <p class="body-text">TNS Tobacco is 100% owned by Aptis Holdings Ltd, a privately held Mauritian diversified group that traces its origins to the TNS Tobacco platform itself. Aptis has since expanded into consumer goods distribution (TNS Consumer), commerce, property, and healthcare, with Oscar Mamet appointed Group CEO in January 2024. Harel Mallac &amp; Co. Ltd — one of Mauritius's oldest listed conglomerates, listed on the Stock Exchange of Mauritius since 1991 — is referenced in the company's background as a strategic partner or minority investor, though precise shareholding percentages in Aptis Holdings are not publicly disclosed. TNS Tobacco itself remains a wholly owned subsidiary of Aptis Holdings with 150,000 ordinary shares and a stated capital of MUR 15 million.</p>
+
+  <p class="body-text">Financially, the company is a high-volume, low-margin distribution engine: MUR 1.89 billion in FY2024 revenue generating a gross margin of just 4.1% and a net profit after tax of MUR 4.84 million (0.26%). The balance sheet is dominated by trade payables of MUR 698 million — almost certainly BAT extended credit terms — creating a structurally leveraged working capital cycle. A Competition Commission investigation launched in July 2024 into TNS Tobacco's sub-distributor exclusivity arrangements adds regulatory uncertainty. EOS suitability score is 5.9/10: the company has genuine implementation-readiness signals, but the dominant BAT dependency and single-product model place structural limits on the value EOS can unlock compared to a more diversified enterprise.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Structural Dependency Risk</div>
+    TNS Tobacco's entire business rests on a single exclusive distribution agreement with British American Tobacco. Revenue of MUR 1.89 billion and the livelihoods of approximately 40 employees depend on BAT renewing this agreement. The Competition Commission investigation into sub-distributor exclusivity — launched July 2024, reference INV072 — introduces regulatory risk that could force changes to the distribution model. Combined with global secular decline in cigarette consumption and Mauritius's tightening tobacco control regulations (plain packaging mandatory since March 2023), the medium-term revenue trajectory warrants serious consideration before any long-term EOS engagement.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Exclusive BAT distribution rights</strong> create a de facto monopoly on the most-consumed cigarette brands in Mauritius. 16-year track record, bonded warehouse licence, and deep sub-distributor network create high barriers to displacement. Part of a growing diversified group (Aptis) with management succession already executed.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Quick ratio of 0.71× signals illiquidity without inventory</strong> — the company cannot meet short-term obligations from liquid assets alone. Net margin of 0.26% leaves zero buffer for disruption. MUR 698 million in trade payables (DPO 141 days) signals near-total reliance on BAT's credit terms to fund operations.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Recent CEO succession (Jean-Pierre → Oscar Mamet, Jan 2024)</strong> is the clearest EOS entry signal — new leadership inheriting a founder-built business typically creates immediate demand for structure, accountability, and a shared vision. The group's expansion into multiple verticals also creates the coordination complexity EOS addresses directly.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">TNS Tobacco is a lean, founder-built distribution monopoly: one exclusive contract, one principal supplier, one primary product category — and over MUR 1.89 billion flowing through a 40-person operation headquartered at Riche Terre, Mauritius.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">TNS Tobacco Company Limited (File No. C085660, BRN: C09085660) was incorporated on 6 January 2009 as a private domestic company under the laws of Mauritius. Registered address: 2nd Floor, Hermes House, Inova Business Park, Riche Terre, Mauritius. Stated capital: MUR 15,000,000 (150,000 ordinary shares at par). Secretary: Navitas Corporate Services Ltd, Navitas House, Robinson Road, Floréal (appointed 1 January 2024). Auditor: BDO LLP, Essar House, 10 Frere Felix de Valois Street, Port Louis (appointed 22 June 2011). Annual returns are current and filed on time — the most recent being filed 14 July 2025 for the period ending 26 June 2025. Financial statements have been filed for FY2022, FY2023, and FY2024. The company has no recorded charges on its charge register, indicating no asset-backed borrowing.</p>
+  <p class="body-text">The company was founded by Jean-Pierre Mamet following his retirement from a 25-year career at British American Tobacco, during which he served as Production Director in Russia and Regional Director for the Indian Ocean. He co-founded TNS Tobacco with former BAT colleague Sabbi Appanna, purchasing BAT's Mauritius distribution assets when BAT closed its local manufacturing operations. The name "TNS" is understood to reference the original operational scope: Tobacco, Network, and Supply. The parent entity Aptis Holdings Ltd eventually rebranded the wider group from "TNS Tobacco Group" to "Aptis" in 2020–2021 to reflect diversification, though the tobacco subsidiary retained its original legal name.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>TNS Tobacco Company Ltd</h4>
+        <div class="ec-sub">Operating Entity — File C085660</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">LIVE</span></div>
+        <div class="ec-metric"><span class="mk">Incorporated</span><span class="mv">6 Jan 2009</span></div>
+        <div class="ec-metric"><span class="mk">Stated Capital</span><span class="mv">MUR 15M</span></div>
+        <div class="ec-metric"><span class="mk">Shares</span><span class="mv">150,000 Ordinary</span></div>
+        <div class="ec-metric"><span class="mk">100% owned by</span><span class="mv">Aptis Holdings Ltd</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Aptis Holdings Ltd</h4>
+        <div class="ec-sub">Immediate Parent — Private</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Structure</span><span class="mv">Private Holding Co.</span></div>
+        <div class="ec-metric"><span class="mk">Sectors</span><span class="mv">Distribution, Commerce, Property</span></div>
+        <div class="ec-metric"><span class="mk">CEO (from Jan 2024)</span><span class="mv">Oscar Mamet</span></div>
+        <div class="ec-metric"><span class="mk">Founder / Chairman</span><span class="mv">Jean-Pierre Mamet</span></div>
+        <div class="ec-metric"><span class="mk">Sibling entity</span><span class="mv">TNS Consumer (FMCG)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Harel Mallac &amp; Co. Ltd</h4>
+        <div class="ec-sub">Strategic Shareholder (Partial) — Listed</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Listed</span><span class="mv">SEM — Official Market</span></div>
+        <div class="ec-metric"><span class="mk">Founded</span><span class="mv">Est. 1830</span></div>
+        <div class="ec-metric"><span class="mk">Sectors</span><span class="mv">Technology, Chemicals, Fertilisers</span></div>
+        <div class="ec-metric"><span class="mk">Role in Aptis</span><span class="mv">Minority strategic investor</span></div>
+        <div class="ec-metric"><span class="mk">Stake %</span><span class="mv warn">Not publicly disclosed</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Jean-Pierre Mamet</h4>
+      <p><strong>Founder &amp; Director</strong> — Appointed 6 January 2009. Former BAT Regional Director for the Indian Ocean and Production Director (Russia). 25-year BAT career before founding TNS Tobacco on retirement. Now serves as Group Founder/Chairman of Aptis Holdings. Succession to Oscar Mamet completed January 2024.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Sabbi Appanna Dev Anand</h4>
+      <p><strong>Director &amp; Co-founder</strong> — Appointed 6 January 2009. Former BAT colleague of Jean-Pierre Mamet. Co-founder of TNS Tobacco; served as CFO of Aptis Group. Residential address: Lot 694, Morc Highland Rose (Gated), Highlands, Mauritius.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Mamet Marie Joseph Jean-Pierre</h4>
+      <p><strong>Director</strong> — Appointed 4 March 2015. Likely a family member of the founder, consistent with the Mamet family's involvement across Aptis group entities. Oscar Mamet (CEO of Aptis Group, appointed Jan 2024) has previously been Managing Director of TNS Tobacco since 2016.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Anne Regine de Ravel de l'Argentiere</h4>
+      <p><strong>Director</strong> — Appointed 20 September 2017. Registered address: Hermes House, Inova, Riche Terre. Identified in public sources as Group HR Manager of Aptis / TNS Tobacco. Board appointment reflects the professionalisation of governance as the group diversified.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Oscar Mamet</h4>
+      <p><strong>CEO — Aptis Group</strong> (from January 2024). Previously Managing Director of TNS Tobacco since 2016 and Group Deputy CEO. BSc Commerce, Griffith University. Represents the second-generation leadership transition within the Mamet family. Likely the primary EOS conversation partner at group level.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Navitas Corporate Services Ltd</h4>
+      <p><strong>Company Secretary</strong> — Appointed 1 January 2024. Navitas House, Robinson Road, Floréal, Mauritius. A professional corporate secretarial firm. The appointment date coinciding with Oscar Mamet's CEO elevation suggests a deliberate governance upgrade at the start of the new leadership era.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">TNS Tobacco operates exclusively as the sole importer and wholesale distributor of British American Tobacco brands in Mauritius and Rodrigues. The company does not manufacture tobacco products. BAT closed its Mauritius manufacturing facility in 2008; TNS Tobacco acquired the distribution rights and infrastructure, resuming supply of BAT's cigarette portfolio through an import-and-distribute model. Specific BAT brand names distributed include global portfolio brands such as Lucky Strike, Pall Mall, Dunhill, and Rothmans, consistent with BAT's Indian Ocean and African portfolio strategy.</p>
+  <p class="body-text">The business activity registered with the Registrar of Companies covers four defined activities: (1) Import and export; (2) Distributor/Dealer of manufactured tobacco — Wholesale of food, beverages and tobacco; (3) Bonded Warehouse operations at Inova Riche Terre Business Park; and (4) Warehouse and storage (more than 100m²) at Inova Riche Terre Business Park. The bonded warehouse licence is a significant operational asset: it allows TNS Tobacco to hold duty-unpaid tobacco stock under Customs supervision, optimising working capital and cash flow on landed stock.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">TNS Tobacco's operations are based entirely in Mauritius, with coverage extending to Rodrigues through its exclusive BAT distribution agreement. The company's registered office and principal place of business is 2nd Floor, Hermes House, Inova Business Park, Riche Terre — a modern commercial zone on the north-western outskirts of Port Louis, proximate to the Port Louis Waterfront and the main port of entry for imported goods. Physical warehouse and bonded storage operations are co-located at the Inova Riche Terre Business Park. There is no evidence of export activity — TNS Tobacco's role is domestic-market distribution only. The company employs approximately 40 people based on publicly available estimates.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS filings, Registrar of Companies, Mauritius (issued 16 April 2026). Currency: Mauritius Rupee (MUR). Fiscal year ended 31 December 2024. Approved by directors 26 June 2025.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    TNS Tobacco Company Limited is a private domestic company. The financials below are extracted from its statutory filing with the Registrar of Companies via the CBRIS system. Only the most recent year (FY2024) is reported in detail. Prior-year comparatives (FY2023, FY2022) were filed but the full P&amp;L and balance sheet line items for those years are not reproduced in the CBRIS extract. No segmental analysis, notes to accounts, cash flow statement, or director's report is available through CBRIS. Revenue growth trend cannot be confirmed without accessing the prior-year filings directly.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>1,887,530,185</td><td>100.0%</td><td>MUR 1.89 billion — a high-volume, low-margin distribution business at scale</td></tr>
+        <tr class="heat-critical"><td>Cost of Sales</td><td>1,809,644,039</td><td>95.9%</td><td>Dominated by tobacco product purchase cost from BAT — near-total pass-through model</td></tr>
+        <tr class="heat-warn"><td>Gross Profit</td><td>77,886,146</td><td>4.1%</td><td>4.1% gross margin is structurally thin; reflects the economics of exclusive distribution</td></tr>
+        <tr><td>Other Income</td><td>27,652,072</td><td>1.5%</td><td>Likely BAT marketing support, rebates, or bonded warehouse income — a critical margin cushion</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>Nil stated — costs may be embedded in COGS or reclassified to admin</td></tr>
+        <tr class="heat-critical"><td>Administration Costs</td><td>94,799,974</td><td>5.0%</td><td>Admin costs exceed gross profit — the business is operationally dependent on Other Income to break even</td></tr>
+        <tr class="heat-ok"><td>Other Expenses (net credit)</td><td>(3,181,899)</td><td>(0.2%)</td><td>Net credit — possibly provisions released or one-off income items</td></tr>
+        <tr><td>Finance Costs</td><td>4,924,858</td><td>0.3%</td><td>Relatively modest given working capital scale — reflects limited formal debt</td></tr>
+        <tr class="heat-warn"><td>Profit Before Tax</td><td>8,995,285</td><td>0.48%</td><td>Sub-1% PBT margin — profitable but with minimal resilience</td></tr>
+        <tr><td>Tax Expense</td><td>4,154,628</td><td>0.22%</td><td>Effective tax rate ~46% on PBT — warrants review; may include deferred tax adjustments</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>4,840,657</strong></td><td><strong>0.26%</strong></td><td>MUR 4.84 million net profit on MUR 1.89 billion revenue — operationally sound but strategically fragile</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">Critical Observation — Admin Exceeds Gross Profit</div>
+    Administration costs of MUR 94.8 million exceed gross profit of MUR 77.9 million by MUR 16.9 million. The company is only profitable because Other Income (MUR 27.7 million — likely BAT rebates or marketing support) bridges this gap. If BAT were to reduce or eliminate support payments, TNS Tobacco would report an operating loss even at current revenue levels. This is a single-counterparty dependency risk of the highest order.
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 December 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>8,125,118</td><td>Modest fixed asset base — consistent with asset-light distribution model</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>203,541</td><td>Negligible</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Investments</td><td>64,471,840</td><td>Likely investments in Aptis group sibling entities or associates</td></tr>
+        <tr class="heat-ok"><td>Non-Current Assets</td><td><strong>Total Non-Current</strong></td><td><strong>72,800,499</strong></td><td>8.7% of total assets — genuinely asset-light</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>262,028,616</td><td>31.5% of total assets — significant bonded stock holding</td></tr>
+        <tr><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>122,349,672</td><td>DSO ~24 days — healthy collection from sub-distributors</td></tr>
+        <tr><td>Current Assets</td><td>Cash &amp; Cash Equivalents</td><td>49,625,069</td><td>Modest cash position relative to liability obligations</td></tr>
+        <tr><td>Current Assets</td><td>Other Current Assets</td><td>326,028,209</td><td>Large — likely prepayments, VAT receivable, or inter-company balances</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>760,031,566</strong></td><td>91.3% of total assets — almost entirely current</td></tr>
+        <tr class="heat-ok"><td><strong>Total Assets</strong></td><td></td><td><strong>832,832,065</strong></td><td></td></tr>
+        <tr><td>Equity</td><td>Share Capital</td><td>15,000,000</td><td>MUR 15M stated capital</td></tr>
+        <tr><td>Equity</td><td>Retained Earnings</td><td>83,564,440</td><td>Accumulated profits — healthy retention history</td></tr>
+        <tr><td>Equity</td><td>Other Reserves</td><td>512,800</td><td>Negligible</td></tr>
+        <tr class="heat-ok"><td><strong>Total Equity</strong></td><td></td><td><strong>99,077,240</strong></td><td>11.9% of total assets — adequate but thin equity cushion</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Borrowings</td><td>4,338,573</td><td>Very low formal long-term debt</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Provisions</td><td>24,773,280</td><td>Likely employee benefit provisions (gratuity, leave)</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Deferred Tax</td><td>838,000</td><td>Negligible</td></tr>
+        <tr class="heat-ok"><td>Non-Current Liabilities</td><td><strong>Total Non-Current Liabilities</strong></td><td><strong>29,949,853</strong></td><td></td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>698,146,361</td><td>83.8% of total assets — almost certainly BAT credit terms; DPO ~141 days</td></tr>
+        <tr><td>Current Liabilities</td><td>Short-Term Borrowings</td><td>0</td><td>No short-term bank debt</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax / ST Provisions</td><td>0</td><td>Nil stated</td></tr>
+        <tr><td>Current Liabilities</td><td>Other Current Liabilities</td><td>5,658,611</td><td>Minor accruals</td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>703,804,972</strong></td><td>Payment of this would require near-liquidation of current assets</td></tr>
+        <tr><td><strong>Total Liabilities</strong></td><td></td><td><strong>733,754,825</strong></td><td>88.1% of total assets financed by liabilities</td></tr>
+        <tr class="heat-ok"><td><strong>Total Equity &amp; Liabilities</strong></td><td></td><td><strong>832,832,065</strong></td><td>Balance sheet balances — confirmed</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The CBRIS charge register for TNS Tobacco Company Limited (File C085660) records no charges as at 16 April 2026. No floating charges, fixed charges, or debentures have been registered against the company's assets. This is consistent with the balance sheet showing zero short-term bank borrowings and only MUR 4.34 million in long-term borrowings. The company's primary financing mechanism is trade credit from BAT (MUR 698 million in trade payables), which does not require charge registration. This is structurally positive from an asset encumbrance perspective, but reinforces the single-counterparty dependency risk.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks: Mauritius wholesale/distribution SME norms and COMESA regional comparables. Green = healthy, Amber = watch, Red = critical concern. All calculations from FY2024 CBRIS data.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.08×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (distribution)</span><span class="ratio-val">1.2× – 1.8×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">AMBER</span></span></div>
+      <span class="ratio-interpret">Current assets barely cover current liabilities. A 1.08× ratio in a distribution business with MUR 262M in inventory means the margin is uncomfortably thin. Any disruption to receivables collection or BAT calling in payables early could create a liquidity crisis. Acceptable only because BAT trade credit is effectively permanent working capital financing.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.71×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (distribution)</span><span class="ratio-val">0.8× – 1.2×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">RED</span></span></div>
+      <span class="ratio-interpret">Stripping out inventory, liquid assets cover only 71% of current liabilities. The company cannot meet its short-term obligations without selling stock. Given inventory is bonded tobacco — which cannot be sold instantaneously — this represents a genuine liquidity vulnerability. The MUR 326M in "Other Current Assets" is the key unknown: if these are easily convertible, the position improves materially.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">4.13%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (exclusive distrib.)</span><span class="ratio-val">5% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">RED</span></span></div>
+      <span class="ratio-interpret">4.1% gross margin is structurally low even for distribution. It reflects BAT's pricing power as the sole supplier: TNS Tobacco retains a thin distribution fee on each carton sold. There is limited scope to improve this unilaterally — margin enhancement requires renegotiating the BAT agreement or diversifying into higher-margin products.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.57%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (distribution)</span><span class="ratio-val">2% – 5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">RED</span></span></div>
+      <span class="ratio-interpret">EBIT of MUR 10.7M on MUR 1.89B revenue. Operating leverage is almost nonexistent — a 1% revenue decline (~MUR 18.9M) would wipe out EBIT entirely. The admin cost structure needs scrutiny: at MUR 94.8M on 40 staff, per-employee costs are high for a distribution operation.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.26%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (distribution)</span><span class="ratio-val">1% – 3%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">RED</span></span></div>
+      <span class="ratio-interpret">MUR 4.84M net profit on MUR 1.89B revenue. At this margin, a 0.3% adverse revenue movement destroys the year's profit entirely. The high effective tax rate (~46%) also requires investigation — either deferred tax charges or undisclosed adjustments are compressing take-home profitability further.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.58%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">3% – 7%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">RED</span></span></div>
+      <span class="ratio-interpret">Generating only MUR 0.58 per MUR 100 of assets deployed. Poor asset productivity is driven by the massive working capital trapped in inventory and receivables relative to the thin profit generated. The asset-light model on fixed assets is offset entirely by the working-capital-heavy nature of distribution.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">4.88%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">10% – 20%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">AMBER</span></span></div>
+      <span class="ratio-interpret">ROE of 4.88% is below the cost of equity for most private companies in Mauritius (~8–12%). Shareholders are not being adequately compensated for the risk concentration in a single-client, single-product business. The high leverage (BAT trade credit) amplifies ROE nominally but does not compensate for the structural margin problem.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity (Formal Debt)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.04×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&lt; 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">Formal borrowings of MUR 4.34M against equity of MUR 99.1M — negligible bank debt. This is a misleading green: if trade payables to BAT (MUR 698M) are treated as economic debt, the true leverage ratio is approximately 7.0× equity. The business is deeply leveraged through its supplier relationship, not through banks.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">2.18×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt; 3.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">AMBER</span></span></div>
+      <span class="ratio-interpret">EBIT covers finance costs only 2.18 times — below the healthy threshold of 3×. While formal debt is minimal, finance costs of MUR 4.9M relative to a thin EBIT of MUR 10.7M leaves limited headroom. Any increase in borrowing or reduction in operating income would breach typical lender covenants.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">2.27×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (distribution)</span><span class="ratio-val">1.5× – 3.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">MUR 2.27 of revenue per MUR 1.00 of assets — strong asset utilisation characteristic of high-velocity distribution. This confirms the model works operationally: assets are churning quickly. The problem is that the margin extracted per turn is insufficient to generate meaningful returns.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">6.91×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (FMCG distrib.)</span><span class="ratio-val">6× – 12×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">Inventory turns ~7 times per year — approximately every 53 days. For bonded tobacco distribution this is healthy, though the upper end of best-in-class would be 10–12×. There may be scope to tighten bonded warehouse stock holding without impacting service levels, freeing up working capital.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debtor Days (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">23.7 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">20 – 35 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN</span></span></div>
+      <span class="ratio-interpret">Trade receivables are collected in under 24 days — excellent for a wholesale business. This suggests either strong credit control or that sub-distributors are required to pay relatively promptly. Fast collection is essential given the thin margin: any slippage would erode profitability disproportionately.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">140.8 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">AMBER</span></span></div>
+      <span class="ratio-interpret">TNS Tobacco pays its suppliers (effectively BAT) in 141 days on average — more than 4× the market norm. This is almost certainly a negotiated extended credit term baked into the BAT exclusive distribution agreement. It is a structural advantage (free working capital financing) but also a structural risk: it makes the business entirely dependent on BAT's continued willingness to extend these terms.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. Admin Costs vs Gross Profit (MUR 94.8M vs MUR 77.9M):</strong> The operating cost structure is not funded by product margin — it is funded by BAT support income. Reducing admin costs by MUR 17M (a 17% reduction) would make the business profitable on product margin alone, eliminating the single greatest source of strategic fragility. On MUR 1.89B revenue, this is a matter of operational discipline, not scale.<br><br>
+    <strong>2. DPO of 141 days (MUR 698M in trade payables):</strong> BAT's credit terms are TNS Tobacco's primary liquidity mechanism. If BAT were to normalise payment terms to 60 days, TNS Tobacco would need to fund an additional ~MUR 500M in working capital immediately — a sum that exceeds total equity by 5×. This is not a risk that EOS can mitigate; it is a fundamental structural dependency that must be understood before any engagement.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">TNS Tobacco operates in a single segment — exclusive wholesale tobacco distribution — where it holds a structural monopoly by contract, in a market facing secular volume decline and accelerating regulatory pressure.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Wholesale Tobacco Distribution</h4>
+        <div class="ec-sub">Core Business · Exclusive</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Market size</span><span class="mv">~USD 94M (2025)</span></div>
+        <div class="ec-metric"><span class="mk">TNS position</span><span class="mv ok">Sole BAT distributor</span></div>
+        <div class="ec-metric"><span class="mk">Competition</span><span class="mv">PMI &amp; other brands</span></div>
+        <div class="ec-metric"><span class="mk">Volume trend</span><span class="mv warn">Slow decline</span></div>
+        <div class="ec-metric"><span class="mk">Margin trend</span><span class="mv warn">Under pressure</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Mauritius Tobacco Market</h4>
+        <div class="ec-sub">End Market Context</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Total market</span><span class="mv">USD 100.8M (2025)</span></div>
+        <div class="ec-metric"><span class="mk">Cigarettes share</span><span class="mv">93% of market</span></div>
+        <div class="ec-metric"><span class="mk">Adult smoking prev.</span><span class="mv">17.2% (2024)</span></div>
+        <div class="ec-metric"><span class="mk">Male / Female</span><span class="mv">32.1% / 2.3%</span></div>
+        <div class="ec-metric"><span class="mk">Growth 2024–2029</span><span class="mv warn">+0.20% p.a.</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Regulatory Environment</h4>
+        <div class="ec-sub">Risk Landscape</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Plain packaging</span><span class="mv warn">Mandatory Mar 2023</span></div>
+        <div class="ec-metric"><span class="mk">Competition probe</span><span class="mv danger">Active (INV072)</span></div>
+        <div class="ec-metric"><span class="mk">WHO tax target</span><span class="mv warn">Below 70% threshold</span></div>
+        <div class="ec-metric"><span class="mk">Advertising ban</span><span class="mv">In force</span></div>
+        <div class="ec-metric"><span class="mk">Risk trajectory</span><span class="mv danger">Escalating</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Exclusive BAT distribution rights:</strong> TNS Tobacco is the only legal importer and wholesale distributor of BAT brands in Mauritius — the dominant cigarette portfolio by volume in the market. This is not a competitive advantage that can be replicated by a competitor; it is contractually protected. Any market entrant would have to negotiate an alternative principal (PMI, JTI) and build a distribution network from scratch against an established 16-year incumbent.</p>
+  <p class="body-text"><strong>2. Bonded warehouse licence and infrastructure:</strong> Holding a bonded warehouse licence at Inova Riche Terre allows TNS Tobacco to import, store, and release duty-unpaid tobacco under Customs supervision. This is a regulated asset requiring compliance infrastructure and Customs relationships that create genuine barriers to entry. The co-location of offices and warehouse at Inova Business Park provides operational efficiency.</p>
+  <p class="body-text"><strong>3. Deep sub-distributor network:</strong> Sixteen years of relationship-building with sub-distributors across Mauritius and Rodrigues constitutes a distribution network that would take years for a competitor to replicate. The Competition Commission's concern about exclusivity arrangements in this sub-distributor network is itself evidence of how deeply embedded these relationships are — they are strong enough to attract regulatory scrutiny.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds / Headwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Headwind — Secular volume decline:</strong> Global and regional cigarette consumption is in long-term decline driven by health awareness, regulatory pressure, and generational shift. Mauritius's 0.2% projected annual growth (2024–2029) reflects near-stagnation.</li>
+    <li><strong>Headwind — Regulatory escalation:</strong> Plain packaging (March 2023), advertising prohibition, proposed excise increases, and potential retail display bans are progressively restricting the marketing and distribution environment for tobacco products in Mauritius.</li>
+    <li><strong>Headwind — Competition Commission investigation (INV072, July 2024):</strong> Active investigation into whether TNS Tobacco's sub-distributor exclusivity arrangements restrict competition. Even if concluded with no finding, the investigation consumes management time and creates uncertainty about the distribution model's legal durability.</li>
+    <li><strong>Tailwind — Resilient demand base:</strong> Mauritius has 17.2% adult smoking prevalence with a deeply habituated male smoker base (32.1%). Despite regulatory pressure, near-term demand destruction is likely to be gradual rather than abrupt. Cigarette consumption is relatively price-inelastic at moderate excise levels.</li>
+    <li><strong>Tailwind — Group diversification:</strong> Aptis Group's expansion into TNS Consumer (FMCG distribution), property, and health reduces the group's dependency on tobacco revenues over time, even if TNS Tobacco itself remains mono-product.</li>
+    <li><strong>Tailwind — BAT's strategic commitment to Mauritius:</strong> BAT has maintained its exclusive partnership with TNS Tobacco for 16 years. Given the political and regulatory complexity of direct BAT re-entry into Mauritius distribution, this relationship has durability — particularly as BAT continues to earn income from the Mauritius market through TNS Tobacco without direct operational exposure.</li>
+  </ul>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">TNS Tobacco employs approximately 40 people — firmly within EOS's 10–250 sweet spot. However, the company is a subsidiary of Aptis Holdings, and the relevant EOS engagement would need to address the group structure (multiple entities: TNS Tobacco, TNS Consumer, property, health). At the group level, complexity is higher and EOS is more clearly warranted. At the TNS Tobacco entity level alone, 40 people in a single-product distribution operation is on the simpler end — straightforward enough that EOS might be under-utilised without a broader group mandate.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">The January 2024 CEO transition from Jean-Pierre Mamet (founder, 25-year BAT veteran, highly personal leadership style) to Oscar Mamet (second generation, university-educated, more process-oriented) is a strong signal of leadership receptivity. New CEOs inheriting founder-built businesses almost universally feel the absence of structure — they inherit informal systems, undocumented processes, and accountability gaps. Oscar's appointment of a professional company secretary (Navitas) in the same month signals an appetite for governance improvement. The key unknown is whether Jean-Pierre remains influential enough to resist structural change.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Classic EOS pain symptoms are present at the group level: a founder stepping back, multiple new business lines (TNS Consumer, property, health) with unclear accountability, a core business under regulatory scrutiny, and a leadership team that has grown with the business rather than being recruited for scale. The mono-product, mono-client nature of TNS Tobacco itself limits the complexity EOS can address — EOS works best when the business has multiple moving parts. At the Aptis group level, the pain is more pronounced and the EOS case is stronger.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No evidence of documented process frameworks, ERP systems, or structured business operating rhythms in public sources. The 16-year tenure of the founding team and the relatively small headcount suggest informal systems that have worked because of founder knowledge and personal relationships — not repeatable processes. The appointment of a professional secretarial firm and BDO as auditor suggests some process discipline at the compliance level, but operational systems are unknown. A distribution business of this scale (MUR 1.89B) without visible systems investment is a meaningful EOS entry signal.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The founding team has been together for 16 years — co-founders Mamet and Appanna, core directors largely unchanged since 2009–2017. Long tenure indicates stability but also potential calcification of informal norms. The LinkedIn/Facebook presence of the Aptis group suggests a reasonably active employer brand and genuine pride in the business's growth story. However, there is no public evidence of defined core values, structured performance management, or formal accountability systems — hallmarks of a culture that has been carried by the founder's presence rather than embedded in the organisation.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">A founder-led business with a single dominant principal (BAT) tends toward centralised, relationship-driven decision-making. The fact that the Competition Commission is investigating TNS Tobacco's sub-distributor exclusivity arrangements suggests the commercial model has been managed informally — deals done on trust and long-standing relationships rather than transparent, documented processes. The transition to Oscar Mamet may already be driving change, but the pattern of the first 15 years is likely still dominant.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Aptis Group's public messaging articulates a clear diversification narrative: "from TNS Tobacco to a multi-sector group." Oscar Mamet's appointment as CEO with a mandate to grow the group's commerce, property, and health clusters signals a defined strategic direction. However, the tension between managing a declining legacy tobacco business and building new growth verticals is a classic EOS "vision vs. traction" gap. What is the 10-year vision for TNS Tobacco specifically, as tobacco volumes decline? The V/TO would surface this tension productively.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of structured meeting rhythms (weekly L10, quarterly pulsing, annual planning sessions) in any public source. A 40-person distribution business run for 16 years by a founder with deep personal knowledge of every account and relationship is likely to have informal, ad-hoc meeting culture — updates happen in corridors, decisions are made one-on-one with the MD. This is both the most addressable EOS gap and the one with the clearest ROI: installing structured meeting rhythms would immediately surface issues, create accountability, and reduce the founder-dependence of the operating model.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">5.9</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate Fit — Group Engagement Preferred</h4>
+      <p>TNS Tobacco is a moderate EOS candidate at the entity level, but a stronger one at the Aptis group level. The clearest entry signal is the January 2024 founder succession: Oscar Mamet is inheriting a founder-built, informally operated business and needs the structure EOS provides. The gating factor is the business model risk — engaging deeply with a company whose sole revenue stream faces regulatory headwinds and Competition Commission scrutiny requires honest conversation about whether EOS investment is appropriate for the tobacco entity alone, or whether the engagement should be framed around the Aptis group's diversification journey. A Focus Day framed around the group, not just TNS Tobacco, would yield the highest EOS leverage.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for TNS Tobacco / Aptis</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The succession from Jean-Pierre to Oscar Mamet almost certainly leaves structural gaps: roles that were implicitly "the founder's" are now unclaimed. The Accountability Chart will surface these gaps, clarify who owns what, and prevent Oscar from inheriting accountability without authority. Essential in Year 1 of any new CEO's tenure.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision / Traction Organiser (V/TO)</h4>
+      <p>The Aptis group needs a shared answer to: "What does this group look like in 10 years as tobacco volumes decline?" The V/TO provides the framework to commit to a directional answer and align the leadership team around it — preventing the paralysis of managing a legacy cash cow while building new verticals simultaneously.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>The single highest-ROI EOS tool for TNS Tobacco specifically. A 40-person distribution business running on founder informal communication patterns needs a structured weekly rhythm that surfaces issues, tracks KPIs (collection rates, inventory turns, sub-distributor performance), and creates accountability without requiring the founder to be present at every decision.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard</h4>
+      <p>TNS Tobacco is a data-rich business (sales volumes by SKU, sub-distributor performance, inventory levels, receivables aging) but likely manages performance reactively rather than proactively. A weekly Scorecard with 5–15 KPIs would shift the culture from fire-fighting to data-driven management — particularly critical given the thin margins where early warning signals matter enormously.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks</h4>
+      <p>With the Competition Commission investigation active, the BAT contract renewal cycle approaching, and new group verticals requiring management attention, the leadership team almost certainly lacks a disciplined 90-day priority framework. Rocks would force Oscar Mamet and his team to choose the 3–7 things that matter most each quarter, preventing the dilution that comes with managing a complex multi-entity group.</p>
+    </div>
+    <div class="profile-card">
+      <h4>People Analyser</h4>
+      <p>A 16-year-old founder business with a long-tenured team needs an honest assessment of whether the right people are in the right seats for the next phase of growth. The People Analyser, applied against the group's new Core Values, will help Oscar distinguish between loyal founding-era contributors and the talent profile needed to navigate regulatory complexity and multi-sector expansion.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations total: four financial/operational (address the structural risks before EOS) and four EOS implementation (sequenced from the highest-leverage entry point). Sequenced by urgency.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Restructure Admin Costs Below Gross Profit</h4>
+      <p>Admin costs of MUR 94.8M exceed gross profit of MUR 77.9M — the business is loss-making on product margin before Other Income. Oscar Mamet should commission a zero-based cost review of the MUR 94.8M admin line, targeting a MUR 15–20M reduction (16–21%). Success: gross profit covers operating costs without reliance on BAT support payments. Owner: Oscar Mamet / Aptis Group CFO. Timeline: 6 months.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Negotiate BAT Agreement Terms and Secure Renewal Clarity</h4>
+      <p>The entire business depends on a single agreement with BAT. Management should proactively engage BAT for a formal multi-year renewal commitment and seek to increase the gross distribution margin from ~4.1%. A 1% margin improvement would add ~MUR 18.9M to gross profit — more than tripling current net income. Owner: Oscar Mamet (personal BAT relationship). Timeline: initiate within 90 days.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Resolve Competition Commission Investigation Proactively</h4>
+      <p>The INV072 investigation into sub-distributor exclusivity arrangements (launched July 2024) is an active regulatory risk. Management should engage legal counsel to assess the investigation's scope, consider voluntary remedies (restructuring exclusivity clauses), and engage proactively with the Competition Commission rather than waiting for findings. Unresolved regulatory risk will deter EOS investment and any future partnership or exit conversations. Owner: Board / Legal counsel. Timeline: Engage counsel within 30 days.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Clarify "Other Current Assets" (MUR 326M)</h4>
+      <p>MUR 326 million in "Other Current Assets" represents 39% of total assets and is uncharacterised in the CBRIS filing. This is critical for liquidity assessment: if these are inter-company receivables from Aptis group entities, they are not independently liquid. Management should provide a breakdown to any prospective partner or EOS implementer. Success: full characterisation provided in next filing or management accounts. Owner: CFO. Timeline: Immediate.</p>
+      <span class="urg urg-week">Within 30 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Frame the Engagement at Aptis Group Level</h4>
+      <p>A TNS Tobacco-only EOS engagement underutilises the opportunity. The right conversation is with Oscar Mamet as Group CEO of Aptis, addressing the multi-entity structure: TNS Tobacco (distribution), TNS Consumer (FMCG), property, and health. A group-level Focus Day will surface the Vision/Traction gap, the Accountability Chart ambiguities, and the strategic question of where TNS Tobacco sits in the group's 10-year future. This framing positions LMA Growth Partners as a strategic partner to a diversifying MUR 2B+ group, not just a tobacco distributor.</p>
+      <span class="urg urg-week">EOS Entry Point</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Focus Day — New CEO, New Structure</h4>
+      <p>The optimal EOS entry is a Focus Day delivered to the Aptis leadership team within Oscar Mamet's first 18 months as CEO. The agenda: establish Core Values, draft the Accountability Chart, and surface the top 3 Issues the leadership team knows exist but has not confronted. The founder transition context creates natural energy and openness — the team knows things need to change and will welcome an external framework. Propose this as "building the structure Oscar needs to lead Aptis to its next chapter."</p>
+      <span class="urg urg-week">EOS — Phase 1</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Install Scorecard and Level 10 Meeting at TNS Tobacco</h4>
+      <p>Begin EOS toolset deployment with the two tools that deliver fastest visible ROI for a distribution business: a weekly Scorecard (sub-distributor sales volume, receivables aging, inventory days, compliance status) and the L10 meeting rhythm. These can be operational within 60 days of the Focus Day. Success metric: leadership team reviews performance data weekly rather than reacting to month-end surprises. This also creates the discipline culture needed to navigate the Competition Commission investigation period.</p>
+      <span class="urg urg-medium">EOS — Phase 2</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>V/TO — Address the Strategic Question Directly</h4>
+      <p>Within 6 months of EOS engagement, lead the Aptis leadership team through the full V/TO process. The central strategic question that must be confronted: "As cigarette volumes in Mauritius decline over the next decade, does TNS Tobacco reinvent itself (diversify into new principals? Enter NGP/vaping distribution?) or does it become a managed cash-cow funding Aptis group growth?" EOS cannot tell them the answer, but the V/TO process will force the conversation and prevent the drift that characterises founder-era businesses in transition.</p>
+      <span class="urg urg-medium">EOS — Phase 3</span>
+    </div>
+  </div>
+
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>TNS Tobacco is a well-run distribution monopoly that has generated stable revenues for 16 years from a single exclusive contract. Its financial fragility — 0.26% net margin, admin costs exceeding gross profit, MUR 698M in supplier credit dependency — is structural, not operational. EOS can help Oscar Mamet build the management system he needs to run a multi-entity group, but it cannot solve the strategic question of what Aptis does when the tobacco revenue engine begins to slow. The most valuable conversation LMA Growth Partners can have is with Oscar Mamet about the Aptis group's future, using TNS Tobacco's regulatory headwinds as the catalyst for urgency.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Introductory meeting with Oscar Mamet — frame conversation around Aptis group, not just TNS Tobacco (within 30 days)</li>
+        <li><span class="sig-num">02</span>Parallel: ensure Competition Commission matter is legally managed; confirm BAT contract status (Days 30–60)</li>
+        <li><span class="sig-num">03</span>Focus Day — Aptis leadership team — Core Values, Accountability Chart, top Issues (Month 2–3)</li>
+        <li><span class="sig-num">04</span>Scorecard + L10 meeting deployment at TNS Tobacco and TNS Consumer (Month 3–4)</li>
+        <li><span class="sig-num">05</span>Full EOS implementation including V/TO and Rocks framework — address the group's 10-year strategic direction (Month 6 onwards)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>TNS Tobacco — Comprehensive Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (16 April 2026) · aptis.mu · competitioncommission.mu · business-magazine.mu · Statista · WHO / AFRO</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
