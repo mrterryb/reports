@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APTIS Property Company Limited — Comprehensive Company Analysis — 16 April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Real Estate · Property Investment</span>
+    <span class="badge badge-type">Private Company · Domestic · Mauritius</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">16 April 2026</span>
+  </div>
+  <h1>APTIS Property:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">APTIS Property Company Limited · Company intelligence · Financial ratios · EOS implementation assessment · Riche Terre, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 21.3M</div>
+      <div class="stat-delta">Rental income · Year ended 31 Dec 2024</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit FY2024</div>
+      <div class="stat-value emerald">MUR 12.3M</div>
+      <div class="stat-delta">57.5% net margin · Strong profitability</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">5.5 / 10</div>
+      <div class="stat-delta">Moderate fit · Holding-level entry preferred</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">High Leverage</div>
+      <div class="stat-delta">Current liabilities MUR 155.6M vs equity MUR 135.8M</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>APTIS Property Company Limited — Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION — 7 tabs, always this order
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 7-year-old property holding and rental entity inside the APTIS Group generating a remarkably high net margin of 57.5% — yet carrying a balance sheet tension between MUR 155.6M in current liabilities and MUR 135.8M in equity that demands structural attention.</p>
+
+  <p class="body-text">APTIS Property Company Limited (File No. C162801, BRN: C19162801) was incorporated on 6 March 2019 as a private domestic company. Registered at 2nd Floor, Hermes House, Inova Business Park, Riche Terre, the company operates as the real estate arm of the APTIS Group, a diversified Mauritian group that began as TNS Tobacco in 2009. Its primary business is the rental of its own or leased commercial property — specifically office and warehouse spaces — within the Hermes House, Inova Business Park development in Riche Terre, strategically located near the Port-Louis harbour corridor.</p>
+
+  <p class="body-text">APTIS Property is 100% owned by APTIS Holdings Ltd, the ultimate parent of the APTIS Group. The group is co-founded and led by Jean-Pierre Mamet (now President/Founder, based in Goodlands) and Oscar Mamet (CEO since January 2024, based in Mont Piton). Sabbi Appanna Dev Anand serves as Group CFO and Anne Régine de Ravel de l'Argentière as Group HR Director — both sit on the APTIS Property board. The four directors share identical board seats across APTIS Property and APTIS Services, reflecting a centralised governance model typical of Mauritius family-controlled groups.</p>
+
+  <p class="body-text">Financially, FY2024 (year ended 31 December 2024) is a strong top-line story: MUR 21.3M in rental revenue flowing through to MUR 12.3M net profit after tax — a 57.5% net margin, exceptional for any business. However, the balance sheet is dominated by MUR 286.2M in investment properties (almost certainly the Hermes House buildings carried at fair value), financed largely by MUR 155.5M in trade payables and other current liabilities. This creates a debt-to-equity ratio of 1.18x and a current ratio of only 0.04x — a structural fragility concealed by the quality of the underlying real estate asset. The EOS suitability score of 5.5/10 reflects moderate fit: this is an asset-holding vehicle, not an operational business with people complexity, but the parent group clearly has the scale and complexity to benefit from EOS at the APTIS Holdings level.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Balance Sheet Illiquidity Masked by Asset Quality</div>
+    APTIS Property's current ratio of 0.04x signals extreme short-term illiquidity on paper — current assets of MUR 6.5M face current liabilities of MUR 155.6M. This is not necessarily a crisis: the MUR 286.2M investment property portfolio is likely to be readily financeable and the parent group provides structural backstop. However, it means that any cash flow disruption (tenant vacancy, interest cost increase) would rapidly crystallise into a liquidity event. The absence of any long-term debt (only MUR 5.1M in non-current liabilities) and zero bank borrowings suggests the trade payables figure includes inter-company balances owed to the parent — a structure that warrants clarification before any external financing is considered.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Exceptional profitability at 57.5% net margin</strong> on a pure rental model with zero cost of sales. Strategic location at Inova Business Park, Riche Terre — one of Mauritius's fastest-growing commercial/logistics corridors near the main port. Parent group provides tenant base and brand credibility. BDO as auditor signals governance maturity.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Current ratio of 0.04x is critically low</strong>, meaning the company cannot service short-term obligations from liquid assets alone. The MUR 155.5M in current liabilities (likely inter-company) creates artificial balance sheet tension. Administration costs of MUR 19.2M exceed revenue in scale (90% of revenue) — needs detailed breakdown. Zero revenue diversification: single revenue stream from property rental.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Group-level complexity is the real EOS entry point</strong>, not this entity. APTIS Property itself is a lean holding vehicle with four directors and a corporate secretary — no operational team to speak of. EOS conversation belongs at APTIS Holdings or APTIS Services level where the actual people management, commercial execution, and growth challenges reside. The Mamet family governance structure suggests readiness for accountability frameworks.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">APTIS Property is the dedicated real estate holding and rental vehicle of the APTIS Group, owning and managing commercial office and warehouse space in the strategic Riche Terre Business Park corridor.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Incorporated on 6 March 2019 as a private domestic company, APTIS Property Company Limited holds File Number C162801 and Business Registration Number C19162801. The registered office is at 2nd Floor, Hermes House, Inova Business Park, Riche Terre, Mauritius — the very building whose premises it manages. Stated capital is MUR 10,000 (100 ordinary shares at MUR 100 par value). Annual returns have been filed consistently for 2022, 2023, and 2024, with the 2024 return filed on 20 June 2024 — confirming full regulatory compliance. Financial statements have been approved through 31 December 2024. The secretary is Navitas Corporate Services Ltd (appointed 1 January 2024), and the auditor is Messrs. BDO (appointed 24 October 2025). No charges are registered against the company and no winding-up proceedings are on file. The annual registration fee was paid in 2026.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>APTIS Holdings Ltd</h4>
+        <div class="ec-sub">Ultimate Parent · 100% Shareholder</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Ownership</span><span class="mv ok">100%</span></div>
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">100 ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Group role</span><span class="mv">Holding co.</span></div>
+        <div class="ec-metric"><span class="mk">Founded</span><span class="mv">2009 (as TNS Tobacco)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Jean-Pierre Mamet</h4>
+        <div class="ec-sub">Co-Founder · President · Director</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Founder / President</span></div>
+        <div class="ec-metric"><span class="mk">Appointed</span><span class="mv">6 Mar 2019</span></div>
+        <div class="ec-metric"><span class="mk">Address</span><span class="mv">St Antoine, Goodlands</span></div>
+        <div class="ec-metric"><span class="mk">Background</span><span class="mv">Ex-BAT international</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Oscar Mamet</h4>
+        <div class="ec-sub">CEO (from Jan 2024) · Director</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Group CEO</span></div>
+        <div class="ec-metric"><span class="mk">Appointed</span><span class="mv">6 Mar 2019</span></div>
+        <div class="ec-metric"><span class="mk">Address</span><span class="mv">Mont Piton II Estate</span></div>
+        <div class="ec-metric"><span class="mk">Prior role</span><span class="mv">Deputy CEO to Dec 2023</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Director — Jean-Pierre Mamet</h4>
+      <p><strong>Co-Founder &amp; Group President.</strong> Launched the entrepreneurial project after a career at British American Tobacco (BAT). Established TNS Tobacco in April 2009 under an exclusive agreement with BAT. Resident at St Antoine, Goodlands. Appointed to this company 6 March 2019.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Director — Oscar Mamet (CEO)</h4>
+      <p><strong>Group Chief Executive Officer.</strong> Son of Jean-Pierre Mamet. Served as Group Deputy CEO until December 2023, then became full CEO in January 2024. Based at Lot 29, Mont Piton II Residential Estate. LinkedIn profile active. Appointed to this company 6 March 2019.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Director — Anne Régine de Ravel de l'Argentière</h4>
+      <p><strong>Group HR Director.</strong> Service address at 2nd Floor, Hermes House, Inova Business Park, Riche Terre — indicating she is operationally based at group headquarters. Appointed to this company 6 March 2019.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Director — Sabbi Appanna Dev Anand</h4>
+      <p><strong>Group Chief Finance Officer.</strong> Co-founder of the original TNS Tobacco with Jean-Pierre Mamet. Formerly a colleague at BAT. Resident at Highland Rose Gated Community, Highlands. Appointed to this company 6 March 2019.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Auditor — Messrs. BDO</h4>
+      <p><strong>Big-4 equivalent audit firm.</strong> Appointed 24 October 2025 — a recent change, possibly reflecting group-wide audit harmonisation. BDO Mauritius is a well-established firm with a strong local presence. Consistent across all APTIS subsidiaries reviewed.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Secretary — Navitas Corporate Services Ltd</h4>
+      <p><strong>Corporate secretary appointed 1 January 2024.</strong> Navitas is based in Floreal, Mauritius. The appointment date coincides across multiple APTIS subsidiaries, suggesting a group-level secretarial services consolidation exercise in early 2024.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">APTIS Property's registered business activity is "Real estate activities with (rental of) own or leased property." In practice, the company manages and leases commercial space within the Hermes House facility at Inova Business Park, Riche Terre. The offerings include: office spaces in Riche Terre Business Park described as "ideal environments for company development"; warehouse space of 400m² in a gated logistics facility with a ceiling height of 6m and one loading bay. The Inova Business Park and Riche Terre corridor have been developed as a logistics and light-industrial hub adjacent to the Port-Louis port infrastructure, positioning APTIS Property's assets well for import/export businesses, distribution companies, and professional services tenants needing modern commercial accommodation.</p>
+
+  <p class="body-text">The company's MUR 286.2M investment property book value (at 31 December 2024) — representing 96.5% of total assets — confirms that the primary value proposition is property ownership and capital appreciation, with rental income as the operational output. The group also owns the building as its own headquarters, meaning the internal lettings to APTIS Services and other group entities may form part of the revenue stream.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">APTIS Property operates exclusively within Mauritius, with its single registered address and primary operating location at Hermes House, Inova Business Park, Riche Terre. Riche Terre is one of Mauritius's designated Business Parks, located in the Terre Rouge district in the north-west of the island, approximately 4km from Port-Louis and close to the Sir Seewoosagur Ramgoolam International Airport access corridor. The park attracts logistics, trade, and professional services companies. There is no indication of export activity or off-island operations.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Data sourced from CBRIS (MNS / Registrar of Companies, Mauritius) filed financial statements for the year ended 31 December 2024, approved 26 June 2025. Currency: Mauritius Rupee (MUR). Audited by BDO.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Financial data is sourced from the summarised financial statements filed with the Registrar of Companies via CBRIS. These are condensed filings — individual line items are available but granular notes (depreciation schedules, related-party transaction details, breakdown of trade payables) are not disclosed. As a private company, APTIS Property is not required to publish full IFRS-standard accounts. The nature of the MUR 155.5M trade payables figure is a key unknown — it likely contains significant inter-company balances. Historical comparison data (FY2023, FY2022) is not available in this extract.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>21,304,352</td><td>100.0%</td><td>Pure rental income from commercial property. Zero cost of sales — consistent with an asset rental business model.</td></tr>
+        <tr><td>Cost of Sales</td><td>0</td><td>0.0%</td><td>No direct cost of sales — revenue is lease income with no inventory or direct labour cost.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>21,304,352</td><td>100.0%</td><td>100% gross margin confirms pure landlord model. Exceptional for any business.</td></tr>
+        <tr><td>Add: Other Income</td><td>11,479,834</td><td>53.9%</td><td>Significant other income — likely fair value gains on investment property or inter-company receipts. Warrants clarification.</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>No distribution costs — consistent with a property holding vehicle.</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>19,189,220</td><td>90.1%</td><td>High relative to revenue — likely includes depreciation, management fees to parent, and professional fees. Absorbs most of the rental margin.</td></tr>
+        <tr><td>Other Expenses</td><td>0</td><td>0.0%</td><td>No other expenses classified separately.</td></tr>
+        <tr><td>Finance Costs</td><td>0</td><td>0.0%</td><td>Zero explicit finance costs despite large balance sheet — suggests debt is inter-company with no interest charged, or interest is absorbed in admin costs.</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>13,594,966</td><td>63.8%</td><td>Strong PBT margin supported by other income contribution.</td></tr>
+        <tr><td>Tax Expense</td><td>1,343,653</td><td>6.3%</td><td>Effective tax rate of approximately 9.9% on PBT — below standard 15% Mauritius corporate rate, possibly due to property-specific deductions.</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>12,251,313</strong></td><td><strong>57.5%</strong></td><td>Exceptional net margin. Strong value creation from the property portfolio for the APTIS Group.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 December 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr class="heat-ok"><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>3,778,913</td><td>Relatively modest PP&amp;E — mainly fit-out and equipment.</td></tr>
+        <tr class="heat-ok"><td>Non-Current Assets</td><td>Investment Properties</td><td>286,230,000</td><td>The dominant asset — Hermes House and related buildings carried at fair value. Represents 96.5% of total assets.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Non-Current Assets</td><td>0</td><td>No other non-current assets.</td></tr>
+        <tr><td>Non-Current Assets</td><td><strong>Total Non-Current Assets</strong></td><td><strong>290,008,913</strong></td><td>Asset base anchored entirely in real estate.</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>0</td><td>No inventories — consistent with service/rental model.</td></tr>
+        <tr><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>1,128,002</td><td>Low receivables — good debtor management or pre-paid rent structure.</td></tr>
+        <tr><td>Current Assets</td><td>Cash &amp; Cash Equivalents</td><td>3,681,419</td><td>Low cash balance relative to current liability exposure.</td></tr>
+        <tr><td>Current Assets</td><td>Other Current Assets</td><td>1,649,429</td><td>Prepayments or short-term receivables.</td></tr>
+        <tr><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>6,458,850</strong></td><td>Very thin liquidity pool against MUR 155.6M current liabilities.</td></tr>
+        <tr><td></td><td><strong>Total Assets</strong></td><td><strong>296,467,763</strong></td><td>Dominated by investment property at fair value.</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital</td><td>10,000</td><td>Nominal stated capital.</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Retained Earnings</td><td>135,781,859</td><td>Strong accumulated profits — the real equity base.</td></tr>
+        <tr><td>Equity</td><td>Other Reserves</td><td>-9,120</td><td>Minor negative reserve — possibly revaluation adjustment.</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>135,782,739</strong></td><td>Solid equity base, majority from retained earnings.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Borrowings</td><td>0</td><td>No formal long-term debt — unusual for a property company of this size.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Provisions</td><td>531,729</td><td>Minor provisions — possibly lease dilapidation or staff provisions.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Deferred Tax</td><td>4,570,780</td><td>Deferred tax on investment property revaluation gains.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td><strong>Total Non-Current Liabilities</strong></td><td><strong>5,102,509</strong></td><td>Very low formal long-term debt — almost all financing is short-term.</td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>155,487,313</td><td>Dominant and alarming figure — almost certainly includes inter-company payables to APTIS Holdings for property acquisition financing. Requires clarification.</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax Payable</td><td>95,202</td><td>Normal tax accrual.</td></tr>
+        <tr><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>155,582,515</strong></td><td>24x current assets. Structural concern unless confirmed as inter-company.</td></tr>
+        <tr><td></td><td><strong>Total Liabilities</strong></td><td><strong>160,685,024</strong></td><td>Majority of the financing sits in current payables.</td></tr>
+        <tr><td></td><td><strong>Total Equity and Liabilities</strong></td><td><strong>296,467,763</strong></td><td>Balance sheet balances correctly.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">No charges are registered against APTIS Property Company Limited as at the date of the CBRIS extract (16 April 2026). This is notable given the MUR 286.2M investment property portfolio — the absence of mortgage charges suggests the property may have been funded through equity injections or inter-company loans from APTIS Holdings rather than external bank financing. This is consistent with the MUR 155.5M trade and other payables figure likely representing intra-group balances. No winding-up or removal proceedings are on file.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks drawn from Mauritius SME and property sector norms. Colour key: Green = healthy range, Amber = watch closely, Red = critical concern requiring immediate attention.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.04×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (property SME)</span><span class="ratio-val">0.8× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Current assets of MUR 6.5M face current liabilities of MUR 155.6M. This extreme ratio almost certainly reflects inter-company balances classified as current payables rather than a genuine third-party liquidity crisis. However, if APTIS Holdings were to call these balances, the company would face immediate insolvency without asset disposal.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.04×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.5× – 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Identical to current ratio since there are zero inventories. Quick assets (cash MUR 3.7M + receivables MUR 1.1M = MUR 4.8M) are negligible versus current obligations. The real liquidity backstop is the parent group, not the company's own liquid resources.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">100.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (property rental)</span><span class="ratio-val">70% – 95%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Excellent</span></span></div>
+      <span class="ratio-interpret">100% gross margin is structurally expected for a pure property rental entity with no cost of sales. The value to watch is the EBIT and net margin after overhead absorption.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">63.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (property sector)</span><span class="ratio-val">40% – 65%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">PBT margin of 63.8% (used as EBIT proxy given zero finance costs) is strong. The MUR 19.2M administration cost consumes 90% of rental revenue — but MUR 11.5M in other income (likely fair value gains) lifts the effective margin significantly.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">57.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (property)</span><span class="ratio-val">25% – 50%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Excellent</span></span></div>
+      <span class="ratio-interpret">57.5% net margin is above the sector benchmark, driven partly by other income. On pure rental income basis, the margin narrows to roughly 25% — still healthy. The distinction matters for sustainable earnings quality assessment.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">4.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (property)</span><span class="ratio-val">3% – 8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">ROA of 4.1% (MUR 12.25M / MUR 296.5M) is acceptable for a capital-intensive property holding entity. The MUR 286M investment property base limits this ratio inherently — the real return is better captured through total property yield (rental income + fair value gains).</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">9.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">8% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">ROE of 9.0% (MUR 12.25M / MUR 135.8M equity) is in the lower-healthy range. For a property entity with high-quality assets and growing retained earnings, this is an acceptable return for the parent group on its equity investment.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.07×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (property)</span><span class="ratio-val">0.05× – 0.15×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Normal</span></span></div>
+      <span class="ratio-interpret">Asset turnover of 0.07× is low but entirely normal for a property-heavy balance sheet — large investment property assets relative to rental income is structurally expected. The revenue yield on the MUR 286M property portfolio (rental income / property value) is approximately 7.4%, which is a respectable commercial property yield for Mauritius.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">1.18×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (property)</span><span class="ratio-val">0.5× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">D/E of 1.18× sits within benchmark range technically, but the entire debt is classified as current and is concentrated in a single payables line (MUR 155.5M). If this is inter-company debt, the effective external leverage is zero — which is actually conservative. Clarification of the payables composition is essential.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">N/A</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt;3×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Not Applicable</span></span></div>
+      <span class="ratio-interpret">Finance costs are zero, making interest coverage technically infinite. No external debt service obligations are visible. This is unusual for a MUR 296M asset company and reinforces the interpretation that financing is entirely intra-group.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debtor Days / DSO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">19 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Excellent</span></span></div>
+      <span class="ratio-interpret">DSO of 19 days (MUR 1.13M receivables / MUR 21.3M revenue × 365) indicates very prompt collection — likely due to pre-paid rent arrangements or strong tenant covenant. Excellent working capital management on the receivables side.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days / DPO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">N/A — Structural</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 90 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Flag — Requires Clarification</span></span></div>
+      <span class="ratio-interpret">DPO cannot be meaningfully calculated — COGS is zero, and the MUR 155.5M payables figure is a structural balance likely representing intra-group financing rather than supplier credit. If calculated on total costs, DPO would be distorted and misleading. The payables structure requires disclosure.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">N/A</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">Not applicable</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-blue">Not Applicable</span></span></div>
+      <span class="ratio-interpret">Zero inventories. Property rental businesses carry no inventory by nature. This ratio is not applicable to APTIS Property's business model.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. Current Ratio: 0.04× (Red)</strong> — MUR 155.6M in current liabilities against MUR 6.5M current assets creates a technical insolvency position that is only sustainable because the debt appears to be intra-group. If APTIS Holdings ever sought external refinancing of this property portfolio, lenders would require the inter-company structure to be formalised into proper long-term debt instruments — a restructuring exercise with significant legal and tax costs. This is the single most important issue to resolve.<br><br>
+    <strong>2. Administration Costs at 90% of Revenue (Amber)</strong> — MUR 19.2M admin costs against MUR 21.3M rental revenue means that on a pure operational basis, APTIS Property is barely breaking even from its rental activity. The MUR 11.5M in "other income" (likely fair value gains) is the cushion that generates the MUR 12.3M net profit. Fair value gains are non-cash and non-recurring — stripping them out reveals an operationally thin business that depends on property appreciation to generate shareholder value.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">APTIS Property operates in the Mauritius commercial property rental market, focused on the Riche Terre Business Park corridor — a logistics and light-industrial hub benefiting from proximity to Port-Louis and ongoing infrastructure investment.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Office Rental</h4>
+        <div class="ec-sub">Primary Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Location</span><span class="mv">Inova Business Park, Riche Terre</span></div>
+        <div class="ec-metric"><span class="mk">Tenant profile</span><span class="mv">SME and corporate</span></div>
+        <div class="ec-metric"><span class="mk">Competitive set</span><span class="mv">Landscope, Medine, private landlords</span></div>
+        <div class="ec-metric"><span class="mk">Positioning</span><span class="mv">Premium, gated, managed park</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Warehouse / Logistics</h4>
+        <div class="ec-sub">Secondary Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Space</span><span class="mv">400m² warehouse units</span></div>
+        <div class="ec-metric"><span class="mk">Spec</span><span class="mv">6m ceiling height, 1 loading bay</span></div>
+        <div class="ec-metric"><span class="mk">Tenant profile</span><span class="mv">Distribution, import/export</span></div>
+        <div class="ec-metric"><span class="mk">Competitive set</span><span class="mv">Riche Terre Business Park operators</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Group Captive Lettings</h4>
+        <div class="ec-sub">Internal / Related Party</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Tenants</span><span class="mv">APTIS Services + group entities</span></div>
+        <div class="ec-metric"><span class="mk">Nature</span><span class="mv">Inter-company leases</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv">Revenue concentration</span></div>
+        <div class="ec-metric"><span class="mk">Benefit</span><span class="mv">Guaranteed occupancy</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Group Captive Demand:</strong> With multiple APTIS Group entities operating from the same building (APTIS Services, historically the parent's distribution businesses), APTIS Property has a structural occupancy guarantee that external commercial landlords cannot replicate. This eliminates vacancy risk and ensures predictable cash flows.</p>
+  <p class="body-text"><strong>2. Strategic Location in a Designated Business Park:</strong> Riche Terre / Inova Business Park is a government-developed, designated business zone with infrastructure investment. Landscope Mauritius has developed the park with road access, utilities, and security. The location's proximity to Port-Louis port and ring road access makes it irreplaceable for logistics-oriented tenants.</p>
+  <p class="body-text"><strong>3. MUR 286M Asset Base with No External Debt:</strong> The debt-free (from external lenders) ownership of a MUR 286M investment property portfolio gives APTIS Property substantial headroom to refinance, expand, or realise capital gains without lender consent complications.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Rising demand for quality commercial space:</strong> Mauritius's growing financial services, ICT, and professional services sectors are creating sustained demand for A-grade office space outside Port-Louis CBD, benefiting established parks like Inova.</li>
+    <li><strong>Logistics growth from port expansion:</strong> The Mauritius Ports Authority's ongoing container terminal expansion drives demand for adjacent logistics and warehousing facilities — directly supporting APTIS Property's warehouse offering.</li>
+    <li><strong>IRS/PDS real estate boom creating secondary effects:</strong> The luxury residential boom (driven by IRS/PDS/Smart City schemes) is attracting foreign investors and creating demand for supporting commercial infrastructure, benefiting the broader Mauritius property market.</li>
+    <li><strong>Construction cost inflation (headwind):</strong> MUR cost inflation in construction materials is eroding development margins for any expansion of the property portfolio, potentially limiting APTIS Property's ability to grow its asset base economically.</li>
+    <li><strong>Interest rate environment (moderate headwind):</strong> Global interest rate normalisation has increased funding costs for property acquisitions. Should APTIS Property seek external financing to expand, the cost of debt will be higher than the near-zero implicit rate it currently benefits from via intra-group financing.</li>
+    <li><strong>ESG and sustainability pressure (emerging):</strong> International tenants and investors increasingly require green building credentials. The current Hermes House infrastructure may need upgrading to meet evolving sustainability standards if it is to retain premium tenants long-term.</li>
+  </ul>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score low">3 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:30%"></div></div>
+    <p class="eos-rationale">APTIS Property is a holding vehicle, not an operational business. Its "team" consists of four co-directors (who are also group executives) and a corporate secretary. There is no discernible operational headcount — no sales team, no property management staff, no finance team specific to this entity. The work is done at group level. EOS is designed for businesses with operational teams of 10–250 people. APTIS Property alone is well below the minimum meaningful threshold. Score: 3/10 — the entity exists but EOS would be installed at the group level, not here.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The Mamet family has demonstrated leadership willingness to professionalise — appointing BDO as group auditor, transitioning the CEO role from Jean-Pierre to Oscar in a structured succession (January 2024), and maintaining a four-person governance board. The 2009–2024 evolution from a single tobacco distribution contract to a multi-division group shows strategic ambition. Oscar Mamet's active LinkedIn presence and the group's external communications suggest openness to structured leadership frameworks. However, family-controlled groups frequently resist true accountability systems that constrain founder authority — this is a watch point.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">At the group level (which is where APTIS Property's pain points originate), there are classic EOS indicators: rapid diversification across multiple unrelated sectors (Distribution, Commerce, Property, Services including Harley Street Fertility Centre and Navitas), a generational succession in progress, a recent significant acquisition (BARNES Mauritius, May 2025), and a group structure that now spans five activity poles. These are precisely the conditions under which accountability and vision clarity become critical. The MUR 155.5M inter-company liability structure also suggests financial complexity that would benefit from cleaner governance.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The group uses Navitas Corporate Services for secretarial functions and BDO for audit — indicating some process maturity. However, the inter-company balance structure (MUR 155.5M classified as current trade payables rather than formal inter-company loan agreements) suggests financial reporting systems that may not reflect economic reality clearly. The opaque administration cost structure (MUR 19.2M with no visible breakdown) points to management accounts that may lack the granularity needed for good decision-making. Score reflects average — professional service providers in place, but internal MIS likely founder-dependent.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">APTIS Group has a visible entrepreneurial culture built around Jean-Pierre Mamet's original BAT experience and opportunity-driven growth. The team appears stable — the same four directors have been in place since incorporation in 2019, suggesting loyalty and cohesion. However, the four-person board (founder, son/CEO, CFO, HR Director) with no independent directors is a classic family business culture where accountability flows personally rather than through systems. The upcoming challenge of managing the enlarged group (post-BARNES acquisition) with a team that has not previously operated a multi-brand retail property business will test this cultural model.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The group's acquisition history (BARNES Mauritius in May 2025) and structured CEO succession (January 2024) suggest that major strategic decisions are made deliberately and with planning. However, the identical four-director boards across multiple subsidiaries (APTIS Property and APTIS Services share all four directors) indicates that decision-making is highly centralised — the same four people make all the calls across all entities. At scale, this creates bottleneck risk. EOS's concept of the Accountability Chart and seat-based authority would directly address this.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The group's public-facing positioning on aptis.mu shows a clear articulated vision — "Distribution, Commerce, Property and Investment" — and a narrative around entrepreneurial growth from a single tobacco distribution contract. The CEO transition from Jean-Pierre to Oscar, the BARNES acquisition, and the branding evolution from TNS Tobacco to APTIS Group all suggest a group that is actively managing its identity. However, whether this strategic clarity cascades to individual entity level and operational staff is unknown. Score: 6/10 — vision exists at founder level, but EOS V/TO rigour is absent.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of structured meeting rhythms at the entity or group level. The co-location of all four directors at the same headquarters building makes informal decision-making easy and structured meeting discipline less likely. Annual return filing timeliness is good (filed within days of the meeting date), suggesting the statutory annual general meeting process is well-run. However, EOS's weekly L10 meeting, quarterly pulse, and annual planning cadence are almost certainly absent. This is the most improvable dimension at group level.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">5.5</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate Fit — Target the Group, Not This Entity</h4>
+      <p>APTIS Property Company Limited is a holding vehicle with no standalone operational team — it scores 5.5/10 primarily because the group it belongs to (APTIS Holdings) is a genuine EOS candidate. The right EOS entry point is APTIS Holdings or APTIS Services, where the real operational complexity, people management challenges, and growth execution pressures reside. Post-BARNES acquisition, the group now has five activity poles, a new CEO navigating a succession, and a growing multi-brand portfolio — precisely the conditions where EOS delivers maximum impact. The gating factor for EOS at any APTIS entity is Oscar Mamet's readiness to install formal accountability systems that may constrain his and his father's autonomy as founders.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for APTIS Property / Group</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The identical four-director board across multiple subsidiaries with no operational differentiation means that <strong>no one has clear seat-based accountability</strong>. An EOS Accountability Chart would define who owns Distribution, Commerce, Property, and Services — creating clear leadership structure for the enlarged group post-BARNES.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision/Traction Organizer (V/TO)</h4>
+      <p>The group has a narrative vision but no structured long-term target (10-Year Target, 3-Year Picture, 1-Year Plan). With a CEO transition complete and a significant acquisition just made, <strong>the next 3 years need a documented roadmap</strong> — the V/TO is the ideal crystallisation tool.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>The BARNES acquisition and the inter-company balance sheet restructuring are two simultaneous major undertakings. <strong>Quarterly Rocks would force prioritisation</strong> of the most critical integration and financial housekeeping tasks, preventing the common post-acquisition execution diffusion.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard</h4>
+      <p>No financial KPIs are publicly visible at entity level. Given that APTIS Property's value is 96% in an investment property asset, <strong>a weekly Scorecard should track: occupancy rate, rental yield, cash position, and inter-company balance movement</strong> — giving the leadership team a real-time pulse.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List (IDS)</h4>
+      <p>The MUR 155.5M in unexplained current payables, the 0.04× current ratio, and the administration cost opacity are all <strong>issues that need structured Identify-Discuss-Solve sessions</strong> rather than being left to informal corridor conversations between the four co-located directors.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting (L10)</h4>
+      <p>The co-location of all four directors at Hermes House, Riche Terre may create the illusion of alignment without actual structured decision-making discipline. <strong>A weekly L10 with a standing agenda, scorecard review, and issues list</strong> would transform informal co-location into genuine leadership cadence.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations across financial, governance, and EOS implementation dimensions. Financial and structural actions should precede any EOS engagement to ensure the foundation is stable before installing an operating system.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Reclassify and Formalise the MUR 155.5M Inter-Company Payables</h4>
+      <p>The MUR 155.5M classified as "Trade and Other Payables" almost certainly represents intra-group financing from APTIS Holdings for property acquisition. This should be reclassified as a formal inter-company loan agreement with documented terms (interest rate, repayment schedule, security). Without this, the balance sheet shows a false insolvency position that would deter any external financing, partnership, or acquisition discussions. Oscar Mamet and Sabbi Appanna (CFO) should commission Messrs. BDO to advise on the restructuring as a priority.</p>
+      <span class="urg urg-now">Immediate Priority — Before Any External Financing</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Separate Operational P&amp;L from Fair Value Adjustments in Management Reporting</h4>
+      <p>The MUR 11.5M "Other Income" is inflating the reported net margin to 57.5% when the underlying rental business margin (ex-fair value gains) is approximately 25%. Management should produce monthly P&amp;L reports that distinguish between recurring rental income, recurring costs, and non-cash fair value adjustments — enabling genuine operational performance measurement. This is a 30-day task for the finance team led by Sabbi Appanna.</p>
+      <span class="urg urg-week">Within 30 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Commission an Independent Tenant Covenant Review</h4>
+      <p>With zero receivables management visibility and a property portfolio entirely dependent on tenant occupancy, APTIS Property should commission an annual tenant covenant review assessing: financial strength of each tenant, lease expiry profile, vacancy risk, and rent escalation opportunities. Given the likely concentration in group entities, this review should also assess whether inter-company rents are at market rates — relevant for transfer pricing compliance.</p>
+      <span class="urg urg-week">Quarterly — First Within 60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Establish a Cash Reserve Policy</h4>
+      <p>MUR 3.7M in cash against MUR 155.6M in current liabilities is a dangerous operating position even if the payables are intra-group. APTIS Property should establish a minimum cash reserve policy (recommend: 6 months of administration costs = approximately MUR 9.6M) held specifically within this entity to provide operational liquidity independent of the parent. This requires a dividend/distribution decision from APTIS Holdings.</p>
+      <span class="urg urg-week">Within 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Initiate EOS Conversation at APTIS Holdings / Group Level, Not Entity Level</h4>
+      <p>Do not propose EOS for APTIS Property as a standalone entity — it has no operational team. The conversation should be positioned as a group-wide operating system for APTIS Holdings, covering all five activity poles. Request a 90-minute Discovery Session with Oscar Mamet (CEO) and Jean-Pierre Mamet (Founder) to explore group-level pain points around accountability, post-BARNES integration, and next-phase growth planning.</p>
+      <span class="urg urg-medium">EOS Entry Point</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Focus Day at APTIS Group — Map the Accountability Chart</h4>
+      <p>The most immediate EOS value for the APTIS Group is building the Accountability Chart for the enlarged group structure — defining who runs Distribution, who runs Commerce, who runs Property (including BARNES integration), and who runs Services. With Oscar Mamet as new CEO and five divisions, seat clarity is the #1 leadership need. A Focus Day would surface this within 8 hours.</p>
+      <span class="urg urg-medium">First EOS Session</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Build the First 90-Day Rock List Around the BARNES Integration</h4>
+      <p>The May 2025 BARNES acquisition is the most complex execution challenge APTIS has faced. The first Rocks exercise should focus on: (1) BARNES integration milestones for Q3 2026, (2) inter-company balance sheet restructuring (Rec 01 above), (3) group Accountability Chart finalisation, (4) APTIS Property cash reserve establishment. These four Rocks give the leadership team a concrete 90-day sprint to demonstrate EOS value.</p>
+      <span class="urg urg-medium">First Quarter After Focus Day</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Develop the APTIS Group V/TO — 10-Year Target and 3-Year Picture</h4>
+      <p>The group's public vision ("leading Mauritius group in Distribution, Commerce, Property and Investment") needs crystallisation into a V/TO with: a 10-Year Target (e.g., market leadership in 3 of 5 divisions), a 3-Year Picture (post-BARNES integration complete, specific revenue milestones), and a 1-Year Plan with measurable priorities. This is the strategic planning backbone that will guide Oscar Mamet's first full tenure as CEO.</p>
+      <span class="urg urg-medium">Annual Planning Session</span>
+    </div>
+  </div>
+
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>APTIS Property Company Limited is a well-performing property holding vehicle that generates strong returns on a high-quality real estate portfolio. Its standalone EOS suitability is limited — it is not an operational business. The real opportunity is the APTIS Group, now at a critical inflection point: new CEO, five divisions, and a significant acquisition to integrate. The group's founders have the ambition and track record to be excellent EOS clients — the question is whether Oscar Mamet is ready to install a formal operating system in the next phase of his tenure. The financial housekeeping (MUR 155.5M payables structure) must be addressed before any external engagement can proceed credibly.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Initiate balance sheet restructuring — formalise inter-company loans (Months 1–2)</li>
+        <li><span class="sig-num">02</span>Request Discovery Session with Oscar Mamet at APTIS Holdings level (Month 2)</li>
+        <li><span class="sig-num">03</span>Run EOS Focus Day — Accountability Chart and V/TO introduction (Month 3)</li>
+        <li><span class="sig-num">04</span>First Quarter Rocks — BARNES integration milestones and financial housekeeping (Month 4)</li>
+        <li><span class="sig-num">05</span>Annual EOS planning session — V/TO draft and 3-Year Picture for enlarged group (Month 6)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>APTIS Property Company Limited — Comprehensive Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (16 April 2026) · aptis.mu · MNS Online Search · ZoomInfo · LinkedIn · Propertycloud.mu · barnes-mauritius.com</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
