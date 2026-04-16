@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APTIS Holdings — Comprehensive Company Analysis — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Distribution · Commerce · Property · Services</span>
+    <span class="badge badge-type">Private Group · Domestic · Multi-Entity</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">2 April 2026</span>
+  </div>
+  <h1>APTIS Group:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">APTIS Holdings Ltd (C162483) · Company intelligence · Financial overview · EOS implementation assessment · Riche Terre, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Group Revenue (est.)</div>
+      <div class="stat-value steel">MUR 7+ Bn</div>
+      <div class="stat-delta">Consolidated across 5 clusters · FY2024 estimate</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Group Headcount (est.)</div>
+      <div class="stat-value emerald">200+</div>
+      <div class="stat-delta">Across all subsidiaries · Multi-entity group</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">7.1 / 10</div>
+      <div class="stat-delta">High — Growth-stage complexity · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Key Risk Flag</div>
+      <div class="stat-value red">CEO Transition</div>
+      <div class="stat-delta">New CEO since Jan 2024 · Strategic realignment underway</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>APTIS Holdings Ltd — Company Analysis &amp; EOS Assessment · 2 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 15-year-old Mauritian conglomerate that bootstrapped from tobacco distribution into a seven-subsidiary group spanning FMCG, fiberglass manufacturing, fleet management, Italian retail, fertility services, and now luxury real estate — at an inflection point where complexity has likely outgrown its operational systems.</p>
+
+  <p class="body-text">APTIS Group is a privately held, founder-led Mauritian conglomerate incorporated in 2009 as TNS Tobacco, the exclusive BAT distributor for Mauritius. Under the vision of founder Jean-Pierre Mamet, the group aggressively diversified over 15 years, rebranding to APTIS in March 2019 to signal its transformation from a single-sector operator into a multi-cluster holding group. The group's registered holding entity, APTIS Holdings Ltd (C162483), is headquartered at Aptis House, Inova, Riche Terre Business Park, Riche Terre, Mauritius. The group operates through five activity clusters: Distribution (TNS Tobacco, TNS Consumer, Racso, L'Artigiano), Commerce (Resiglas), Services (Navitas, Harley Street Fertility Centre), Investment (Bigarade sur Mer, Dominos), and Real Estate (APTIS Property, BARNES Mauritius).</p>
+
+  <p class="body-text">Ownership is concentrated within the Mamet family. Jean-Pierre Mamet remains Founder and President. His son Oscar Mamet (age 33) assumed the role of Group CEO in January 2024, succeeding Jean-Pierre who had held the Group Deputy CEO title. Jean-Alain Mamet serves as Managing Director of RACSO, suggesting the group is undergoing a generational leadership transition across multiple subsidiaries. The group also counts two additional live CBRIS entities — APTIS Property Company Limited (C162801) and APTIS Services Company Limited (C162742) — indicating intentional legal ring-fencing across its property and services divisions. The holding structure was selected as the primary research subject given its role as the group apex and EOS engagement entry point.</p>
+
+  <p class="body-text">Financially, the group's dominant revenue engine is Aptis Distribution (the BAT franchise), which disclosed a turnover of MUR 6.8 billion — dwarfing all other subsidiaries and making it a low-margin, high-volume anchor. Resiglas (fiberglass) contributed MUR 148 million with a team of 167, making it the most labour-intensive entity. RACSO (fleet/fuel) recorded MUR 46.5 million with 5 employees, suggesting strong per-head productivity. BARNES Mauritius (luxury real estate, acquired May 2025) generated MUR 78 million turnover in its most recent financial year with 35 staff. EOS suitability is scored at 7.1/10 — the group shows all the classical signals of an organisation that has grown faster than its systems: multi-entity complexity, a very recent CEO transition, active M&amp;A, and expressed strategic priorities around efficiency and innovation that have not yet been translated into operational frameworks.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — CEO Transition + Multi-Entity Complexity = Classic EOS Entry Window</div>
+    Oscar Mamet became Group CEO in January 2024 at age 33, inheriting a seven-entity conglomerate with five business clusters spanning tobacco, manufacturing, fleet, food retail, healthcare, and property. His stated priorities — "efficiency, innovation, and positioning APTIS as a leading market player" — are precisely the language of a CEO who intuitively knows his organisation needs a system but has not yet found one. The May 2025 acquisition of BARNES Mauritius (the group's largest external acquisition to date) adds a 35-person luxury sales team with a distinct culture, compounding the accountability and coordination challenge. This is a textbook EOS window: new leader, ambitious growth agenda, proven but uncoordinated subsidiaries, and no visible operating system. The conversation should open on how Oscar is currently running the group across seven subsidiaries — L10s, Rocks, accountability across entities — before EOS is ever named.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Exclusive BAT distribution franchise — a near-monopoly revenue base generating MUR 6.8 Bn annually — provides financial firepower for acquisitions and diversification.</strong> Resiglas is a 65-year-old fiberglass specialist with 167 staff and real manufacturing depth. BARNES Mauritius gives the group a foothold in the highest-margin real estate segment on the island. Brand diversity reduces single-sector exposure.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Extreme revenue concentration risk: the BAT distribution contract, if renegotiated or lost, would eliminate ~97% of consolidated group revenue at a stroke.</strong> Tobacco regulation globally is tightening — this franchise is a declining asset. Resiglas carries 167 employees against a MUR 148M turnover, implying very thin per-head revenue. No consolidated financials are publicly disclosed, making true profitability opaque.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>A 33-year-old new CEO running seven subsidiaries across five sectors with no visible operating rhythm or shared accountability framework is the clearest EOS entry signal available.</strong> The group's own language — "efficiency and innovation," "data-driven decision making," "close proximity with field teams" — signals operational friction without yet naming it. The BARNES acquisition adds urgent integration complexity. The window is open now.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A family-controlled Mauritian conglomerate that pivoted from a single-product distribution franchise into a multi-cluster group through disciplined opportunistic acquisitions — but whose internal operating infrastructure has not visibly kept pace with the pace of expansion.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">APTIS Holdings Ltd was incorporated under Mauritius company law with file number C162483, registered with the Mauritius corporate registry (CBRIS). The group traces its commercial origins to 2009 with the founding of TNS Tobacco as exclusive importer and distributor of British American Tobacco's brands in Mauritius. On 7 March 2019, the holding entity was formally rebranded from TNS Group to APTIS to reflect the group's diversified identity. The registered office is Aptis House, Inova, Riche Terre Business Park, Riche Terre, Mauritius. Primary contact: +230 249 24 09 / info@aptis.mu. Two sibling CBRIS-registered entities exist: APTIS Property Company Limited (C162801, LIVE) and APTIS Services Company Limited (C162742, LIVE), indicating a deliberate ring-fenced legal structure across property and services operations.</p>
+
+  <p class="body-text">Three additional CBRIS entities were returned in the search that bear the BAPTISTE name (BAPTISTE BOAT SERVICING LTD, BAPTISTE TOURS LTD, G. BAPTISTE CONTRACTOR CO LTD, JEAN BAPTISTE WIEHE &amp; CIE) — these are unrelated companies that appeared due to the registry's alphabetical search algorithm and have no connection to the APTIS Group.</p>
+
+  <h3 class="subsection-title">Ownership and Group Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>APTIS Holdings Ltd</h4>
+        <div class="ec-sub">Apex Holding Entity · C162483</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">File Number</span><span class="mv">C162483</span></div>
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">LIVE</span></div>
+        <div class="ec-metric"><span class="mk">Founded</span><span class="mv">2009 (as TNS); renamed 2019</span></div>
+        <div class="ec-metric"><span class="mk">Controller</span><span class="mv">Mamet Family</span></div>
+        <div class="ec-metric"><span class="mk">President</span><span class="mv">Jean-Pierre Mamet</span></div>
+        <div class="ec-metric"><span class="mk">CEO</span><span class="mv">Oscar Mamet (since Jan 2024)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>APTIS Property Company Ltd</h4>
+        <div class="ec-sub">Property Vehicle · C162801</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">File Number</span><span class="mv">C162801</span></div>
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">LIVE</span></div>
+        <div class="ec-metric"><span class="mk">Cluster</span><span class="mv">Real Estate</span></div>
+        <div class="ec-metric"><span class="mk">Assets</span><span class="mv">2 resi projects; 3 corp buildings</span></div>
+        <div class="ec-metric"><span class="mk">Location</span><span class="mv">Riche Terre</span></div>
+        <div class="ec-metric"><span class="mk">Note</span><span class="mv">Ring-fenced from Holdings</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>APTIS Services Company Ltd</h4>
+        <div class="ec-sub">Services Vehicle · C162742</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">File Number</span><span class="mv">C162742</span></div>
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">LIVE</span></div>
+        <div class="ec-metric"><span class="mk">Cluster</span><span class="mv">Services</span></div>
+        <div class="ec-metric"><span class="mk">Entities</span><span class="mv">Navitas, Harley Street</span></div>
+        <div class="ec-metric"><span class="mk">Note</span><span class="mv">Separate legal wrapper for services</span></div>
+        <div class="ec-metric"><span class="mk">CBRIS</span><span class="mv">Confirmed LIVE</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Note — Three-Entity CBRIS Architecture</div>
+    The Mamet family has deliberately created three separate LIVE CBRIS entities under the APTIS brand — Holdings, Property, and Services — suggesting sophisticated legal and tax structuring advice. This indicates the group has professional corporate governance support. However, it also means any EOS engagement must address which entity Oscar Mamet actually runs operationally, and whether a group-level VTO is viable or whether each cluster needs its own EOS journey.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Jean-Pierre Mamet — Founder &amp; President</h4>
+      <p>Founder of TNS Tobacco (2009), architect of the group's diversification strategy. Stepped back from day-to-day CEO role in January 2024. Remains President and strategic anchor of the Mamet family holding. LinkedIn: linkedin.com/in/jean-pierre-mamet-1728741a6/. Email pattern: j***@aptis.mu</p>
+    </div>
+    <div class="profile-card">
+      <h4>Oscar Mamet — Group CEO</h4>
+      <p><strong>Primary EOS engagement target.</strong> Appointed CEO January 2024 at age 33, previously Group Deputy CEO. Stated priorities: efficiency, innovation, market leadership. LinkedIn: mu.linkedin.com/in/oscar-mamet (500+ connections). Email pattern: o***@aptis.mu. Phone: +230 249 24 09 (group main).</p>
+    </div>
+    <div class="profile-card">
+      <h4>Sabbi Appanna — Group CFO</h4>
+      <p>Group Chief Finance Officer. Key figure in any EOS financial accountability conversation — owns the numbers across all five clusters. Will be a critical ally or gatekeeper in the sales process. Named publicly in BARNES acquisition announcement (May 2025).</p>
+    </div>
+    <div class="profile-card">
+      <h4>Jean-Alain Mamet — RACSO MD</h4>
+      <p>Managing Director of RACSO (fleet/fuel management subsidiary). Family member — suggests the Mamet family retains operational control across multiple subsidiaries, not just at holding level. Important context for the accountability conversation in an EOS pitch.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Fabien Harel — Resiglas MD</h4>
+      <p>Managing Director of Resiglas, the group's largest employer (167 staff, MUR 148M turnover). Non-family leader managing the most operationally complex entity. Likely experiencing the most acute process and accountability pain — a potential EOS champion.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Karen Sarah — Group Marketing &amp; Comms</h4>
+      <p>Group Marketing and Communication Manager. Named in Business Magazine article (July 2025) as the architect of the group's data-driven, hybrid marketing model across all subsidiaries. Manages the internal marketing cell that coordinates brand strategy across all clusters.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text"><strong>Distribution Cluster:</strong> TNS Tobacco is the sole importer and distributor of British American Tobacco brands in Mauritius — 13 brands, 25 employees, turnover MUR 6.8 billion. TNS Consumer handles FMCG distribution (11 brands, 6 employees). Racso Ltd manages petroleum product distribution, GPS fleet monitoring (sole importer of OmniComm systems), and fuel control installations — MUR 46.5M turnover, 5 employees. L'Artigiano distributes and retails premium Italian gourmet products for both professional chefs and retail customers, with franchise expansion launched in Moka/Telfair (October 2022).</p>
+  <p class="body-text"><strong>Commerce Cluster:</strong> Resiglas is a 65-year-old fiberglass specialist manufacturing tanks, swimming pools, boat components, acrylic domes, and polyethylene products across five product categories (Storage, Pool, Nautical, Professional, Sustainable). MUR 148M turnover, 167 employees, one showroom. Acquired by APTIS in 2018.</p>
+  <p class="body-text"><strong>Services Cluster:</strong> Navitas (corporate services, 10+ years operating). Harley Street Fertility Centre (infertility diagnosis and treatment — the group's most specialised and brand-sensitive entity, with clear reputational stakes).</p>
+  <p class="body-text"><strong>Real Estate Cluster:</strong> APTIS Property (residential and commercial property development — 2 residential projects, 3 corporate buildings at Riche Terre). BARNES Mauritius (acquired May 2025) — top-3 luxury real estate agency on the island, MUR 78M turnover (2024), 35 professionals, 6 locations (Grand Baie, Moka, Belle Mare, Floréal, Mahébourg, Tamarin). The BARNES acquisition is the group's most significant external acquisition to date and represents its entry into the premium end of the Mauritius property market.</p>
+  <p class="body-text"><strong>Investment/Associates:</strong> Bigarade sur Mer, Dominos, Rema Investments — investment vehicles and associates with limited public disclosure.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">APTIS is a Mauritius-domestic group with island-wide reach. The holding company and most operational subsidiaries are based at Riche Terre Business Park in the north of the island. BARNES Mauritius extends the group's physical presence to six locations across the island (Grand Baie, Moka, Belle Mare, Floréal, Mahébourg, Tamarin), giving APTIS a genuinely island-wide footprint for the first time. TNS Tobacco's BAT distribution provides nationwide market penetration through retail distribution. No confirmed export operations or international subsidiaries.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Note</div>
+    APTIS maintains a well-structured website (aptis.mu) and active Facebook/LinkedIn presence. The group publishes a branded magazine ("UP TO IT") featuring Oscar Mamet — indicating deliberate thought-leadership positioning. However, individual subsidiary websites vary in quality (Resiglas and L'Artigiano have dedicated sites; RACSO and Navitas do not appear to have independent web presence). This inconsistency in brand architecture is itself a signal of decentralised management.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Data sourced from CBRIS public registry, subsidiary disclosures on aptis.mu, and the BARNES Mauritius acquisition announcement (May 2025). Currency: Mauritian Rupee (MUR). No consolidated group accounts are publicly available — all figures are at subsidiary level.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    APTIS Holdings Ltd is a private Mauritian company. No consolidated group financial statements are publicly disclosed. Subsidiary-level turnover figures were obtained from the group's own website cluster pages and the BARNES acquisition press release. CBRIS does not publish financial data for private domestic companies. The figures below represent subsidiary-level disclosures only. No P&amp;L, balance sheet, or ratio analysis can be performed at group level. Prior-year comparatives are unavailable for most entities. All figures treated as management-disclosed approximates for strategic assessment purposes only.
+  </div>
+
+  <h3 class="subsection-title">Subsidiary Revenue Summary (FY2024 est., MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Subsidiary</th>
+          <th>Cluster</th>
+          <th>Turnover (MUR)</th>
+          <th>Employees</th>
+          <th>Revenue / Head</th>
+          <th>Commentary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="heat-ok">
+          <td>Aptis Distribution (TNS Tobacco)</td>
+          <td>Distribution</td>
+          <td>6,800,000,000</td>
+          <td>25</td>
+          <td>272,000,000</td>
+          <td>Dominant group revenue engine. Exclusive BAT franchise — high volume, low margin. 13 brands.</td>
+        </tr>
+        <tr>
+          <td>Resiglas</td>
+          <td>Commerce</td>
+          <td>148,000,000</td>
+          <td>167</td>
+          <td>886,000</td>
+          <td>Manufacturing-intensive; 65-year-old brand. Low revenue per head signals margin pressure in a capital-heavy operation.</td>
+        </tr>
+        <tr>
+          <td>BARNES Mauritius</td>
+          <td>Real Estate</td>
+          <td>78,000,000</td>
+          <td>35</td>
+          <td>2,229,000</td>
+          <td>Acquired May 2025. Strong revenue per head for a services business. Luxury segment — high variable comp model typical.</td>
+        </tr>
+        <tr class="heat-warn">
+          <td>RACSO Ltd</td>
+          <td>Distribution</td>
+          <td>46,500,000</td>
+          <td>5</td>
+          <td>9,300,000</td>
+          <td>Best revenue-per-head in the group. Petroleum distribution + OmniComm GPS monopoly. Very lean operation.</td>
+        </tr>
+        <tr>
+          <td>TNS Consumer</td>
+          <td>Distribution</td>
+          <td>Not disclosed</td>
+          <td>6</td>
+          <td>—</td>
+          <td>FMCG distribution, 11 brands. Small team suggests agency/broker model rather than owned stock.</td>
+        </tr>
+        <tr>
+          <td>L'Artigiano</td>
+          <td>Distribution</td>
+          <td>Not disclosed</td>
+          <td>Not disclosed</td>
+          <td>—</td>
+          <td>Premium Italian gourmet retail. Franchise expansion begun 2022 (Telfair/Moka). Growing brand.</td>
+        </tr>
+        <tr>
+          <td>Navitas</td>
+          <td>Services</td>
+          <td>Not disclosed</td>
+          <td>Not disclosed</td>
+          <td>—</td>
+          <td>Corporate services, 10+ years. No public financial data.</td>
+        </tr>
+        <tr>
+          <td>Harley Street Fertility Centre</td>
+          <td>Services</td>
+          <td>Not disclosed</td>
+          <td>Not disclosed</td>
+          <td>—</td>
+          <td>Specialist medical services. Most brand-sensitive entity. No public financial data.</td>
+        </tr>
+        <tr class="heat-ok">
+          <td><strong>Group Estimated Consolidated</strong></td>
+          <td><strong>All</strong></td>
+          <td><strong>~7,100,000,000+</strong></td>
+          <td><strong>~200+</strong></td>
+          <td><strong>~35,000,000</strong></td>
+          <td>Dominated by TNS Tobacco. True economic diversity lower than headline suggests.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Revenue Concentration Analysis</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>Value</th><th>Assessment</th></tr>
+      </thead>
+      <tbody>
+        <tr class="heat-critical">
+          <td>TNS Tobacco share of group revenue</td>
+          <td>~96%</td>
+          <td>Extreme concentration. Single-contract dependency. BAT franchise renewal risk is existential.</td>
+        </tr>
+        <tr class="heat-warn">
+          <td>Non-tobacco revenue (all other units)</td>
+          <td>~MUR 272M+</td>
+          <td>Meaningful but nascent. BARNES acquisition and Resiglas are the most scalable non-tobacco engines.</td>
+        </tr>
+        <tr class="heat-ok">
+          <td>BARNES revenue per employee</td>
+          <td>MUR 2.2M/head</td>
+          <td>Best margin-to-head ratio in services cluster. Strong acquisition rationale confirmed by numbers.</td>
+        </tr>
+        <tr>
+          <td>Resiglas revenue per employee</td>
+          <td>MUR 886K/head</td>
+          <td>Manufacturing baseline — acceptable for the sector but leaves little room for error in cost management.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register and Financial Obligations</h3>
+  <p class="body-text">No charge register data is publicly available for APTIS Holdings Ltd through CBRIS for private domestic companies. The group's CBRIS PDF confirms entity registration details but does not include charge disclosures at the holding level. Given the group's active property development (3 corporate buildings at Riche Terre, 2 residential projects) and the BARNES acquisition, it is reasonable to assume bank financing is in place — the nature and quantum of which are not publicly disclosed. The group's own Riche Terre Business Park development (Inova) suggests significant capital investment in owned property, likely debt-financed.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Financial Intelligence Gap</div>
+    The absence of consolidated accounts is the single biggest intelligence limitation for this report. A conversation with Oscar Mamet that surfaces EBITDA margins across clusters, the group's banking relationships, and the true profitability of non-tobacco entities would transform the EOS pitch from directional to highly targeted. The key question: is the group growing profitably across its diversified units, or is tobacco subsidising loss-making experiments?
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Due to APTIS Holdings' private company status, full ratio analysis is not possible from public data. The analysis below applies available subsidiary data and industry benchmarks to derive strategic signals. Colour key: Green = healthy benchmark, Amber = watch zone, Red = critical concern.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Ratio Analysis Scope</div>
+    No balance sheet, P&amp;L, or cash flow data is publicly available at group or subsidiary level beyond the turnover figures disclosed on the group's own website. Ratio calculations below are derived from disclosed turnover, employee counts, and industry norms for each business type. They are indicative, not audited. The primary value here is benchmarking efficiency and flagging conversations to have with management.
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios — Revenue per Employee</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>TNS Tobacco — Revenue per Employee</h4>
+      <div class="ratio-row"><span class="ratio-label">APTIS (disclosed)</span><span class="ratio-val ok">MUR 272M / head</span></div>
+      <div class="ratio-row"><span class="ratio-label">Distribution benchmark (Mauritius)</span><span class="ratio-val">MUR 20–60M / head</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Exceptional</span></span></div>
+      <span class="ratio-interpret">The BAT franchise is a near-pure distribution play requiring minimal headcount — importer margins on international tobacco brands are typically 2–5% of a very large base. Revenue per head at this level reflects the exclusivity of the contract, not operational excellence. Do not confuse turnover efficiency with profit quality.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Resiglas — Revenue per Employee</h4>
+      <div class="ratio-row"><span class="ratio-label">APTIS (disclosed)</span><span class="ratio-val warn">MUR 886K / head</span></div>
+      <div class="ratio-row"><span class="ratio-label">Manufacturing benchmark (Mauritius)</span><span class="ratio-val">MUR 1.0–2.5M / head</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Below Benchmark</span></span></div>
+      <span class="ratio-interpret">Resiglas's MUR 148M turnover across 167 employees puts revenue per head below the manufacturing sector norm. This signals either labour-intensive craft production (consistent with fiberglass), underpricing, or overstaffing. Productivity and process improvement is clearly available — this is an EOS Scorecard &amp; Rocks conversation.</span>
+    </div>
+  </div>
+
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>RACSO — Revenue per Employee</h4>
+      <div class="ratio-row"><span class="ratio-label">APTIS (disclosed)</span><span class="ratio-val ok">MUR 9.3M / head</span></div>
+      <div class="ratio-row"><span class="ratio-label">B2B services benchmark</span><span class="ratio-val">MUR 2–5M / head</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Strong</span></span></div>
+      <span class="ratio-interpret">RACSO's 5-person team generating MUR 46.5M is exceptional. The OmniComm GPS monopoly and petroleum distribution contracts are likely recurring, low-touch revenue. This entity could scale significantly with minimal headcount addition — a lever the group may be under-exploiting.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>BARNES Mauritius — Revenue per Employee</h4>
+      <div class="ratio-row"><span class="ratio-label">APTIS (disclosed)</span><span class="ratio-val ok">MUR 2.2M / head</span></div>
+      <div class="ratio-row"><span class="ratio-label">Real estate agency benchmark</span><span class="ratio-val">MUR 1.5–3.0M / head</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">In Range</span></span></div>
+      <span class="ratio-interpret">BARNES sits comfortably within the Mauritius luxury real estate productivity range. The acquisition at this revenue base makes strategic sense — the upside is in volume growth (more mandates) and margin improvement (APTIS operational support reducing overhead). The EOS Rocks conversation here is: what does BARNES need to double turnover in 24 months?</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Concentration and Diversification Risk</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Revenue Concentration (Herfindahl Proxy)</h4>
+      <div class="ratio-row"><span class="ratio-label">TNS Tobacco % of group</span><span class="ratio-val bad">~96%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Healthy diversification target</span><span class="ratio-val">&lt;50% from one source</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">The group's financial stability is almost entirely contingent on the BAT distribution agreement. Any change in that contract — renegotiation, loss, tobacco regulation tightening — would be existential. The diversification strategy Oscar Mamet is pursuing is not merely ambitious; it is structurally necessary. This urgency should inform the EOS conversation.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Non-Tobacco Revenue Growth Potential</h4>
+      <div class="ratio-row"><span class="ratio-label">Current non-tobacco revenue (est.)</span><span class="ratio-val warn">~MUR 272M</span></div>
+      <div class="ratio-row"><span class="ratio-label">5-yr target (est. needed)</span><span class="ratio-val">MUR 1–2Bn</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Urgent Priority</span></span></div>
+      <span class="ratio-interpret">To achieve meaningful diversification, the group needs to grow non-tobacco revenue by roughly 4–7x. BARNES, Resiglas, and RACSO are the three most credible growth vehicles. Each would benefit from EOS Rocks — specific, 90-day targets — to accelerate without losing focus.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. ~96% revenue concentration in one BAT contract:</strong> If this contract were renegotiated to a 10% lower margin (plausible as tobacco markets tighten globally), the impact on group free cash flow could be MUR 680M+ annually — wiping out the entire non-tobacco revenue base. This is the group's single most critical financial risk and the reason Oscar Mamet's diversification agenda is not optional. <strong>2. MUR 886K revenue per head at Resiglas:</strong> With 167 employees and MUR 148M turnover, Resiglas is the group's most labour-intensive entity. A 15% productivity improvement (achievable with EOS Scorecard and clear Rocks) would release approximately MUR 22M of additional throughput without adding headcount. These two numbers frame the entire strategic conversation.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">APTIS competes in five distinct markets simultaneously — tobacco distribution, fiberglass manufacturing, fleet/fuel management, luxury real estate, and premium food retail — with franchise-protected dominance in tobacco and genuine competitive positions in the others. The group's positioning strategy is diversification through market leadership in niche segments rather than mass-market competition.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Tobacco Distribution</h4>
+        <div class="ec-sub">TNS Tobacco · Near-Monopoly</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv ok">Sole BAT importer</span></div>
+        <div class="ec-metric"><span class="mk">Revenue</span><span class="mv">MUR 6.8 Bn</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">None (franchise-protected)</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv danger">Regulatory / BAT contract</span></div>
+        <div class="ec-metric"><span class="mk">Trend</span><span class="mv warn">Declining (global)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Fiberglass Manufacturing</h4>
+        <div class="ec-sub">Resiglas · Specialist Manufacturer</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv">65-yr heritage specialist</span></div>
+        <div class="ec-metric"><span class="mk">Revenue</span><span class="mv">MUR 148M</span></div>
+        <div class="ec-metric"><span class="mk">Employees</span><span class="mv">167</span></div>
+        <div class="ec-metric"><span class="mk">Differentiator</span><span class="mv ok">Only local manufacturer</span></div>
+        <div class="ec-metric"><span class="mk">Products</span><span class="mv">Tanks, pools, boats, acrylic</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Luxury Real Estate</h4>
+        <div class="ec-sub">BARNES Mauritius · Top-3 Agency</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv">Top 3 luxury agency</span></div>
+        <div class="ec-metric"><span class="mk">Revenue</span><span class="mv">MUR 78M (2024)</span></div>
+        <div class="ec-metric"><span class="mk">Employees</span><span class="mv">35 across 6 sites</span></div>
+        <div class="ec-metric"><span class="mk">Brand</span><span class="mv ok">BARNES International (global)</span></div>
+        <div class="ec-metric"><span class="mk">Trend</span><span class="mv ok">Mauritius luxury RE growing</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Franchise-protected monopoly in tobacco distribution.</strong> The BAT exclusivity agreement is not replicable by any competitor — it is a contractual moat that generates MUR 6.8 billion in turnover with 25 people. This cash engine funds all diversification and acquisition activity. It is the group's most valuable and most perishable asset simultaneously.</p>
+  <p class="body-text"><strong>2. First-mover manufacturing heritage in Resiglas.</strong> A 65-year-old fiberglass manufacturer in a small island economy is inherently difficult to replicate — the tooling, the craft skills, the client relationships, and the local supply chain knowledge are compounded over decades. No credible local competitor exists in the fiberglass/pool/tank manufacturing segment.</p>
+  <p class="body-text"><strong>3. International brand licensing in luxury real estate and premium retail.</strong> BARNES Mauritius operates under a globally recognised luxury real estate brand (BARNES International, 150+ offices, 20+ countries). L'Artigiano brings premium Italian gourmet credibility unavailable to local competitors. These licensed brands provide instant market positioning that would take years to build independently.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Mauritius luxury property market is growing</strong> — international HNW buyers, residency-by-investment schemes, and post-COVID lifestyle migration are driving sustained demand in the premium segment BARNES serves. The APTIS acquisition timing is well-judged.</li>
+    <li><strong>Global tobacco regulation tightening</strong> — The WHO Framework Convention on Tobacco Control continues to drive plain packaging, advertising bans, and tax increases. The BAT franchise will face volume pressure over a 5–10 year horizon. This is APTIS's strategic time bomb.</li>
+    <li><strong>Sustainability and pool/water management demand</strong> — Resiglas's fiberglass pool and tank business benefits from Mauritius's growing residential construction market and increasing awareness of water storage needs. New product lines in sustainable materials are a growth lever.</li>
+    <li><strong>Fleet electrification and GPS compliance</strong> — RACSO's OmniComm GPS monopoly and fuel management systems are well-positioned as fleet operators face increasing regulatory and ESG pressure to monitor and optimise fuel consumption. The market for fleet telematics in Mauritius is underpenetrated.</li>
+    <li><strong>FMCG distribution consolidation</strong> — TNS Consumer's 11-brand portfolio and Danette/L'Artigiano premium positioning benefit from a broader trend toward premium FMCG consumption in Mauritius as disposable incomes rise in the middle class.</li>
+    <li><strong>Healthcare demand growth</strong> — Harley Street Fertility Centre operates in a sector with structural demographic tailwinds (delayed family formation, medical tourism from the region) and very limited local competition in specialist fertility services.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Critical Gap — No Digital Presence Strategy for B2B Subsidiaries</div>
+    RACSO and Navitas have no visible independent web presence. For B2B entities targeting fleet operators and corporate clients respectively, the absence of a dedicated digital identity limits lead generation and credibility. This is a symptom of decentralised subsidiary management — each business is running its own (or no) marketing strategy. A group-level marketing framework, which Karen Sarah is building, will need EOS-level alignment to execute consistently across seven entities.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. APTIS presents an unusually rich EOS opportunity: a family-controlled group in active transition, with a new CEO, aggressive M&amp;A, multi-entity complexity, and an operational infrastructure that has not yet caught up with strategic ambition. Each dimension rated 1–10 with evidence from public data and the acquisition/leadership record.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">The group operates seven subsidiaries across five business clusters with an estimated 200+ employees. Multi-entity structures with separate legal wrappers (Holdings, Property, Services) and family members leading individual businesses (Jean-Alain Mamet at RACSO, Oscar Mamet at group level) create exactly the coordination and accountability complexity EOS was built to address. The BARNES acquisition (May 2025) added 35 people with a distinct luxury sales culture to a manufacturing and distribution group — integration without a shared operating system is the textbook EOS challenge.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Oscar Mamet's public positioning is distinctly self-aware and growth-oriented. His stated priorities — "efficiency and innovation," "remaining alert for expansion opportunities while optimising resources" — reflect a leader who knows the organisation needs to improve how it runs, not just what it sells. At 33, a new CEO successor to a founder, he is more likely to be open to external frameworks than an entrenched owner-operator. The family retention of operational control (Jean-Alain Mamet at RACSO) is a nuance — the EOS pitch must address how the framework works in a family business context. The Founder (Jean-Pierre) remaining as President could be either an ally (if he champions EOS) or a blocker (if Oscar defers to him on structural decisions).</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">9 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:90%"></div></div>
+    <p class="eos-rationale">APTIS is in exactly the growth stage where EOS delivers maximum value: past early-stage survival, proven in multiple markets, actively acquiring, but facing the integration and coordination complexity that comes with scale. The BARNES acquisition (May 2025), the L'Artigiano franchise expansion (2022–ongoing), the Resiglas acquisition (2018), and the CEO transition (January 2024) all happened within a short window. Each of these events generates accountability gaps, unclear ownership of outcomes, and coordination friction — the exact pain points EOS resolves. Pain level: very high.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The group's internal marketing cell (managed by Karen Sarah) demonstrates that some cross-subsidiary coordination exists. The group's data-driven marketing language ("consumer data and insights drive Group marketing decisions") suggests some analytical infrastructure. However, with seven subsidiaries, a family-run holding structure, and no visible ERP or shared performance management framework disclosed, it is probable that each entity runs its own informal systems. The absence of published processes, a group scorecard, or any mention of a shared meeting rhythm supports a mid-range score. There is enough existing structure to implement EOS without starting from zero, but enough fragmentation to make EOS feel immediately relevant.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">APTIS's brand identity — captured in the "UP TO IT" magazine series featuring Oscar Mamet — projects an entrepreneurial, achievement-oriented culture with clear leadership pride. The mission statement ("We make a difference by providing opportunities for people to unleash their full potential") and the vision ("diversified group enabling our businesses to grow and be leaders in their respective fields") are EOS-compatible values. However, a conglomerate culture spanning tobacco distribution, fiberglass manufacturing, fertility medicine, and luxury real estate will have radically different sub-cultures at the entity level. EOS's core values and accountability tools are designed precisely to create cultural coherence across diverse businesses.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The group's acquisition decisions (Resiglas 2018, L'Artigiano 2022, BARNES 2025) show strategic boldness and reasonable deal judgment, suggesting capable top-level decision-making. However, in family-controlled conglomerates with a Founder-President and a new CEO-son, decision authority is rarely fully delegated. The risk is that Oscar can set direction but cannot fully commit organisational resources without Jean-Pierre's backing. EOS's Accountability Chart and IDS (Issues, Discuss, Solve) tools directly address this — they create a forum where decisions are made at the right level with clear ownership.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">APTIS has a clear strategic direction (diversification away from tobacco dependency, premium brand acquisition, island market leadership) and Oscar Mamet has articulated priorities (efficiency, innovation, market leadership). What is missing is a shared, written, precise V/TO — a 10-year target, a 3-year picture, and 1-year plan that every subsidiary leader understands and is executing toward. The current vision lives in Oscar Mamet's head and in brand magazine interviews. EOS's V/TO would crystallise this into a document the whole leadership team can run from.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of a structured group-level meeting rhythm is visible in any public source. With seven subsidiaries, five clusters, and multiple family and non-family MDs, the absence of a Level 10 Meeting structure means strategic issues almost certainly surface late, get resolved bilaterally, or get deferred. The BARNES integration in particular — combining a luxury real estate culture with a distribution and manufacturing group — needs a structured weekly forum to catch and resolve issues before they compound. This is the lowest-scoring dimension and one of the most actionable entry points for an EOS conversation.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">7.1</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: High — Qualified Positive with Strong Timing Signal</h4>
+      <p>APTIS scores 7.1/10 — one of the strongest EOS suitability scores for a Mauritian conglomerate of this type. The combination of a 33-year-old new CEO succeeding a founder, active M&amp;A adding complexity, an explicit efficiency mandate, and a multi-entity structure with no visible operating system creates a near-perfect EOS entry window. The gating factor is Jean-Pierre Mamet: if the Founder-President is not aligned with the EOS journey, Oscar may not have the authority to fully commit. The score would move to 8.5+ if Jean-Pierre is brought into the first conversation as a champion rather than a bystander. The window is open now — the BARNES integration is generating friction that Oscar will feel acutely in Q2–Q3 2026.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for APTIS Group</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>Seven subsidiaries, five clusters, three Mamet family leaders, and five external MDs — all without a publicly defined organisational structure. Who owns what? Who reports to whom across entities? The Accountability Chart is the first tool APTIS needs: it will surface every authority gap, family hierarchy tension, and role duplication. This is where the EOS conversation starts.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision / Traction Organiser (V/TO)</h4>
+      <p>Oscar Mamet's stated vision — diversification, market leadership, efficiency — exists in his head and in interview quotes. The V/TO would crystallise it into a shared 10-year target, 3-year picture, and annual plan that every subsidiary MD (from Fabien Harel at Resiglas to François Colin at BARNES) can execute against. Without this, each business is optimising for its own definition of success.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>With subsidiaries as diverse as a 167-person manufacturer and a 5-person fuel distributor, group-level performance visibility is almost certainly non-existent. A group Scorecard with 5–15 weekly leading indicators would give Oscar Mamet the single-page view of the entire business he currently lacks. This is the most immediate pain relief tool — and the one he will recognise fastest.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks</h4>
+      <p>The BARNES integration, Resiglas productivity improvement, RACSO growth, and L'Artigiano franchise expansion are all running simultaneously with no shared prioritisation framework. Rocks would give Oscar Mamet and his leadership team a way to set 3 priorities per quarter per entity, ensure focus, and measure completion. The current state — multiple acquisitions, multiple expansions, new CEO, all at once — is a recipe for execution dilution.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>No group-level meeting structure is evident. With seven entities and five clusters, issues that need cross-entity resolution (BARNES integration, shared marketing resources, capital allocation) are almost certainly being handled in ad hoc conversations. The L10 Meeting structure would create a predictable weekly forum where the leadership team surfaces, discusses, and solves the group's most important issues — rather than letting them compound across subsidiaries.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>In a family-controlled conglomerate where Jean-Pierre Mamet remains President and Oscar is the new CEO, difficult conversations about strategy, resource allocation, and performance are structurally harder to have. EOS's Issues List and IDS (Identify, Discuss, Solve) methodology provides a neutral process for surfacing and resolving issues that might otherwise stay buried in family dynamics or inter-subsidiary politics. This is one of the most culturally transformative tools for a business like APTIS.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total — four operational/financial and four EOS-specific — sequenced from immediate intelligence gathering through to full EOS implementation. The principle: build credibility with Oscar Mamet by demonstrating understanding of his specific challenges before pitching the framework.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Quantify the BAT Dependency Risk in Concrete Terms Before the First Meeting</h4>
+      <p>Before engaging Oscar Mamet, calculate the exact scenario impact of a 10%, 20%, or full loss of the BAT distribution contract on group-level free cash flow. At MUR 6.8 billion turnover and typical tobacco distribution margins of 2–4%, APTIS's BAT profit contribution is likely MUR 136–272 million annually — all of which would disappear if the contract were lost or renegotiated. Bring this number into the conversation as a strategic vulnerability, not as a critique. It will immediately demonstrate that Thierry has done serious homework and frames the EOS conversation as urgency-driven, not optional.</p>
+      <span class="urg urg-now">Immediate Priority — Before First Contact</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Identify the Resiglas Productivity Opportunity as a Quick Win</h4>
+      <p>Resiglas generates MUR 886K revenue per employee versus a Mauritius manufacturing benchmark of MUR 1.0–2.5M. A 15% productivity improvement across 167 employees would add approximately MUR 22M in throughput without any capital investment. Name Fabien Harel (Resiglas MD) as the conversation target for this specific angle. He manages the most operationally complex entity in the group and is the most likely non-family leader to feel the pain of inadequate systems. He may be an EOS champion independent of the group-level engagement.</p>
+      <span class="urg urg-week">Within 30 Days — Second Meeting Target</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Frame BARNES Integration as the Immediate Crisis That Creates the Opening</h4>
+      <p>The May 2025 BARNES acquisition brought 35 luxury real estate professionals with a distinct culture, operating model, and client base into a group built on tobacco distribution and fiberglass manufacturing. In April 2026 — 11 months after acquisition — the integration challenges will be fully live: performance expectations, culture clash, reporting lines, shared services. Ask Oscar directly: "How are you running BARNES alongside your other seven businesses? What does your operating rhythm look like?" The answer will reveal the EOS gap more powerfully than any sales pitch.</p>
+      <span class="urg urg-now">Immediate Priority — Opening Conversation Frame</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Engage Jean-Pierre Mamet as a Champion, Not a Bystander</h4>
+      <p>In family-controlled businesses where the Founder remains as President, EOS implementations that exclude the Founder fail or stall. Jean-Pierre Mamet (LinkedIn: linkedin.com/in/jean-pierre-mamet-1728741a6/) should be brought into the EOS conversation at the earliest appropriate stage — ideally before the formal proposal. His buy-in converts Oscar's authority into institutional commitment. The framing: "You built this group over 15 years — EOS is the system that ensures the next 15 years are built as deliberately, by the team you've assembled, not just by you." Founders love this because it honours their legacy while enabling succession.</p>
+      <span class="urg urg-week">Within 60 Days — Before Formal Proposal</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Open with a Focus Day Framed Around the Group Leadership Team</h4>
+      <p>The Focus Day should be scoped for the APTIS Group leadership team — Oscar Mamet (CEO), Sabbi Appanna (CFO), Jean-Alain Mamet (RACSO MD), Fabien Harel (Resiglas MD), François Colin (BARNES GM), Karen Sarah (Group Marketing), and ideally Jean-Pierre Mamet (Founder/President). Seven leaders, five clusters, one Focus Day. The deliverable is a draft Accountability Chart and a first V/TO. Success is defined as: every person in the room agrees on who owns what, and Oscar leaves with a written 1-year plan for the first time in the group's history.</p>
+      <span class="urg urg-week">Month 1–2 — Once Oscar Commits</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the Accountability Chart Around the BARNES Integration First</h4>
+      <p>Start the Accountability Chart exercise by mapping the BARNES entity specifically — it is the newest, most structurally ambiguous, and most culturally distinct unit. Who owns BARNES's P&amp;L? Does François Colin report to Oscar directly or through a cluster head? What shared services does BARNES get from the group? Answering these questions with the Accountability Chart tool will immediately demonstrate EOS value in a concrete, urgent context rather than in the abstract. Once the group has done it for BARNES, they will see how to apply it to every other entity.</p>
+      <span class="urg urg-week">Month 2 — During or After Focus Day</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Set the First Group Rocks Around Diversification — Not Operations</h4>
+      <p>Oscar Mamet's explicit strategic agenda is reducing tobacco dependency through non-tobacco growth. The first quarterly Rocks for the group should therefore be framed around that agenda: Rock 1 — BARNES reaches MUR 25M quarterly run-rate (by Q3 2026). Rock 2 — Resiglas launches one new sustainable product line (by Q4 2026). Rock 3 — RACSO signs two new fleet management contracts (by Q3 2026). These are concrete, measurable, and directly tied to the strategic imperative Oscar has publicly articulated. He will recognise them as his own priorities, translated into 90-day commitments.</p>
+      <span class="urg urg-medium">Month 3 — First Full Quarter Planning</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Propose a V/TO Question: What Does APTIS Look Like Without the BAT Contract?</h4>
+      <p>The most powerful V/TO question for the APTIS leadership team is: "If the BAT distribution contract ended in five years, what would APTIS Group look like, and would you be proud of it?" This question forces the group to articulate a genuine 10-year target that is not tobacco-dependent — and reveals whether the diversification strategy is a real vision or an opportunistic hedge. The answer becomes the BHAG (Big Hairy Audacious Goal) for the V/TO. It also positions Thierry as the advisor who asked the question nobody else dared to ask — the highest-value contribution a trusted adviser can make.</p>
+      <span class="urg urg-medium">Month 2–3 — During V/TO Development</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>APTIS Group is one of the most EOS-ready organisations in the Mauritian market: a proven family conglomerate at an inflection point, with a new young CEO who has inherited extraordinary complexity and an explicit mandate to systematise it. The opportunity is real, the pain is current, and the timing — 11 months post-BARNES acquisition, 27 months into Oscar's tenure — could not be better calibrated. The risk is the family governance dynamic: Jean-Pierre Mamet must be a champion, not a silent observer. If Thierry can get both Mamets in a room and frame EOS as the operating system that makes Oscar's vision executable and protects Jean-Pierre's legacy, this closes. Approach Oscar via LinkedIn (mu.linkedin.com/in/oscar-mamet) or through the group main line (+230 249 24 09 / info@aptis.mu) with a specific, non-generic opening that references the BARNES integration and the diversification agenda.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Week 1–2: Connect with Oscar Mamet on LinkedIn with a personalised note referencing BARNES integration complexity and the diversification mandate. Request 20 minutes, not a meeting.</li>
+        <li><span class="sig-num">02</span>Week 3–4: Discovery call. Open with "How are you running seven businesses right now — what does your operating rhythm look like?" Let the pain surface. Do not pitch EOS before he names at least one of its problems himself.</li>
+        <li><span class="sig-num">03</span>Month 2: Bring Jean-Pierre Mamet into the conversation. Frame EOS as legacy protection and next-generation enablement. Get his public buy-in before the Focus Day proposal.</li>
+        <li><span class="sig-num">04</span>Month 2–3: Deliver Focus Day for the full APTIS Group leadership team (7 people). Deliver draft Accountability Chart and V/TO. Demonstrate the system, don't just describe it.</li>
+        <li><span class="sig-num">05</span>Month 3 onward: Launch full EOS with quarterly planning cadence. Set first Rocks around BARNES performance, Resiglas productivity, and RACSO growth. Run L10s at group level monthly and at entity level weekly.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>APTIS Holdings Ltd (C162483) — Comprehensive Company Analysis &amp; EOS Assessment · 2 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (2 April 2026) · aptis.mu · barnes-mauritius.com · business-magazine.mu · linkedin.com/company/aptis · propertycloud.mu · defimedia.info</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
