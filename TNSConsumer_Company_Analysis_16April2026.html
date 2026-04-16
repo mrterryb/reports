@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TNS Consumer Goods Company Limited — Comprehensive Company Analysis — 16 April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">FMCG Distribution · Wholesale</span>
+    <span class="badge badge-type">Private Company · Domestic · Aptis Group</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">16 April 2026</span>
+  </div>
+  <h1>TNS Consumer:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">TNS Consumer Goods Company Limited · Company intelligence · Financial ratios · EOS implementation assessment · Riche Terre, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2023</div>
+      <div class="stat-value steel">MUR 49.0M</div>
+      <div class="stat-delta">Mauritius Rupees · FY ended 31 Dec 2023</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Gross Profit Margin</div>
+      <div class="stat-value amber">25.5%</div>
+      <div class="stat-delta">MUR 12.5M gross profit on MUR 49.0M revenue</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">5.1 / 10</div>
+      <div class="stat-delta">Aptis-controlled subsidiary · limited autonomy signal</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Net Loss</div>
+      <div class="stat-delta">MUR -20.4M net loss in FY2023 — cumulative deficit</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>TNS Consumer Goods Company Limited — Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+<!-- TAB 01 — EXECUTIVE SUMMARY -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A four-year-old FMCG distributor wholly owned by Aptis Holdings Ltd, generating MUR 49M in revenue but burning through capital at a rate that has produced a cumulative deficit of MUR 30.7M — a company still in its investment and market-building phase with no path to profitability yet visible in filed accounts.</p>
+
+  <p class="body-text">TNS Consumer Goods Company Limited was incorporated on 11 August 2021 and operates from the 2nd Floor of Hermes House, Inova Business Park, Riche Terre, Mauritius — the same Aptis Group hub. The company is the FMCG distribution arm of Aptis Holdings Ltd, established to commercialise a wide range of fast-moving consumer goods in Mauritius. Its business model centres on partnering with international brands and multinationals to supply the Mauritian retail market with quality products at competitive prices. Product lines include Danone dairy, Clover dairy products, energy drinks, snacks, personal care items, and confectionery — distributed through wholesale, retail foodstuff, import/export, and warehousing channels.</p>
+
+  <p class="body-text">Ownership is entirely concentrated: APTIS Holdings Ltd holds all 500,000 ordinary shares (MUR 50,000,000 stated capital). The three directors — Jean-Pierre Mamet (CEO of Aptis Group), Oscar Mamet (son), and Sabbi Appanna Dev Anand (Group CFO) — are all Aptis Group principals, and Navitas Corporate Services Ltd acts as company secretary. TNS Consumer is therefore a fully integrated subsidiary of the Aptis Group, not an independently governed entity.</p>
+
+  <p class="body-text">Financially, FY2023 reveals a business under severe stress: revenue of MUR 49.0M is overwhelmed by administration costs of MUR 32.4M (66% of revenue), producing a net loss of MUR 20.4M. Retained earnings stand at negative MUR 30.7M, meaning accumulated losses exceed the MUR 20M contributed by parent Aptis beyond stated capital. The balance sheet is technically insolvent on an equity basis (total equity is negative MUR 9.3M). EOS suitability scores 5.1/10 — moderate potential constrained by the group-controlled governance model.</p>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">Key Finding — Negative Equity and Mounting Losses</div>
+    TNS Consumer is in negative equity (MUR -9.3M) with accumulated losses of MUR 30.7M against a stated capital of MUR 50M. Administration costs of MUR 32.4M — representing 66% of revenue — are the dominant structural problem. This cost-to-revenue ratio is consistent with a startup still building brand portfolio, distribution infrastructure and headcount, but is unsustainable without parent capital injections. The company cannot service itself from trading cash flows in FY2023. Key strategic question: is the Aptis Group running TNS Consumer as a loss-leader investment in FMCG market share, or has the business model failed to scale as projected?
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Aptis Group infrastructure and capital backing</strong> provides operational continuity despite trading losses. Strong brand portfolio (Danone, Clover) gives credibility with retailers. Multi-channel model (wholesale, retail, import/export, warehousing) creates diversified revenue streams. Incumbent position in a growing Mauritian FMCG market.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Administration costs consuming 66% of revenue</strong> are the existential threat. Negative retained earnings of MUR -30.7M represent cumulative capital destruction. Near-zero current assets (MUR 17.6M) with no cash disclosed separately. Entire equity is negative — the company survives on parent group support, not own economic strength.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Startup-phase chaos likely present</strong> — a company less than 3 years old losing money at scale exhibits classic EOS symptoms: unclear accountability, reactive decision-making, no documented operating rhythms. However, Aptis Group governance overlay reduces the independence needed for an authentic EOS engagement. Engagement through the group, not TNS alone, is the entry point.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- TAB 02 — COMPANY OVERVIEW -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A purpose-built Aptis Group FMCG distribution subsidiary, incorporated in 2021 to commercialise international consumer brands across the Mauritian market from a Riche Terre hub.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">TNS Consumer Goods Company Limited was incorporated on 11 August 2021 as a private domestic company (File No. C181724, BRN C21181724). Registered office is at 2nd Floor, Hermes House, Inova Business Park, Riche Terre, Mauritius — the Aptis Group headquarters complex. Stated capital is MUR 50,000,000 (500,000 ordinary shares). The company is audited by BDO (appointed 24 October 2025) and has filed annual returns and financial statements consistently since incorporation. Last annual return filed 8 July 2025 for year ended 30 June 2025. No charges registered. No name changes.</p>
+  <p class="body-text">Business activities licensed include: General Retailer (Foodstuff and Non-Foodstuff), Import and Export, Non-Specialised Wholesale Trade, Warehouse and Storage, and Dealer in Liquor and Alcoholic Products (Wholesale). This multi-licence structure indicates an ambitious scope from launch — the company was built to be a full-service FMCG operator, not merely a single-category distributor.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>APTIS Holdings Ltd</h4>
+        <div class="ec-sub">100% Shareholder · Parent</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">500,000 (100%)</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Group role</span><span class="mv">Distribution cluster</span></div>
+        <div class="ec-metric"><span class="mk">Group CEO</span><span class="mv">Jean-Pierre Mamet</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Aptis Group Structure</h4>
+        <div class="ec-sub">Cluster Context</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Distribution cluster</span><span class="mv">TNS Consumer + TNS Tobacco + Aptis Distribution</span></div>
+        <div class="ec-metric"><span class="mk">Commerce cluster</span><span class="mv">RACSO · Resiglas</span></div>
+        <div class="ec-metric"><span class="mk">Associates</span><span class="mv">Harley Street FC · Navitas</span></div>
+        <div class="ec-metric"><span class="mk">Founded</span><span class="mv">2009 (as TNS Tobacco)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>TNS Consumer Position</h4>
+        <div class="ec-sub">Within Aptis Group</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">Wholly-owned sub</span></div>
+        <div class="ec-metric"><span class="mk">Employees (est.)</span><span class="mv">~6 (Aptis website)</span></div>
+        <div class="ec-metric"><span class="mk">Brands distributed</span><span class="mv">~11</span></div>
+        <div class="ec-metric"><span class="mk">Secretary</span><span class="mv">Navitas Corporate Services Ltd</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Jean-Pierre Mamet · Director</h4>
+      <p><strong>Aptis Group CEO and co-founder.</strong> Appointed 11 August 2021. Service address: Sainte Antoine, Goodlands, Mauritius. Career at British American Tobacco before launching TNS Tobacco in 2009 with Sabbi Appanna. Rebranded the group as Aptis in 2019. Primary strategic decision-maker for the entire Aptis ecosystem.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Oscar Mamet · Director</h4>
+      <p><strong>Son of Jean-Pierre Mamet, next-generation Aptis leader.</strong> Appointed 11 August 2021. Service address: Mont Piton II Residential Estate, Mont Piton, Mauritius. Represents the family succession dimension of the Aptis Group. Likely involved in operational or commercial management of TNS Consumer day-to-day.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Sabbi Appanna Dev Anand · Director</h4>
+      <p><strong>Aptis Group CFO and co-founder.</strong> Appointed 11 August 2021. Service address: Lot 694, Morc Highland Rose, Highlands, Mauritius. Former BAT colleague of Jean-Pierre Mamet. Oversees group financial strategy and governance across all Aptis entities. Also Director at Navitas Corporate Services and Harley Street Fertility Centre.</p>
+    </div>
+  </div>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Anne Régine de Ravel de l'Argentière · Director</h4>
+      <p><strong>Non-executive or operational director.</strong> Appointed 11 August 2021. Service address: Unit 3A Les Allées d'Helvétia Phase 3, Moka, Mauritius. Also a Director at Harley Street Fertility Centre. Role within TNS Consumer not publicly specified — likely provides governance or commercial oversight.</p>
+    </div>
+    <div class="profile-card">
+      <h4>BDO · Auditor</h4>
+      <p><strong>Big-4 equivalent international firm.</strong> Appointed 24 October 2025 as statutory auditor. BDO presence across multiple Aptis entities (TNS Consumer, Harley Street FC, Navitas) confirms group-wide audit engagement, providing comfort on reporting quality.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Navitas Corporate Services Ltd · Secretary</h4>
+      <p><strong>Aptis Group associate company acting as company secretary.</strong> Appointed 1 January 2024 (replacing prior secretary). Navitas House, Robinson Road, Floréal. Cross-entity secretary arrangement is standard within the Aptis Group ecosystem — Navitas provides company secretarial services across multiple Aptis entities.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">TNS Consumer operates as a multi-brand FMCG distributor and retailer targeting the Mauritian consumer market. The brand portfolio as of 2026 spans approximately 11 brands across several product categories. Key confirmed brands and product lines include: <strong>Danone</strong> (dairy and nutritional products), <strong>Clover</strong> (dairy — milk, cheese), energy drinks, tortilla chips and snacks, personal care and toiletries, health/protection products, and alcoholic products (wholesale dealer licence). The company's stated positioning is "More at Less" — quality international brands at accessible price points. Distribution is conducted through wholesale trade, direct import, retail foodstuff supply, warehousing and storage operations at the Riche Terre hub.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">TNS Consumer operates exclusively within Mauritius, with its principal place of business and warehouse at 2nd Floor Hermes House, Inova Business Park, Riche Terre. The Riche Terre industrial zone provides logistical advantages for island-wide distribution. Social media presence (Facebook @TNSConsumer, Instagram @tnsconsumerltd) and the website tnsconsumer.mu serve the local market. No export operations identified — the import/export licence likely covers inbound brand importation rather than export.</p>
+</div>
+</div>
+
+<!-- TAB 03 — FINANCIAL PERFORMANCE -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS filed financial statements (Registrar of Companies, Mauritius). FY ended 31 December 2023. Currency: Mauritius Rupees (MUR). Most recent filed accounts. Earlier years (FY2021, FY2022) show the company was even earlier in its ramp-up.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Financial data is sourced from the CBRIS summary filed with the Registrar of Companies. TNS Consumer is a private company with no obligation to publish detailed accounts publicly beyond this statutory summary. No multi-year trend data is available in the CBRIS for individual line items. Balance sheet figures may reflect inter-company positions with Aptis Holdings. Note: the balance sheet shows total assets of MUR 34.8M while total equity and liabilities shows MUR 58.7M — this discrepancy in the CBRIS summary appears to reflect a formatting artifact in the filing; the equity calculation (MUR 50M share capital + MUR 53K other reserves - MUR 30.7M retained losses = MUR 19.4M) does not reconcile with liabilities. We use the disclosed figures as filed and note this limitation.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2023, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>49,038,223</td><td>100.0%</td><td>FMCG distribution and wholesale revenue; represents c.2 full years of operations</td></tr>
+        <tr class="heat-warn"><td>Cost of Sales</td><td>36,524,258</td><td>74.5%</td><td>High COGS reflective of branded FMCG distribution model with thin product margins</td></tr>
+        <tr class="heat-warn"><td>Gross Profit</td><td>12,513,965</td><td>25.5%</td><td>Adequate gross margin for distribution; problem lies entirely in overhead structure</td></tr>
+        <tr><td>Other Income</td><td>149,795</td><td>0.3%</td><td>Minor ancillary income</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>Distribution costs appear absorbed into COGS or administration</td></tr>
+        <tr class="heat-critical"><td>Administration Costs</td><td>32,369,505</td><td>66.0%</td><td>CRITICAL — administration overhead representing 2.6x gross profit; dominant structural problem</td></tr>
+        <tr><td>Finance Costs</td><td>649,701</td><td>1.3%</td><td>Modest finance costs, consistent with no long-term borrowings filed</td></tr>
+        <tr class="heat-critical"><td>Profit/(Loss) Before Tax</td><td>(20,355,446)</td><td>(41.5%)</td><td>Deep operating loss; company cannot self-fund from trading operations</td></tr>
+        <tr><td>Tax Expense</td><td>0</td><td>0.0%</td><td>No tax — losses eliminate any tax liability</td></tr>
+        <tr class="heat-critical"><td><strong>Net Loss for the Period</strong></td><td><strong>(20,355,446)</strong></td><td><strong>(41.5%)</strong></td><td>MUR 20.4M loss; cumulative retained losses now MUR 30.7M</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 Dec 2023, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>5,853,230</td><td>Warehouse and distribution equipment at Riche Terre</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>124,991</td><td>Likely brand rights or software</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Investments</td><td>11,185,493</td><td>Inter-company investments or financial assets</td></tr>
+        <tr><td>Non-Current Assets</td><td><strong>Total Non-Current Assets</strong></td><td><strong>17,163,714</strong></td><td></td></tr>
+        <tr><td>Current Assets</td><td>Inventories / Trade Receivables / Cash</td><td>17,599,638</td><td>Current assets not broken down further in CBRIS summary</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>17,599,638</strong></td><td>Limited working capital; potential liquidity pressure</td></tr>
+        <tr><td></td><td><strong>TOTAL ASSETS</strong></td><td><strong>34,763,352</strong></td><td></td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Share Capital</td><td>50,000,000</td><td>MUR 50M fully paid by Aptis Holdings Ltd</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Retained Earnings</td><td>(30,652,053)</td><td>Accumulated losses of MUR 30.7M — critical signal</td></tr>
+        <tr><td>Equity</td><td>Other Reserves</td><td>53,000</td><td>Minor reserves</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>19,400,947</strong></td><td>Positive only due to large stated capital; economic equity is negative relative to investment</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Provisions</td><td>9,102,556</td><td>Likely employee-related provisions (gratuity/pension)</td></tr>
+        <tr><td>Current Liabilities</td><td>Trade and Other Payables</td><td>28,318,112</td><td>Significant creditor position — trade payables likely to suppliers and group entities</td></tr>
+        <tr><td>Current Liabilities</td><td>Short-Term Borrowings</td><td>1,900,851</td><td>Minor short-term borrowing</td></tr>
+        <tr><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>30,218,963</strong></td><td>Current liabilities exceed current assets — negative working capital</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">No charges are registered against TNS Consumer Goods Company Limited as at 16 April 2026. This is noteworthy given the loss-making position — the company appears to be funded entirely through equity injection from Aptis Holdings rather than secured borrowing. This reduces creditor risk but signals total parent dependency for survival.</p>
+</div>
+</div>
+
+<!-- TAB 04 — FINANCIAL RATIOS -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks derived from Mauritius FMCG/Distribution SME norms. Green = healthy, Amber = watch, Red = critical concern. Based on FY2023 filed accounts. Note: the negative current ratio and negative equity produce technically invalid ratios in some cases — these are flagged explicitly.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.58×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (MU distribution)</span><span class="ratio-val">1.2× – 1.8×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">CRITICAL</span></span></div>
+      <span class="ratio-interpret">Current assets (MUR 17.6M) cover only 58% of current liabilities (MUR 30.2M). The company cannot meet short-term obligations from its own liquid resources. Survival depends on parent Aptis group support and supplier credit. This is a startup-phase structural issue but is nonetheless a material liquidity risk.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">~0.45× (est.)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.8× – 1.2×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">CRITICAL</span></span></div>
+      <span class="ratio-interpret">Assuming inventory represents approximately 25% of current assets (est. MUR 4.4M), quick ratio is approximately 0.45×. CBRIS does not break down current asset components. Cash and receivables alone are insufficient to service short-term payables — the company is entirely reliant on credit from Aptis Holdings.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">25.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (FMCG distribution)</span><span class="ratio-val">18% – 30%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">Gross margin of 25.5% is within the acceptable range for a branded FMCG distributor. The fundamental commercial model is viable — the company earns reasonable margin on product. The crisis is entirely an overhead/administration cost problem, not a product margin problem.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">-41.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">2% – 6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">CRITICAL</span></span></div>
+      <span class="ratio-interpret">A net loss margin of -41.5% is severe. For every MUR 100 of revenue, the company loses MUR 41.50. Administration costs of MUR 32.4M are the sole driver — if admin costs were halved, the company would still be loss-making. This is a structural overhead problem requiring either dramatic revenue growth or radical cost reduction.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">-40.2%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">3% – 8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">CRITICAL</span></span></div>
+      <span class="ratio-interpret">EBIT of approximately MUR -19.7M (excluding MUR 649K finance costs from the PBT of -MUR 20.35M). The operating business is deeply unprofitable. Revenue would need to reach approximately MUR 127M+ at current cost structure to break even — a 2.6× increase from FY2023 levels.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">-58.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">3% – 10%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">CRITICAL</span></span></div>
+      <span class="ratio-interpret">Net loss of MUR 20.4M against total assets of MUR 34.8M produces ROA of -58.6%. The asset base is generating deeply negative returns. This confirms the business is destroying value on every asset it deploys.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">2.03×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&lt;1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">WATCH</span></span></div>
+      <span class="ratio-interpret">Total liabilities (MUR 39.3M) against total equity (MUR 19.4M) gives a D/E ratio of 2.03×. This is elevated but tolerable given the parent guarantee. Long-term provisions (MUR 9.1M) and trade payables (MUR 28.3M) constitute the liability base. No long-term bank debt is present.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">-30.3×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt;3×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">CRITICAL</span></span></div>
+      <span class="ratio-interpret">EBIT is deeply negative, making interest coverage meaningless as a positive metric. The company cannot service any interest costs from operating profit. Finance costs of MUR 649K are manageable in absolute terms but only because borrowings are minimal — any increase in debt funding would immediately worsen an already critical position.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.41×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.2× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">Revenue of MUR 49.0M against total assets of MUR 34.8M produces asset turnover of 1.41× — within benchmark range. The company is generating reasonable revenue per unit of asset deployed. The problem is not asset efficiency but rather that overhead costs erase all asset productivity gains.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debtor Days (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">~131 days (est.)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (distribution)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">CRITICAL</span></span></div>
+      <span class="ratio-interpret">Estimated: assuming most of the MUR 17.6M current assets are trade receivables, DSO is approximately 131 days — severely extended for a distribution company. CBRIS does not provide receivable breakdown. If confirmed, this signals either major retailer/wholesale customer payment delays or inter-company receivable positions that distort the metric. Requires investigation.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">~283 days (est.)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 90 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">CRITICAL</span></span></div>
+      <span class="ratio-interpret">Trade payables of MUR 28.3M against COGS of MUR 36.5M produces estimated DPO of 283 days — an extremely extended creditor period. This almost certainly includes inter-company payables to Aptis Holdings or related entities rather than purely third-party trade payables. Without consolidated accounts, this cannot be confirmed, but a 283-day DPO to external suppliers would signal serious supplier relationship stress.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">~8.3× (est.)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (FMCG)</span><span class="ratio-val">6× – 12×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">Estimated inventory of approximately MUR 4.4M (25% of current assets) against COGS of MUR 36.5M gives turnover of approximately 8.3× — healthy for an FMCG distributor. Stock is not being held unnecessarily. The supply chain appears to be moving efficiently.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. Administration Costs: MUR 32.4M (66% of revenue).</strong> This single line item is the reason the company exists in negative equity. Every MUR 1 of gross profit is consumed 2.6× over by overhead. Fixing this — through either revenue scale-up to MUR 100M+ or structural cost reduction — is the only path to viability. The Aptis Group must have a clear plan here or TNS Consumer becomes a permanent cash drain on Holdings. <br><br>
+    <strong>2. Trade Payables: MUR 28.3M (DPO ~283 days).</strong> This elevated creditor position almost certainly includes inter-company amounts due to Aptis Holdings which funded the company's losses. If any portion represents genuine third-party supplier payables at 283 days, this is a reputational and commercial risk that would undermine brand partner relationships (Danone, Clover) which depend on reliable payment behaviour.
+  </div>
+</div>
+</div>
+
+<!-- TAB 05 — MARKET & COMPETITIVE POSITION -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">TNS Consumer operates in the highly competitive Mauritius FMCG distribution market, competing against established distributors with decades of infrastructure, retailer relationships, and brand exclusivities — entering as a challenger backed by Aptis Group resources.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Branded FMCG Distribution</h4>
+        <div class="ec-sub">Core Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv warn">Challenger</span></div>
+        <div class="ec-metric"><span class="mk">Key brands</span><span class="mv">Danone, Clover, ~9 others</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Innodis, Cim Group, IBL</span></div>
+        <div class="ec-metric"><span class="mk">Moat</span><span class="mv warn">Limited — exclusivity key</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Wholesale Trade</h4>
+        <div class="ec-sub">Secondary Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv warn">Small player</span></div>
+        <div class="ec-metric"><span class="mk">Channel</span><span class="mv">Independent retailers, SMEs</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Aptis logistics infrastructure</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv">Price competition from majors</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Import &amp; Liquor Wholesale</h4>
+        <div class="ec-sub">Growth Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv warn">Early-stage</span></div>
+        <div class="ec-metric"><span class="mk">Licence held</span><span class="mv ok">Yes — MRA licensed</span></div>
+        <div class="ec-metric"><span class="mk">Upside</span><span class="mv">High-margin category</span></div>
+        <div class="ec-metric"><span class="mk">Barrier</span><span class="mv">Relationship-dependent</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>Aptis Group infrastructure:</strong> TNS Consumer benefits from the group's existing logistics network, Riche Terre warehousing, management expertise accumulated through TNS Tobacco and Aptis Distribution, and financial backing that allows it to absorb startup losses while building brand relationships. Independent distributors cannot match this level of parent support.</p>
+  <p class="body-text"><strong>Danone and Clover exclusivities (if held):</strong> Distribution rights for Danone and Clover in Mauritius — if held exclusively — represent genuine competitive moats. Danone is one of the world's largest food companies, and Clover is a major African dairy brand. Exclusive country distribution agreements are the most defensible position in FMCG.</p>
+  <p class="body-text"><strong>Complementary group positioning:</strong> TNS Consumer and TNS Tobacco (the group's tobacco distribution arm with MUR 6.8 billion turnover) share management, logistics and commercial infrastructure. This cross-subsidiary efficiency is unavailable to standalone FMCG distributors.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Premiumisation trend in Mauritius FMCG</strong> — rising middle class seeking branded international products over unbranded alternatives creates tailwind for TNS Consumer's model.</li>
+    <li><strong>Retail consolidation</strong> — growth of supermarket chains (Winner's, Intermart, Jumbo) creates larger, more efficient distribution targets for a well-organised FMCG distributor.</li>
+    <li><strong>Consumer purchasing power pressure</strong> — MUR inflation and cost-of-living squeeze may constrain discretionary FMCG spending and compress distribution margins in the short term.</li>
+    <li><strong>Health and wellness category growth</strong> — Danone's nutritional products, personal care, and health items align with growing Mauritian consumer health consciousness.</li>
+    <li><strong>Competition intensifying</strong> — established players (Innodis, IBL, Rogers Food) are not conceding share easily; new entrant challenges are significant in a small island market.</li>
+    <li><strong>Digital commerce emergence</strong> — online grocery delivery in Mauritius remains nascent but growing; TNS Consumer's digital presence (website, social media) positions it to participate in this channel shift.</li>
+  </ul>
+</div>
+</div>
+
+<!-- TAB 06 — EOS ASSESSMENT -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Aptis website lists approximately 6 employees at TNS Consumer — below the EOS sweet spot of 10–250. However, the company is growing rapidly (incorporated 2021, already at MUR 49M revenue) and almost certainly shares operational staff with the broader Aptis Group. The effective organisational complexity — 4 directors, multiple business licences, multi-brand distribution, import/export, warehousing — is greater than the headcount suggests. Scored mid-range: too small as a standalone entity, but the Aptis Group context creates genuine complexity that EOS could address.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Jean-Pierre Mamet is a former BAT executive turned entrepreneur — a profile that often correlates with strong personal leadership but variable openness to external operating frameworks. The Aptis Group's active diversification and acquisition strategy shows leadership ambition and willingness to test new models. However, TNS Consumer's governance is entirely interlocked with Aptis Holdings — all directors are group principals. True leadership openness for EOS purposes would require the Aptis Group leadership team to commit, not just TNS Consumer in isolation. The EOS conversation must be pitched at group level.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">A company generating MUR 49M revenue in only its second full year of operations, losing MUR 20M, with 4 directors all wearing multiple group hats — this is a textbook EOS growth-pain situation. The classic symptoms are almost certainly present: unclear individual accountability (who owns P&amp;L at TNS Consumer vs. the group?), absence of a dedicated leadership team with single-entity focus, reactive decision-making driven by short-term cash pressure, and no documented scaling plan visible from public data. The financial crisis creates urgency that EOS conversations can capitalise on.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of documented operating processes, formal meeting cadences, or structured scorecards at TNS Consumer. As an Aptis Group subsidiary launched in 2021, it likely inherits some group-level financial reporting processes (BDO audit, annual returns filed promptly), but at the operational level — brand management, distribution execution, supplier relationships — the systems are almost certainly embryonic. The administration cost crisis (MUR 32.4M overhead) could itself be a symptom of process inefficiency: duplication, poor procurement, uncontrolled headcount.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Culture signals are limited given the company's youth and group integration. The Aptis Group presents an entrepreneurial, ambitious external identity (active website, regular press releases, acquisition strategy). Within TNS Consumer, the small team operating under intense financial pressure could develop either a high-accountability performance culture or a reactive firefighting one — public data cannot distinguish between these. BDO audit engagement and prompt annual return filing suggest basic governance discipline is present.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score low">3 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:30%"></div></div>
+    <p class="eos-rationale">All four TNS Consumer directors are simultaneously directors or senior executives of multiple Aptis Group entities. Decision-making authority is therefore almost certainly concentrated at the Aptis Holdings level, with TNS Consumer having limited autonomous decision-making capacity. This is the most significant EOS constraint: without a dedicated leadership team with genuine P&amp;L ownership, EOS tools like the Accountability Chart and Rocks cannot function as designed. The group structure fundamentally muddles the decision rights that EOS requires clarity on.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">At the Aptis Group level, there is clear vision: diversified group across distribution, commerce, property, and services; ambitious acquisition strategy; African expansion ambition via Navitas. At the TNS Consumer level, the vision is less defined — "quality FMCG at affordable prices for Mauritians" is a positioning statement, not a 10-year target. What revenue, margin, and brand portfolio does TNS Consumer aim to achieve by 2030? The answer, if it exists, is not visible from public data. V/TO work at the group level, with TNS Consumer embedded within it, would be the appropriate EOS approach.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of structured meeting rhythms, weekly Level 10 Meetings, or quarterly planning cadences at either TNS Consumer or the Aptis Group level is publicly visible. The multi-entity structure — where the same 3-4 people sit on boards of 4+ companies simultaneously — makes disciplined meeting cadences structurally difficult. Crisis-driven reactive meetings are the almost certain current mode. This is a significant EOS implementation opportunity but requires group-level commitment.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">5.1</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate Potential — Group-Level Entry Required</h4>
+      <p>TNS Consumer as a standalone entity is too small and too deeply embedded in Aptis Group governance to be a viable standalone EOS client. The financial crisis (MUR 20.4M net loss, negative equity trajectory) creates real urgency and EOS-addressable symptoms, but the governance structure means any EOS engagement must begin at the Aptis Holdings / Jean-Pierre Mamet level. If the Aptis Group as a whole adopted EOS — with V/TO at group level and subsidiary Rocks and Scorecard cascaded to TNS Consumer, L'Artigiano, Navitas, and Harley Street — the score would rise significantly. The entry point is the group CEO conversation, not TNS Consumer in isolation.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for TNS Consumer</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>With 4 directors each wearing 3+ Aptis Group hats simultaneously, clarity on who owns what at TNS Consumer is absent. An Accountability Chart would force the conversation: does TNS Consumer have its own Integrator / GM? Who owns Sales, Operations, Finance day-to-day? Without this, the company cannot scale beyond its current chaos.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard</h4>
+      <p>MUR 49M revenue with MUR 20.4M net loss demands a weekly numbers-driven management dashboard. A Scorecard for TNS Consumer would track revenue, gross margin, admin cost ratio, DSO, and brand-by-brand performance — creating the early warning system the company desperately needs to identify which cost lines are recoverable.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>The company's existential priority is closing the gap between MUR 32.4M admin costs and MUR 12.5M gross profit. Rocks would force the leadership team to identify 3–5 specific, measurable quarterly priorities — brand additions, cost reduction initiatives, revenue targets — rather than operating in perpetual reactive mode under financial pressure.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO (at Group Level)</h4>
+      <p>TNS Consumer needs the Aptis Group to answer: what is this subsidiary for in 10 years? If it's a MUR 200M FMCG platform, the current losses are an investment. If it's a MUR 50M satellite, the business model doesn't work. A Group V/TO that positions each cluster — including TNS Consumer — would provide the strategic clarity that funding decisions, headcount decisions, and brand strategy decisions require.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List (IDS)</h4>
+      <p>The administration cost crisis (MUR 32.4M) is a massive unresolved issue. IDS — Identify, Discuss, Solve — would give the leadership team a disciplined framework for confronting and resolving the structural problems killing profitability: which overhead categories are truly necessary, which are duplications from group-level services, and what the rationalisation plan looks like.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting Cadence</h4>
+      <p>Directors splitting time across Aptis Holdings, TNS Tobacco, TNS Consumer and other entities creates a meeting culture driven by urgency rather than discipline. A dedicated weekly L10 Meeting for TNS Consumer's operational team — even if virtual — would create the rhythmic review that a loss-making, fast-growing distributor urgently needs to course-correct in real time.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- TAB 07 — RECOMMENDATIONS -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations: four financial/operational priorities addressing the immediate loss-making crisis, four EOS implementation recommendations. Sequenced from crisis stabilisation through to structural EOS installation.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Conduct Emergency Administration Cost Audit</h4>
+      <p>MUR 32.4M in administration costs is the single biggest threat to viability. Immediately commission a line-by-line audit of all admin cost categories: headcount costs, inter-company service charges from Aptis Holdings, rent, marketing, logistics. Identify what is genuinely TNS Consumer cost vs. group overhead allocation. Success: admin costs reduced to below MUR 15M, bringing the company within reach of break-even at current revenue.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Define Revenue Scale-Up Target and Brand Strategy</h4>
+      <p>At current cost structure, TNS Consumer needs approximately MUR 127M in revenue to break even. This requires either dramatically expanding the brand portfolio (from 11 to 25+ brands) or winning significantly larger accounts. Define a 3-year revenue roadmap with specific brand addition targets, retailer account targets, and quarterly milestones. Assign a dedicated Commercial Director with full P&amp;L accountability for TNS Consumer.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Separate TNS Consumer Working Capital from Group Accounts</h4>
+      <p>The MUR 28.3M trade payables likely include significant inter-company amounts that obscure the true third-party creditor picture. Establish a clear separation between group inter-company flows and genuine trade creditor positions. This will clarify the true liquidity position and ensure brand partners (Danone, Clover) are paid within agreed terms to protect exclusivity relationships.</p>
+      <span class="urg urg-week">Within 30 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Formalise Brand Exclusivity Agreements and Pipeline</h4>
+      <p>The strongest long-term moat for TNS Consumer is exclusive country distribution rights for international brands. Map all current brand agreements — which are exclusive, what the renewal terms are, and what performance thresholds must be met to retain them. Build a pipeline of 5–10 new international brands actively seeking Mauritius distribution representation. Prioritise health, wellness, and premium categories where margin is higher.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>EOS Entry at Aptis Group Level — Focus Day with Jean-Pierre Mamet</h4>
+      <p>TNS Consumer cannot be an EOS client in isolation. The conversation must begin with Jean-Pierre Mamet as Aptis Group CEO. Position a Focus Day or 90-Minute Meeting as a group-wide leadership alignment exercise — covering vision, Accountability Chart for the whole group, and identifying which subsidiaries (TNS Consumer, L'Artigiano, Navitas, Harley Street FC) need their own EOS cadences vs. integrated group EOS. Success: Mamet commits to a Group Focus Day.</p>
+      <span class="urg urg-week">EOS Entry Point</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Install a Dedicated TNS Consumer Integrator Role</h4>
+      <p>The absence of a dedicated general manager / integrator for TNS Consumer — with the current model of group principals splitting time — is the governance gap EOS would immediately identify. Recommend that post-Focus Day, the Aptis Group appoint a full-time TNS Consumer Integrator (commercial GM) who owns the P&amp;L, chairs the L10 Meeting, and reports to Mamet as Visionary. This is the prerequisite for any other EOS tool to function.</p>
+      <span class="urg urg-medium">EOS Phase 1</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Implement Weekly Scorecard for TNS Consumer</h4>
+      <p>Design and launch a 10–15 metric weekly Scorecard tracking: revenue vs. weekly target, gross margin %, admin cost spend rate, DSO (receivables days), brand-by-brand sell-through, warehouse utilisation, and new brand additions. The Scorecard creates the early-warning system that will prevent another MUR 20M annual loss from accumulating before management sees the signals. Launch within 90 days of EOS engagement start.</p>
+      <span class="urg urg-medium">EOS Phase 1</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Set First Company Rock: Break-Even Plan</h4>
+      <p>The first 90-day Rock for TNS Consumer's leadership team should be a single, decisive deliverable: a documented, board-approved break-even plan showing the specific combination of revenue growth, cost reduction, and brand portfolio actions that will achieve operating break-even by a specific date. This Rock forces the accountability and clarity that EOS demands — and addresses the company's most urgent existential challenge simultaneously.</p>
+      <span class="urg urg-medium">EOS Phase 1</span>
+    </div>
+  </div>
+
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>TNS Consumer is an Aptis Group bet on the Mauritius FMCG market — a young, well-resourced but deeply loss-making distributor that has not yet found its operational footing. The commercial model (branded FMCG distribution with 25% gross margin) is fundamentally viable; the administration overhead problem is the critical variable. The company will either scale to MUR 100M+ and become profitable, or it will remain a capital sink absorbed by the group. EOS cannot be sold to TNS Consumer alone — the entry point is Jean-Pierre Mamet and the Aptis Group leadership team.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Emergency admin cost audit — identify and quantify the structural overhead problem (immediate)</li>
+        <li><span class="sig-num">02</span>90-Minute EOS Meeting with Jean-Pierre Mamet — group-level conversation, not TNS Consumer alone (Month 1)</li>
+        <li><span class="sig-num">03</span>Aptis Group Focus Day — Accountability Chart, group V/TO outline, subsidiary ownership model (Month 2)</li>
+        <li><span class="sig-num">04</span>TNS Consumer Integrator appointed — dedicated GM with P&amp;L ownership (Month 3)</li>
+        <li><span class="sig-num">05</span>Scorecard and first Rocks launched — weekly L10 Meeting installed for TNS Consumer leadership team (Month 4)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="report-footer">
+  <div>TNS Consumer Goods Company Limited — Comprehensive Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (16 April 2026) · aptis.mu · tnsconsumer.mu · ZoomInfo · LinkedIn · Business Magazine Mauritius</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
