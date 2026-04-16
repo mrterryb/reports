@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aptis Group Reports</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --line: #dbe4f0;
+      --blue: #1d5fd0;
+      --blue-dark: #1547a0;
+      --blue-soft: #eef4ff;
+      --shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top left, #ffffff 0%, #f4f7fb 45%), linear-gradient(to bottom, #f4f7fb, #eef3f9);
+    }
+    .wrap { max-width: 980px; margin: 56px auto; padding: 0 24px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+    .hero { padding: 40px 40px 24px; border-bottom: 1px solid var(--line); background: linear-gradient(135deg, #ffffff 0%, #f7fbff 100%); }
+    .eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+    h1 { margin: 0; font-size: 44px; line-height: 1.03; letter-spacing: -0.03em; }
+    .sub { margin: 14px 0 0; max-width: 760px; font-size: 16px; line-height: 1.65; color: var(--muted); }
+    .section { padding: 30px 40px 36px; }
+    .section-title { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .section-divider { margin: 0 0 18px; border: none; border-top: 1px solid var(--line); }
+    .report-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .report-link {
+      display: block; text-decoration: none; color: inherit;
+      border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px;
+      background: #fbfdff;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+    }
+    .report-link:hover { transform: translateY(-2px); border-color: #bfd2f3; box-shadow: 0 10px 22px rgba(29,95,208,0.08); background: #ffffff; }
+    .report-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+    .pill { display: inline-block; padding: 4px 8px; border-radius: 999px; background: var(--blue-soft); color: var(--blue-dark); font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    .pill.green { background: #edfdf5; color: #0a7a45; }
+    .pill.amber { background: #fff8ec; color: #9a5a00; }
+    .pill.red { background: #fff1f0; color: #b52a2a; }
+    .arrow { font-size: 20px; color: var(--blue); line-height: 1; }
+    .report-name { font-size: 20px; font-weight: 700; line-height: 1.25; margin: 0 0 4px; }
+    .report-meta { margin: 0 0 6px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+    .eos-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px; background: var(--blue-soft); color: var(--blue-dark); }
+    .note { margin-top: 18px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: #fcfdff; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .footer { padding: 20px 40px 28px; border-top: 1px solid var(--line); background: #fcfdff; color: var(--muted); font-size: 13px; }
+    @media (max-width: 760px) {
+      .wrap { margin: 28px auto; }
+      .hero, .section, .footer { padding-left: 20px; padding-right: 20px; }
+      h1 { font-size: 34px; }
+      .report-grid { grid-template-columns: 1fr; }
+      .report-name { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+
+      <div class="hero">
+        <div class="eyebrow">LMA Growth Partners</div>
+        <h1>Aptis Group</h1>
+        <p class="sub">Company intelligence reports covering the Aptis Holdings group — a Mauritius-based diversified group led by Oscar Mamet (Group CEO), spanning distribution, FMCG, hospitality, real estate, healthcare and professional services.</p>
+      </div>
+
+      <!-- PARENT -->
+      <div class="section">
+        <h2 class="section-title">Parent Company</h2>
+        <hr class="section-divider">
+        <div class="report-grid">
+          <a class="report-link" href="Aptis_Company_Analysis_16April2026.html">
+            <div class="report-top">
+              <span class="pill">Holding Company</span>
+              <span class="arrow">→</span>
+            </div>
+            <h3 class="report-name">Aptis Holdings</h3>
+            <p class="report-meta">Aptis Holdings Ltd · April 2026</p>
+            <span class="eos-badge">EOS 7/10</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- OPERATING SUBSIDIARIES -->
+      <div class="section" style="padding-top:0;">
+        <h2 class="section-title">Operating Subsidiaries &amp; Associates</h2>
+        <hr class="section-divider">
+        <div class="report-grid">
+
+          <a class="report-link" href="TNSTabacco_Company_Analysis_16April2026.html">
+            <div class="report-top">
+              <span class="pill">Distribution</span>
+              <span class="arrow">→</span>
+            </div>
+            <h3 class="report-name">TNS Tobacco</h3>
+            <p class="report-meta">TNS Tobacco Company Ltd · April 2026</p>
+            <p class="report-meta">Sole BAT distributor · MUR 1.89B revenue · ~40 staff</p>
+            <span class="eos-badge">EOS 5.9/10</span>
+          </a>
+
+          <a class="report-link" href="TNSConsumer_Company_Analysis_16April2026.html">
+            <div class="report-top">
+              <span class="pill">FMCG</span>
+              <span class="arrow">→</span>
+            </div>
+            <h3 class="report-name">TNS Consumer</h3>
+            <p class="report-meta">TNS Consumer Goods Company Ltd · April 2026</p>
+            <p class="report-meta">FMCG distribution · MUR 49M revenue · Loss-making</p>
+            <span class="eos-badge">EOS 5.1/10</span>
+          </a>
+
+          <a class="report-link" href="LArtigiano_Company_Analysis_16April2026.html">
+            <div class="report-top">
+              <span class="pill amber">50% Associate</span>
+              <span class="arrow">→</span>
+            </div>
+            <h3 class="report-name">L'Artigiano</h3>
+            <p class="report-meta">L'artigiano Ltd · April 2026</p>
+            <p class="report-meta">Italian restaurant group · 50% Aptis / 50% M&amp;D Gestion</p>
+            <span class="eos-badge">EOS 6.4/10</span>
+          </a>
+
+          <a class="report-link" href="BarnesMauritius_Company_Analysis_16April2026.html">
+            <div class="report-top">
+              <span class="pill green">Priority Target</span>
+              <span class="arrow">→</span>
+            </div>
+            <h3 class="report-name">Barnes Mauritius</h3>
+            <p class="report-meta">OLOA (Holidays) Ltd · April 2026</p>
+            <p class="report-meta">Luxury real estate · Acquired May 2025 · New GM · 35 staff</p>
+            <span class="eos-badge">EOS 7.5/10</span>
+          </a>
+
+          <a class="report-link" href="HarleyStreetFC_Company_Analysis_16April2026.html">
+            <div class="report-top">
+              <span class="pill">Healthcare</span>
+              <span class="arrow">→</span>
+            </div>
+            <h3 class="report-name">Harley Street Fertility Centre</h3>
+            <p class="report-meta">Harley Street Fertility Centre (Mauritius) Ltd · April 2026</p>
+            <p class="report-meta">Fertility clinic · 90% Aptis · MUR 67M revenue</p>
+            <span class="eos-badge">EOS 5.5/10</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- INFRASTRUCTURE -->
+      <div class="section" style="padding-top:0;">
+        <h2 class="section-title">Infrastructure &amp; Services Entities</h2>
+        <hr class="section-divider">
+        <div class="report-grid">
+
+          <a class="report-link" href="AptisProperty_Company_Analysis_16April2026.html">
+            <div class="report-top">
+              <span class="pill">Property Vehicle</span>
+              <span class="arrow">→</span>
+            </div>
+            <h3 class="report-name">Aptis Property</h3>
+            <p class="report-meta">APTIS Property Company Ltd · April 2026</p>
+            <p class="report-meta">Holds Hermes House · MUR 286M investment properties</p>
+            <span class="eos-badge">EOS 5.5/10</span>
+          </a>
+
+          <a class="report-link" href="AptisServices_Company_Analysis_16April2026.html">
+            <div class="report-top">
+              <span class="pill">Shared Services</span>
+              <span class="arrow">→</span>
+            </div>
+            <h3 class="report-name">Aptis Services</h3>
+            <p class="report-meta">APTIS Services Company Ltd · April 2026</p>
+            <p class="report-meta">Group shared services · 60–120 staff · Negative equity</p>
+            <span class="eos-badge">EOS 6.5/10</span>
+          </a>
+
+          <a class="report-link" href="Navitas_Company_Analysis_16April2026.html">
+            <div class="report-top">
+              <span class="pill amber">Associate</span>
+              <span class="arrow">→</span>
+            </div>
+            <h3 class="report-name">Navitas Corporate Services</h3>
+            <p class="report-meta">Navitas Corporate Services Ltd · April 2026</p>
+            <p class="report-meta">Corporate secretarial · MUR 28M revenue · New CEO</p>
+            <span class="eos-badge">EOS 6.0/10</span>
+          </a>
+
+        </div>
+
+        <div class="note">
+          <strong>EOS entry strategy:</strong> Primary target is Oscar Mamet at Aptis Holdings / Aptis Services level. Immediate standalone opportunity: Barnes Mauritius (François Colin, new GM — post-acquisition transition is a classic EOS trigger). L'Artigiano and Navitas are viable standalone conversations via Daniela Quaranta and Julien Rey respectively.
+        </div>
+      </div>
+
+      <div class="footer">
+        Hosted on GitHub Pages · LMA Growth Partners · Aptis Group reports index · April 2026
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
