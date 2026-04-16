@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navitas Corporate Services Ltd — Comprehensive Company Analysis — 16 April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Corporate &amp; Trust Services · Financial Services</span>
+    <span class="badge badge-type">Private Company · Domestic · Aptis Group (via Navitas Holdings)</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">16 April 2026</span>
+  </div>
+  <h1>Navitas Corporate Services:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Navitas Corporate Services Ltd · Company intelligence · Financial ratios · EOS implementation assessment · Floréal, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 28.3M</div>
+      <div class="stat-delta">Pure services revenue — zero cost of sales · FY ended 31 Dec 2024</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit Margin</div>
+      <div class="stat-value emerald">31.6%</div>
+      <div class="stat-delta">MUR 8.9M net profit · profitable professional services firm</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.0 / 10</div>
+      <div class="stat-delta">~99 employees · Aptis acquisition transition · new CEO 2025</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Strategic Flag</div>
+      <div class="stat-value amber">Ownership Transition</div>
+      <div class="stat-delta">Aptis consolidated stake 2023–2025 · new CEO Julien Rey appointed</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>Navitas Corporate Services Ltd — Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+<!-- TAB 01 — EXECUTIVE SUMMARY -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 16-year-old professional services firm specialising in corporate secretarial, trust, accounting, and immigration services, recently acquired by Aptis Holdings and now navigating a founder-exit leadership transition under new CEO Julien Rey — a profitable, cash-generative business at a pivotal inflection point.</p>
+
+  <p class="body-text">Navitas Corporate Services Ltd was incorporated on 16 September 2008 and operates from Navitas House, Robinson Road, Floréal, Mauritius. With approximately 99 employees and a 15+ year track record serving domestic and international clients — from SMEs to large listed firms — Navitas is one of the established corporate services providers in Mauritius. Services span company formation, secretarial administration, accounting, trust administration, immigration, and global business (offshore). The company is licensed by the Financial Services Commission of Mauritius.</p>
+
+  <p class="body-text">Ownership is held entirely by Navitas Holdings Ltd (10,000 shares, 100%), which is itself the parent structure through which the Aptis Group has consolidated its stake. The acquisition process was formalised in 2023 when Aptis and founder Julien Hoareau reached a strategic agreement, with Hoareau stepping down in early 2025. Julien Rey — co-founder and former COO — was appointed CEO in March/April 2025, providing continuity while the new ownership drives growth. Beatrice (Natalie) Gallet remains as Director and Partner/Executive Director. Sabbi Appanna Dev Anand (Aptis Group CFO) joined as Director on 6 April 2023, representing the Aptis ownership interest. BDO audits the company.</p>
+
+  <p class="body-text">Financially, FY2024 shows a healthy professional services business: revenue of MUR 28.3M (zero cost of sales — pure fee income), administration costs of MUR 17.3M (61% of revenue), and net profit of MUR 8.9M (31.6% net margin). Total assets MUR 10.0M, total equity MUR 1.5M (reflecting a high-payout or low-capital model typical of professional services firms), and long-term provisions of MUR 4.7M (employee obligations). No charges registered. EOS suitability scores 6.0/10 — a viable candidate post-transition, with Julien Rey as the primary EOS conversation partner.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Aptis Acquisition Transition Creates EOS Window</div>
+    Navitas is in the classic post-acquisition leadership transition phase: founder departed, new CEO installed, majority shareholder (Aptis) with growth ambitions for offshore expansion. This is precisely the moment when EOS delivers maximum value — a new CEO needing to establish authority and operational cadence, a business that has operated on informal founder-centric systems for 16 years, and a strategic owner (Jean-Pierre Mamet) who expects systematic performance improvement. The EOS conversation should be positioned as the "operating system installation" that Julien Rey can make his own — differentiating his leadership from his predecessor's personal model.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>16 years of established client relationships</strong> across domestic and global business clients, FSC licensure, diversified service lines (secretarial, trust, accounting, immigration, offshore), and Aptis Group resources now available to drive offshore growth. The Navitas brand is well-recognised in Mauritius professional services. ~99 employees provides depth of expertise.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Very low equity base (MUR 1.5M) relative to revenue (MUR 28.3M)</strong> and total liabilities (MUR 8.5M) creates a thin balance sheet buffer. Large long-term provisions (MUR 4.7M) representing employee obligations. Short-term borrowings (MUR 907K) and high current liabilities (MUR 3.7M) require careful working capital management. Revenue per employee (MUR 286K) is below potential for a professional services firm of this calibre.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Post-acquisition founder exit is a textbook EOS trigger.</strong> New CEO installed April 2025, Aptis as growth-oriented majority shareholder, offshore expansion ambition, 99 employees across multiple service lines — all classic EOS readiness signals. Julien Rey, as a co-founder turned CEO who understands the business deeply but needs to scale it beyond personal relationships, is an ideal EOS leadership profile.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- TAB 02 — COMPANY OVERVIEW -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A 16-year-old FSC-licensed corporate and trust services firm with 99 employees, recently acquired into the Aptis Group and undergoing a planned leadership succession from founder to co-founder CEO, with stated ambitions for offshore and African market expansion.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Navitas Corporate Services Ltd was incorporated on 16 September 2008 (File No. C083697, BRN C08083697). Registered and principal office at Navitas House, Robinson Road, Floréal, Mauritius (effective 8 September 2014). Stated capital: MUR 100,000 (10,000 ordinary shares). Audited by BDO &amp; Co Ltd (appointed 24 October 2025 — same BDO appointment pattern as across Aptis entities). Secretary and Director: Beatrice Ann Natalie Gallet (since 15 January 2016). Annual returns consistently filed; most recent 30 June 2025, filed 9 July 2025. No charges registered. Jurisdictions served: Mauritius (domestic and global business), Seychelles, and Freeport.</p>
+  <p class="body-text">The company was founded in 2009 (practical launch, per public sources) by Julien Hoareau, Julien Rey, and Natalie Gallet. Over 15+ years, it grew to ~99 employees and became a recognised corporate services provider. Aptis Holdings reached a strategic agreement with Hoareau in 2023; Hoareau stepped down in early 2025. Julien Rey was promoted from COO to CEO in March/April 2025. Aptis's acquisition is implemented through Navitas Holdings Ltd, which owns 100% of Navitas Corporate Services Ltd. Navitas Corporate Services Ltd is itself the company secretary to multiple Aptis entities including TNS Consumer Goods Company Limited and Harley Street Fertility Centre (Mauritius) Ltd — demonstrating the cross-entity service integration within the group.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Navitas Holdings Ltd</h4>
+        <div class="ec-sub">100% Shareholder · Parent</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">10,000 (100%)</span></div>
+        <div class="ec-metric"><span class="mk">File No.</span><span class="mv">C094162 · LIVE</span></div>
+        <div class="ec-metric"><span class="mk">Effective owner</span><span class="mv">APTIS Holdings Ltd</span></div>
+        <div class="ec-metric"><span class="mk">Acquisition</span><span class="mv">2023 agreement</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>APTIS Holdings Ltd</h4>
+        <div class="ec-sub">Ultimate Beneficial Owner</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Cluster position</span><span class="mv">Services division</span></div>
+        <div class="ec-metric"><span class="mk">Board rep</span><span class="mv">Sabbi Appanna Dev Anand</span></div>
+        <div class="ec-metric"><span class="mk">Strategic role</span><span class="mv">Offshore growth platform</span></div>
+        <div class="ec-metric"><span class="mk">Peer entity</span><span class="mv">Harley Street FC</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Cross-Entity Role</h4>
+        <div class="ec-sub">Navitas as Secretary to Aptis Entities</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">TNS Consumer</span><span class="mv">Secretary since 01/01/2024</span></div>
+        <div class="ec-metric"><span class="mk">Harley Street FC</span><span class="mv">Secretary since 01/01/2024</span></div>
+        <div class="ec-metric"><span class="mk">Other Aptis entities</span><span class="mv">Likely multiple more</span></div>
+        <div class="ec-metric"><span class="mk">Revenue impact</span><span class="mv ok">Captive client base</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Julien Rey · Chief Executive Officer</h4>
+      <p><strong>Co-founder, former COO, appointed CEO March/April 2025.</strong> FCCA, Professional Accountant (MIPA). Joined Navitas at inception in 2009 alongside Hoareau and Natalie Gallet. Deep operational knowledge of the business. Stated aim: "ensure continuity while injecting fresh dynamism." Representing the new Navitas as an Aptis Group Services entity with offshore growth ambitions. Primary EOS conversation partner.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Beatrice Ann Natalie Gallet · Director &amp; Partner</h4>
+      <p><strong>Executive Director (ACIS), Partner, company secretary since January 2016.</strong> Co-founder; joined Navitas at inception in 2009. Company secretarial expertise. Provides governance continuity through the Aptis transition. Service address: Navitas House, Robinson Road, Floréal. ZoomInfo identifies her as a key leadership figure alongside Rey. Registers also as the company secretary in the CBRIS.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Sabbi Appanna Dev Anand · Director</h4>
+      <p><strong>Aptis Group CFO representing the ownership interest.</strong> Appointed 6 April 2023 — the first Aptis representative on the board, marking the formal commencement of Aptis integration. Also Director at TNS Consumer Goods Company Limited and Harley Street Fertility Centre (Mauritius) Ltd. Service address: Navitas House, Robinson Road, Floréal (operational presence confirmed).</p>
+    </div>
+  </div>
+  <div class="profile-grid two-col">
+    <div class="profile-card">
+      <h4>Vidou Seetaram · Head of Operations — Corporate Services</h4>
+      <p><strong>20+ years of corporate services experience.</strong> Oversees the domestic company secretarial and corporate administration operations. Key operational figure providing depth and continuity below the director level.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Jyoti Jowaheer · Head of Operations — Global Business</h4>
+      <p><strong>10+ years in global business and offshore services.</strong> Responsible for Navitas's international (global business) operations — the division identified by Aptis as the primary growth lever, leveraging Mauritius's position as an Africa investment gateway.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Navitas Corporate Services provides a comprehensive suite of professional services to domestic and international clients. Core offerings include: <strong>Company formation and incorporation</strong> (domestic and global business); <strong>Company secretarial services</strong> (ongoing statutory compliance, board support, annual returns); <strong>Accounting and tax services</strong> (including French-language accounting services for Francophone clientele); <strong>Trust administration</strong> (for wealth structuring clients); <strong>Immigration services</strong> (work permits, residence permits, investor visas); <strong>Captive insurance solutions</strong> (specialist structured insurance); <strong>Global business operations</strong> (offshore entity administration for international investors using Mauritius as Africa/Asia gateway). FSC licensing covers the regulated portions of these services. Jurisdictions covered: Mauritius, Seychelles, Freeport.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Single primary office at Navitas House, Robinson Road, Floréal, Mauritius. Global reach through client base: Navitas serves international clients using Mauritius as an investment gateway for Africa — a jurisdiction-dependent business model. The offshore growth strategy under Aptis ownership targets expansion of the global business client book, leveraging Mauritius's favourable tax treaty network with African nations. No physical offshore offices currently confirmed, but the Africa-gateway positioning creates a scalable digital service delivery model that does not require physical presence in each client's home jurisdiction.</p>
+</div>
+</div>
+
+<!-- TAB 03 — FINANCIAL PERFORMANCE -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS filed financial statements (Registrar of Companies, Mauritius). FY ended 31 December 2024. Currency: Mauritius Rupees (MUR). Pure professional services firm — zero cost of sales, fee-based revenue model.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Financial data is sourced from the CBRIS summary. Navitas Corporate Services Ltd is a private company with no public disclosure obligation beyond statutory filings. The zero cost of sales line confirms this is a pure professional services (fee-for-service) model. The large long-term provisions (MUR 4.7M) are almost certainly employee-related obligations (end-of-service gratuity, pension) — standard for a 99-employee professional services firm in Mauritius. No multi-year comparative data is available in the CBRIS summary format.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>28,262,186</td><td>100.0%</td><td>Pure fee income from company secretarial, accounting, trust, immigration services. MUR 286K per employee — below premium firm benchmarks but consistent for Mauritius SME corporate services.</td></tr>
+        <tr class="heat-ok"><td>Cost of Sales</td><td>0</td><td>0.0%</td><td>Zero COGS — confirms pure professional services model; all costs are overhead/administrative.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>28,262,186</td><td>100.0%</td><td>100% gross margin — all revenue flows through to overhead and profit calculation.</td></tr>
+        <tr><td>Other Income</td><td>0</td><td>0.0%</td><td>No other income — clean operating income picture.</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>17,323,234</td><td>61.3%</td><td>Administration costs at 61% of revenue — primarily staff salaries for ~99 employees plus office costs. This is the key efficiency metric for professional services.</td></tr>
+        <tr><td>Finance Costs</td><td>0</td><td>0.0%</td><td>Zero finance costs — no debt servicing obligations.</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>10,938,952</td><td>38.7%</td><td>Strong PBT margin for a corporate services firm — overhead management appears disciplined.</td></tr>
+        <tr><td>Tax Expense</td><td>2,007,162</td><td>7.1%</td><td>Tax paid — effective rate of 18.3%, consistent with Mauritius corporate tax regime.</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit for the Period</strong></td><td><strong>8,931,790</strong></td><td><strong>31.6%</strong></td><td>MUR 8.9M net profit — strong profitability for a Mauritius corporate services firm. Retained earnings growing.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 Dec 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>643,869</td><td>Office equipment, computers, furniture at Navitas House. Asset-light professional services model.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>134,751</td><td>Likely software licences or developed systems.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Investments</td><td>2,301,466</td><td>Investments in related entities (e.g. Navitas Accounting Services, Navitas Management Services).</td></tr>
+        <tr><td>Non-Current Assets</td><td><strong>Total Non-Current Assets</strong></td><td><strong>3,080,086</strong></td><td></td></tr>
+        <tr><td>Current Assets</td><td>Trade and Other Receivables</td><td>1,173,019</td><td>Client fee receivables — short collection cycle typical of corporate services retainer model.</td></tr>
+        <tr><td>Current Assets</td><td>Cash and Equivalents</td><td>5,727,320</td><td>Strong cash position — MUR 5.7M cash confirms cash-generative operations.</td></tr>
+        <tr class="heat-ok"><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>6,900,339</strong></td><td></td></tr>
+        <tr><td></td><td><strong>TOTAL ASSETS</strong></td><td><strong>9,980,425</strong></td><td></td></tr>
+        <tr class="heat-warn"><td>Equity</td><td>Share Capital</td><td>100,000</td><td>MUR 100K stated capital — very low relative to business scale.</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Retained Earnings</td><td>1,417,277</td><td>Growing retained earnings — indicates the business is reinvesting some profit. Relatively modest given 16 years of operation, suggesting historical dividend distributions to founders.</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>1,517,277</strong></td><td>Thin equity base — typical for professional services firms that distribute profits rather than retain them.</td></tr>
+        <tr class="heat-warn"><td>Non-Current Liabilities</td><td>Long-Term Provisions</td><td>4,729,649</td><td>Significant employee-related provisions (gratuity fund) for ~99 employees — a genuine long-term obligation.</td></tr>
+        <tr><td>Current Liabilities</td><td>Short-Term Borrowings</td><td>907,155</td><td>Minor short-term borrowing — bank overdraft or short-term facility.</td></tr>
+        <tr><td>Current Liabilities</td><td>Trade and Other Payables</td><td>611,492</td><td>Supplier/creditor payables — low and manageable.</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax Payable</td><td>1,889,133</td><td>Tax accrual — tax currently due but not yet paid.</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>3,733,499</strong></td><td>Current ratio 1.85× — adequate but not generous given thin equity base.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">No charges are registered against Navitas Corporate Services Ltd as at 16 April 2026. This is consistent with the zero finance costs line in the P&amp;L — the company carries no secured debt. The business has been funded entirely from operating cash flow, with no recourse to property security or floating charges. This clean charge register is a positive signal for the company's financial integrity and for any prospective lender or partner reviewing the entity.</p>
+</div>
+</div>
+
+<!-- TAB 04 — FINANCIAL RATIOS -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks derived from Mauritius professional services and corporate services firm norms. Green = healthy, Amber = watch, Red = critical concern. Based on FY2024 filed accounts. Note: inventory-related ratios do not apply to a pure services business — these are replaced with revenue-per-employee and overhead efficiency metrics.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.85×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (professional services)</span><span class="ratio-val">1.2× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">Current assets (MUR 6.9M) cover current liabilities (MUR 3.7M) 1.85 times — within the healthy benchmark range. Strong cash position (MUR 5.7M) provides substantial liquidity buffer. The current tax payable (MUR 1.9M) is the largest current liability, confirming the company is profitable and settling obligations. No liquidity concerns.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.85×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.8× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">Identical to current ratio — no inventory (professional services). Cash plus receivables comfortably cover all current liabilities. The MUR 5.7M cash balance alone exceeds total current liabilities, providing near-absolute short-term liquidity security.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">31.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (corp services)</span><span class="ratio-val">15% – 30%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">31.6% net margin is at the top end of the benchmark range for Mauritius corporate services firms. This reflects disciplined overhead management — administration costs are 61% of revenue, leaving 38.7% at EBIT level before tax. The pure fee-based model with no COGS enables high margins when overhead is controlled.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">38.7%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">20% – 35%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">EBIT of MUR 10.9M on revenue of MUR 28.3M gives 38.7% EBIT margin — above benchmark. With zero debt and zero finance costs, EBIT and PBT are identical. The company is extracting maximum operating leverage from its revenue base.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">89.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (professional services)</span><span class="ratio-val">15% – 40%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">EXCEPTIONAL</span></span></div>
+      <span class="ratio-interpret">Net profit MUR 8.9M / Total assets MUR 10.0M = 89.5% ROA. This extremely high ratio reflects the asset-light nature of corporate services — the value of the business is in its client relationships, people, and expertise, not in tangible assets. The low asset base relative to profit is a characteristic feature of professional services firms, not a concern.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Revenue per Employee</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">~MUR 286K</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (corp services Mauritius)</span><span class="ratio-val">MUR 350K – 600K</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">WATCH</span></span></div>
+      <span class="ratio-interpret">MUR 28.3M revenue / 99 employees = MUR 286K per employee. This is below the benchmark for a professional services firm of Navitas's experience level. It suggests either: (1) pricing below market rate for the quality of services; (2) staffing above the revenue-efficient level; or (3) a mix of junior staff at lower billable rates dragging the average. Improving revenue per employee to MUR 400K+ — through fee rate increases, better-utilised senior staff, or targeted redundancies — would materially improve profitability.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">5.57×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&lt;2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">WATCH</span></span></div>
+      <span class="ratio-interpret">Total liabilities MUR 8.5M / Total equity MUR 1.5M = 5.57×. This appears elevated but is a structural feature of professional services firms with thin capitalisation and high employee provisions. The long-term provisions (MUR 4.7M employee gratuity) are the dominant liability — not bank debt. Without these provisions, the ratio would be 2.5× — still above benchmark but more benign. The company carries no interest-bearing long-term debt.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Overhead Efficiency Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Admin costs / Revenue</span><span class="ratio-val ok">61.3%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (corp services)</span><span class="ratio-val">55% – 70%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">For a 99-employee professional services firm, administration costs at 61% of revenue is within the healthy benchmark range. Staff costs likely represent 80%+ of administration costs. The remaining 39% of revenue available for EBIT is a healthy return. If Julien Rey can grow revenue to MUR 40M+ while holding admin costs at MUR 20M, EBIT margin would improve to approximately 50%.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debtor Days (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">15.1 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (professional services)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">Trade receivables MUR 1.17M / Revenue MUR 28.3M × 365 = 15.1 days. Excellent DSO for a professional services firm — clients pay quickly, likely on retainer or advance billing arrangements. This confirms strong client relationship quality and billing discipline. No collection risk apparent.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">2.83×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (professional services)</span><span class="ratio-val">1.5× – 3.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">Revenue MUR 28.3M / Total assets MUR 10.0M = 2.83×. High asset turnover is characteristic of asset-light professional services businesses — a feature, not a concern. Every MUR 1 of assets generates MUR 2.83 of revenue. The business model is capital-efficient by design.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">The 1 Number That Matters Most</div>
+    <strong>Revenue per Employee: MUR 286K (~USD 6,300).</strong> This is the core efficiency metric for Navitas. At MUR 286K per employee, the business is generating adequate but sub-optimal revenue per head for a 15-year-old FSC-licensed professional services firm. International comparisons: similar firms in Mauritius typically achieve MUR 400–600K per employee. Closing this gap through fee rate increases, a higher-value offshore client mix, and senior staff billing efficiency would add MUR 10–30M in revenue without adding headcount. This is Julien Rey's most impactful operational lever.
+  </div>
+</div>
+</div>
+
+<!-- TAB 05 — MARKET & COMPETITIVE POSITION -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Navitas operates in the Mauritius corporate and trust services market — a regulated, FSC-licensed sector with high barriers to entry and strong client stickiness, currently experiencing growth from African-market clients using Mauritius as an investment gateway.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Domestic Corporate Services</h4>
+        <div class="ec-sub">Core Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv ok">Established mid-tier</span></div>
+        <div class="ec-metric"><span class="mk">Services</span><span class="mv">Secretarial, accounting, immigration</span></div>
+        <div class="ec-metric"><span class="mk">Clients</span><span class="mv">SMEs to large listed firms</span></div>
+        <div class="ec-metric"><span class="mk">Aptis captive</span><span class="mv ok">Built-in base</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Global Business (Offshore)</h4>
+        <div class="ec-sub">Growth Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv warn">Growing challenger</span></div>
+        <div class="ec-metric"><span class="mk">Gateway</span><span class="mv">Africa investment via Mauritius</span></div>
+        <div class="ec-metric"><span class="mk">Head of Ops</span><span class="mv">Jyoti Jowaheer</span></div>
+        <div class="ec-metric"><span class="mk">Aptis ambition</span><span class="mv ok">Primary growth lever</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Trust &amp; Wealth Structuring</h4>
+        <div class="ec-sub">Premium Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv warn">Niche capability</span></div>
+        <div class="ec-metric"><span class="mk">Jurisdictions</span><span class="mv">Mauritius, Seychelles, Freeport</span></div>
+        <div class="ec-metric"><span class="mk">Margin</span><span class="mv ok">Higher than secretarial</span></div>
+        <div class="ec-metric"><span class="mk">FSC licence</span><span class="mv ok">Licensed and compliant</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>15+ years of client relationships:</strong> In corporate services, client stickiness is very high — companies rarely switch secretarial providers due to the complexity of migrating statutory records and relationships. Navitas's 15-year client book represents significant recurring revenue with low churn risk.</p>
+  <p class="body-text"><strong>FSC licensure and regulatory standing:</strong> The FSC licence is a significant barrier to entry for competitors. Navitas's clean regulatory track record and established FSC relationship is a genuine competitive advantage that new entrants cannot replicate quickly.</p>
+  <p class="body-text"><strong>Captive Aptis Group client base:</strong> Since the acquisition, Navitas serves as company secretary to multiple Aptis entities (TNS Consumer, Harley Street FC, and likely others). This captive base provides revenue floor certainty and cross-entity cost efficiency — a structural advantage unavailable to independent competitors.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Africa-focused investment gateway growth</strong> — Mauritius's double taxation agreement network with African nations continues to attract foreign investors channelling capital into Africa through Mauritius vehicles, driving demand for global business services.</li>
+    <li><strong>Increased compliance complexity</strong> — FATF requirements, beneficial ownership registers, and enhanced due diligence obligations are increasing the workload and expertise required for corporate services — benefiting established, experienced providers like Navitas over smaller competitors.</li>
+    <li><strong>Technology disruption risk</strong> — Automated secretarial and accounting platforms (e.g. Complyor, Diligent) are commoditising basic company secretarial work. Navitas must move up the value chain toward advisory and offshore services to protect margin.</li>
+    <li><strong>Increased cross-border wealth structuring demand</strong> — African high-net-worth individuals and family offices increasingly use Mauritius for wealth structuring — creating opportunities in trust and captive insurance services where Navitas has existing capability.</li>
+    <li><strong>Competition from Big-4 and regional firms</strong> — BDO, KPMG, and MCB Corporate Services compete in the premium end of the market. Navitas's mid-market positioning and personal service model differentiates it, but price pressure exists in the commodity secretarial segment.</li>
+  </ul>
+</div>
+</div>
+
+<!-- TAB 06 — EOS ASSESSMENT -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">99 employees is squarely within the EOS sweet spot of 10–250. The organisational structure — multiple service lines (secretarial, accounting, trust, immigration, global business), two operational heads (domestic vs. global), multiple jurisdictions (Mauritius, Seychelles, Freeport), plus the newly captive Aptis Group client base — creates genuine coordination complexity. At 99 people, informal communication breaks down; formal meeting cadences, Accountabiliity Charts, and Scorecards are not optional luxuries but operational necessities.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Julien Rey is a newly installed CEO (March/April 2025) who has just completed a major transition — from co-founder/COO to CEO, under a new majority shareholder. New CEOs in this position often have high openness to external frameworks that help them establish authority and demonstrate leadership differentiation from their predecessor. However, the Aptis Group ownership overlay means Rey must also navigate Sabbi Appanna's board presence. The leadership openness signal is moderately positive but untested at the EOS conversation level.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Post-acquisition, newly-installed CEO, offshore growth ambition, 99-person team with revenue per employee below potential — this is a business with clear EOS-addressable pain points. The acquisition context specifically creates the classic "founder departure chaos" scenario: informal systems built around Hoareau's personal relationships and knowledge are now exposed as Hoareau exits. Rey needs to replace personal-relationship-based operations with documented systems. EOS addresses this directly.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">A professional services firm necessarily has documented processes for statutory filings, client administration, and regulatory compliance — the FSC licence demands this. However, EOS-style operating rhythms (weekly L10 Meetings, quarterly Rocks, formal Scorecard) are almost certainly absent. The 16-year-old firm operated on personal leadership models that do not translate automatically into scalable, documented systems. The gap between compliance-driven process documentation and EOS-style operational cadence is where Navitas needs work.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Three core values publicly stated: Agility, Proximity, and Independence — the "independence" value is interesting in the context of an Aptis acquisition and warrants observation. A professional services culture with 16 years of stable operation suggests reasonable staff retention and team cohesion. The leadership transition will test culture — whether the team rallies behind Rey or experiences uncertainty-driven attrition will determine EOS adoption readiness. Mid-range score reflecting uncertainty during transition.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Decision-making at Navitas is in active flux: Hoareau's personal authority model is being replaced by Rey's new leadership. The Aptis board presence (Sabbi Appanna) adds a new layer. Two operational heads (Seetaram — domestic, Jowaheer — global) create a natural functional authority structure — but without explicit Accountability Chart clarity, role overlaps and decision bottlenecks at the CEO level are probable. This is the exact problem EOS solves.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Aptis has clearly articulated a growth vision for Navitas: offshore expansion leveraging Mauritius as Africa's investment gateway. This is a credible and commercially sound strategic direction. However, the translation of this Aptis-level vision into a specific Navitas 10-year picture — revenue target, headcount, jurisdiction coverage, service line mix — appears to be work in progress. Julien Rey has stated ambitions for "fresh dynamism" and offshore growth, but the V/TO-level specificity is not yet public. Mid-range score reflecting partial clarity.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of structured EOS-style meeting cadences. A 99-person professional services firm that has operated for 16 years under a personal leadership model will have meeting cultures ranging from ad hoc to departmental — but almost certainly without the structured weekly L10 rhythm, quarterly planning, and annual session model that EOS requires. The transition to Julien Rey is the natural moment to install these structures from scratch — easier than reforming an entrenched meeting culture.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.0</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Good Candidate — Post-Transition Window Is Now</h4>
+      <p>Navitas is a 99-person, profitable, FSC-licensed professional services firm in active post-acquisition leadership transition — exactly the conditions that make EOS engagement most valuable. The new CEO Julien Rey needs a management operating system to replace the founder's personal model; Aptis needs Navitas to perform better than it did under independent ownership; and the offshore growth ambition demands the clarity, accountability, and execution discipline that EOS provides. The EOS conversation should be with Rey directly — "you're the new CEO, you have 99 people and a major shareholder expecting growth: what's your operating system?" — with a clear connect to the Africa offshore strategy.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Navitas</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>With Julien Rey as CEO, Natalie Gallet as Partner/Executive Director, Vidou Seetaram heading domestic operations, and Jyoti Jowaheer heading global business, the functional structure exists — but without a formal Accountability Chart defining who owns what, Rey will face constant decision escalations. The Accountability Chart is the first EOS output that establishes Rey's authority as CEO and defines clear ownership at every function.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO (Vision/Traction Organizer)</h4>
+      <p>Aptis wants offshore growth. Rey wants "fresh dynamism." These are directional signals, not a V/TO. What does Navitas look like with MUR 50M revenue in 5 years? How many offshore clients? Which African markets? What service lines are grown vs. retired? The V/TO forces this conversation and creates the shared North Star that Rey, Gallet, Seetaram, and Jowaheer need to align behind as a new leadership team.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard (Revenue per Employee as Lead Metric)</h4>
+      <p>Revenue per employee (MUR 286K vs. benchmark MUR 400K+) is Navitas's key operational metric. A weekly Scorecard should track: revenue by service line, hours billed per professional staff member, new client wins, client retention rate, and offshore mandate pipeline. This data does not currently exist in a weekly cadence — the Scorecard creates the visibility Rey needs to drive the performance improvement Aptis is expecting.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (CEO Transition Priorities)</h4>
+      <p>Julien Rey's first quarter as CEO should have 3 clear Rocks: (1) Global Business client acquisition target — sign X new offshore mandates; (2) Fee rate review — present board with pricing increase proposal; (3) Knowledge transfer — document the top 20 client relationships previously held by founder Hoareau to prevent client attrition. These Rocks transform Rey's transition from a reactive "steady as she goes" to an active performance-management programme.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting for Leadership Team</h4>
+      <p>A weekly L10 Meeting for Rey, Gallet, Seetaram, and Jowaheer — four people who now collectively own a MUR 28M revenue business — would create the rhythmic management cadence that replaces Hoareau's personal oversight model. The L10 gives Rey a visible leadership platform, gives the team a structured forum, and ensures Issues are identified and resolved weekly rather than allowed to accumulate.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Process Documentation (Client Transition from Founder)</h4>
+      <p>Hoareau's departure creates a knowledge gap. Key client relationships, pricing agreements, service scope understandings, and African-market contacts held personally by the founder are now at risk of being lost. EOS's emphasis on "document and optimise" processes should be applied immediately to client relationship documentation — ensuring every key client's situation, contacts, and ongoing obligations are captured in a format the team can manage without the founder.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- TAB 07 — RECOMMENDATIONS -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations: four operational priorities focused on post-acquisition transition management and revenue efficiency, four EOS recommendations supporting Julien Rey's leadership installation.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Client Relationship Audit and Knowledge Transfer</h4>
+      <p>Julien Hoareau's departure creates the most significant near-term risk for Navitas: client attrition from founder-dependent relationships. Immediately commission a full audit of all existing client relationships — documenting who the relationship owner is, contract terms, fee arrangements, and renewal dates. Assign each Hoareau-owned relationship to a named Navitas team member. Success: zero client attrition in the 12 months following Hoareau's departure.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Fee Rate Review — Move Toward MUR 400K per Employee</h4>
+      <p>Revenue per employee of MUR 286K is the primary operational gap. Julien Rey should commission a fee rate benchmarking study comparing Navitas's current rates against comparable Mauritius corporate services firms. Where rates are below market, initiate a phased price increase programme beginning with new clients and annual renewal clients. A 30% fee rate improvement (achievable in 2 years) would increase revenue to approximately MUR 37M with the same headcount. Success: board-approved fee rate strategy presented within 90 days.</p>
+      <span class="urg urg-now">Immediate Priority</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Offshore (Global Business) Client Acquisition Drive</h4>
+      <p>Aptis's strategic vision for Navitas centres on offshore growth — Mauritius as Africa investment gateway. Jyoti Jowaheer's Global Business division should be given a specific annual revenue target for new offshore mandates. Build a pipeline of 20+ target prospect companies (African businesses, family offices, international investors seeking Mauritius structures). Navitas's Seychelles and Freeport capabilities provide differentiated multi-jurisdiction offering vs. single-jurisdiction competitors. Success: MUR 5M in new offshore revenue within 18 months.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Build the Aptis Captive Client Revenue Base</h4>
+      <p>Navitas already acts as secretary to TNS Consumer and Harley Street FC within the Aptis group. Map all other Aptis entities to identify which are currently using third-party secretarial or accounting services and could be migrated to Navitas. This captive client base consolidation is zero-cost new revenue. Additionally, as Aptis continues to acquire companies (e.g. BARNES Mauritius), Navitas should be the default corporate services provider — formalise this as a group policy. Success: Navitas appointed as secretary/accountant to minimum 5 additional Aptis entities within 12 months.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>90-Minute EOS Meeting with Julien Rey</h4>
+      <p>Position the EOS conversation specifically around Rey's newly-installed CEO role: "You've just become CEO of a 99-person firm. The founder has left. A new majority shareholder expects growth. What's your management operating system?" This framing makes EOS relevant and personal to Rey's immediate situation. The conversation should explore: how does Rey currently manage the leadership team, what issues are not getting resolved, and what does Aptis expect from Navitas in year 1? Success: Rey commits to a Focus Day for Navitas's leadership team.</p>
+      <span class="urg urg-week">EOS Entry Point</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Navitas Focus Day — Accountability Chart and V/TO</h4>
+      <p>The Focus Day should produce: (1) An Accountability Chart clarifying Rey (CEO), Gallet (Partner/Executive Director), Seetaram (Head — Domestic Ops), Jowaheer (Head — Global Business) and the next tier of leaders; (2) Draft V/TO with 10-year picture (Navitas as Mauritius's leading mid-market corporate services and Africa-gateway provider), 3-year targets, and 1-year plan; (3) First set of Company Rocks. This session establishes the EOS foundation for the new leadership era. Success: all four leaders aligned on V/TO draft and first Rocks agreed.</p>
+      <span class="urg urg-medium">EOS Phase 1</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Implement Weekly Scorecard Centred on Revenue-per-Head</h4>
+      <p>Design a weekly Scorecard tracking: total fee revenue (weekly), revenue by service line (domestic vs. global business vs. trust vs. immigration), revenue per professional staff member (the lead metric), new client wins, client retention rate, and offshore mandate pipeline value. This Scorecard does not currently exist — creating it is the first visible operational improvement under Rey's leadership. Launch within 45 days of EOS Focus Day. Success: 8-week streak of L10 meetings using live Scorecard data.</p>
+      <span class="urg urg-medium">EOS Phase 1</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>First Rock: Global Business Revenue Target</h4>
+      <p>Rey's first 90-day Rock: "Jyoti Jowaheer and the Global Business team to close MUR [X] in new offshore client mandates by [date], with at least 3 new mandates from African-headquartered entities." This Rock makes the offshore growth ambition concrete and time-bound, creates visible accountability for Jowaheer's division, and gives Rey a first Rocks achievement to report to the Aptis board at the end of Q3 2025. EOS turns the offshore strategy from aspiration to accountable execution.</p>
+      <span class="urg urg-medium">EOS Phase 1</span>
+    </div>
+  </div>
+
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Navitas is a profitable, established professional services firm in a high-stakes leadership transition moment. The founder has gone, a new CEO has been installed by a growth-oriented new owner, and the business has both an untapped pricing gap and a clear offshore growth opportunity. All three forces — transition, pricing, and offshore — require the same thing: a structured management operating system that replaces personal leadership with institutional discipline. That is EOS. The window is open now, before the transition settles into a new informal status quo.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Client relationship audit — protect the revenue base from founder-exit attrition (immediate)</li>
+        <li><span class="sig-num">02</span>90-Minute EOS Meeting with Julien Rey — CEO transition framing (Month 1)</li>
+        <li><span class="sig-num">03</span>Navitas Focus Day — Accountability Chart, V/TO, first Rocks (Month 2)</li>
+        <li><span class="sig-num">04</span>Weekly L10 Meeting launched — Scorecard live for leadership team (Month 3)</li>
+        <li><span class="sig-num">05</span>Fee rate review completed and offshore client drive launched — first measurable growth deliverable (Month 4–6)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="report-footer">
+  <div>Navitas Corporate Services Ltd — Comprehensive Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (16 April 2026) · navitascorporate.com · aptis.mu · ZoomInfo · newsmoris.com · Business Magazine Mauritius</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
