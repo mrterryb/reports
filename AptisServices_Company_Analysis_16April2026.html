@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APTIS Services Company Limited — Comprehensive Company Analysis — 16 April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Management Consultancy · Group Services</span>
+    <span class="badge badge-type">Private Company · Domestic · Mauritius</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">16 April 2026</span>
+  </div>
+  <h1>APTIS Services:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">APTIS Services Company Limited · Company intelligence · Financial ratios · EOS implementation assessment · Riche Terre, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 58.8M</div>
+      <div class="stat-delta">Management services income · Year ended 31 Dec 2024</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Loss FY2024</div>
+      <div class="stat-value red">MUR -1.4M</div>
+      <div class="stat-delta">Loss-making · Negative equity of MUR -2.3M</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.5 / 10</div>
+      <div class="stat-delta">Good fit · Operational complexity evident</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Negative Equity</div>
+      <div class="stat-delta">Retained losses of MUR -2.3M · Insolvent on paper</div>
+    </div>
+  </div>
+</header>
+
+<div class="prepared-for">
+  <span>APTIS Services Company Limited — Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">APTIS Services is the operational engine and shared services hub of the APTIS Group — a 7-year-old management consultancy entity with MUR 58.8M in revenue but a loss-making P&amp;L, negative equity, and a balance sheet that reveals the cost of running a group-wide services function that charges less than it costs to operate.</p>
+
+  <p class="body-text">APTIS Services Company Limited (File No. C162742, BRN: C19162742) was incorporated on 5 March 2019 — one day before its sister company APTIS Property — and shares an identical governance structure: the same four directors, the same secretary (Navitas Corporate Services Ltd, appointed January 2024), the same auditor (BDO, appointed October 2025), and the same registered office at 2nd Floor, Hermes House, Inova Business Park, Riche Terre. Its registered business activity is "Management consultancy activities (Firm)" — confirming its role as the group's centralised services and management function.</p>
+
+  <p class="body-text">The company is 100% owned by APTIS Holdings Ltd, the ultimate parent of the APTIS Group. The APTIS Group has evolved from TNS Tobacco (founded 2009 with an exclusive BAT distribution agreement) into a diversified group with five activity poles: Distribution (TNS Tobacco, TNS Consumer, L'Artigiano, Racso), Commerce (Resiglas), Services (Navitas, Harley Street Fertility Centre), Investment (Bigarade sur Mer, Dominos), and Real Estate (APTIS Property, BARNES Mauritius). APTIS Services appears to act as the management company providing shared services — HR, finance, administration, commercial support — across these divisions.</p>
+
+  <p class="body-text">Financially, FY2024 is concerning. Revenue is a healthy MUR 58.8M, but administration costs of MUR 60.3M exceed revenue, producing a loss before tax of MUR -1.5M and a net loss of MUR -1.4M. With accumulated retained losses of MUR -2.3M, total equity is negative at MUR -2.3M (share capital of MUR 10,000 less accumulated deficit). Current liabilities of MUR 5.9M (all trade payables) against current assets of MUR 4.1M give a current ratio of 0.69× — below benchmark but workable. The MUR 2.1M long-term provisions suggest employee benefit obligations. This is a company that is operating as a cost centre for the group, with revenue likely being inter-company management fees that do not fully cover operating costs — a model that works only as long as the parent group chooses to sustain it.</p>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">Key Finding — Group Cost Centre Operating Below Cost Recovery</div>
+    APTIS Services is spending MUR 1.50 to generate MUR 1.00 in revenue. The MUR 60.3M in administration costs against MUR 58.8M in management fee income suggests this entity operates as a group shared services centre that prices its services below full cost — either deliberately (as a subsidy to operating subsidiaries) or inadvertently (through inadequate cost allocation modelling). With negative equity of MUR -2.3M, the company is technically insolvent and entirely dependent on group support. The EOS suitability score of 6.5/10 reflects that the genuine operational complexity of running group-wide shared services is exactly where EOS tools deliver value — but the financial model must first be corrected.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Substantial revenue base of MUR 58.8M</strong> indicating the group is large enough to sustain a meaningful shared services operation. Identical governance to APTIS Property means seamless group coordination. Centralised HR, finance, and commercial support functions provide structural value that is difficult to replicate at divisional level. BDO audit provides credibility.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Negative equity of MUR -2.3M is the critical alert</strong> — this entity cannot pay its own way. Administration costs 102.6% of revenue means every rupee of income generates a loss. The long-term provision of MUR 2.1M (likely staff gratuity obligations) represents a growing liability. The company is entirely dependent on group financial support to remain solvent.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>This is the most EOS-ready entity in the APTIS group</strong>. A shared services operation managing HR, finance, commercial support, and management consultancy across five activity poles is precisely the kind of complex operational organisation that benefits from EOS Accountability Charts, Scorecard discipline, and structured meeting rhythms. The loss-making position signals a classic EOS symptom: lack of clarity about who owns what, resulting in cost overruns.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">APTIS Services is the management and shared services hub of the APTIS Group, providing management consultancy, HR, finance, and administrative coordination across the group's five activity poles from Hermes House, Riche Terre.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Incorporated on 5 March 2019, APTIS Services Company Limited holds File Number C162742 and Business Registration Number C19162742. It predates APTIS Property by one day, suggesting both were incorporated as part of a structured group reorganisation in early March 2019. Registered office: 2nd Floor, Hermes House, Inova Business Park, Riche Terre, Mauritius (effective from 1 March 2019). Stated capital is MUR 10,000 (100 ordinary shares). Annual returns have been filed consistently: 2022 (18 July 2022), 2023 (25 July 2023), and 2024 (20 June 2024) — all filed promptly. Financial statements have been filed through 31 December 2024, approved 26 June 2025. Secretary is Navitas Corporate Services Ltd (appointed 1 January 2024). Auditor is Messrs. BDO (appointed 24 October 2025). No charges are registered and no winding-up proceedings are on file. Annual registration fee paid in 2026.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>APTIS Holdings Ltd</h4>
+        <div class="ec-sub">Ultimate Parent · 100% Shareholder</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Ownership</span><span class="mv ok">100%</span></div>
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">100 ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Group origin</span><span class="mv">TNS Tobacco, 2009</span></div>
+        <div class="ec-metric"><span class="mk">Group CEO</span><span class="mv">Oscar Mamet (Jan 2024)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>APTIS Group Structure</h4>
+        <div class="ec-sub">5 Activity Poles</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Distribution</span><span class="mv">TNS Tobacco, TNS Consumer, L'Artigiano, Racso</span></div>
+        <div class="ec-metric"><span class="mk">Commerce</span><span class="mv">Resiglas</span></div>
+        <div class="ec-metric"><span class="mk">Services</span><span class="mv">Navitas, Harley Street Fertility</span></div>
+        <div class="ec-metric"><span class="mk">Real Estate</span><span class="mv">APTIS Property, BARNES Mauritius</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>APTIS Services Role</h4>
+        <div class="ec-sub">Shared Services &amp; Management Hub</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Function</span><span class="mv">Group management co.</span></div>
+        <div class="ec-metric"><span class="mk">Clients</span><span class="mv">All APTIS subsidiaries</span></div>
+        <div class="ec-metric"><span class="mk">Revenue model</span><span class="mv">Inter-company mgmt fees</span></div>
+        <div class="ec-metric"><span class="mk">Cost model</span><span class="mv">Cost centre (subsidised)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Director — Jean-Pierre Mamet</h4>
+      <p><strong>Co-Founder &amp; Group President.</strong> Former BAT international executive. Founded TNS Tobacco in 2009 with Sabbi Appanna. Now serves as Group Founder/President following Oscar's appointment as CEO in January 2024. Based in Goodlands. Appointed to this company 5 March 2019.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Director — Oscar Mamet (CEO)</h4>
+      <p><strong>Group CEO since January 2024.</strong> Son of Jean-Pierre Mamet. Former Group Deputy CEO. Active LinkedIn profile (linked: oscar-mamet on LinkedIn Mauritius). Leading the group through its most ambitious phase: BARNES acquisition (May 2025), post-succession integration, and group expansion.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Director — Anne Régine de Ravel de l'Argentière</h4>
+      <p><strong>Group HR Director.</strong> Service address at group headquarters (Hermes House, Riche Terre). As HR Director, she likely manages the staffing and people infrastructure that flows through APTIS Services — making her the most operationally relevant director for EOS implementation conversations.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Director — Sabbi Appanna Dev Anand</h4>
+      <p><strong>Group Chief Finance Officer &amp; Co-Founder.</strong> Former BAT colleague of Jean-Pierre Mamet. As CFO, Sabbi Appanna would be responsible for the inter-company transfer pricing model that determines APTIS Services' management fee revenue — and therefore for resolving the cost-recovery deficit visible in the P&amp;L.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Auditor — Messrs. BDO</h4>
+      <p><strong>Appointed 24 October 2025.</strong> Group-wide audit harmonisation to BDO across APTIS Property, APTIS Services, and OLOA (Barnes Mauritius) in the same week suggests a deliberate governance upgrade. BDO will have full visibility of the inter-company transfer pricing model — a potential leverage point for a governance conversation.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Secretary — Navitas Corporate Services Ltd</h4>
+      <p><strong>Appointed 1 January 2024</strong>, simultaneously across APTIS Services and APTIS Property. Navitas Corporate Services is itself listed as one of the APTIS Group's Services division businesses — creating an interesting intra-group service relationship where the group's secretarial subsidiary provides services to the group's management subsidiary.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">APTIS Services' registered activity is "Management consultancy activities (Firm)." Based on the group's publicly disclosed structure and operating context, the company appears to function as the APTIS Group's centralised management company, providing some or all of the following shared services to group subsidiaries: human resources management and payroll administration; group finance and accounting services; commercial and sales support; legal and compliance coordination; IT and technology support; marketing and communications; strategic management consulting to group entities. The MUR 60.3M in administration costs (which likely includes headcount and related employee costs) suggests a significant operational team delivering these services.</p>
+
+  <p class="body-text">Job postings on MyJob.mu under "Aptis Services Company Limited" confirm that this entity is the group's primary employer — roles including Commercial Assistant (Flacq), indicating that APTIS Services deploys staff across Mauritius in support of group operations. This confirms that APTIS Services is the operational people-holding entity for the APTIS Group, making it the most relevant EOS target.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">APTIS Services operates from the group's primary headquarters at Hermes House, Inova Business Park, Riche Terre. Staff are deployed across Mauritius in support of group entities — evidenced by job postings referencing Flacq (east coast) locations, consistent with supporting the group's Commerce and Distribution activities. The group's BARNES Mauritius acquisition (May 2025) now extends operational geography to six luxury real estate office locations (Grand Baie, Moka, Belle Mare, Floréal, Mahébourg, Tamarin), all of which may be supported by APTIS Services' shared services infrastructure.</p>
+</div>
+</div>
+
+
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Data sourced from CBRIS (MNS / Registrar of Companies, Mauritius) for year ended 31 December 2024, approved 26 June 2025. Currency: Mauritius Rupee (MUR). Audited by BDO.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Financial data is summarised from CBRIS condensed filings. APTIS Services is a management company whose revenue is almost certainly composed of inter-company management fees charged to APTIS Holdings subsidiaries. This means the revenue and cost figures reflect internal transfer pricing decisions, not arm's-length market transactions. The MUR 5.9M in trade payables and MUR 2.1M long-term provisions require detailed breakdown to assess true obligations. No historical multi-year comparison data is available in this extract.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>58,752,293</td><td>100.0%</td><td>Management fees from APTIS group entities. This is the largest revenue base across the three entities reviewed — reflecting APTIS Services' role as the group's operational hub.</td></tr>
+        <tr><td>Cost of Sales</td><td>0</td><td>0.0%</td><td>No direct cost of sales — consistent with a pure services/management fee model. All costs run through administration.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>58,752,293</td><td>100.0%</td><td>100% gross margin before overhead allocation. The challenge lies entirely in the overhead structure.</td></tr>
+        <tr><td>Add: Other Income</td><td>0</td><td>0.0%</td><td>No other income — pure management fee dependency. No asset revaluation gains or ancillary revenue streams.</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>No distribution costs categorised separately.</td></tr>
+        <tr class="heat-critical"><td>Administration Costs</td><td>60,256,816</td><td>102.6%</td><td>Administration costs exceed revenue. This is the structural problem — the cost of running the group services function outstrips the management fees charged. Likely includes significant employee costs, occupancy, technology, and professional fees.</td></tr>
+        <tr><td>Other Expenses</td><td>0</td><td>0.0%</td><td>No additional expense categories.</td></tr>
+        <tr><td>Finance Costs</td><td>0</td><td>0.0%</td><td>Zero finance costs — consistent with no external debt. Intra-group financing (if any) appears interest-free.</td></tr>
+        <tr class="heat-critical"><td>Profit/(Loss) Before Tax</td><td>-1,504,523</td><td>-2.6%</td><td>Loss before tax. The company is not covering its operating costs from management fee revenue.</td></tr>
+        <tr><td>Tax Expense (Credit)</td><td>-81,090</td><td>-0.1%</td><td>Tax credit on the loss — consistent with loss-making position generating deferred tax asset.</td></tr>
+        <tr class="heat-critical"><td><strong>Net Loss After Tax</strong></td><td><strong>-1,423,433</strong></td><td><strong>-2.4%</strong></td><td>Net loss continues to erode an already negative equity position. Without a management fee increase or cost reduction, losses will compound annually.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 December 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>961,708</td><td>Modest PP&amp;E — IT equipment, furniture, fit-out for the management office.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>180,870</td><td>Possibly software licences or system implementation costs.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Investments</td><td>379,000</td><td>Minor investment — possibly a deposit or equity stake in a subsidiary. Requires clarification.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Non-Current Assets</td><td>13,730</td><td>Minor — possibly deferred tax asset on the loss.</td></tr>
+        <tr><td>Non-Current Assets</td><td><strong>Total Non-Current Assets</strong></td><td><strong>1,535,308</strong></td><td>Very lean asset base for a management company of this revenue scale.</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>0</td><td>No inventories — services business.</td></tr>
+        <tr><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>1,259,978</td><td>Moderate receivables — management fees due from group entities. Equivalent to ~8 days of revenue.</td></tr>
+        <tr><td>Current Assets</td><td>Cash &amp; Cash Equivalents</td><td>1,695,028</td><td>Thin cash position. Less than one month of operating costs.</td></tr>
+        <tr><td>Current Assets</td><td>Other Current Assets</td><td>1,124,966</td><td>Prepayments and short-term recoveries.</td></tr>
+        <tr><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>4,079,972</strong></td><td>Current assets modest but not alarming given management fee collection cycle.</td></tr>
+        <tr><td></td><td><strong>Total Assets</strong></td><td><strong>5,615,280</strong></td><td>Very thin asset base — this entity has minimal tangible asset backing.</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Share Capital</td><td>10,000</td><td>Nominal stated capital only.</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Retained Earnings (Deficit)</td><td>-2,287,345</td><td>Accumulated losses since inception. The company has never been profitable on a cumulative basis.</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Other Reserves</td><td>-67,810</td><td>Negative reserves — possibly actuarial losses on employee benefit provisions.</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td><strong>Total Equity (Deficit)</strong></td><td><strong>-2,345,155</strong></td><td>Technical insolvency. The company exists only through the parent group's financial support.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Provisions</td><td>2,067,000</td><td>Significant — likely end-of-contract gratuity obligations for staff (required under Mauritius labour law). Reflects a real headcount.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td><strong>Total Non-Current Liabilities</strong></td><td><strong>2,067,000</strong></td><td>Entirely employee benefit obligations.</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>5,893,435</td><td>Supplier and inter-company payables. Moderate — represents approximately 36 days of operating costs.</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax Payable</td><td>0</td><td>No current tax payable — consistent with loss-making position.</td></tr>
+        <tr><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>5,893,435</strong></td><td>Current liabilities exceeding current assets by MUR 1.8M.</td></tr>
+        <tr><td></td><td><strong>Total Liabilities</strong></td><td><strong>7,960,435</strong></td><td>Total liabilities exceed total assets — balance sheet is technically insolvent.</td></tr>
+        <tr><td></td><td><strong>Total Equity and Liabilities</strong></td><td><strong>5,615,280</strong></td><td>Balance sheet balances correctly.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">No charges are registered against APTIS Services Company Limited as at 16 April 2026. The absence of external debt is consistent with the intra-group management company model. No winding-up proceedings are on file. Despite the negative equity position, the company's operational continuity is maintained through group support — a risk that crystallises only if APTIS Holdings itself encounters financial difficulty.</p>
+</div>
+</div>
+
+
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks drawn from Mauritius services/management consultancy SME norms. Colour key: Green = healthy, Amber = watch, Red = critical concern. Note: APTIS Services' intra-group revenue model affects the comparability of several ratios.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.69×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services SME)</span><span class="ratio-val">1.0× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Current ratio of 0.69× indicates that current liabilities (MUR 5.9M) exceed current assets (MUR 4.1M) by MUR 1.8M. This is a genuine, if manageable, short-term liquidity concern — not merely a structural balance sheet classification as seen at APTIS Property. Cash of MUR 1.7M and receivables of MUR 1.3M leave a thin operating buffer. Management fee collection speed from group entities is the critical variable.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.69×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.8× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Identical to current ratio (zero inventories). Liquid assets (cash MUR 1.7M + receivables MUR 1.3M = MUR 3.0M) versus current liabilities of MUR 5.9M gives a true liquid coverage of 0.51×. The company relies on the parent group to bridge any operating cash shortfall.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">100.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (management services)</span><span class="ratio-val">60% – 90%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Not Meaningful</span></span></div>
+      <span class="ratio-interpret">100% gross margin is structurally expected for a pure management fee model with no cost of sales. The meaningful margin to watch is EBIT margin, which is deeply negative. Gross margin here is an artefact of the P&amp;L classification structure, not a genuine performance indicator.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">-2.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services SME)</span><span class="ratio-val">10% – 25%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">EBIT margin of -2.6% (PBT/revenue) is critically below benchmark. In a well-run management company, overhead absorption should leave a 10–25% margin. The shortfall of 12.6 percentage points represents approximately MUR 7.4M of unrecovered cost — either through under-pricing of management fees or uncontrolled overhead growth.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">-2.4%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">8% – 20%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Net loss margin of -2.4% confirms that APTIS Services is consuming rather than generating value for the group. The tax credit of MUR 81,090 reduces the loss slightly but does not change the structural picture. This margin must move to positive territory through fee restructuring or cost reduction.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">-25.3%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">ROA of -25.3% (net loss MUR -1.42M / total assets MUR 5.6M) reflects the extreme mismatch between the thin asset base and the operating losses. However, this is a management company — the assets deployed are primarily people and systems, not capital assets. The real measure of performance is whether the management function adds value to the group's operating entities.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">Negative Equity</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">10% – 20%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Not Calculable</span></span></div>
+      <span class="ratio-interpret">ROE cannot be meaningfully calculated with negative equity. The equity base is MUR -2.3M — the company has consumed more value than it has ever created in shareholder equity terms. Resolution requires either a capital injection from APTIS Holdings or a sustained period of profitable operation.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">10.46×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services)</span><span class="ratio-val">1.0× – 5.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Asset-Light Model</span></span></div>
+      <span class="ratio-interpret">Asset turnover of 10.46× reflects the asset-light nature of a management services company. MUR 58.8M revenue generated from only MUR 5.6M in assets — the productive assets are human capital and intellectual property, not balance sheet items. High turnover here confirms the business model is services-led, not capital-led.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">Negative Equity</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&lt;1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">D/E cannot be calculated meaningfully. Total liabilities of MUR 7.96M against negative equity of MUR -2.35M produces a negative ratio — technically indicating complete insolvency. The entity is entirely parent-dependent for solvency. Any external financing would be impossible in this position without a capital injection.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">N/A</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt;3×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-blue">Not Applicable</span></span></div>
+      <span class="ratio-interpret">Zero finance costs — no external debt service obligations. Interest coverage is not applicable. This is the one positive: the company carries no bank debt, so its loss does not trigger any covenant breaches or lender demands.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debtor Days / DSO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">8 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">15 – 45 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Excellent</span></span></div>
+      <span class="ratio-interpret">DSO of 8 days (MUR 1.26M / MUR 58.8M × 365) indicates very rapid collection of management fees — likely because the group entities settle promptly, consistent with intra-group arrangements. Outstanding receivables management, though likely structural rather than a deliberate credit control achievement.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days / DPO</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">36 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Normal</span></span></div>
+      <span class="ratio-interpret">DPO of 36 days (MUR 5.9M payables / MUR 60.3M admin costs × 365) is within normal range. The company is neither stretching supplier payment terms aggressively nor paying unusually early. This is a reasonable creditor management position for a management services entity.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">N/A</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">Not applicable</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-blue">Not Applicable</span></span></div>
+      <span class="ratio-interpret">Zero inventories. Pure management services company — no physical goods handled. Not applicable.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. Administration Costs at 102.6% of Revenue (Red)</strong> — MUR 60.3M in admin costs against MUR 58.8M in management fee revenue means this entity consistently destroys value. To reach a 10% EBIT margin, management fees would need to increase by approximately MUR 7.4M (to MUR 66.2M), or costs would need to fall by the same amount. The CFO (Sabbi Appanna) and CEO (Oscar Mamet) must address the transfer pricing model that determines intra-group fee levels — this is the most urgent financial action in the entire APTIS group.<br><br>
+    <strong>2. Negative Equity of MUR -2.3M (Red)</strong> — Accumulated losses have eliminated all equity. Without a capital injection of at least MUR 2.35M from APTIS Holdings, or a return to profitability sustained over 2–3 years, the technical insolvency will worsen. Under the Mauritius Companies Act 2001, directors have obligations when a company is insolvent — the BDO audit appointment should be accompanied by a board resolution addressing the solvency position and documenting the parent's ongoing support commitment.
+  </div>
+</div>
+</div>
+
+
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">APTIS Services operates as an internal management company rather than a market-facing services firm, competing for internal mandates rather than external clients. Its competitive position is entirely determined by its value to the APTIS Group.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Group Shared Services</h4>
+        <div class="ec-sub">Primary Function</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Clients</span><span class="mv">All APTIS subsidiaries</span></div>
+        <div class="ec-metric"><span class="mk">Services</span><span class="mv">HR, Finance, Admin, Commercial</span></div>
+        <div class="ec-metric"><span class="mk">Revenue model</span><span class="mv">Intra-group management fees</span></div>
+        <div class="ec-metric"><span class="mk">Competition</span><span class="mv">Outsourcing to external firms</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Group HR &amp; Talent</h4>
+        <div class="ec-sub">People Management Hub</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Function</span><span class="mv">Group employer of record</span></div>
+        <div class="ec-metric"><span class="mk">Staff deployed</span><span class="mv">Across Mauritius</span></div>
+        <div class="ec-metric"><span class="mk">Provision type</span><span class="mv">Gratuity / end of service</span></div>
+        <div class="ec-metric"><span class="mk">Obligation</span><span class="mv">MUR 2.1M long-term provision</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Strategic Management</h4>
+        <div class="ec-sub">Group Executive Function</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Leaders housed</span><span class="mv">Oscar Mamet (CEO), Sabbi Appanna (CFO)</span></div>
+        <div class="ec-metric"><span class="mk">Function</span><span class="mv">Group strategy and governance</span></div>
+        <div class="ec-metric"><span class="mk">Post-BARNES</span><span class="mv">Integration management</span></div>
+        <div class="ec-metric"><span class="mk">EOS relevance</span><span class="mv">Primary EOS entry point</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Captive Group Client Base:</strong> APTIS Services has a guaranteed revenue stream from its sister companies — it cannot lose its clients to a competitor as long as the group chooses to maintain centralised shared services. This is both an advantage (revenue security) and a risk (no market validation of pricing or quality).</p>
+  <p class="body-text"><strong>2. Institutional Knowledge and Group Alignment:</strong> Having operated since 2019 with the same leadership team across all entities, APTIS Services has accumulated institutional knowledge of the group's operations, history, supplier relationships, and culture that an external provider would take years to develop.</p>
+  <p class="body-text"><strong>3. Platform for Post-BARNES Integration:</strong> With the May 2025 acquisition of BARNES Mauritius (35 staff, six offices), APTIS Services is positioned as the natural integration vehicle — providing BARNES with group HR, finance, IT, and administrative infrastructure. This represents an expansion of its mandate and a potential revenue opportunity.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Shared services consolidation trend:</strong> Mauritius businesses are increasingly recognising the efficiency benefits of shared services models. APTIS's approach is ahead of many comparable Mauritius family groups — though the financial model needs correction to realise the value.</li>
+    <li><strong>BARNES integration creates immediate demand:</strong> The acquisition of a 35-person, six-office luxury real estate operation immediately expands APTIS Services' mandate — HR onboarding, payroll integration, IT infrastructure, and policy alignment for BARNES staff represent a concrete near-term growth driver.</li>
+    <li><strong>Mauritius labour law complexity increasing:</strong> The Mauritius Workers' Rights Act and related employment legislation is creating increasing compliance complexity. A centralised HR function (APTIS Services) is better positioned than each subsidiary managing this independently.</li>
+    <li><strong>Rising professional services costs (headwind):</strong> Mauritius is experiencing professional salary inflation, particularly in finance, HR, and ICT. This directly pressures APTIS Services' MUR 60.3M cost base — which is predominantly people costs — making the break-even problem harder to solve without fee increases.</li>
+    <li><strong>Digital transformation requirements:</strong> Group-scale digital transformation (ERP, HRIS, CRM) requires centralised management capability. APTIS Services is the logical vehicle for group-wide technology implementation — but this requires investment that will initially worsen the cost position.</li>
+  </ul>
+</div>
+</div>
+
+
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The MUR 60.3M administration cost base implies a significant operational headcount — conservatively, at Mauritius private sector salary levels (average professional MUR 40,000–80,000/month), this suggests a team of 60–120 employees. Job postings under APTIS Services confirm deployment across multiple Mauritius locations. At 60–120 people, the company sits squarely in the EOS sweet spot. The post-BARNES integration (adding 35 people) is moving this further into the zone where people management complexity creates measurable friction.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Oscar Mamet's January 2024 appointment as CEO with a clear succession narrative, his active LinkedIn presence, and the structured group governance evolution (Navitas as secretary, BDO as auditor) signal openness to professionalisation. However, the loss-making position — if not proactively addressed — suggests that leadership has not yet installed the financial discipline frameworks that EOS complements. Anne Régine de Ravel's HR Director role at the group level indicates someone who understands people systems — a potential EOS champion internally.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">This is the highest-scoring dimension. Classic EOS pain points are all visible: the shared services entity is loss-making (accountability gap); administration costs exceed revenue without anyone appearing to own a cost reduction mandate (execution gap); the BARNES acquisition creates immediate integration complexity with people from a different culture (people and process gap); a new CEO in his second year of tenure is building his leadership team (vision and traction gap). These are textbook EOS-addressable symptoms — this company is ready for EOS now.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">The fact that APTIS Services has been operating at a loss for multiple years (negative retained earnings implies sustained losses since incorporation) without any visible corrective action suggests that management reporting systems are either inadequate or not driving decision-making. The identical four-director boards across all entities means there is no dedicated management layer between the group board and operational staff — a structural gap that EOS's Accountability Chart would directly address. Score: 4/10 — professional services providers in place externally, but internal management systems appear informal.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The MUR 2.1M long-term provision for employee gratuities suggests a stable, relatively long-tenured workforce — you only accumulate significant gratuity provisions if staff stay. This points to a culture where people remain, which is a positive EOS indicator. The APTIS Group's stated values of entrepreneurial spirit and growth suggest an energetic culture. The risk is that a cost-centre entity that is perpetually loss-making signals to staff that their function is undervalued — a cultural erosion risk if not addressed.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">The sustained loss-making position (multiple years of accumulated deficit) without apparent corrective pricing or cost action suggests that the management fee transfer pricing model was set at inception and has not been reviewed as costs evolved. This points to decision-making inertia — possibly because the decision to reprice intra-group fees requires a group board decision, and no individual has clear accountability for P&amp;L at the APTIS Services level. EOS's concept of a single accountable seat owner for each function would directly resolve this.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The role of APTIS Services within the group — management company, shared services hub, or strategic consultancy — is not clearly defined in any public-facing material. This ambiguity at entity level is a proxy for ambiguity internally: do the 60–120 employees of APTIS Services know exactly what the company's 3-year goal is, and how their work contributes? EOS V/TO would force this clarity. The CEO transition creates a natural moment to re-establish the vision for the management function.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of structured meeting rhythms. The co-location of all four directors means informal alignment replaces structured decision-making. The sustained loss without corrective action suggests that regular structured review of financial performance (what EOS's Scorecard and L10 would provide) is absent. The annual return meetings (filed promptly, but only once a year) are the only structured governance rhythm visible externally.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.5</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Good Fit — Most EOS-Ready Entity in the APTIS Group</h4>
+      <p>APTIS Services is the entity where EOS would deliver the most immediate, measurable value in the APTIS Group. It has the right size (60–120 people), the right pain points (accountability gap, cost overruns, sustained losses, post-acquisition integration complexity), and the right leadership context (new CEO in second year, proven co-founder stepping back). The gating factor is whether Oscar Mamet and Sabbi Appanna (CFO) are willing to confront the transfer pricing model that has allowed this entity to be perpetually subsidised — because EOS will surface this issue within the first Scorecard cycle. The financial housekeeping (management fee repricing and capital injection) should be framed as prerequisites, not obstacles, to EOS implementation.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for APTIS Services</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The four-director board with identical composition across all APTIS entities has no operational management layer beneath it. <strong>An Accountability Chart would define who runs APTIS Services day-to-day</strong> — HR lead, Finance lead, Commercial lead — creating seat-based ownership that the current structure entirely lacks.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard</h4>
+      <p>APTIS Services has been losing money for multiple years without a visible corrective response. A <strong>weekly Scorecard tracking: management fee revenue, cost-to-revenue ratio, headcount, BARNES integration milestones, and cash position</strong> would have surfaced the P&amp;L deterioration immediately and forced action.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>Three immediate Rocks write themselves: (1) management fee repricing exercise with Sabbi Appanna as accountable owner, (2) BARNES HR integration plan with Anne Régine as owner, (3) capital injection / balance sheet resolution with Oscar as owner. <strong>90-day Rocks would convert these from chronic issues into time-bound commitments</strong>.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List (IDS)</h4>
+      <p>The sustained loss, the negative equity, and the unclear role definition of APTIS Services are all issues that have been quietly tolerated. <strong>EOS's IDS process — Identify, Discuss, Solve — is designed precisely for issues that have been avoided</strong> because they involve cross-entity decisions or founder-level authority to resolve.</p>
+    </div>
+    <div class="profile-card">
+      <h4>People Analyser</h4>
+      <p>With a team of 60–120 people deployed across the group, and a post-BARNES integration adding 35 more, <strong>the People Analyser (Core Values + GWC — Get it, Want it, Capacity to do it)</strong> would help identify the right seats for the right people in the enlarged APTIS Services function.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting (L10)</h4>
+      <p>The most impactful single EOS tool for APTIS Services. A <strong>weekly 90-minute L10 with the management team — reviewing Scorecard, Rocks, and Issues List</strong> — would replace the informal corridor governance model with structured accountability, bringing the loss-making P&amp;L under active management within weeks.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations prioritised by urgency. Financial stabilisation must precede EOS implementation — but EOS should be proposed as the tool that prevents the financial situation from recurring.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Reprice Intra-Group Management Fees to Full Cost Recovery Plus Margin</h4>
+      <p>The most urgent action: commission Sabbi Appanna (CFO) and BDO to model the full cost of delivering group management services and set management fees at cost plus 10–15% margin. At the current cost level (MUR 60.3M), the target management fee revenue should be MUR 66–69M — an increase of MUR 7–11M, to be allocated across APTIS subsidiaries in proportion to headcount or services consumed. This single action, implemented in Q3 2026, resolves the P&amp;L deficit within one year.</p>
+      <span class="urg urg-now">Immediate Priority — Before Next Financial Year</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Inject Capital to Restore Positive Equity</h4>
+      <p>APTIS Holdings should inject a minimum of MUR 3M (to restore equity to approximately MUR 0.6M positive) via a share subscription or formal subordinated loan. This resolves the technical insolvency position and allows the company to operate without risk of director liability under the Mauritius Companies Act. The BDO audit team should document the parent's letter of support as a minimum interim measure before the capital injection is completed.</p>
+      <span class="urg urg-now">Immediate Priority — Board Resolution Required</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Implement a Monthly Management Accounts Dashboard</h4>
+      <p>APTIS Services appears to have been loss-making for multiple years without structured corrective response. Introduce a monthly management accounts pack (revenue vs. budget, cost vs. budget, headcount, BARNES integration costs) reviewed by Oscar Mamet and Sabbi Appanna within 5 business days of month-end. This is the minimum financial discipline required before any EOS implementation — EOS Scorecard will build on top of this foundation.</p>
+      <span class="urg urg-week">Within 30 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Conduct BARNES Integration Cost and People Assessment</h4>
+      <p>The May 2025 BARNES acquisition brings 35 staff across six offices into the APTIS ecosystem. Anne Régine de Ravel (HR Director) should lead a 60-day BARNES staff assessment: payroll absorption, contract alignment with APTIS standards, gratuity provision calculation, and role mapping to the APTIS Services Accountability Chart (once built). The MUR 2.1M long-term provision should be updated to include BARNES-related obligations.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Initiate EOS Conversation with Oscar Mamet — Frame Around the Services Integration Challenge</h4>
+      <p>The EOS conversation for APTIS Services should be framed around Oscar Mamet's most immediate challenge: integrating BARNES Mauritius into the group while managing a loss-making shared services entity. The opening question: "You're managing five activity poles, a new acquisition, a CEO succession, and a shared services entity that's losing money — how are you making sure the right things get done by the right people?" This positions EOS as the answer to his specific situation, not a generic framework.</p>
+      <span class="urg urg-medium">EOS Entry Point</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the APTIS Services Accountability Chart as First EOS Deliverable</h4>
+      <p>The most impactful first EOS output for APTIS Services: an Accountability Chart that defines the operational leadership structure below the four-director board level. This requires identifying who runs HR operations, who runs finance operations, who runs IT and systems, and who runs commercial support — and ensuring each seat has a named owner with clear GWC (Get it, Want it, Capacity). The current structure has board-level accountability with no operational layer.</p>
+      <span class="urg urg-medium">First EOS Session Deliverable</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Set Three Rocks for Q3 2026 — Fee Repricing, Capital Injection, BARNES Integration</h4>
+      <p>After the Focus Day, assign three company-level Rocks for Q3 2026 (July–September): Rock 1 — management fee model repriced and agreed with APTIS Holdings (owner: Sabbi Appanna); Rock 2 — capital injection executed and positive equity restored (owner: Oscar Mamet); Rock 3 — BARNES HR integration complete, staff on APTIS payroll structure (owner: Anne Régine de Ravel). These three Rocks are measurable, time-bound, and directly address the most critical business risks.</p>
+      <span class="urg urg-medium">First Quarter Rocks</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Deploy EOS Scorecard for APTIS Services — 5 Weekly Metrics</h4>
+      <p>The APTIS Services Scorecard should track five weekly metrics: (1) Management fee revenue vs. weekly target; (2) Cost-to-revenue ratio (target: below 90%); (3) BARNES integration milestone completion %; (4) Cash balance vs. minimum reserve; (5) Staff headcount vs. budgeted headcount. These five numbers, reviewed at a weekly L10 meeting with the operational management team, provide the financial pulse that has been missing for this entity's entire existence.</p>
+      <span class="urg urg-medium">First Scorecard — Week 2 of EOS</span>
+    </div>
+  </div>
+
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>APTIS Services is a company with a genuine operational role, a real team, and meaningful group value — but it has been allowed to run as a subsidised cost centre without accountability for its own P&amp;L. The financial fix (repricing management fees) is straightforward; the harder challenge is installing the governance discipline to prevent the same drift from recurring. This is exactly what EOS is designed to deliver. Oscar Mamet's second year as CEO is the optimal moment to install an operating system — before the BARNES integration complexity compounds the current management vacuum.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Board resolution: capital injection of MUR 3M and letter of support from APTIS Holdings (Month 1)</li>
+        <li><span class="sig-num">02</span>Management fee repricing exercise — BDO model + board approval (Month 1–2)</li>
+        <li><span class="sig-num">03</span>EOS Discovery Session with Oscar Mamet — frame around BARNES integration challenge (Month 2)</li>
+        <li><span class="sig-num">04</span>Focus Day — build Accountability Chart and first Scorecard (Month 3)</li>
+        <li><span class="sig-num">05</span>Q3 2026 Rocks agreed and L10 rhythm established — weekly meeting cadence live (Month 4)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<footer class="report-footer">
+  <div>APTIS Services Company Limited — Comprehensive Company Analysis &amp; EOS Assessment · 16 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (16 April 2026) · aptis.mu · myjob.mu · MNS Online Search · ZoomInfo · LinkedIn · business-magazine.mu</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
