@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rema Investments — Comprehensive Company Analysis — 21 April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Holding &amp; Investment Company</span>
+    <span class="badge badge-type">Private Company · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">21 April 2026</span>
+  </div>
+  <h1>Rema Investments:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Rema Investments Ltd · Company intelligence · Financial ratios · EOS implementation assessment · Riche Terre, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 0</div>
+      <div class="stat-delta">No trading revenue — pure holding vehicle · FY ended 31 Dec 2024</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Investment Portfolio</div>
+      <div class="stat-value emerald">MUR 58.7M</div>
+      <div class="stat-delta">Investments in subsidiaries · Balance sheet FY2024</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">4.0 / 10</div>
+      <div class="stat-delta">Holding vehicle — EOS applies at operating entity level · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Negative Earnings</div>
+      <div class="stat-delta">Accumulated deficit MUR 224K — no revenue generated to cover operating costs</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Rema Investments — Company Analysis &amp; EOS Assessment · 21 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION — 7 tabs, always this order
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">Rema Investments Ltd is an eight-year-old domestic holding company incorporated in 2017, sitting at the apex of the Aptis Group's investment portfolio, whose entire strategic value lies in MUR 58.7 million of subsidiary investments — not in any trading activity of its own.</p>
+
+  <p class="body-text">Rema Investments Ltd (File No. C151754, BRN C17151754) was incorporated on 14 November 2017 as a private domestic company in Mauritius. It operates exclusively as a holding and investment vehicle, generating no turnover of its own. Its registered office is at the Inova Business Park, 2nd Floor, Hermes House, Riche Terre — the same address used by the broader Aptis Group. The company has no employees in its own right; its function is to hold, manage, and invest through subsidiary entities. Its secretary since January 2024 is Navitas Corporate Services Ltd, itself an Aptis Group entity.</p>
+
+  <p class="body-text">Rema Investments is jointly owned by APTIS Holdings Ltd (59.1% — 34,704 shares) and OLKAT Investments Ltd (40.9% — 24,073 shares), out of a total stated capital of MUR 58,777,020 across 58,777 ordinary shares. APTIS Holdings is the main listed group holding vehicle for the Aptis Group, a diversified Mauritian conglomerate active in distribution (TNS Tobacco, TNS Consumer, L'Artigiano), commerce (RACSO, Resiglas), property (TNS Property, M'Bote, BARNES Mauritius), and investment (Rema Investments). The Aptis Group traces its roots to 2009, rebranding from TNS to Aptis to reflect its growing diversification. OLKAT Investments represents a secondary founding-family co-investment vehicle. The six directors — Karin Harel, Simon Harel, Jean-Pierre Mamet, Andre Rey, Dominique Rey, and Sabbi Appanna — are all senior principals of the Aptis Group, appointed on the day of incorporation.</p>
+
+  <p class="body-text">Financially, Rema Investments is structurally a dormant holding shell at the P&amp;L level: FY2024 revenue is MUR 0, with a net loss of MUR 151,989 arising purely from administrative costs. Its balance sheet is dominated by MUR 58,716,000 in investments in subsidiaries, representing 99.97% of total assets. The company is adequately capitalised (equity MUR 58.5M vs. total liabilities of just MUR 182,549) and carries no debt or charges. The EOS suitability score of 4.0/10 reflects the structural reality: EOS is a framework for operating businesses, not holding vehicles. The meaningful EOS conversation is at the Aptis Group operational entity level.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — This Is the Group's Investment Arm, Not an Operating Business</div>
+    Rema Investments Ltd functions purely as a holding vehicle within the Aptis Group structure. It has no revenue, no employees, and no independent operational capability. The real strategic conversation with Oscar Mamet and Jean-Pierre Mamet should focus on which operating entities sit beneath Rema — and whether EOS can be implemented there. The MUR 58.7M in subsidiary investments is the asset to understand: who manages those subsidiaries, how they perform, and whether accountability and execution systems are in place at that level is the central question for LMA Growth Partners.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Backed by a well-capitalised, diversified group (Aptis) with operations across five sectors.</strong> MUR 58.7M investment portfolio signals real operating assets beneath. Zero debt at holding level — clean balance sheet for structuring future acquisitions or restructures. Annual returns filed consistently and on time — good governance hygiene.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>No revenue whatsoever — the holding company is a pure cost centre generating a recurring annual loss.</strong> Accumulated deficit of MUR 224,207 growing each year. No dividend income visible in filings. If subsidiary performance deteriorates, the MUR 58.7M asset value could impair with no income buffer. Trade payables of MUR 161,669 left unpaid at year-end suggest cash management tension.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Six-director board with no visible governance differentiation signals a classic family-group accountability gap.</strong> The Aptis Group's rapid diversification into five sectors (distribution, commerce, property, healthcare, investment) since 2009 is precisely the scaling complexity EOS is built to address. The real EOS opportunity lies with the operating subsidiaries — TNS Consumer, RACSO, Resiglas, L'Artigiano — not at the Rema holding level.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">Rema Investments Ltd is the Aptis Group's dedicated investment holding vehicle — a clean, debt-free shell incorporated in 2017 to consolidate and manage the group's equity stakes across its operating subsidiaries.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Rema Investments Ltd was incorporated on <strong>14 November 2017</strong> as a private domestic company in Mauritius. Its file number is <strong>C151754</strong> and its Business Registration Number is <strong>C17151754</strong>. The registered office is at <strong>Inova Business Park, 2nd Floor, Hermes House, Riche Terre, Mauritius</strong> — effective from the date of incorporation and unchanged since. The company's nature of business is classified as <em>"Activities of holding / management / investment companies (with or without managing)"</em>, with its principal place of business at the same Inova address. Stated capital stands at <strong>MUR 58,777,020</strong> across <strong>58,777 ordinary shares</strong> with no unpaid or par value. There are no recorded name changes. The company secretary since 1 January 2024 is <strong>Navitas Corporate Services Ltd</strong> (Robinson Road, Navitas House, Floreal), itself an Aptis Group entity. Annual registration fees are paid up to 2026. Annual returns have been filed consistently for 2023, 2024, and 2025 with no delays. Financial statements have been approved and filed for FY2022, FY2023, and FY2024. No charges are registered against the company. No removal or winding-up proceedings are on record.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>APTIS Holdings Ltd</h4>
+        <div class="ec-sub">Majority Shareholder · Aptis Group</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv ok">34,704</span></div>
+        <div class="ec-metric"><span class="mk">Ownership</span><span class="mv ok">59.1%</span></div>
+        <div class="ec-metric"><span class="mk">Type</span><span class="mv">Ordinary Shares (MUR)</span></div>
+        <div class="ec-metric"><span class="mk">Nature</span><span class="mv">Group holding vehicle — Aptis Group parent entity, active since 2009, diversified across distribution, commerce, property, healthcare</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>OLKAT Investments Ltd</h4>
+        <div class="ec-sub">Minority Shareholder · Co-Investment Vehicle</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv warn">24,073</span></div>
+        <div class="ec-metric"><span class="mk">Ownership</span><span class="mv warn">40.9%</span></div>
+        <div class="ec-metric"><span class="mk">Type</span><span class="mv">Ordinary Shares (MUR)</span></div>
+        <div class="ec-metric"><span class="mk">Nature</span><span class="mv">Private investment vehicle — likely represents family or founding-partner co-investment alongside the Aptis Group principals</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Rema Investments Ltd</h4>
+        <div class="ec-sub">The Entity · Associates Division</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Total shares</span><span class="mv">58,777 ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Stated capital</span><span class="mv">MUR 58,777,020</span></div>
+        <div class="ec-metric"><span class="mk">Position</span><span class="mv">Holding / investment vehicle — Aptis Group Associates division</span></div>
+        <div class="ec-metric"><span class="mk">Subsidiaries</span><span class="mv warn">MUR 58,716,000 in investment in subsidiaries (identity not disclosed in CBRIS)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Group Context</div>
+    Rema Investments sits within the Aptis Group's "Associates" cluster — the investment and minority-stake arm of a group that operates four primary divisions: Distribution (TNS Tobacco, TNS Consumer, L'Artigiano), Commerce (RACSO, Resiglas), Property (TNS Property, M'Bote, BARNES Mauritius), and Associates (Rema Investments). The group is led by Jean-Pierre Mamet as Founder &amp; President, with Oscar Mamet serving as Group CEO, and Sabbi Appanna (who is also a Rema director) as Group CFO. The Aptis Group's registered address — Aptis House, Inova, Riche Terre Business Park — is the same location as Rema Investments, confirming full operational co-location.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <p class="body-text">All six directors were appointed simultaneously on 14 November 2017 — the day of incorporation. This is consistent with a holding vehicle established to formalise an existing group structure rather than a new operational venture. All directors are principal figures in the Aptis Group ecosystem.</p>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Karin Marie-Thérèse Irène Harel — Director</h4>
+      <p><strong>Appointed:</strong> 14 Nov 2017<br><strong>Address:</strong> 13 Edouard Rouillard Street, Floreal<br>Senior family principal; the Harel family (Karin and Simon) represents one of the two co-founding families of the Aptis Group alongside the Mamet and Rey families. Fabien Harel (likely family connection) heads Resiglas within the group.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Simon Jérôme Harel — Director</h4>
+      <p><strong>Appointed:</strong> 14 Nov 2017<br><strong>Address:</strong> 13A Edouard Rouillard, Floreal<br>Co-principal from the Harel branch of the founding family. Address proximate to Karin Harel — likely related. Serves alongside Karin in multiple Aptis Group entities.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Jean-Pierre Mamet — Director &amp; Group Founder</h4>
+      <p><strong>Appointed:</strong> 14 Nov 2017<br><strong>Address:</strong> Belmont St Antoine, Goodlands<br><strong>Role at Aptis:</strong> Founder &amp; President. Quoted in press regarding BARNES Mauritius acquisition and the Harley Street Fertility Centre partnership. Primary spokesperson for the group's strategic direction.</p>
+    </div>
+    <div class="profile-card">
+      <h4>André Olivier Hugues Rey — Director</h4>
+      <p><strong>Appointed:</strong> 14 Nov 2017<br><strong>Address:</strong> Coastal Road, Kalodyne<br>Senior principal from the Rey family, one of the Aptis co-founding families. Julien Rey (likely family) was appointed CEO of Navitas (the group's corporate services entity) per blog records. The Rey family holds board representation across multiple group entities.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Dominique André Thierry Hugues Rey — Director</h4>
+      <p><strong>Appointed:</strong> 14 Nov 2017<br><strong>Address:</strong> G Vth Avenue, Floreal<br>Second Rey family principal on the board. The dual-family (Harel and Rey) plus Mamet leadership structure reflects the multi-partner founding of the Aptis Group, with Sabbi Appanna as the professional/executive director.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Sabbi Appanna Dev Anand — Director &amp; Group CFO</h4>
+      <p><strong>Appointed:</strong> 14 Nov 2017<br><strong>Address:</strong> Lot 694, Morc Highland Rose (Gated), Highlands<br><strong>Role at Aptis:</strong> Group Chief Finance Officer. The professional executive among the founding principals. Key financial decision-maker for both the group and Rema. Most likely the primary financial contact for any due diligence or EOS conversation.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Rema Investments Ltd has no direct products or services. Its sole purpose is the holding, management, and investment in subsidiary and associated companies. Its balance sheet shows MUR 58,716,000 invested in subsidiaries, though the specific identities of those subsidiaries are not disclosed in the CBRIS filing. Given the Aptis Group's structure, these investments are likely to include equity stakes in one or more of the group's operating entities — potentially spanning distribution, commerce, or healthcare-adjacent investments that are classified under the Associates division rather than the core group clusters.</p>
+  <p class="body-text">The Associates division of the Aptis Group, where Rema Investments sits, is described as "grouping our investment projects." This language suggests Rema may serve as a vehicle for minority investments, joint ventures, or strategic stakes that do not fit neatly into the four main operational clusters. The Harley Street Fertility Centre partnership (announced January 2023, described as a "business partnership agreement" by Jean-Pierre Mamet) may be a relevant adjacent investment, though its formal ownership structure has not been confirmed.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Rema Investments Ltd is registered and operates exclusively in Mauritius. Its registered office is at Inova Business Park, Riche Terre — the main Aptis Group campus. As a holding vehicle, it has no independent physical presence, export activity, or international operations in its own name. The Aptis Group's operating subsidiaries (TNS Consumer, L'Artigiano, RACSO, Resiglas, BARNES Mauritius) are all Mauritius-domiciled businesses serving the domestic market, with some reaching regional and diaspora markets.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">No Independent Digital Presence</div>
+    Rema Investments Ltd has no website, no social media accounts, and no public-facing identity of its own. It exists purely as a legal and financial structure. All group-level communications flow through aptis.mu. Any outreach must be directed through the Aptis Group or its principals directly.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Data sourced from CBRIS / Registrar of Companies Mauritius (issued 22 April 2026), covering filed financial summaries for FY2022, FY2023, and FY2024 (year-ended 31 December). All figures in Mauritius Rupees (MUR). Detailed line-item disclosure is limited to the summary format prescribed by the Registrar.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    As a private domestic company, Rema Investments Ltd files abbreviated financial summaries with the Registrar of Companies, not full audited accounts. The CBRIS disclosure provides: P&amp;L summary (revenue, COGS, gross profit, other income, operating cost categories, PBT, tax, PAT) and a balance sheet summary (non-current assets, current assets, equity components, and liability categories). Prior-year comparatives for FY2023 and FY2022 are not available in the filed summary format — only FY2024 figures are shown. The identity of the subsidiaries held is not disclosed. No auditor is identified in the CBRIS record.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>0</td><td>n/a</td><td>No trading revenue — pure holding vehicle; income, if any, would come from dividends from subsidiaries, which are not reflected here</td></tr>
+        <tr><td>Cost of Sales</td><td>0</td><td>n/a</td><td>No COGS — consistent with no trading activity</td></tr>
+        <tr><td>Gross Profit</td><td>0</td><td>n/a</td><td>No gross profit — the holding company generates no margin</td></tr>
+        <tr><td>Other Income</td><td>0</td><td>n/a</td><td>No other income — notable absence of any dividend income from the MUR 58.7M subsidiary investments</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>n/a</td><td>None — no distribution activity</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>151,989</td><td>n/a</td><td>The sole cost driver — likely secretarial fees, compliance, annual return filing, and related corporate maintenance costs paid to Navitas Corporate Services</td></tr>
+        <tr><td>Other Expenses</td><td>0</td><td>n/a</td><td>None</td></tr>
+        <tr><td>Finance Costs</td><td>0</td><td>n/a</td><td>No debt, no interest — structurally clean</td></tr>
+        <tr class="heat-critical"><td>Profit / (Loss) Before Tax</td><td>(151,989)</td><td>n/a</td><td>Pure administrative loss — every rupee spent at holding level with no income offset</td></tr>
+        <tr><td>Tax Expense</td><td>0</td><td>n/a</td><td>No taxable income — loss position, no deferred tax triggered</td></tr>
+        <tr class="heat-critical"><td><strong>Net Loss After Tax</strong></td><td><strong>(151,989)</strong></td><td><strong>n/a</strong></td><td>Recurring annual loss — the company has never generated revenue since incorporation in 2017</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 December 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr class="heat-ok"><td>Non-Current Assets</td><td>Investment in Subsidiaries</td><td>58,716,000</td><td>The core asset — 99.97% of total assets. Represents equity stakes in subsidiaries, likely Aptis Group operating entities. Value appears to be at cost/book; no indication of fair value or impairment testing outcome</td></tr>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>0</td><td>No fixed assets — consistent with a holding shell</td></tr>
+        <tr><td>Non-Current Assets</td><td>Investment Properties</td><td>0</td><td>None</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>0</td><td>None</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Investments / Biological / Others</td><td>0</td><td>None</td></tr>
+        <tr><td>Non-Current Assets</td><td><strong>Total Non-Current Assets</strong></td><td><strong>58,716,000</strong></td><td>&nbsp;</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Cash and Cash Equivalents</td><td>19,362</td><td>Very low cash balance — barely enough to cover one month's admin costs (MUR 151,989 / 12 = MUR 12,666). Signals the holding company relies on capital injections or inter-company transfers to meet running costs</td></tr>
+        <tr><td>Current Assets</td><td>Trade and Other Receivables</td><td>0</td><td>None</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>0</td><td>None — as expected for a holding company</td></tr>
+        <tr><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>19,362</strong></td><td>&nbsp;</td></tr>
+        <tr class="heat-ok"><td>&nbsp;</td><td><strong>TOTAL ASSETS</strong></td><td><strong>58,735,362</strong></td><td>&nbsp;</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital</td><td>58,777,020</td><td>Fully paid-up stated capital — strong capital base relative to liabilities</td></tr>
+        <tr class="heat-warn"><td>Equity</td><td>Retained Earnings</td><td>(224,207)</td><td>Accumulated deficit since inception — seven years of administrative losses not offset by any dividend income. Growing at approximately MUR 152K per year</td></tr>
+        <tr><td>Equity</td><td>Other Reserves</td><td>0</td><td>None</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>58,552,813</strong></td><td>Strongly positive — holding company is solvent with equity covering 99.69% of total assets</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long Term Borrowings</td><td>0</td><td>No debt — a significant strength; the holding shell is entirely equity-funded</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Deferred Tax</td><td>0</td><td>None</td></tr>
+        <tr class="heat-warn"><td>Non-Current Liabilities</td><td>Long Term Provisions</td><td>20,880</td><td>Small provision — likely for statutory employee-related obligations despite no visible employees, or for a known future cost at holding level</td></tr>
+        <tr><td>Non-Current Liabilities</td><td><strong>Total Non-Current Liabilities</strong></td><td><strong>20,880</strong></td><td>&nbsp;</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Trade and Other Payables</td><td>161,669</td><td>Primarily unpaid administrative service fees — likely owed to Navitas (secretary) or Aptis Group inter-company charges. This is the only real working capital pressure point</td></tr>
+        <tr><td>Current Liabilities</td><td>Short Term Borrowings</td><td>0</td><td>None</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax Payable</td><td>0</td><td>None</td></tr>
+        <tr><td>Current Liabilities</td><td>Short Term Provisions</td><td>0</td><td>None</td></tr>
+        <tr><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>161,669</strong></td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td><strong>TOTAL LIABILITIES</strong></td><td><strong>182,549</strong></td><td>&nbsp;</td></tr>
+        <tr class="heat-ok"><td>&nbsp;</td><td><strong>TOTAL EQUITY AND LIABILITIES</strong></td><td><strong>58,735,362</strong></td><td>Balanced — equity dominates; holding company is structurally solvent</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">No charges are registered against Rema Investments Ltd in the CBRIS record as at 22 April 2026. This is a positive indicator — the MUR 58,716,000 investment portfolio is not pledged as security for any borrowing, either at the holding level or (visibly) via cross-charges from subsidiary operations. This clean charge register gives the company — or its shareholders — full flexibility to structure any future transaction, refinancing, or disposal of the investment portfolio without prior charge discharge requirements.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks drawn from Mauritius holding company and investment vehicle norms, with comparisons to domestic SME standards where applicable. Colour key: <span class="b b-green">Green</span> = healthy, <span class="b b-amber">Amber</span> = watch, <span class="b b-red">Red</span> = critical concern. Note: As Rema generates no revenue, profitability, efficiency, and turnover ratios are structurally inapplicable or produce undefined results — this is normal and expected for a pure holding vehicle.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.12×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">19,362 ÷ 161,669</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (holding co.)</span><span class="ratio-val">≥ 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">The holding company has MUR 19,362 in cash against MUR 161,669 in current payables — a ratio of 0.12×. In isolation, this looks alarming. In practice, for a holding shell of this type, it is managed through inter-company funding from APTIS Holdings or OLKAT Investments. However, if the parent group faces liquidity stress, this vehicle has no independent buffer. The low cash position is a structural dependency risk.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.12×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">(19,362 − 0) ÷ 161,669</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">≥ 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Identical to the current ratio as there are no inventories. The holding company has virtually no liquid assets to meet short-term obligations. The trade payables of MUR 161,669 are effectively funded by group liquidity, not by Rema itself. This dependency is a concentration risk — it only becomes a real problem if the Aptis parent group encounters cash flow difficulties.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">N/A</span></div>
+      <div class="ratio-row"><span class="ratio-label">Revenue</span><span class="ratio-val">MUR 0</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">N/A — Holding Co.</span></span></div>
+      <span class="ratio-interpret">Not applicable. Rema generates no revenue and is not designed to. Gross margin analysis is structurally irrelevant for a holding vehicle. The meaningful profitability question is at the subsidiary level — what return does the MUR 58.7M investment generate in terms of dividends or capital appreciation?</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">N/A (loss)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Net Loss FY2024</span><span class="ratio-val">(MUR 151,989)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Loss-Making</span></span></div>
+      <span class="ratio-interpret">The company produces a recurring annual loss of approximately MUR 152K. At this run rate, the accumulated deficit will reach MUR 300K by FY2025. Without dividend income being captured at this holding level, the retained earnings will continue to deteriorate. This does not threaten solvency (equity is MUR 58.5M) but it does mean shareholders are subsidising the holding vehicle's existence without visible return.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">−0.26%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">(−151,989) ÷ 58,735,362</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius)</span><span class="ratio-val">3–8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Negative ROA of −0.26%. The MUR 58.7M asset base is generating a loss, not a profit, at this entity level. In a properly structured holding group, dividends from subsidiaries would flow to the holding level, producing a positive return. The absence of any dividend income in the P&amp;L is a significant structural question: either the subsidiaries are not distributing profits, or the income flows through a different mechanism not captured here.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">−0.26%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">(−151,989) ÷ 58,552,813</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius)</span><span class="ratio-val">8–15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">ROE of −0.26%. Shareholders APTIS Holdings and OLKAT Investments are receiving no visible return on their MUR 58.7M equity investment in Rema. This is typical for a holding structure where returns flow directly from subsidiaries to ultimate shareholders, bypassing the intermediate holding vehicle — but it does mean Rema itself produces no financial justification for its own existence beyond legal structure.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">0 ÷ 58,552,813</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">≤ 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Zero financial debt. The holding company is entirely equity-funded with no borrowings at all — short or long term. This is a major structural strength that gives the Aptis Group complete flexibility to leverage Rema's balance sheet for future transactions, acquisitions, or structured financing without pre-existing lender consent requirements.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">N/A</span></div>
+      <div class="ratio-row"><span class="ratio-label">Finance Costs</span><span class="ratio-val">MUR 0</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">No Debt</span></span></div>
+      <span class="ratio-interpret">No interest payable — no debt to service. Interest coverage is therefore not a relevant risk metric for this entity. The absence of debt is a clean platform for any future structured financing.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">0 ÷ 58,735,362</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius)</span><span class="ratio-val">0.5–1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">N/A — Holding Co.</span></span></div>
+      <span class="ratio-interpret">Zero asset turnover — structurally expected for a holding vehicle. The MUR 58.7M in assets is not deployed to generate revenue at this level. Efficiency ratios (inventory turnover, DSO, DPO) are also structurally inapplicable given zero revenue, zero inventories, zero receivables, and zero COGS.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Equity-to-Assets Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">99.7%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Formula</span><span class="ratio-val">58,552,813 ÷ 58,735,362</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">≥ 50%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">99.7% of assets are funded by equity — an exceptionally strong capital structure for a holding vehicle. Total liabilities are only MUR 182,549 against an asset base of MUR 58.7M. This holding company is one of the cleanest balance sheets in terms of leverage that one can find in the Mauritius corporate registry.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. MUR 58,716,000 in subsidiary investments generating MUR 0 in dividend income.</strong> This is the central financial anomaly. Either the subsidiaries are not profitable enough to distribute, or dividends are being routed directly to the parent shareholders bypassing Rema entirely. Understanding this cash flow architecture is critical before any EOS or growth conversation — it defines whether Rema is a strategic asset or simply a legal artifact. <br><br>
+    <strong>2. Current ratio of 0.12× — MUR 19,362 cash against MUR 161,669 payables.</strong> The holding company cannot service its own administrative costs from its own cash. It is entirely dependent on the parent group's liquidity. In a normalised Mauritius SME, this would be a red-flag solvency signal. Here, it is a structural dependency that becomes a risk only if the Aptis Group itself faces cash stress. Oscar Mamet and Sabbi Appanna should be asked directly how Rema's running costs are funded.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Rema Investments Ltd operates in the Mauritius holding and investment company segment — a vehicle class, not a market. Its competitive position is entirely derived from the operating performance and strategic direction of its subsidiary investees within the Aptis Group ecosystem.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Holding Company Landscape</h4>
+        <div class="ec-sub">Mauritius — Domestic Holdings</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">ENL Group, Rogers &amp; Co, IBL Group, Cim Group</span></div>
+        <div class="ec-metric"><span class="mk">Rema's Position</span><span class="mv warn">Small-cap investment vehicle within a mid-size conglomerate</span></div>
+        <div class="ec-metric"><span class="mk">Key dynamic</span><span class="mv">Mauritius holding companies are valued on underlying asset performance, not holding-level metrics</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Aptis Group Ecosystem</h4>
+        <div class="ec-sub">Distribution · Commerce · Property · Associates</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Group revenue base</span><span class="mv">Multiple operating entities — TNS Consumer, RACSO, Resiglas, L'Artigiano, BARNES, M'Bote</span></div>
+        <div class="ec-metric"><span class="mk">Rema's role</span><span class="mv">Investment vehicle for projects that sit outside the four main clusters</span></div>
+        <div class="ec-metric"><span class="mk">Strategic value</span><span class="mv ok">Access to a diversified group with demonstrated ability to scale and acquire</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Healthcare / Specialty Investment</h4>
+        <div class="ec-sub">Possible Adjacent Sector — Harley Street Partnership</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Partnership</span><span class="mv">Harley Street Fertility Centre Mauritius — signed January 2023</span></div>
+        <div class="ec-metric"><span class="mk">Sector</span><span class="mv">Reproductive medicine — IVF, infertility treatment, Floreal</span></div>
+        <div class="ec-metric"><span class="mk">Strategic fit</span><span class="mv warn">Non-core to Aptis' main sectors — likely classified under Associates/Rema as a strategic minority stake or commercial partnership</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Aptis Group backing and deal flow:</strong> Rema Investments has access to the Aptis Group's full deal-sourcing capability, management bandwidth, and sectoral knowledge across distribution, commerce, property, and services. This is a meaningful advantage over standalone investment vehicles in Mauritius that lack operational expertise or sectoral depth.</p>
+  <p class="body-text"><strong>2. Clean, debt-free balance sheet:</strong> MUR 58.7M in equity-funded assets with zero borrowings creates a structurally advantageous platform for opportunistic investment, leveraged acquisitions, or partnership structures. The absence of existing lender covenants gives maximum transactional flexibility.</p>
+  <p class="body-text"><strong>3. Multi-family governance at board level:</strong> The Harel, Mamet, and Rey families — together with professional CFO Sabbi Appanna — provide broad coverage of commercial networks, industry relationships, and capital connections across the Mauritian business community. This is the Aptis Group's real competitive moat: its founding family network and long-standing institutional trust.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Growing sophistication of Mauritius holding structures:</strong> The Registrar's consistent annual return and financial filing requirements create pressure for professionalisation of holding company governance — an EOS-adjacent opportunity at the group level.</li>
+    <li><strong>Aptis Group's proven acquisition capability:</strong> The BARNES Mauritius acquisition (luxury real estate, 2024) demonstrates the group's willingness and ability to deploy capital for strategic bolt-ons — Rema may be the legal vehicle through which future Associates-division deals are structured.</li>
+    <li><strong>Mauritius healthcare infrastructure gap:</strong> The Harley Street Fertility Centre partnership reflects a broader trend of private capital filling healthcare service gaps in Mauritius. Fertility treatment demand is rising regionally. This could be an emerging growth investment theme for the Associates division.</li>
+    <li><strong>Rising administrative and compliance costs:</strong> As Mauritius tightens corporate governance requirements (OECD compliance, FATF monitoring), holding companies like Rema face growing secretarial, compliance, and reporting costs — exactly what the MUR 152K annual loss reflects.</li>
+    <li><strong>Interest rate environment:</strong> With no debt, Rema is insulated from interest rate risk. But the flip side is that the company is not using leverage to amplify returns on its MUR 58.7M asset base — a potential missed opportunity if subsidiariy returns are strong.</li>
+    <li><strong>Family-group succession risk:</strong> The Aptis Group's six-director board structure across Rema — all founding generation — carries implicit succession planning risk. No next-generation leadership is visible in the public record. This is an EOS-relevant pain point at the group level.</li>
+  </ul>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis. Note: Rema Investments is a holding shell with no employees or operational activity. The EOS assessment here evaluates the holding vehicle itself AND signals where the Aptis Group conversation should be directed.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score low">2 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:20%"></div></div>
+    <p class="eos-rationale">Rema Investments itself has zero employees and no operational activity — it is structurally outside the EOS sweet spot. However, the Aptis Group as a whole is very much within it: a multi-sector group with at least 6 operating subsidiaries, leadership across 4+ clusters, and demonstrated scaling complexity (distribution to healthcare to luxury real estate). The EOS conversation belongs at the Aptis Group level, not at Rema specifically. Score reflects the holding vehicle assessed in isolation.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The Aptis Group leadership — Jean-Pierre Mamet (Founder/President), Oscar Mamet (Group CEO), and Sabbi Appanna (Group CFO) — has demonstrated a pattern of strategic openness: rebranding from TNS to Aptis, entering luxury real estate via BARNES Mauritius, partnering with Harley Street Fertility Centre, and professionalising through Navitas. These are signals of a leadership team that is willing to evolve structures. The multi-family board, however, introduces relationship dynamics that can complicate accountability installations. Score: moderate-high openness at the executive level, with family governance friction as the key qualifier.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">The Aptis Group exhibits classic scaling-complexity pain points: five-sector diversification since 2009, seven-plus operating entities under a single group umbrella, a multi-family leadership board, simultaneous expansion into luxury real estate and healthcare, and Navitas being professionalised with a new CEO (Julien Rey). These are textbook EOS symptoms — too many moving parts, unclear accountability across clusters, potential vision fragmentation. The holding structure (Rema + APTIS Holdings) suggests the group is trying to create structure but has not yet installed a formal management operating system. Strong EOS candidate at the group level.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">At the Rema holding level, governance is functional: annual returns filed on time, financial statements approved and filed, a professional secretary (Navitas Corporate Services) in place since 2024. This is baseline compliance, not sophisticated management infrastructure. At the operating entity level within Aptis, the group has developed cluster structures (four divisions) and appointed sector-specific leaders (Fabien Harel at Resiglas, Jean-Alain Mamet at RACSO, Daniela Quaranta at L'Artigiano, Julien Rey at Navitas, François Colin at BARNES). This is partial organisational architecture — more advanced than most Mauritius SMEs, but likely lacking the consistent rhythms, scorecards, and accountability structures EOS provides.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The Aptis Group publishes a quarterly internal magazine ("UP TO IT") and profiles employees on its blog, signalling investment in culture and employer branding. Navitas was highlighted as "une marque employeur exemplaire" (exemplary employer brand). These are green flags for a culture that values people development — a strong EOS prerequisite. The multi-family board dynamic may create competing cultural sub-groups within the group, however. The vision statement ("enabling businesses to grow and be leaders in their fields") is directionally sound but lacks the precision that a V/TO would provide.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">A six-person board with no publicly visible operating committee, committee charter, or governance framework below board level is a classic accountability ambiguity signal. The simultaneous multi-sector expansion — distribution, commerce, property, healthcare, luxury real estate — across seven-plus entities, all with different sector heads but no visible integrator role or operating cadence, suggests decision-making is founder-heavy and relationship-driven. Oscar Mamet as Group CEO is the logical EOS integrator candidate, but no evidence exists of a structured decision-making framework beneath him.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The Aptis Group's public vision — "to be a diversified group enabling our businesses to grow and be leaders in their respective fields" — is aspirational but not specific. No 10-year target, no 3-year picture, no defined core focus or primary market. The diversification into luxury real estate (BARNES), healthcare (Harley Street), and distribution (L'Artigiano franchise expansion) in parallel suggests opportunistic growth strategy rather than a clearly articulated focus. This is exactly the ambiguity a V/TO session would resolve. Jean-Pierre Mamet's public statements focus on sector access and people potential — not on specific growth targets or a defined future state.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">3 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:30%"></div></div>
+    <p class="eos-rationale">No evidence of any structured meeting rhythms at the Aptis Group level — no quarterly business reviews, no published annual planning cycle, no board committee cadence visible in public records. Rema's annual shareholder meetings are implied by the annual return filing dates (June/July each year), suggesting a once-a-year formal governance rhythm. For an operating group of this complexity and size, reactive or ad-hoc meeting patterns are likely. The internal magazine "UP TO IT" suggests communication exists, but communication is not the same as structured decision-making rhythms. This dimension is the single biggest EOS opportunity.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">4.0</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Low — Wrong Entity, Right Group</h4>
+      <p>Rema Investments Ltd as a standalone holding vehicle scores 4.0/10 for EOS suitability — not because the Aptis Group is a poor EOS candidate, but because EOS is a framework for operating businesses and Rema has no operations. The real EOS score for the Aptis Group overall would be 6.5–7.0/10: a multi-sector conglomerate with genuine complexity, a leadership team demonstrating openness to structural change, and classic accountability and vision fragmentation symptoms that EOS is built to resolve. The recommended conversation with Oscar Mamet is not "can we implement EOS at Rema?" but "can we implement EOS across the Aptis Group's operating entities — starting with the cluster that has the most traction-to-accountability gap?" The gating factor is the multi-family board dynamic: any EOS implementation will need explicit buy-in from the Harel and Rey family principals, not just the Mamet family alone.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for the Aptis Group (via Rema conversation)</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>V/TO — Vision/Traction Organiser</h4>
+      <p>The Aptis Group's diversification into five sectors without a clearly articulated 10-year target or defined core focus is the most visible symptom of vision fragmentation. <strong>A V/TO session with Jean-Pierre Mamet, Oscar Mamet, and Sabbi Appanna would be the highest-leverage starting point</strong> — forcing the question of which sectors are core, which are opportunistic, and what "leader in their field" actually means in measurable terms by 2030.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>Six directors on a holding company board, plus seven-plus sector heads operating under a loose cluster structure, with no visible integrator or operating committee — <strong>the Aptis Group is almost certainly running with accountability ambiguity at the inter-cluster level.</strong> The Accountability Chart exercise would clarify who owns what across distribution, commerce, property, and associates, and whether Oscar Mamet is functioning as Integrator or Visionary (or attempting both).</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks — 90-Day Priorities</h4>
+      <p>The group's simultaneous execution of BARNES luxury real estate entry, L'Artigiano franchise expansion, Navitas CEO transition, and Harley Street partnership suggests an execution-bandwidth problem. <strong>Rocks would force prioritisation across competing group-level initiatives</strong> — preventing the classic multi-sector conglomerate trap of spreading leadership attention too thin across too many fronts simultaneously.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>No evidence of structured weekly or monthly leadership rhythms across the Aptis cluster heads. <strong>Implementing Level 10 Meetings at the group leadership level (CEO + cluster heads) would be the single fastest way to improve execution velocity across the seven-plus operating entities.</strong> The pattern of strategic announcements (BARNES acquisition, Harley Street partnership) without visible follow-through tracking suggests decisions are made but not systematically executed against.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>As a holding group with seven operating entities across five sectors, Aptis almost certainly lacks a single-page group-level scorecard that gives Jean-Pierre Mamet and Oscar Mamet a weekly pulse on the health of the entire portfolio. <strong>A group-level scorecard with 5–10 leading indicators per cluster would replace subjective judgment calls with data-driven triage.</strong> Sabbi Appanna as Group CFO is the natural owner of this tool.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>Multi-family, multi-sector conglomerates accumulate issues that are never fully resolved — they are managed around, deferred, or avoided to preserve family relationships. <strong>IDS (Identify, Discuss, Solve) would give the Aptis leadership a structured, depersonalised framework for resolving the cross-cluster tensions</strong> (resource allocation, succession, inter-entity service pricing, governance) that inevitably build up when three founding families and a professional CFO co-govern seven-plus businesses.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations — 4 financial/structural and 4 EOS-specific — sequenced from immediate structural clarity through to full EOS implementation across the Aptis Group's operating entities. The overriding principle: do not begin EOS until the group's vision, accountability structure, and inter-entity income flows are clarified.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Clarify the Income Architecture — Where Do Subsidiary Dividends Flow?</h4>
+      <p>Rema Investments shows MUR 58,716,000 in subsidiary investments with MUR 0 in dividend or investment income. This is either because the subsidiaries are not distributing profits, or because dividends bypass Rema and flow directly to APTIS Holdings / OLKAT Investments. Oscar Mamet and Sabbi Appanna should be asked directly: what is the intended return mechanism for Rema's MUR 58.7M? Is Rema expected to generate dividend income, or is it a pure structural holding with returns accruing at the shareholder level? The answer defines Rema's purpose and whether the holding structure is optimal.</p>
+      <span class="urg urg-now">Immediate — First Conversation</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Identify the Subsidiaries Held Under Rema</h4>
+      <p>The CBRIS record shows MUR 58,716,000 in "Investment in Subsidiaries" but does not name the entities. Sabbi Appanna (Group CFO) should be asked: which specific companies sit beneath Rema Investments? Are these Aptis operating entities, joint ventures, or minority stakes in third parties? The Harley Street Fertility Centre partnership is the most visible candidate. Understanding the underlying portfolio is essential before any growth, EOS, or investment strategy discussion can proceed. Request a simple holding structure diagram from the CFO as a conversation opener.</p>
+      <span class="urg urg-now">Immediate — First Conversation</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Address the Accumulating Deficit at Holding Level</h4>
+      <p>Rema is accumulating losses of approximately MUR 152K per year with no income. By FY2026, the retained earnings deficit will approach MUR 375K. While this is trivial relative to the MUR 58.5M equity base, it signals an inefficient holding structure where shareholders are subsidising compliance costs with no return. Recommendation: either (a) restructure the holding so that one or more subsidiaries pays a management fee or dividend to Rema, or (b) accept that Rema is a cost-of-structure vehicle and ensure the cost is explicitly budgeted within the group's consolidated P&amp;L. Sabbi Appanna should own this resolution.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Map the Full Aptis Group Structure Before the EOS Conversation</h4>
+      <p>The Aptis Group has at minimum seven operating entities across four clusters plus the Associates division. Before any EOS proposal is made, Thierry should request — or construct from public records — a complete group structure map: which entities exist, who leads each, what each entity's revenue and headcount is, and how decisions flow between them. This map will define where EOS should be implemented first (the highest-complexity, highest-revenue operating entity) and what the group-wide rollout would look like. Without this map, any EOS proposal risks being too narrow or too ambitious.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Open the Conversation at the Aptis Group Level, Not the Rema Level</h4>
+      <p>The entry point should be Oscar Mamet as Group CEO, not a holding company board meeting. Frame the conversation as: "The Aptis Group has built significant complexity across five sectors and seven-plus entities since 2009. EOS is the operating system that leading private conglomerates use to install execution discipline across multi-sector businesses. A 90-minute Focus Day with your leadership team would give you a live demonstration of what this looks like for Aptis specifically." This framing positions EOS as a group-level strategic tool, not a compliance or restructuring exercise.</p>
+      <span class="urg urg-week">Within 30 Days — Outreach</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Propose a Focus Day with the Aptis Group Leadership Team</h4>
+      <p>Invite Oscar Mamet, Jean-Pierre Mamet, Sabbi Appanna, and the cluster heads (Fabien Harel, Jean-Alain Mamet, Daniela Quaranta, Julien Rey, François Colin) to a half-day Focus Day. The output should be a preliminary Accountability Chart for the group and a list of the top 3 group-level issues that no one has formally resolved. This gives the Aptis leadership a direct EOS experience and gives Thierry a diagnostic of where the accountability gaps are sharpest. The session should culminate in agreement on the first Rock: completing the group structure map.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Build the Accountability Chart Starting with the Three Founding Families</h4>
+      <p>The most sensitive EOS exercise for the Aptis Group will be the Accountability Chart — because it requires the Harel, Mamet, and Rey families to accept defined roles and explicit accountability. Jean-Pierre Mamet as Visionary (Founder/President) and Oscar Mamet as Integrator (Group CEO) is the natural structure, with Sabbi Appanna as the CFO/financial integrator. The cluster heads (Harel, Rey, etc.) need clearly defined GWC (Gets it, Wants it, Capacity) assessments. The Accountability Chart exercise will surface whether any family director is in a seat they don't own by competence — this is the single highest-risk, highest-reward conversation in the engagement.</p>
+      <span class="urg urg-medium">Within 90 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Run a V/TO Session to Define the Aptis Group's 10-Year Target</h4>
+      <p>The Aptis Group's public vision is aspirational but undefined. The V/TO session should force answers to: What does Aptis look like in 2035 — how many entities, in which sectors, at what revenue? What is the core focus — distribution, property, or diversified conglomerate? Which current entities are strategic anchors and which are opportunistic? Is healthcare (Harley Street) a long-term sector play or a one-off partnership? The answers will determine whether Rema Investments' portfolio of subsidiaries is being built with strategic intent or accumulated opportunistically — and they will give Oscar Mamet a compelling internal rallying point for the group's next phase.</p>
+      <span class="urg urg-medium">Within 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Rema Investments Ltd is a structurally sound, debt-free holding vehicle within the Aptis Group — but it is not the EOS opportunity. The real opportunity is the Aptis Group itself: a 15-year-old Mauritius conglomerate that has grown from tobacco distribution to a seven-entity, five-sector enterprise, led by three founding families and a professional CFO, with the classic symptoms of scaling complexity — too many moving parts, no visible management operating system, vision that has diversified faster than accountability has been installed. Oscar Mamet is the right door. The entry conversation is not about Rema — it's about what the Aptis Group needs to run better as it enters its next phase of growth.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Contact Oscar Mamet (Group CEO) via the Aptis Group main line or through a warm introduction — target within 2 weeks. Frame as a group-level conversation, not a Rema conversation.</li>
+        <li><span class="sig-num">02</span>Request a 30-minute discovery call with Oscar Mamet and Sabbi Appanna to understand the group structure, the subsidiaries beneath Rema, and the current leadership team dynamics — within 30 days.</li>
+        <li><span class="sig-num">03</span>Propose a half-day Focus Day with the Aptis Group leadership team — within 60 days. Deliverable: preliminary Accountability Chart and top-3 group issues list.</li>
+        <li><span class="sig-num">04</span>Run a full V/TO session with the founding principals (Jean-Pierre Mamet, Oscar Mamet, Sabbi Appanna, and the Harel and Rey family directors) — within 90 days of engagement start.</li>
+        <li><span class="sig-num">05</span>Propose a phased EOS implementation starting with the highest-complexity operating entity (likely TNS Consumer or RACSO based on visible scale), then roll out across the cluster heads — month 3 onwards.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Rema Investments — Comprehensive Company Analysis &amp; EOS Assessment · 21 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (issued 22 April 2026) · aptis.mu · lemauricien.com · harleystreet.mu · Public company records</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
