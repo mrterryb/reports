@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YuGo Limited — Comprehensive Company Analysis — 21 April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Technology · Ride-Hailing &amp; Mobility</span>
+    <span class="badge badge-type">Private Company · Domestic · Startup</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">21 April 2026</span>
+  </div>
+  <h1>YuGo Limited:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Yugo Limited · Company intelligence · Financial ratios · EOS implementation assessment · Port Louis, Mauritius · Part of the Aptis Group ecosystem</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 1.49M</div>
+      <div class="stat-delta">FY ended 31 December 2024 · MUR</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Gross Profit Margin</div>
+      <div class="stat-value emerald">87.4%</div>
+      <div class="stat-delta">Service-model strength · FY2024</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">5.9 / 10</div>
+      <div class="stat-delta">Founder-led startup · High readiness signal · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Net Loss −46%</div>
+      <div class="stat-delta">Opex 162% of revenue · MUR 11.9M accumulated losses</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>YuGo Limited — Company Analysis &amp; EOS Assessment · 21 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION — 7 tabs, always this order
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">YuGo Limited is a seven-year-old Mauritian ride-hailing and mobility platform with a strong product, a growing user base, and a financially unsustainable cost structure that has accumulated MUR 11.9M in losses against a share capital of MUR 13.5M — the defining tension of this business.</p>
+
+  <p class="body-text">Incorporated on 14 December 2017 and operating from 32 Rue St George, Port Louis, YuGo Limited (File No. C152433, BRN C17152433) is the operator of the Yugo app — Mauritius's leading native ride-hailing platform. Founded by Kaushik Rathod and Evanee Rathod, the company connects passengers to PSV-licensed taxi and van drivers across the island, with services expanded to include food delivery and grocery ordering. The app has achieved 50,000+ downloads on Google Play and passed the 20,000 active user milestone following its first angel funding round. Yugo holds the "Made in Moris" accreditation, signalling its status as a recognised local enterprise.</p>
+
+  <p class="body-text">Ownership of YuGo Limited is held across three shareholders: Ker Ventures Ltd (6,000 shares, 50.6%), Mo Angels Second Limited (4,363 shares, 36.8%), and Media Alliance Ltd (1,500 shares, 12.6%). The Mo Angels connection is strategic: Isabelle Alvares Pereira de Melo, a co-founder of Mo Angels (Mauritius's first syndicated angel investment group) and a director at IBL Ltd and Five35 Ventures, sits on the YuGo board. Ker Ventures Ltd appears to be the Aptis Group investment vehicle — the link through which Oscar Mamet's Aptis Group holds its stake. Mohammed Reaz Emambocus, a certified accountant and director at Le Défi Media Group, provides governance and financial oversight. The shareholder structure reflects a startup that has moved through multiple funding rounds and assembled a commercially credible board.</p>
+
+  <p class="body-text">Financially, FY2024 shows a company with genuine product-market fit — an 87.4% gross margin on MUR 1.49M revenue — but with an operating cost structure (MUR 2.4M in admin and other expenses, primarily platform and technology costs) that dwarfs its revenue by 62%. The net loss of MUR 686K on a base of MUR 1.49M in revenue, combined with MUR 11.9M in accumulated losses, signals that YuGo is in a classic startup scale-up dilemma: the unit economics work, but the volume is not yet there to absorb overhead. The EOS suitability score of 5.9/10 reflects the strong founder leadership and clear vision, tempered by the financial pressure and early-stage operating structure that has not yet been formalised.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — A Commercially Sound Product Running Out of Runway</div>
+    YuGo's 87.4% gross margin proves the service model works. The problem is not the product — it is scale. At MUR 1.49M in revenue against MUR 2.4M in operating expenses, the company needs to roughly double revenue before it reaches operating breakeven. With MUR 11.9M in accumulated losses already absorbed against MUR 13.5M in share capital, the equity cushion is almost entirely consumed. The next 12–18 months are critical: YuGo must either grow revenue sharply, secure additional funding, or rationalise its cost base. The Aptis Group connection (via Ker Ventures) is the most strategically important variable — if Aptis decides to actively support YuGo's growth (distribution channels, corporate accounts, fleet partnerships), the trajectory changes materially. The conversation with Oscar Mamet is not a standard EOS pitch — it is a strategic partnership conversation about how Aptis can accelerate YuGo's path to profitability.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>First-mover advantage in regulated Mauritius ride-hailing</strong> — no Uber, no Bolt, only local players. 50K+ app downloads, 20K+ active users, "Made in Moris" brand. Diversified revenue streams: taxi, van, food delivery, grocery. Strong angel investor board with IBL and Le Défi Media Group connections. App available on iOS and Android with active development (v5.6.2, Feb 2025).</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>MUR 11.9M in accumulated losses against MUR 13.5M share capital — equity is 88% consumed.</strong> Operating costs are 162% of revenue. Current ratio of 0.75x means current liabilities exceed liquid assets. Zero debt financing provides flexibility, but also confirms no bank will currently lend to this entity without collateral. The intangible asset base (MUR 1.71M, 65.8% of total assets) is not realisable in a distress scenario.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Classic founder-led startup symptoms: strong vision, weak operating infrastructure.</strong> Two founding directors (Kaushik and Evanee Rathod) hold all operational knowledge. No evidence of a formal scorecard, quarterly Rocks, or structured meeting rhythm. The 3.2-star app rating (111 reviews) points to execution gaps — payment friction, driver availability — that an Accountability Chart and measurables would address directly.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">YuGo Limited is Mauritius's pioneering native ride-hailing platform — a regulated, locally built alternative to global apps that have been blocked by the island's transport legislation, backed by a commercially sophisticated angel investor syndicate and a diversified group holding.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">YuGo Limited was incorporated on 14 December 2017, making it a seven-year-old company. File Number: C152433. Business Registration Number: C17152433. Registered office: 32 Rue St George, Port Louis 11324, Mauritius (effective 12 August 2021 — indicating an address change from its original registration). Company secretary: Parker Russell Corporate Management Services Ltd, 30 Louis Pasteur Street, 7th Floor, Shehnaz Tower, Port Louis — a reputable corporate services provider. No auditor is recorded in the CBRIS (common for small private companies at this revenue level). Stated capital: MUR 13,519,224 across 11,863 ordinary shares. Annual returns are current and filed on time (most recent: 28 July 2025 for FY ending 30 June 2025). Financial statements are filed for the last three years (FY2022, FY2023, FY2024) — a positive governance signal. Last annual registration fee paid: 2026. No charges registered. No winding-up proceedings. Status: Live.</p>
+  <p class="body-text">The company trades under the business name "Yugo" in the Nature of Business category: Data processing, hosting and other related activities n.e.c (Computer/ICT Related Activities). This classification reflects the platform's underlying technology infrastructure rather than its consumer-facing transport positioning. The company was incubated at La Plage Factory, Mauritius's leading startup hub, and holds the "Made in Moris" trademark — awarded by the Board of Investment for locally developed products and services.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Ker Ventures Ltd</h4>
+        <div class="ec-sub">Majority Shareholder · 50.6%</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">6,000 of 11,863</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Connection</span><span class="mv ok">Aptis Group vehicle</span></div>
+        <div class="ec-metric"><span class="mk">Significance</span><span class="mv">Strategic group investor — distribution, commerce, property base</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Mo Angels Second Limited</h4>
+        <div class="ec-sub">Angel Investor · 36.8%</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">4,363 of 11,863</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Connection</span><span class="mv ok">Mo Angels syndicate — first Mauritian angel group</span></div>
+        <div class="ec-metric"><span class="mk">Significance</span><span class="mv">First external funding round; Isabelle de Melo on board</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Media Alliance Ltd</h4>
+        <div class="ec-sub">Minority Shareholder · 12.6%</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">1,500 of 11,863</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Connection</span><span class="mv">Media / communications sector link — strategic marketing value</span></div>
+        <div class="ec-metric"><span class="mk">Significance</span><span class="mv">Potential media partnership and brand amplification resource</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Group Context — Aptis Group Connection</div>
+    Ker Ventures Ltd (50.6% majority holder) is the investment vehicle through which the Aptis Group participates in YuGo. Aptis Group, led by CEO Oscar Mamet (appointed January 2024), is a fast-growing Mauritian conglomerate operating across Distribution (TNS Tobacco, TNS Consumer, L'Artigiano), Commerce (RACSO, Resiglas), Property (TNS Property, M'Bote), and an Associates division. Aptis has been present in Mauritius since 2009 and describes itself as "fuelled by an entrepreneurial spirit." YuGo sits within the Associates division as an investment/incubation project. This is the primary reason the report is being prepared: Oscar Mamet, as Group CEO, is the decision-maker for whether YuGo receives the strategic support it needs to reach profitability.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Kaushik Rathod — Co-Founder &amp; Managing Director</h4>
+      <p>Appointed: 14 December 2017 (founding director). Service address: 32 Rue St George, Port Louis. Relocated to Mauritius in 2015 and identified the gap in regulated, app-based mobility. Holds operational and commercial oversight. LinkedIn: linkedin.com/in/kaushik-rathod-3a1052238. <strong>Primary EOS conversation partner.</strong> Tech entrepreneur, innovative thinker, 371 LinkedIn connections. Contact: hello@yugo.mu / +230 260 2626.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Evanee Rathod — Co-Founder &amp; Director of Operations</h4>
+      <p>Appointed: 14 December 2017 (founding director). Service address: 32 Rue St George, Port Louis. Manages day-to-day operations, driver partnerships, and service delivery. LinkedIn: linkedin.com/in/evanee-rathod-4a2562223. Previously noted as Director at The Sports Pub (additional activity). <strong>ZoomInfo email: e***@yugo.mu (pattern: evanee@yugo.mu).</strong> Core operational leader.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Isabelle Alvares Pereira de Melo — Director</h4>
+      <p>Appointed: 5 October 2021. Service address: 32 Rue St George, Port Louis. Co-founder of Mo Angels (2021). Director at IBL Ltd (listed entity) and Five35 Ventures. Former CFO at Gemplus (France), COO at Privat Air (Switzerland) and a Geneva family office. Former auditor at Arthur Andersen, Paris. Mauritian, Swiss, and French national. <strong>Represents Mo Angels' institutional interests on the YuGo board. Heavyweight governance credential.</strong></p>
+    </div>
+    <div class="profile-card">
+      <h4>Mohammed Reaz Emambocus — Director</h4>
+      <p>Appointed: 11 February 2019. Service address: 7, Cité Souchon, Eng Martial, Curepipe Road, Mauritius. Certified accountant. Director at Le Défi Media Group (201–500 employees), a leading Mauritian media organisation. Previously served as a company liquidator (Nirvi Management Ltd, Lotus Fund Ltd). <strong>Provides financial governance and potentially the Media Alliance Ltd connection.</strong> LinkedIn: linkedin.com/in/mohammed-reaz-emambocus-90623527b.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">YuGo operates as an all-in-one mobility and delivery super-app for Mauritius. The platform connects users to PSV-licensed taxi and van drivers across the island through a native mobile application available on iOS (App Store) and Android (Google Play). Current version: 5.6.2 (updated February 2025), indicating active ongoing development. Core service lines include: (1) On-demand taxi rides with real-time tracking, transparent distance-based fare calculation, and multiple payment options (cash, credit card, my.t money, digital wallet); (2) Full-day taxi service for island tours and multi-destination travel; (3) Food and grocery delivery in partnership with restaurants and stores. Additional features include an in-app SOS function, ride-sharing capabilities, in-app chat and call, and a driver loyalty rewards programme ("Yugo Partner" programme). The driver-facing "Yugo Partner" app is a separate application enabling drivers to manage bookings and track earnings. YuGo 2.0 represents the evolution to a super-app model combining transport, food, and grocery into a single user interface.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">YuGo operates exclusively within Mauritius — the island is the company's entire addressable market. The registered office at 32 Rue St George, Port Louis, serves as the principal place of business. The platform covers the full island, connecting users to a network of taxi and van drivers across all major zones including Port Louis, Curepipe, Rose Hill, and tourist corridors. No evidence of export or regional expansion activity has been identified. Mauritius's compact geography (2,040 km²) and population of approximately 1.3 million make full island coverage achievable with a relatively modest driver network. The absence of Uber, Bolt, or other international ride-hailing platforms — due to regulatory restrictions requiring PSV licensing — provides a protected domestic market.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Note</div>
+    The YuGo website (yugo.mu) is operational with a professional interface. Social media presence is active across Facebook (yugo.mu), Instagram (yugomauritius), and LinkedIn (yugo-mauritius). However, the Google Play rating of 3.2 stars from 111 reviews — against 50K+ downloads — indicates a gap between reach and user satisfaction. Key complaints centre on payment processing friction (inability to save cards) and driver availability outside peak hours. These are operational and product execution issues, not market issues.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS / Registrar of Companies financial summary filing, FY ended 31 December 2024, approved 30 June 2025. Currency: Mauritius Rupee (MUR). Unit: 1 (figures are in actual MUR). Three years of filed financials are on record (FY2022, FY2023, FY2024); only FY2024 detailed figures are available through CBRIS.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    YuGo Limited is a private company filing simplified financial summaries with the Registrar of Companies. The CBRIS provides the most recent filed P&amp;L and balance sheet (FY2024) with one year of data only — prior-year comparatives are not available in the filed summary, preventing trend analysis. No auditor is named in the filing (common for companies at this revenue level). All figures are in actual MUR (unit = 1 as stated in filing). No disaggregation by revenue stream (taxi vs. food delivery) is available. Intangible assets (MUR 1.71M) likely represent capitalised software development costs for the Yugo app platform — not further described in the filing.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>1,485,438</td><td>100.0%</td><td>Platform commissions and service fees; modest absolute scale for a 7-year-old platform</td></tr>
+        <tr><td>Cost of Sales</td><td>187,891</td><td>12.6%</td><td>Low CoS consistent with a software platform model — likely payment processing and direct driver costs</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>1,297,547</td><td>87.4%</td><td>Exceptional gross margin — validates the platform business model and pricing structure</td></tr>
+        <tr><td>Other Income</td><td>419,785</td><td>28.3%</td><td>Significant — likely grant income, partnership fees, or advertising revenue; adds 28% to top line</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>Nil — no separate distribution expense line</td></tr>
+        <tr class="heat-critical"><td>Administration Costs</td><td>2,056,391</td><td>138.5%</td><td>Critical — admin costs alone exceed revenue by 38.5%; primary loss driver; includes staff, tech infrastructure, office</td></tr>
+        <tr class="heat-warn"><td>Other Expenses</td><td>347,430</td><td>23.4%</td><td>Additional overhead — likely marketing, app store fees, and operational overheads</td></tr>
+        <tr><td>Finance Costs</td><td>0</td><td>0.0%</td><td>Zero debt financing — no interest expense; clean capital structure</td></tr>
+        <tr class="heat-critical"><td>Profit/(Loss) Before Tax</td><td>−686,489</td><td>−46.2%</td><td>Operating loss driven entirely by overhead; even including other income, costs are 26% above total income</td></tr>
+        <tr><td>Tax Expense</td><td>0</td><td>0.0%</td><td>Zero — losses carried forward eliminate any tax liability</td></tr>
+        <tr class="heat-critical"><td><strong>Net Loss After Tax</strong></td><td><strong>−686,489</strong></td><td><strong>−46.2%</strong></td><td><strong>Loss equals nearly half of revenue — unsustainable without revenue growth or cost reduction</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 December 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>123,713</td><td>Minimal physical assets — computers, furniture; consistent with tech company</td></tr>
+        <tr class="heat-warn"><td>Non-Current Assets</td><td>Intangible Assets</td><td>1,713,946</td><td>Capitalised app development costs — 65.8% of total assets; not realisable in distress scenario</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other (investments, biological, etc.)</td><td>0</td><td>Nil</td></tr>
+        <tr><td><strong>Non-Current Assets Total</strong></td><td></td><td><strong>1,837,659</strong></td><td>70.5% of total assets — predominantly intangibles</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>0</td><td>Nil — pure service model, no stock</td></tr>
+        <tr><td>Current Assets</td><td>Trade and Other Receivables</td><td>371,931</td><td>91-day DSO — moderately high; may include accrued platform fees or grant receivables</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Cash and Cash Equivalents</td><td>396,809</td><td>Less than 7 months of current operating losses — thin liquidity buffer</td></tr>
+        <tr><td><strong>Current Assets Total</strong></td><td></td><td><strong>768,740</strong></td><td>29.5% of total assets</td></tr>
+        <tr><td><strong>Total Assets</strong></td><td></td><td><strong>2,606,399</strong></td><td></td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital</td><td>13,519,224</td><td>MUR 13.5M invested by shareholders across multiple rounds</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Retained Earnings (Accumulated Losses)</td><td>−11,940,933</td><td>Critical — 88% of share capital has been consumed by losses since incorporation</td></tr>
+        <tr><td><strong>Total Equity</strong></td><td></td><td><strong>1,578,291</strong></td><td>Only MUR 1.58M of equity remains — razor thin</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>All items</td><td>0</td><td>Zero long-term debt — no borrowings, no deferred tax, no provisions</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Trade and Other Payables</td><td>1,028,108</td><td>Exceeds liquid current assets — creditor days are elevated</td></tr>
+        <tr><td><strong>Total Current Liabilities</strong></td><td></td><td><strong>1,028,108</strong></td><td></td></tr>
+        <tr><td><strong>Total Equity &amp; Liabilities</strong></td><td></td><td><strong>2,606,399</strong></td><td>Balance sheet checks</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The CBRIS charge register is entirely clear. No floating charges, fixed charges, debentures, or secured lending facilities have been registered against YuGo Limited. This confirms the company has no external debt financing — funding has come exclusively through equity (share capital from Ker Ventures, Mo Angels Second Limited, and Media Alliance Ltd). While the absence of debt reduces financial risk in the traditional sense, it also means the company has not accessed bank credit lines, which is consistent with the financial profile of a loss-making startup without a clear path to near-term profitability. The zero-debt balance sheet means any future growth capital would need to come from: (a) a new equity round, (b) active group support from Aptis (Ker Ventures), or (c) revenue-based growth — none of which require debt financing but all of which require a deliberate strategic decision from the shareholder group.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks: Mauritius tech/ICT SME and startup comparables. Colour key — Green (healthy, within or better than benchmark), Amber (watch, approaching concern), Red (critical concern, materially outside benchmark). FY2024 data sourced from CBRIS filing.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.75×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.5× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Current assets of MUR 768,740 cover only 75% of current liabilities of MUR 1,028,108. If trade payables are called in, the company cannot meet them from liquid assets alone. The gap of MUR 259,368 represents a real near-term liquidity risk. This ratio has likely deteriorated as accumulated losses have eroded cash reserves.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.75×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Identical to current ratio because inventory is zero (service business). Quick ratio confirms there is no inventory buffer inflating the current ratio — what you see is what you get. Cash of MUR 396,809 plus receivables of MUR 371,931 against payables of MUR 1,028,108. The company is technically illiquid on a strict basis.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">87.4%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (ICT/platform)</span><span class="ratio-val">60% – 85%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Exceptional gross margin — above the upper end of the ICT/platform benchmark range. This is the clearest signal that the business model is fundamentally sound. Low cost of sales (MUR 187,891) against service revenue confirms that when volume grows, each incremental MUR of revenue drops through to gross profit at 87 cents. The platform architecture is not expensive to operate per transaction.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">−46.2%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">5% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">The 133-percentage-point gap between gross margin (87.4%) and EBIT margin (−46.2%) is entirely explained by MUR 2.4M in operating expenses (admin MUR 2.06M + other MUR 0.35M) against MUR 1.49M in revenue. This is the core financial problem. Other income of MUR 420K partially offsets but does not bridge the gap. Breakeven requires roughly doubling revenue with a stable cost base.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">−46.2%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">3% – 12%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Identical to EBIT margin because finance costs are zero and tax is zero (losses carried forward). The net loss of MUR 686,489 on MUR 1,485,438 revenue means the company loses 46 cents for every MUR 1 it earns. At the current burn rate, the remaining equity of MUR 1.58M is approximately 2.3 years of losses — but cash of only MUR 397K is less than 7 months.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets / Return on Equity</h4>
+      <div class="ratio-row"><span class="ratio-label">ROA</span><span class="ratio-val bad">−26.3%</span></div>
+      <div class="ratio-row"><span class="ratio-label">ROE</span><span class="ratio-val bad">−43.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Both returns are deeply negative, reflecting the loss-making position. ROE of −43.5% means shareholders are losing MUR 43.50 for every MUR 100 of equity remaining. However, for a growth-stage startup, these are expected metrics; the relevant question is whether the trajectory is improving — which requires year-on-year comparison data not available from CBRIS.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.3× – 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Zero borrowings — the company is entirely equity-funded. From a traditional leverage perspective, this is clean. In the context of a loss-making startup, it also means no bank has taken a view on lending, which is strategically limiting. There is theoretical capacity to take on structured debt once the revenue trajectory improves, but this is not a near-term option.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val">N/A</span></div>
+      <div class="ratio-row"><span class="ratio-label">Finance costs</span><span class="ratio-val">MUR 0</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-blue">N/A — No Debt</span></span></div>
+      <span class="ratio-interpret">Not applicable. Zero finance costs mean no interest to cover. If the company were to take on debt in the future, the current loss position would make interest coverage a critical concern — EBIT is deeply negative. Debt financing is not viable until profitability is restored.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.57×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (ICT/platform)</span><span class="ratio-val">0.6× – 1.2×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Revenue of MUR 1.49M against total assets of MUR 2.61M gives 0.57× — just below the lower end of the ICT benchmark range. The large intangible asset base (capitalised app development) inflates the denominator. As revenue grows, this ratio will improve without any additional capital expenditure — a positive embedded leverage point.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debtor Days (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">91 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services)</span><span class="ratio-val">30 – 45 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">Trade receivables of MUR 371,931 represent 91 days of revenue — double the services sector benchmark. For a platform that predominantly processes cashless digital payments, high receivables are unusual and suggest either (a) outstanding corporate account billings, (b) accrued grant or partnership income not yet received, or (c) a collection efficiency issue. This warrants investigation — MUR 150–180K of receivables could potentially be accelerated to cash.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">145 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical</span></span></div>
+      <span class="ratio-interpret">Trade payables of MUR 1,028,108 against total operating costs (excluding CoS) of MUR 2,403,821 gives 145 days — more than triple the benchmark. YuGo is stretching its creditors significantly, using payables as de facto working capital. This is a common and rational survival tactic for cash-constrained startups, but it is unsustainable if creditors apply pressure. The MUR 1.03M payables balance is the single largest balance sheet risk.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val">N/A</span></div>
+      <div class="ratio-row"><span class="ratio-label">Inventories</span><span class="ratio-val">MUR 0</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-blue">N/A — Services</span></span></div>
+      <span class="ratio-interpret">Not applicable. YuGo holds no inventory — it is a pure platform/services business. This is consistent with the sector and confirms there is no stock management, obsolescence, or warehousing risk in the business model.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. Operating cost base of MUR 2.4M against revenue of MUR 1.49M.</strong> This single gap — MUR 910,000 of annual operating losses (before other income) — is the entire financial story of YuGo. If revenue doubles to MUR 3.0M with a flat cost base, the company moves to breakeven. Every percentage point of revenue growth is worth MUR 14,854 in additional gross profit. The most powerful intervention is not cost-cutting (which risks the platform) — it is accelerating revenue through corporate accounts, fleet partnerships, and the Aptis Group's existing commercial relationships.<br><br>
+    <strong>2. Cash of MUR 396,809 against payables of MUR 1,028,108.</strong> The liquidity gap of MUR 631,299 is the near-term survival constraint. At a monthly burn rate of approximately MUR 57,000 (net loss MUR 686K / 12), the cash runway is roughly 7 months. If payables are called, the runway collapses immediately. This is a matter for urgent shareholder attention — specifically Ker Ventures (Aptis) as the 50.6% majority holder.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">YuGo operates across three market segments — on-demand transport, full-day hire, and food/grocery delivery — in a protected domestic market where global platforms are legislatively blocked, making local incumbency the primary competitive advantage.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>On-Demand Taxi &amp; Van</h4>
+        <div class="ec-sub">Core Segment — Primary Revenue</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Espace-Taxi, Ala-Lila, MyTaxi MU</span></div>
+        <div class="ec-metric"><span class="mk">YuGo position</span><span class="mv ok">Market leader by app installs</span></div>
+        <div class="ec-metric"><span class="mk">Regulation</span><span class="mv">PSV licensing required — blocks Uber/Bolt</span></div>
+        <div class="ec-metric"><span class="mk">Key advantage</span><span class="mv">50K+ downloads, 7-year head start</span></div>
+        <div class="ec-metric"><span class="mk">Key risk</span><span class="mv warn">3.2-star rating — UX and availability gaps</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Full-Day Taxi &amp; Tour</h4>
+        <div class="ec-sub">Ancillary Segment — Tourism-Linked</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Hotel concierge networks, private drivers</span></div>
+        <div class="ec-metric"><span class="mk">YuGo position</span><span class="mv">Challenger — digitising a fragmented market</span></div>
+        <div class="ec-metric"><span class="mk">Opportunity</span><span class="mv ok">Tourism recovery post-Covid; 1M+ tourists/yr</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Digital booking, transparent pricing, tracking</span></div>
+        <div class="ec-metric"><span class="mk">Key risk</span><span class="mv">Hotel loyalty to existing driver relationships</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Food &amp; Grocery Delivery</h4>
+        <div class="ec-sub">Growth Segment — Super-App Expansion</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Jumia Food, local delivery operators</span></div>
+        <div class="ec-metric"><span class="mk">YuGo position</span><span class="mv">Early stage — leveraging existing driver network</span></div>
+        <div class="ec-metric"><span class="mk">Opportunity</span><span class="mv ok">Delivery demand growing post-pandemic habit shift</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Existing driver fleet, single app for user</span></div>
+        <div class="ec-metric"><span class="mk">Key risk</span><span class="mv warn">Jumia's established restaurant relationships</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Regulatory fortress:</strong> Mauritius's PSV licensing requirement for all transport-for-hire services has effectively blocked Uber, Bolt, and every other international ride-hailing platform from entering the market. YuGo has built its driver network exclusively around PSV-compliant vehicles — a 7-year head start that no new entrant can replicate overnight. This is not a moat that expires when regulation changes; it is embedded in the operating model.</p>
+  <p class="body-text"><strong>2. "Made in Moris" brand and local trust:</strong> The Board of Investment's "Made in Moris" accreditation is a meaningful quality signal in the Mauritian consumer market. Combined with 7 years of operations, YuGo has brand recognition that a new entrant would require significant capital to build. The Mauritius market is small and relationship-driven — word-of-mouth and community trust compound over time.</p>
+  <p class="body-text"><strong>3. Super-app infrastructure:</strong> The YuGo 2.0 expansion into food and grocery delivery means the platform is no longer a single-use-case app. Multi-service super-apps generate higher DAU (daily active users), more data, and stronger network effects. The Aptis Group's commercial relationships — particularly TNS Consumer and L'Artigiano — represent untapped distribution and delivery partnership opportunities that YuGo alone could not access.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Regulatory protection is durable:</strong> Mauritius transport regulation continues to require PSV licensing, and there is no current legislative signal toward liberalisation. The international platform ban is effectively permanent in the near-to-medium term.</li>
+    <li><strong>Tourism recovery driving demand:</strong> Mauritius receives 1M+ tourists per year; taxi demand from airports, hotels, and tourist zones is structurally growing. YuGo is positioned as the digital-first option for this market segment.</li>
+    <li><strong>Digital payment adoption accelerating:</strong> my.t money and mobile wallet penetration is increasing in Mauritius, reducing friction for cashless ride payments — directly supporting YuGo's revenue model.</li>
+    <li><strong>Delivery economy normalisation:</strong> Post-pandemic food and grocery delivery habits have become structural in Mauritius urban areas. The market YuGo is entering with its delivery vertical is growing, not contracting.</li>
+    <li><strong>Driver acquisition remains a constraint:</strong> PSV licensing requirements and the relatively small pool of licensed drivers limits how fast YuGo can scale its supply side. Competing for drivers with Espace-Taxi and other incumbents is an ongoing challenge.</li>
+    <li><strong>App quality expectations rising:</strong> Mauritius consumers increasingly benchmark local apps against international standards (WhatsApp, Netflix, global e-commerce). YuGo's 3.2-star rating and payment UX issues are a risk as consumer expectations rise.</li>
+  </ul>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">YuGo is a small company — exact headcount is not public, but a company with MUR 1.49M in revenue and MUR 2.06M in admin costs likely employs between 8–15 people. This is at the lower end of the EOS sweet spot (10–250). The platform manages three service lines (taxi, full-day hire, delivery) with two operational apps (consumer and driver). This multi-product, multi-audience structure creates genuine coordination complexity even at small team size. The score of 6 reflects real complexity without being overpowering — EOS would not be over-engineered for this entity.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Kaushik Rathod describes himself on LinkedIn as "an innovative thinker, dynamic and results-driven individual." He actively sought angel investment (Mo Angels), engaged with La Plage Factory as an incubator, and has built a diverse board including a former Arthur Andersen auditor and a Le Défi Media Group director. This pattern — deliberately building governance infrastructure around himself — signals openness to external frameworks, accountability, and advice. The co-founder pair (Kaushik and Evanee) appear to have a clear division of labour (commercial/technology vs. operations) which further supports leadership receptivity. No public signals of rigidity or resistance to external input.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">YuGo is experiencing the canonical EOS growth-stage pain: a clear vision that hasn't translated into financial sustainability, execution gaps visible in user reviews (payment friction, driver availability), and a cost structure that has outpaced revenue for seven years. The 3.2-star app rating points to execution and prioritisation problems — classic symptoms of a team managing by intuition rather than measurables and Rocks. The financial data confirms the urgency: with less than 7 months of cash runway, the pain is real and immediate. This is not a theoretical EOS case — the founders are actively living the execution gap every day.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Positive signals: the company files annual returns and financial statements on time, uses Parker Russell as corporate secretary (professional governance infrastructure), and has maintained a functioning mobile platform with continuous updates across 7 years. These are not the actions of a completely unstructured entity. However, there is no public evidence of formal process documentation, an org chart, role clarity below director level, or structured operational rhythms. The app's UX issues (payment problems reported in reviews) suggest process gaps in product development cycles and user feedback loops.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">YuGo carries the "Made in Moris" label — a cultural marker of local pride and quality commitment. The founding pair have remained with the company for 7 years through significant financial difficulty, suggesting resilience and alignment to the mission. Mo Angels co-founder Isabelle de Melo joining the board in 2021 introduced a governance culture from a world-class professional background. However, the 3.2-star user rating and payment complaints suggest a culture that has not yet fully internalised user experience as a non-negotiable standard — there are accountability gaps in product quality management.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">As a founder-led company with two co-founders in the operational seats, decision-making is almost certainly concentrated. The board of four directors (Kaushik, Evanee, Isabelle, Reaz) provides a formal structure, but the day-to-day decision authority likely remains entirely with the Rathod pair. This creates the classic founder bottleneck: decisions are fast but capacity-limited. The fact that seven years of investment has not yet produced a breakeven business suggests some strategic decisions (on pricing, cost structure, or growth focus) have not been made with sufficient rigor. EOS's Issues List and IDS (Identify, Discuss, Solve) process would directly address this.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">The vision for YuGo is publicly articulated and coherent: become the dominant all-in-one mobility and delivery super-app for Mauritius. The super-app evolution (YuGo 2.0) demonstrates strategic thinking about where the business is going beyond taxi rides. The "Made in Moris" positioning and focus on regulatory compliance show clarity about the brand's market differentiation. However, vision clarity at the company level has not translated into a documented V/TO (Vision/Traction Organiser) — there is no public evidence of a 10-year target, 3-year picture, or 1-year plan. The founders know where they want to go; the challenge is translating vision into quarterly Rocks that the whole team can execute against.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of a structured meeting rhythm — no Level 10 meeting structure, no quarterly planning cadence, no public annual strategy announcements. For a company at this stage, the meeting culture is almost certainly reactive: deal with today's problem, respond to the user complaint, fix the payment bug. The financial situation (MUR 686K annual loss, 7 months of cash) creates a permanently reactive environment that makes structured planning feel like a luxury. This is precisely the trap EOS is designed to break: the Level 10 Meeting and Rocks system forces the team to work on the business, not just in it. This dimension is the most immediate EOS intervention opportunity.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">5.9</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive with Urgency</h4>
+      <p>YuGo scores 5.9/10 — a genuine EOS candidate with the right product, the right founders, and the right pain. The gating factor is financial: at less than 7 months of cash runway, EOS cannot be introduced in a standard format. The first conversation must address the strategic question — what is Aptis/Ker Ventures' plan for YuGo over the next 12 months? — before any EOS engagement begins. If Oscar Mamet and the Aptis board commit to a growth or bridge funding decision, the EOS runway opens immediately. A Focus Day could happen within 60 days of that decision. What would move the score above 7.0: a shareholder commitment to a defined growth plan, a leadership team expanded beyond the founding pair, and a revenue milestone target set for Q3 2026.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for YuGo</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>YuGo has two founders doing everything. The Accountability Chart will force clarity on who owns technology, operations, commercial, and finance — separating roles that are currently blurred. With Isabelle de Melo and Reaz Emambocus on the board, there is sufficient leadership depth to build a real structure. This is tool #1 because the decision-making bottleneck is the primary execution constraint.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>YuGo's financial crisis is partly a measurement crisis: there is no evidence the team tracks weekly KPIs (active users, rides per day, revenue per driver, churn, delivery completion rate). A Scorecard with 5–10 measurables would make the financial trajectory visible in real time — and would have surfaced the cash runway problem earlier. This is tool #2 because it turns the financial alarm into an early-warning system.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>YuGo needs a 90-day sprint system immediately. The first set of Rocks should be: (1) resolve payment UX issues, (2) establish corporate account pipeline, (3) negotiate a bridge funding commitment with Aptis, (4) close two new restaurant delivery partners. Without Rocks, the team operates in permanent firefighting mode — exactly the pattern that has kept the company loss-making for seven years.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>The 3.2-star app rating and recurring payment complaints are issues that have clearly not been resolved in a structured way. The Issues List with Identify-Discuss-Solve would force the founding team to surface, prioritise, and close problems rather than living with them. The payment friction issue alone — fixing it could improve the app rating and reduce churn significantly. This is a measurable, solvable problem that IDS would have closed 18 months ago.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision/Traction Organiser (V/TO)</h4>
+      <p>YuGo's super-app vision needs to be documented. The V/TO would force Oscar Mamet, Kaushik Rathod, and the board to agree on the 10-year target, the 3-year picture, and the 1-year plan — and to surface any disagreements between shareholders about the direction of the company. Given the Aptis group connection and the Mo Angels investment horizon, a documented V/TO is the essential alignment tool before any growth capital is deployed.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>YuGo almost certainly has no weekly structured management meeting. The Level 10 Meeting — 90 minutes, fixed agenda, Scorecard review, Rock update, Issues List — would transform the operational rhythm from reactive to proactive. For a small team under financial pressure, this structure provides both discipline and psychological safety: problems are surfaced weekly rather than exploding quarterly. This is the single most implementable EOS tool for a company at YuGo's stage.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations total: four financial/operational (immediate priority, before EOS), four EOS-specific (sequential once stability is confirmed). The sequencing principle: stabilise cash first, formalise structure second, install EOS third.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Convene an Emergency Shareholder Meeting on Capital Adequacy</h4>
+      <p>With MUR 396K in cash against MUR 1.03M in payables and a monthly burn of approximately MUR 57K, YuGo is within 7 months of a liquidity crisis. Ker Ventures (Aptis / Oscar Mamet) as the 50.6% majority shareholder must decide: bridge loan, new equity round, or active revenue acceleration support. This decision cannot wait. Kaushik Rathod should request a formal shareholder review meeting within 30 days with a prepared financial runway analysis and a go-forward funding proposal. The outcome of this meeting determines whether all other recommendations are relevant.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Resolve Payment UX Friction — Fix Card-Save and Cashless Flow</h4>
+      <p>The #1 recurring complaint in user reviews is that credit card details cannot be saved between rides. This is a product development task, not a strategic question. Assign one developer (or contract sprint) with a specific deadline of 60 days to implement persistent card storage. Success measure: payment-related 1-star reviews drop by 50% within 90 days. A 3.2-star app rating in a market where the company has no international competition is indefensible. Each rating point improvement measurably increases organic downloads and reduces churn. This is the highest ROI technical investment available to the company.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Launch a Corporate Account Programme via Aptis Group Distribution</h4>
+      <p>YuGo's fastest path to revenue growth is not consumer marketing — it is B2B corporate accounts. Aptis Group operates TNS Consumer, L'Artigiano, RACSO, and other businesses with employees who travel. Kaushik Rathod should present Oscar Mamet with a specific proposal: Aptis Group companies become founding corporate accounts on a negotiated monthly flat-fee or per-ride model. Target: 3 Aptis subsidiaries signed as corporate accounts within 90 days, generating a minimum MUR 50,000/month in contracted revenue. This alone would represent a 40% increase in monthly revenue and would not require any marketing spend.</p>
+      <span class="urg urg-week">Priority — Within 60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Reduce Debtor Days from 91 to Under 45 — Accelerate Receivables Collection</h4>
+      <p>Trade receivables of MUR 371,931 at 91 days represent approximately MUR 185,000 that could be converted to cash with tightened payment terms. Identify the top 3–5 debtors by balance (likely corporate accounts, grant bodies, or delivery partners). Issue formal payment demands with 14-day settlement terms. Offer a 2% early payment discount to the largest debtor. Implement automated payment reminders via the admin system. Success: receivables reduced to MUR 185K (45-day DSO) within 90 days, releasing approximately MUR 185K to cash — equivalent to 3+ additional months of runway.</p>
+      <span class="urg urg-week">Priority — Within 60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Schedule a Focus Day with the Full Leadership Team</h4>
+      <p>Once the shareholder funding question is resolved (Rec 01) and the team has breathing room, schedule a Focus Day with Kaushik Rathod, Evanee Rathod, and at minimum Isabelle de Melo (board). The Focus Day should introduce the Six Key Components, build the initial Accountability Chart, and surface the top 10 Issues. Target timing: within 30 days of shareholder funding confirmation. Success measure: a completed draft Accountability Chart and a prioritised Issues List by the end of the day. This is the formal entry point for EOS at YuGo — it should not happen during a liquidity crisis, but immediately after it is stabilised.</p>
+      <span class="urg urg-medium">EOS Priority — Post Funding Clarity</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the Accountability Chart — Separate Founder Roles Formally</h4>
+      <p>Kaushik and Evanee Rathod are both directors and both founders, but their functional domains differ. The Accountability Chart should formalise: Kaushik as Integrator/CEO (commercial, technology, investor relations) and Evanee as Operator/COO (driver partnerships, service delivery, customer experience). Define 3–5 direct roles below each seat (tech lead, sales lead, driver relations, finance/admin). Identify the open seats that need to be hired or promoted into within the next 12 months. Success: a one-page Accountability Chart approved by the full board within 30 days of the Focus Day.</p>
+      <span class="urg urg-medium">EOS Priority — Post Focus Day</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Set the First 90-Day Rocks — Focus on Revenue and Product</h4>
+      <p>The first set of company Rocks should be: (1) Corporate account programme — 3 signed accounts; (2) Payment UX fix — card save live in app; (3) Driver network — add 20 new PSV-compliant drivers to the platform; (4) Delivery partnerships — sign 5 new restaurant/store partners; (5) Receivables — DSO reduced to under 45 days. Each Rock assigned to a named owner with a measurable outcome and a weekly checkpoint in the Level 10 Meeting. Success: all 5 Rocks either completed or on-track at the 90-day mark. This gives the board a concrete milestone to assess execution quality before committing further capital.</p>
+      <span class="urg urg-medium">EOS Priority — Post Focus Day</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Complete the V/TO — Align Shareholders on the 10-Year Target</h4>
+      <p>The most strategically important EOS tool for YuGo is the V/TO because it forces alignment between Aptis (Ker Ventures, 50.6%), Mo Angels (36.8%), and the founding team on the fundamental question: what is YuGo's exit horizon and strategy? Is YuGo a standalone company building to profitability and eventual sale? Is it an Aptis strategic asset to be absorbed into the group? Is it building toward a Series A with regional ambitions? The founding team likely has a view; the shareholders may disagree. The V/TO meeting surfaces and resolves this — and it changes the entire financial and operational decision-making framework. This should be completed within 90 days of the Focus Day.</p>
+      <span class="urg urg-medium">EOS Priority — Within 90 Days of Focus Day</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>YuGo Limited is a real business with a proven product, a protected market, and a financially sophisticated board — running out of time. The company has done the hardest thing: built a mobile platform that Mauritians actually use, in a market where no global player can compete. What it has not done is convert that product success into financial sustainability. The EOS opportunity is genuine but contingent: the first conversation is not about methodology — it is about whether the Aptis Group sees YuGo as a strategic asset worth funding to profitability, or a portfolio investment approaching its write-down horizon. If Oscar Mamet says yes, YuGo is an excellent EOS engagement. If he says no, the conversation should still happen — because EOS might be the framework that makes the profitability case for continued investment.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Meet Oscar Mamet (Aptis/Ker Ventures) — present the financial runway analysis and the corporate account proposal. Decision required within 30 days. [April–May 2026]</li>
+        <li><span class="sig-num">02</span>Resolve payment UX (card-save fix) and launch aggressive receivables collection — generate MUR 185K of additional cash within 60 days. [May–June 2026]</li>
+        <li><span class="sig-num">03</span>Sign 3 Aptis corporate accounts for YuGo transport — contractual revenue uplift of MUR 50K+/month. [May–June 2026]</li>
+        <li><span class="sig-num">04</span>Schedule and run the EOS Focus Day with Kaushik, Evanee, and Isabelle de Melo — Accountability Chart and Issues List as outputs. [July 2026]</li>
+        <li><span class="sig-num">05</span>Complete V/TO with all shareholders — align on 10-year target, 3-year picture, and 1-year plan. First Level 10 Meeting cadence established. [August 2026]</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>YuGo Limited — Comprehensive Company Analysis &amp; EOS Assessment · 21 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (22 April 2026) · yugo.mu · aptis.mu · mo-angels.com · business-magazine.mu · La Plage Factory · LinkedIn · ZoomInfo · Google Play Store · App Store</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
