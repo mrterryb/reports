@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C.D.A Management Services — Comprehensive Company Analysis — 27 April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Property Management · Syndic Services</span>
+    <span class="badge badge-type">Private Company · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">27 April 2026</span>
+  </div>
+  <h1>C.D.A Management Services:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">C.D.A MANAGEMENT SERVICES LTD · Company intelligence · Financial ratios · EOS implementation assessment · Grand Baie, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 21.6M</div>
+      <div class="stat-delta">Year ended 31 December 2024 · Pure fee income</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit After Tax</div>
+      <div class="stat-value emerald">MUR 3.3M</div>
+      <div class="stat-delta">15.1% net margin · Zero debt · Strong cash</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.1 / 10</div>
+      <div class="stat-delta">Moderate-High — founder-led, scaling complexity · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Admin 85.6%</div>
+      <div class="stat-delta">Admin costs consume 85.6% of revenue — structural squeeze</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>C.D.A Management Services — Company Analysis &amp; EOS Assessment · 27 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 15-year-old Grand Baie property management specialist generating MUR 21.6M in fee revenue with a clean balance sheet — but carrying an admin cost structure that leaves almost no room for error and a liquidity position that is technically below the safety threshold.</p>
+
+  <p class="body-text">C.D.A Management Services Ltd (file C105287, BRN C11105287) was incorporated on 19 September 2011 in Mauritius as a private domestic company. Operating from the Grand Baie Business Quarter on Chemin Vingt Pieds, Grand Baie, the company specialises in the management of syndicats de copropriétaires — co-ownership associations — primarily for high-value IRS and ERS-equivalent residential developments in the north of Mauritius. Public data indicates the company administers at least five condominium properties comprising approximately 135 residential units: Oasis 2, Athéna, Casasola, Leora, and Cape Bay. In addition to its fee-based syndic management activity, the company holds MUR 7.88M in investment properties on its balance sheet, indicating it is both a manager and a property owner in its own right.</p>
+
+  <p class="body-text">Ownership is entirely concentrated in one person: Pierre Christophe D'Argent holds all 5,000 ordinary shares, giving him 100% beneficial ownership. He is also the founding director, appointed at incorporation in 2011. A second director, Calou Béatrice Marie Solange (known professionally as Béatrice Henry-Calou), was appointed in June 2020 and serves as Accounts and Administrative Manager. A third operational figure, Obryana Peertum, appears in third-party data as a co-director. The company is accountant-serviced by TC &amp; TC. There are no registered charges, no external borrowings, and no winding-up proceedings — a structurally clean corporate record.</p>
+
+  <p class="body-text">Financially, CDA's FY2024 results are a study in contrasts. Revenue grew to MUR 21.6M with a 15.1% net margin (MUR 3.3M PAT) and a return on equity of 29.9% — genuinely strong numbers for a Mauritius SME. The balance sheet is debt-free, with MUR 4.06M in cash and MUR 10.9M in equity. However, administration costs at 85.6% of revenue represent a structural vulnerability: if revenue dips or costs rise, there is very little buffer. The current ratio of 0.91x means current liabilities technically exceed current assets. These are not crisis signals today, but they are EOS-relevant symptoms — the business is operationally profitable but cost-constrained and lacks documented processes to scale safely. The EOS suitability score is 6.1 out of 10.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Admin Cost Concentration Risk</div>
+    CDA generates strong profits for now, but 85.6% of its revenue is consumed by administration costs — an opaque line item that likely includes staff salaries, property maintenance coordination, insurance, and owner distributions rolled together. This is the most important number in the file: it means the company has almost zero ability to absorb a revenue shock (loss of a key contract, vacancy in managed units, a fee dispute) without immediately slipping into loss. The investment properties (MUR 7.88M) provide a balance sheet buffer, but they are illiquid. Understanding what is inside the admin cost line — and whether any of it is discretionary or related-party — is the first conversation to have with Christophe D'Argent.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Established 15-year track record in a niche, high-trust sector.</strong> Managing IRS/ERS properties in Grand Baie requires regulatory knowledge, resident relationship skills, and operational reliability — CDA has built this over time. Zero debt gives full strategic flexibility. Strong cash generation (MUR 3.3M PAT on MUR 21.6M revenue). Investment property portfolio adds asset depth. Consistent annual return filing — disciplined governance basics.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Administration costs at 85.6% of revenue create extreme operating leverage — any revenue contraction directly threatens profitability.</strong> Current ratio of 0.91x means the company is technically illiquid on a short-term basis. The MUR 3.28M "Others" in current liabilities is unexplained and may include deferred management fees or related-party payables. No balance sheet comparatives available — trajectory unknown. Entire equity is retained earnings built by one person.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Classic founder-led, operationally concentrated business with no visible organisational structure beyond two directors.</strong> With 10–19 staff managing 135 units across five properties, complexity is real. The absence of any documented process, the cost opacity, and the sole-shareholder structure are textbook EOS entry symptoms. Christophe D'Argent almost certainly holds all decisions — operational, financial, and strategic. The business is profitable enough to invest in structure, but not yet in pain enough to demand it urgently.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A founder-controlled, owner-operated property management company that has quietly built a profitable niche managing premium co-ownership developments in Mauritius's most active residential corridor.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">C.D.A MANAGEMENT SERVICES LTD was incorporated on <strong>19 September 2011</strong> under the Companies Act 2001 as a private domestic company. File number: <strong>C105287</strong>. Business Registration Number: <strong>C11105287</strong>. The company's registered office is at <strong>Chemin Vingt Pieds, Suite 003D, Grand Baie Business Quarter (GBBQ), 30529 Grand Baie, Mauritius</strong> — a business address in effect since 28 October 2015, suggesting the company relocated from an earlier address in its first four years. The stated capital is MUR 5,000 (5,000 ordinary shares at par, fully paid). The company has no sub-category classification and carries no certificate issued by other institutions. Annual returns have been filed consistently for the last three recorded years (2023, 2024, 2025), and financial statements have been filed for FY2022, FY2023, and FY2024 — all approved within the required timeframe. The last annual registration fee was paid in 2026. The company's accountant is TC &amp; TC. There are no registered charges, no objections, and no winding-up proceedings on the CBRIS record.</p>
+  <p class="body-text">The company's trade name in digital channels is "CDA" and its web presence is at <strong>cdaltd.net</strong> (currently inaccessible at time of research) and on Facebook at <strong>facebook.com/cdamanagement</strong>. The business operates Monday–Friday 08:00–16:30. Its two registered business activities are: (1) management consultancy activities and (2) taxi operation (Carrier A, car) — both listed at the same Grand Baie address. The taxi operation is a secondary activity, likely related to transport services for managed properties or residents.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Pierre Christophe D'Argent</h4>
+        <div class="ec-sub">Sole Shareholder · 100% Ownership</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares Held</span><span class="mv">5,000 / 5,000</span></div>
+        <div class="ec-metric"><span class="mk">Share Type</span><span class="mv">Ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Ownership</span><span class="mv ok">100%</span></div>
+        <div class="ec-metric"><span class="mk">Currency</span><span class="mv">Mauritius Rupee</span></div>
+        <div class="ec-metric"><span class="mk">Director Since</span><span class="mv">19 Sep 2011</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>C.D.A Management Services Ltd</h4>
+        <div class="ec-sub">Operating Entity · File C105287</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">LIVE</span></div>
+        <div class="ec-metric"><span class="mk">Incorporated</span><span class="mv">19 Sep 2011</span></div>
+        <div class="ec-metric"><span class="mk">Category</span><span class="mv">Private · Domestic</span></div>
+        <div class="ec-metric"><span class="mk">Stated Capital</span><span class="mv">MUR 5,000</span></div>
+        <div class="ec-metric"><span class="mk">No. Subsidiaries</span><span class="mv">0 (filed)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Investment Properties Portfolio</h4>
+        <div class="ec-sub">Balance Sheet Asset · Not Separately Incorporated</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Book Value</span><span class="mv">MUR 7,879,167</span></div>
+        <div class="ec-metric"><span class="mk">PPE</span><span class="mv">MUR 3,471,916</span></div>
+        <div class="ec-metric"><span class="mk">Nature</span><span class="mv">Real estate held</span></div>
+        <div class="ec-metric"><span class="mk">Subsidiaries</span><span class="mv warn">None filed</span></div>
+        <div class="ec-metric"><span class="mk">Note</span><span class="mv">Likely office/units</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Ownership Note — No Group Structure Identified</div>
+    CDA is a standalone entity with no registered subsidiaries and no holding company above it. The investment properties on the balance sheet (MUR 7.88M) are held directly by CDA, not through a separate SPV. This means Christophe D'Argent's personal wealth and business wealth are highly intertwined in this single entity — a structural factor relevant to any EOS or succession conversation.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Pierre Christophe D'Argent — Founder &amp; Director</h4>
+      <p>Appointed <strong>19 September 2011</strong> (founding director). Sole shareholder and 100% beneficial owner. Holds a BTS Comptabilité et Gestion (French accounting and management qualification, July 1994) and has a background that includes submarine diving/piloting training — suggesting a career pivot into property management. Listed on LinkedIn as "Directeur" at CDA. Service address not listed in CBRIS for this director. The primary decision-maker for all operational, financial, and strategic matters.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Calou Béatrice Marie Solange — Director</h4>
+      <p>Appointed <strong>29 June 2020</strong>. Service address: Chemin 20 Pieds Suite 003D, GBBQ, Grand Baie. Known professionally as <strong>Béatrice Henry-Calou</strong>. Her ZoomInfo profile lists her role as "Accounts Administrative Manager" at CDA. Prior experience includes positions at Tropical Submarine Safari Ltd, MPM, and Agritec Ltd. Her appointment as director nine years after founding suggests she was elevated from within, likely as the company grew in complexity and required a second signatory.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Obryana Peertum — Operational Director</h4>
+      <p>Not listed in the CBRIS filing as a director but referenced in third-party sources (RocketReach) as "Directeur." Likely holds an operational management or site-management role at CDA. May be a proxy director or have been removed/not yet registered at time of CBRIS extract. Role appears to be operational oversight of managed properties. No further public data available.</p>
+    </div>
+  </div>
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Joseph De Croos — Business Consultant</h4>
+      <p>Listed in ZoomInfo's employee directory for CDA Management Services. Email domain: cdaltd.net. Likely handles business development or client relationship functions. No further public data available.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Thibaut Yahia — Responsable Site</h4>
+      <p>Listed in ZoomInfo's employee directory for CDA Management Services. Role title "Responsable Site" indicates on-site property management responsibility — likely the site manager for one or more of the five managed properties. Email domain: cdaltd.net.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Loïc Lionnet — Responsable Maintenance</h4>
+      <p>Listed in ZoomInfo's employee directory for CDA Management Services. Role title "Responsable Maintenance" indicates responsibility for maintenance operations across managed properties. Email domain: cdaltd.net. A key operational role in a syndic business where maintenance responsiveness is a primary client satisfaction driver.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">CDA Management Services operates in a specialist segment of Mauritius's real estate sector: the professional management of syndicats de copropriétaires (co-ownership associations). The company's core service is the end-to-end management of residential co-ownership developments, particularly those established under IRS (Integrated Resort Scheme), ERS (Explore Residence Scheme), and equivalent schemes that attract both Mauritian and foreign buyers. This is a high-trust, relationship-intensive service requiring regulatory compliance, financial management of common funds, maintenance coordination, resident communications, and legal representation of the co-ownership body.</p>
+  <p class="body-text"><strong>Core service: Syndic Management.</strong> CDA manages the day-to-day administration of five known properties comprising approximately 135 units: Oasis 2, Athéna, Casasola, Leora, and Cape Bay — all believed to be located in or near Grand Baie/north Mauritius. Services include collection and management of syndic fees, maintenance and repair coordination, insurance procurement, general meeting organisation, common area management, and regulatory compliance under the Non-Citizens (Property Restriction) Act and related legislation. <strong>Secondary activity: Taxi/transport operation (Carrier A).</strong> This secondary line may include shuttle or transfer services for managed property residents — a value-added amenity differentiator. The company also holds investment properties (MUR 7.88M), suggesting it may own one or more units within or adjacent to its managed developments.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">CDA's primary operating location is Grand Baie Business Quarter (GBBQ), one of the most active commercial and residential nodes in northern Mauritius. Grand Baie is the epicentre of Mauritius's premium residential development market — particularly for IRS and ERS schemes that attract European (French, British, South African) buyers seeking Mauritian residency through property investment. CDA's five known managed properties are all consistent with this geographic focus. The company has no identified international presence and no export activity — it is a purely domestic, location-specific service operator. Its market is the north coastal corridor of Mauritius, principally the Grand Baie, Pereybere, and Cap Malheureux zones.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence — Website Currently Inaccessible</div>
+    CDA's website at cdaltd.net was unreachable at the time of this research (DNS resolution failure). This is a potential business development and credibility risk for a company whose clients include international property buyers. Facebook (facebook.com/cdamanagement) and LinkedIn are active. This should be raised in any first conversation — a non-functional website in 2026 is a visible gap for a premium property management firm.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">All financial data sourced from the CBRIS summary filed with the Mauritius Registrar of Companies for the year ended 31 December 2024, approved 26 June 2025. Currency: Mauritius Rupee (MUR). Unit: 1 (all figures in actual MUR). Prior-year P&amp;L comparatives are not available in the CBRIS summary format.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    The CBRIS financial summary provides a single-year snapshot of the P&amp;L and balance sheet for FY2024. Prior-year comparatives are not available in this format, so revenue growth, cost trajectory, and balance sheet evolution cannot be assessed. The "Administration Costs" line (MUR 18.5M) is a consolidated figure — the breakdown between staff costs, property maintenance, insurance, management fees, and any related-party payments is not visible in the summary filing. The "Others" line in current liabilities (MUR 3.28M) is unexplained. These are the key data gaps in this analysis.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>21,644,947</td><td>100.0%</td><td>Pure fee income — syndic management fees from 135 units across 5 properties. No product sales. Annualised ~MUR 160K per unit managed.</td></tr>
+        <tr><td>Cost of Sales</td><td>0</td><td>0.0%</td><td>Consistent with a pure service business — no direct cost of goods. All costs are classified as operating expenses below.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>21,644,947</td><td>100.0%</td><td>100% gross margin is technically correct for a fee-only service business where all costs are below-the-line operating costs.</td></tr>
+        <tr><td>Add: Other Income</td><td>1,240,717</td><td>+5.7%</td><td>Meaningful other income — likely rental income from the company's own investment properties (MUR 7.88M on balance sheet) or management fee surcharges.</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>No distribution costs — consistent with a local service delivery model.</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>18,534,603</td><td>85.6%</td><td>The critical number. Consumes 85.6% of revenue. Likely includes: staff salaries (10–19 employees), property maintenance coordination costs, insurance premiums, and potentially owner drawings routed through the company.</td></tr>
+        <tr><td>Other Expenses</td><td>350,000</td><td>1.6%</td><td>Modest other expenses — likely professional fees, regulatory costs, or one-off items.</td></tr>
+        <tr><td>Finance Costs</td><td>92,378</td><td>0.4%</td><td>Minimal finance costs. Despite zero reported borrowings, this likely reflects bank charges, credit card fees, or lease interest on office equipment.</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>3,908,683</td><td>18.1%</td><td>Healthy PBT margin for a Mauritius SME. Boosted by MUR 1.24M other income — underlying operating margin (before other income) is closer to 13.3%.</td></tr>
+        <tr><td>Tax Expense</td><td>635,943</td><td>2.9%</td><td>Effective tax rate: 16.3% — slightly below the 15% flat rate, suggesting some allowable deductions (likely depreciation on investment properties and PPE).</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>3,272,740</strong></td><td><strong>15.1%</strong></td><td>Strong absolute PAT for a company this size. All retained in the business (retained earnings MUR 9.15M accumulated).</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 December 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>3,471,916</td><td>Likely includes office fit-out, vehicles (taxi operation), and equipment. Depreciated value — original cost higher.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Investment Properties</td><td>7,879,167</td><td>The most interesting asset. CDA owns real estate valued at MUR 7.88M — likely one or more units within the developments it manages. Creates a dual revenue stream (management fees + rental/capital appreciation).</td></tr>
+        <tr><td>Non-Current Assets</td><td>Others</td><td>22,000</td><td>Minor — likely deposits or security bonds.</td></tr>
+        <tr class="heat-ok"><td>Non-Current Assets</td><td><strong>Total NCA</strong></td><td><strong>11,373,083</strong></td><td>71.4% of total assets are long-term — heavily asset-backed for a service company.</td></tr>
+        <tr><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>490,102</td><td>Very low DSO (8.3 days). Syndic fees appear to be collected promptly — likely direct debit or advance payment from co-owners.</td></tr>
+        <tr class="heat-ok"><td>Current Assets</td><td>Cash &amp; Cash Equivalents</td><td>4,061,324</td><td>Strong cash position — MUR 4.06M represents approximately 2.4 months of operating costs. Comfortable operational liquidity buffer.</td></tr>
+        <tr><td>Current Assets</td><td>Others</td><td>9,493</td><td>Immaterial — likely prepaid expenses or VAT receivable.</td></tr>
+        <tr><td>Current Assets</td><td><strong>Total CA</strong></td><td><strong>4,560,919</strong></td><td>28.6% of total assets in current form. Dominated by cash (89% of current assets).</td></tr>
+        <tr class="heat-ok"><td></td><td><strong>TOTAL ASSETS</strong></td><td><strong>15,934,002</strong></td><td></td></tr>
+        <tr><td>Equity</td><td>Share Capital</td><td>5,000</td><td>Nominal — MUR 5,000 stated capital at founding.</td></tr>
+        <tr><td>Equity</td><td>Other Reserves</td><td>1,780,754</td><td>Revaluation reserve — likely from upward revaluation of the investment properties.</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Retained Earnings</td><td>9,153,622</td><td>The real story: MUR 9.15M of accumulated profits retained in the business since 2011. Indicates consistent profitability and low owner distributions relative to earnings.</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>10,939,376</strong></td><td>68.7% of total assets funded by equity. Excellent solvency position.</td></tr>
+        <tr class="heat-ok"><td>Non-Current Liabilities</td><td><strong>Total NCL</strong></td><td><strong>0</strong></td><td>Zero non-current liabilities — no long-term debt, no deferred tax, no provisions. Pristine.</td></tr>
+        <tr><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>1,079,774</td><td>Trade payables — amounts owed to suppliers. DPO of ~20.9 days suggests prompt payment to contractors and suppliers.</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax Payable</td><td>635,943</td><td>FY2024 tax liability — consistent with the tax expense on the P&amp;L. Expected to be settled by due date.</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Others</td><td>3,278,909</td><td>The unexplained item. MUR 3.28M in "Other" current liabilities is the largest single current liability. Likely includes deferred syndic fee income collected in advance, accrued expenses, or owner loan accounts. Needs clarification.</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td><strong>Total CL</strong></td><td><strong>4,994,626</strong></td><td>Exceeds total current assets (MUR 4.56M) — hence current ratio of 0.91x. Not a crisis, but a flag.</td></tr>
+        <tr><td></td><td><strong>TOTAL EQUITY &amp; LIABILITIES</strong></td><td><strong>15,934,002</strong></td><td>Balance sheet balances correctly.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The CBRIS charge register for C.D.A Management Services Ltd is <strong>completely clear</strong> — no charges of any kind have been registered against the company. There are no floating charges, fixed charges, debentures, or security interests recorded at the Registrar of Companies. This is consistent with the balance sheet showing zero borrowings (both long-term and short-term). The company has financed its investment property portfolio and operating assets entirely from retained earnings and equity — a conservative financial strategy that eliminates lender risk but may also reflect limited appetite for leveraged growth.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks sourced from Mauritius SME financial databases, EDB Mauritius sector reports, and comparable service-sector companies in the region. Colour key: <span class="b b-green">Green</span> = healthy vs. benchmark, <span class="b b-amber">Amber</span> = watch, <span class="b b-red">Red</span> = critical concern.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.91×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius services SME)</span><span class="ratio-val">1.5 – 2.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Below 1.0 — Watch</span></span></div>
+      <span class="ratio-interpret">Current liabilities (MUR 4.99M) exceed current assets (MUR 4.56M). In isolation this is a concern; in context, MUR 3.28M of the current liabilities are classified as "Others" and may represent deferred client fees (which are non-cash obligations) rather than genuine creditor pressure. The MUR 4.06M cash position provides day-to-day operational comfort. This warrants clarification — not alarm — but must be resolved before EOS engagement.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">0.91×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius services SME)</span><span class="ratio-val">1.0 – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber — Just Below Target</span></span></div>
+      <span class="ratio-interpret">Identical to current ratio because inventories are zero (pure service business). The quick ratio confirms the same message: CDA is technically short on liquid coverage of current obligations. However, cash alone (MUR 4.06M) covers 81% of current liabilities — the practical liquidity risk is limited if the "Others" liability is indeed deferred income.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">100.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius services)</span><span class="ratio-val">30 – 60%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-blue">N/A — Pure Service Model</span></span></div>
+      <span class="ratio-interpret">100% gross margin is technically correct and not a meaningful ratio for a pure-service business with zero cost of sales. The relevant profitability measure for CDA is the EBIT margin and net margin — all costs are operating, not production.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value (EBIT: MUR 4,001,061)</span><span class="ratio-val ok">18.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius services SME)</span><span class="ratio-val">10 – 20%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">CDA's EBIT margin sits at the top of the healthy range for Mauritius services SMEs. This is partly supported by MUR 1.24M in other income — the underlying operating EBIT margin (excluding other income) is approximately 13.3%, still solidly healthy. This margin is sustainable as long as admin costs don't expand.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">15.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius services SME)</span><span class="ratio-val">8 – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Strong</span></span></div>
+      <span class="ratio-interpret">Net margin of 15.1% is at the top of the benchmark range — strong performance. The business converts MUR 0.15 of every revenue rupee into after-tax profit. This is a well-managed cost structure at the current scale, though the admin cost concentration means this margin is fragile if revenue falters.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets &amp; Equity</h4>
+      <div class="ratio-row"><span class="ratio-label">ROA (PAT / Total Assets)</span><span class="ratio-val ok">20.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">ROE (PAT / Total Equity)</span><span class="ratio-val ok">29.9%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmarks</span><span class="ratio-val">ROA 5–12% · ROE 12–20%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Excellent</span></span></div>
+      <span class="ratio-interpret">Both ROA and ROE significantly exceed benchmarks. ROE of 29.9% means the owner is generating nearly MUR 0.30 of profit for every MUR 1.00 of equity invested — exceptional for a Mauritius SME. The high ROA reflects efficient use of assets relative to earnings.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Total borrowings</span><span class="ratio-val">MUR 0</span></div>
+      <div class="ratio-row"><span class="ratio-label">D/E Ratio (borrowings / equity)</span><span class="ratio-val ok">0.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius SME)</span><span class="ratio-val">0.3 – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Debt-Free</span></span></div>
+      <span class="ratio-interpret">CDA carries zero financial debt — no bank loans, no overdraft, no hire purchase. The entire business is equity-funded. This eliminates refinancing risk and interest burden, but also means the company has not leveraged its strong cash flows to accelerate growth. This may be a conscious choice — or a missed opportunity.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">EBIT</span><span class="ratio-val">MUR 4,001,061</span></div>
+      <div class="ratio-row"><span class="ratio-label">Finance Costs</span><span class="ratio-val">MUR 92,378</span></div>
+      <div class="ratio-row"><span class="ratio-label">Interest Coverage</span><span class="ratio-val ok">43.3×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt;3×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Excellent</span></span></div>
+      <span class="ratio-interpret">Interest coverage of 43.3× is outstanding — well beyond any meaningful threshold. The MUR 92K finance cost is likely bank charges rather than loan interest, making this ratio somewhat nominal. The company could comfortably service significant debt if it chose to borrow for expansion.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Revenue / Total Assets</span><span class="ratio-val ok">1.36×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius services)</span><span class="ratio-val">0.5 – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Good</span></span></div>
+      <span class="ratio-interpret">Asset turnover of 1.36× is healthy. For context, CDA holds MUR 7.88M in investment properties that generate income but are not directly productive of syndic fee revenue — if excluded, the asset turnover ratio against operating assets alone would be considerably higher, indicating excellent efficiency in the core business.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>DSO — Debtor Days</h4>
+      <div class="ratio-row"><span class="ratio-label">Trade Receivables / Revenue × 365</span><span class="ratio-val ok">8.3 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius services)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Excellent</span></span></div>
+      <span class="ratio-interpret">DSO of just 8.3 days is outstanding — CDA collects its fees almost immediately. This is consistent with syndic fee structures where co-owners typically pay in advance or by standing order. It also confirms that the low trade receivables (MUR 490K) represent genuinely current, not aged, invoices.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>DPO — Creditor Days</h4>
+      <div class="ratio-row"><span class="ratio-label">Trade Payables / Operating Costs × 365</span><span class="ratio-val ok">20.9 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius services)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Prompt Payer</span></span></div>
+      <span class="ratio-interpret">CDA pays its suppliers in approximately 21 days — faster than benchmark. This is consistent with a company that has strong cash flows and prioritises supplier relationships. In the context of property management (where contractor reliability is essential), being a prompt payer is a genuine competitive advantage for securing good maintenance contractors.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Admin Cost Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Admin Costs / Revenue</span><span class="ratio-val bad">85.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius services)</span><span class="ratio-val">50 – 70%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Critical — Above Benchmark</span></span></div>
+      <span class="ratio-interpret">This is the most important number in the file. At 85.6% of revenue, admin costs are 15–35 percentage points above healthy benchmarks for Mauritius services SMEs. If admin costs grow even modestly (staff cost inflation, maintenance cost increases, new hires) without a corresponding revenue increase, the net margin collapses rapidly. Understanding what drives this line is essential before any growth conversation.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. Admin Costs at 85.6% of Revenue (MUR 18.5M).</strong> If this ratio were reduced to the 70% benchmark, CDA would free up approximately MUR 3.4M of additional operating profit — more than doubling PAT from MUR 3.3M to over MUR 6.7M. No growth strategy comes close to this financial leverage. The first EOS conversation should open with: "What's inside your admin cost line, and what of it is truly fixed?" <br><br>
+    <strong>2. Current Ratio of 0.91× (MUR 434K shortfall).</strong> While the immediate liquidity risk is manageable (MUR 4.06M cash covers day-to-day operations), the structural imbalance between current assets and current liabilities needs to be understood — specifically the MUR 3.28M "Other" current liabilities. If that represents deferred fee income held in trust for co-owners, it is not a real creditor obligation; if it represents genuine accrued payables, it signals that cash generation is not fully translating to working capital health.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">CDA operates in a specialist niche within Mauritius's property management sector — professional syndic management for premium IRS/ERS residential developments — where trust, regulatory compliance, and local relationships matter more than price competition.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>IRS / ERS Syndic Management</h4>
+        <div class="ec-sub">Core Segment · 5 Properties · 135 Units</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Known Properties</span><span class="mv">Oasis 2, Athéna, Casasola, Leora, Cape Bay</span></div>
+        <div class="ec-metric"><span class="mk">Key Clients</span><span class="mv">International co-owners (French, European buyers)</span></div>
+        <div class="ec-metric"><span class="mk">CDA Positioning</span><span class="mv ok">Established incumbent</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Smart Syndic, Syndis Services, COMAGIM</span></div>
+        <div class="ec-metric"><span class="mk">Switching Cost</span><span class="mv ok">High — trust-based</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Investment Property Portfolio</h4>
+        <div class="ec-sub">Dual Revenue — Owner + Manager</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Book Value</span><span class="mv">MUR 7,879,167</span></div>
+        <div class="ec-metric"><span class="mk">Est. Rental Yield</span><span class="mv">~5–7% (Mauritius market)</span></div>
+        <div class="ec-metric"><span class="mk">Income Source</span><span class="mv">Likely "Other Income" MUR 1.24M</span></div>
+        <div class="ec-metric"><span class="mk">Competitive Angle</span><span class="mv ok">Owner-manager alignment</span></div>
+        <div class="ec-metric"><span class="mk">Market Trend</span><span class="mv ok">Capital appreciation strong</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Transport / Taxi Operation</h4>
+        <div class="ec-sub">Secondary Activity · Carrier A</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Activity Type</span><span class="mv">Taxi · Carrier A (private car)</span></div>
+        <div class="ec-metric"><span class="mk">Revenue Contribution</span><span class="mv warn">Unquantified</span></div>
+        <div class="ec-metric"><span class="mk">Likely Purpose</span><span class="mv">Resident transfers / amenity service</span></div>
+        <div class="ec-metric"><span class="mk">Strategic Value</span><span class="mv">Value-add differentiator</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Local taxi operators, ride apps</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Established relationships in a trust-intensive market.</strong> Syndic management is won and retained through trust, not price. Co-owners — particularly international buyers managing properties remotely from France or the UK — value responsiveness and reliability above cost. CDA's 15-year track record in Grand Baie's premium residential corridor is a genuine moat. Switching to a new syndic manager requires a general assembly vote and a transition process — clients rarely switch unless service has failed badly.</p>
+  <p class="body-text"><strong>2. Owner-as-client alignment.</strong> CDA holds MUR 7.88M of investment properties — it is a co-owner in the types of developments it manages. This creates a powerful alignment signal: CDA's director has personal financial skin in the game of keeping properties well-maintained and residents satisfied. This is not something competitors can easily replicate or claim.</p>
+  <p class="body-text"><strong>3. Geographic concentration in the highest-value residential corridor.</strong> Grand Baie and north Mauritius is the most active market for premium residential developments. By establishing deep roots here, CDA benefits from the continued pipeline of new IRS/PDS developments in the area — each new development is a potential new client that CDA can pitch from a position of local credibility.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Tailwind: Mauritius real estate market booming.</strong> The IRS/ERS/PDS property market in Mauritius has seen significant growth — MUR 44 billion in combined sales volume in 2022–2023. New residential developments continue to be approved, expanding the total addressable market for professional syndic managers.</li>
+    <li><strong>Tailwind: Rising demand for professional syndic management.</strong> As of late 2024, there are 59 property management companies in Mauritius, but demand is growing faster than supply of quality operators. The Non-Citizens (Property Restriction) Act creates a regulatory environment that requires compliant syndic management — increasing the value of experienced, registered operators like CDA.</li>
+    <li><strong>Tailwind: International buyer demand.</strong> European (particularly French) buyers continue to invest in Mauritius residential property for residency-by-investment benefits. These buyers overwhelmingly prefer professional, English/French-bilingual syndic management — a profile that fits CDA's Grand Baie positioning.</li>
+    <li><strong>Headwind: Market fragmentation and new entrants.</strong> The average age of property management companies in Mauritius is only 3 years 8 months — the market is attracting new entrants rapidly. CDA must actively differentiate on service quality and track record or face margin compression from cheaper competitors.</li>
+    <li><strong>Headwind: Admin cost inflation.</strong> Labour costs in Mauritius's service sector have been rising with minimum wage increases and competition for skilled property management professionals. CDA's 85.6% admin cost ratio leaves minimal buffer to absorb further cost inflation without raising fees.</li>
+    <li><strong>Headwind: Digital disruption and tenant-platform competition.</strong> Platforms offering automated syndic management tools (online portals for fee collection, maintenance requests, document management) are emerging. CDA's non-functional website and limited digital infrastructure could become a competitive liability if co-owners begin expecting a higher digital experience standard.</li>
+  </ul>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">CDA employs 10–19 people according to ZoomInfo data, placing it firmly in the EOS sweet spot of 10–250. The company manages 135 units across 5 properties with at least 6 identified staff roles (Director, Accounts Admin Manager, Business Consultant, Responsable Site, Responsable Maintenance, and likely others). This creates genuine cross-functional complexity: financial management, on-site operations, maintenance coordination, client relations, regulatory compliance, and transport services all need to be coordinated. The company is large enough to need EOS but small enough to implement it quickly. Score: 6 (solid fit — good size, moderate complexity, room to grow).</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Christophe D'Argent is a self-made founder who built CDA from zero to MUR 21.6M in revenue over 15 years. He holds all 5,000 shares and carries 100% of the personal financial risk. Founders with this profile are often privately open to structure but publicly resistant — they built success without formal systems, so they can be sceptical that systems will help rather than constrain. The appointment of Béatrice Henry-Calou as director in 2020 is a positive signal: D'Argent was willing to share governance responsibility, not just delegate tasks. However, with no publicly visible leadership development, no identified external advisors, and a company that has grown without documented EOS-type tools, the openness to a framework must be explored, not assumed. Score: 5 (neutral — needs qualification in conversation).</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">CDA is at a classic EOS inflection point: a profitable, established business that has outgrown its founding-phase operating model. The financial data reveals this clearly — revenue of MUR 21.6M, 10–19 staff, five properties, an unexplained MUR 3.28M liability, admin costs that consume 85.6% of revenue, and a current ratio below 1.0. These are the financial fingerprints of a business that is growing in complexity faster than its management systems are evolving. The founder almost certainly feels the classic EOS pain: difficulty scaling, people not doing what he expects, financial visibility that lacks granularity, and decisions that funnel through him rather than being owned by his team. Score: 7 (clear EOS-addressable symptoms present).</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of documented processes, ERP systems, or operational frameworks has been found in any public source. The company's website is non-functional. Its ZoomInfo and LinkedIn profiles are basic. The financial filing is accurate and timely (a positive baseline), but the 85.6% admin cost opacity — where MUR 18.5M disappears into a single line — suggests the internal financial reporting is similarly aggregated rather than granular. In a property management company, the absence of documented processes for maintenance requests, fee collection workflows, contractor approval, and complaint resolution represents a direct quality-of-service risk as the portfolio grows beyond current levels. Score: 4 (limited visible systems — high EOS upside from installing process).</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The company has retained a stable team over multiple years — Béatrice Henry-Calou has been with CDA for a significant period (appointed director 2020 after clearly earning the role), and the ZoomInfo employee data suggests a small but defined team with named role titles. In Mauritius's SME sector, employee retention at a 10–19 person company is itself a culture signal — people don't stay if the culture is toxic. The prompt supplier payment (DPO 21 days) and consistent regulatory compliance suggest a business that runs with a degree of reliability and discipline. However, without any public culture signals (Glassdoor, LinkedIn employee content, client testimonials), this is inferred rather than evidenced. Score: 6 (positive indicators, evidence limited).</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">With 100% ownership concentrated in one person, all significant decisions likely flow through Christophe D'Argent. The appointment of a second director in 2020 creates a formal governance structure, but operational decision-making authority is unlikely to be formally delegated with clear GWC (get it, want it, capacity to do it) criteria. In a 15-person property management company managing five concurrent developments, the absence of clear decision rights creates bottlenecks: maintenance approvals, contractor selections, resident fee disputes, and financial commitments all likely need the founder's sign-off. This is EOS's clearest entry point. Score: 4 (decision concentration is the most EOS-relevant symptom in this company).</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No publicly documented vision, mission, or strategic direction has been identified for CDA. The company's Facebook and LinkedIn presence are basic and operational, not strategic. There is no articulated 3-year or 10-year direction. The investment property portfolio (MUR 7.88M) suggests Christophe D'Argent is building personal wealth alongside the business — but whether this is part of a deliberate strategy to become a property-owner-manager hybrid, or simply opportunistic acquisitions, is unknown. A V/TO process would be immediately valuable in clarifying whether the business is aiming to expand its property portfolio, grow the number of managed developments, or optimise the existing portfolio. Score: 4 (vision exists in the founder's head — needs externalising and aligning with team).</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">3 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:30%"></div></div>
+    <p class="eos-rationale">No evidence of structured meeting rhythms, Level 10 formats, or regular leadership team cadence is visible from any public source. In a property management company of this size, meetings tend to be reactive — driven by resident complaints, maintenance crises, contractor delays, or AGM preparation cycles — rather than proactive and structured. The annual general meetings of the managed co-ownerships provide external rhythms that discipline the calendar, but these are client-facing, not internal leadership forums. The absence of an internal meeting structure that separates tactical issues from strategic direction is a classic EOS entry symptom. Score: 3 (no evidence of structured internal meeting culture — highest EOS installation upside here).</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.1</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>CDA is a genuine EOS candidate: the right size (10–19 people), the right stage (profitable but complexity-stressed), and with the right financial profile (strong enough to pay for EOS, stressed enough to need it). The gating factor is Christophe D'Argent's personal openness — a 15-year founder who has succeeded without formal frameworks may not feel the urgency that a loss-making company would. The best entry point is the admin cost conversation: if you can show him that structured accountability and process could reduce his 85.6% admin ratio meaningfully, the financial case for EOS becomes concrete and personal. The score rises to 7.5+ if D'Argent is growth-oriented and willing to delegate.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for C.D.A Management Services</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>CDA's most urgent need. With decisions concentrated in one founder and a team of 10–19 people across multiple functions, the Accountability Chart will clarify who owns what — maintenance operations, client relations, financial management, site management — and create the structure for D'Argent to genuinely delegate rather than informally supervise. <strong>This is the single highest-value EOS tool for this company.</strong></p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>CDA's financial opacity (one admin cost line of MUR 18.5M) is a business risk, not just an accounting preference. Installing a weekly Scorecard with 5–15 measurables — units managed, maintenance response times, fee collection rates, occupancy, satisfaction scores — will give Christophe D'Argent visibility he almost certainly doesn't currently have, and create the data foundation for performance conversations with his team.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>CDA almost certainly runs reactive meetings — triggered by crises rather than scheduled rhythms. Installing a weekly Level 10 Meeting for the leadership team (D'Argent, Henry-Calou, and the site/maintenance managers) will create the cadence to surface and resolve operational issues before they become client complaints or cost overruns. Given the property management context, a structured IDS process for maintenance and resident issues would transform operational consistency.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks</h4>
+      <p>For a company with no visible strategic direction, defining quarterly Rocks will force the leadership team to agree on the 3–7 most important priorities for the next 90 days. In CDA's case, likely Rocks include: (1) fixing the website/digital presence, (2) understanding and optimising the admin cost structure, (3) defining the growth strategy (more properties vs. optimise existing). Without Rocks, every week is consumed by operational fires.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision / Traction Organiser (V/TO)</h4>
+      <p>Christophe D'Argent has a vision for CDA — it lives entirely in his head. The V/TO process will externalise it, align the team around it, and make it actionable. Key strategic questions to resolve: Does CDA want to expand from 5 to 10+ properties? Does it want to develop its own properties as an investment-manager hybrid? Does Christophe eventually want an exit? These decisions shape everything — staffing, systems investment, marketing — and currently none of them are formally resolved.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>In a property management business, issues accumulate fast: difficult residents, unreliable contractors, regulatory changes, maintenance backlogs, fee non-payment. Without a structured Issues List and IDS (Identify, Discuss, Solve) process, these issues recirculate in informal conversations without resolution, consuming management energy repeatedly. An IDS discipline will give the CDA leadership team the tool to surface, triage, and resolve operational issues permanently rather than managing them symptomatically.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total — four financial/operational and four EOS-specific. Sequenced to address the admin cost vulnerability first, establish financial clarity second, then build the organisational structure that allows CDA to grow beyond its current founder-dependent model.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Decompose the Admin Cost Line — Immediately</h4>
+      <p>MUR 18.5M in "Administration Costs" is a single aggregated number that obscures the company's true cost structure. Before any growth or EOS conversation, Christophe D'Argent should produce a full cost breakdown: staff salaries by role, property maintenance coordination costs per property, insurance premiums, office costs, management fees, owner drawings, and any related-party transactions. The goal is to identify which costs are genuinely fixed, which are variable, and which are discretionary. A target reduction of admin costs from 85.6% to 75% of revenue would generate approximately MUR 2.3M of additional pre-tax profit — nearly 70% more than current PAT.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Clarify the MUR 3.28M "Other" Current Liability</h4>
+      <p>The MUR 3,278,909 sitting in "Others" within current liabilities must be identified and correctly classified before any financial conversation can be held with confidence. If it is deferred syndic fee income (cash received from co-owners in advance of the period it covers), it should be separately disclosed and is not a genuine creditor obligation — which would materially improve the current ratio. If it is a related-party payable, loan account, or accrued expense, that tells a different story about the company's actual financial position. This is a TC &amp; TC conversation, not a board decision.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Restore Digital Presence — Fix the Website</h4>
+      <p>cdaltd.net is currently inaccessible (DNS failure). For a company managing 135 residential units for international co-owners, a non-functional website is a credibility gap and a potential client communication problem. CDA should: (1) restore the website immediately on a reliable hosting platform, (2) add an online portal for co-owners to view accounts, submit maintenance requests, and access meeting documents, and (3) activate a LinkedIn content strategy to build sector visibility. Budget estimate: MUR 150–300K for website rebuild and portal. ROI: immeasurable in client retention and new business credibility.</p>
+      <span class="urg urg-week">Priority — Within 30 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Assess the Investment Property Portfolio — Strategy Decision Needed</h4>
+      <p>CDA holds MUR 7.88M in investment properties on its balance sheet. At current Mauritius market yields (5–7%), this generates approximately MUR 394K–552K of annual rental income — consistent with the MUR 1.24M "Other Income" on the P&amp;L (which may include both rental income and other management fee surcharges). Christophe D'Argent should formally decide: is the company a property manager, a property investor, or both? If both, should the investment portfolio be separately incorporated for asset protection and tax optimisation? This decision shapes the 10-year strategy and should be addressed in the V/TO process.</p>
+      <span class="urg urg-week">Priority — Within 60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Start with a Focus Day — Qualify D'Argent's Readiness</h4>
+      <p>The first EOS engagement for CDA should be a Focus Day with Christophe D'Argent (and Béatrice Henry-Calou if D'Argent agrees). The Focus Day will: (1) introduce EOS concepts without commitment, (2) surface the real pain points D'Argent experiences day-to-day, (3) test whether he has the genuine desire to install a structure that empowers others rather than himself, and (4) identify whether the team is ready for EOS or needs foundational alignment first. The financial data suggests CDA is ready; the conversation will confirm it. Lead with the admin cost conversation — that is the financial hook that will resonate personally with a sole shareholder.</p>
+      <span class="urg urg-week">EOS Entry Point — Schedule Within 30 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Design the Accountability Chart — Start with the Right Seats</h4>
+      <p>CDA's Accountability Chart will likely reveal that Christophe D'Argent is sitting in 3–4 seats simultaneously: Integrator, Finance Lead, Client Relations Lead, and Property Portfolio Manager. The first EOS output should be an Accountability Chart that defines the 4–5 key seats CDA needs to operate effectively (Leadership/Integrator, Finance &amp; Admin, Operations/Site Management, Maintenance, Client Relations) and honestly assesses who currently holds each seat — and who needs to be developed, hired, or replaced to fill them properly.</p>
+      <span class="urg urg-week">First EOS Deliverable — 90-Day Rock</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Define the First Three Rocks — Focus on Cost and Capacity</h4>
+      <p>CDA's first set of quarterly Rocks should be laser-focused on the two financial vulnerabilities identified in this report. Suggested first Rocks: (1) Complete admin cost decomposition and establish cost categories with monthly reporting by 30 June 2026; (2) Install a weekly Scorecard with 10 measurables covering all five properties by 31 May 2026; (3) Identify and hire or promote one person to the Operations/Integrator seat to reduce D'Argent's direct workload by 30% by 30 September 2026. These Rocks are measurable, time-bound, and directly address the company's core vulnerability.</p>
+      <span class="urg urg-medium">First Quarter Rocks — Within 90 Days of EOS Start</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Answer the V/TO Strategic Question: How Many Properties in 3 Years?</h4>
+      <p>CDA currently manages 5 properties and 135 units. The Mauritius property management market is growing — the V/TO process should answer one fundamental question: where does CDA want to be in 3 years? A doubling to 10 properties and 270 units implies a need for additional site managers, a stronger tech platform, and potentially an additional director-level hire. A decision to stay at current scale and optimise margins implies a different set of priorities. Either answer is valid — but without a V/TO answer, the company will drift rather than grow intentionally. This is the strategic question that unlocks every other decision.</p>
+      <span class="urg urg-medium">V/TO Deliverable — First Vision Day</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>C.D.A Management Services is a profitable, founder-led property management specialist that has built a genuine niche in Mauritius's most active residential corridor over 15 years. The business is financially healthy at its core — MUR 21.6M revenue, 15.1% net margin, zero debt, strong cash — but is operating with a cost structure that leaves almost no room for revenue disruption and a management model that is entirely dependent on Christophe D'Argent as the sole decision-maker. The real opportunity here is operational: if D'Argent can be shown that EOS will reduce his personal workload while improving profitability, the conversation will resonate. The financial case — reducing admin costs from 85.6% to 75% generates MUR 2.3M more profit — is the hook. The website gap is a quick win that signals operational sloppiness in a business that presents itself as premium. This is a solid EOS lead.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>First contact with Christophe D'Argent — lead with the admin cost conversation and the financial case for operational structure (Week 1–2)</li>
+        <li><span class="sig-num">02</span>Qualify readiness — Focus Day with D'Argent and Henry-Calou to surface real pain points and test EOS fit (Week 3–4)</li>
+        <li><span class="sig-num">03</span>Fix immediate gaps — website restoration and MUR 3.28M liability clarification as parallel quick wins that demonstrate good faith (Month 1)</li>
+        <li><span class="sig-num">04</span>Launch EOS — Accountability Chart, first Scorecard, Level 10 Meeting cadence, and first 3 Rocks (Month 2–3)</li>
+        <li><span class="sig-num">05</span>Vision Day — complete V/TO with the strategic question of how many properties in 3 years, and define the Integrator hire or promotion plan (Month 4–6)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>C.D.A Management Services — Comprehensive Company Analysis &amp; EOS Assessment · 27 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (27 April 2026) · ZoomInfo · RocketReach · LinkedIn · Facebook · Web search (April 2026)</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
