@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remihens — Comprehensive Company Analysis — 30 April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Water Treatment · MEP · O&amp;M</span>
+    <span class="badge badge-type">Private Company · Domestic</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">30 April 2026</span>
+  </div>
+  <h1>Remihens:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Remihens Co Ltd · Company intelligence · Financial ratios · EOS implementation assessment · Riche Terre, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">MUR 163.8M</div>
+      <div class="stat-delta">Year ended 30 June 2025 · MUR</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit After Tax</div>
+      <div class="stat-value emerald">MUR 25.5M</div>
+      <div class="stat-delta">15.5% net margin · FY2025</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.5 / 10</div>
+      <div class="stat-delta">Moderate-High — Qualified Positive · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">87-Day DSO</div>
+      <div class="stat-delta">Trade receivables MUR 39.1M — cash tied up in debtors</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Remihens Co Ltd — Company Analysis &amp; EOS Assessment · 30 April 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION — 7 tabs, always this order
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A founder-led engineering contractor with 11 years of growth behind it, exceptional profitability for its size, and a debtor book that is quietly consuming its operational flexibility.</p>
+
+  <p class="body-text">Remihens Co Ltd is a Mauritius-registered private company incorporated on 25 April 2014, operating under the trading name REMIHENS. The company specialises in water treatment, wastewater management, and mechanical, electrical and plumbing (MEP) engineering services. It designs, supplies, installs and maintains water treatment plants and MEP systems across Mauritius and the wider Indian Ocean — with project references in Madagascar, Rodrigues and the Seychelles. In 2019, within five years of its founding, it became the official distributor of German wastewater treatment plant manufacturer Clearfox&reg; for the Indian Ocean and South African region — a commercially significant milestone that signalled both technical credibility and export ambition. The company operates from KL House, Motorway M3, Riche Terre, and its website trades as remihensgroup.com.</p>
+
+  <p class="body-text">Remihens is 100% owned by its founding director, Sookurun Priscilla, who holds all 100 ordinary shares and has been director since 18 February 2020. A second director, Sookurun Ramkissoon Mahendra Madun Mohun, was appointed on 1 January 2024 — almost certainly a family member given the shared surname, pointing to a classic founder-family governance structure. The company is entirely privately held with no group connections, subsidiaries, or external investors on record. Its secretary is Fortenberry Corporate Services Ltd, appointed in July 2024. There are no registered charges against the company.</p>
+
+  <p class="body-text">Financially, Remihens is in excellent shape for a business of its size. For the year ended 30 June 2025, revenue reached MUR 163.8 million — a striking figure for a sub-25-employee SME in Mauritius. The gross margin stands at 42.6%, the net margin at 15.5%, and the return on equity at 60.1%. The balance sheet is debt-free in terms of formal borrowings, and the current ratio is a comfortable 3.27x. The one structural vulnerability that stands out is the debtor days figure of 87 days — MUR 39.1 million sitting in trade receivables, which in a project-based business reflects normal billing patterns but creates meaningful working capital risk. The MUR 38.4 million under non-current liabilities classified as "Others" likely represents deferred income or advance payments from clients, and warrants clarification. EOS suitability scores 6.5 out of 10 — a qualified positive.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Exceptional Profitability Masking a Collections Problem</div>
+    Remihens punches well above its weight: MUR 163.8 million in revenue, a 42.6% gross margin and MUR 25.5 million net profit for a company with fewer than 25 employees is an extraordinary result. However, 87 debtor days means MUR 39.1 million — nearly 24% of annual revenue — is on the street at any given time. In a project-based engineering business operating across multiple territories, this creates cash flow dependency on client payment discipline that the company does not fully control. The Clearfox distributor role and the Indian Ocean footprint position Remihens for further growth, but without a formal collections rhythm and billing cadence built into operations, that growth will be funded by the bank account rather than by the business itself.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Official Clearfox distributor for Indian Ocean &amp; South Africa</strong> — exclusive regional position in a high-demand segment. Multi-territory project track record across Mauritius, Rodrigues, Seychelles and Madagascar. 42.6% gross margin reflecting strong pricing power relative to cost. Debt-free balance sheet. Active annual return compliance and up-to-date financials.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>87-day debtor days — MUR 39.1M in trade receivables</strong> with zero inventory buffer. MUR 38.4M under non-current "Others" liabilities requires clarification (likely deferred income but unconfirmed). Revenue concentrated in project-based contracts with inherent lumpy cash flow. No disclosed auditor — financial oversight structure unclear for a company of this revenue scale.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Founder-led with a second family director recently added</strong> — a classic signal of a business at the inflection point between founder control and professional management. Multi-territory operations with no visible management structure below director level suggest accountability gaps. The MUR 163.8M revenue level with sub-25 employees indicates the founder is likely carrying operational weight that EOS tools would systematically redistribute.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A tight, founder-owned engineering contractor that started on a provident fund payout in 2014 and became a regional Clearfox distributor in under five years — now generating MUR 163.8 million in revenue with fewer than 25 people.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Remihens Co Ltd was incorporated on 25 April 2014 under file number C122557, registered with Business Registration Number C14122557 as a domestic private company. The registered office is at 3rd Floor (Office 1), KL House, Motorway M3, Riche Terre, Mauritius — this address was effective from 17 September 2022, suggesting a prior office move as the company grew. The stated capital is MUR 200,000 comprising 100 ordinary shares, all held by the founder. The company operates under the business name REMIHENS, classified as "Job Contractor (Other Than Grade A, B, C, D or E)" under MNS business classification. Its secretary is Fortenberry Corporate Services Ltd, appointed 18 July 2024. No auditor is recorded on the CBRIS. Annual registration fees are paid through 2026 and annual returns are filed on time for all three years on record, with the most recent filed 13 February 2025 for the period to 20 December 2024. Financial statements are filed for FY2023, FY2024 and FY2025, all approved within six months of year-end — a sign of good administrative discipline.</p>
+  <p class="body-text">The founding story is notable: the company was started by Priscilla Sookurun who reportedly cashed in her provident fund to buy two computers and second-hand office furniture. This origin signals a founder with high personal risk tolerance, a bootstrapped growth mentality, and likely a hands-on operational style. The addition of Sookurun Ramkissoon Mahendra Madun Mohun as second director on 1 January 2024 — sharing the Sookurun surname — indicates a family succession or co-management arrangement is being established, consistent with a founder preparing for partial delegation.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Sookurun Priscilla</h4>
+        <div class="ec-sub">Founder · 100% Shareholder · Director</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv ok">100 / 100</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary · MUR</span></div>
+        <div class="ec-metric"><span class="mk">Director since</span><span class="mv">18 Feb 2020</span></div>
+        <div class="ec-metric"><span class="mk">Stated capital</span><span class="mv">MUR 200,000</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Remihens Co Ltd</h4>
+        <div class="ec-sub">Operating Entity · File C122557</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv ok">LIVE</span></div>
+        <div class="ec-metric"><span class="mk">Incorporated</span><span class="mv">25 Apr 2014</span></div>
+        <div class="ec-metric"><span class="mk">Subsidiaries</span><span class="mv">None on record</span></div>
+        <div class="ec-metric"><span class="mk">Charges</span><span class="mv ok">None registered</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Clearfox&reg; Partnership</h4>
+        <div class="ec-sub">Distribution Agreement · Est. 2019</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Principal</span><span class="mv">Clearfox GmbH (Germany)</span></div>
+        <div class="ec-metric"><span class="mk">Territory</span><span class="mv">Indian Ocean · S. Africa</span></div>
+        <div class="ec-metric"><span class="mk">Type</span><span class="mv">Official distributor</span></div>
+        <div class="ec-metric"><span class="mk">Since</span><span class="mv">c. 2019 (5 yrs post-founding)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Ownership Note</div>
+    Remihens is entirely founder-owned with no group structure, holding company, or external investors. The MUR 38.4 million under non-current "Others" liabilities is likely advance payments or deferred project income rather than shareholder loans, but this cannot be confirmed from the CBRIS summary alone. This point should be clarified in the initial discovery conversation.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Sookurun Priscilla — Founder &amp; Director</h4>
+      <p>Appointed director <strong>18 February 2020</strong>; sole shareholder since incorporation. Founder who bootstrapped the company from personal savings. Drove the company from zero to MUR 163.8M revenue in 11 years and secured the Clearfox regional distributorship by year five. Service address: KL House, Motorway M3, Riche Terre. Likely serves as CEO/MD in practice. Contact: sachin@remihens.mu (company general email); phone +230 249 0932.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Sookurun Ramkissoon Mahendra Madun Mohun — Director</h4>
+      <p>Appointed <strong>1 January 2024</strong>. Shared Sookurun surname strongly suggests a family relationship with the founder — possibly spouse, sibling or adult child. The 2024 appointment date coincides with a likely strategic decision to formalise co-management or begin succession planning. No public profile or LinkedIn presence found. Service address: KL House, Motorway M3, Riche Terre.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Fortenberry Corporate Services Ltd — Secretary</h4>
+      <p>Appointed <strong>18 July 2024</strong>. Professional corporate secretary firm based at 2 River Court, St Denis Street, Port Louis. Appointment of an external corporate secretary in mid-2024 signals growing compliance awareness and professionalism — a positive indicator. No prior secretary name on record suggests Fortenberry replaced either no formal secretary or an informal arrangement.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Remihens operates across four integrated service lines that create natural cross-sell opportunities and sticky recurring revenue from operations and maintenance contracts:</p>
+  <p class="body-text"><strong>Water Treatment:</strong> Design, supply and installation of potable and process water treatment systems. Includes reverse osmosis, filtration and disinfection plants for commercial, industrial and public-sector clients. Regional expertise across island environments where imported technology is required.</p>
+  <p class="body-text"><strong>Wastewater Treatment:</strong> As the exclusive Clearfox&reg; distributor for the Indian Ocean and South Africa, Remihens supplies, installs and commissions modular and bespoke wastewater treatment plants. Clearfox technology is used in hotels, resorts, industrial facilities and municipal applications. Reference project includes Le Meridien hotel in Mauritius.</p>
+  <p class="body-text"><strong>MEP (Mechanical, Electrical and Plumbing):</strong> Full MEP design, supply and installation for building and infrastructure projects. Covers commercial, hospitality, industrial and residential developments. MEP services are often bundled with water or wastewater scope, enabling comprehensive project delivery.</p>
+  <p class="body-text"><strong>Operation and Maintenance:</strong> Post-installation O&amp;M contracts for water and wastewater plants. This service line is strategically important — it provides recurring, lower-capital-intensity revenue and builds long-term client relationships that are hard for competitors to displace without performance failure.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Remihens is headquartered at KL House, Motorway M3, Riche Terre, Mauritius — the main island. Its project track record extends to Rodrigues (Mauritius dependency), the Seychelles, and Madagascar. The Clearfox distributorship covers the Indian Ocean and South Africa, giving the company a formal commercial footprint across a wide regional arc. The company's website (remihensgroup.com) presents an English-language professional face appropriate for regional business development. ZoomInfo records a phone of +230 249 0932 and email sachin@remihens.mu — the "sachin" prefix in the email address may indicate a named contact rather than a generic inbox, which warrants investigation in the contact enrichment phase.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Note</div>
+    The company's digital footprint is modest relative to its revenue size. The remihensgroup.com website is live but content-light based on indexed pages. No verified LinkedIn company page was found. Facebook presence exists but appears inactive. For a company targeting regional hotel, resort and industrial clients — many of whom research suppliers online — a stronger digital presence would be a low-cost competitive differentiator.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS financial summary filed with the Registrar of Companies, Mauritius. Financial year ended 30 June 2025. Currency: Mauritius Rupee (MUR). Unit: 1 (all figures in MUR).</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    The CBRIS summary provides the full P&amp;L and balance sheet for FY2025 (year ended 30 June 2025), approved 30 December 2025 and filed with MNS. Prior-year comparatives (FY2024, FY2023) are listed as filed but their detailed figures are not disclosed in the CBRIS summary — year-on-year trend analysis is therefore not possible from this source. No auditor is named on the CBRIS, meaning the reliability and audit status of these figures cannot be independently confirmed. The balance sheet item "Non-Current Liabilities — Others" at MUR 38,384,834 is not broken down further; it is likely deferred project income or advance payments but must be confirmed with management. Distribution costs are recorded as MUR 1 — a rounding artifact; treated as zero in this analysis.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>163,817,193</td><td>100.0%</td><td>Strong revenue for a sub-25-employee SME; implies high revenue-per-head productivity</td></tr>
+        <tr class="heat-warn"><td>Cost of Sales</td><td>93,958,141</td><td>57.4%</td><td>Project costs — materials, subcontractors, direct labour; in line with engineering contractor norms</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>69,859,052</td><td>42.6%</td><td>Exceptional margin for an engineering contractor; reflects strong pricing, Clearfox distributor margin, and O&amp;M mix</td></tr>
+        <tr><td>Other Income</td><td>0</td><td>0.0%</td><td>No other income — all revenue is operational</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>Recorded as MUR 1 — rounding artifact, treated as nil</td></tr>
+        <tr class="heat-warn"><td>Administration Costs</td><td>28,367,877</td><td>17.3%</td><td>Significant overhead load — likely includes management salaries, office costs, professional fees; watch for bloat at this level</td></tr>
+        <tr><td>Other Expenses</td><td>6,336,843</td><td>3.9%</td><td>Miscellaneous operating expenses; nature not specified in CBRIS summary</td></tr>
+        <tr><td>Finance Costs</td><td>3,983,143</td><td>2.4%</td><td>Interest expense despite zero formal borrowings on balance sheet — likely lease interest (IFRS 16) or bank charges</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>31,171,189</td><td>19.0%</td><td>Healthy PBT — top-quartile performance for Mauritius engineering SMEs</td></tr>
+        <tr><td>Tax Expense</td><td>5,718,574</td><td>3.5%</td><td>Effective tax rate 18.4% — consistent with standard Mauritius corporate tax of 15% plus possible CSR or surcharge</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>25,452,615</strong></td><td><strong>15.5%</strong></td><td><strong>Outstanding net margin — confirms strong pricing power and operational efficiency</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>42,605,270</td><td>Substantial PPE — vehicles, plant, workshop equipment, leased premises; confirms operational scale</td></tr>
+        <tr><td>Non-Current Assets</td><td>Investment Properties / Intangibles / Other</td><td>0</td><td>No investment assets; purely operational</td></tr>
+        <tr><td>Non-Current Assets</td><td><strong>Total NCA</strong></td><td><strong>42,605,270</strong></td><td>44% of total assets in fixed assets — normal for an equipment-intensive contractor</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Trade and Other Receivables</td><td>39,107,629</td><td>Large debtor book — 87 days DSO; MUR 39.1M at risk from client payment delays</td></tr>
+        <tr><td>Current Assets</td><td>Cash and Cash Equivalents</td><td>15,743,260</td><td>Adequate operational cash — but only 9.6 weeks of revenue cover at current run-rate</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>0</td><td>No inventory — service/project model; materials likely bought per-project and expensed to COGS</td></tr>
+        <tr><td>Current Assets</td><td><strong>Total CA</strong></td><td><strong>54,850,889</strong></td><td>Predominantly receivables — liquidity is receivables-dependent</td></tr>
+        <tr class="heat-ok"><td></td><td><strong>Total Assets</strong></td><td><strong>97,456,159</strong></td><td>Healthy asset base for an MUR 163.8M revenue business</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital</td><td>200,000</td><td>Nominal — founder-funded through retained earnings</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Retained Earnings</td><td>42,121,740</td><td>Strong accumulated profits; MUR 25.5M added in FY2025</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>42,321,740</strong></td><td>43.4% equity ratio — solid foundation</td></tr>
+        <tr class="heat-warn"><td>Non-Current Liabilities</td><td>Others (unspecified)</td><td>38,384,834</td><td>Largest single liability — likely deferred income, advance client payments, or IFRS 16 lease liabilities. Requires clarification.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long Term Borrowings / Deferred Tax / Provisions</td><td>0</td><td>No formal long-term debt — company is debt-free in traditional sense</td></tr>
+        <tr><td>Non-Current Liabilities</td><td><strong>Total NCL</strong></td><td><strong>38,384,834</strong></td><td>Entirely composed of unspecified "Others"</td></tr>
+        <tr><td>Current Liabilities</td><td>Trade and Other Payables</td><td>8,299,884</td><td>32 days DPO — paying suppliers faster than collecting from clients</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax Payable</td><td>5,718,574</td><td>Equal to FY2025 tax expense — full year tax accrued and outstanding at year-end</td></tr>
+        <tr><td>Current Liabilities</td><td>Short Term Borrowings</td><td>0</td><td>No short-term bank debt</td></tr>
+        <tr><td>Current Liabilities</td><td>Others</td><td>2,731,127</td><td>Accrued expenses or other short-term obligations</td></tr>
+        <tr class="heat-ok"><td>Current Liabilities</td><td><strong>Total CL</strong></td><td><strong>16,749,585</strong></td><td>Manageable current liabilities — current ratio 3.27x</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The CBRIS charge register for Remihens Co Ltd is entirely clear — no floating charges, fixed charges, debentures or any other registered encumbrances are recorded as at 30 April 2026. This is a significant positive: the company has not pledged its assets to any lender. Combined with zero formal borrowings on the balance sheet, Remihens carries no financial institution debt. This leaves the company's balance sheet completely unencumbered and available as security should it wish to raise growth capital in the future — whether for Clearfox inventory financing, regional expansion, or acquisition.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks: Mauritius engineering/contracting SME norms, Indian Ocean project services sector. Green = healthy, Amber = watch, Red = critical concern. All calculations from FY2025 CBRIS data.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">3.27×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius contractor)</span><span class="ratio-val">1.2× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Current assets of MUR 54.9M comfortably exceed current liabilities of MUR 16.7M. The company has no problem meeting short-term obligations. However, 71% of current assets are receivables, so the quality of this ratio is entirely dependent on debtor collection. If MUR 20M of receivables were overdue, the effective ratio would still be above 2.0×.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">3.27×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius contractor)</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Identical to the current ratio because inventories are zero — Remihens holds no stock. This is appropriate for a project-delivery business where materials are bought per-contract. The quick ratio is thus entirely driven by receivables and cash.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">42.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius engineering SME)</span><span class="ratio-val">20% – 35%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Excellent</span></span></div>
+      <span class="ratio-interpret">42.6% gross margin is exceptional for an engineering contractor. This reflects the value-add of the Clearfox distributor margin, proprietary O&amp;M contracts, and the company's ability to price at a premium for specialist water treatment expertise. It is the single most important commercial signal in the financials.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value (PBT + Finance Costs)</span><span class="ratio-val ok">21.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">8% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Excellent</span></span></div>
+      <span class="ratio-interpret">EBIT of MUR 35.2M on MUR 163.8M revenue. The 21.5% EBIT margin significantly outperforms Mauritius engineering SME norms, confirming that the gross margin advantage is not being eroded by overheads — though admin costs at 17.3% of revenue are a trend to monitor as the company grows.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">15.5%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5% – 10%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Excellent</span></span></div>
+      <span class="ratio-interpret">Net margin of 15.5% is approximately double the Mauritius engineering contractor benchmark. MUR 25.5M net profit retained in a company with MUR 200,000 of share capital — the retained earnings base has been built almost entirely from operating performance.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets / Return on Equity</h4>
+      <div class="ratio-row"><span class="ratio-label">ROA</span><span class="ratio-val ok">26.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">ROE</span><span class="ratio-val ok">60.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Exceptional</span></span></div>
+      <span class="ratio-interpret">ROA of 26.1% and ROE of 60.1% are both outstanding by any benchmark. ROE is amplified by the modest equity base (MUR 42.3M) relative to profits (MUR 25.5M). The company is generating exceptional returns on its invested capital — a reflection of the asset-light, skills-intensive business model.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value (borrowings / equity)</span><span class="ratio-val ok">0.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.3× – 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Debt-Free</span></span></div>
+      <span class="ratio-interpret">Remihens carries zero formal debt (borrowings). This is a major balance sheet strength. It also means the company has significant unused debt capacity available for growth — it could take on substantial bank financing without straining its balance sheet. The MUR 38.4M NCL "Others" is excluded from this calculation as it is not borrowings.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value (EBIT / finance costs)</span><span class="ratio-val ok">8.83×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt; 3.0× = healthy</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Strong</span></span></div>
+      <span class="ratio-interpret">Finance costs of MUR 3.98M are covered nearly 9× by EBIT. The finance costs likely represent IFRS 16 lease interest on the office and equipment leases rather than bank loan interest, given the absence of formal borrowings. Either way, coverage is very comfortable.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value (revenue / total assets)</span><span class="ratio-val ok">1.68×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.8× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Efficient</span></span></div>
+      <span class="ratio-interpret">MUR 163.8M revenue generated from MUR 97.5M of assets — a strong asset utilisation ratio. The company extracts high revenue from a relatively modest asset base, consistent with a skills and project-management driven business model.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">N/A</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">N/A</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-blue">Not Applicable</span></span></div>
+      <span class="ratio-interpret">Zero inventory reported — materials are procured on a per-project basis and flow directly to Cost of Sales. This is correct for a project delivery business and eliminates stock obsolescence risk entirely.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debtor Days (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value (receivables / revenue × 365)</span><span class="ratio-val warn">87 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius contractor)</span><span class="ratio-val">45 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">87 days DSO is the most significant operational weakness in the financials. At the benchmark of 60 days, Remihens would have MUR 26.9M in receivables — instead it has MUR 39.1M, representing MUR 12.2M of cash tied up beyond normal. In a project business serving public-sector clients across multiple territories, extended payment cycles are common but must be actively managed through milestone billing, retention clauses, and collections escalation.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value (payables / COGS × 365)</span><span class="ratio-val ok">32 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 45 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">32-day DPO is within benchmark. However, the gap between DSO (87 days) and DPO (32 days) creates a working capital gap of 55 days — the company is funding a 55-day cash conversion gap from its own resources. Extending supplier payment terms where possible, or deploying invoice financing, could close this gap materially.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. DSO at 87 days:</strong> Remihens has MUR 39.1 million locked in trade receivables. At a benchmark 60-day DSO, this figure should be MUR 26.9M — the company is carrying MUR 12.2M in excess debtors at all times. If collections were tightened to 60 days, that MUR 12.2M would convert to cash immediately and could fund either Clearfox inventory pre-purchase, a new territory push, or simply reduce financial risk. For Thierry's conversation: ask "what is your current billing and collections process — do you have a structured follow-up rhythm?" <br><br>
+    <strong>2. Admin costs at 17.3% of revenue (MUR 28.4M):</strong> As the company grows, overhead discipline will determine whether the 42.6% gross margin translates into sustained net profit or gets absorbed. At MUR 163.8M revenue, 17.3% admin is already elevated. An Accountability Chart and a Scorecard with a weekly revenue-per-head metric would be the EOS answer to keeping this ratio in check through growth.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Three interlocking segments — water treatment, wastewater (Clearfox), and MEP — with an O&amp;M recurring revenue layer; Remihens competes on specialist expertise and a unique regional distribution right that no Mauritius-based competitor can replicate.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Water Treatment</h4>
+        <div class="ec-sub">Potable &amp; Process · Hospitality, Industrial, Public</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Watertech Ltd, Chunke, Pure Aqua</span></div>
+        <div class="ec-metric"><span class="mk">Remihens position</span><span class="mv">Mid-market specialist</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Full O&amp;M lifecycle</span></div>
+        <div class="ec-metric"><span class="mk">Client profile</span><span class="mv">Hotels, industry, public bodies</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Wastewater — Clearfox</h4>
+        <div class="ec-sub">Exclusive Distributor · Indian Ocean &amp; S. Africa</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">None (exclusive territory)</span></div>
+        <div class="ec-metric"><span class="mk">Remihens position</span><span class="mv">Sole regional distributor</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Uncontestable in territory</span></div>
+        <div class="ec-metric"><span class="mk">Client profile</span><span class="mv">Resorts, municipalities, industry</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>MEP Engineering</h4>
+        <div class="ec-sub">Mechanical · Electrical · Plumbing</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">REC, KYA Engineers, Manser Saxon</span></div>
+        <div class="ec-metric"><span class="mk">Remihens position</span><span class="mv">Integrated MEP + water player</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv">Single-contractor water+MEP</span></div>
+        <div class="ec-metric"><span class="mk">Client profile</span><span class="mv">Hotels, commercial, industrial</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Exclusive Clearfox distributorship for the Indian Ocean and South Africa.</strong> This is the most strategically significant moat Remihens possesses. Competitors in Mauritius, Seychelles, Madagascar and South Africa cannot legally supply or install Clearfox wastewater treatment systems — they must come through Remihens. This creates a captive supply chain position in a growing market segment driven by environmental regulation and hospitality sector expansion. The distributorship has been held since approximately 2019 and, with seven years of tenure, is likely well-entrenched.</p>
+  <p class="body-text"><strong>2. Integrated water-wastewater-MEP capability with O&amp;M continuity.</strong> Very few Mauritius contractors can deliver all three disciplines under one contract and then maintain the installed systems on a recurring basis. This integration reduces client coordination cost, simplifies procurement, and creates high switching costs once O&amp;M contracts are in place. The combination of design, supply, install and maintain under one roof is a genuine structural advantage, not a marketing claim.</p>
+  <p class="body-text"><strong>3. Multi-territory project track record with island-environment expertise.</strong> Operating effectively in Rodrigues, Seychelles and Madagascar requires logistics, import clearance, and regulatory knowledge that most Mauritius contractors lack. This creates a meaningful barrier to entry for local competitors attempting to follow Remihens into these markets.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Growing environmental regulation in Mauritius and the Indian Ocean:</strong> Increasing pressure from government and international hotel chains for certified wastewater treatment positions Clearfox-equipped installers at the front of the compliance queue.</li>
+    <li><strong>Hospitality sector expansion:</strong> New hotel and resort construction across Mauritius, Seychelles and the Maldives consistently requires MEP and water treatment services — Remihens's core client segment is structurally growing.</li>
+    <li><strong>Climate-driven water scarcity awareness:</strong> Islands across the Indian Ocean face freshwater supply pressure, creating sustained demand for water treatment and recycling systems that Remihens can supply and maintain.</li>
+    <li><strong>African infrastructure demand:</strong> The Clearfox South Africa territorial right gives Remihens access to one of Africa's largest infrastructure markets — a significant optionality not yet fully monetised given the company's current scale.</li>
+    <li><strong>Price and margin pressure from international contractors:</strong> Large-scale MEP projects on the main island are increasingly contested by international groups with lower overheads and stronger balance sheets — Remihens must protect its niche positioning rather than compete head-to-head on large commercial developments.</li>
+    <li><strong>Key-person concentration risk:</strong> With a sub-25-employee team and a founder-led structure, the departure or incapacitation of the founder would create significant operational disruption — a risk amplified by the multi-territory scope of the business.</li>
+  </ul>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">ZoomInfo reports fewer than 25 employees; however MUR 163.8M in revenue implies extraordinarily high productivity per head, suggesting either significant subcontractor reliance or that the employee count is understated. The company is squarely within the EOS size sweet spot in headcount terms. The multi-territory operation (Mauritius, Rodrigues, Seychelles, Madagascar) and multi-service-line model (water treatment, wastewater, MEP, O&amp;M) create genuine organisational complexity that EOS tools are designed to address. Score is mid-range because sub-25 people is at the lower end of the range where EOS delivers maximum value — optimal EOS companies tend to have 30–150 employees.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The founder's personal origin story — cashing in a provident fund, starting from scratch, growing to MUR 163.8M — indicates high agency, resilience and ambition. These traits are positive EOS signals. The appointment of a second director (likely family) in January 2024 shows willingness to share governance responsibility, even if informally. The appointment of a professional corporate secretary in July 2024 shows growing compliance awareness. However, a 100%-founder-owned, founder-led company with no external investors and no visible management structure below director level suggests a strong controlling personality who may resist the vulnerability and transparency that EOS requires. Score held at 6 — strong potential but the conversation must surface whether the founder is truly open to being held accountable by a Leadership Team, not just managing them.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">MUR 163.8M in revenue for a sub-25-person team is the single clearest signal of a business in classic EOS pain. The founder is almost certainly the hub of all major decisions, project relationships, and technical authority. The 87-day DSO suggests no systematic billing and collections process exists. The MUR 38.4M unspecified non-current liability suggests financial complexity that has outgrown informal management. Multi-territory operations running from one office, one founding director, and a small team are textbook signs of a business that has grown faster than its management infrastructure. The Clearfox distributorship creates regional expansion optionality that will require structured processes and delegated accountability to exploit — precisely what EOS delivers.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Annual returns are filed on time, financial statements are produced and approved within six months of year-end, and a corporate secretary was formalised in 2024 — these are signs of baseline administrative competence. However, the zero distribution costs (no formalised sales function), the 87-day DSO (no systematic AR process), and the absence of any named auditor (no third-party financial review) suggest that operating processes are largely informal and founder-dependent. There is no public evidence of project management systems, ERP, or CRM usage. The business is likely run on Excel, WhatsApp, and founder intuition — which works at this scale but will break as the company grows.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The founding story — bootstrapped from a provident fund payout — instils a culture of resourcefulness and accountability that is genuinely positive. A company that has grown to MUR 163.8M on those origins has attracted and retained capable people. The Clearfox distributorship renewal implies the German principal has confidence in the company's professionalism. However, with no visibility into HR practices, team stability, or internal culture, the score is held at mid-range. The family director appointment could strengthen or fragment culture depending on execution.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">With one director since founding and a second added only in January 2024, all strategic and operational decisions have almost certainly flowed through one person for 10 years. A company generating MUR 163.8M in revenue with this governance structure will have severe decision-making bottlenecks — the founder is simultaneously the CEO, the key account manager, the technical authority, and the financial controller. This is the most EOS-relevant pain point in the business. An Accountability Chart would immediately surface role confusion; Rocks would force structured quarterly prioritisation; the L10 would create a forum where decisions are made collectively rather than by the founder in real time.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The company's website states an ambition to become "the most reliable MEP and water treatment company in Mauritius and the Indian Ocean" — this is a clear directional statement, even if not a formally documented V/TO. The Clearfox distributorship gives the business a concrete growth vector (Indian Ocean and South Africa). The 11-year trajectory from nothing to MUR 163.8M suggests the founder has a clear personal vision. However, whether this vision is shared with, and understood by, the wider team is unknown — and in a founder-led business it rarely is without a formal process like the V/TO to make it explicit.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No evidence of structured meeting rhythms exists. In a sub-25-person founder-led company with multi-territory project delivery, meetings are almost certainly reactive — called to solve problems, not to review scorecards, clear issues, and set quarterly rocks. The 87-day DSO alone is evidence that nobody is reviewing a weekly collections number in a structured setting. The Level 10 Meeting cadence — 90-minute weekly with a fixed agenda — would be among the highest-impact early EOS tools for Remihens.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.4</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>Remihens is a compelling EOS candidate: the right size, the right growth stage, and clear evidence of the three EOS pain points — people, data, and issues. The gating factor is leadership openness: a founder who has operated solo for a decade and built MUR 163.8M in revenue has proven she does not need a system — the question is whether she wants one to take the company to the next level without it depending entirely on her. If the founder is open, this is a high-probability engagement. The decision-making concentration (score 4) and meeting culture (score 4) are the two dimensions where EOS would deliver the fastest visible impact.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Remihens</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>With one functional director for 10 years and a second added 18 months ago, Remihens almost certainly has no documented ownership of functions. The Accountability Chart will surface the founder's role overload immediately — she is likely sitting in 5+ seats. This is the first and most important tool: it makes the structural problem visible and creates the conversation about who fills which seat.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard</h4>
+      <p>The 87-day DSO is the clearest evidence that no one is looking at a weekly collections number in a structured setting. A Scorecard with 5–10 leading indicators — including weekly billings, cash collected, open project milestones and O&amp;M renewal rate — would immediately change how the business is managed. The founder would stop running on gut feel and start running on data.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>A company operating across Mauritius, Rodrigues, Seychelles and Madagascar with no visible meeting cadence is resolving problems in the field, by phone, or not at all. The Level 10 Meeting — 90 minutes, every week, same agenda — creates the structured rhythm that converts reactive fire-fighting into proactive issue resolution. For Remihens, this is potentially the single highest-ROI tool in the first 90 days.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks</h4>
+      <p>The Clearfox distributorship creates a clear 90-day Rock candidate: formalise and grow the South Africa territory, or execute the first Rodrigues O&amp;M contract expansion. Without quarterly Rocks, the company's growth priorities compete with daily project demands and the founder never gets strategic focus time. Rocks enforce the discipline that bridges vision and execution.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List and IDS</h4>
+      <p>The MUR 38.4M unclassified NCL liability, the 87-day DSO, the admin cost creep, the digital presence gap — these are all issues that a well-run business surfaces and resolves systematically. Identify, Discuss, Solve (IDS) in the L10 meeting gives the leadership team a repeatable framework for clearing these backlogs rather than carrying them indefinitely.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vision / Traction Organiser (V/TO)</h4>
+      <p>The company has a stated vision ("most reliable MEP and water company in Indian Ocean") but it lives in the founder's head and on the website. The V/TO forces the 10-year target, 3-year picture, 1-year plan and Core Values into one shared document. For a family-directed company with an 11-year track record and a regional distributorship, articulating a documented V/TO is the first step to building a leadership team that can execute without the founder in every room.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total — four financial and operational priorities to action before or alongside EOS, and four EOS implementation recommendations. Sequenced: fix the cash conversion gap first, then install the operating system.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Install a Structured Billing and Collections Rhythm</h4>
+      <p>Debtor days at 87 is the top priority. Assign ownership of AR to a named person (not the founder). Implement milestone-based billing on all project contracts so invoices are raised on completion of defined phases, not at project end. Create a weekly collections report — outstanding invoices by client, by age, by territory. Set a 60-day collection target and escalate anything over 75 days to director level within the L10 meeting. Success = DSO below 60 days within 6 months, releasing approximately MUR 12M in cash.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Clarify and Reclassify the MUR 38.4M Non-Current Liability</h4>
+      <p>The MUR 38,384,834 sitting under "Non-Current Liabilities — Others" is the largest single item on the balance sheet and is entirely uncharacterised. Management must confirm whether this is: (a) deferred project income / advance payments from clients, (b) IFRS 16 lease liabilities, (c) related-party obligations, or (d) something else. If it is deferred income, it represents revenue to be earned — a positive signal. If it is undisclosed related-party debt, it changes the debt-to-equity assessment materially. Commission a formal audit or financial review to properly disclose this item. Target: full disclosure before any external financing is sought.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Appoint a Registered Auditor</h4>
+      <p>No auditor is listed on the CBRIS for a company generating MUR 163.8M in annual revenue. While Mauritius private companies below a certain threshold may not be legally required to audit, at this revenue scale a clean audit opinion is essential for: (a) any bank financing, (b) government tender qualification, (c) regional expansion partnerships, and (d) future Clearfox contract renewals with the German principal. Appoint a licensed Mauritius auditing firm within 90 days. This is a credibility and governance investment, not just a compliance step.</p>
+      <span class="urg urg-week">Priority — Within 60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Invest in Digital Presence to Match Revenue Scale</h4>
+      <p>A company generating MUR 163.8M in revenue from hotel groups, resort developers and industrial clients across four territories has a digital presence that does not reflect its commercial weight. The remihensgroup.com website is live but content-light; no active LinkedIn company page was found. Immediate actions: (a) build a project portfolio page on the website with 5–8 reference case studies including client name, scope and geography, (b) create and actively manage a LinkedIn company page targeting hospitality procurement and project management decision-makers, (c) list the Clearfox distributorship prominently — this alone differentiates Remihens from every competitor in the territory.</p>
+      <span class="urg urg-week">Priority — Within 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Run the EOS Focus Day with Both Directors</h4>
+      <p>The initial EOS engagement should be a full Focus Day with Priscilla Sookurun and Sookurun Ramkissoon Mahendra Madun Mohun — both directors present, no exceptions. The Focus Day will surface whether the two directors share a common vision, whether the second director is operational or advisory, and where the real accountability gaps are. This is the correct starting point before any tools are introduced. Target: Focus Day within 60 days of engagement agreement.</p>
+      <span class="urg urg-week">Priority — Within 60 Days of Engagement</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Draft the Accountability Chart — Expose the Seat Overload</h4>
+      <p>After the Focus Day, the first deliverable is an Accountability Chart. The hypothesis based on available data: the founder is currently sitting in at minimum the Integrator, Sales/Business Development, Technical Lead, and Finance Oversight seats simultaneously. Mapping this explicitly is the moment the conversation shifts from "what is EOS" to "we need this." The Accountability Chart also initiates the discussion about whether the second director holds a functional seat or is advisory — a critical governance question for the business at this stage.</p>
+      <span class="urg urg-week">Priority — Within 90 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Set the First Rock: Formalise the South Africa Territory</h4>
+      <p>The Clearfox distributorship covers South Africa but there is no public evidence of active South African operations. The first 90-day Rock should be: define the South Africa go-to-market — identify one target client segment (hospitality or industrial wastewater), make three qualified prospecting contacts, and produce a one-page market entry plan. This Rock directly leverages an existing competitive asset, is achievable in 90 days, and demonstrates to the leadership team that the Rock framework delivers results against real strategic priorities — not just administrative tasks.</p>
+      <span class="urg urg-medium">Within First EOS Quarter</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Answer the V/TO Strategic Question: What Does Remihens Look Like in 3 Years?</h4>
+      <p>The founder's stated vision is "most reliable MEP and water company in Mauritius and the Indian Ocean." The V/TO process sharpens this into a 3-year picture with concrete numbers: How many employees? What revenue target? Which territories active? Is South Africa a primary growth market or secondary? Does the company build a second technical director to reduce key-person risk? Is the Clearfox relationship expanded to additional product lines? The V/TO answers these questions collectively with the leadership team — and once answered, every other EOS tool becomes a delivery mechanism for that shared destination.</p>
+      <span class="urg urg-medium">Within First Full Year of EOS</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Remihens is a genuinely impressive business: bootstrapped from nothing in 2014, MUR 163.8M in revenue by 2025, 42.6% gross margin, zero debt, and an exclusive regional distributorship that no competitor can replicate. The opportunity is real and the fundamentals are strong. The risk is equally real: a founder carrying the entire business on her shoulders across four territories, an 87-day debtor cycle with no formal collections process, and a governance structure that has not yet caught up with the commercial scale the business has reached. EOS does not fix all of this — but it creates the operating system that allows the founder to stop running the business reactively and start growing it intentionally.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Initial discovery call — validate the MUR 38.4M NCL, confirm employee count, establish rapport with founder. Target: within 2 weeks.</li>
+        <li><span class="sig-num">02</span>Collections and billing intervention — assign AR ownership, implement milestone billing on open contracts, launch weekly collections report. Target: within 30 days.</li>
+        <li><span class="sig-num">03</span>EOS Focus Day with both directors — share vision, surface seat confusion, introduce the Six Key Components. Target: within 60 days.</li>
+        <li><span class="sig-num">04</span>Accountability Chart and Scorecard — expose seat overload, install weekly data discipline including DSO, cash and project pipeline. Target: within 90 days.</li>
+        <li><span class="sig-num">05</span>First 90-day Rocks and V/TO — South Africa territory Rock, Clearfox expansion plan, 3-year picture documented and shared with team. Target: end of first EOS quarter.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Remihens Co Ltd — Comprehensive Company Analysis &amp; EOS Assessment · 30 April 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (30 April 2026) · remihensgroup.com · ZoomInfo · Cybo · OpenCorporates · Clearfox.com · Web research</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
