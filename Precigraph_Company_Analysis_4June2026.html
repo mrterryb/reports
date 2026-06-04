@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Précigraph — Comprehensive Company Analysis — 4 June 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Commercial Printing &amp; Publishing</span>
+    <span class="badge badge-type">Private Company · Domestic · Family-Owned</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">4 June 2026</span>
+  </div>
+  <h1>Précigraph:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Précigraph Limited · Company intelligence · Financial ratios · EOS implementation assessment · Les Pailles, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 180.2M</div>
+      <div class="stat-delta">Year ended 30 June 2024 · MUR</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit FY2024</div>
+      <div class="stat-value emerald">MUR 3.0M</div>
+      <div class="stat-delta">Net margin 1.7% · Thin but positive</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.4 / 10</div>
+      <div class="stat-delta">Moderate-High — Qualified positive · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Retained Deficit</div>
+      <div class="stat-delta">MUR −32.2M accumulated losses eroding equity base</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Précigraph Limited — Company Analysis &amp; EOS Assessment · 4 June 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 53-year-old family-owned printing institution generating MUR 180M in revenue — technically profitable but financially stretched, carrying a MUR 32M retained deficit and MUR 72M in debt against a thin 1.7% net margin.</p>
+
+  <p class="body-text">Précigraph Limited is one of Mauritius's oldest and most established commercial printing companies, incorporated on 14 August 1973 and operating continuously from its Avenue St Vincent de Paul facility in Les Pailles. The company offers a comprehensive one-stop-shop for print: from concept, design, and prepress through to offset printing, digital printing (via Précisprint), binding, packing, and delivery. Its flagship Précidiary range — launched in 1981 — commands the local diary and agenda market. With approximately 115 employees, Précigraph sits squarely in the EOS sweet spot of 10–250 people. The company exports 30–40% of revenue to Réunion, Seychelles, Madagascar, Comores, and East Africa, a rare competitive differentiator in Mauritius's printing sector.</p>
+
+  <p class="body-text">Ownership is tightly concentrated in the de Labauve d'Arifat family. France de Labauve d'Arifat and his spouse hold the overwhelming majority of both ordinary and preference shares — approximately 83% of ordinary shares and 100% of preference shares — with Société d'Argus holding the remaining 16.3% of ordinary shares. This is a multigenerational family enterprise: France de Labauve d'Arifat has been a director since the company's founding in 1973 and Chairman since 1992, while his son Vincent serves as CEO and has led operations since 1988. A third generation is now represented by Hubert de Labauve d'Arifat (Manager, Development) and a recent 2023 director appointment (Thevenau Marie Joseph Bertrand) signals possible governance evolution.</p>
+
+  <p class="body-text">Financially, FY2024 shows MUR 180.2M in revenue with a 27.6% gross margin — adequate for the sector — but steep administration costs of MUR 44.7M (24.8% of revenue) compress the EBIT to MUR 7.6M (4.2% margin) and net profit to just MUR 3.0M (1.7%). The balance sheet reveals a more concerning picture: MUR 72.5M in total borrowings (54% short-term), a MUR 32.2M retained earnings deficit, and working capital of only MUR 4.7M. With an EOS suitability score of 6.4/10, Précigraph presents a genuine opportunity — the size is right, the pain points are visible, and the family's long track record suggests openness to structured systems, but financial tightness must be acknowledged in any EOS conversation.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Administration Cost Bloat Destroying Margin</div>
+    Précigraph's fundamental problem is not revenue — MUR 180M from a 115-person Mauritian printing company is a strong top line. The problem is that administration costs alone consume MUR 44.7M (24.8% of revenue), turning a healthy 27.6% gross margin into a near-zero net margin of 1.7%. The company is working hard and earning well at the gross level, then giving most of it back in overhead. This is a classic EOS accountability signal: without clear role ownership and a Scorecard driving cost visibility, overhead accumulates invisibly. Any EOS engagement should open with a deep dive into what those MUR 44.7M of admin costs actually contain.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>53-year brand with dominant diary market position (Précidiary)</strong> and first-mover regional export footprint (Réunion, Seychelles, Madagascar, East Africa). Pioneer of digital printing in Mauritius (Précisprint, launched 2011). Award-winning quality (Sappi African Digital Printer 2012). One-stop-shop capability from concept to delivery is genuinely rare in the local market.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>MUR −32.2M retained earnings deficit signals sustained margin underperformance over multiple years.</strong> Short-term borrowings of MUR 39.4M represent 54% of total debt — rollover risk is real. Quick ratio of 0.60x means the company cannot meet current liabilities without liquidating inventory. Admin costs at 24.8% of revenue are the core pathology.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Classic symptoms of a founder-managed business that has outgrown its informal systems.</strong> Multi-generational family with no visible governance structure. Thin margins despite strong revenue suggest execution drag. The 2023 addition of an external director (Thevenau) may signal that the family is already seeking outside perspective. The export complexity and ~115-person workforce demand more accountability infrastructure than a family enterprise typically installs organically.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A family-owned commercial printing institution founded in 1973, operating across domestic and regional markets from a single Les Pailles facility with ~115 employees and a strong proprietary brand in the diary and agenda segment.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Précigraph Limited was incorporated on <strong>14 August 1973</strong> under File No. <strong>C2223</strong>, Business Registration No. <strong>C07002223</strong>. The company is a private domestic company limited by shares, currently registered at <strong>Avenue St Vincent de Paul, Les Pailles, Mauritius</strong> (effective address since 22 November 2007). Stated capital comprises 147,897 ordinary shares (MUR 14,789,700 at par MUR 100) and 99,270 Preference B shares (MUR 9,927,000 at par MUR 100), totalling MUR 24,716,700 in share capital. The current auditor is <strong>Messr UHY &amp; Co</strong> (appointed June 2020), replacing PricewaterhouseCoopers. Secretary is <strong>Alain Rey</strong> (since December 1992). Annual returns are current — the most recent was filed 29 January 2026 for the meeting held 22 December 2025. Financial statements are filed annually with FY end 30 June.</p>
+  <p class="body-text">The company was founded with seven employees and has grown to approximately 115 staff over five decades. Key milestones include: launch of the Précidiary agenda range (1981), becoming the first Mauritius printing company to export regionally, adoption of digital printing technology (Précisprint, 2011), and launch of the Photobook.mu online platform (2011). The company received the Sappi African Digital Printer Gold Award in 2012. A 2013 Tecoma Award was received by CEO Vincent de Labauve d'Arifat, recognising innovation in printing. The shift from PwC to UHY &amp; Co as auditor in 2020 is worth noting — it may reflect cost management, a relationship change, or both.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>France de Labauve d'Arifat</h4>
+        <div class="ec-sub">Founding Shareholder · Chairman · Director</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Ordinary Shares</span><span class="mv ok">120,865 (81.7%)</span></div>
+        <div class="ec-metric"><span class="mk">Preference B</span><span class="mv ok">71,270 (71.8%)</span></div>
+        <div class="ec-metric"><span class="mk">Director Since</span><span class="mv">14 Aug 1973</span></div>
+        <div class="ec-metric"><span class="mk">Chairman Since</span><span class="mv">14 Dec 1992</span></div>
+        <div class="ec-metric"><span class="mk">Note</span><span class="mv">Founder. Majority ordinary &amp; preference holder.</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>France de Labauve d'Arifat MRS</h4>
+        <div class="ec-sub">Spouse Shareholder</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Ordinary Shares</span><span class="mv">2,937 (2.0%)</span></div>
+        <div class="ec-metric"><span class="mk">Preference B</span><span class="mv">28,000 (28.2%)</span></div>
+        <div class="ec-metric"><span class="mk">Combined Family</span><span class="mv ok">~83.7% ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Note</span><span class="mv">Family unit controls both share classes. No outside institutional capital.</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Société d'Argus</h4>
+        <div class="ec-sub">Minority Ordinary Shareholder</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Ordinary Shares</span><span class="mv warn">24,095 (16.3%)</span></div>
+        <div class="ec-metric"><span class="mk">Preference B</span><span class="mv">0 (0%)</span></div>
+        <div class="ec-metric"><span class="mk">Nature</span><span class="mv">Corporate shareholder — identity not publicly disclosed</span></div>
+        <div class="ec-metric"><span class="mk">Note</span><span class="mv">Holds 16.3% of ordinary shares. No public record of group connection found.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Ownership Note — Société d'Argus</div>
+    Société d'Argus holds 16.3% of ordinary shares. No public information was found establishing its identity, group affiliation, or strategic intent. It does not hold preference shares. This is a minority position with no evidence of board representation. It may represent a legacy investment or a strategic relationship from the company's early years. Larry should note this as an open question for Kay's CRM entry.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>France de Labauve d'Arifat — Chairman &amp; Director</h4>
+      <p>Director since <strong>14 August 1973</strong> (founding). Chairman since 14 December 1992. The patriarch of the enterprise and its original driver. Now in a chairman/oversight role while Vincent leads operations. Holds the dominant ownership position.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vincent de Labauve d'Arifat — CEO</h4>
+      <p>Director since <strong>16 May 1988</strong>. Describes the company as "a family enterprise." Has led Précigraph's modernisation including digital printing, exports, and the Photobook.mu platform. Received the Tecoma Award 2013 for innovation. Primary EOS conversation partner — operational leader with three decades of institutional knowledge.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Alain Rey — Director &amp; Secretary</h4>
+      <p>Director since <strong>24 November 1989</strong>. Secretary since 14 December 1992. Long-serving dual role suggests corporate secretary/governance function in addition to directorship. Likely handles regulatory and compliance administration.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Pilot M. Joseph Ignace Gerard Michel — Director</h4>
+      <p>Director since <strong>14 December 1992</strong>. No service address listed publicly. Long tenure alongside the family directors. Likely an independent or semi-independent board member from the early governance restructuring period.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Thevenau Marie Joseph Bertrand — Director</h4>
+      <p>Director since <strong>28 July 2023</strong>. Service address: Montebello, Les Pailles. Most recently appointed director — the only addition in the past decade. This 2023 appointment may signal a deliberate move toward external governance or succession planning. A notable conversation hook.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Hubert de Labauve d'Arifat — Manager, Development</h4>
+      <p>Not a registered director but identified via ZoomInfo and LinkedIn as Manager, Development at Précigraph. Educated at ESITC Caen (France). Represents the third generation of the family in the business. LinkedIn: linkedin.com/in/hubert-de-labauve-d-arifat-aa871a184/</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text"><strong>Core Printing Services:</strong> Précigraph operates as a true one-stop print shop. Prepress services include scanning and image retouching, electronic page make-up, and digital proofing. Production capabilities cover offset printing with film lamination, hot foil stamping, and UV varnishing. Finishing services include binding (hardcover and softcover), packing, and direct delivery. The company was among the first in Mauritius to offer food-grade gold and silver plates for packaging, exported regionally.</p>
+  <p class="body-text"><strong>Digital Printing — Précisprint:</strong> Launched 2011, Précisprint is the company's digital printing division, targeting short-run, variable-data, and fast-turnaround print needs. This division enables the company to serve clients who need smaller quantities without committing to offset minimum runs — widening the addressable market. The Sappi African Digital Printer Gold Award (2012) confirms technical excellence in this segment.</p>
+  <p class="body-text"><strong>Proprietary Products:</strong> The Précidiary range (launched 1981) is the flagship branded product — described as "the most sought-after agendas on the local market" and positioned as 100% Mauritian. The 2026 brochure catalogue (visible at precigraph.mu/brochure) confirms active product development in the diary and agenda space. Photobook.mu (launched 2011) is an online photo album creation platform, extending the brand into consumer-facing digital services.</p>
+  <p class="body-text"><strong>Published output categories:</strong> Annual reports, books (hard and soft cover), brochures, calendars, diaries, directories, folders, labels, leaflets, light packaging, magazines, posters, and postcards. This breadth positions Précigraph as a full-service partner rather than a commodity printer.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Précigraph operates from a single facility at Avenue St Vincent de Paul, Les Pailles, Mauritius — a well-established industrial-commercial corridor west of Port Louis. The domestic market is the primary revenue base. However, the company generates 30–40% of revenue from <strong>regional exports</strong>: Réunion Island, Seychelles, Madagascar, Comores, and East Africa. This makes Précigraph one of the very few Mauritius printing companies with a meaningful regional footprint — a genuine competitive differentiator that warrants attention in any EOS V/TO discussion. The company's website is www.precigraph.mu; phone: +230 212 1546 / +230 208 5050; hours: Monday–Friday 08:00–16:30.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS filing, Registrar of Companies Mauritius, issued 4 June 2026. FY ended 30 June 2024. Currency: Mauritius Rupee (MUR). Unit: 1. Prior-year comparative not included in the CBRIS summary filing.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Financial data is drawn from the statutory summary filed with the Registrar of Companies for FY ended 30 June 2024 (approved 31 December 2024). This is a condensed statutory summary — the full audited accounts (prepared by UHY &amp; Co) contain greater line-item detail not captured here. Prior-year comparatives (FY2022, FY2023) are not included in this CBRIS extract. Detailed cost breakdowns within the MUR 44.7M administration cost line are not publicly available. Inventory and receivables are reported as totals without ageing detail.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>180,202,830</td><td>100.0%</td><td>Strong top line for a ~115-person Mauritius print operation; regional exports (30–40%) drive scale.</td></tr>
+        <tr><td>Cost of Sales</td><td>130,463,111</td><td>72.4%</td><td>Printing is materials-intensive; paper, ink, plates, and consumables dominate COGS.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>49,739,719</td><td>27.6%</td><td>Healthy gross margin — adequate for offset/digital printing. Sector benchmark 25–40%.</td></tr>
+        <tr><td>Add: Other Income</td><td>2,584,746</td><td>1.4%</td><td>Ancillary income — nature unspecified; may include rental, management fees, or sundry credits.</td></tr>
+        <tr class="heat-warn"><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>Nil reported — likely consolidated into administration or COGS rather than separately disclosed.</td></tr>
+        <tr class="heat-critical"><td>Administration Costs</td><td>44,683,096</td><td>24.8%</td><td><strong>Critical concern.</strong> At 24.8% of revenue, this single line consumes nearly all gross profit. Salary, management overheads, and facilities costs likely dominate. No breakdown available.</td></tr>
+        <tr><td>Other Expenses</td><td>0</td><td>0.0%</td><td>Nil — all non-COGS costs appear consolidated into administration.</td></tr>
+        <tr class="heat-warn"><td>Finance Costs</td><td>3,009,143</td><td>1.7%</td><td>Interest on MUR 72.5M borrowings. Moderate but interest coverage is below benchmark at 2.5x.</td></tr>
+        <tr class="heat-warn"><td>Profit Before Tax</td><td>4,632,226</td><td>2.6%</td><td>Very thin PBT margin. Leaves almost no buffer against revenue variability or cost surprises.</td></tr>
+        <tr><td>Tax Expense</td><td>1,623,078</td><td>0.9%</td><td>Effective tax rate ~35% — notably high; may reflect deferred tax movements or non-deductible expenses.</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>3,009,148</strong></td><td><strong>1.7%</strong></td><td>Profitable but barely so. Revenue needs to grow or costs must fall by ~MUR 5M to reach a comfortable 4–5% net margin.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>167,226,296</td><td>Dominant asset — reflects printing equipment, building, and land. At 72.2% of total assets, capital intensity is high.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Investment in Subsidiaries</td><td>497,388</td><td>Minor subsidiary investment — nature not disclosed. May relate to Photobook.mu or a regional entity.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Other Investments</td><td>49,300</td><td>Negligible.</td></tr>
+        <tr class="heat-ok"><td>Non-Current Assets</td><td><strong>Total NCA</strong></td><td><strong>167,772,984</strong></td><td>72.5% of total assets — asset-heavy balance sheet typical of offset printing operations.</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>28,466,028</td><td>15.7% of total assets. At ~80 days of COGS, inventory turns are slow (4.6x). Paper and consumables likely held in bulk.</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>30,298,589</td><td>DSO of 61 days — above the 30–45 day benchmark. MUR 30.3M tied up in debtors; tightening collection by 15 days would free ~MUR 7.4M cash.</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Cash &amp; Cash Equivalents</td><td>4,995,280</td><td>Very low cash buffer relative to MUR 39.4M in short-term borrowings. Company is operating on its credit facilities.</td></tr>
+        <tr><td>Current Assets</td><td><strong>Total CA</strong></td><td><strong>63,759,897</strong></td><td></td></tr>
+        <tr><td></td><td><strong>Total Assets</strong></td><td><strong>231,532,881</strong></td><td></td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital</td><td>24,716,700</td><td>MUR 100 par — ordinary + preference shares fully paid.</td></tr>
+        <tr><td>Equity</td><td>Other Reserves</td><td>113,169,385</td><td>Significant — likely includes revaluation reserve on PPE. Supports the equity figure despite the retained deficit.</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Retained Earnings</td><td>−32,210,586</td><td><strong>Critical.</strong> Accumulated retained losses of MUR 32.2M. This signals years of below-cost-of-capital returns. The revaluation reserve masks the underlying performance problem.</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>105,675,499</strong></td><td>Equity is positive only due to the revaluation reserve. Strip it out and the business has been consuming economic value.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Borrowings</td><td>33,081,282</td><td>Term debt — likely bank facilities against plant and property.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Deferred Tax</td><td>9,496,523</td><td>Arising from PPE timing differences — expected given the capital-heavy balance sheet.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Long-Term Provisions</td><td>24,254,000</td><td>Significant — likely gratuity/retirement provisions for long-serving staff. At MUR 24.3M for ~115 employees, this is material.</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Short-Term Borrowings</td><td>39,390,953</td><td><strong>Largest current liability.</strong> Represents 54% of total borrowings. High rollover frequency adds financial risk.</td></tr>
+        <tr><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>18,281,496</td><td>DPO of 51 days — within normal range. Suppliers are paid in a reasonable timeframe.</td></tr>
+        <tr><td>Current Liabilities</td><td>Current Tax Payable</td><td>1,353,128</td><td>Normal.</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>59,025,577</strong></td><td>Working capital of only MUR 4.7M — extremely thin buffer.</td></tr>
+        <tr><td></td><td><strong>Total Liabilities</strong></td><td><strong>125,857,382</strong></td><td></td></tr>
+        <tr><td></td><td><strong>Total Equity &amp; Liabilities</strong></td><td><strong>231,532,881</strong></td><td>Balances correctly.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">Précigraph carries four registered floating charges over its movable and immovable properties. These are:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Volume</th><th>Property</th><th>Nature</th><th>Amount</th><th>Currency</th><th>Date Charged</th><th>Interpretation</th></tr></thead>
+      <tbody>
+        <tr><td>CH498/7</td><td>Mov/Immov</td><td>Floating</td><td>3,000,000</td><td>MUR</td><td>14 Aug 1991</td><td>Original charge from 1991 — likely an early-era bank facility. Still registered; not formally discharged.</td></tr>
+        <tr><td>CH 2739/44</td><td>Mov &amp; Immov Properties</td><td>Floating</td><td>2,000,000</td><td>MUR</td><td>30 Oct 2001</td><td>2001 charge — small amount; may relate to equipment financing from that period.</td></tr>
+        <tr class="heat-warn"><td>CH 3430/49</td><td>Mov/Immov Properties</td><td>Floating</td><td>600,000</td><td>EUR</td><td>19 Aug 2004</td><td>Euro-denominated charge — likely linked to European equipment financing (printing presses). Currency risk if still active.</td></tr>
+        <tr class="heat-warn"><td>CH 3430/33</td><td>Mov/Immov Properties</td><td>Floating</td><td>26,000,000</td><td>MUR</td><td>19 Aug 2004</td><td>Largest charge — MUR 26M in 2004 would have funded major equipment investment. Both 2004 charges registered on the same date, suggesting a coordinated financing event (likely a major press acquisition).</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="alert alert-warning">
+    <div class="alert-title">Charge Register — Interpretation</div>
+    All four charges remain registered and have not been formally discharged in the public record. The two 2004 charges (MUR 26M + EUR 600K) were clearly linked to a significant equipment investment — likely the adoption of the violet laser plate technology referenced in the company's history. The 1991 charge (MUR 3M) and 2001 charge (MUR 2M) are likely legacy security positions. The continued registration of undischarged charges, combined with MUR 72.5M in current borrowings on the balance sheet, confirms that Précigraph is a consistently leveraged operator that finances its capital requirements through bank debt rather than retained earnings — a pattern consistent with the accumulated retained deficit.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks drawn from Mauritius manufacturing and printing sector SME norms (Bank of Mauritius, Dun &amp; Bradstreet, and regional printing industry comparables). Green = healthy, Amber = watch, Red = critical concern. All values from FY2024 CBRIS filing.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.08×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.5 – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber — Watch</span></span></div>
+      <span class="ratio-interpret">At 1.08×, Précigraph's current assets barely cover current liabilities, leaving almost no buffer. Working capital of MUR 4.7M is thin for a MUR 180M revenue company. A moderate disruption to receivables collection or a short-term loan maturity could create a cash squeeze. This is a watchlist ratio — not yet critical, but the trend matters.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.60×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">1.0 – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red — Critical</span></span></div>
+      <span class="ratio-interpret">After stripping out MUR 28.5M of inventory, the company has only MUR 35.3M in liquid assets against MUR 59.0M in current liabilities — a quick ratio of 0.60×. This means Précigraph <em>cannot</em> meet its current obligations from liquid assets alone. It relies on inventory liquidation or credit line draws to service short-term debt. This is the most urgent financial vulnerability.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">27.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">25 – 40%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green — Healthy</span></span></div>
+      <span class="ratio-interpret">The gross margin is within the acceptable range for commercial printing. At 27.6%, the company is covering its direct costs adequately. The problem is not at the gross level — it is entirely in the overhead layer above it. This is an important diagnostic: production is not the issue; management and administrative cost control is.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">4.2%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5 – 12%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber — Below Benchmark</span></span></div>
+      <span class="ratio-interpret">EBIT of MUR 7.6M on MUR 180M revenue gives a 4.2% EBIT margin — below the 5–12% benchmark. The entire margin compression occurs in the administration cost line. Achieving the sector midpoint of 8% EBIT would require either reducing admin costs by ~MUR 6.8M or growing revenue by ~MUR 87M at the current overhead base — making cost action the more realistic lever.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">1.7%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">3 – 8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red — Critical</span></span></div>
+      <span class="ratio-interpret">Net margin of 1.7% is roughly half the minimum benchmark. After finance costs and a high effective tax rate (~35%), only MUR 3.0M survives to retained earnings. At this margin, one bad quarter of revenue softness or an unexpected cost hit would flip the company to a net loss. There is essentially zero margin of safety at the bottom line.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets &amp; Equity</h4>
+      <div class="ratio-row"><span class="ratio-label">ROA (calculated)</span><span class="ratio-val bad">1.3%</span></div>
+      <div class="ratio-row"><span class="ratio-label">ROA benchmark</span><span class="ratio-val">4 – 8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">ROE (calculated)</span><span class="ratio-val bad">2.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">ROE benchmark</span><span class="ratio-val">8 – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">Red — Both Below</span></span></div>
+      <span class="ratio-interpret">ROA of 1.3% means the company earns back only MUR 1.30 for every MUR 100 of assets deployed — deeply below the 4–8% benchmark. ROE of 2.8% similarly underperforms. Both ratios reflect the capital intensity of the asset base relative to the thin net profit being generated. The business is not earning an adequate return on the capital it has deployed.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.69×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&lt; 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green — Within Range</span></span></div>
+      <span class="ratio-interpret">Total borrowings of MUR 72.5M against equity of MUR 105.7M gives a D/E of 0.69× — technically within the benchmark. However, caution is warranted: the equity base includes MUR 113.2M of revaluation reserves. Strip these out and the adjusted equity is deeply negative (MUR −7.5M). The headline D/E ratio is misleading; the economic leverage is much higher than it appears.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">2.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt; 3.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber — Below Threshold</span></span></div>
+      <span class="ratio-interpret">EBIT of MUR 7.6M covers finance costs of MUR 3.0M only 2.5 times — below the 3.0× safety threshold. This means that a 40% drop in EBIT would leave the company unable to service its interest obligations. With a thin operating margin, this is a genuine risk. Lenders will be monitoring this closely.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.78×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">0.5 – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green — Acceptable</span></span></div>
+      <span class="ratio-interpret">Generating MUR 0.78 of revenue per MUR 1 of assets is within the normal range for a capital-intensive printing operation. The large PPE base (MUR 167M) naturally suppresses this ratio. Not a concern in isolation.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">4.6×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">6 – 12×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber — Slow</span></span></div>
+      <span class="ratio-interpret">Inventory turns at 4.6× per year (~79 days of COGS held in stock). For a printing company, this suggests bulk paper and consumable purchasing rather than lean inventory management. While bulk buying can be economically justified for paper, the MUR 28.5M tied up in inventory represents a significant working capital drag that could be partially released through better supply chain discipline.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debtor Days (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">61 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 45 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">Amber — Above Benchmark</span></span></div>
+      <span class="ratio-interpret">Customers are taking 61 days on average to pay — 16–31 days beyond benchmark. MUR 30.3M is tied up in debtors. Reducing DSO to 45 days would free approximately MUR 7.4M in cash, which would be transformative for the company's liquidity position. This is actionable and within management's control.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">51 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Green — Within Range</span></span></div>
+      <span class="ratio-interpret">Précigraph is paying its suppliers in 51 days — within the acceptable range. The company is using its supplier credit effectively without being a late payer. The DSO/DPO gap (61 days collecting vs. 51 days paying) creates a working capital deficit of ~10 days — contributing to the cash squeeze. Closing the DSO to 45 days would eliminate this gap entirely.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. Administration Costs: MUR 44.7M (24.8% of revenue).</strong> This single line is responsible for the entire margin problem. The gross profit of MUR 49.7M is entirely consumed by MUR 44.7M in admin costs before a single rupee of finance cost or tax is considered. Reducing admin costs by just MUR 9M (a 20% cut) would more than double net profit to approximately MUR 12M — a 300% improvement in the bottom line from one structural change. Until the company can account for and control what sits in this MUR 44.7M, every other improvement initiative is operating in the dark.<br><br>
+    <strong>2. Quick Ratio: 0.60×.</strong> The company cannot cover its current liabilities from liquid assets. With MUR 39.4M of short-term borrowings needing periodic rollover and only MUR 5M in cash, Précigraph is operationally dependent on continued bank cooperation. A receivables collection campaign targeting DSO reduction from 61 to 45 days would release MUR 7.4M in cash — meaningfully improving this ratio without requiring external financing.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Précigraph competes across three distinct market segments — domestic commercial print, proprietary branded products, and regional export — with a genuinely differentiated position in all three, but faces intensifying digital disruption and a concentrated cost base that limits competitive flexibility.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Domestic Commercial Print</h4>
+        <div class="ec-sub">Primary Revenue Base</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key Competitors</span><span class="mv">Caractère Ltée (MUR 120M+), Easy Print (MUR 62M), MCS Printing</span></div>
+        <div class="ec-metric"><span class="mk">Précigraph Position</span><span class="mv ok">3rd by revenue (~MUR 180M incl. exports)</span></div>
+        <div class="ec-metric"><span class="mk">Key Clients</span><span class="mv">Banks, corporates, government agencies, hospitality sector</span></div>
+        <div class="ec-metric"><span class="mk">Differentiation</span><span class="mv">One-stop-shop + digital capability + 50-year brand trust</span></div>
+        <div class="ec-metric"><span class="mk">Key Risk</span><span class="mv">Commoditisation; digital alternatives reducing print volumes</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Proprietary Products — Précidiary</h4>
+        <div class="ec-sub">Branded Revenue Stream</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Product</span><span class="mv">Précidiary agendas — market leader since 1981</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Imported European diaries; online calendar apps</span></div>
+        <div class="ec-metric"><span class="mk">Précigraph Position</span><span class="mv ok">Dominant — "100% Mauritian" positioning resonates</span></div>
+        <div class="ec-metric"><span class="mk">Differentiation</span><span class="mv">Local cultural relevance, quality, customisation options</span></div>
+        <div class="ec-metric"><span class="mk">Key Risk</span><span class="mv">Digital calendars eroding premium diary demand over time</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Regional Export Markets</h4>
+        <div class="ec-sub">30–40% of Revenue</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Markets</span><span class="mv">Réunion, Seychelles, Madagascar, Comores, East Africa</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">South African and European print exporters; local print capacity</span></div>
+        <div class="ec-metric"><span class="mk">Précigraph Position</span><span class="mv ok">Pioneer — first Mauritius printer to export regionally</span></div>
+        <div class="ec-metric"><span class="mk">Differentiation</span><span class="mv">Quality, proximity, established relationships, EPZ history</span></div>
+        <div class="ec-metric"><span class="mk">Key Risk</span><span class="mv">Currency exposure; growing local print capacity in target markets</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Précidiary — a durable proprietary brand in a commoditised sector.</strong> In commercial printing, where most output is undifferentiated, owning a branded product with 43 years of market presence is genuinely rare. The Précidiary range generates demand that is brand-driven rather than price-driven — insulating this revenue stream from commodity price competition in ways that commercial print jobs cannot be. No competitor in Mauritius has replicated this position.</p>
+  <p class="body-text"><strong>2. Regional export infrastructure and first-mover relationships.</strong> Having established export routes to Réunion, Seychelles, Madagascar, Comores, and East Africa over multiple decades, Précigraph has built relationships, regulatory knowledge, and logistical capability that a domestic competitor cannot replicate quickly. This 30–40% revenue diversification also provides a natural hedge against domestic demand softness.</p>
+  <p class="body-text"><strong>3. Full-service capability from concept to delivery.</strong> The combination of prepress, digital printing (Précisprint), offset printing, and finishing under one roof is a genuine operational differentiator. Clients seeking a single accountable partner for complex print projects — annual reports, premium magazines, corporate diaries — will pay a premium for this. Most Mauritius print operations are not genuinely full-service.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Digital disruption continuing to suppress commercial print volumes</strong> — corporate communications, annual reports, and marketing materials increasingly digital-first. Précigraph's Précisprint digital capability partially hedges against this but does not fully offset volume pressure.</li>
+    <li><strong>Sustainability and ESG are driving paper and packaging premiums</strong> — corporates increasingly require FSC-certified, recycled, or low-carbon print. Précigraph's early adoption of violet laser technology (2005) and paper recycling positions it ahead of less environmentally aware competitors.</li>
+    <li><strong>Regional African markets are under-served in premium print quality</strong> — as East African and Indian Ocean economies grow, demand for high-quality printed materials (banking, hospitality, government) is expanding. Précigraph's established regional presence is a genuine growth platform if capacity and quality can be maintained.</li>
+    <li><strong>Short-run digital printing demand is growing</strong> — SMEs and startups require smaller print runs with faster turnaround than traditional offset allows. Précisprint addresses this directly and positions Précigraph well for the next wave of demand.</li>
+    <li><strong>Premium diary and gift market faces secular decline risk</strong> — while Précidiary is currently dominant, smartphone calendar adoption among younger demographics represents a long-term demand risk for physical diaries that the company must plan for strategically.</li>
+    <li><strong>Input cost volatility — paper and ink prices</strong> — global supply chain disruptions continue to affect paper pricing and availability. At 72.4% of revenue in COGS, any sustained paper price increase directly compresses the already-thin margin. Bulk purchasing (reflected in the high inventory) is a mitigation strategy but also a working capital drain.</li>
+  </ul>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">At approximately 115 employees, Précigraph sits squarely in the EOS sweet spot of 10–250 people. The company runs multiple operational clusters — prepress, digital print, offset print, finishing, sales, export logistics, and the Précidiary product line — with geographic complexity across five regional markets. This level of operational breadth across a single management layer is precisely the environment where EOS accountability structures deliver maximum value. The size and complexity score is high; the only reason it is not 9 or 10 is the absence of confirmed evidence of multiple functional silos causing visible friction.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">There are meaningful signals of openness alongside structural barriers. Positive signals: Vincent de Labauve d'Arifat won the Tecoma Award 2013 for innovation — suggesting a CEO who values external recognition and new approaches. The company was a digital printing pioneer and first regional exporter, both requiring a willingness to change. The 2023 appointment of Thevenau Marie Joseph Bertrand as an external director is particularly notable — it may indicate the family is actively seeking outside governance perspective. Barriers: this is a 53-year family business where the founder is still Chairman and the CEO is his son. Long-tenure family businesses often have deep resistance to outside accountability structures, even when the leader intellectually supports them. Score reflects genuine but unconfirmed openness.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">The financial data reveals textbook EOS-addressable pain points. Admin costs consuming 90% of gross profit without any visible breakdown suggests a lack of cost accountability — nobody is measuring what the MUR 44.7M contains. A MUR 32.2M accumulated retained deficit indicates years of below-potential financial performance, consistent with a business that has grown in revenue but not in management discipline. The DSO of 61 days suggests a collections process that is not being managed to a clear owner and target. The thin liquidity (quick ratio 0.60×) creates operational stress that fragments management attention. These are all classic symptoms of a business that has outgrown its informal systems and needs the structure EOS provides.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No public evidence of formal management frameworks, OKRs, KPIs, or documented processes. The switch from PwC to UHY as auditor in 2020 may indicate financial system simplification rather than sophistication. The company's longevity (53 years) and quality awards confirm that production processes are strong — but the absence of financial cost transparency (entire overhead in one admin line) suggests management information systems are not granular enough to drive decision-making. Score of 5 reflects: strong operational processes in production, likely weak processes in finance, HR, and strategic planning.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Several strong cultural indicators. The company's five founding pillars — quality, happy work environment, employment creation, and sustainability — suggest an intentional culture. The long tenure of key directors (some since 1989–1992) indicates low leadership turnover and institutional loyalty. The MUR 24.3M in long-term staff provisions for ~115 employees (~MUR 211K per employee) indicates long-serving staff with significant entitlements, implying high retention and a stable workforce. Environmental commitments (violet laser technology, water reduction, recycling) signal a culture that cares beyond pure profit. These are positive EOS cultural prerequisites. However, family governance without clear accountability structures can breed a culture of loyalty over performance — a pattern EOS directly addresses.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">In a family business where the Chairman (France) founded the company and the CEO (Vincent) has led it for 36 years, decision-making almost certainly concentrates at the top. The presence of three long-tenured directors (Rey since 1989, Pilot since 1992) who have served alongside the family for decades may not provide genuine challenge. The 2023 external appointment (Thevenau) is a positive signal of evolving governance, but one new director against a long-established family board structure is insufficient to change fundamental decision-making patterns. EOS's Accountability Chart and Issues List / IDS meeting rhythm would directly address this.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">Vincent's public articulation of the five founding pillars demonstrates that Précigraph has a sense of purpose and values. The company's consistent innovation investments — digital printing, Photobook.mu, regional exports — suggest a directional strategy even if not formally documented. However, no public V/TO-equivalent exists. The retained earnings deficit over multiple years suggests that financial targets, if they exist, have not been consistently achieved — indicating either unclear financial goals or insufficient accountability to them. Score reflects a business with genuine core values and directional momentum, but lacking the shared, written, quarterly-reviewed vision that EOS codifies.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No public evidence of structured meeting rhythms (weekly L10s, quarterly reviews, annual planning days). The annual meeting dates filed with the Registrar are consistently in late December, suggesting year-end governance meetings only — a calendar pattern consistent with a family business doing what is legally required rather than running a proactive management calendar. With 115 employees across multiple functions and five regional export markets, the absence of a disciplined meeting structure would explain the execution drag visible in the financial ratios. This is a strong EOS entry point.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.4</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>Précigraph is a genuine EOS candidate. The size (115 people), operational complexity (multi-segment, multi-market), and financial pain points (admin cost opacity, margin compression, liquidity stress) are all EOS-addressable. The founding family's track record of innovation and the 2023 external director appointment suggest real openness to structured thinking. The gating factor is family business inertia: 53 years of the de Labauve d'Arifat family managing without external accountability frameworks means the EOS conversation must be led with business pain (the MUR 44.7M admin problem, the thin margin) rather than framework concepts. If Vincent acknowledges the admin cost opacity as a problem he cannot solve alone, EOS has a clear entry point. If the framing is "we've always done it this way," the score drops to 4.5.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Précigraph</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The most urgent tool. With five directors (two family, three long-tenured), a CEO, a Development Manager, and multiple operational functions, <strong>role clarity is almost certainly absent</strong>. The Accountability Chart would force the family to define who owns what — particularly the MUR 44.7M admin cost line, the export P&amp;L, and the Précidiary product line — and eliminate the overlapping authority that typically drives overhead accumulation in family businesses.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>The financial data shows no evidence that management operates from a weekly data dashboard. <strong>DSO at 61 days and admin costs at 24.8% of revenue are problems that a Scorecard would surface and force action on immediately.</strong> Building a 10–15 metric weekly Scorecard — covering DSO, cost-per-revenue-rupee, production yield, and export revenue — would give Vincent visibility he currently lacks and create the accountability cadence the business needs.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>The admin cost opacity, the liquidity crunch, the DSO problem, and the long-term provisions liability are all <strong>long-standing issues that have not been resolved</strong> — consistent with a business that discusses problems but does not systematically Identify, Discuss, and Solve them. EOS IDS meeting rhythm would break this pattern by forcing each issue onto a visible list and through a structured resolution process in every Level 10 meeting.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>Précigraph's financial condition requires near-term operational change — DSO reduction, admin cost audit, and working capital improvement cannot wait for a five-year plan. <strong>EOS Rocks would translate the three most critical financial improvements into specific 90-day commitments</strong> with named owners and weekly check-ins. This gives the team a structured sprint methodology for the financial work that needs to happen alongside any EOS rollout.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO — Vision/Traction Organiser</h4>
+      <p>Précigraph has clear core values and a track record of strategic moves (digital launch, regional exports, Photobook.mu) but no evidence of a written 3-year picture or 10-year target. <strong>The V/TO would capture the de Labauve d'Arifat family's vision for the business</strong> — does Vincent want to grow regional exports to 50% of revenue? Position the company for succession to the next generation (Hubert)? Crystallising this in writing would align the entire management team and reveal where strategic disagreements exist within the family.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting Rhythm</h4>
+      <p>Annual governance meetings (the only structured calendar event visible in the CBRIS filing) are insufficient for a 115-person operation across multiple market segments. <strong>A weekly 90-minute L10 meeting with a fixed agenda, Scorecard review, and IDS time</strong> would immediately improve operational communication and surface the issues that are currently left to accumulate into structural problems — like the admin cost overhang and the DSO creep. This is the simplest EOS tool to implement and the one that produces the fastest visible change.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations: four financial and operational (immediate to 60-day horizon) and four EOS-specific (to be implemented sequentially following a Focus Day). Financial recommendations must precede EOS rollout to stabilise the business and establish credibility with the leadership team.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Conduct an Emergency Administration Cost Audit</h4>
+      <p>Commission UHY &amp; Co (or an internal finance lead) to produce a full breakdown of the MUR 44,683,096 administration cost line within 30 days. The objective is to identify the top 5 cost categories by value and flag any that are discretionary, duplicated, or can be reduced without operational impact. Success looks like: a ranked list of admin cost components with a documented reduction target of minimum MUR 5M (11% reduction) and an owner assigned to each action. This single initiative, if successful, would increase net profit by approximately 160%.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Launch a 60-Day Receivables Collection Drive</h4>
+      <p>Assign a named owner (Finance Manager or CFO equivalent) to reduce DSO from 61 days to 45 days within 60 days. Actions: contact top 10 debtors by balance this week; implement 7-day reminder cycle for all invoices; introduce a 2% early payment discount for clients settling within 30 days. Success looks like: MUR 7.4M in cash released from debtors, quick ratio improving from 0.60× to approximately 0.73×, and a named DSO metric added to a weekly management report. This is the fastest available lever to improve the liquidity crisis without taking on more debt.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Restructure Short-Term Borrowings to Reduce Rollover Risk</h4>
+      <p>With MUR 39.4M (54% of total debt) in short-term borrowings, Précigraph is operationally dependent on bank renewal decisions. Within 60 days, Vincent should approach the company's banking partners to convert a minimum of MUR 20M of short-term facilities to 3–5 year term facilities, reducing the current liability profile and the rollover concentration risk. Success: short-term borrowings fall below MUR 20M, current ratio improves from 1.08× to approximately 1.41×, and interest coverage stress is reduced by extending maturities even if the rate is marginally higher.</p>
+      <span class="urg urg-week">30–60 Day Priority</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Clarify the Société d'Argus Relationship and Strategic Intent</h4>
+      <p>Société d'Argus holds 16.3% of ordinary shares — a material minority that is not publicly explained. Before any EOS engagement, Vincent should confirm: Who controls Société d'Argus? Is this a legacy holding, a strategic partner, or a financial investor? Is there any board representation or shareholder agreement? This matters for EOS because any major governance or strategic change (Accountability Chart, V/TO) must account for minority shareholder rights. If Société d'Argus is a passive legacy holding, no action is needed — but this should be confirmed.</p>
+      <span class="urg urg-week">30–60 Day Priority</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Run a Focus Day with the Leadership Team</h4>
+      <p>Begin EOS with a Focus Day attended by Vincent (CEO), Hubert (Development Manager), and 2–3 functional heads (Production, Sales/Export, Finance). Do not include all five board directors — the Focus Day is an operational leadership session, not a board meeting. The Focus Day should open with the admin cost problem as the concrete pain point that validates why EOS is being introduced. This gives Vincent a business-first narrative: "We are implementing EOS because we have a MUR 44M cost problem we cannot see clearly, and we need accountability structures to fix it."</p>
+      <span class="urg urg-week">Within 90 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the Accountability Chart — Resolve the Family Roles Question</h4>
+      <p>The most sensitive EOS exercise for Précigraph will be the Accountability Chart. France (Chairman) and Vincent (CEO) need clearly defined seats. Hubert's role as "Development Manager" needs a seat with owned functions — likely New Business Development and/or Digital/Photobook.mu platform. Alain Rey (Secretary/Director) needs his functional role clarified. The Accountability Chart session should surface whether the board structure reflects actual operational accountability or merely legacy governance — and Vincent must be prepared for that conversation to be uncomfortable.</p>
+      <span class="urg urg-week">Within 90 Days — Focus Day Output</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Set the First Rocks — 3 Financial and 1 Strategic</h4>
+      <p>The first quarter of EOS Rocks should be financially grounded to demonstrate tangible ROI: Rock 1 — Complete admin cost audit and implement MUR 5M reduction plan (Finance owner, Q1). Rock 2 — Reduce DSO to 45 days (Finance owner, Q1). Rock 3 — Restructure MUR 20M of short-term debt to long-term (CEO/Finance, Q1). Rock 4 — Define and document the 3-year regional export growth target in the V/TO (CEO, Q1). Running four financially-grounded Rocks in the first quarter builds leadership team trust in EOS as a performance system, not a theoretical framework.</p>
+      <span class="urg urg-medium">90-Day EOS Quarter 1</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Draft the V/TO — Answer the Succession Question First</h4>
+      <p>The most important strategic question for Précigraph's V/TO is succession: is the long-term vision for this business to remain a family enterprise in the next generation (Hubert), or is there a potential exit or partial sale scenario? This question determines whether the 10-year target is "dominant regional print group under third-generation family leadership" or something else entirely. The 2023 external director appointment (Thevenau) and Hubert's formal role as Development Manager both suggest the family is actively planning the next chapter. The V/TO session should surface this explicitly — it is the core strategic question that all other planning depends on.</p>
+      <span class="urg urg-medium">90-Day EOS Quarter 1–2</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Précigraph is a strong Mauritius printing institution — 53 years old, dominant in its branded diary niche, pioneering in regional exports, and technically proficient. It generates MUR 180M in revenue from 115 people, which is genuinely impressive. The problem is entirely structural: MUR 44.7M in administration costs that nobody has publicly accounted for is destroying the margin on a business that produces MUR 49.7M of gross profit. The retained deficit of MUR 32.2M suggests this pattern has persisted for years. EOS will not fix the cost problem — but the accountability structures EOS installs (Scorecard, Accountability Chart, IDS, Rocks) will make it impossible to ignore. That is the real pitch for Vincent: not "EOS will transform your culture" but "EOS will give you the visibility to solve the problem that is costing you MUR 40M in margin every year."</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Weeks 1–2: Make contact with Vincent de Labauve d'Arifat. Open with the admin cost finding — "your business earns MUR 50M gross profit and keeps MUR 3M." This will get attention.</li>
+        <li><span class="sig-num">02</span>Weeks 2–4: Exploratory conversation on Recommendations 01–04. Confirm Société d'Argus ownership. Use these conversations to build trust and assess Vincent's appetite for accountability structures.</li>
+        <li><span class="sig-num">03</span>Weeks 4–8: If Vincent engages on the cost and liquidity problems, propose a Focus Day. Brief Thevenau (2023 external director) separately if possible — he may be an internal EOS advocate.</li>
+        <li><span class="sig-num">04</span>Months 2–3: Focus Day → Accountability Chart → First Rocks (financial focus). Demonstrate measurable progress within the first quarter to build momentum.</li>
+        <li><span class="sig-num">05</span>Months 3–6: V/TO session with family leadership team. Answer the succession question. Define the 10-year target. Launch Level 10 meeting rhythm. EOS is now embedded.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Précigraph Limited — Comprehensive Company Analysis &amp; EOS Assessment · 4 June 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (4 June 2026) · Business Magazine Mauritius · Yelo.mu · ZoomInfo · RocketReach · Monique Labat Consulting · OpenCorporates · SearchInAfrica</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
