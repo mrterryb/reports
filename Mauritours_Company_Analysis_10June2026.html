@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mauritours — Comprehensive Company Analysis — June 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Tourism &amp; Destination Management</span>
+    <span class="badge badge-type">Public Company · Domestic · Family-Controlled</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">10 June 2026</span>
+  </div>
+  <h1>Mauritours:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">MAURITOURS LTD · Company intelligence · Financial ratios · EOS implementation assessment · Rose Hill, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 247M</div>
+      <div class="stat-delta">Year ended 30 June 2024 · Unit 1</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit FY2024</div>
+      <div class="stat-value emerald">MUR 3.2M</div>
+      <div class="stat-delta">Net margin 1.3% · Tax expense nil</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.1 / 10</div>
+      <div class="stat-delta">Moderate-High — Qualified Positive · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Retained Losses</div>
+      <div class="stat-delta">Accumulated deficit MUR 93.9M — erodes equity base</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>MAURITOURS LTD — Company Analysis &amp; EOS Assessment · 10 June 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">Nearly five decades old and still family-controlled, Mauritours Ltd is one of Mauritius's most established destination management companies — yet its balance sheet carries an accumulated deficit of MUR 93.9 million that tells a story of past structural losses still weighing on the business today.</p>
+
+  <p class="body-text">Mauritours Ltd (File No. C2881, BRN C06002881) was incorporated on 4 August 1977 and has been operating as a tour operator and destination management company for close to 50 years. Headquartered at Swami Venkatesananda Street, Rose Hill, the company operates across Mauritius (including the SSR Airport in Plaisance), Rodrigues (Camp du Roi), and Madagascar through its subsidiary Tropic Tours &amp; Travel. The group brand architecture covers three receptive labels: Mauritours, Rod Tours (Rodrigues), and Tropic Tours &amp; Travel (Madagascar), plus a subsidiary Holiday Escape. The business spans tour operating/destination management, car hire, and a call centre, employing approximately 100 staff.</p>
+
+  <p class="body-text">Ownership is concentrated within the Leal family. The largest named individual shareholder is Leal Gilbert Louis Patrick (161,428 ordinary shares, ~25.2% of ordinary shares), with additional family holdings through Leal Gilbert Patrick Stephane (16,100 shares), Leal Marie-Claire Josette (7,750 shares), Leal Michel Patrice (4,800 shares), and the Succession Leal Gilbert Louis Patrick (4,815 shares). Together named family holdings account for approximately 30% of ordinary shares, with the majority of shares (445,185) distributed across more than 25 additional shareholders. Industrial Finance Corporation of Mauritius (Equity) Ltd holds 50,000 redeemable preference shares — a legacy institutional position. The stated capital structure comprises MUR 65 million across ordinary and preference share classes.</p>
+
+  <p class="body-text">FY2024 revenue of MUR 247.1 million is substantial for a Mauritius tourism SME, but the operating model is highly compressed: cost of sales is a negligible MUR 140,183 (consistent with a service/commissions model), while administration costs of MUR 46.1 million and "other expenses" of MUR 201.4 million consume virtually the entire gross profit and other income, leaving a net profit of just MUR 3.2 million on a 1.3% net margin. The most alarming balance sheet line is the retained earnings deficit of MUR 93.9 million — evidence of accumulated losses over prior years that have never been reversed despite the company returning to (thin) profitability. An EOS suitability score of 6.1/10 reflects a business of the right size and complexity for EOS, with clear evidence of the growth pains EOS addresses, but leadership dynamics and the family governance dimension require careful handling.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Legacy Deficit and Thin Margin Are the Defining Constraints</div>
+    Mauritours is generating revenue in the MUR 247 million range — impressive for a domestic Mauritius tourism operator — but it is doing so on a razor-thin 1.3% net margin with a MUR 93.9 million accumulated deficit sitting in the balance sheet. The "other expenses" line of MUR 201.4 million (81.5% of revenue) is the critical unknown: without audited detail, it is impossible to determine whether this reflects legitimate pass-through tourism costs (flights, hotels booked on behalf of clients) or genuinely bloated overhead. Any conversation with Mauritours leadership must start here. The thin margin and legacy losses signal a business that has historically struggled to translate revenue into value — exactly the kind of accountability and focus problem EOS is designed to solve.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>~50 years of operational history</strong> and deep relationships with major tourism service providers. Multi-island and multi-country presence (Mauritius, Rodrigues, Madagascar). Established DMC brand with airport operations at SSR. Car hire division provides revenue diversification. Positive tailwind from Mauritius inbound tourism growth (+3.9% in 2025, heading toward Rs 100bn in earnings).</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Accumulated deficit of MUR 93.9 million</strong> — the most serious balance sheet risk. Net margin of 1.3% leaves no buffer for downturns. "Other expenses" of MUR 201M (81.5% of revenue) with no public breakdown. Non-current liabilities of MUR 34.5M (nature unspecified) alongside MUR 39.8M current liabilities. Annual return filing has gaps (no filing between 2019 and 2023 visible in CBRIS).</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Classic second-generation family business complexity</strong> — founder deceased, two sons running operations as Executive Chairman and Managing Director. Approximately 100 employees across multiple brands and geographies. A 2013 restructuring following Rodrigues losses signals that the business has experienced the "hitting the ceiling" moment EOS targets. Decision-making is likely centralised around Stephane and Patrice Leal with limited management system infrastructure.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A nearly 50-year-old Mauritius family dynasty in tourism, now spanning three islands and three brands under second-generation leadership — but carrying significant legacy financial scars that demand fresh strategic discipline.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Mauritours Ltd was incorporated on <strong>4 August 1977</strong> as a public domestic company. Its file number at the Registrar of Companies is <strong>C2881</strong> and its Business Registration Number is <strong>C06002881</strong>. The registered office is at Swami Venkatesananda Street, Rose Hill, Mauritius (address effective 23 September 2016 — a prior address change, possibly coinciding with a premises move). The company's auditor is <strong>HLB-Appavoo &amp; Associates</strong> (appointed 12 December 2003), a reputable Mauritius accounting firm. The company secretary is <strong>Anex Corporate Services Ltd</strong>, 8th Floor Ebene Tower, Ebene (appointed 1 August 2016). Annual registration fee is paid up to 2026. The most recent three annual returns are dated 10 August 2023, 29 November 2023, and 11 September 2019, with a notable gap between 2019 and 2023 that warrants inquiry.</p>
+
+  <p class="body-text">Stated capital totals <strong>MUR 70 million</strong> across three tranches: 450,000 ordinary shares at par value MUR 100 (MUR 45M), 200,000 ordinary shares at par value nil (MUR 20M), and 50,000 redeemable preference shares at par value nil (MUR 5M). The balance sheet records share capital of MUR 65M. The company was founded by the late Patrick Leal and has been described in industry sources as having operated since as early as 1973–1977 in the Mauritius tourism sector. In 2004, executive leadership transitioned to his sons upon his passing.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Annual Return Filing Gap — Item to Clarify</div>
+    The CBRIS record shows annual returns filed on 11/09/2019, then a jump to 29/11/2023 and 16/01/2024. This four-year gap (2020–2022) likely reflects the Covid-19 disruption period and associated regulatory forbearance, but it is worth confirming during any due diligence conversation. The company has caught up and is current for 2026.
+  </div>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Leal Family — Core Control</h4>
+        <div class="ec-sub">Ordinary Shares · Direct &amp; Succession</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">L. G. L. Patrick</span><span class="mv ok">161,428 shares</span></div>
+        <div class="ec-metric"><span class="mk">Succession LGLP</span><span class="mv">4,815 shares</span></div>
+        <div class="ec-metric"><span class="mk">G. P. Stephane</span><span class="mv">16,100 shares</span></div>
+        <div class="ec-metric"><span class="mk">M. C. Josette</span><span class="mv">7,750 shares</span></div>
+        <div class="ec-metric"><span class="mk">Michel Patrice</span><span class="mv">4,800 shares</span></div>
+        <div class="ec-metric"><span class="mk">~Family Total</span><span class="mv ok">~30% ord. shares</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Dispersed Shareholders</h4>
+        <div class="ec-sub">Ordinary Shares · 25+ holders</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">&gt;25 shareholders</span><span class="mv">445,185 shares</span></div>
+        <div class="ec-metric"><span class="mk">The MDIT Co Ltd</span><span class="mv">2,572 shares</span></div>
+        <div class="ec-metric"><span class="mk">Soc. Hér. Chao An Tong</span><span class="mv">3,556 shares</span></div>
+        <div class="ec-metric"><span class="mk">Soc des Fraisiers</span><span class="mv">1,016 shares</span></div>
+        <div class="ec-metric"><span class="mk">Nokiah Jean Celio</span><span class="mv">1,609 shares</span></div>
+        <div class="ec-metric"><span class="mk">Lennon Guy</span><span class="mv">448 shares</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Institutional &amp; Fund Holders</h4>
+        <div class="ec-sub">Preference &amp; Special Positions</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">IFC Mauritius (Equity)</span><span class="mv warn">50,000 pref. shares</span></div>
+        <div class="ec-metric"><span class="mk">Mauritours Super. Fund</span><span class="mv">54 ord. shares</span></div>
+        <div class="ec-metric"><span class="mk">Golden Orchids Ltd</span><span class="mv">667 ord. shares</span></div>
+        <div class="ec-metric"><span class="mk">Preference nature</span><span class="mv">REDEEMABLE</span></div>
+        <div class="ec-metric"><span class="mk">IFC position</span><span class="mv warn">Legacy / not redeemed</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Note — Group Architecture</div>
+    Mauritours Ltd is the parent/holding entity for a small group. Subsidiaries include Tropic Tours &amp; Travel (Madagascar operations), Rod Tours (Rodrigues brand), and Holiday Escape (a separate consumer brand). The MUR 77,500 "Investment in Subsidiaries" on the balance sheet is nominal — subsidiaries may be operationally integrated rather than separately capitalised. The group employs approximately 100 staff across all entities. This multi-brand, multi-geography structure is a key EOS complexity driver.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Leal Gilbert Patrick Stephane — Executive Chairman &amp; Managing Director</h4>
+      <p>Appointed Director <strong>30 December 1994</strong>; Chairman <strong>1 September 2004</strong>; Managing Director <strong>1 September 2004</strong>. Son of founder. Holds 16,100 ordinary shares directly. Educated at Boston College USA (double major marketing &amp; finance, cum laude). LinkedIn profile active. Email: stephane@mauritours.net. Primary public face of the company on industry platforms.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Leal Michel Patrice — Director &amp; Managing Director</h4>
+      <p>Appointed Director <strong>1 September 2004</strong>; Managing Director <strong>1 August 2007</strong>. Son of founder; brother of Stephane. Holds 4,800 ordinary shares. The dual Managing Director structure (both Stephane and Patrice hold this title) is unusual and may indicate divided operational responsibility across brands or geographies — a classic EOS accountability gap signal.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Leal Marie-Claire Josette — Director</h4>
+      <p>Appointed Director <strong>2 September 2009</strong>. Holds 7,750 ordinary shares. Likely a family member (spouse or sibling generation). No operational title visible in CBRIS or public sources. Presence on the board adds a family governance dimension that EOS conversations should be sensitive to.</p>
+    </div>
+  </div>
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>HLB-Appavoo &amp; Associates — Auditor</h4>
+      <p>Appointed <strong>12 December 2003</strong>. Service address: 29 Bis Mere Barthelemy Street, Port Louis. HLB International member firm — a credible mid-tier international audit network appropriate for a company of this size. Long tenure (23 years) may indicate stability or alternatively reduced auditor independence scrutiny risk.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Anex Corporate Services Ltd — Secretary</h4>
+      <p>Appointed <strong>1 August 2016</strong>. Address: 52 Cybercity, 8th Floor Ebene Tower, Ebene. A professional corporate secretarial firm — standard for Mauritius companies of this size and complexity.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Key Operational Staff (Public Sources)</h4>
+      <p>Sathya Somanah — E-Commerce Manager (identified via Datanyze). Obhiroy Dewnath — Marketing &amp; Sales / Spanish Hotel Representative. No CFO, COO or HR Director publicly identified — consistent with a lean senior team under two managing directors.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Mauritours operates as a full-service Destination Management Company (DMC) with three core business pillars. <strong>Tour Operating / DMC Services</strong> is the revenue centrepiece: incoming group tours (full-day guided itineraries), FIT holiday packages, airport transfers, excursions, wedding planning, honeymoon packages, golf holidays, helicopter tours, and fine dining experiences. The company leverages 45+ years of supplier relationships with hotels (all budget tiers), cruise lines, and activity providers. A Virtual Reality Library (360° smartphone experience) indicates investment in digital sales tools for B2B partners. <strong>Car Hire</strong> provides a steady ancillary revenue stream with a registered vehicle contractor licence. <strong>Call Centre</strong> operations support both in-house bookings and potentially third-party tourism clients. Rodrigues operations operate under the Rod Tours brand; Madagascar operations under Tropic Tours &amp; Travel.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Primary operations in <strong>Rose Hill, Mauritius</strong> (registered office and head office). Operational presence at <strong>SSR International Airport, Plaisance</strong> (airport desk — a strategically important customer touchpoint for inbound tourism). <strong>Camp du Roi, Rodrigues</strong> (island branch — previously a source of significant losses, subject of the 2013 restructuring). <strong>Madagascar</strong> via Tropic Tours &amp; Travel subsidiary. The company's ambition to serve emerging markets (Middle East, India, Russia, Eastern Europe) was stated in 2013 — it is unclear how far this diversification has progressed. The company has no identified international offices beyond its Mauritius-region island network.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Website &amp; Digital Presence — Adequate but Not Differentiated</div>
+    Mauritours operates a functional website at mauritours.mu with services, tours, accommodation, and contact sections. The site positions the company correctly as a DMC. However, in a market where inbound tourism is growing and digital booking is accelerating, there is no visible investment in online booking capability, no obvious SEO dominance, and no TripAdvisor or Google Reviews prominence at scale. The E-Commerce Manager role (Sathya Somanah) suggests awareness of this gap. Facebook page active (Mauritours Travel and Tourism).
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS / Registrar of Companies extract issued 10 June 2026. Currency: Mauritius Rupee (MUR). Fiscal year end: 30 June. Most recent filed year: FY2024 (year ended 30 June 2024, approved 19 June 2025). Financial statements filed for FY2022, FY2023, and FY2024.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    The CBRIS financial summary provides income statement and balance sheet totals but not full line-item detail (no notes to accounts, no segmental breakdown, no cash flow statement). The "Other Expenses" line of MUR 201.4M is particularly opaque — for a tour operator this likely represents pass-through costs (hotel, flight, and activity costs billed on behalf of clients) that inflate both revenue and expenses simultaneously, making margin analysis sensitive to the accounting treatment. Prior-year comparatives (FY2023, FY2022) are filed but their detailed P&amp;L and balance sheet figures are not reproduced in the CBRIS summary extract — only the most recent year is provided. All ratios are therefore single-year and cannot be trended.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>247,116,432</td><td>100.0%</td><td>MUR 247M — substantial scale for a Mauritius domestic tourism operator</td></tr>
+        <tr class="heat-warn"><td>Less: Cost of Sales</td><td>140,183</td><td>0.1%</td><td>Negligible CoS is consistent with a commission/service-fee model; suggests direct costs are classified elsewhere</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>246,976,249</td><td>99.9%</td><td>Optically high — a feature of tour operator accounting where pass-through costs hit "Other Expenses" not CoS</td></tr>
+        <tr><td>Add: Other Income</td><td>3,639,123</td><td>1.5%</td><td>Ancillary income — likely interest, rental, or subsidiary income</td></tr>
+        <tr><td>Less: Distribution Costs</td><td>0</td><td>0.0%</td><td>Nil — no separate distribution cost line</td></tr>
+        <tr><td>Less: Administration Costs</td><td>46,075,680</td><td>18.6%</td><td>Staff, premises, management overhead — reasonable for ~100 FTE</td></tr>
+        <tr class="heat-critical"><td>Less: Other Expenses</td><td>201,370,173</td><td>81.5%</td><td>Critical unknown — likely pass-through tour costs. Absorbs virtually all gross profit. Requires audited breakdown</td></tr>
+        <tr><td>Less: Finance Costs</td><td>0</td><td>0.0%</td><td>No interest costs recorded — despite historic charge register. Possibly reclassified or debts discharged</td></tr>
+        <tr class="heat-warn"><td>Profit Before Tax</td><td>3,169,519</td><td>1.3%</td><td>Thin but positive — a recovery signal after likely Covid years of losses</td></tr>
+        <tr><td>Tax Expense</td><td>0</td><td>0.0%</td><td>Nil tax — likely due to carried-forward tax losses from prior years</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit for Period</strong></td><td><strong>3,169,519</strong></td><td><strong>1.3%</strong></td><td>Positive but fragile — equivalent to approximately USD 68,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>116,614,963</td><td>Largest asset — vehicles, office fit-out, airport desk infrastructure; significant for a service business</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>761,603</td><td>Software or goodwill — modest</td></tr>
+        <tr><td>Non-Current Assets</td><td>Investment in Subsidiaries</td><td>77,500</td><td>Nominal — Tropic Tours &amp; Travel, Rod Tours, Holiday Escape at cost</td></tr>
+        <tr><td>Non-Current Assets</td><td>Others (Non-Current)</td><td>8,905,845</td><td>Deposits, long-term receivables, or deferred assets — unspecified</td></tr>
+        <tr class="heat-ok"><td>Non-Current Assets</td><td><strong>Total Non-Current</strong></td><td><strong>126,359,911</strong></td><td>83.1% of total assets — asset-heavy for a service business</td></tr>
+        <tr><td>Current Assets</td><td>Trade &amp; Other Receivables</td><td>17,194,956</td><td>25.4 days DSO at MUR 247M revenue — see ratios tab</td></tr>
+        <tr><td>Current Assets</td><td>Cash &amp; Cash Equivalents</td><td>8,445,454</td><td>MUR 8.4M cash — tight relative to MUR 39.8M current liabilities</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>0</td><td>Nil — consistent with service model</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>25,640,410</strong></td><td>Current ratio 0.64x — below 1.0x, a liquidity concern</td></tr>
+        <tr class="heat-ok"><td></td><td><strong>TOTAL ASSETS</strong></td><td><strong>152,000,321</strong></td><td></td></tr>
+        <tr><td>Equity</td><td>Share Capital</td><td>65,000,000</td><td>MUR 65M paid-in capital</td></tr>
+        <tr><td>Equity</td><td>Other Reserves</td><td>106,697,673</td><td>Revaluation or other reserves — likely PP&amp;E revaluation surplus</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Retained Earnings (Deficit)</td><td>-93,941,089</td><td>MUR 93.9M accumulated losses — the defining financial constraint; years of losses not recovered</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>77,756,584</strong></td><td>Equity survives only because reserves exceed deficit; structurally fragile</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Others (Non-Current)</td><td>34,477,092</td><td>Nature unspecified — possibly deferred income, employee obligations, or restructured debt</td></tr>
+        <tr><td>Non-Current Liabilities</td><td><strong>Total Non-Current Liabilities</strong></td><td><strong>34,477,092</strong></td><td>No long-term borrowings, deferred tax, or provisions — all classified as "Others"</td></tr>
+        <tr><td>Current Liabilities</td><td>Trade &amp; Other Payables</td><td>34,301,479</td><td>Large payables relative to cash — indicates reliance on supplier credit</td></tr>
+        <tr><td>Current Liabilities</td><td>Others (Current)</td><td>5,465,166</td><td>Accruals, customer deposits, or deferred revenue</td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>39,766,645</strong></td><td>MUR 39.8M vs MUR 25.6M current assets — negative working capital</td></tr>
+        <tr><td></td><td>Total Liabilities</td><td>74,243,737</td><td>Debt-to-equity ratio 0.95x — moderately leveraged</td></tr>
+        <tr class="heat-ok"><td></td><td><strong>TOTAL EQUITY &amp; LIABILITIES</strong></td><td><strong>152,000,321</strong></td><td>Balance sheet balances correctly</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">The CBRIS charge register for Mauritours is extensive — <strong>50+ registered charges</strong> spanning from 1983 to 2008, predominantly floating charges over movable and immovable property. The pattern tells a clear story of heavy bank borrowing across three distinct phases: (1) early vehicle financing in the 1980s–1990s (car gage sans deplacement charges on specific vehicles); (2) rapid expansion borrowing in 1996–2001 with multiple floating charges of MUR 1–9 million per instrument; and (3) a large recapitalisation/restructuring in 2006 with two significant charges totalling MUR 108.75 million (CH3925/10 at MUR 53.75M and CH3967/NO49 at MUR 35M, both fixed and floating). The most recent charge is CH4482/65 dated 28 December 2007 (MUR 1.586M floating). <strong>No charges have been registered since 2008</strong>, which is consistent with the company operating without new bank debt — either debts were discharged, restructured out of CBRIS, or the company has not taken on new formal borrowing. The nil Finance Costs line in FY2024 P&amp;L supports this reading.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Charge Register — 2006 Restructuring Signal</div>
+    The two large 2006 fixed-and-floating charges (MUR 88.75M combined) coincide with what appears to be a major refinancing event — possibly related to the Rodrigues expansion that ultimately led to significant losses and the 2013 restructuring (mega.mu reporting). The MUR 93.9M accumulated deficit on the balance sheet may represent, in whole or part, losses sustained during and after this expansion period. An objection by "OTHERS" was filed on 2 June 2025 — the nature of this objection (possibly a creditor challenge or shareholder dispute) is not publicly disclosed but warrants clarification.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">All ratios calculated from FY2024 CBRIS data (year ended 30 June 2024). Benchmark ranges reference Mauritius SME tourism sector norms and general regional comparators. Colour key: <span class="b b-green">Green</span> = healthy vs benchmark · <span class="b b-amber">Amber</span> = watch · <span class="b b-red">Red</span> = critical concern. Single-year data only — no trend analysis possible from available CBRIS extract.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.64×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.5× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Mauritius SME tourism</span><span class="ratio-val">~1.0× – 1.4×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">CRITICAL</span></span></div>
+      <span class="ratio-interpret">Current assets (MUR 25.6M) cover only 64% of current liabilities (MUR 39.8M). The business is in a negative working capital position. Cash of MUR 8.4M covers only 21% of current liabilities. If trade payables are called or a large customer deposit is returned, the company faces an immediate liquidity squeeze. This is the most urgent financial metric.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio (Acid Test)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.64×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">CRITICAL</span></span></div>
+      <span class="ratio-interpret">With nil inventories, quick ratio equals current ratio at 0.64×. There is no inventory buffer to strip out — all current assets are receivables and cash. The quick ratio being identical to the current ratio confirms that the liquidity weakness is structural, not masked by inventory inflation. Immediate action on receivables collection and payables management is required.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">99.9%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Context</span><span class="ratio-val">Tour operator model</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">INTERPRET WITH CARE</span></span></div>
+      <span class="ratio-interpret">The 99.9% gross margin is an accounting artefact of a commission/service-fee revenue model where pass-through costs (hotel nights, flights, activities sold on behalf of clients) are classified as "Other Expenses" rather than Cost of Sales. This is consistent with Mauritius tour operator accounting practice. The true economic gross margin is embedded in the spread between what Mauritours charges clients and what it pays suppliers — not visible from CBRIS data alone.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated EBIT</span><span class="ratio-val warn">MUR 3.17M</span></div>
+      <div class="ratio-row"><span class="ratio-label">EBIT Margin</span><span class="ratio-val warn">1.28%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (tourism SME)</span><span class="ratio-val">3% – 8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">WATCH</span></span></div>
+      <span class="ratio-interpret">EBIT margin of 1.28% (finance costs nil, so EBIT equals PBT) is below the 3–8% range typical for well-run Mauritius tourism businesses. The margin is positive — a recovery from what were likely Covid-period losses — but there is no cushion for cost shocks or revenue decline. A 1% revenue decline at this margin would erase half the profit.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.28%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (tourism SME)</span><span class="ratio-val">2% – 6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">WATCH</span></span></div>
+      <span class="ratio-interpret">Net margin equals EBIT margin (no tax, no interest). At 1.28%, Mauritours is generating MUR 1.28 for every MUR 100 of revenue. This is survivable but not investable. The nil tax expense (carried-forward losses) provides temporary relief — once tax losses are exhausted, the effective tax rate will compress margins further unless profitability improves substantially first.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">2.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">5% – 10%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">WEAK</span></span></div>
+      <span class="ratio-interpret">Net profit of MUR 3.17M on total assets of MUR 152M yields ROA of 2.1%. The asset base is dominated by PP&amp;E (MUR 116.6M — vehicles, premises, airport desk). These are not generating strong returns. The car hire fleet and physical infrastructure should be assessed for whether they are the most efficient deployment of capital in a predominantly service business.</span>
+    </div>
+  </div>
+
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">4.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">10% – 20%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">BELOW BENCHMARK</span></span></div>
+      <span class="ratio-interpret">ROE of 4.1% (MUR 3.17M / MUR 77.8M equity) is well below the 10–20% range that justifies retained ownership. Family shareholders are earning 4.1 cents per MUR of book equity. However, equity is inflated by MUR 106.7M of reserves (likely PP&amp;E revaluation) so the "real" economic return on cash invested is even harder to assess. This is a business that needs to grow profit dramatically to justify its asset base.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Total liabilities / equity</span><span class="ratio-val warn">0.95×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&lt; 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">WATCH</span></span></div>
+      <span class="ratio-interpret">Total liabilities of MUR 74.2M against equity of MUR 77.8M gives D/E of 0.95× — just below the 1.0× threshold. No bank borrowings are recorded (all charges pre-2008). The MUR 34.5M non-current "others" liability is the key unknown — if reclassified as debt, leverage would be materially higher. On face value, leverage is manageable but tight given the negative working capital position.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Revenue / Total Assets</span><span class="ratio-val ok">1.63×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (tourism)</span><span class="ratio-val">1.2× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">ADEQUATE</span></span></div>
+      <span class="ratio-interpret">Asset turnover of 1.63× is within the healthy range for a tourism operator. MUR 247M of revenue from MUR 152M of assets is reasonable. The company is generating revenue efficiently from its asset base — the problem is not revenue generation but margin capture and cost control. This is the one ratio that is clearly healthy.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Debtor Days (DSO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Trade receivables / Revenue × 365</span><span class="ratio-val ok">25.4 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (B2B tourism)</span><span class="ratio-val">30 – 45 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">HEALTHY</span></span></div>
+      <span class="ratio-interpret">DSO of 25 days indicates that Mauritours is collecting receivables relatively quickly — better than average for B2B tourism where 30–45 days is standard. This is a positive operational signal. However, the MUR 17.2M receivables relative to MUR 8.4M cash means the company is dependent on continued prompt collection to maintain liquidity.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Creditor Days (DPO)</h4>
+      <div class="ratio-row"><span class="ratio-label">Trade payables / Revenue × 365</span><span class="ratio-val warn">50.6 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30 – 45 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">WATCH</span></span></div>
+      <span class="ratio-interpret">DPO of 51 days — significantly above standard terms — indicates that Mauritours is using supplier credit as a working capital tool. With MUR 34.3M in trade payables and MUR 8.4M cash, the company is effectively funding operations on supplier credit. If key hotel or airline suppliers tighten payment terms, the working capital gap would widen severely. This is a structural vulnerability that EOS accountability tools can help address.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">N/A</span></div>
+      <div class="ratio-row"><span class="ratio-label">Context</span><span class="ratio-val">Service model — nil inventory</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-blue">NOT APPLICABLE</span></span></div>
+      <span class="ratio-interpret">Nil inventory is consistent with a pure service and DMC model. No inventory turnover metric is applicable or meaningful for Mauritours' business model.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. Current Ratio 0.64× / Negative Working Capital of MUR 14.1M:</strong> Mauritours cannot cover its short-term obligations from current assets. With MUR 8.4M cash against MUR 39.8M current liabilities, one bad month of collections or one major supplier demand could trigger a cash crisis. Fixing this — through receivables acceleration, payables renegotiation, or a working capital facility — is a prerequisite for any growth investment.<br><br>
+    <strong>2. Accumulated Deficit MUR 93.9M:</strong> This is not a current-year problem — it is a balance sheet scar from years of historical losses. It suppresses equity to MUR 77.8M (held up only by MUR 106.7M reserves, likely PP&amp;E revaluation). Until this deficit is addressed through sustained profitability, the company's financial resilience is structurally compromised. At the current net profit rate of MUR 3.2M/year, it would take 30 years to recover — the real solution is a step-change in profitability.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Mauritours competes across three overlapping segments — inbound DMC/group tours, FIT accommodation and transfers, and island car hire — in a Mauritius tourism market that grew 3.9% to 1.43 million arrivals in 2025, with earnings set to exceed Rs 100 billion. The market is growing but also professionalising rapidly, with digital booking and brand differentiation becoming table stakes.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Inbound DMC / Group Tours</h4>
+        <div class="ec-sub">Core Revenue Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Mautourco, Maurijet</span></div>
+        <div class="ec-metric"><span class="mk">Mauritours position</span><span class="mv ok">~50yr heritage brand</span></div>
+        <div class="ec-metric"><span class="mk">Mautourco advantage</span><span class="mv warn">WTA winner 3 yrs</span></div>
+        <div class="ec-metric"><span class="mk">Growth markets</span><span class="mv ok">India +33.5%, Spain +19%</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">France/UK/Germany down</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>FIT / Leisure Travel Agency</h4>
+        <div class="ec-sub">Accommodation &amp; Transfers</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Concorde Travel, Ovation DMC</span></div>
+        <div class="ec-metric"><span class="mk">Mauritours position</span><span class="mv">Full-service offering</span></div>
+        <div class="ec-metric"><span class="mk">Differentiator</span><span class="mv ok">Airport SSR presence</span></div>
+        <div class="ec-metric"><span class="mk">Digital gap</span><span class="mv warn">No online booking</span></div>
+        <div class="ec-metric"><span class="mk">Opportunity</span><span class="mv ok">VR Library innovation</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Car Hire / Vehicle Contracting</h4>
+        <div class="ec-sub">Ancillary Revenue</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Sixt, Europcar, ABC Cars</span></div>
+        <div class="ec-metric"><span class="mk">Mauritours position</span><span class="mv">Integrated with DMC</span></div>
+        <div class="ec-metric"><span class="mk">Asset intensity</span><span class="mv warn">Fleet in PP&amp;E MUR 116M</span></div>
+        <div class="ec-metric"><span class="mk">Advantage</span><span class="mv ok">Airport desk cross-sell</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv warn">Fleet renewal capital</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Longevity and supplier relationships.</strong> Nearly 50 years of continuous operation in Mauritius tourism translates into deeply embedded relationships with hotels across all tiers, cruise operators, airlines, and activity providers. These relationships are difficult for new entrants to replicate and provide Mauritours with preferential allocation and pricing in peak periods. The 2013 restructuring, while painful, demonstrates institutional resilience — the company survived a major operational crisis and continued.</p>
+  <p class="body-text"><strong>2. Multi-island / multi-country footprint.</strong> Very few Mauritius DMCs operate credibly across Mauritius, Rodrigues, and Madagascar simultaneously. This gives Mauritours a differentiated proposition for tour operators and wholesalers seeking a single-source Indian Ocean partner. The Rodrigues operation (Rod Tours) and Madagascar subsidiary (Tropic Tours &amp; Travel) create real barriers to entry that pure Mauritius operators cannot match.</p>
+  <p class="body-text"><strong>3. Airport physical presence.</strong> The SSR Airport operational desk is a significant strategic asset — it provides direct access to arriving tourists at the moment of maximum receptivity, enables real-time service recovery, and creates upsell opportunities that competitors without an airport footprint cannot access.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Strong inbound growth momentum:</strong> Mauritius recorded 1.43M arrivals in 2025 (+3.9%), with January 2026 up 7.7% and February 2026 up 12.1% year-on-year. The sector is in an accelerating growth phase heading into 2026.</li>
+    <li><strong>Emerging market diversification opportunity:</strong> India grew +33.5% in 2025 and Spain +19% — both markets where Mauritours' 2013 strategic ambition (Middle East, India, Russia, Eastern Europe) remains relevant. The company has a stated strategy but unclear execution track record.</li>
+    <li><strong>Digital booking transformation:</strong> The increasing shift to direct online booking (OTAs, hotel.com, Booking.com) risks disintermediating traditional DMCs. Mauritours' investment in an E-Commerce Manager and VR Library is a signal of awareness, but the absence of a transactional online booking engine is a structural gap.</li>
+    <li><strong>Experiential travel premium:</strong> High-end wellness, adventure, and authentic cultural experiences are commanding premium pricing. Mauritours' full-service capability (helicopter tours, fine dining, golf) positions it to capture this segment if marketed effectively.</li>
+    <li><strong>Traditional European market headwinds:</strong> France (-0.6%), UK (-2.0%), and Germany (-1.3%) all declined in 2025. These have historically been core Mauritius feeder markets and Mauritours' legacy client base likely skews toward them — a structural market-mix challenge requiring active diversification.</li>
+    <li><strong>Climate and sustainability pressure:</strong> Inter-ministerial focus on dolphin/whale watching regulation signals growing environmental scrutiny of tourism activities. Operators without credible sustainability credentials face increasing reputational and regulatory risk.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">A June 2025 Objection Was Filed Against Mauritours</div>
+    The CBRIS record shows an objection filed on 2 June 2025 by "OTHERS" — the nature is not publicly disclosed. This could be a creditor objection, shareholder dispute, or regulatory challenge. It is a live signal that deserves investigation before any partnership or commercial engagement deepens. Ask directly in the first meeting.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Approximately 100 employees across multiple legal entities (Mauritours Ltd, Tropic Tours &amp; Travel, Rod Tours, Holiday Escape), three geographic markets (Mauritius, Rodrigues, Madagascar), three business lines (DMC/tour ops, car hire, call centre), and at least two managing directors. This is precisely the complexity range where EOS delivers maximum value — too big to manage informally, not yet big enough for a full corporate governance overlay. The multi-brand, multi-geography structure means role clarity, accountability, and cross-entity coordination are constant friction points.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The dual Managing Director structure (Stephane and Patrice Leal both holding MD titles since 2004 and 2007 respectively) is a yellow flag for EOS. EOS works best with a clear Visionary/Integrator split — a dual MD structure often reflects divided authority rather than a deliberate leadership design. Stephane Leal's Boston College education (marketing and finance, cum laude) and active LinkedIn/industry presence suggest openness to professional frameworks. However, the family governance dimension (mother or sister also on the board, company inherited from father) introduces emotional dynamics that can slow the honest self-assessment EOS requires. Score would move to 7 if both brothers demonstrate willingness to clearly delineate roles.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">The evidence of growth pain is abundant and documented. A major restructuring in 2013 following Rodrigues losses — publicly reported in business media — is the clearest possible signal of "hitting the ceiling." The MUR 93.9M accumulated deficit tells the story of years of decisions that did not convert revenue into value. The return to thin profitability (MUR 3.2M in FY2024) after what were likely Covid-period losses indicates the company is emerging from a recovery phase and now needs a systematic framework to scale sustainably. The current negative working capital position adds urgency. These are textbook EOS pain points: accountability gaps, execution misalignment, and financial discipline deficit.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The company has a professional secretary (Anex Corporate Services), a reputable auditor (HLB-Appavoo), and an E-Commerce Manager — suggesting some functional specialisation. However, no ERP, CRM, or operational management platform is publicly identifiable. The tourism industry in Mauritius is increasingly tech-enabled (reservation systems, yield management, digital booking), and Mauritours' lack of an online booking engine suggests process maturity gaps. The "other expenses" classification in the P&amp;L (MUR 201M with no breakdown) could reflect inadequate management accounting systems. EOS's Scorecard and Process Documentation tools would deliver immediate value here.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">A family business approaching its 50th year in operation carries strong cultural DNA — pride in heritage, loyalty to long-tenured staff, and a service ethos built over decades. The Superannuation Fund shareholding (54 shares) indicates a history of employee benefit programmes. However, the same longevity can embed cultural inertia: resistance to change, deference to founding family, and tolerance of underperformance by loyal but misaligned staff. The 2013 restructuring involved brand repositioning — suggesting the leadership has demonstrated willingness to make culturally difficult calls before. Net score is moderate: real strengths to build on, but legacy culture work needed.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">With two co-Managing Directors and a family board, decision-making is almost certainly centralised at the family level with limited empowerment of the management tier below. No COO, CFO, or equivalent operational head is publicly identifiable — suggesting Stephane and Patrice are directly managing functions that would typically be delegated in a 100-person organisation. The dual MD structure without public role delineation is a classic EOS symptom: the Accountability Chart is unclear, so decisions flow upward and slow down. EOS's Accountability Chart and Rocks process directly addresses this.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The company articulates a clear service identity (premium DMC, 45+ years, Mauritius-Rodrigues-Madagascar) but no publicly stated 3-year or 10-year growth vision is visible. The 2013 strategic ambition (Middle East, India, Russia, Eastern Europe diversification) was stated but its execution status is unknown — suggesting a disconnect between stated vision and operational follow-through. The multi-brand architecture (Mauritours / Rod Tours / Tropic Tours / Holiday Escape) implies strategic optionality but may also reflect strategic drift — four brands for a 100-person company is a focus challenge. V/TO work would sharpen this significantly.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">No public information is available about Mauritours' internal meeting cadence. For a company in the tourism sector with airport operations, multi-island logistics, and a call centre, operational coordination meetings are a daily necessity — so some structured meeting culture almost certainly exists. However, EOS-level meeting discipline (Level 10 meetings with Issues Lists and IDS) is a different category from operational briefings. Family-run businesses at this size typically lack this disciplined meeting architecture. Score at mid-range reflecting assumed operational meeting habit without the strategic discipline layer.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.1</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>Mauritours is in the EOS sweet spot for size, complexity, and documented pain — approximately 100 people, multi-brand/geography, second-generation family leadership, and clear evidence of the accountability and execution gaps EOS resolves. The 2013 restructuring, the accumulated deficit, and the negative working capital position are not disqualifiers — they are EOS selling points. The single gating factor is the dual Managing Director structure: EOS cannot run effectively without a clear Visionary/Integrator distinction. If Stephane and Patrice Leal are willing to define and own distinct roles, the score moves to 7.5+. The conversation with this company should open with the accountability gap, not the growth story.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Mauritours</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The dual-MD structure is the number one EOS readiness blocker. Building an Accountability Chart will force Stephane and Patrice to define who owns what — DMC vs Car Hire vs Call Centre vs Madagascar — and create the structural clarity that currently doesn't exist. This is the first conversation.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>With a 1.3% net margin, current ratio of 0.64×, and MUR 201M in opaque "other expenses," Mauritours is flying financially blind. A Scorecard with 5–15 weekly metrics (bookings, cash position, receivables, margin per segment) would be transformative within 90 days of implementation.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks</h4>
+      <p>The 2013 emerging-market diversification strategy appears to be an unexecuted vision. The Rocks process — 3–7 company priorities per quarter, owned by named individuals — is exactly what Mauritours needs to translate stated strategic intent into delivered results. Focus is the intervention.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>The June 2025 CBRIS objection, the working capital deficit, the Rodrigues historical losses — these are symptoms of issues that were never systematically surfaced and resolved. A structured Issues List with disciplined IDS (Identify, Discuss, Solve) would create the organisational habit of solving problems permanently rather than managing them indefinitely.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO (Vision/Traction Organiser)</h4>
+      <p>Four brands, three markets, two MDs — Mauritours needs a shared, written vision. The V/TO will force the family leadership to agree on the 10-year target, the 3-year picture, and the 1-year plan simultaneously. The process of building it is as valuable as the document itself for a family-controlled company.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>With operations spanning Mauritius, Rodrigues, and Madagascar and approximately 100 staff, coordination overhead is significant. Implementing L10 meetings across the leadership team and the brand/segment heads will replace ad-hoc corridor decisions with structured, accountable weekly rhythm — freeing the two MDs from operational micromanagement.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total: four financial/operational priorities to stabilise the business before EOS, and four EOS implementation recommendations sequenced for a family-controlled tourism company. Financial fixes first — EOS accelerates from a position of stability, not crisis.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Emergency Working Capital Audit and 90-Day Cash Plan</h4>
+      <p>The current ratio of 0.64× and cash position of MUR 8.4M against MUR 39.8M current liabilities is a potential crisis. Within 30 days: (a) Produce a 13-week cash flow forecast. (b) Review all trade payables for renegotiation of payment terms — target 30-day extension on the MUR 34.3M payables book, creating ~MUR 2.8M immediate headroom. (c) Accelerate any receivables over 20 days. Owner: CFO (if appointed) or Patrice Leal as MD directly. Success: current ratio above 0.85× within 90 days.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Disaggregate the MUR 201M "Other Expenses" Line</h4>
+      <p>The single most important financial intelligence action. Commission HLB-Appavoo to produce a management accounts breakout of the "other expenses" category into: (i) pass-through client costs (flights, hotels, activities — should be netted against revenue if Mauritours is acting as agent), (ii) staff costs, (iii) vehicle operating costs, (iv) marketing, (v) other overhead. This one action will reveal the true economic margin of the business and identify the top 3 cost reduction opportunities. Target completion: before the first EOS Focus Day.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Investigate and Resolve the June 2025 CBRIS Objection</h4>
+      <p>An objection filed on 2 June 2025 by "OTHERS" is on the public record. The nature is undisclosed. This must be investigated, understood, and ideally resolved before any external commercial partnership (including EOS engagement) deepens. Obtain legal advice from a Mauritius corporate lawyer to understand the nature and status of the objection. If it is a creditor claim, include it in the working capital plan. Owner: Stephane Leal. Timeline: within 30 days.</p>
+      <span class="urg urg-now">Immediate Priority — Requires Clarification</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Reposition for India and GCC Market Growth</h4>
+      <p>India grew +33.5% as a Mauritius source market in 2025; Spain +19%; GCC and Eastern Europe markets are expanding. Mauritours stated this strategic direction in 2013 — 13 years later, execution must be evidenced. Within 60 days: appoint or designate a Market Development lead for India and GCC. Within 90 days: establish at least two active B2B tour operator partnerships in each market. The alternative — continued dependence on France/UK/Germany (all declining) — is a managed decline strategy.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Conduct a Focus Day with Stephane and Patrice Leal — Visionary/Integrator Conversation First</h4>
+      <p>The Focus Day should open with the Visionary/Integrator concept before any other EOS tool is introduced. With two MDs sharing the title, the single most valuable output of the Focus Day is an agreed delineation: who is Visionary (external/growth/relationships) and who is Integrator (internal/operations/accountability)? Stephane's profile (marketing-educated, external-facing, industry networked) likely maps to Visionary; Patrice may suit Integrator. This conversation must happen and be documented before the Accountability Chart is built.</p>
+      <span class="urg urg-week">First Step — Schedule Within 30 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the Accountability Chart — One Brand, Then All</h4>
+      <p>Start with Mauritours Ltd (the primary entity) and its four functional heads (DMC/Tour Ops, Car Hire, Call Centre, Finance). Then expand to include Tropic Tours and Rod Tours brand heads. Map every seat in the structure and confirm the right person in the right seat. The dual MD problem will surface here in practical terms — use the structure to resolve it empirically rather than through a theoretical role discussion. Target: completed Accountability Chart within 60 days of Focus Day.</p>
+      <span class="urg urg-week">Within 60 Days of Focus Day</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Set 3 Company Rocks for Q1 — Cash, Cost Clarity, One New Market</h4>
+      <p>First Rocks should be tightly focused on the three most critical business outcomes: Rock 1 — raise current ratio above 1.0× (working capital plan). Rock 2 — produce disaggregated management accounts identifying top-3 cost reduction opportunities. Rock 3 — execute first signed partnership agreement with an India or GCC tour operator. Three Rocks only. Owner each with a named individual (not "the company"). Weekly check-in on each. This makes EOS tangibly valuable from Day 1 rather than philosophically interesting.</p>
+      <span class="urg urg-medium">Within 90 Days of Focus Day</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Implement a Weekly L10 Meeting Cadence for the Leadership Team</h4>
+      <p>With ~100 staff, three markets, and four brands, the leadership coordination overhead is currently absorbed by Stephane and Patrice in an unstructured way. Implement one weekly 90-minute L10 meeting with the top 5–7 leaders (the two MDs plus brand/function heads). Scorecard review, Rock updates, Issues list IDS — 90 minutes maximum, every week. Within 3 months, this single habit will reduce the volume of decisions escalating to the two MDs by an estimated 40–60%, freeing them for strategic work and client relationships.</p>
+      <span class="urg urg-medium">Within 90 Days — Sustain as Permanent Habit</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Mauritours is a genuine Mauritius tourism institution — nearly 50 years old, real brand equity, multi-island footprint, and approximately 100 jobs. But it is a business that has historically converted revenue into losses, not value: the MUR 93.9M deficit is the defining fact of its financial life. The current generation (Stephane and Patrice Leal) has stabilised the business and returned it to thin profitability. The opportunity is now to build the management systems that translate heritage and revenue scale into durable, compounding profit. EOS is well-suited to this challenge. The risks are the dual-MD governance ambiguity, the negative working capital position, and the unresolved June 2025 CBRIS objection — all of which must be addressed before any growth investment is justified.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Within 30 days: Investigate CBRIS objection; initiate 13-week cash flow forecast; request management accounts breakout from HLB-Appavoo.</li>
+        <li><span class="sig-num">02</span>Within 45 days: Schedule and run EOS Focus Day with Stephane and Patrice Leal — Visionary/Integrator as the central agenda item.</li>
+        <li><span class="sig-num">03</span>Within 60 days of Focus Day: Complete Accountability Chart for all four brands/entities; implement weekly L10 meeting cadence.</li>
+        <li><span class="sig-num">04</span>Quarter 1: Execute three Rocks — working capital to 1.0×, cost disaggregation, first India/GCC partnership signed.</li>
+        <li><span class="sig-num">05</span>By end of Year 1: V/TO completed with a written 10-year target and 3-year picture; net margin target set at 3%+ with named accountability for each lever.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>MAURITOURS LTD — Comprehensive Company Analysis &amp; EOS Assessment · 10 June 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (10 June 2026) · mauritours.mu · mega.mu · ZoomInfo · Datanyze · RocketReach · Statistics Mauritius Tourism 2025</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
