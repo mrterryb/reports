@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maurice Publicite — Comprehensive Company Analysis — 16 June 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Advertising &amp; Marketing Communications</span>
+    <span class="badge badge-type">Private Company · Domestic · Est. 1929</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">16 June 2026</span>
+  </div>
+  <h1>Maurice Publicite:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Maurice Publicite Limited · Company intelligence · Financial ratios · EOS implementation assessment · Bon Air, Moka, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2025</div>
+      <div class="stat-value steel">MUR 35.1M</div>
+      <div class="stat-delta">Year ended 30 June 2025 · ~USD 779K</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Gross Profit Margin</div>
+      <div class="stat-value emerald">60.6%</div>
+      <div class="stat-delta">Strong service-sector margin · FY2025</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">5.5 / 10</div>
+      <div class="stat-delta">Moderate — Conditional Positive · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Financial Flag</div>
+      <div class="stat-value red">Negative Equity</div>
+      <div class="stat-delta">Liabilities exceed assets by MUR 1.67M · Technically insolvent</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Maurice Publicite Limited — Company Analysis &amp; EOS Assessment · 16 June 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">Mauritius's oldest advertising agency — incorporated in 1929, operating since 1924 — holds a prestigious Ogilvy Worldwide affiliation and genuine market leadership, yet is currently technically insolvent with accumulated losses of MUR 5.75M wiping out shareholder equity.</p>
+
+  <p class="body-text">Maurice Publicite Limited (File C443, BRN C07000443) is the operating entity behind what the market knows as "Maurice Publicité Ogilvy" or "Moris Pub Ogilvy." It is one of Mauritius's pioneer advertising agencies, tracing its origins to 1924, formally incorporated as a private domestic company on 7 May 1929. The company is headquartered at Old Reduit Road, Bon Air, Moka — having moved its registered office address in September 2025. It operates across the full spectrum of marketing communications: brand advertising, digital strategy, media buying, event management, corporate branding, and creative design. Its Ogilvy Worldwide affiliation (since 1995/1996) grants access to a global network of 500+ specialist firms and proprietary brand tools including the "360 Degree Brand Stewardship" framework.</p>
+
+  <p class="body-text">Ownership is tightly held between two shareholders, each holding exactly 150,000 ordinary shares (50/50): Neubert Geraldine and Neubert Peter Staver. This is a family-controlled business with no external equity investors. The company's secretary is KBA Investment Ltd (appointed September 2021), a corporate services provider based in Port Louis. The company's service address for director Neubert Anne Geraldine is care of ABAX Corporate Administrators, a major Mauritius trust and corporate governance firm — indicating she may be operationally positioned through a formal governance structure.</p>
+
+  <p class="body-text">Financially, the FY2025 results (year ended 30 June 2025) reveal a business with strong gross margins (60.6%) but dangerously thin net margins (1.4%). Revenue of MUR 35.1M is absorbed almost entirely by administration costs of MUR 22.5M — the agency's primary cost line, which at 64.3% of revenue points to a heavy staffing and overhead burden. The most critical financial finding is negative shareholder equity of MUR -1.67M caused by accumulated retained losses of MUR 5.75M. The company has technically consumed all its capital and is operating in negative equity territory. The EOS suitability score of 5.5/10 reflects real opportunity — classic SME complexity and family ownership patterns — but the financial fragility must be acknowledged in any conversation.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Competition Law Breach &amp; Reputational Risk</div>
+    In August 2023, the Mauritius Competition Commission found Maurice Publicité Limited, alongside Circus Advertising Company Ltd and P&P Link Co. Ltd, guilty of collusive conduct under Section 41 of the Competition Act 2007. The three agencies, through their jointly-controlled media buying entity Touchpoint Ltd, had agreed to restrict the supply of media space to clients of competing agencies. This regulatory action is a significant reputational and legal event that signals governance vulnerabilities in the company. It is also a direct signal of the kind of market-control instinct that EOS Accountability Charts and defined Roles & Responsibilities are designed to channel productively rather than destructively.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Ogilvy Worldwide affiliation is the company's single most valuable asset</strong> — it confers international credibility, proprietary tools, and network access no local competitor can replicate. The agency pioneered advertising in Mauritius (1924), giving it deep institutional relationships. Strong 60.6% gross margin reflects service-sector pricing power. Regional reach via SADC and World Bank mandates. The Moris Pub Ogilvy brand is well-recognised locally.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>Negative shareholder equity of MUR -1.67M is the overriding financial risk</strong> — accumulated losses of MUR 5.75M have consumed all capital. Working capital deficit of MUR -1.6M means current liabilities exceed current assets. Debtor days of 108 days signals slow client payment collection. DPO of 331 days indicates the company is stretching supplier payments to manage cash — unsustainable. Finance costs of MUR 543K on thin profits signals reliance on debt financing.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>The 50/50 family ownership structure is the clearest EOS signal</strong> — two equal shareholders with no documented governance framework is a classic source of leadership paralysis and unresolved tension. Administration costs consuming 64.3% of revenue with near-zero net margin strongly suggests undefined roles and uncontrolled headcount growth. The competition law breach signals an absence of structured decision-making and accountability frameworks — precisely the pain EOS addresses.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A century-old Mauritius advertising institution, family-owned and Ogilvy-affiliated, now navigating the digital transition while carrying the weight of accumulated losses and a competition law finding.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Maurice Publicite Limited was incorporated on 7 May 1929 as a private domestic company — making it one of the oldest active private companies in Mauritius. The business itself traces its origins to 1924, making it over 100 years old in commercial terms. Its File Number is C443, Business Registration Number C07000443. The registered office was updated on 22 September 2025 to Old Reduit Road, Bon Air, Moka, Mauritius — consistent with ZoomInfo and directory data showing a Floréal-area operating address at 3 Dupuis Lane, Morcellement GIDC, Floréal. The company's stated capital is MUR 3,000,000, divided into 300,000 ordinary shares at MUR 10 par value each, with no amount unpaid.</p>
+  <p class="body-text">Annual returns are filed regularly and promptly: the three most recent filings were for 31 December 2025 (filed 10 March 2026), 4 December 2024 (filed 30 May 2025), and 31 December 2023 (filed 19 February 2024). Financial statements have been filed for FY2025, FY2024, and FY2023, all in Mauritius Rupees, with fiscal years ending 30 June. Registration fees are paid current to 2026. The company holds a historical Recruitment Licence (issued June 1999, expired June 2001) suggesting past involvement in staffing or recruitment services. The company's secretary is KBA Investment Ltd (68, D'Entrecasteaux Street, Port Louis), appointed 14 September 2021.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Neubert Geraldine</h4>
+        <div class="ec-sub">Shareholder — 50%</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">150,000</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv ok">Director / MD</span></div>
+        <div class="ec-metric"><span class="mk">Appointed</span><span class="mv">01 Jan 2016</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Neubert Peter Staver</h4>
+        <div class="ec-sub">Shareholder — 50%</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares held</span><span class="mv">150,000</span></div>
+        <div class="ec-metric"><span class="mk">Share type</span><span class="mv">Ordinary</span></div>
+        <div class="ec-metric"><span class="mk">Role</span><span class="mv">Director</span></div>
+        <div class="ec-metric"><span class="mk">Appointed</span><span class="mv">14 Oct 2009</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Touchpoint Ltd</h4>
+        <div class="ec-sub">Joint Venture Entity</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Type</span><span class="mv">Media buying JV</span></div>
+        <div class="ec-metric"><span class="mk">Location</span><span class="mv">Moka</span></div>
+        <div class="ec-metric"><span class="mk">Partners</span><span class="mv warn">3 agencies</span></div>
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv danger">CC Breach 2023</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Ownership Note — Family Control &amp; Governance</div>
+    The exact 50/50 split between two Neubert family members (Geraldine and Peter Staver) creates a governance structure with no natural casting vote or tiebreaker. This is a structurally fragile arrangement for strategic decision-making. Peter Neubert is publicly known as a former President of SME Mauritius Ltd (appointed 2018), indicating active civic and business leadership beyond the company. Geraldine Neubert operates as Managing Director and the primary public face of the agency, with her service address care of ABAX Corporate Administrators, suggesting formal governance arrangements are in place for at least one director.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Neubert Anne Geraldine — Managing Director</h4>
+      <p>Appointed director: <strong>1 January 2016.</strong> Also listed as a shareholder (Neubert Geraldine). Confirmed as Managing Director of Maurice Publicité Ogilvy / Moris Pub Ogilvy on LinkedIn and ZoomInfo. Service address: c/o ABAX Corporate Administrators, 6th Floor Tower, CyberCity, Ebene. Active public profile — gave media interviews and conference presentations, including a 2014 quote stating the agency was "ready to run an electoral campaign for a political party." Known for digital transformation advocacy within the company.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Neubert Staver Peter — Director</h4>
+      <p>Appointed director: <strong>14 October 2009.</strong> Co-shareholder with 50% stake. Previously served as President of SME Mauritius Ltd (2018), demonstrating external business leadership and networks. No service address filed with CBRIS. Described in MBC Radio coverage as being named President of the SME development body, indicating public-sector engagement and entrepreneurial ecosystem involvement.</p>
+    </div>
+    <div class="profile-card">
+      <h4>KBA Investment Ltd — Secretary</h4>
+      <p>Appointed: <strong>14 September 2021.</strong> Corporate secretary entity. Address: 68, D'Entrecasteaux Street, Port Louis, Mauritius. Appointment date coincides with a probable governance review period. Replacing prior secretary arrangements suggests a professionalisation of the corporate administration function around that time — a positive governance signal.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Maurice Publicité Ogilvy operates across the full integrated marketing communications stack. Core service capabilities documented via ACA Mauritius, ZoomInfo, and the company's own materials include: <strong>Brand Advertising</strong> (concept, creative, production across all media); <strong>Marketing and Communication Strategy</strong> (360-degree brand stewardship using Ogilvy's proprietary methodology); <strong>Digital Strategy and Communication</strong> (social media, content, digital campaigns); <strong>Media Strategy and Buying</strong> (historically via Touchpoint Ltd joint venture); <strong>Corporate Branding and Identity</strong>; <strong>Event Creation and Management</strong>; <strong>Packaging Design</strong>; and <strong>Workshops and Training</strong> for client marketing teams.</p>
+  <p class="body-text">The agency positions itself as a full-service integrated communications partner rather than a specialist boutique. Its Ogilvy affiliation gives it access to proprietary brand frameworks unavailable to local competitors. The agency has worked for large corporate groups and SMEs alike, and has executed work under SADC and World Bank mandates — demonstrating capacity for both public-sector and regional projects. The company's NACE classification ("Other professional, scientific and technical activities n.e.c.") reflects its broad-based professional service nature.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Maurice Publicite Limited operates exclusively from Mauritius. Its operating address — 3 Dupuis Lane, Morcellement GIDC, Floréal, Plaines Wilhems district — is in the commercial hinterland south of Port Louis. The CBRIS-registered office is Old Reduit Road, Bon Air, Moka (updated September 2025), which may reflect a recent office relocation. The company's primary market is Mauritius, serving local corporate clients. The agency has demonstrated regional reach through SADC-related mandates and World Bank-funded projects, but there is no evidence of permanent regional offices or formal African expansion.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence — Gap Identified</div>
+    The company's domain www.maupub.com is referenced in employee email formats and ZoomInfo data, but no active web presence was confirmed during research. The agency's primary public-facing digital touchpoint appears to be a Facebook page (facebook.com/Maupub), a Pinterest account, and a YouTube channel — none of which appear actively managed in 2025–2026. This is a notable gap for a company that sells digital strategy and communication services to its own clients.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS filed financial statements, Registrar of Companies, Mauritius. Currency: Mauritius Rupee (MUR). Fiscal year ended 30 June 2025. Unit: MUR 1. No prior-year comparative available from public CBRIS filing.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Financial data is sourced exclusively from the summary P&amp;L and balance sheet filed with the Registrar of Companies (CBRIS), approved 31 December 2025. This is a summary filing — detailed notes, segmental data, cash flow statement, and accounting policies are not available in the public CBRIS record. Only FY2025 (ended 30 June 2025) figures are presented here. Prior-year comparatives (FY2024, FY2023) are not disclosed in the summary filing. No independent audit opinion text was available. All figures are stated in MUR at unit value of 1.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY ended 30 June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Turnover (Revenue)</td><td>35,067,730</td><td>100.0%</td><td>~USD 779K. Scale consistent with a 10–50 person Mauritius services firm.</td></tr>
+        <tr><td>Cost of Sales</td><td>13,803,717</td><td>39.4%</td><td>Likely includes media buying pass-through costs and direct project costs.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>21,264,013</td><td>60.6%</td><td>Strong margin — above-average for Mauritius services SMEs. Reflects Ogilvy premium positioning.</td></tr>
+        <tr class="heat-ok"><td>Other Income</td><td>2,315,809</td><td>6.6%</td><td>Material non-trading income. Could include rentals, commissions, or dividends from investments.</td></tr>
+        <tr><td>Distribution Costs</td><td>0</td><td>0.0%</td><td>Nil — consistent with a services agency with no physical distribution.</td></tr>
+        <tr class="heat-critical"><td>Administration Costs</td><td>22,548,361</td><td>64.3%</td><td>Critical: admin costs exceed gross profit alone by MUR 1.28M. The dominant cost driver — staff salaries, rent, and overheads.</td></tr>
+        <tr><td>Other Expenses</td><td>0</td><td>0.0%</td><td>Nil reported.</td></tr>
+        <tr class="heat-warn"><td>Finance Costs</td><td>542,656</td><td>1.5%</td><td>Debt servicing on MUR 5.0M total borrowings. Thin coverage at 1.9x EBIT.</td></tr>
+        <tr class="heat-warn"><td>Profit Before Tax</td><td>488,805</td><td>1.4%</td><td>Razor-thin margin. Business is only marginally profitable — one bad quarter eliminates this.</td></tr>
+        <tr><td>Tax Expense</td><td>0</td><td>0.0%</td><td>No tax payable — likely due to carried-forward losses offsetting taxable profit.</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>488,805</strong></td><td><strong>1.4%</strong></td><td>The company is profitable but barely. Accumulated losses of MUR 5.75M will take many years to reverse at this rate.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (30 June 2025, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr class="heat-ok"><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>2,662,166</td><td>Likely office equipment, furniture, IT. Meaningful for a 100-year-old agency.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>27,477</td><td>Minimal — likely software licences.</td></tr>
+        <tr class="heat-warn"><td>Non-Current Assets</td><td>Other Investments</td><td>1,955,673</td><td>Notable — could include the investment in Touchpoint Ltd JV or other holdings.</td></tr>
+        <tr><td>Non-Current Assets</td><td><strong>Total Non-Current Assets</strong></td><td><strong>4,645,316</strong></td><td>29.3% of total assets.</td></tr>
+        <tr class="heat-critical"><td>Current Assets</td><td>Trade and Other Receivables</td><td>10,405,219</td><td>Critical: 29.7% of annual revenue. Implies 108 days DSO — severely slow collection.</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Cash and Cash Equivalents</td><td>810,389</td><td>Very low cash — equivalent to approximately 8 days of revenue. Fragile liquidity cushion.</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>0</td><td>Nil — pure services business.</td></tr>
+        <tr><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>11,215,608</strong></td><td>70.7% of total assets — heavily weighted to receivables.</td></tr>
+        <tr><td>&nbsp;</td><td><strong>Total Assets</strong></td><td><strong>15,860,924</strong></td><td>&nbsp;</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Share Capital</td><td>3,000,000</td><td>300,000 ordinary shares at MUR 10 par value.</td></tr>
+        <tr><td>Equity</td><td>Other Reserves</td><td>1,080,673</td><td>Nature unspecified in summary filing.</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td>Retained Earnings</td><td>-5,751,725</td><td>Accumulated losses — the core structural problem. Years of losses have consumed all capital and more.</td></tr>
+        <tr class="heat-critical"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>-1,671,052</strong></td><td>NEGATIVE EQUITY. The company is technically insolvent — liabilities exceed assets by MUR 1.67M.</td></tr>
+        <tr class="heat-warn"><td>Non-Current Liabilities</td><td>Long Term Borrowings</td><td>4,716,445</td><td>Significant long-term debt for a company of this size — likely bank loans or director loans.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td><strong>Total Non-Current Liabilities</strong></td><td><strong>4,716,445</strong></td><td>Entirely borrowings — no deferred tax or provisions.</td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td>Trade and Other Payables</td><td>12,515,852</td><td>Very high — 331 DPO. The company is stretching supplier payments to manage cash. Unsustainable if creditors demand payment.</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Short Term Borrowings</td><td>299,679</td><td>Minor short-term debt component.</td></tr>
+        <tr class="heat-critical"><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>12,815,531</strong></td><td>Current ratio of 0.88x — current liabilities exceed current assets. Liquidity risk.</td></tr>
+        <tr><td>&nbsp;</td><td><strong>Total Liabilities</strong></td><td><strong>17,531,976</strong></td><td>110.5% of total assets — company is funded entirely by liabilities.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">One charge is registered against Maurice Publicite Limited: Volume <strong>CH1447/18</strong>, dated 16 August 1996, filed 27 September 1996. Nature: <strong>Floating charge</strong> over movable and immovable property (MOV/IMMOV). Amount: <strong>MUR 1,500,000</strong>. Currency: Mauritius Rupee. This charge is approximately 30 years old and predates the company's Ogilvy affiliation (1995–1996). The floating nature means it covers a class of assets rather than specific property, and it has not been discharged from the CBRIS record.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Charge Register — Interpretation</div>
+    The 1996 floating charge of MUR 1.5M remains on record and has never been formally discharged. While charges of this vintage may simply reflect historical bank facilities that were rolled into successor arrangements, an undischarged charge from 30 years ago is a governance housekeeping issue. The charge predates the Ogilvy affiliation and was likely related to initial agency expansion financing. Combined with current long-term borrowings of MUR 4.7M, the company has sustained a debt-financed operating model throughout its modern history.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks based on Mauritius services-sector SME norms. Colour key: <span class="b b-green">Green</span> = healthy vs. benchmark, <span class="b b-amber">Amber</span> = watch, <span class="b b-red">Red</span> = critical concern. All figures derived from CBRIS FY2025 summary filing.</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.88×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.5× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">RED — Critical</span></span></div>
+      <span class="ratio-interpret">Current liabilities (MUR 12.8M) exceed current assets (MUR 11.2M) by MUR 1.6M. The company cannot cover its short-term obligations from short-term assets. The primary driver is trade payables of MUR 12.5M — the agency is heavily reliant on its suppliers' tolerance. Any creditor pressure could create a cash crisis.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">0.88×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy)</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">RED — Critical</span></span></div>
+      <span class="ratio-interpret">Identical to current ratio since inventories are zero (pure services business). The bulk of current assets are trade receivables (MUR 10.4M) — not cash. This means liquidity depends entirely on clients paying invoices. Cash on hand of only MUR 810K is approximately 8 days of revenue. Extremely fragile.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">60.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius services)</span><span class="ratio-val">45% – 65%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">GREEN — Healthy</span></span></div>
+      <span class="ratio-interpret">Gross margin is strong for a services agency — the Ogilvy affiliation supports premium pricing. The issue is not gross profitability but the cost structure below the gross profit line. The agency earns well on its work but spends too much running the business.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value (EBIT: MUR 1.03M)</span><span class="ratio-val warn">2.9%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy services SME)</span><span class="ratio-val">8% – 15%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">RED — Critical</span></span></div>
+      <span class="ratio-interpret">EBIT margin collapses from 60.6% gross to 2.9% operating — a 57.7 percentage point gap driven almost entirely by administration costs (64.3% of revenue). This is the smoking gun: the cost base is structurally misaligned with revenue. No revenue growth can solve this without cost discipline.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">1.4%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (healthy services SME)</span><span class="ratio-val">5% – 12%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">RED — Critical</span></span></div>
+      <span class="ratio-interpret">Net profit of MUR 489K on MUR 35.1M revenue is a 1.4% net margin — far below healthy services benchmarks. At this margin, a 2% decline in revenue would push the business into a net loss. The zero tax charge (due to carried-forward losses) is the only reason the business reports any profit.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets / Return on Equity</h4>
+      <div class="ratio-row"><span class="ratio-label">ROA (Net Profit / Total Assets)</span><span class="ratio-val warn">3.08%</span></div>
+      <div class="ratio-row"><span class="ratio-label">ROE</span><span class="ratio-val bad">N/M (Neg. Equity)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-amber">AMBER / RED</span></span></div>
+      <span class="ratio-interpret">ROA of 3.08% is below the 8–12% benchmark for a services firm — the asset base is not generating adequate returns. ROE is mathematically meaningless due to negative equity. The negative equity situation means shareholders have no residual claim on assets — the business belongs, in economic terms, to its creditors.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Total Borrowings</span><span class="ratio-val bad">MUR 5,016,124</span></div>
+      <div class="ratio-row"><span class="ratio-label">Total Equity</span><span class="ratio-val bad">MUR -1,671,052</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">RED — Not Meaningful</span></span></div>
+      <span class="ratio-interpret">The debt-to-equity ratio is technically negative (approximately -3.0x) due to negative equity — the ratio loses meaning in this context. The correct interpretation is that MUR 5.0M of borrowings sit against a company with no equity cushion whatsoever. The business is entirely creditor-funded. This is a critical structural risk if interest rates rise or lenders review facilities.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">EBIT</span><span class="ratio-val warn">MUR 1,031,461</span></div>
+      <div class="ratio-row"><span class="ratio-label">Finance Costs</span><span class="ratio-val">MUR 542,656</span></div>
+      <div class="ratio-row"><span class="ratio-label">Coverage</span><span class="ratio-val warn">1.90×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (safe)</span><span class="ratio-val">3.0× minimum</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">RED — Thin Coverage</span></span></div>
+      <span class="ratio-interpret">Interest coverage of 1.90x means the company earns less than twice its finance costs from operating profit. Below 2x is considered vulnerable by most lenders. A 10% decline in EBIT would bring coverage to approximately 1.7x — well into distress territory. The company has very little buffer against an earnings shock.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover &amp; DSO (Debtor Days)</h4>
+      <div class="ratio-row"><span class="ratio-label">Asset Turnover</span><span class="ratio-val ok">2.21×</span></div>
+      <div class="ratio-row"><span class="ratio-label">DSO (Debtor Days)</span><span class="ratio-val bad">108 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark DSO (Mauritius services)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">RED — Collection Crisis</span></span></div>
+      <span class="ratio-interpret">Asset turnover of 2.21x is healthy — the business generates good revenue relative to its asset base. However, DSO of 108 days is severely elevated. Receivables of MUR 10.4M represent nearly a third of annual revenue sitting unpaid. If DSO could be reduced to 60 days, the company would unlock approximately MUR 4.6M in cash — eliminating the working capital deficit and improving liquidity dramatically.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>DPO (Creditor Days)</h4>
+      <div class="ratio-row"><span class="ratio-label">DPO (Creditor Days)</span><span class="ratio-val bad">331 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Trade Payables</span><span class="ratio-val bad">MUR 12,515,852</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark DPO (services)</span><span class="ratio-val">30 – 60 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-red">RED — Structural Problem</span></span></div>
+      <span class="ratio-interpret">DPO of 331 days is the single most alarming number in this analysis. The company is paying its suppliers on average almost a full year after purchase — nearly 5x the normal benchmark. This is not a cash management strategy; it is a symptom of a fundamental cash shortfall. The MUR 12.5M in trade payables is essentially a forced loan from the company's suppliers. If any major creditor demands payment on normal terms, the company has no capacity to comply without new financing.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The Two Numbers That Matter Most</div>
+    <strong>1. DPO of 331 days (MUR 12.5M trade payables):</strong> The company owes its suppliers nearly a full year of COGS in unpaid invoices. This is the clearest sign of a structural cash crisis. If the three major creditors (likely media owners whose space was purchased through Touchpoint) synchronise payment demands, the company cannot survive without emergency financing. Fixing the receivables cycle alone (see below) would generate the cash to normalise this.<br><br>
+    <strong>2. DSO of 108 days (MUR 10.4M receivables):</strong> Getting clients to pay in 60 days instead of 108 would release approximately MUR 4.6M in cash — more than enough to eliminate the working capital deficit, partially repay long-term borrowings, and begin restoring positive equity. This is the highest-ROI operational change available to this business, more valuable than any new revenue initiative.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Mauritius's small, concentrated advertising market with three primary agency segments — full-service integrated, digital-native boutiques, and media specialists — where Maurice Publicite holds the strongest legacy position but faces accelerating disruption from digital-first competitors.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Full-Service Integrated Agencies</h4>
+        <div class="ec-sub">Primary Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">P&amp;P Link (Saatchi &amp; Saatchi), Circus Advertising</span></div>
+        <div class="ec-metric"><span class="mk">MPO positioning</span><span class="mv ok">Market leader</span></div>
+        <div class="ec-metric"><span class="mk">Key clients</span><span class="mv">Large corporate groups, public sector, SADC, World Bank</span></div>
+        <div class="ec-metric"><span class="mk">MPO advantage</span><span class="mv">Ogilvy affiliation, 100yr brand, proprietary tools</span></div>
+        <div class="ec-metric"><span class="mk">Key risk</span><span class="mv danger">CC ruling 2023</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Digital-Native Boutiques</h4>
+        <div class="ec-sub">Growing Challenger Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key competitors</span><span class="mv">Rise Collective, local digital specialists</span></div>
+        <div class="ec-metric"><span class="mk">MPO positioning</span><span class="mv warn">Lagging — weak digital presence</span></div>
+        <div class="ec-metric"><span class="mk">Market trend</span><span class="mv">Digital ad market growing 6.76% CAGR to 2028</span></div>
+        <div class="ec-metric"><span class="mk">MPO gap</span><span class="mv danger">No active website, dormant social</span></div>
+        <div class="ec-metric"><span class="mk">Opportunity</span><span class="mv ok">Ogilvy digital frameworks available</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Media Buying / Planning</h4>
+        <div class="ec-sub">JV / Specialist Segment</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Entity</span><span class="mv">Touchpoint Ltd (JV)</span></div>
+        <div class="ec-metric"><span class="mk">Partners</span><span class="mv">MPO + Circus + P&amp;P Link</span></div>
+        <div class="ec-metric"><span class="mk">Status</span><span class="mv danger">Collusion ruling Aug 2023</span></div>
+        <div class="ec-metric"><span class="mk">Risk</span><span class="mv danger">JV model under legal scrutiny</span></div>
+        <div class="ec-metric"><span class="mk">Impact</span><span class="mv warn">Reputational + structural</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Ogilvy Worldwide Network Access:</strong> The 1995/1996 affiliation with Ogilvy gives Maurice Publicite access to proprietary brand frameworks (360 Degree Brand Stewardship), global case studies, training resources, and the Ogilvy brand's international credibility. For clients with regional or international aspirations, this affiliation is uniquely valuable and not replicable by any local-only competitor. No other Mauritius agency holds a major international network affiliation of this calibre.</p>
+  <p class="body-text"><strong>2. Century-Long Institutional Relationships:</strong> Having pioneered advertising in Mauritius in 1924, Maurice Publicite holds relationships with clients and institutions that predate most of its competitors by decades. This includes established positions with major Mauritius conglomerates and familiarity with the public sector's communication procurement processes. Institutional memory and trust are genuine competitive moats in a small-market context.</p>
+  <p class="body-text"><strong>3. Full-Stack Capability Under One Roof:</strong> Unlike specialist boutiques, MPO offers the complete marketing communications stack — strategy, creative, digital, media, events, packaging — with a single client relationship. For mid-to-large Mauritius businesses that want a single agency partner, this breadth is genuinely differentiated.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Digital advertising growth:</strong> Mauritius digital ad market projected to reach USD 56.3M by 2028 (6.76% CAGR 2024–2028) — a direct tailwind for any agency that builds genuine digital capabilities, but a threat to those that do not adapt.</li>
+    <li><strong>AI and automation disruption:</strong> AI is reshaping content creation, media planning, and campaign optimisation in 2025–2026. Agencies without AI capability pipelines risk becoming cost-inefficient relative to nimble digital boutiques. Ogilvy network gives MPO access to AI tools their competitors lack.</li>
+    <li><strong>Mauritius ICT sector growth:</strong> The broader Mauritius ICT/services economy is growing — USD 156M revenue by 2025 with 5.4% CAGR to 2030 — creating new B2B clients who need professional marketing communications as they scale.</li>
+    <li><strong>Competition Act consequences:</strong> The 2023 collusion finding against MPO, Circus, and P&amp;P Link may reshape the media buying landscape. If Touchpoint Ltd is unwound or restructured, MPO must develop independent media planning and buying capabilities — a significant operational transition.</li>
+    <li><strong>Short-video and social media dominance:</strong> Mauritius consumer audiences are increasingly engaged on TikTok, Instagram Reels, and Facebook — requiring creative capabilities that traditional agency models did not need. This is an area where digital-native competitors have a head start.</li>
+    <li><strong>Regional market opportunity:</strong> Mauritius agencies with credible international affiliations (particularly Ogilvy) are well-positioned for African mainland mandates as regional businesses seek sophisticated communications support. MPO's SADC and World Bank track record is an underexploited asset.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Notable Gap — No Active Digital Presence for a Digital Agency</div>
+    Maurice Publicite sells digital strategy and communication services to its clients, yet its own digital presence is effectively absent. The domain www.maupub.com is referenced in email formats but no active website was confirmed. Social media (Facebook, Pinterest, YouTube) appears dormant. This is a credibility gap that any prospective client, competitor, or business partner will notice immediately. Addressing this is both a commercial priority and a prerequisite for any serious conversation about digital service growth.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">ZoomInfo and directory data indicate 11–50 employees — squarely in the EOS sweet spot of 10–250. However, at the lower end of this range, the complexity may be modest. The company runs multiple service lines (creative, digital, media, events, strategy) across a small team — creating interdependency complexity that EOS handles well. The JV arrangement with Touchpoint Ltd adds a layer of structural complexity (a separate entity to manage). Administration costs of MUR 22.5M on MUR 35.1M revenue suggest a relatively heavy overhead structure for the team size, implying inefficiency or role ambiguity rather than genuine complexity. Score reflects adequate size with some complexity — ideal EOS candidate in terms of headcount but not yet at peak complexity.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Mixed signals. Positive: Geraldine Neubert has a documented track record of innovation — the Ogilvy affiliation in 1995, the Touchpoint JV concept, the digital transformation push, and the 90th anniversary innovation conference in 2014 all suggest an entrepreneurially open leader. Peter Neubert's role as SME Mauritius Ltd President shows willingness to engage with business improvement frameworks. Negative: the competition law finding signals a leadership culture willing to bend rules for competitive advantage — a mindset that EOS's Accountability Chart and IDS (Issues, Discuss, Solve) approach can channel, but which requires genuine openness to change. The 50/50 ownership split is the key risk — EOS requires a clear Integrator/Visionary structure, and two equal owners rarely make this easy to install without tension.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">Classic EOS-addressable pain points are present and measurable. The accumulated losses of MUR 5.75M, the DPO of 331 days, the DSO of 108 days, and the negative equity all signal a business that has grown in revenue scale (MUR 35M is meaningful for Mauritius) but has not built the operational discipline to capture profit from that scale. The competition law breach is a direct symptom of unclear accountability for strategic decisions — nobody owned the decision to restrict media space via Touchpoint, or if they did, it was not reviewed against documented values or guardrails. The company appears to be at the "ceiling" growth stage EOS is designed for — technically capable, brand-strong, but leaking cash and value through operational chaos.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">Low score reflects the evidence of weak process discipline. A DPO of 331 days means the accounts payable process is dysfunctional — either invoices are not being tracked or payments are being deliberately deferred without a formal policy. A DSO of 108 days suggests the client invoicing and collections process lacks enforcement. Administration costs at 64.3% of revenue suggest that overhead management lacks a systematic review process. The 30-year-old undischarged floating charge on CBRIS points to gaps in legal and compliance process management. The company's dormant digital presence (website, social media) for a digital agency suggests internal processes for maintaining the firm's own brand are absent or unowned.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The agency has a genuine brand story — 100 years of existence, Ogilvy affiliation, and a history of industry innovation create a cultural foundation. Geraldine Neubert's public profile as an innovative agency leader likely creates some cultural energy around creativity and market leadership. However, the competition law finding raises a direct culture question: was the Touchpoint arrangement a knowing breach, or a governance failure where nobody checked? Either answer is a culture signal. Long-tenured staff at a 100-year-old agency often creates complacency alongside experience. The absence of any visible values statement, public team culture content, or structured people practices (beyond annual return compliance) suggests culture is informal rather than intentional.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">The 50/50 ownership structure is the defining constraint on decision-making. In a company where two shareholders must agree on everything strategic, and where neither has a casting vote, decisions are either fast (one person dominates) or paralysed (genuine disagreement). The Touchpoint JV — a three-way commercial arrangement that ended in a legal finding — suggests decisions were made without adequate legal review or documented approval processes. The absence of a clearly documented Managing Director with defined operational authority (vs. Geraldine's MD title) versus Peter's director role creates ambiguity about who owns what decisions day-to-day. Low score is appropriate given structural constraints.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score low">4 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:40%"></div></div>
+    <p class="eos-rationale">No public Vision/Traction Organizer equivalent is visible. The company's public positioning oscillates between heritage (100 years, Mauritius pioneer) and innovation (digital, Ogilvy tools, regional expansion) without a clear synthesis of where it is going and why. The competition law finding suggests the business may have been pursuing market control (via Touchpoint's media space restriction) as an implicit strategy — but this was never a legitimate documented vision. The financial trajectory — negative equity, accumulated losses, thin margins — suggests the company has been surviving rather than executing against a defined 3-year or 10-year target picture. EOS's V/TO tool would be transformative here.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score low">3 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill low" style="width:30%"></div></div>
+    <p class="eos-rationale">No evidence of structured meeting rhythms in any public or CBRIS material. Annual returns are filed on time — the bare minimum of governance compliance — but there is no indication of a Level 10 Meeting discipline, quarterly review process, or annual planning cycle beyond what compliance requires. The DPO of 331 days is itself evidence of absent operational review meetings — if a weekly or monthly leadership team meeting reviewed aged payables, this number would have been addressed years ago. An advertising agency's creative culture often runs on client-driven reactive meetings rather than leadership-team proactive ones. This dimension represents one of the highest-value EOS installation opportunities.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">5.5</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate — Conditional Positive</h4>
+      <p>Maurice Publicite presents a genuine but conditional EOS opportunity. The company has the scale, the complexity, and — critically — the evidence of unresolved operational and leadership issues that EOS addresses directly. The conditions are: (1) both Neubert shareholders must genuinely agree on installing a governance framework, which the 50/50 structure makes non-trivial; (2) the competition law finding must be acknowledged as a governance failure, not a legal technicality — it is a signal that accountability structures are broken; and (3) the financial fragility (negative equity, DPO crisis) must be stabilised before EOS implementation consumes leadership bandwidth. The score would move to 7/10 if the ownership question and financial triage are resolved first.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Maurice Publicite</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>The most urgent EOS tool for this company. The 50/50 ownership between Geraldine and Peter Neubert creates structural ambiguity about who owns what. The Accountability Chart forces the company to define a clear Visionary/Integrator split and document every seat's five key responsibilities. <strong>This is the prerequisite for everything else.</strong></p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>DSO of 108 days and DPO of 331 days would not persist in a company with a weekly Scorecard. Installing 10–15 weekly measurables — including receivables aging, cash position, and billable hours — creates the visibility to catch cash crises before they become structural. <strong>The most immediate financial benefit of EOS for this business.</strong></p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>An advertising agency running on client-reactive rhythms with no structured weekly leadership meeting is a business running on instinct alone. Level 10 Meetings would provide the discipline to review the Scorecard, resolve Issues, and hold people accountable. Given the evidence of absent process discipline (DPO, DSO, dormant website), this meeting rhythm would be transformative within 90 days of installation.</p>
+    </div>
+    <div class="profile-card">
+      <h4>V/TO (Vision/Traction Organizer)</h4>
+      <p>The company has a powerful heritage and an Ogilvy network but no visible 3- or 10-year documented vision. The V/TO would force Geraldine and Peter to align on Core Values, Core Focus, and a 3-Year Picture — resolving the implicit strategic ambiguity between heritage positioning and digital transformation. This alignment conversation is essential before any growth investment is made.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (90-Day Priorities)</h4>
+      <p>The two most important immediate Rocks are clear from the data: (1) reduce DSO from 108 to 60 days within 90 days; (2) negotiate a formal creditor payment plan to bring DPO below 180 days. Installing Rock discipline ensures these financial priorities get executive ownership and weekly tracking, rather than being buried under client work.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>The competition law finding is evidence that the company's Issues were never properly surfaced, discussed, and solved through a structured process. The Touchpoint arrangement — a legally risky market-control mechanism — was apparently allowed to persist without a structured review. IDS (Identify, Discuss, Solve) would create the discipline to surface and resolve structural business risks before they become regulatory events.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total: four financial/operational (to be implemented before or concurrent with EOS) and four EOS-specific. Sequencing principle: stabilise the cash position first, then install the operating system, then pursue growth.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Implement a 90-Day Collections Blitz: DSO Target 60 Days</h4>
+      <p>Assign Geraldine Neubert (as MD) personal ownership of collections. Map every receivable over 60 days. Contact the top 5 clients by outstanding value immediately with a structured payment plan. Introduce a policy: no new work starts on a client with an invoice over 90 days outstanding. Target: reduce receivables from MUR 10.4M to MUR 5.8M within 90 days, releasing MUR 4.6M in cash. Success metric: weekly receivables aging report reviewed at Monday morning leadership meeting. This single action changes the company's financial position more than any revenue initiative.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Negotiate a Formal Creditor Payment Plan: DPO Target 180 Days</h4>
+      <p>DPO of 331 days means the company owes MUR 12.5M in trade payables that are, on average, almost a year overdue. Proactively contact the top 5 creditors (likely media owners through Touchpoint) and negotiate structured 12-month repayment schedules. The cash released from Rec 01 funds this. Do not wait for creditors to demand payment — that scenario removes negotiating leverage. Target: normalise DPO to 180 days within 6 months, then 90 days within 12 months. This restores supplier relationships, removes the latent insolvency trigger, and begins rebuilding a positive credit reputation.</p>
+      <span class="urg urg-now">Immediate Priority — Within 30 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Administration Cost Review: Target 50% of Revenue</h4>
+      <p>Administration costs at 64.3% of revenue are the root cause of the company's chronic inability to convert its strong gross margin into net profit. Commission an independent review of the cost base. Benchmark staffing ratios against comparable Ogilvy network agencies (10–15% revenue per head is the standard). Identify the top 5 cost lines within admin. Target: reduce admin costs to MUR 17.5M (50% of revenue), restoring net margin to approximately 7–8%. Owner: both directors. Timeline: 60-day analysis, 90-day implementation of identified savings. Success metric: monthly P&amp;L review with admin costs as a tracked KPI.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Discharge the 1996 Floating Charge and Clarify Legal Position</h4>
+      <p>The MNS/CBRIS record shows an undischarged floating charge (CH1447/18) from August 1996 — now 30 years old. Engage a Mauritius commercial lawyer to review whether this charge relates to an active facility or was never formally discharged when the underlying debt was repaid. If the charge is spent, file for discharge immediately. Additionally, obtain a full legal status update on the Touchpoint Competition Commission ruling: what penalties were imposed, what remedial actions are required, and what ongoing compliance obligations exist. This is essential corporate hygiene before any third-party due diligence (investors, bank, acquirer) is conducted.</p>
+      <span class="urg urg-week">Within 30 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Begin with a Focus Day: Align the Two Shareholders Before Any EOS Work</h4>
+      <p>The 50/50 ownership between Geraldine and Peter Neubert is the single biggest gating factor for successful EOS implementation. Before inviting an Implementer to run a Focus Day, both shareholders need a private pre-conversation: do they both genuinely want to install a documented operating system, and can they agree on which one is Visionary and which is Integrator? Thierry should raise this question in the introductory meeting — the answer will determine whether EOS is viable. If both shareholders are aligned, a full Focus Day is the correct first step. Timeline: intro meeting within 30 days; Focus Day within 60 days if aligned.</p>
+      <span class="urg urg-week">EOS Step 1 — After Financial Triage Begins</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Draft the Accountability Chart Hypothesis Before the Focus Day</h4>
+      <p>The Accountability Chart is the most urgent EOS structural tool for this company. Thierry should arrive at the introductory conversation with a draft hypothesis: Geraldine as Visionary (creative, client, brand) and Peter as Integrator (finance, operations, legal, compliance) — or explore whether an external GM is needed. Present this as a hypothesis to test, not a prescription. The goal is to make the Accountability Chart conversation the centrepiece of the Focus Day rather than a theoretical exercise. Define 5 key responsibilities for each seat as preparation material.</p>
+      <span class="urg urg-week">EOS Step 2 — Prepare for Focus Day</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>First Rock: Implement a Weekly Scorecard Within 30 Days of Focus Day</h4>
+      <p>The highest-ROI first Rock is the Scorecard. Propose that the leadership team agrees to 10–15 weekly measurables at the Focus Day and begins tracking them the following Monday. Include as mandatory Scorecard items: (1) receivables aging over 60 days; (2) cash balance; (3) new billings value; (4) client invoices issued; (5) creditor days outstanding. This Scorecard will make visible the DSO and DPO crises within weeks, and gives the leadership team a shared language for accountability before the full EOS system is installed. Assign Scorecard ownership to one person — ideally Peter, as the operational/financial director.</p>
+      <span class="urg urg-medium">EOS Step 3 — First 90 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>V/TO Strategic Question: Mauritius Specialist or African Regional Player?</h4>
+      <p>The Vision/Traction Organizer will force a fundamental strategic choice that has been deferred for years: is Maurice Publicite a premium Mauritius-focused full-service agency, or is it building toward becoming the premier Ogilvy-affiliated marketing partner for francophone African and Indian Ocean markets? These two visions require completely different investment profiles, staffing strategies, and partnership approaches. The V/TO's 10-Year Target conversation is the right forum for this decision. Thierry should surface this question in the introductory meeting as a productive provocation — the answer reveals the leadership team's actual strategic ambition.</p>
+      <span class="urg urg-medium">EOS Step 4 — During Full-Day Session</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Maurice Publicite is Mauritius's most credentialled advertising agency — a 100-year-old Ogilvy-affiliated pioneer with genuine market leadership and institutional relationships no competitor can easily replicate. But it is also a financially fragile business running on fumes: negative equity, a 331-day payables backlog, and a competition law finding that signals governance structures are broken. The opportunity is real. The conversation should start with cash and accountability, not with growth. If Geraldine and Peter Neubert can align on the Visionary/Integrator split and commit to the financial triage, this company has the brand, the skills, and the network to be sustainably profitable within 18–24 months.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Introductory meeting with Geraldine Neubert — surface the 50/50 governance question and gauge EOS openness (Week 1–2)</li>
+        <li><span class="sig-num">02</span>Launch DSO collections blitz and creditor payment plan negotiations — financial triage before any EOS bandwidth is consumed (Week 2–4)</li>
+        <li><span class="sig-num">03</span>If shareholders aligned: run Focus Day with EOS Implementer — deliver Accountability Chart hypothesis and V/TO provocation (Month 2)</li>
+        <li><span class="sig-num">04</span>Install Scorecard and Level 10 Meeting rhythm — measure DSO, DPO, cash weekly; create the accountability infrastructure (Month 2–3)</li>
+        <li><span class="sig-num">05</span>Full-Day Session: complete V/TO, set Rocks for Q3/Q4, begin admin cost restructuring under EOS discipline — business transformation phase (Month 3–6)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Maurice Publicite Limited — Comprehensive Company Analysis &amp; EOS Assessment · 16 June 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (16 June 2026) · ZoomInfo · LinkedIn · RocketReach · Le Mauricien · Business Magazine Mauritius · L'Express Mauritius · ACA Mauritius · MBC Radio · newsmoris.com · Commonwealth of Nations Business Directory · findglocal.com</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
