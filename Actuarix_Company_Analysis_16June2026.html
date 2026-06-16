@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actuarix — Comprehensive Company Analysis — 16 June 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0d1620; --iron-mid: #121e2c; --iron-light: #192840;
+    --steel: #2a6fa8; --steel-mid: #1e5a8e; --steel-pale: #c2dff2; --steel-ultra: #eef6fc;
+    --amber: #c07820; --amber-pale: #fef3e2;
+    --red: #b83020; --red-pale: #fdf2f0;
+    --emerald: #1a6a40; --emerald-pale: #edf8f2;
+    --offwhite: #f4f6f9; --white: #ffffff;
+    --text: #111b28; --text-mid: #2a3f56; --text-light: #4e6a85; --border: #d0dded;
+    --shadow: 0 4px 20px rgba(13,22,32,0.08); --shadow-lg: 0 12px 44px rgba(13,22,32,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+  /* ── HEADER ── */
+  .report-header { background: var(--iron); color: #fff; padding: 52px 64px 44px; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; top: -100px; right: -80px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(42,111,168,0.16) 0%, transparent 65%); pointer-events: none; }
+  .report-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--steel), #60aee0, transparent); }
+  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap; }
+  .badge-co { background: rgba(42,111,168,0.25); border: 1px solid rgba(42,111,168,0.5); color: #80c4f0; }
+  .badge-type { background: rgba(26,106,64,0.22); border: 1px solid rgba(26,106,64,0.45); color: #80d0a8; }
+  .badge-eos { background: rgba(192,120,32,0.22); border: 1px solid rgba(192,120,32,0.45); color: #f5c47a; }
+  .badge-date { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.5); }
+  h1 { font-family: 'Libre Baskerville', serif; font-size: 38px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.4px; }
+  h1 span { color: #60b8f0; }
+  .report-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.46); font-weight: 300; margin-bottom: 32px; }
+  .header-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; max-width: 900px; }
+  .stat-box { background: rgba(255,255,255,0.03); padding: 14px 18px; }
+  .stat-label { font-size: 9.5px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .stat-value { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .stat-value.steel { color: #60b8f0; } .stat-value.red { color: #f09070; } .stat-value.emerald { color: #80e0a8; } .stat-value.amber { color: #f5c47a; }
+  .stat-delta { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px; }
+
+  /* ── PREPARED-FOR STRIP ── */
+  .prepared-for { background: var(--iron-mid); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .prepared-for span { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+  .author-links { display: flex; gap: 10px; }
+  .author-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.38); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .author-links a:hover { color: #60b8f0; }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 0 64px; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(13,22,32,0.07); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 14px 17px; font-size: 13px; font-weight: 500; color: var(--text-light); border: none; background: none; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.2s; display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--steel); transform: scaleX(0); transition: transform 0.25s; }
+  .tab-btn:hover { color: var(--steel); }
+  .tab-btn.active { color: var(--steel-mid); font-weight: 600; }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-num { background: var(--border); color: var(--text-light); font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 2px 5px; border-radius: 3px; transition: all 0.2s; }
+  .tab-btn.active .tab-num { background: var(--steel-ultra); color: var(--steel); }
+
+  /* ── TAB CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp 0.28s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 46px 64px 80px; }
+
+  /* ── TYPOGRAPHY ── */
+  .section-title { font-family: 'Libre Baskerville', serif; font-size: 27px; color: var(--iron); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .section-lead { font-size: 14.5px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.72; max-width: 740px; border-left: 3px solid var(--steel); padding-left: 16px; }
+  .subsection-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--iron); margin: 34px 0 13px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+  p.body-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+
+  /* ── ALERT BOXES ── */
+  .alert { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 4px solid; font-size: 13.5px; line-height: 1.65; }
+  .alert-critical { background: var(--red-pale); border-color: var(--red); }
+  .alert-warning { background: var(--amber-pale); border-color: var(--amber); }
+  .alert-ok { background: var(--emerald-pale); border-color: var(--emerald); }
+  .alert-info { background: var(--steel-ultra); border-color: var(--steel); }
+  .alert-title { font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning .alert-title { color: var(--amber); }
+  .alert-ok .alert-title { color: var(--emerald); }
+  .alert-info .alert-title { color: var(--steel); }
+
+  /* ── PROFILE CARDS (3-column grid) ── */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 18px 0; }
+  .profile-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .profile-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .profile-card h4 { font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); font-weight: 600; margin-bottom: 8px; }
+  .profile-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .profile-card strong { color: var(--iron); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--iron); color: #fff; }
+  thead th { padding: 10px 15px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f4f9; }
+  tbody td { padding: 9px 15px; vertical-align: top; color: var(--text-mid); line-height: 1.52; }
+  tbody td:first-child { font-weight: 500; color: var(--text); }
+  .heat-critical { background: #fdf2f0 !important; }
+  .heat-warn { background: #fef8f0 !important; }
+  .heat-ok { background: #edf8f2 !important; }
+
+  /* ── INLINE BADGES ── */
+  .b { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+  .b-red { background: #fdecea; color: var(--red); border: 1px solid #f5c4c1; }
+  .b-amber { background: var(--amber-pale); color: #9a5000; border: 1px solid #f5daa0; }
+  .b-green { background: var(--emerald-pale); color: var(--emerald); border: 1px solid #a8dfc0; }
+  .b-blue { background: var(--steel-ultra); color: var(--steel); border: 1px solid var(--steel-pale); }
+
+  /* ── STYLED LIST ── */
+  .styled-list { list-style: none; padding: 0; margin: 8px 0; }
+  .styled-list li { padding: 6px 0 6px 22px; position: relative; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid #edf2f7; line-height: 1.58; }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before { content: '→'; position: absolute; left: 0; color: var(--steel); font-weight: 700; }
+
+  /* ── ENTITY CARDS (3-column, used for business units / ownership) ── */
+  .entity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .entity-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+  .entity-card .ec-header { padding: 14px 18px; background: var(--iron); color: #fff; }
+  .entity-card .ec-header h4 { font-family: 'Libre Baskerville', serif; font-size: 14.5px; margin-bottom: 2px; }
+  .entity-card .ec-header .ec-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .entity-card .ec-body { padding: 16px 18px; }
+  .entity-card .ec-metric:last-child { border-bottom: none; }
+  .entity-card .ec-metric { display: flex; align-items: baseline; gap: 16px; padding: 5px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .entity-card .ec-metric .mk { color: var(--text-light); font-size: 11.5px; flex: 0 0 110px; }
+  .entity-card .ec-metric .mv { font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; margin-left: auto; flex: 1; }
+  .mv.danger { color: var(--red); } .mv.warn { color: var(--amber); } .mv.ok { color: var(--emerald); }
+
+  /* ── RATIO CARDS (2-column grid) ── */
+  .ratio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .ratio-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .ratio-card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 14px; }
+  .ratio-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #edf2f7; font-size: 12.5px; }
+  .ratio-row:last-child { border-bottom: none; }
+  .ratio-label { color: var(--text-mid); }
+  .ratio-val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; }
+  .ratio-val.ok { color: var(--emerald); } .ratio-val.warn { color: var(--amber); } .ratio-val.bad { color: var(--red); }
+  .ratio-interpret { font-size: 11.5px; color: var(--text-light); margin-top: 3px; display: block; }
+
+  /* ── EOS DIMENSION BARS ── */
+  .eos-dimension { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .eos-dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .eos-dim-title { font-size: 14px; font-weight: 600; color: var(--iron); }
+  .eos-score { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; }
+  .eos-score.low { color: var(--red); } .eos-score.mid { color: var(--amber); } .eos-score.high { color: var(--emerald); }
+  .eos-bar-track { height: 6px; background: #e8edf4; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .eos-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+  .eos-bar-fill.low { background: var(--red); } .eos-bar-fill.mid { background: var(--amber); } .eos-bar-fill.high { background: var(--emerald); }
+  .eos-rationale { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── EOS OVERALL SCORE BLOCK ── */
+  .eos-overall { background: var(--iron); border-radius: 12px; padding: 28px 32px; margin: 28px 0; color: #fff; display: flex; gap: 32px; align-items: center; }
+  .eos-overall-score { text-align: center; flex-shrink: 0; }
+  .eos-overall-score .big-num { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1; color: #60b8f0; }
+  .eos-overall-score .big-denom { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .eos-overall-score .big-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-top: 4px; }
+  .eos-overall-text h4 { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-bottom: 10px; }
+  .eos-overall-text p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+
+  /* ── ACTION / RECOMMENDATION CARDS (2-column) ── */
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 16px 0; }
+  .action-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 19px 21px; box-shadow: var(--shadow); transition: border-color 0.2s; }
+  .action-card:hover { border-color: var(--steel); }
+  .ac-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--steel); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .action-card h4 { font-size: 14px; font-weight: 600; color: var(--iron); margin-bottom: 7px; line-height: 1.3; }
+  .action-card p { font-size: 13px; color: var(--text-mid); line-height: 1.62; }
+  .urg { display: inline-block; margin-top: 9px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 3px; }
+  .urg-now { background: #fdecea; color: var(--red); }
+  .urg-medium { background: var(--emerald-pale); color: var(--emerald); }
+  .urg-week { background: var(--amber-pale); color: #9a5000; }
+
+  /* ── CLOSING GRID (dark 2-column summary) ── */
+  .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .closing-box { background: var(--iron); color: #fff; border-radius: 10px; padding: 22px 24px; }
+  .closing-box.steel-box { background: linear-gradient(135deg, var(--steel-mid), var(--steel)); }
+  .closing-box h4 { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; opacity: 0.55; }
+  .closing-box p { font-size: 13.5px; line-height: 1.7; opacity: 0.9; }
+  .signal-list { list-style: none; padding: 0; margin-top: 8px; }
+  .signal-list li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; line-height: 1.5; opacity: 0.9; }
+  .signal-list li:last-child { border-bottom: none; }
+  .sig-num { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #60b8f0; font-weight: 600; padding-top: 2px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: var(--iron); color: rgba(255,255,255,0.28); padding: 20px 64px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .report-header, .prepared-for, .tab-nav, .content-wrap, .report-footer { padding-left: 20px; padding-right: 20px; }
+    .header-stats, .profile-grid, .entity-grid, .ratio-grid, .action-grid, .closing-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .eos-overall { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="header-meta">
+    <span class="badge badge-co">Actuarial &amp; Financial Consulting</span>
+    <span class="badge badge-type">Public Company · Domestic · MBO 2024</span>
+    <span class="badge badge-eos">EOS Suitability Assessment</span>
+    <span class="badge badge-date">16 June 2026</span>
+  </div>
+  <h1>Actuarix:<br><span>Comprehensive Company Analysis</span></h1>
+  <p class="report-subtitle">Actuarix Consulting Limited · Company intelligence · Financial ratios · EOS implementation assessment · Moka, Mauritius</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Revenue FY2024</div>
+      <div class="stat-value steel">MUR 106.8M</div>
+      <div class="stat-delta">12 months to 31 Dec 2024 · ~USD 2.4M</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Net Profit After Tax</div>
+      <div class="stat-value emerald">MUR 4.9M</div>
+      <div class="stat-delta">4.6% net margin · Profitable and debt-free</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">EOS Suitability Rating</div>
+      <div class="stat-value amber">6.4 / 10</div>
+      <div class="stat-delta">Moderate-High — Qualified Positive · See Tab 06</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Critical Watch Flag</div>
+      <div class="stat-value red">114-Day DSO</div>
+      <div class="stat-delta">Debtor days well above benchmark — cash conversion risk</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREPARED-FOR STRIP
+══════════════════════════════════════════ -->
+<div class="prepared-for">
+  <span>Actuarix Consulting Limited — Company Analysis &amp; EOS Assessment · 16 June 2026 · Prepared by LMA Growth Partners</span>
+  <div class="author-links">
+    <a href="https://thierrybechard.com" target="_blank">thierrybechard.com</a>
+    <a href="mailto:thierry@lmagrowthpartners.com">thierry@lmagrowthpartners.com</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('exec',this)">Executive Summary <span class="tab-num">01</span></button>
+  <button class="tab-btn" onclick="showTab('overview',this)">Company Overview <span class="tab-num">02</span></button>
+  <button class="tab-btn" onclick="showTab('financial',this)">Financial Performance <span class="tab-num">03</span></button>
+  <button class="tab-btn" onclick="showTab('ratios',this)">Financial Ratios <span class="tab-num">04</span></button>
+  <button class="tab-btn" onclick="showTab('market',this)">Market &amp; Competitive Position <span class="tab-num">05</span></button>
+  <button class="tab-btn" onclick="showTab('eos',this)">EOS Assessment <span class="tab-num">06</span></button>
+  <button class="tab-btn" onclick="showTab('recs',this)">Recommendations <span class="tab-num">07</span></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 01 — EXECUTIVE SUMMARY
+══════════════════════════════════════════ -->
+<div id="exec" class="tab-content active">
+<div class="content-wrap">
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-lead">A 29-year-old actuarial institution reborn as an independent Mauritius-owned firm following a 2024 management buyout — profitable, debt-free, and holding a landmark government mandate, but carrying slow debtor collection that quietly strains cash despite strong earnings.</p>
+
+  <p class="body-text">Actuarix Consulting Limited (File No. C17939, BRN C06017939) is Mauritius's only fully independent actuarial, employee benefits, investment consulting, and insurance broking firm. Founded in 1997 as Bacon, Woodrow &amp; Legris Ltd and subsequently operated as Aon Solutions Ltd under the global Aon network, the company was rebranded Actuarix Consulting Limited following a management buyout in which founding actuary Yvan Legris reacquired the Mauritius operations from Aon. Today Actuarix serves over 400 organisations locally and across Africa, advising on retirement, benefits, and risk solutions. It is audited by Ernst &amp; Young and its registered office is at 1st Floor, The Pod, Vivéa Business Park, Moka.</p>
+
+  <p class="body-text">The ownership structure is clean and concentrated. Actuarix Consulting Limited is 100% owned by Actuarix Holdings Limited (File No. C209645), a private holding company incorporated on 13 June 2024 — the vehicle through which the MBO was executed. The three individual shareholders of the holding company are Vincent Alain Yvan Legris (25%), Jeeban Samuel (26%), and Noor Ahmad Raza Hotee (49%). Noor Hotee, the majority beneficial owner and Managing Director, is a qualified actuary educated at LSE with over 25 years of industry experience. Yvan Legris, non-executive Chairman, founded the Aon Mauritius office in 1997 and has served as Global CEO of Aon Consulting. The leadership team is experienced, credentialed, and owner-managed — a strong EOS indicator.</p>
+
+  <p class="body-text">For FY2024, Actuarix reported revenue of MUR 106.8M, a 100% gross margin (pure services business, no COGS), and a net profit after tax of MUR 4.9M (4.6% net margin). The company is entirely debt-free with MUR 33.8M cash on hand and MUR 41.4M total equity. The one material concern is debtor days of 114 days — MUR 33.4M in trade receivables sitting against MUR 106.8M revenue. In a services firm with zero inventory and no borrowings, this is the single biggest operational lever available. In May 2026, Actuarix was awarded the government mandate to serve as investment strategy consultant to the National Pensions Fund and National Savings Fund — a Rs 3.84M contract covering Rs 220 billion in combined public assets. EOS suitability is rated 6.4/10 — a firm at the right scale, with owner-managers, recently restructured, and likely experiencing the accountability and vision clarity challenges that follow any ownership transition.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Key Finding — Post-MBO Leadership Alignment is the Entry Point</div>
+    Actuarix has just completed a significant corporate transformation: a global corporate parent replaced by three local owner-managers with different equity stakes (49/26/25). This structural change almost always creates hidden tension — around strategic direction, decision rights, accountability between peers, and meeting culture. The company's financial performance is sound and its market position is strong, but the real EOS conversation is about how three highly credentialed professionals with different ownership stakes make decisions, resolve disagreements, and align on a 3-year vision now that there is no parent company to defer to. That is the precise problem EOS solves.
+  </div>
+
+  <h3 class="subsection-title">At a Glance</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Commercial Strengths</h4>
+      <p><strong>Only independent actuarial firm in Mauritius</strong> with 29 years of institutional history and the Aon brand pedigree. Active across 400+ client organisations. Government-mandated consultant for MUR 220B in state pension assets (May 2026). Diversified service lines across actuarial, employee benefits, investment consulting, and insurance broking. Strong cash position (MUR 33.8M). Zero financial debt.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Financial Vulnerabilities</h4>
+      <p><strong>114-day debtor days is the dominant operational risk.</strong> MUR 33.4M locked in receivables — equivalent to 4 months' revenue. Admin costs consume 92.3% of revenue, leaving a thin 6.8% EBIT margin. No prior-year comparatives available from CBRIS, making trend analysis impossible. Net margin of 4.6% leaves limited buffer if revenue softens or a major client delays payment.</p>
+    </div>
+    <div class="profile-card">
+      <h4>EOS Readiness Signal</h4>
+      <p><strong>Three owner-managers with unequal stakes, no parent company, and a newly independent structure</strong> — textbook EOS entry conditions. The company likely lacks a formalised V/TO, has informal meeting rhythms inherited from a corporate parent culture, and faces the classic "brilliance bottleneck" of senior actuaries as both producers and decision-makers. The recent government mandate will add operational complexity that demands better accountability infrastructure.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 02 — COMPANY OVERVIEW
+══════════════════════════════════════════ -->
+<div id="overview" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">A 29-year-old institution that began as a partnership, was absorbed by a global corporate, and has now been reclaimed by its founders — Mauritius's sole independent actuarial house with a government mandate and a pan-African client base.</p>
+
+  <h3 class="subsection-title">Founding and Corporate Record</h3>
+  <p class="body-text">Actuarix Consulting Limited was incorporated on 21 May 1997 under the name Bacon, Woodrow &amp; Legris Ltd — a local actuarial partnership anchored by Yvan Legris. The firm subsequently became Aon Solutions Ltd when incorporated into the global Aon network, operating under the Aon brand for over two decades. In 2024, following Aon's strategic decision to divest the Mauritius operations, Yvan Legris led a management buyout, reacquiring the business and rebranding it Actuarix Consulting Limited. The company is registered as a Public Domestic company (File No. C17939, BRN C06017939) with a stated capital of MUR 900,000 across 9,000 ordinary shares. It is fully current on annual registration fees (2026 paid), has filed financials through 31 December 2024, and maintains its registered office at 1st Floor, The Pod, Vivéa Business Park, Moka 81406, Mauritius. Secretary: StraFin Corporate Services Ltd, Cybercity, Ebène (appointed 22 December 2025). Auditor: Messrs. Ernst &amp; Young (appointed 1 April 2015).</p>
+
+  <p class="body-text">The company carries no registered charges — no floating charges, debentures, or fixed charges appear in the CBRIS charge register. This is consistent with its debt-free balance sheet and services-only business model. Annual returns are filed but the last three on record show dates of 2020–2021, suggesting the post-MBO filings are still being established under the new structure.</p>
+
+  <h3 class="subsection-title">Ownership Structure</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Actuarix Holdings Limited</h4>
+        <div class="ec-sub">Parent Company · File C209645</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Incorporated</span><span class="mv">13 Jun 2024</span></div>
+        <div class="ec-metric"><span class="mk">Nature</span><span class="mv">Private · Domestic</span></div>
+        <div class="ec-metric"><span class="mk">BRN</span><span class="mv">C24209645</span></div>
+        <div class="ec-metric"><span class="mk">Shares held in ACL</span><span class="mv ok">9,000 (100%)</span></div>
+        <div class="ec-metric"><span class="mk">Reg. Address</span><span class="mv">Villa 111, La Plantation Marguery, La Mivoie, Black River</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Noor Ahmad Raza Hotee</h4>
+        <div class="ec-sub">Majority Shareholder · 49%</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Shares</span><span class="mv">490 / 1,000</span></div>
+        <div class="ec-metric"><span class="mk">Role (ACL)</span><span class="mv">Managing Director</span></div>
+        <div class="ec-metric"><span class="mk">Address</span><span class="mv">25 Morcellement Koenig, St Paul Phoenix</span></div>
+        <div class="ec-metric"><span class="mk">Appointed</span><span class="mv">16 Dec 2024</span></div>
+        <div class="ec-metric"><span class="mk">Background</span><span class="mv">LSE · Actuary · 25+ yrs</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Jeeban Samuel &amp; Yvan Legris</h4>
+        <div class="ec-sub">Minority Shareholders · 26% + 25%</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Jeeban Samuel</span><span class="mv">260 shares (26%)</span></div>
+        <div class="ec-metric"><span class="mk">Yvan Legris</span><span class="mv">250 shares (25%)</span></div>
+        <div class="ec-metric"><span class="mk">Legris role</span><span class="mv">Non-Exec Chairman</span></div>
+        <div class="ec-metric"><span class="mk">Legris background</span><span class="mv">Founder 1997 · Ex-Global CEO Aon Consulting</span></div>
+        <div class="ec-metric"><span class="mk">Legris address</span><span class="mv">Villa 111, La Mivoie, Black River</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Strategic Note — MBO Structure and Governance Implications</div>
+    Actuarix Holdings Limited was incorporated on 13 June 2024 — formerly trading as "Actuarix Consulting Limited" (now renamed) — as the MBO vehicle. The three individual shareholders hold unequal stakes: Hotee (49%), Samuel (26%), Legris (25%). No single shareholder has majority control, and no unanimous decision threshold is evident from public records. This distributed ownership, combined with the absence of a corporate parent providing governance guardrails, creates exactly the kind of accountability ambiguity that EOS is designed to resolve. The Accountability Chart and V/TO are likely the highest-priority tools for this leadership team.
+  </div>
+
+  <h3 class="subsection-title">Leadership and Directors</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Noor Ahmad Raza Hotee — Managing Director</h4>
+      <p><strong>Managing Director and majority beneficial owner (49%).</strong> Qualified actuary, educated at the London School of Economics (BSc Actuarial Science, 1993–1996). One of approximately ten practising actuaries in Mauritius. Spent 12 years at Towers Watson (UK) before returning to Mauritius and joining Aon Hewitt. Appointed director of Actuarix Consulting Limited: 2 May 2025. Known publicly as the public face of Actuarix in press and regulatory contexts. LinkedIn: linkedin.com/in/noor-hotee-75a48083/</p>
+    </div>
+    <div class="profile-card">
+      <h4>Vincent Alain Yvan Legris — Non-Executive Chairman</h4>
+      <p><strong>Founder and non-executive Chairman.</strong> An actuaire professionnel who founded the Mauritius office of Aon in 1997. Held leadership positions in actuarial and employee benefits consulting in Mauritius, the UK, and the USA; served as Global CEO of Aon Consulting. Manager of Actuarix Consulting Limited since 27 May 1997 (inception). Director since 2 May 2025. Chairman of Actuarix Holdings Limited (appointed 13 June 2024). Also serves as non-executive Chairperson of Medine Limited. Service address: 1st Floor, The Pod, Vivéa Business Park, Moka.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Jeeban Samuel — Director</h4>
+      <p><strong>Director and 26% beneficial owner.</strong> Appointed director of both Actuarix Consulting Limited (2 May 2025) and Actuarix Holdings Limited (16 December 2024). Service address at Parasol Lane, Mont Fertile, New Grove, Mauritius. No LinkedIn profile identified in public searches. Functional role within the operating company not confirmed from public data — likely a senior technical or commercial role given shareholding.</p>
+    </div>
+  </div>
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Imrith Ramtohul — Head of Investment Consulting</h4>
+      <p><strong>Senior executive leading the investment consulting division.</strong> FCCA, CFA, CIPM-certified. Over 26 years' experience including Head of Investment at Mauritius Union Group and roles at the Stock Exchange of Mauritius and subsidiaries of Rand Merchant Bank and Nedbank. Leads the engagement on the May 2026 National Pensions Fund / National Savings Fund mandate. LinkedIn: linkedin.com/in/imrith-ramtohul/</p>
+    </div>
+    <div class="profile-card">
+      <h4>Secretary — StraFin Corporate Services Ltd</h4>
+      <p>Appointed 22 December 2025. Located at Silicon Avenue, Cybercity, Suite 408, 4th Floor, The Catalyst, Ebène, Mauritius. Professional corporate secretarial firm.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Auditor — Messrs. Ernst &amp; Young</h4>
+      <p>Appointed 1 April 2015. Big Four audit firm. Financial statements for FY2024 were approved on 19 June 2025, in line with normal Mauritius filing timelines.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Products and Services Portfolio</h3>
+  <p class="body-text">Actuarix operates across four integrated service lines, positioning itself as Mauritius's only firm that spans the full spectrum of actuarial and financial advisory for institutions:</p>
+  <ul class="styled-list">
+    <li><strong>Actuarial Services:</strong> Actuarial valuations for pension funds, insurance companies, and provident funds. IAS 19 accounting disclosures, curtailments, settlements, acquisitions, and divestitures. Accredited actuaries for insurance and pension schemes across Mauritius and several African jurisdictions.</li>
+    <li><strong>Employee Benefits Consulting:</strong> Design, benchmarking, and management of retirement and group risk benefit schemes. Serves over 400 organisations across Mauritius and Africa. Covers pension scheme governance, trustee advisory, and benefit restructuring.</li>
+    <li><strong>Investment Consulting:</strong> Long-term investment strategy, risk management, investment recommendations, manager selection, and performance monitoring for institutional investors (pension funds, insurers, provident funds). Led by Imrith Ramtohul. Mandated in May 2026 by the Ministry of Finance to advise the NPF/NSF Investment Committee on ~MUR 220 billion in combined assets.</li>
+    <li><strong>Insurance Broking:</strong> Independent insurance broking services, complementing the actuarial and employee benefits offering for corporate clients.</li>
+    <li><strong>Training and Education:</strong> Registered as a Training Institution under Mauritius business classifications at the same address, indicating an active learning or CPD offering.</li>
+  </ul>
+  <p class="body-text">The CBRIS business description lists two registered activities: Training Institution / Education (n.e.c.) and Other professional, scientific and technical activities — coaches, trainers, consultants, motor surveyors, opticians. The breadth of the registered categories reflects the firm's multi-line professional services scope.</p>
+
+  <h3 class="subsection-title">Geographic Presence</h3>
+  <p class="body-text">Actuarix operates from a single physical office at 1st Floor, The Pod, Vivéa Business Park, Moka 81406, Mauritius — a modern business park in the geographic centre of the island. The firm's client reach, however, extends well beyond Mauritius: it partners with organisations across sub-Saharan Africa and is accredited as an actuarial consultant in multiple African regulatory frameworks, including Rwanda (listed as an accredited actuary for insurance companies and pension schemes as of March 2026). The currency capability on the Actuarix platform includes MUR, EGP, EUR, GBP, RWF, SZL, USD, ZAR, and ZMW — confirming multi-country African operations in at least Rwanda, South Africa, Eswatini, and Zambia.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Note</div>
+    The Actuarix website (www.actuarix.mu) is live and functional but appears to be in a revamp phase — the company itself notes the site is being updated. The public-facing content is limited. No team page, no detailed service descriptions, and no published case studies are currently accessible. For a firm positioning itself across Africa and seeking to grow its investment consulting mandate, the digital presence is underdeveloped relative to its institutional standing. This is a moderate commercial risk but also a clear near-term opportunity.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 03 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════ -->
+<div id="financial" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Performance Analysis</h2>
+  <p class="section-lead">Source: CBRIS / Registrar of Companies financial summary filed for FY ended 31 December 2024 (approved 19 June 2025). Currency: Mauritius Rupee (MUR). Unit: 1 (actual amounts). No prior-year comparative available from CBRIS for trend analysis.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Data Scope and Limitations</div>
+    Financial data is drawn from the statutory summary filed with the Registrar of Companies — these are condensed figures, not full audited accounts. No prior-year comparative is available from CBRIS, making year-on-year trend analysis impossible from this source alone. Cost of Sales is recorded as zero, consistent with a pure professional services model where all costs flow through Administration Costs. Finance Costs are nil, confirming the debt-free balance sheet. The "Other Expenses" line (MUR 4.4M) likely captures depreciation, provisions, or non-recurring items — it is not broken out further in the CBRIS summary. No financial data has been filed for the holding company (Actuarix Holdings Limited) as it was only incorporated in June 2024.
+  </div>
+
+  <h3 class="subsection-title">P&amp;L Summary (FY2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>MUR</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr class="heat-ok"><td>Turnover (Revenue)</td><td>106,825,878</td><td>100.0%</td><td>MUR 106.8M (~USD 2.4M). Pure services revenue — no COGS. Consistent with an actuarial/consulting model billing on retainer and project fees.</td></tr>
+        <tr><td>Cost of Sales</td><td>0</td><td>0.0%</td><td>Nil — all costs are captured in operating expenditure lines. Typical for professional services firms.</td></tr>
+        <tr class="heat-ok"><td>Gross Profit</td><td>106,825,878</td><td>100.0%</td><td>100% gross margin. The entire revenue line flows to operating profit before overheads. Benchmark for professional services: 60–80% gross; 100% here means all labour and delivery costs are below-the-line.</td></tr>
+        <tr class="heat-ok"><td>Add: Other Income</td><td>3,432,609</td><td>3.2%</td><td>Likely interest income on the substantial cash balance (MUR 33.8M), investment returns, or fee income not classified as turnover.</td></tr>
+        <tr><td>Less: Distribution Costs</td><td>1</td><td>0.0%</td><td>Effectively nil — no sales distribution function.</td></tr>
+        <tr class="heat-warn"><td>Less: Administration Costs</td><td>98,613,199</td><td>92.3%</td><td>Dominant cost line. In a people-business, this is almost entirely staff costs (salaries, benefits, actuarial CPD, office lease at Vivéa). At 92.3% of revenue, operational leverage is tight — any revenue softness translates directly to margin erosion.</td></tr>
+        <tr class="heat-warn"><td>Less: Other Expenses</td><td>4,367,486</td><td>4.1%</td><td>Likely depreciation on PPE (MUR 5.3M on balance sheet), software amortisation, provisions, or one-off restructuring costs related to the MBO transition.</td></tr>
+        <tr><td>Less: Finance Costs</td><td>0</td><td>0.0%</td><td>Nil. Confirmed debt-free position. Exceptional for a firm of this scale and tenure.</td></tr>
+        <tr class="heat-ok"><td>Profit Before Tax</td><td>7,277,802</td><td>6.8%</td><td>MUR 7.3M PBT. Solid for a professional services SME, though thin relative to revenue scale due to high admin cost base.</td></tr>
+        <tr class="heat-warn"><td>Tax Expense</td><td>2,356,714</td><td>2.2%</td><td>Effective tax rate of 32.4% on PBT — above the standard 15% corporate rate. This may indicate deferred tax adjustments or non-deductible items. Warrants clarification with the finance team.</td></tr>
+        <tr class="heat-ok"><td><strong>Net Profit After Tax</strong></td><td><strong>4,921,088</strong></td><td><strong>4.6%</strong></td><td>MUR 4.9M PAT. Healthy absolute profit for a firm of this size and market. Leaves room for owner distributions and reinvestment.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Balance Sheet Summary (31 December 2024, MUR)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Item</th><th>MUR</th><th>Commentary</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Current Assets</td><td>Property, Plant &amp; Equipment</td><td>5,255,870</td><td>Office equipment, computers, furniture at Vivéa. Reasonable for a 16-person consulting office.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Intangible Assets</td><td>6,321</td><td>Minimal — likely software licences or IP in final stages of amortisation.</td></tr>
+        <tr><td>Non-Current Assets</td><td>Others (non-current)</td><td>2,155,241</td><td>Could include long-term deposits, loans to staff, or right-of-use assets under IFRS 16 lease accounting.</td></tr>
+        <tr class="heat-ok"><td>Non-Current Assets</td><td><strong>Total Non-Current Assets</strong></td><td><strong>7,417,432</strong></td><td>9.2% of total assets — asset-light business model, as expected.</td></tr>
+        <tr><td>Current Assets</td><td>Inventories</td><td>0</td><td>Nil — services business. No stock.</td></tr>
+        <tr class="heat-warn"><td>Current Assets</td><td>Trade and Other Receivables</td><td>33,417,566</td><td>MUR 33.4M — equivalent to 114 days' revenue. The single most important number on this balance sheet. Slow collection from institutional clients (pension funds, insurers, government entities) appears to be structural.</td></tr>
+        <tr class="heat-ok"><td>Current Assets</td><td>Cash and Cash Equivalents</td><td>33,762,325</td><td>MUR 33.8M cash — very strong liquidity. Covers all current liabilities twice over on its own.</td></tr>
+        <tr><td>Current Assets</td><td>Others (current)</td><td>6,200,166</td><td>Prepayments, tax receivables, other short-term assets.</td></tr>
+        <tr class="heat-ok"><td>Current Assets</td><td><strong>Total Current Assets</strong></td><td><strong>73,380,057</strong></td><td>90.8% of total assets. Highly liquid asset base.</td></tr>
+        <tr class="heat-ok"><td></td><td><strong>TOTAL ASSETS</strong></td><td><strong>80,797,489</strong></td><td></td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Share Capital</td><td>900,000</td><td>9,000 ordinary shares at MUR 100 each.</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td>Retained Earnings</td><td>40,495,824</td><td>MUR 40.5M retained — 29 years of accumulated profit. Reflects sustained profitability since 1997 and disciplined dividend policy under Aon ownership.</td></tr>
+        <tr class="heat-ok"><td>Equity</td><td><strong>Total Equity</strong></td><td><strong>41,395,824</strong></td><td>Equity-to-assets ratio of 51.2%. Majority-equity-funded. Strong balance sheet.</td></tr>
+        <tr><td>Non-Current Liabilities</td><td>Deferred Tax</td><td>822,912</td><td>Timing difference on tax — normal. No long-term borrowings whatsoever.</td></tr>
+        <tr class="heat-ok"><td>Non-Current Liabilities</td><td><strong>Total Non-Current Liabilities</strong></td><td><strong>822,912</strong></td><td>Minimal. No debt financing of any kind.</td></tr>
+        <tr class="heat-warn"><td>Current Liabilities</td><td>Trade and Other Payables</td><td>33,558,499</td><td>MUR 33.6M — large relative to a COGS-zero model. Likely accrued staff costs (bonuses, pension contributions), professional fees payable, retainer advances from clients, and MBO-related accruals. Warrants careful monitoring.</td></tr>
+        <tr><td>Current Liabilities</td><td>Others (current)</td><td>5,020,254</td><td>Other short-term accruals, provisions, or tax liabilities not separately disclosed.</td></tr>
+        <tr class="heat-ok"><td>Current Liabilities</td><td><strong>Total Current Liabilities</strong></td><td><strong>38,578,753</strong></td><td>Well covered by current assets (1.90× ratio).</td></tr>
+        <tr><td></td><td><strong>TOTAL LIABILITIES</strong></td><td><strong>39,401,665</strong></td><td>All liability-funded by trade payables and accruals — zero financial debt.</td></tr>
+        <tr class="heat-ok"><td></td><td><strong>TOTAL EQUITY &amp; LIABILITIES</strong></td><td><strong>80,797,489</strong></td><td>Balanced. Confirms integrity of the filing.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">Charge Register</h3>
+  <p class="body-text">No charges are registered against Actuarix Consulting Limited in the CBRIS charge register. No floating charges, fixed charges, debentures, or other encumbrances appear. This is entirely consistent with the balance sheet — the company has never needed to borrow against its assets. The clean charge register confirms that the MBO was funded without third-party security over company assets, likely financed through the retained earnings and existing cash resources of the principals.</p>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 04 — FINANCIAL RATIOS
+══════════════════════════════════════════ -->
+<div id="ratios" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Financial Ratios Analysis</h2>
+  <p class="section-lead">Benchmarks sourced from Mauritius professional services / financial services SME norms and sub-Saharan Africa consulting sector data. Colour key: <span class="b b-green">Green</span> = healthy, <span class="b b-amber">Amber</span> = watch, <span class="b b-red">Red</span> = critical concern. All values from FY2024 CBRIS filing (MUR, 31 December 2024).</p>
+
+  <h3 class="subsection-title">Liquidity Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Current Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.90×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services SME)</span><span class="ratio-val">1.2× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Signal</span><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">MUR 73.4M in current assets against MUR 38.6M current liabilities. The company can meet all short-term obligations comfortably. However, note that MUR 33.4M (45%) of current assets are receivables — if collection delays worsen, this ratio degrades faster than the headline number suggests. The MUR 33.8M cash position provides the real safety buffer.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Quick Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.90×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services SME)</span><span class="ratio-val">1.0× – 1.5×</span></div>
+      <div class="ratio-row"><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">Identical to current ratio — no inventory to strip out. A pure services business. At 1.90×, the firm exceeds the typical professional services benchmark. This is a strength, though the quality of the receivables (age profile, client mix) matters more than the ratio itself.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Profitability Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Gross Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">100.0%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (actuarial/consulting)</span><span class="ratio-val">60%–80%</span></div>
+      <div class="ratio-row"><span class="ratio-val"><span class="b b-green">Strong</span></span></div>
+      <span class="ratio-interpret">100% gross margin reflects the pure-fee, no-COGS professional services model. All costs — including staff — flow through Administration Costs. The gross margin number itself is mechanical and not directly comparable to firms that allocate labour to COGS. The meaningful profitability metrics are EBIT and net margin.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>EBIT Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">6.8%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (consulting SME)</span><span class="ratio-val">10%–20%</span></div>
+      <div class="ratio-row"><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">EBIT of MUR 7.3M on MUR 106.8M revenue. Below typical consulting firm benchmarks of 10–20%. The 92.3% admin cost ratio (virtually all staff costs) leaves limited margin. This is not a crisis — the firm is profitable — but it signals that cost discipline and revenue growth will both be needed to improve returns for the new owner-managers.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Net Profit Margin</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val warn">4.6%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (professional services)</span><span class="ratio-val">8%–15%</span></div>
+      <div class="ratio-row"><span class="ratio-val"><span class="b b-amber">Watch</span></span></div>
+      <span class="ratio-interpret">MUR 4.9M net profit on MUR 106.8M revenue. The effective tax rate of 32.4% (versus the standard 15% Mauritius corporate rate) is compressing the bottom line — if this normalises, net margin would improve materially. Worth investigating the tax position with the finance team. Absolute profit is healthy; the margin percentage is the concern.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Return on Assets (ROA)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">6.1%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius services)</span><span class="ratio-val">4%–10%</span></div>
+      <div class="ratio-row"><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">MUR 4.9M net profit on MUR 80.8M total assets. Within benchmark range. The large cash holding (MUR 33.8M) is diluting ROA — if cash is deployed or distributed, ROA would improve significantly. The asset base is otherwise lean and appropriate for a services model.</span>
+    </div>
+  </div>
+
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Return on Equity (ROE)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">11.9%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (Mauritius SME)</span><span class="ratio-val">8%–18%</span></div>
+      <div class="ratio-row"><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">MUR 4.9M PAT on MUR 41.4M equity. 11.9% ROE is healthy and within benchmark. The accumulated retained earnings (MUR 40.5M) form the bulk of equity — if these are partially distributed post-MBO, ROE would improve. The new owner-managers have a strong equity base from which to work.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Effective Tax Rate</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">32.4%</span></div>
+      <div class="ratio-row"><span class="ratio-label">Standard Mauritius rate</span><span class="ratio-val">15%</span></div>
+      <div class="ratio-row"><span class="ratio-val"><span class="b b-red">Anomalous</span></span></div>
+      <span class="ratio-interpret">Tax of MUR 2.36M on PBT of MUR 7.28M implies an effective rate of 32.4% — more than double the standard Mauritius 15% corporate tax rate. This could reflect deferred tax liabilities crystallising, non-deductible expenses, MBO transaction costs treated as non-deductible, or prior-year adjustments. This should be clarified in the EOS conversation — it is suppressing net profit by approximately MUR 1.2M per year versus the standard rate.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Leverage Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Debt-to-Equity Ratio</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">0.00×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services)</span><span class="ratio-val">&lt; 1.0×</span></div>
+      <div class="ratio-row"><span class="ratio-val"><span class="b b-green">Excellent</span></span></div>
+      <span class="ratio-interpret">Zero financial debt — no long-term borrowings, no short-term borrowings. Total equity of MUR 41.4M is entirely unencumbered. This is an exceptional balance sheet position and gives the new owners complete strategic flexibility: acquisitions, expansion, dividend distributions, or reinvestment can all be funded from existing resources.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Interest Coverage</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">N/A (∞)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">&gt; 3×</span></div>
+      <div class="ratio-row"><span class="ratio-val"><span class="b b-green">Not Applicable</span></span></div>
+      <span class="ratio-interpret">Finance costs are nil. Interest coverage is effectively infinite. The company has no debt service obligations of any kind. This is a structural strength that differentiates Actuarix from most SMEs of comparable scale.</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Efficiency Ratios</h3>
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>Asset Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">1.32×</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (services SME)</span><span class="ratio-val">1.0× – 2.0×</span></div>
+      <div class="ratio-row"><span class="ratio-val"><span class="b b-green">Healthy</span></span></div>
+      <span class="ratio-interpret">MUR 106.8M revenue generated from MUR 80.8M total assets. The ratio is mildly diluted by the large cash holding — if cash were excluded, asset turnover would be approximately 2.3×, well above benchmark. Revenue per employee is high, consistent with a highly qualified professional services team.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>Inventory Turnover</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">N/A</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">Not applicable</span></div>
+      <div class="ratio-row"><span class="ratio-val"><span class="b b-blue">Not Applicable</span></span></div>
+      <span class="ratio-interpret">Zero inventory — pure professional services model. No stock, no WIP in the traditional sense. Relevant measure for this business is DSO (debtor days), not inventory turns.</span>
+    </div>
+  </div>
+
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <h4>DSO — Debtor Days (Days Sales Outstanding)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val bad">114 days</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark (professional services)</span><span class="ratio-val">30–60 days</span></div>
+      <div class="ratio-row"><span class="ratio-val"><span class="b b-red">Critical Watch</span></span></div>
+      <span class="ratio-interpret">MUR 33.4M trade receivables on MUR 106.8M revenue = 114 days. This is almost double the upper benchmark for professional services firms. In absolute terms, reducing DSO from 114 to 60 days would release approximately MUR 16.2M in working capital — effectively a one-time cash injection equivalent to 3.3× the annual net profit. This is the highest-priority operational improvement available to the new owner-managers.</span>
+    </div>
+    <div class="ratio-card">
+      <h4>DPO — Creditor Days (Days Payable Outstanding)</h4>
+      <div class="ratio-row"><span class="ratio-label">Calculated value</span><span class="ratio-val ok">N/A (COGS = 0)</span></div>
+      <div class="ratio-row"><span class="ratio-label">Benchmark</span><span class="ratio-val">30–60 days</span></div>
+      <div class="ratio-row"><span class="ratio-val"><span class="b b-blue">Not Calculable</span></span></div>
+      <span class="ratio-interpret">DPO requires COGS as the denominator. With COGS of zero, a meaningful DPO ratio cannot be calculated. The MUR 33.6M trade payables (primarily staff-related accruals, professional fees, and operational liabilities) are monitored via the current ratio instead. The near-parity of receivables (MUR 33.4M) and payables (MUR 33.6M) is notable — the firm effectively intermediates its own cash cycle between collections and obligations.</span>
+    </div>
+  </div>
+
+  <div class="alert alert-critical">
+    <div class="alert-title">The 2 Numbers That Matter Most</div>
+    <strong>1. DSO of 114 days</strong> — MUR 33.4M is sitting uncollected. At benchmark (60 days), this would release MUR 16.2M in cash — roughly 3.3 years of net profit unlocked in a single operational improvement. The likely cause is institutional client payment cycles (government bodies, pension funds, large corporates). The fix is formal billing terms, automated reminders, and escalation protocols — an EOS accountability issue, not a credit quality issue. <strong>2. Effective tax rate of 32.4%</strong> — versus the standard 15% corporate rate, this is costing approximately MUR 1.2M per year in excess tax. Over five years, that is MUR 6M. Before any growth strategy, the tax position should be reviewed with Ernst &amp; Young to confirm whether it is structural or correctable.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 05 — MARKET & COMPETITIVE POSITION
+══════════════════════════════════════════ -->
+<div id="market" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Market &amp; Competitive Position</h2>
+  <p class="section-lead">Actuarix operates across three overlapping segments — institutional actuarial, corporate employee benefits, and institutional investment consulting — as Mauritius's only fully independent multi-line actuarial firm, competing primarily on independence, depth of expertise, and local market tenure.</p>
+
+  <h3 class="subsection-title">Market Segments and Competitive Dynamics</h3>
+  <div class="entity-grid">
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Institutional Actuarial Services</h4>
+        <div class="ec-sub">Pension funds · Insurance · Regulators</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Key clients</span><span class="mv">Pension funds, insurers, government bodies</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">QED Actuaries &amp; Consultants (Mauritius) Ltd; Aon Hewitt Ltd (Mauritius)</span></div>
+        <div class="ec-metric"><span class="mk">Actuarix position</span><span class="mv ok">Accredited actuary — multiple jurisdictions incl. Rwanda</span></div>
+        <div class="ec-metric"><span class="mk">Key advantage</span><span class="mv">Independence from global networks; deep local regulatory knowledge</span></div>
+        <div class="ec-metric"><span class="mk">Key risk</span><span class="mv warn">Thin actuary supply (~10 practitioners in Mauritius)</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Corporate Employee Benefits</h4>
+        <div class="ec-sub">400+ organisations · Mauritius &amp; Africa</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Client base</span><span class="mv">400+ organisations locally and across Africa</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Aon Hewitt Ltd (200+ clients, MUR 100B+ AUM); global HR consultancies</span></div>
+        <div class="ec-metric"><span class="mk">Actuarix position</span><span class="mv ok">Advises most of Mauritius's top-100 companies per public sources</span></div>
+        <div class="ec-metric"><span class="mk">Key advantage</span><span class="mv">Long-tenure relationships; full-service independence; African footprint</span></div>
+        <div class="ec-metric"><span class="mk">Key risk</span><span class="mv warn">Client concentration unknown; no published client list</span></div>
+      </div>
+    </div>
+    <div class="entity-card">
+      <div class="ec-header">
+        <h4>Institutional Investment Consulting</h4>
+        <div class="ec-sub">NPF · NSF · Insurers · Provident Funds</div>
+      </div>
+      <div class="ec-body">
+        <div class="ec-metric"><span class="mk">Mandate (May 2026)</span><span class="mv ok">NPF/NSF — MUR 220B+ in assets</span></div>
+        <div class="ec-metric"><span class="mk">Contract value</span><span class="mv">MUR 3.84M p.a. (initial 1-year term)</span></div>
+        <div class="ec-metric"><span class="mk">Lead</span><span class="mv">Imrith Ramtohul (CFA, FCCA, CIPM)</span></div>
+        <div class="ec-metric"><span class="mk">Competitors</span><span class="mv">Mercer; Willis Towers Watson (regional); local asset managers</span></div>
+        <div class="ec-metric"><span class="mk">Key risk</span><span class="mv warn">Government contract renewal risk after 12-month term</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Structural Competitive Advantages</h3>
+  <p class="body-text"><strong>1. Independence as a differentiator.</strong> Actuarix is the only actuarial firm in Mauritius that is not affiliated with a global consulting network (Aon, Mercer, Willis Towers Watson). For clients who are sensitive to conflicts of interest — particularly pension fund trustees and insurance regulators — this independence is commercially valuable and structurally defensible. No acquisition by a global player could easily replicate this positioning without undermining it.</p>
+  <p class="body-text"><strong>2. Founder-led institutional memory and relationships.</strong> Yvan Legris has been the face of actuarial consulting in Mauritius since 1997. The client relationships built over nearly three decades under the Bacon Woodrow, Aon, and Actuarix brands constitute a relationship moat that cannot be acquired or copied in the short term. The MBO preserves this continuity in a way that a trade sale to an outsider could not.</p>
+  <p class="body-text"><strong>3. Scarcity of qualified actuaries.</strong> With approximately ten practising actuaries in Mauritius, Actuarix's team constitutes a disproportionate share of the country's total actuarial capacity. Entry barriers — the time and cost of actuarial qualification — are exceptionally high. This creates a durable supply-side constraint that protects the firm's pricing power.</p>
+
+  <h3 class="subsection-title">Industry Trends and Tailwinds</h3>
+  <ul class="styled-list">
+    <li><strong>Growing pan-African pension infrastructure:</strong> Sub-Saharan Africa is expanding formal pension coverage, creating demand for actuarial and investment consulting services across multiple markets where Actuarix already has accreditation. Rwanda, South Africa, Zambia, and Eswatini are all active based on the currency data.</li>
+    <li><strong>Mauritius as African financial hub:</strong> The island's well-developed regulatory framework, IFC status, and bilateral tax treaties position it as a gateway for institutional investment flows into Africa — directly benefiting Actuarix's investment consulting practice.</li>
+    <li><strong>Ageing workforce and pension reform pressure:</strong> Mauritius's demographic shift toward an older population increases the urgency and complexity of pension fund management, driving demand for actuarial valuations, IAS 19 work, and investment strategy.</li>
+    <li><strong>Post-MBO growth potential:</strong> Independence from Aon's global priorities allows Actuarix to pursue mandates and pricing strategies that a global network subsidiary could not. The NPF/NSF mandate won within a year of the MBO is an early signal of this.</li>
+    <li><strong>Headwind — key-person concentration risk:</strong> With ~10 actuaries in Mauritius nationally, the firm's technical capacity is critically dependent on Noor Hotee and potentially one or two other qualified practitioners. Loss of a key actuary would be disproportionately damaging.</li>
+    <li><strong>Headwind — digital transformation expectations:</strong> Institutional clients increasingly expect digital reporting portals, data analytics, and real-time performance dashboards. Actuarix's current digital presence is underdeveloped and the website is in revamp. Failure to invest here creates vulnerability to better-resourced regional competitors.</li>
+  </ul>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Digital Presence Gap</div>
+    Actuarix.mu is functional but sparse. No team bios, no service detail pages, no thought leadership content, no client testimonials are currently publicly accessible. For a firm advising MUR 220 billion in government assets and 400+ organisations, this is a credibility gap in any competitive pitch situation. The website revamp already in progress should be treated as a strategic priority, not a cosmetic exercise.
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 06 — EOS ASSESSMENT
+══════════════════════════════════════════ -->
+<div id="eos" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">EOS Suitability Assessment</h2>
+  <p class="section-lead">EOS is most effective in private companies of 10–250 people experiencing growth complexity — disconnect between vision, execution, and accountability. Each dimension rated 1–10 with evidence from public data and financial analysis.</p>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">01 — Organisational Size and Complexity</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">RocketReach and public sources indicate approximately 16 employees. This is within the EOS sweet spot of 10–250 people. The firm operates four distinct service lines (actuarial, employee benefits, investment consulting, insurance broking) plus a training function — meaningful complexity for the headcount. The recent addition of the NPF/NSF mandate will add reporting obligations, client communication cadence, and coordination demands that make structured operating rhythms increasingly necessary. Score 7 rather than 8–9 because at 16 people, the firm is relatively small and the complexity may not yet feel acute to leadership.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">02 — Leadership Openness</span>
+      <span class="eos-score high">7 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:70%"></div></div>
+    <p class="eos-rationale">The MBO itself is a strong signal of entrepreneurial mindset and willingness to take ownership — literally. Owner-managers who have put their own capital and careers into a business are typically more open to frameworks that improve accountability and performance than professional managers operating under corporate oversight. Yvan Legris's background as Global CEO of Aon Consulting suggests comfort with structured management frameworks. Noor Hotee's public profile demonstrates a reflective, professionally credentialed leader. The risk is that high professional qualifications can create resistance to frameworks perceived as "too simple" for experts — this is a known pattern in professional services EOS engagements and must be addressed in the first conversation.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">03 — Growth Stage and Pain Points</span>
+      <span class="eos-score high">8 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill high" style="width:80%"></div></div>
+    <p class="eos-rationale">The company is in a textbook EOS-addressable moment: a major ownership transition (MBO completed ~18 months ago), a new government mandate that will increase operational demands, a DSO problem that requires cross-functional accountability to fix, and three owner-managers with different equity stakes who need to align on a common 3-year vision. The classic EOS pain points are all present: "We don't have the right people in the right seats" (post-MBO role clarity), "We're not all on the same page" (three owners, different priorities), "We're not getting traction" (114-day DSO, thin margins). This is a high-probability EOS engagement trigger.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">04 — Current Systems and Processes</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">The company runs its CRM and client portal on Odoo (confirmed from actuarix.mu/website/info — an Odoo-powered platform), which suggests some operational infrastructure. Ernst &amp; Young-audited financials imply disciplined financial reporting. However, the 114-day DSO suggests the billing and collections process is either not systematised or not being enforced. The website revamp and what appears to be a relatively lean team managing a large client base suggest processes are individual-driven rather than system-driven. Post-MBO, the inherited Aon governance structures have likely been partially dismantled without replacement EOS-equivalent rhythms yet in place.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">05 — Company Culture</span>
+      <span class="eos-score mid">6 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:60%"></div></div>
+    <p class="eos-rationale">The stability signals are positive: a 29-year tenure, the same founding actuary still active, a team that chose to execute an MBO rather than accept external acquisition. This speaks to loyalty and shared purpose. However, the culture is likely shaped by a professional partnership model — high individual expertise, peer accountability norms, limited hierarchical direction. For EOS purposes, this means core values are probably lived but never documented, accountability is professional rather than structural, and "difficult conversations" are likely avoided in favour of collegial deference. This is common in professional services and is exactly what the Accountability Chart and Rocks address.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">06 — Decision-Making Patterns</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">Three owner-managers with stakes of 49%, 26%, and 25% — no single majority controller, no documented decision-making protocol visible from public data. Under Aon, decisions above a threshold were escalated to the regional/global parent; that backstop no longer exists. The distribution of equity (designed to prevent any single individual from having unilateral control) is deliberately balanced, which can default to either consensus-paralysis or informal dominance by the most assertive personality. Neither is optimal. An Accountability Chart with clearly defined roles and a GWC (Get it, Want it, Capacity to do it) assessment per seat would directly address this.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">07 — Vision Clarity</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No V/TO or publicly articulated 3-year or 10-year vision is available from any public source. The company's stated identity — "since inception in 1997, dedicated to providing exceptional financial and risk management solutions" — is continuity language, not directional strategy. The MBO creates a natural inflection point: the new owners now need to answer "What does Actuarix look like in 2030?" for the first time without a parent company's strategic plan to anchor them. Is the goal to remain a Mauritius-focused boutique? Expand across East Africa? Grow the investment consulting practice? Build a training academy? These are real open questions that a V/TO session would clarify.</p>
+  </div>
+
+  <div class="eos-dimension">
+    <div class="eos-dim-header">
+      <span class="eos-dim-title">08 — Meeting Culture</span>
+      <span class="eos-score mid">5 / 10</span>
+    </div>
+    <div class="eos-bar-track"><div class="eos-bar-fill mid" style="width:50%"></div></div>
+    <p class="eos-rationale">No evidence of a structured meeting rhythm is available from public data. In a firm of 16 people with three owner-managers at the top, meeting culture is almost certainly informal and driven by individual work patterns rather than a formal weekly L10 cadence. The Aon corporate parent likely imposed its own meeting structure; post-MBO, that structure has been removed without documented replacement. The risk is a drift toward reactive management — "meetings when there's a problem" rather than "meetings on a fixed schedule to stay ahead of problems." The DSO issue is a concrete example: a weekly metrics review with a receivables line item would have flagged this much earlier.</p>
+  </div>
+
+  <div class="eos-overall">
+    <div class="eos-overall-score">
+      <div class="big-num">6.4</div>
+      <div class="big-denom">/ 10</div>
+      <div class="big-label">EOS Suitability</div>
+    </div>
+    <div class="eos-overall-text">
+      <h4>Overall Rating: Moderate-High — Qualified Positive</h4>
+      <p>Actuarix scores well on size fit, growth-stage urgency, and leadership calibre — but the gaps in vision clarity, decision-making structure, and meeting culture keep the score from reaching the highest tier. The most compelling EOS entry point is the post-MBO alignment challenge: three highly capable owner-managers who need to transition from "we just survived the buyout" to "we have a shared 3-year plan and a weekly accountability rhythm." The 114-day DSO is the clearest, most quantifiable symptom of missing EOS infrastructure. A Focus Day framed around the question "What does Actuarix look like in 2028, and who owns what to get there?" would be the natural entry point for this firm.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Highest-Priority EOS Tools for Actuarix</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h4>Vision / Traction Organizer (V/TO)</h4>
+      <p>The MBO created a leadership team without a shared documented vision for the first time in the company's history. A V/TO session to define the 10-year target, 3-year picture, 1-year plan, and quarterly Rocks is the foundational requirement. Without it, the three owners are making daily decisions against different unstated assumptions about where the firm is headed.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Accountability Chart</h4>
+      <p>Three owner-managers with different equity stakes and (likely) overlapping functional responsibilities. The Accountability Chart clarifies who sits in the Visionary seat, who sits in the Integrator seat, and who owns each major function. In a 16-person professional services firm, role ambiguity at the top creates friction all the way down.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Scorecard &amp; Measurables</h4>
+      <p>The 114-day DSO would have been visible on a weekly Scorecard months before it appeared on the balance sheet. A 5–15 metric Scorecard with DSO, revenue pipeline, billable hours, and client retention as weekly line items gives the leadership team early-warning data instead of annual-filing surprises.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Rocks (Quarterly Priorities)</h4>
+      <p>Post-MBO, Actuarix has multiple competing priorities: website revamp, NPF/NSF mandate delivery, DSO reduction, African expansion, and internal role clarity. Without Rocks, all of these compete for attention simultaneously and none get resolved. Setting 3–7 company Rocks per quarter forces explicit prioritisation and creates accountability for delivery.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Level 10 Meeting</h4>
+      <p>A fixed weekly L10 for the leadership team replaces the informal, reactive meeting culture that almost certainly developed post-MBO. For a firm managing a MUR 220B government mandate, a 90-minute weekly rhythm with a standing agenda — Scorecard review, Rock updates, Headlines, To-Do list — is not optional; it is a risk management tool.</p>
+    </div>
+    <div class="profile-card">
+      <h4>Issues List &amp; IDS</h4>
+      <p>The DSO problem, the website revamp, the tax rate anomaly, and the post-MBO role ambiguity are all Issues that need Identify-Discuss-Solve treatment rather than indefinite deferral. Implementing IDS discipline — with a visible Issues list owned collectively by the leadership team — would unlock resolution of several problems that currently drift without a clear owner or deadline.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     TAB 07 — RECOMMENDATIONS
+══════════════════════════════════════════ -->
+<div id="recs" class="tab-content">
+<div class="content-wrap">
+  <h2 class="section-title">Recommendations</h2>
+  <p class="section-lead">Eight recommendations in total — four financial/operational and four EOS-specific. Sequenced in order of impact: fix the cash cycle first, align leadership second, then build the growth infrastructure. No EOS work should commence before the DSO issue is addressed, as it provides the most tangible proof-of-concept for accountability frameworks.</p>
+
+  <h3 class="subsection-title">Financial and Operational Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 01</div>
+      <h4>Implement a Formal Receivables Collection Protocol — Target DSO of 60 Days Within 12 Months</h4>
+      <p>Assign one named owner (likely Jeeban Samuel or a designated finance manager) accountable for the weekly receivables report. Introduce 30/60/90-day billing terms in all new and renewed client contracts. Implement automated invoice reminders at day 30, 45, and 60. Escalate outstanding invoices above 75 days to a director. Target: reduce DSO from 114 to 60 days within 12 months. Cash impact: MUR 16.2M released — equivalent to 3.3× annual net profit. This single action transforms the working capital position and directly improves the liquidity available for owner distributions or reinvestment.</p>
+      <span class="urg urg-now">Immediate Priority — Before EOS</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 02</div>
+      <h4>Commission a Tax Position Review — Resolve the 32.4% Effective Tax Rate</h4>
+      <p>The effective tax rate of 32.4% on FY2024 PBT — more than double the standard 15% Mauritius corporate rate — is costing approximately MUR 1.2M per year in excess tax versus the statutory rate. Commission Ernst &amp; Young to prepare a formal memo explaining the components of the FY2024 tax charge: deferred tax movements, non-deductible MBO transaction costs, prior-year adjustments, and any permanent differences. If the rate is correctable (e.g., MBO-related one-offs normalising), no further action is needed. If structural, a tax optimisation strategy should be implemented. Success metric: confirmed explanation of the rate within 30 days of engagement.</p>
+      <span class="urg urg-now">Immediate Priority — 30 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 03</div>
+      <h4>Formalise the Website Revamp as a Strategic Project with a Deadline and Owner</h4>
+      <p>The actuarix.mu website is acknowledged to be in revamp. For a firm that just won a landmark government mandate and advises 400+ organisations, the current sparse digital presence is a credibility risk in competitive pitches and a missed opportunity for inbound lead generation. Assign Noor Hotee or a designated marketing lead as owner. Set a deadline of 90 days for launch. Minimum viable content: team bios with credentials, four service line pages with clear capability descriptions, a news/insights section seeded with two articles per quarter. This is not optional for a firm seeking African expansion.</p>
+      <span class="urg urg-week">Within 30–60 Days</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 04</div>
+      <h4>Formalise the NPF/NSF Mandate Delivery Infrastructure</h4>
+      <p>The May 2026 government mandate covers MUR 220B+ in assets and is performance-based with a 12-month renewal. Imrith Ramtohul leads the engagement, but the mandate requires regular reporting to the Ministry of Finance's Investment Committee. Establish a formal reporting calendar, a dedicated engagement file, and a quarterly Actuarix-to-Ministry review meeting. Create an internal mandate scorecard tracking deliverables, report deadlines, and relationship milestones. A failed renewal due to delivery gaps — not technical quality — would be an avoidable and damaging outcome in the first year of independence.</p>
+      <span class="urg urg-week">Within 60 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">EOS Implementation Recommendations</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="ac-num">Recommendation 05</div>
+      <h4>Schedule a Focus Day — Post-MBO Leadership Alignment Session</h4>
+      <p>The entry point for Actuarix is not a generic EOS pitch — it is a specific conversation about what happens when three owner-managers with different equity stakes inherit a company from a global corporate parent and need to define their own direction for the first time. Frame the Focus Day around the question: "What does Actuarix look like in 2028?" Bring all three directors (Hotee, Samuel, Legris) plus Imrith Ramtohul as the de facto senior leadership team. The output is a drafted V/TO and a preliminary Accountability Chart. Timing: within 60 days of first contact.</p>
+      <span class="urg urg-week">Within 60 Days of First Contact</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 06</div>
+      <h4>Build the Accountability Chart — Clarify the Integrator Seat</h4>
+      <p>The most important EOS structural question for Actuarix is: who is the Integrator? Yvan Legris is clearly the Visionary — founder, strategist, non-executive. Noor Hotee as Managing Director and majority owner is the logical Integrator candidate, but his technical actuarial role may pull him into Visionary territory on technical matters. Jeeban Samuel's functional role is unclear from public data and needs to be defined. A completed Accountability Chart with GWC assessments per seat will either confirm the current structure works or surface the gap that is creating friction. This is the single most impactful structural deliverable from EOS for this firm.</p>
+      <span class="urg urg-week">During or Immediately After Focus Day</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 07</div>
+      <h4>Set the First Company Rock — DSO Reduction as Proof of Concept</h4>
+      <p>Use the DSO reduction (Recommendation 01) as the first company Rock. This is strategically ideal: it is measurable (114 days → 60 days), it has a named owner, it has a financial impact (MUR 16.2M), and its success is entirely within the control of the leadership team. Completing this Rock in Q3 2026 demonstrates to the whole team that the EOS Rocks framework produces real business outcomes — not just process compliance. It also funds future initiatives from the released working capital.</p>
+      <span class="urg urg-medium">Q3 2026 Rock</span>
+    </div>
+    <div class="action-card">
+      <div class="ac-num">Recommendation 08</div>
+      <h4>Launch the Weekly L10 Meeting for the Leadership Team</h4>
+      <p>Establish a fixed weekly 90-minute Level 10 Meeting with all four senior leaders (Hotee, Samuel, Legris, Ramtohul). Standing agenda: Segue (5 min), Scorecard review (5 min), Rock review (5 min), Customer/employee headlines (5 min), To-do list review (5 min), Issues — IDS (60 min), Conclude (5 min). Put DSO, revenue pipeline, and NPF/NSF mandate deliverables on the Scorecard from day one. The discipline of a fixed weekly rhythm — not ad-hoc meetings when things go wrong — is the single highest-leverage cultural change available to this leadership team post-MBO.</p>
+      <span class="urg urg-medium">Within 90 Days</span>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Overall Assessment — Conclusion</h3>
+  <div class="closing-grid">
+    <div class="closing-box">
+      <h4>The Bottom Line</h4>
+      <p>Actuarix is a rare company: 29 years old, debt-free, profitable, holding a government mandate for MUR 220 billion in public assets, and recently reborn as an independently owned firm under a credentialed and committed leadership team. The commercial opportunity is real. The risks are internal rather than market-facing — a DSO that is draining cash, a tax charge that is suppressing profit, and three owner-managers who have completed the hardest part (the MBO) but not yet done the next hardest part: agreeing on where they are going and who owns what to get there. EOS addresses exactly that problem. The timing of the approach — approximately 18 months post-MBO — is optimal: the excitement of the buyout has settled, the operational reality has arrived, and the need for structured accountability is becoming felt.</p>
+    </div>
+    <div class="closing-box steel-box">
+      <h4>The Recommended Sequence</h4>
+      <ol class="signal-list">
+        <li><span class="sig-num">01</span>Initiate first contact with Noor Hotee (Managing Director, 49% owner) — position around post-MBO growth and the NPF/NSF mandate complexity. Target: within 2 weeks.</li>
+        <li><span class="sig-num">02</span>DSO intervention begins immediately — assign owner, issue collection protocol, set 60-day target. This happens regardless of EOS engagement outcome.</li>
+        <li><span class="sig-num">03</span>Tax position review commissioned with Ernst &amp; Young within 30 days — quick win if rate is correctable.</li>
+        <li><span class="sig-num">04</span>Focus Day scheduled for all three directors + Imrith Ramtohul — V/TO draft and Accountability Chart as outputs. Target: within 60 days of first contact.</li>
+        <li><span class="sig-num">05</span>Full EOS implementation begins — L10 cadence, Rocks, Scorecard — with DSO reduction as the first company Rock proving the system works. Target: Q3 2026 onward.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div>Actuarix Consulting Limited — Comprehensive Company Analysis &amp; EOS Assessment · 16 June 2026 · Prepared by LMA Growth Partners · thierrybechard.com</div>
+  <div>Sources: CBRIS / Registrar of Companies, Mauritius (16 June 2026) · Actuarix Holdings Ltd CBRIS (C209645) · actuarix.mu · LinkedIn · Business Magazine Mauritius · L'Express Mauritius · AllAfrica · RocketReach</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
